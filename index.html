@@ -678,15 +678,27 @@ window.fazerLogin = async () => {
   try { await signInWithRedirect(auth, gp); } catch(e) { console.error(e); }
 };
 
-// Captura resultado do redirect ao voltar do Google
+// Captura resultado do redirect e aguarda antes de mostrar tela de login
+let redirectChecked = false;
+
 getRedirectResult(auth).then(result => {
+  redirectChecked = true;
   if (result?.user) console.log('Login via redirect OK:', result.user.email);
-}).catch(e => console.error('Redirect error:', e));
+}).catch(e => {
+  redirectChecked = true;
+  console.error('Redirect error:', e);
+});
 
 onAuthStateChanged(auth, async user => {
   if (!user) {
-    document.getElementById('login-screen').classList.add('show');
-    document.getElementById('app').classList.remove('show');
+    // Aguarda o redirect ser processado antes de mostrar tela de login
+    if (!redirectChecked) {
+      await new Promise(r => setTimeout(r, 2000));
+    }
+    if (!auth.currentUser) {
+      document.getElementById('login-screen').classList.add('show');
+      document.getElementById('app').classList.remove('show');
+    }
     return;
   }
   USER = user;
