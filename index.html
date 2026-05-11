@@ -548,7 +548,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
     </div>
     <div class="topbar-right">
       <button class="btn-icon" onclick="toggleTheme()" id="theme-btn">🌙</button>
-      <div class="avatar" id="user-avatar">--</div>
+      <div style="position:relative"><div class="avatar" id="user-avatar" onclick="toggleMenuPerfil()">--</div><div id="menu-perfil" style="display:none;position:absolute;right:0;top:44px;background:var(--surf);border:1px solid var(--border);border-radius:12px;min-width:200px;box-shadow:0 8px 24px var(--shadow);z-index:200;overflow:hidden;"><div style="padding:14px 16px;border-bottom:1px solid var(--border)"><div id="perfil-nome" style="font-size:13px;font-weight:600;color:var(--txt)"></div><div id="perfil-email" style="font-size:11px;color:var(--txt3);margin-top:2px"></div></div><div onclick="fazerLogout()" style="display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;font-size:13px;color:var(--red)">🚪 Sair da conta</div></div></div>
     </div>
   </header>
 
@@ -650,7 +650,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged }
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
@@ -700,6 +700,8 @@ onAuthStateChanged(auth, async user => {
 
   const ini = (user.displayName||'EA').split(' ').slice(0,2).map(n=>n[0]).join('').toUpperCase();
   document.getElementById('user-avatar').textContent = ini;
+  document.getElementById('perfil-nome').textContent  = user.displayName || 'Usuário';
+  document.getElementById('perfil-email').textContent = user.email || '';
 
   const ref  = doc(db,'usuarios',user.uid);
   const snap = await getDoc(ref);
@@ -903,6 +905,24 @@ window.openModal  = id => document.getElementById(id).classList.add('open');
 window.closeModal = id => document.getElementById(id).classList.remove('open');
 window.closeOut   = (e,id) => { if(e.target.id===id) closeModal(id); };
 window.irStripe   = () => { window.location.href='/api/checkout'; };
+
+window.toggleMenuPerfil = () => {
+  const menu = document.getElementById('menu-perfil');
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+};
+
+window.fazerLogout = async () => {
+  await signOut(auth);
+  document.getElementById('menu-perfil').style.display = 'none';
+};
+
+document.addEventListener('click', e => {
+  const menu   = document.getElementById('menu-perfil');
+  const avatar = document.getElementById('user-avatar');
+  if (menu && avatar && !menu.contains(e.target) && !avatar.contains(e.target)) {
+    menu.style.display = 'none';
+  }
+});
 
 // ── DEMO (remover após Firebase conectado) ───────────────────
 const DEMO = [
