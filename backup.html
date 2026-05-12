@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Ações — Backup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;600;700&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<style>
+:root {
+  --bg:     #06070d;
+  --card:   #111828;
+  --card2:  #1a2238;
+  --border: rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --green:  #10b981;
+  --green2: rgba(16,185,129,0.1);
+  --red:    #ef4444;
+  --red2:   rgba(239,68,68,0.1);
+  --yellow: #f59e0b;
+  --txt:    #fff;
+  --txt2:   rgba(255,255,255,0.6);
+  --txt3:   rgba(255,255,255,0.3);
+  --mono:   'DM Mono', monospace;
+  --title:  'Syne', sans-serif;
+  --body:   'Inter', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--txt);
+  min-height: 100vh;
+  background-image: radial-gradient(ellipse at 15% 0%, rgba(16,185,129,0.06), transparent 55%);
+}
+
+/* LOGIN */
+#login-screen { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+#acesso-negado { display:none; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+#app-screen { display:none; padding:40px 20px; }
+
+.login-box, .negado-box {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%; max-width: 400px;
+  text-align: center;
+}
+.login-logo { font-family:var(--title); font-size:24px; font-weight:800; margin-bottom:8px; letter-spacing:-.03em; }
+.login-logo span { color: var(--green); }
+.login-sub { color:var(--txt3); font-size:13px; margin-bottom:32px; }
+
+.btn-google {
+  width:100%; padding:14px;
+  background:var(--card2); border:1px solid var(--border2); border-radius:12px;
+  color:var(--txt); font-family:var(--body); font-size:15px; font-weight:500;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:12px;
+  transition:border-color .2s;
+}
+.btn-google svg { width:20px; height:20px; flex-shrink:0; }
+.btn-google:hover { border-color: rgba(255,255,255,.25); }
+.login-note { font-size:12px; color:var(--txt3); margin-top:20px; }
+
+.negado-box h2 { font-size:20px; margin-bottom:10px; color:var(--red); }
+.negado-box p  { color:var(--txt2); font-size:14px; margin-bottom:20px; }
+
+/* APP */
+.app-inner { max-width:860px; margin:0 auto; }
+
+header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:48px; padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.header-logo { font-family:var(--title); font-size:20px; font-weight:800; letter-spacing:-.03em; }
+.header-logo span { color:var(--green); }
+.header-right { display:flex; align-items:center; gap:12px; }
+.user-email { font-size:12px; color:var(--txt3); font-family:var(--mono); }
+
+.btn-small {
+  padding:8px 14px; background:transparent;
+  border:1px solid var(--border2); border-radius:8px;
+  color:var(--txt2); font-size:12px; cursor:pointer; transition:border-color .2s;
+}
+.btn-small:hover { border-color:var(--red); color:var(--red); }
+
+.page-title { font-family:var(--title); font-size:28px; font-weight:800; letter-spacing:-.03em; margin-bottom:6px; }
+.page-sub   { color:var(--txt2); font-size:14px; margin-bottom:36px; line-height:1.6; }
+
+/* REPO BANNER */
+.repo-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px; }
+@media(max-width:600px) { .repo-grid { grid-template-columns:1fr; } }
+
+.repo-banner {
+  background: var(--green2);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius:12px; padding:14px 18px;
+}
+.repo-label { font-family:var(--mono); font-size:11px; color:var(--txt3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
+.repo-info  { font-size:14px; color:var(--txt); font-weight:500; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.repo-meta  { font-family:var(--mono); font-size:11px; color:var(--green); }
+
+.save-btn-wrap { text-align:right; margin:16px 0 28px; }
+
+.btn-primary {
+  padding:12px 22px; background:var(--green); color:#000;
+  border:none; border-radius:10px;
+  font-family:var(--mono); font-size:13px; font-weight:700;
+  cursor:pointer; transition:opacity .15s, transform .1s;
+}
+.btn-primary:hover { opacity:.88; transform:translateY(-1px); }
+.btn-primary:disabled { opacity:.4; cursor:default; transform:none; }
+
+/* NOVO PONTO */
+.new-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:24px; margin-bottom:32px;
+}
+.section-label {
+  font-family:var(--mono); font-size:11px; font-weight:600;
+  color:var(--txt3); text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px;
+}
+.form-row { display:flex; gap:12px; align-items:flex-end; flex-wrap:wrap; }
+.form-group { flex:1; min-width:180px; }
+label { display:block; font-size:11px; color:var(--txt3); margin-bottom:6px; font-family:var(--mono); letter-spacing:.05em; }
+input[type=text] {
+  width:100%; padding:12px 14px;
+  background:var(--card2); border:1px solid var(--border); border-radius:10px;
+  color:var(--txt); font-family:var(--body); font-size:14px; outline:none;
+  transition:border-color .2s;
+}
+input[type=text]:focus { border-color:rgba(16,185,129,.35); }
+input[type=text]::placeholder { color:var(--txt3); }
+
+/* LISTA */
+.empty {
+  text-align:center; padding:52px; color:var(--txt3); font-size:14px;
+  background:var(--card); border:1px dashed var(--border); border-radius:16px;
+}
+.point-card {
+  background:var(--card); border:1px solid var(--border); border-radius:14px;
+  padding:18px 22px; margin-bottom:10px;
+  display:flex; align-items:center; gap:16px;
+  transition:border-color .2s; animation:fadeUp .25s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+.point-card:hover { border-color:var(--border2); }
+.point-icon {
+  width:38px; height:38px;
+  background:var(--green2); border:1px solid rgba(16,185,129,.2);
+  border-radius:10px; display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0;
+}
+.point-info { flex:1; min-width:0; }
+.point-name { font-size:15px; font-weight:500; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.point-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.point-date { font-family:var(--mono); font-size:11px; color:var(--txt3); }
+.point-hash {
+  font-family:var(--mono); font-size:11px; color:var(--green);
+  background:var(--green2); padding:2px 8px; border-radius:4px;
+}
+.point-actions { display:flex; gap:8px; flex-shrink:0; }
+.btn-restore {
+  padding:8px 16px; background:var(--green); color:#000;
+  border:none; border-radius:8px; font-family:var(--mono); font-size:12px; font-weight:700; cursor:pointer;
+}
+.btn-restore:hover { opacity:.85; }
+.btn-delete {
+  padding:8px 12px; background:var(--red2); color:var(--red);
+  border:1px solid rgba(239,68,68,.2); border-radius:8px;
+  font-family:var(--mono); font-size:12px; cursor:pointer;
+}
+
+/* MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.75); backdrop-filter:blur(6px);
+  z-index:100; align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.active { display:flex; }
+.modal {
+  background:var(--card); border:1px solid var(--border2);
+  border-radius:20px; padding:30px; max-width:620px; width:100%;
+  animation:modalIn .2s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:scale(.96) translateY(6px)} to{opacity:1;transform:none} }
+.modal h3 { font-size:18px; font-weight:600; margin-bottom:8px; }
+.modal p  { color:var(--txt2); font-size:14px; line-height:1.6; margin-bottom:16px; }
+.modal-commands {
+  background:var(--card2); border:1px solid var(--border);
+  border-radius:10px; padding:16px; margin-bottom:18px;
+}
+.modal-commands pre {
+  font-family:var(--mono); font-size:12px; color:var(--green);
+  line-height:1.8; white-space:pre-wrap; word-break:break-all;
+}
+.modal-footer { display:flex; gap:10px; justify-content:flex-end; }
+.btn-cancel {
+  padding:10px 20px; background:transparent; color:var(--txt2);
+  border:1px solid var(--border); border-radius:8px;
+  font-family:var(--body); font-size:14px; cursor:pointer;
+}
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:24px; right:24px;
+  padding:13px 18px; background:var(--card2);
+  border:1px solid rgba(16,185,129,.25); border-radius:12px;
+  font-size:13px; color:var(--green); font-family:var(--mono);
+  z-index:200; transform:translateY(70px); opacity:0;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1); pointer-events:none;
+}
+.toast.show { transform:translateY(0); opacity:1; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Elite<span>Ações</span></div>
+    <div class="login-sub">Painel de backup — acesso restrito</div>
+    <button class="btn-google" id="btn-google">
+      <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Entrar com Google
+    </button>
+    <div class="login-note">🔒 Acesso permitido apenas para lucasserip1990@gmail.com</div>
+  </div>
+</div>
+
+<!-- ACESSO NEGADO -->
+<div id="acesso-negado">
+  <div class="negado-box">
+    <h2>⛔ Acesso negado</h2>
+    <p>Página restrita ao administrador do Elite Ações.</p>
+    <button class="btn-small" onclick="logout()">Sair</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app-screen">
+  <div class="app-inner">
+    <header>
+      <div class="header-logo">Elite<span>Ações</span> // backup</div>
+      <div class="header-right">
+        <span class="user-email" id="user-email"></span>
+        <button class="btn-small" onclick="logout()">Sair</button>
+      </div>
+    </header>
+
+    <div class="page-title">Pontos de Restauração</div>
+    <p class="page-sub">Salve o estado atual antes de fazer alterações.<br>Se algo der errado, restaure com um clique.</p>
+
+    <!-- STATUS DOS REPOS -->
+    <div class="repo-grid">
+      <div class="repo-banner">
+        <div class="repo-label">// Frontend (Cloudflare)</div>
+        <div class="repo-info" id="info-frontend">Carregando...</div>
+        <div class="repo-meta" id="meta-frontend"></div>
+      </div>
+      <div class="repo-banner">
+        <div class="repo-label">// Backend (GCloud Functions)</div>
+        <div class="repo-info" id="info-backend">Gerenciado localmente</div>
+        <div class="repo-meta" id="meta-backend">elite-acoes/backend</div>
+      </div>
+    </div>
+
+    <div class="save-btn-wrap">
+      <button class="btn-primary" id="btn-salvar-atual" onclick="salvarAtual()" disabled>💾 Salvar ponto atual</button>
+    </div>
+
+    <!-- NOVO PONTO MANUAL -->
+    <div class="new-card">
+      <div class="section-label">// Ponto personalizado</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>NOME DO PONTO</label>
+          <input type="text" id="input-nome" placeholder="Ex: v1.0 — antes de atualizar Hotmart">
+        </div>
+        <div class="form-group" style="max-width:180px">
+          <label>HASH DO FRONTEND</label>
+          <input type="text" id="input-hash" placeholder="Ex: 2a9a15d" maxlength="40">
+        </div>
+        <button class="btn-primary" onclick="salvarPonto()">+ Salvar</button>
+      </div>
+    </div>
+
+    <div class="section-label">// Pontos salvos</div>
+    <div id="lista-pontos"></div>
+  </div>
+</div>
+
+<!-- MODAL RESTAURAR -->
+<div class="modal-overlay" id="modal-restaurar">
+  <div class="modal">
+    <h3>🔄 Restaurar ponto</h3>
+    <p id="modal-desc"></p>
+    <div class="modal-commands"><pre id="modal-cmd"></pre></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="fecharModal()">Fechar</button>
+      <button class="btn-primary" onclick="copiarCmd()">📋 Copiar comandos</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DELETAR -->
+<div class="modal-overlay" id="modal-deletar">
+  <div class="modal">
+    <h3>🗑️ Apagar ponto</h3>
+    <p id="modal-del-desc"></p>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-delete" onclick="confirmarDelete()">Apagar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────
+const EMAIL_AUTORIZADO = 'lucasserip1990@gmail.com';
+const GITHUB_TOKEN     = 'SEU_GITHUB_TOKEN'; // github.com → Settings → Developer settings → Personal access tokens
+const REPO_FRONTEND    = 'lucaspires0690/elite-acoes';
+
+// ── FIREBASE ─────────────────────────────────────────────────
+firebase.initializeApp({
+  apiKey:            'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',
+  authDomain:        'elite-acoes.firebaseapp.com',
+  projectId:         'elite-acoes',
+  storageBucket:     'elite-acoes.firebasestorage.app',
+  messagingSenderId: '723536084871',
+  appId:             '1:723536084871:web:c6cf5879ddeb629759dd22'
+});
+
+const auth = firebase.auth();
+
+document.getElementById('btn-google').addEventListener('click', () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
+  auth.signInWithPopup(provider).catch(e => showToast('Erro: ' + e.message));
+});
+
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    mostrarTela('login-screen');
+  } else if (user.email !== EMAIL_AUTORIZADO) {
+    mostrarTela('acesso-negado');
+  } else {
+    document.getElementById('user-email').textContent = user.email;
+    mostrarTela('app-screen');
+    setTimeout(iniciar, 200);
+  }
+});
+
+function logout() { auth.signOut(); }
+
+function mostrarTela(id) {
+  document.getElementById('login-screen').style.display  = id === 'login-screen'  ? 'flex'  : 'none';
+  document.getElementById('acesso-negado').style.display = id === 'acesso-negado' ? 'flex'  : 'none';
+  document.getElementById('app-screen').style.display    = id === 'app-screen'    ? 'block' : 'none';
+}
+
+// ── PONTOS ───────────────────────────────────────────────────
+let pontos = [];
+let deleteIdx = null;
+let cmdAtual  = '';
+let commits   = {};
+
+function carregarPontos() {
+  try { pontos = JSON.parse(localStorage.getItem('ea_pontos') || '[]'); } catch(e) { pontos = []; }
+  renderizar();
+}
+
+function salvarLS() { localStorage.setItem('ea_pontos', JSON.stringify(pontos)); }
+
+function salvarPonto() {
+  const nome = document.getElementById('input-nome').value.trim();
+  const hash = document.getElementById('input-hash').value.trim();
+  if (!nome) { showToast('⚠️ Digite um nome'); return; }
+  if (!hash) { showToast('⚠️ Digite o hash do frontend'); return; }
+  const agora = new Date();
+  const data  = agora.toLocaleDateString('pt-BR') + ' às ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+  pontos.unshift({ nome, hash: hash.substring(0,7), data, ts: Date.now() });
+  salvarLS(); renderizar();
+  document.getElementById('input-nome').value = '';
+  document.getElementById('input-hash').value = '';
+  showToast('✅ Ponto salvo!');
+}
+
+function salvarAtual() {
+  if (!commits.frontend) { showToast('⚠️ Aguarde carregar os commits'); return; }
+  const chave = commits.frontend.hash;
+  if (pontos.some(p => p.chave === chave)) { showToast('✅ Já salvo'); return; }
+  const agora = new Date();
+  const data  = agora.toLocaleDateString('pt-BR') + ' às ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+  pontos.unshift({
+    nome:  commits.frontend.nome + ' · ' + agora.toLocaleDateString('pt-BR'),
+    hash:  commits.frontend.hash,
+    chave, data, ts: Date.now()
+  });
+  salvarLS(); renderizar(); atualizarBotaoSalvar();
+  showToast('✅ Ponto salvo!');
+}
+
+function renderizar() {
+  const lista = document.getElementById('lista-pontos');
+  if (!lista) return;
+  if (!pontos.length) {
+    lista.innerHTML = '<div class="empty">Nenhum ponto salvo ainda.<br>Crie o primeiro ponto acima.</div>';
+    return;
+  }
+  lista.innerHTML = pontos.map((p, i) => `
+    <div class="point-card">
+      <div class="point-icon">💾</div>
+      <div class="point-info">
+        <div class="point-name">${p.nome}</div>
+        <div class="point-meta">
+          <span class="point-date">${p.data}</span>
+          <span class="point-hash">frontend:${p.hash}</span>
+        </div>
+      </div>
+      <div class="point-actions">
+        <button class="btn-restore" onclick="abrirRestaura(${i})">Restaurar</button>
+        <button class="btn-delete"  onclick="abrirDelete(${i})">🗑</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function abrirRestaura(i) {
+  const p = pontos[i];
+  const cmd =
+`:: ── Elite Ações — Restaurar Frontend ──
+cd C:\\Users\\lucas\\elite-acoes\\frontend
+git fetch origin
+git checkout ${p.hash} -- index.html admin.html
+git add .
+git commit -m "Restaurar: ${p.nome} (${p.hash})"
+git push origin main
+
+:: ── Verificar deploy no Cloudflare Pages ──
+:: Acesse: https://dash.cloudflare.com → Workers & Pages → elite-acoes`;
+
+  cmdAtual = cmd;
+  document.getElementById('modal-desc').textContent = `Restaurando: "${p.nome}" (${p.hash})`;
+  document.getElementById('modal-cmd').textContent   = cmd;
+  document.getElementById('modal-restaurar').classList.add('active');
+}
+
+function abrirDelete(i) {
+  deleteIdx = i;
+  document.getElementById('modal-del-desc').textContent = `Apagar o ponto "${pontos[i].nome}"?`;
+  document.getElementById('modal-deletar').classList.add('active');
+}
+
+function confirmarDelete() {
+  if (deleteIdx !== null) {
+    const nome = pontos[deleteIdx].nome;
+    pontos.splice(deleteIdx, 1);
+    salvarLS(); renderizar(); fecharModal();
+    showToast(`🗑️ "${nome}" apagado`);
+    deleteIdx = null;
+  }
+}
+
+function fecharModal() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); }
+function copiarCmd()    { navigator.clipboard.writeText(cmdAtual).then(() => showToast('📋 Copiado!')); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) fecharModal(); });
+});
+
+// ── GITHUB ───────────────────────────────────────────────────
+async function buscarCommit() {
+  try {
+    const resp = await fetch(`https://api.github.com/repos/${REPO_FRONTEND}/commits/main`, {
+      headers: { Authorization: `token ${GITHUB_TOKEN}` }
+    });
+    if (!resp.ok) throw new Error(resp.status);
+    const data = await resp.json();
+    commits.frontend = {
+      hash: data.sha.substring(0, 7),
+      nome: data.commit.message.split('\n')[0].substring(0, 50),
+      data: new Date(data.commit.author.date).toLocaleDateString('pt-BR') + ' às ' +
+            new Date(data.commit.author.date).toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})
+    };
+    document.getElementById('info-frontend').textContent = commits.frontend.nome;
+    document.getElementById('meta-frontend').textContent = commits.frontend.hash + ' · ' + commits.frontend.data;
+    atualizarBotaoSalvar();
+  } catch(e) {
+    document.getElementById('info-frontend').textContent = 'Erro ao carregar (' + e.message + ')';
+  }
+}
+
+function atualizarBotaoSalvar() {
+  const btn = document.getElementById('btn-salvar-atual');
+  if (!btn || !commits.frontend) return;
+  const jaSalvo = pontos.some(p => p.chave === commits.frontend.hash);
+  btn.disabled      = jaSalvo;
+  btn.textContent   = jaSalvo ? '✅ Já salvo' : '💾 Salvar ponto atual';
+}
+
+function iniciar() {
+  carregarPontos();
+  buscarCommit();
+  setInterval(buscarCommit, 60000);
+}
+</script>
+</body>
+</html>
