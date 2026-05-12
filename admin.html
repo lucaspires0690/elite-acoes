@@ -282,16 +282,8 @@ body {
 </head>
 <body>
 
-<!-- LOADING -->
-<div id="loading-screen" style="position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:200">
-  <div style="font-family:var(--fd);font-size:22px;font-weight:800;color:var(--txt)">Elite<span style="color:var(--green)">Ações</span></div>
-  <div style="font-size:13px;color:var(--txt3)">Verificando autenticação...</div>
-  <div style="width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 0.8s linear infinite"></div>
-</div>
-<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
-
 <!-- LOGIN -->
-<div id="login-screen">
+<div id="login-screen" class="show">
   <div class="login-logo">Elite<span>Ações</span> — Admin</div>
   <p class="login-sub">Acesso restrito ao administrador</p>
 
@@ -494,8 +486,6 @@ onAuthStateChanged(auth, async user => {
   const app         = document.getElementById('app');
   const loginBtn    = document.getElementById('login-btn-wrap');
   const acessoNeg   = document.getElementById('acesso-negado');
-
-  document.getElementById('loading-screen').style.display = 'none';
 
   if (!user) {
     loginScreen.classList.add('show');
