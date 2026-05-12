@@ -407,6 +407,34 @@ body {
       </div>
     </div>
 
+    <!-- CLOUD SCHEDULER -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">⏰</span>
+        <div>
+          <div class="card-title">Cloud Scheduler</div>
+          <div class="card-sub">Agendamento automático de atualização das ações</div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px">
+          <div style="font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px">🟡 Modo gratuito — 1x ao dia às 18h</div>
+          <div style="font-size:12px;color:var(--txt3);margin-bottom:12px">Atualiza as ações uma vez por dia ao final do pregão.</div>
+          <button class="btn btn-ghost" onclick="mostrarComando('gratuito')">📋 Ver comando</button>
+        </div>
+
+        <hr class="divider">
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px">
+          <div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:4px">🟢 Modo produção — a cada hora (10h–17h)</div>
+          <div style="font-size:12px;color:var(--txt3);margin-bottom:12px">Atualiza a cada hora durante o pregão da B3. Requer plano Startup da brapi.</div>
+          <button class="btn btn-green" onclick="mostrarComando('producao')">📋 Ver comando</button>
+        </div>
+
+      </div>
+    </div>
+
     <!-- USUÁRIOS -->
     <div class="card">
       <div class="card-header">
@@ -442,7 +470,7 @@ body {
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut }
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc, query, where }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
@@ -450,7 +478,7 @@ import { getFirestore, collection, getDocs, doc, getDoc, setDoc, query, where }
 // ── CONFIG FIREBASE ──────────────────────────────────────────
 const firebaseConfig = {
   apiKey:            "AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo",
-  authDomain:        "eliteacoes.com",
+  authDomain:        "elite-acoes.firebaseapp.com",
   projectId:         "elite-acoes",
   storageBucket:     "elite-acoes.firebasestorage.app",
   messagingSenderId: "723536084871",
@@ -471,43 +499,35 @@ const gp    = new GoogleAuthProvider();
 
 // ── AUTH ─────────────────────────────────────────────────────
 window.fazerLogin = async () => {
-  try { await signInWithRedirect(auth, gp); } catch(e) { console.error(e); }
+  try {
+    const result = await signInWithPopup(auth, gp);
+    const user = result.user;
+    if (user.email !== ADMIN_EMAIL) {
+      await signOut(auth);
+      document.getElementById('login-btn-wrap').style.display = 'none';
+      document.getElementById('acesso-negado').classList.add('show');
+      return;
+    }
+    document.getElementById('login-screen').classList.remove('show');
+    document.getElementById('app').classList.add('show');
+    document.getElementById('admin-email').textContent = user.email;
+    await carregarConfig();
+    await carregarStats();
+  } catch(e) {
+    console.error(e);
+    alert('Erro ao fazer login: ' + e.message);
+  }
 };
 
 window.fazerLogout = async () => {
   await signOut(auth);
 };
 
-// Processa resultado do redirect
-getRedirectResult(auth).catch(e => console.error('Redirect error:', e));
-
-onAuthStateChanged(auth, async user => {
-  const loginScreen = document.getElementById('login-screen');
-  const app         = document.getElementById('app');
-  const loginBtn    = document.getElementById('login-btn-wrap');
-  const acessoNeg   = document.getElementById('acesso-negado');
-
+onAuthStateChanged(auth, user => {
   if (!user) {
-    loginScreen.classList.add('show');
-    app.classList.remove('show');
-    loginBtn.style.display = 'block';
-    acessoNeg.classList.remove('show');
-    return;
+    document.getElementById('login-screen').classList.add('show');
+    document.getElementById('app').classList.remove('show');
   }
-
-  // Verifica se é o admin
-  if (user.email !== ADMIN_EMAIL) {
-    loginBtn.style.display = 'none';
-    acessoNeg.classList.add('show');
-    return;
-  }
-
-  loginScreen.classList.remove('show');
-  app.classList.add('show');
-  document.getElementById('admin-email').textContent = user.email;
-
-  await carregarConfig();
-  await carregarStats();
 });
 
 // ── CARREGAR CONFIG ──────────────────────────────────────────
@@ -652,6 +672,46 @@ window.atualizarBanco = async () => {
     btn.textContent = '🔄 Atualizar agora';
   }
 };
+
+// ── CLOUD SCHEDULER ──────────────────────────────────────────
+window.mostrarComando = (modo) => {
+  const cmds = {
+    gratuito: `gcloud scheduler jobs update http atualizar-acoes-diario --schedule "0 18 * * 1-5" --time-zone "America/Sao_Paulo" --location southamerica-east1`,
+    producao:  `gcloud scheduler jobs update http atualizar-acoes-diario --schedule "0 10-17 * * 1-5" --time-zone "America/Sao_Paulo" --location southamerica-east1`
+  };
+
+  const titulo = {
+    gratuito: '🟡 Modo gratuito — 1x ao dia às 18h',
+    producao:  '🟢 Modo produção — a cada hora (10h–17h)'
+  };
+
+  document.getElementById('modal-cmd-titulo').textContent = titulo[modo];
+  document.getElementById('modal-cmd-code').textContent   = cmds[modo];
+  document.getElementById('modal-cmd').style.display = 'flex';
+};
+
+window.copiarComando = () => {
+  const txt = document.getElementById('modal-cmd-code').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = document.getElementById('btn-copiar');
+    btn.textContent = '✅ Copiado!';
+    setTimeout(() => btn.textContent = '📋 Copiar comando', 2000);
+  });
+};
 </script>
+
+<!-- MODAL COMANDO -->
+<div id="modal-cmd" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:300;align-items:center;justify-content:center;padding:24px" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:600px;width:100%;display:flex;flex-direction:column;gap:16px">
+    <div style="font-family:var(--fd);font-size:16px;font-weight:700;color:var(--txt)" id="modal-cmd-titulo"></div>
+    <div style="font-size:12px;color:var(--txt3)">Cole este comando no terminal (CMD) do seu computador:</div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--fm);font-size:12px;color:var(--green);line-height:1.6;word-break:break-all" id="modal-cmd-code"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-green" id="btn-copiar" onclick="copiarComando()">📋 Copiar comando</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-cmd').style.display='none'">Fechar</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
