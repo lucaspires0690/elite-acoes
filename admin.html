@@ -450,7 +450,7 @@ body {
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc, query, where }
                             from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
@@ -479,12 +479,15 @@ const gp    = new GoogleAuthProvider();
 
 // ── AUTH ─────────────────────────────────────────────────────
 window.fazerLogin = async () => {
-  try { await signInWithPopup(auth, gp); } catch(e) { console.error(e); }
+  try { await signInWithRedirect(auth, gp); } catch(e) { console.error(e); }
 };
 
 window.fazerLogout = async () => {
   await signOut(auth);
 };
+
+// Processa resultado do redirect
+getRedirectResult(auth).catch(e => console.error('Redirect error:', e));
 
 onAuthStateChanged(auth, async user => {
   const loginScreen = document.getElementById('login-screen');
