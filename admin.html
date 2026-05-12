@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Ações — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:     #10b981;
+  --green-dim: rgba(16,185,129,0.12);
+  --red:       #ef4444;
+  --red-dim:   rgba(239,68,68,0.12);
+  --yellow:    #f59e0b;
+  --blue:      #3b82f6;
+  --fd: 'Syne', sans-serif;
+  --fb: 'Inter', sans-serif;
+  --fm: 'DM Mono', monospace;
+}
+[data-theme="dark"] {
+  --bg:     #080d18;
+  --bg2:    #0d1426;
+  --surf:   #131c30;
+  --surf2:  #1a2540;
+  --border: rgba(255,255,255,0.07);
+  --txt:    #f0f4ff;
+  --txt2:   #8899bb;
+  --txt3:   #4a5a7a;
+  --shadow: rgba(0,0,0,0.5);
+}
+[data-theme="light"] {
+  --bg:     #eef2f7;
+  --bg2:    #f8fafc;
+  --surf:   #ffffff;
+  --surf2:  #f0f4f8;
+  --border: rgba(0,0,0,0.08);
+  --txt:    #0d1426;
+  --txt2:   #4a5a7a;
+  --txt3:   #9aaabb;
+  --shadow: rgba(0,0,0,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--txt);
+  min-height: 100dvh;
+}
+
+/* LOGIN */
+#login-screen {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 100;
+}
+#login-screen.show { display: flex; }
+
+.login-logo {
+  font-family: var(--fd);
+  font-size: 28px; font-weight: 800;
+  color: var(--txt);
+}
+.login-logo span { color: var(--green); }
+.login-sub { font-size: 14px; color: var(--txt3); }
+
+.btn-google {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surf);
+  color: var(--txt);
+  font-size: 14px; font-weight: 600;
+  font-family: var(--fb);
+  cursor: pointer;
+  transition: all .15s;
+}
+.btn-google:hover { background: var(--surf2); }
+
+.acesso-negado {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.acesso-negado.show { display: flex; }
+.acesso-negado h2 { font-size: 20px; color: var(--red); }
+.acesso-negado p { font-size: 14px; color: var(--txt3); }
+
+/* APP */
+#app { display: none; }
+#app.show { display: block; }
+
+/* TOPBAR */
+.topbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 56px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+}
+.topbar-logo {
+  font-family: var(--fd);
+  font-size: 18px; font-weight: 800;
+  color: var(--txt);
+  display: flex; align-items: center; gap: 8px;
+}
+.topbar-logo span { color: var(--green); }
+.admin-badge {
+  font-size: 10px; font-weight: 700;
+  background: var(--green-dim); color: var(--green);
+  padding: 2px 8px; border-radius: 20px;
+  font-family: var(--fb);
+}
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.topbar-email { font-size: 12px; color: var(--txt3); }
+.btn-logout {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--txt2);
+  font-size: 12px; cursor: pointer;
+  font-family: var(--fb);
+  transition: all .15s;
+}
+.btn-logout:hover { background: var(--red-dim); color: var(--red); border-color: var(--red); }
+
+/* MAIN */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* CARD */
+.card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.card-icon { font-size: 20px; }
+.card-title { font-family: var(--fd); font-size: 16px; font-weight: 700; color: var(--txt); }
+.card-sub { font-size: 12px; color: var(--txt3); margin-top: 2px; }
+.card-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+
+/* FORM */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; font-weight: 600; color: var(--txt2); text-transform: uppercase; letter-spacing: .5px; }
+.field input {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--txt);
+  font-size: 14px;
+  font-family: var(--fm);
+  outline: none;
+  transition: border-color .15s;
+}
+.field input:focus { border-color: var(--green); }
+
+/* TOGGLE */
+.toggle-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.toggle-info { display: flex; flex-direction: column; gap: 2px; }
+.toggle-label { font-size: 14px; font-weight: 500; color: var(--txt); }
+.toggle-desc  { font-size: 11px; color: var(--txt3); }
+
+.switch { position: relative; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; inset: 0;
+  background: var(--surf2);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  left: 3px; top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform .2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+.switch input:checked + .slider { background: var(--green); }
+.switch input:checked + .slider::before { transform: translateX(20px); }
+
+/* BOTÕES */
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px; font-weight: 600;
+  font-family: var(--fb);
+  cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; gap: 8px;
+}
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-green  { background: var(--green); color: white; box-shadow: 0 2px 8px rgba(16,185,129,.25); }
+.btn-green:hover:not(:disabled) { opacity: .9; }
+.btn-blue   { background: var(--blue);  color: white; box-shadow: 0 2px 8px rgba(59,130,246,.25); }
+.btn-blue:hover:not(:disabled) { opacity: .9; }
+.btn-ghost  { background: var(--surf2); color: var(--txt2); border: 1px solid var(--border); }
+.btn-ghost:hover:not(:disabled) { background: var(--bg2); }
+
+/* STATUS LOG */
+.log-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--txt2);
+  min-height: 80px;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.log-line-ok     { color: var(--green); }
+.log-line-erro   { color: var(--red); }
+.log-line-info   { color: var(--blue); }
+.log-line-warn   { color: var(--yellow); }
+
+/* STATS */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.stat-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+.stat-n { font-family: var(--fm); font-size: 28px; font-weight: 500; color: var(--green); }
+.stat-l { font-size: 11px; color: var(--txt3); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px; }
+
+/* STATUS BADGE */
+.status-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 20px;
+}
+.status-badge.ok   { background: var(--green-dim); color: var(--green); }
+.status-badge.off  { background: var(--red-dim);   color: var(--red); }
+.status-badge.warn { background: rgba(245,158,11,.12); color: var(--yellow); }
+
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-logo">Elite<span>Ações</span> — Admin</div>
+  <p class="login-sub">Acesso restrito ao administrador</p>
+
+  <div id="login-btn-wrap">
+    <button class="btn-google" onclick="fazerLogin()">
+      <svg width="16" height="16" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
+      Entrar com Google
+    </button>
+  </div>
+
+  <div class="acesso-negado" id="acesso-negado">
+    <h2>🚫 Acesso negado</h2>
+    <p>Este painel é restrito ao administrador.<br>Você entrou com um e-mail não autorizado.</p>
+    <button class="btn btn-ghost" onclick="fazerLogout()">Sair e tentar outro e-mail</button>
+  </div>
+</div>
+
+<!-- APP ADMIN -->
+<div id="app">
+  <header class="topbar">
+    <div class="topbar-logo">
+      Elite<span>Ações</span>
+      <span class="admin-badge">ADMIN</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-email" id="admin-email"></span>
+      <button class="btn-logout" onclick="fazerLogout()">Sair</button>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <!-- STATUS DO BANCO -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">📊</span>
+        <div>
+          <div class="card-title">Status do Banco de Dados</div>
+          <div class="card-sub">Informações da coleção de ações no Firestore</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-n" id="stat-total">—</div>
+            <div class="stat-l">Total de ações</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n" id="stat-atualizadas" style="font-size:13px;padding-top:8px">—</div>
+            <div class="stat-l">Última atualização</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n" id="stat-plano" style="font-size:16px;padding-top:8px">—</div>
+            <div class="stat-l">Plano brapi</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" onclick="carregarStats()">🔄 Atualizar status</button>
+      </div>
+    </div>
+
+    <!-- CONFIGURAÇÃO BRAPI -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🔑</span>
+        <div>
+          <div class="card-title">Configuração da brapi.dev</div>
+          <div class="card-sub">Token da API e ativação do plano pago</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <label>Token da brapi.dev</label>
+          <input type="text" id="input-token" placeholder="Cole aqui o token da brapi.dev">
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Plano pago (Startup)</div>
+            <div class="toggle-desc">Ativa dados de dividendos de 1 ano — requer token do plano Startup</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-plano">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-green" onclick="salvarConfig()">💾 Salvar configuração</button>
+        </div>
+
+        <div id="log-config" class="log-box">Aguardando ação...</div>
+      </div>
+    </div>
+
+    <!-- OPERAÇÕES -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">⚡</span>
+        <div>
+          <div class="card-title">Operações do Banco</div>
+          <div class="card-sub">Popular e atualizar as ações manualmente</div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px">
+          <div style="font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px">🗄️ Popular banco (carga inicial)</div>
+          <div style="font-size:12px;color:var(--txt3);margin-bottom:12px">Limpa o banco atual e recarrega todas as ações disponíveis na brapi. Use ao trocar de plano ou na primeira configuração. Demora ~9 minutos.</div>
+          <button class="btn btn-blue" id="btn-popular" onclick="popularBanco()">🚀 Popular banco agora</button>
+        </div>
+
+        <hr class="divider">
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px">
+          <div style="font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px">🔄 Atualizar cotações</div>
+          <div style="font-size:12px;color:var(--txt3);margin-bottom:12px">Atualiza apenas cotação e DY de todas as ações já cadastradas. Roda automaticamente todo dia às 18h. Demora ~9 minutos.</div>
+          <button class="btn btn-green" id="btn-atualizar" onclick="atualizarBanco()">🔄 Atualizar agora</button>
+        </div>
+
+        <div id="log-operacoes" class="log-box">Aguardando ação...</div>
+      </div>
+    </div>
+
+    <!-- USUÁRIOS -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">👥</span>
+        <div>
+          <div class="card-title">Usuários</div>
+          <div class="card-sub">Visão geral da base de usuários</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-n" id="u-total">—</div>
+            <div class="stat-l">Total cadastrados</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n" id="u-pagantes" style="color:var(--green)">—</div>
+            <div class="stat-l">Pagantes</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n" id="u-trial" style="color:var(--yellow)">—</div>
+            <div class="stat-l">Em trial</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" onclick="carregarUsuarios()">🔄 Atualizar usuários</button>
+        <div id="log-usuarios" class="log-box">Clique em "Atualizar usuários" para carregar.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
+                            from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, query, where }
+                            from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+// ── CONFIG FIREBASE ──────────────────────────────────────────
+const firebaseConfig = {
+  apiKey:            "AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo",
+  authDomain:        "elite-acoes.firebaseapp.com",
+  projectId:         "elite-acoes",
+  storageBucket:     "elite-acoes.firebasestorage.app",
+  messagingSenderId: "723536084871",
+  appId:             "1:723536084871:web:c6cf5879ddeb629759dd22"
+};
+
+// ── EMAIL AUTORIZADO ─────────────────────────────────────────
+const ADMIN_EMAIL = 'lucasserip1990@gmail.com';
+
+// ── URLS DAS CLOUD FUNCTIONS ─────────────────────────────────
+const URL_POPULAR    = 'https://southamerica-east1-elite-acoes.cloudfunctions.net/popularAcoes';
+const URL_ATUALIZAR  = 'https://southamerica-east1-elite-acoes.cloudfunctions.net/atualizarAcoes';
+
+const fbApp = initializeApp(firebaseConfig);
+const auth  = getAuth(fbApp);
+const db    = getFirestore(fbApp);
+const gp    = new GoogleAuthProvider();
+
+// ── AUTH ─────────────────────────────────────────────────────
+window.fazerLogin = async () => {
+  try { await signInWithPopup(auth, gp); } catch(e) { console.error(e); }
+};
+
+window.fazerLogout = async () => {
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, async user => {
+  const loginScreen = document.getElementById('login-screen');
+  const app         = document.getElementById('app');
+  const loginBtn    = document.getElementById('login-btn-wrap');
+  const acessoNeg   = document.getElementById('acesso-negado');
+
+  if (!user) {
+    loginScreen.classList.add('show');
+    app.classList.remove('show');
+    loginBtn.style.display = 'block';
+    acessoNeg.classList.remove('show');
+    return;
+  }
+
+  // Verifica se é o admin
+  if (user.email !== ADMIN_EMAIL) {
+    loginBtn.style.display = 'none';
+    acessoNeg.classList.add('show');
+    return;
+  }
+
+  loginScreen.classList.remove('show');
+  app.classList.add('show');
+  document.getElementById('admin-email').textContent = user.email;
+
+  await carregarConfig();
+  await carregarStats();
+});
+
+// ── CARREGAR CONFIG ──────────────────────────────────────────
+async function carregarConfig() {
+  const snap = await getDoc(doc(db, 'configuracoes', 'brapi'));
+  if (snap.exists()) {
+    const d = snap.data();
+    document.getElementById('input-token').value = d.token || '';
+    document.getElementById('toggle-plano').checked = d.plano_pago || false;
+  }
+}
+
+// ── SALVAR CONFIG ────────────────────────────────────────────
+window.salvarConfig = async () => {
+  const token     = document.getElementById('input-token').value.trim();
+  const planoPago = document.getElementById('toggle-plano').checked;
+  const log       = document.getElementById('log-config');
+
+  if (!token) {
+    log.innerHTML = '<span class="log-line-erro">❌ Token não pode ser vazio.</span>';
+    return;
+  }
+
+  log.innerHTML = '<span class="log-line-info">💾 Salvando configuração...</span>';
+
+  try {
+    await setDoc(doc(db, 'configuracoes', 'brapi'), {
+      token,
+      plano_pago:        planoPago,
+      ultima_atualizacao: new Date().toISOString(),
+    });
+    log.innerHTML = `<span class="log-line-ok">✅ Configuração salva com sucesso!\nPlano pago: ${planoPago ? 'ATIVO ✅' : 'INATIVO (plano grátis)'}\nToken: ${token.slice(0,8)}...</span>`;
+  } catch(e) {
+    log.innerHTML = `<span class="log-line-erro">❌ Erro ao salvar: ${e.message}</span>`;
+  }
+};
+
+// ── STATS ────────────────────────────────────────────────────
+window.carregarStats = async () => {
+  try {
+    const snap = await getDocs(collection(db, 'acoes'));
+    document.getElementById('stat-total').textContent = snap.size;
+
+    // Pega a última atualização de qualquer ação
+    const sample = snap.docs[0]?.data();
+    if (sample?.ultima_atualizacao) {
+      const d = new Date(sample.ultima_atualizacao);
+      document.getElementById('stat-atualizadas').textContent =
+        d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+    }
+
+    // Plano
+    const config = await getDoc(doc(db, 'configuracoes', 'brapi'));
+    const plano = config.data()?.plano_pago ? '🟢 Startup' : '🟡 Grátis';
+    document.getElementById('stat-plano').textContent = plano;
+  } catch(e) {
+    console.error(e);
+  }
+};
+
+// ── USUARIOS ─────────────────────────────────────────────────
+window.carregarUsuarios = async () => {
+  const log = document.getElementById('log-usuarios');
+  log.innerHTML = '<span class="log-line-info">Carregando usuários...</span>';
+
+  try {
+    const snap     = await getDocs(collection(db, 'usuarios'));
+    const usuarios = snap.docs.map(d => d.data());
+
+    const total    = usuarios.length;
+    const pagantes = usuarios.filter(u => u.plano === 'pago').length;
+    const trial    = usuarios.filter(u => {
+      if (u.plano === 'pago') return false;
+      const dias = Math.ceil((new Date(u.trial_ate) - new Date()) / 864e5);
+      return dias > 0;
+    }).length;
+
+    document.getElementById('u-total').textContent    = total;
+    document.getElementById('u-pagantes').textContent = pagantes;
+    document.getElementById('u-trial').textContent    = trial;
+
+    log.innerHTML = usuarios.map(u => {
+      const dias = Math.ceil((new Date(u.trial_ate) - new Date()) / 864e5);
+      const status = u.plano === 'pago' ? '🟢 PAGO' : dias > 0 ? `🟡 TRIAL (${dias}d)` : '🔴 EXPIRADO';
+      return `${status} — ${u.email || '—'}`;
+    }).join('\n') || 'Nenhum usuário cadastrado.';
+  } catch(e) {
+    log.innerHTML = `<span class="log-line-erro">❌ Erro: ${e.message}</span>`;
+  }
+};
+
+// ── POPULAR BANCO ─────────────────────────────────────────────
+window.popularBanco = async () => {
+  const btn = document.getElementById('btn-popular');
+  const log = document.getElementById('log-operacoes');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Populando...';
+  log.innerHTML = '<span class="log-line-info">🚀 Iniciando carga de ações...\nIsso pode demorar até 9 minutos. Não feche esta página.</span>';
+
+  try {
+    const res    = await fetch(URL_POPULAR);
+    const data   = await res.json();
+
+    if (data.ok) {
+      log.innerHTML = `<span class="log-line-ok">✅ Banco populado com sucesso!\nTotal: ${data.total} ações\nSucesso: ${data.sucesso}\nErros: ${data.erros}\nDuração: ${data.duracao}</span>`;
+      await carregarStats();
+    } else {
+      log.innerHTML = `<span class="log-line-erro">❌ Erro: ${data.msg || data.erro}</span>`;
+    }
+  } catch(e) {
+    log.innerHTML = `<span class="log-line-erro">❌ Erro na requisição: ${e.message}</span>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🚀 Popular banco agora';
+  }
+};
+
+// ── ATUALIZAR BANCO ───────────────────────────────────────────
+window.atualizarBanco = async () => {
+  const btn = document.getElementById('btn-atualizar');
+  const log = document.getElementById('log-operacoes');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Atualizando...';
+  log.innerHTML = '<span class="log-line-info">🔄 Atualizando cotações...\nIsso pode demorar até 9 minutos. Não feche esta página.</span>';
+
+  try {
+    const res  = await fetch(URL_ATUALIZAR);
+    const data = await res.json();
+
+    if (data.ok) {
+      log.innerHTML = `<span class="log-line-ok">✅ Atualização concluída!\nTotal: ${data.total} ações\nSucesso: ${data.sucesso}\nErros: ${data.erros}\nDuração: ${data.duracao}</span>`;
+      await carregarStats();
+    } else {
+      log.innerHTML = `<span class="log-line-erro">❌ Erro: ${data.msg || data.erro}</span>`;
+    }
+  } catch(e) {
+    log.innerHTML = `<span class="log-line-erro">❌ Erro na requisição: ${e.message}</span>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🔄 Atualizar agora';
+  }
+};
+</script>
+</body>
+</html>
