@@ -556,7 +556,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
 
     <aside class="sidebar">
       <div>
-        <div class="s-title">Taxa de Retorno</div>
+        <div class="s-title">Taxa de Retorno — Ações</div>
         <div class="taxa-card">
           <div class="taxa-top">
             <span class="taxa-lbl">Taxa desejada ao ano</span>
@@ -564,6 +564,27 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
           </div>
           <input type="range" id="taxa-slider" min="4" max="15" step="0.5" value="6" oninput="onTaxa(this.value)">
           <div class="taxa-range"><span>4%</span><span>15%</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="s-title">Taxa de Retorno — FIIs</div>
+        <div class="taxa-card">
+          <div class="taxa-top">
+            <span class="taxa-lbl">Taxa desejada ao ano</span>
+            <div class="taxa-num" id="taxa-fii-display">10,0<small>%</small></div>
+          </div>
+          <input type="range" id="taxa-fii-slider" min="4" max="20" step="0.5" value="10" oninput="onTaxaFii(this.value)">
+          <div class="taxa-range"><span>4%</span><span>20%</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="s-title">Tipo de Ativo</div>
+        <div class="filter-list">
+          <div class="fitem active" id="f-todos-tipo" onclick="setTipoAtivo('todos',this)"><span>📋 Todos</span></div>
+          <div class="fitem" id="f-acoes" onclick="setTipoAtivo('acoes',this)"><span>🏢 Ações</span></div>
+          <div class="fitem" id="f-fiis"  onclick="setTipoAtivo('fiis',this)"> <span>🏗️ FIIs</span></div>
         </div>
       </div>
 
@@ -600,6 +621,8 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
         <button class="mfbtn" onclick="setFiltroM('baratas',this)">🟢 Baratas</button>
         <button class="mfbtn" onclick="setFiltroM('caras',this)">🔴 Caras</button>
         <button class="mfbtn" onclick="setFiltroM('dy',this)">📊 DY &gt;6%</button>
+        <button class="mfbtn" onclick="setFiltroM('acoes',this)">🏢 Ações</button>
+        <button class="mfbtn" onclick="setFiltroM('fiis',this)">🏗️ FIIs</button>
       </div>
       <!-- Mobile search -->
       <div style="padding:10px 16px;background:var(--bg2);border-bottom:1px solid var(--border)" id="mob-search">
@@ -613,10 +636,9 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
   </div>
 
   <nav class="bnav">
-    <div class="ni active"><span class="ni-ico">📋</span><span class="ni-lbl">Ações</span></div>
-    <div class="ni"><span class="ni-ico">⭐</span><span class="ni-lbl">Favoritas</span></div>
-    <div class="ni"><span class="ni-ico">🔔</span><span class="ni-lbl">Alertas</span></div>
-    <div class="ni"><span class="ni-ico">👤</span><span class="ni-lbl">Perfil</span></div>
+    <div class="ni active" id="nav-feed" onclick="setNav('feed',this)"><span class="ni-ico">📋</span><span class="ni-lbl">Feed</span></div>
+    <div class="ni" id="nav-fav" onclick="setNav('favoritos',this)"><span class="ni-ico">⭐</span><span class="ni-lbl">Favoritas</span></div>
+    <div class="ni" id="nav-perfil" onclick="openModal('modal-sub')"><span class="ni-ico">👤</span><span class="ni-lbl">Perfil</span></div>
   </nav>
 </div>
 
@@ -671,7 +693,7 @@ const db    = getFirestore(fbApp);
 const gp    = new GoogleAuthProvider();
 
 // ── ESTADO ───────────────────────────────────────────────────
-let ACOES = [], taxa = 6, filtro = 'todas', busca = '', USER = null;
+let ACOES = [], taxa = 6, taxaFii = 10, filtro = 'todas', tipoAtivo = 'todos', busca = '', USER = null, FAVORITOS = new Set();
 
 // ── AUTH ─────────────────────────────────────────────────────
 window.fazerLogin = async () => {
@@ -709,8 +731,12 @@ onAuthStateChanged(auth, async user => {
   } else {
     const d = snap.data();
     taxa = d.taxa_personalizada || 6;
+    taxaFii = d.taxa_fii || 10;
+    FAVORITOS = new Set(d.favoritos || []);
     document.getElementById('taxa-slider').value = taxa;
     setTaxaDisplay(taxa);
+    document.getElementById('taxa-fii-slider').value = taxaFii;
+    setTaxaFiiDisplay(taxaFii);
     if (d.plano === 'pago') {
       document.getElementById('trial-box').style.display = 'none';
     } else {
@@ -746,6 +772,14 @@ async function carregarAcoes() {
 }
 
 // ── CÁLCULO ──────────────────────────────────────────────────
+function isFii(codigo) {
+  return /11$/.test(codigo);
+}
+
+function calcTaxa(a) {
+  return isFii(a.codigo) ? taxaFii : taxa;
+}
+
 function calc(a, t) {
   const teto = a.dividendo_anual / (t/100);
   const diff = ((teto - a.cotacao) / a.cotacao) * 100;
@@ -772,10 +806,18 @@ function renderSkel() {
 
 // ── RENDER ───────────────────────────────────────────────────
 function renderFeed() {
-  const all    = ACOES;
-  const buyN   = all.filter(a=>calc(a,taxa).status==='barata').length;
+  // Se aba favoritos
+  if (tipoAtivo === 'favoritos') { renderFavoritos(); return; }
+
+  const all = ACOES.filter(a => {
+    if (tipoAtivo === 'acoes') return !isFii(a.codigo);
+    if (tipoAtivo === 'fiis')  return isFii(a.codigo);
+    return true;
+  });
+
+  const buyN   = all.filter(a=>calc(a,calcTaxa(a)).status==='barata').length;
   const sellN  = all.length - buyN;
-  const dyN    = all.filter(a=>parseFloat(calc(a,taxa).dy)>=6).length;
+  const dyN    = all.filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=6).length;
 
   document.getElementById('s-total').textContent = all.length;
   document.getElementById('s-buy').textContent   = buyN;
@@ -787,7 +829,7 @@ function renderFeed() {
   document.getElementById('fc-dy').textContent      = dyN;
 
   const lista = all.filter(a => {
-    const c = calc(a,taxa);
+    const c = calc(a,calcTaxa(a));
     const q = busca.toLowerCase();
     const m = !q || a.codigo.toLowerCase().includes(q) || (a.nome||'').toLowerCase().includes(q);
     if (!m) return false;
@@ -803,14 +845,17 @@ function renderFeed() {
   }
 
   document.getElementById('feed').innerHTML = lista.map(a => {
-    const c  = calc(a,taxa);
+    const t  = calcTaxa(a);
+    const c  = calc(a,t);
     const ib = c.status==='barata';
     const sg = a.codigo.replace(/\d/g,'').slice(0,4);
+    const fav = FAVORITOS.has(a.codigo);
+    const tipo = isFii(a.codigo) ? 'FII' : 'AÇÃO';
     return `
     <div class="row ${c.status}" onclick="openDet('${a.codigo}')">
       <div class="row-ico ${c.status}">${sg}</div>
       <div class="row-info">
-        <div class="row-tick">${a.codigo}</div>
+        <div class="row-tick">${a.codigo} <span style="font-size:9px;color:var(--txt3);font-family:var(--fb);font-weight:500;background:var(--surf2);padding:1px 5px;border-radius:4px">${tipo}</span></div>
         <div class="row-meta">
           <span class="row-name">${a.nome||''}</span>
           <span class="dy-tag ${parseFloat(c.dy)>=6?'ok':'low'}">DY ${c.dy}%</span>
@@ -818,11 +863,12 @@ function renderFeed() {
       </div>
       <div class="row-price">
         <div class="row-cur">R$&nbsp;${a.cotacao.toFixed(2)}</div>
-        <div class="row-teto">Teto R$&nbsp;${c.teto.toFixed(2)}</div>
+        <div class="row-teto">Teto R$&nbsp;${isFinite(c.teto)&&c.teto>0?c.teto.toFixed(2):'—'}</div>
       </div>
-      <div class="row-diff">
+      <div class="row-diff" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
         <div class="diff-pct ${ib?'g':'r'}">${ib?'▼':'▲'}&nbsp;${c.diffAbs}%</div>
         <div class="diff-lbl">${ib?'desconto':'ágio'}</div>
+        <span onclick="event.stopPropagation();toggleFav('${a.codigo}')" style="cursor:pointer;font-size:14px;margin-top:2px">${fav?'⭐':'☆'}</span>
       </div>
     </div>`;
   }).join('');
@@ -831,7 +877,8 @@ function renderFeed() {
 // ── DETALHE ──────────────────────────────────────────────────
 window.openDet = codigo => {
   const a = ACOES.find(x=>x.codigo===codigo); if(!a) return;
-  const c  = calc(a,taxa);
+  const t  = calcTaxa(a);
+  const c  = calc(a,t);
   const ib = c.status==='barata';
   const pct = Math.min(ib?(a.cotacao/c.teto)*100:(c.teto/a.cotacao)*100, 100);
   document.getElementById('det-body').innerHTML = `
@@ -845,7 +892,7 @@ window.openDet = codigo => {
     </div>
     <div class="det-grid">
       <div class="det-card"><div class="det-lbl">Cotação atual</div><div class="det-val">R$&nbsp;${a.cotacao.toFixed(2)}</div><div class="det-sub">preço de mercado</div></div>
-      <div class="det-card"><div class="det-lbl">Preço teto (${taxa}%)</div><div class="det-val ${ib?'g':'r'}">R$&nbsp;${c.teto.toFixed(2)}</div><div class="det-sub">${ib?`desc. ${c.diffAbs}%`:`ágio ${c.diffAbs}%`}</div></div>
+      <div class="det-card"><div class="det-lbl">Preço teto (${t}%)</div><div class="det-val ${ib?'g':'r'}">R$&nbsp;${c.teto.toFixed(2)}</div><div class="det-sub">${ib?`desc. ${c.diffAbs}%`:`ágio ${c.diffAbs}%`}</div></div>
       <div class="det-card"><div class="det-lbl">Dividendo anual</div><div class="det-val">R$&nbsp;${a.dividendo_anual.toFixed(2)}</div><div class="det-sub">por ação</div></div>
       <div class="det-card"><div class="det-lbl">Dividend Yield</div><div class="det-val ${parseFloat(c.dy)>=6?'g':''}">${c.dy}%</div><div class="det-sub">ao ano</div></div>
     </div>
@@ -854,7 +901,7 @@ window.openDet = codigo => {
       <div class="prog-track"><div class="prog-fill ${ib?'g':'r'}" style="width:${pct}%"></div></div>
     </div>
     <div class="det-acts">
-      <button class="btn-main">⭐ Adicionar aos favoritos</button>
+      <button class="btn-main" onclick="toggleFav('${a.codigo}')" id="btn-fav-${a.codigo}">${FAVORITOS.has(a.codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos'}</button>
       <button class="btn-ghost" onclick="closeModal('modal-detalhe')">Fechar</button>
     </div>`;
   openModal('modal-detalhe');
@@ -869,6 +916,14 @@ function setTaxaDisplay(v) {
   document.getElementById('taxa-display').innerHTML =
     `${v%1===0?v+',0':String(v).replace('.',',')} <small>%</small>`;
 }
+window.onTaxaFii = async v => {
+  taxaFii = parseFloat(v); setTaxaFiiDisplay(taxaFii); renderFeed();
+  if (USER) await setDoc(doc(db,'usuarios',USER.uid),{taxa_fii:taxaFii},{merge:true});
+};
+function setTaxaFiiDisplay(v) {
+  document.getElementById('taxa-fii-display').innerHTML =
+    `${v%1===0?v+',0':String(v).replace('.',',')} <small>%</small>`;
+}
 window.onBusca = v => { busca=v; renderFeed(); };
 
 window.setFiltro = (f, btn) => {
@@ -876,7 +931,7 @@ window.setFiltro = (f, btn) => {
   document.querySelectorAll('.fitem').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.mfbtn').forEach((b,i)=>{
-    b.classList.toggle('active',['todas','baratas','caras','dy'][i]===f);
+    b.classList.toggle('active',['todas','baratas','caras','dy','acoes','fiis'][i]===f);
   });
   renderFeed();
 };
@@ -885,10 +940,74 @@ window.setFiltroM = (f, btn) => {
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.fitem').forEach(b=>b.classList.remove('active'));
-  const map={todas:'f-todas',baratas:'f-baratas',caras:'f-caras',dy:'f-dy'};
+  const map={todas:'f-todas',baratas:'f-baratas',caras:'f-caras',dy:'f-dy',acoes:'f-acoes',fiis:'f-fiis'};
   document.getElementById(map[f])?.classList.add('active');
   renderFeed();
 };
+
+window.setTipoAtivo = (tipo, btn) => {
+  tipoAtivo = tipo;
+  document.querySelectorAll('#f-todos-tipo,#f-acoes,#f-fiis').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFeed();
+};
+
+window.setNav = (aba, btn) => {
+  tipoAtivo = aba === 'feed' ? 'todos' : aba;
+  document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFeed();
+};
+
+window.toggleFav = async codigo => {
+  if (FAVORITOS.has(codigo)) {
+    FAVORITOS.delete(codigo);
+  } else {
+    FAVORITOS.add(codigo);
+  }
+  if (USER) {
+    await setDoc(doc(db,'usuarios',USER.uid),{favoritos:[...FAVORITOS]},{merge:true});
+  }
+  renderFeed();
+  // Atualiza botão no modal se estiver aberto
+  const btnFav = document.getElementById('btn-fav-'+codigo);
+  if (btnFav) btnFav.textContent = FAVORITOS.has(codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos';
+};
+
+function renderFavoritos() {
+  const lista = ACOES.filter(a => FAVORITOS.has(a.codigo));
+  if (!lista.length) {
+    document.getElementById('feed').innerHTML = `<div class="empty"><div class="empty-ico">⭐</div><div class="empty-txt">Nenhuma ação favoritada ainda.<br>Clique na ☆ para adicionar.</div></div>`;
+    return;
+  }
+  document.getElementById('feed').innerHTML = lista.map(a => {
+    const t  = calcTaxa(a);
+    const c  = calc(a,t);
+    const ib = c.status==='barata';
+    const sg = a.codigo.replace(/\d/g,'').slice(0,4);
+    const tipo = isFii(a.codigo) ? 'FII' : 'AÇÃO';
+    return `
+    <div class="row ${c.status}" onclick="openDet('${a.codigo}')">
+      <div class="row-ico ${c.status}">${sg}</div>
+      <div class="row-info">
+        <div class="row-tick">${a.codigo} <span style="font-size:9px;color:var(--txt3);font-family:var(--fb);font-weight:500;background:var(--surf2);padding:1px 5px;border-radius:4px">${tipo}</span></div>
+        <div class="row-meta">
+          <span class="row-name">${a.nome||''}</span>
+          <span class="dy-tag ${parseFloat(c.dy)>=6?'ok':'low'}">DY ${c.dy}%</span>
+        </div>
+      </div>
+      <div class="row-price">
+        <div class="row-cur">R$&nbsp;${a.cotacao.toFixed(2)}</div>
+        <div class="row-teto">Teto R$&nbsp;${isFinite(c.teto)&&c.teto>0?c.teto.toFixed(2):'—'}</div>
+      </div>
+      <div class="row-diff" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+        <div class="diff-pct ${ib?'g':'r'}">${ib?'▼':'▲'}&nbsp;${c.diffAbs}%</div>
+        <div class="diff-lbl">${ib?'desconto':'ágio'}</div>
+        <span onclick="event.stopPropagation();toggleFav('${a.codigo}')" style="cursor:pointer;font-size:14px;margin-top:2px">⭐</span>
+      </div>
+    </div>`;
+  }).join('');
+}
 
 window.toggleTheme = () => {
   const dark = document.documentElement.getAttribute('data-theme')==='dark';
