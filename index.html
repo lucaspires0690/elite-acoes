@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#06070d">
+<meta name="theme-color" content="#0a0e1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Elite Ações">
@@ -33,44 +33,46 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 
 /* ══════════════════════════════════════════
    TOKENS
 ══════════════════════════════════════════ */
 :root {
-  --green:      #c8ff00;
-  --green-lt:   #d4ff33;
-  --green-dim:  rgba(200,255,0,0.1);
-  --red:        #ff4757;
-  --red-dim:    rgba(255,71,87,0.1);
-  --yellow:     #ffd32a;
-  --teal:       #00d4a8;
-  --fd: 'Bricolage Grotesque', sans-serif;
-  --fb: 'DM Sans', sans-serif;
+  --green:      #00d4a8;
+  --green-lt:   #00eabc;
+  --green-dim:  rgba(0,212,168,0.12);
+  --positive:   #10b981;
+  --positive-dim: rgba(16,185,129,0.12);
+  --red:        #ef4444;
+  --red-dim:    rgba(239,68,68,0.12);
+  --yellow:     #f59e0b;
+  --blue:       #3b82f6;
+  --fd: 'Plus Jakarta Sans', sans-serif;
+  --fb: 'Plus Jakarta Sans', sans-serif;
   --fm: 'DM Mono', monospace;
 }
 [data-theme="dark"] {
-  --bg:       #06070d;
-  --bg2:      #0c0f1e;
-  --surf:     #111828;
-  --surf2:    #1a2238;
+  --bg:       #0a0e1a;
+  --bg2:      #0f1525;
+  --surf:     #141d2e;
+  --surf2:    #1a2438;
   --border:   rgba(255,255,255,0.07);
-  --txt:      #ffffff;
-  --txt2:     rgba(255,255,255,0.78);
-  --txt3:     rgba(255,255,255,0.5);
+  --txt:      #e8edf5;
+  --txt2:     rgba(232,237,245,0.7);
+  --txt3:     rgba(232,237,245,0.4);
   --shadow:   rgba(0,0,0,0.5);
 }
 [data-theme="light"] {
-  --bg:       #f0f2f5;
+  --bg:       #f0f4f8;
   --bg2:      #f8fafc;
   --surf:     #ffffff;
   --surf2:    #f0f4f8;
   --border:   rgba(0,0,0,0.08);
-  --txt:      #06070d;
-  --txt2:     rgba(6,7,13,0.75);
-  --txt3:     rgba(6,7,13,0.5);
+  --txt:      #0a0e1a;
+  --txt2:     rgba(10,14,26,0.7);
+  --txt3:     rgba(10,14,26,0.4);
   --shadow:   rgba(0,0,0,0.08);
 }
 
@@ -236,12 +238,12 @@ body {
 .avatar {
   width: 38px; height: 38px;
   border-radius: 10px;
-  background: var(--surf2); border: 1px solid var(--green);
-  color: var(--green);
+  background: linear-gradient(135deg, var(--green), var(--positive));
+  color: #0a0e1a;
   font-family: var(--fd); font-weight: 700; font-size: 13px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(200,255,0,.35);
+  box-shadow: 0 2px 10px rgba(0,212,168,.35);
 }
 
 /* BODY WRAP */
@@ -294,7 +296,7 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px; height: 18px; border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 10px rgba(200,255,0,.5);
+  box-shadow: 0 0 10px rgba(0,212,168,.5);
   cursor: pointer; transition: transform .1s;
 }
 input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
@@ -309,7 +311,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
   border: 1px solid transparent; transition: all .12s;
 }
 .fitem:hover { background: var(--surf); color: var(--txt); }
-.fitem.active { background: var(--green-dim); color: var(--green); border-color: rgba(200,255,0,.2); }
+.fitem.active { background: var(--green-dim); color: var(--green); border-color: rgba(0,212,168,.2); }
 .fcount { font-family: var(--fm); font-size: 11px; color: var(--txt3); }
 .fitem.active .fcount { color: var(--green); }
 
@@ -366,7 +368,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
   background: var(--surf); color: var(--txt2);
   cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all .12s;
 }
-.mfbtn.active { background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 2px 8px rgba(200,255,0,.3); }
+.mfbtn.active { background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 2px 8px rgba(0,212,168,.3); }
 
 /* Feed */
 .feed { padding: 20px 24px; display: flex; flex-direction: column; gap: 5px; }
@@ -383,7 +385,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
 }
 .row:hover { background: var(--surf2); box-shadow: 0 4px 20px var(--shadow); }
 .row:active { transform: scale(.995); }
-.row.barata { border-left-color: var(--green); }
+.row.barata { border-left-color: var(--positive); }
 .row.cara   { border-left-color: var(--red); }
 
 .row-ico {
@@ -392,7 +394,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
   font-family: var(--fd); font-size: 11px; font-weight: 800;
   letter-spacing: -.5px; flex-shrink: 0;
 }
-.row-ico.barata { background: var(--green-dim); color: var(--green); }
+.row-ico.barata { background: var(--positive-dim); color: var(--positive); }
 .row-ico.cara   { background: var(--red-dim);   color: var(--red); }
 
 .row-info { min-width: 0; }
@@ -415,7 +417,7 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
   font-family: var(--fm); font-size: 15px; font-weight: 500;
   display: flex; align-items: center; justify-content: flex-end; gap: 2px;
 }
-.diff-pct.g { color: var(--green); }
+.diff-pct.g { color: var(--positive); }
 .diff-pct.r { color: var(--red); }
 .diff-lbl { font-size: 10px; color: var(--txt3); text-align: right; margin-top: 2px; }
 
@@ -486,9 +488,9 @@ input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.3); }
 .det-acts { padding: 0 24px; display: flex; flex-direction: column; gap: 8px; }
 .btn-main {
   width: 100%; padding: 14px; border-radius: 12px; border: none;
-  background: var(--green); color: #06070d;
+  background: var(--green); color: #0a0e1a;
   font-family: var(--fd); font-size: 15px; font-weight: 700;
-  cursor: pointer; box-shadow: 0 4px 16px rgba(200,255,0,.25); transition: opacity .15s;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(0,212,168,.25); transition: opacity .15s;
 }
 .btn-main:hover { opacity: .9; }
 .btn-ghost {
