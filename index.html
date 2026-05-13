@@ -372,10 +372,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="sb-trial" id="trial-box" onclick="openModal('modal-sub')">
       <div class="sb-trial-ttl" id="trial-ttl">⏰ 7 dias de trial</div>
       <div class="sb-trial-sub">Assine e mantenha acesso completo.</div>
-      <button class="sb-trial-btn">Assinar — R$ 19,90/mês</button>
+      <button class="sb-trial-btn" onclick="openModal('modal-sub')">🚀 Assinar Elite Ações<br><small style="font-weight:400;font-size:11px;opacity:.8"><s>R$ 49,90</s> → R$ 19,90/mês</small></button>
     </div>
     <div class="sb-bottom">
-      <button class="sb-assinar-btn" id="sb-assinar" onclick="openModal('modal-sub')">🚀 Assinar Elite Ações</button>
+      
       <div class="sb-user" onclick="togglePerfil()">
         <div class="sb-avatar" id="sb-avatar">?</div>
         <div class="sb-user-info">
@@ -476,7 +476,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="sub-ico">🚀</div>
       <div class="sub-title">Acesso completo</div>
       <div class="sub-desc">Preço teto automático para 300+ ações e FIIs da B3 baseado em dividendos.</div>
-      <div class="sub-price">R$ 19,90 <small>/mês</small></div>
+      <div class="sub-price"><span style="text-decoration:line-through;opacity:.5;font-size:16px">R$ 49,90</span> <span style="color:var(--green)">R$ 19,90</span> <small>/mês</small></div>
     </div>
     <div class="sub-feats">
       <div class="sub-feat">Preço teto por dividendos de todas as ações</div>
@@ -484,7 +484,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="sub-feat">Filtros por DY e potencial</div>
       <div class="sub-feat">Favoritos e carteira pessoal</div>
     </div>
-    <button class="btn-main" onclick="irCheckout()">Assinar agora — R$ 19,90/mês</button>
+    <button class="btn-main" onclick="irCheckout()">🚀 Garantir por R$ 19,90/mês</button>
     <div class="dismiss" onclick="closeModal('modal-sub')">Continuar com o trial gratuito</div>
   </div>
 </div>
