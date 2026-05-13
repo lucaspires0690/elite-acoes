@@ -352,18 +352,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <span id="taxa-toggle-txt">Ajustar taxa</span>
       </div>
       <div id="taxa-avancada" style="display:none;margin-top:10px">
-        <div style="font-size:10px;color:var(--txt3);margin-bottom:8px;line-height:1.4">
-          ⚠️ Alterar a taxa muda o preço teto. Use apenas se souber o que está fazendo.
+        <div style="font-size:10px;color:var(--txt3);margin-bottom:10px;line-height:1.5;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:8px">
+          💡 <strong style="color:var(--yellow)">Como funciona:</strong> quanto maior a taxa, mais barato o ativo precisa estar para você comprar. Taxa alta = você é mais exigente.
         </div>
         <div class="sb-taxa-lbl">Ações</div>
-        <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-display">6,0%</span></div>
+        <div class="sb-taxa-row"><span class="sb-taxa-name">Retorno mínimo desejado</span><span class="sb-taxa-val" id="taxa-display">6,0%</span></div>
         <input type="range" id="taxa-slider" min="4" max="15" step="0.5" value="6" oninput="onTaxa(this.value)">
-        <div class="sb-range-hints"><span>4% — flexível</span><span>15% — exigente</span></div>
+        <div class="sb-range-hints"><span>4% — mais flexível</span><span>15% — mais exigente</span></div>
         <div style="margin-top:10px"></div>
         <div class="sb-taxa-lbl">FIIs</div>
-        <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-fii-display">10,0%</span></div>
+        <div class="sb-taxa-row"><span class="sb-taxa-name">Retorno mínimo desejado</span><span class="sb-taxa-val" id="taxa-fii-display">10,0%</span></div>
         <input type="range" id="taxa-fii-slider" min="4" max="20" step="0.5" value="10" oninput="onTaxaFii(this.value)">
-        <div class="sb-range-hints"><span>4%</span><span>20%</span></div>
+        <div class="sb-range-hints"><span>4% — mais flexível</span><span>20% — mais exigente</span></div>
         <div style="margin-top:8px">
           <button class="sb-bazin-reset" onclick="resetarTaxa()">↺ Voltar ao padrão Bazin (6%)</button>
         </div>
@@ -492,7 +492,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',authDomain:'elite-acoes.firebaseapp.com',projectId:'elite-acoes',storageBucket:'elite-acoes.firebasestorage.app',messagingSenderId:'723536084871',appId:'1:723536084871:web:c6cf5879ddeb629759dd22'};
 const fbApp=initializeApp(firebaseConfig);
@@ -543,9 +543,17 @@ function setTrialUI(dias){
 }
 
 async function carregarAcoes(){
-  try{const snap=await getDocs(collection(db,'acoes'));ACOES=snap.docs.map(d=>({id:d.id,...d.data()}));}
-  catch(_){ACOES=DEMO;}
-  atualizarContadores();renderContent();
+  try{
+    const snap=await getDocs(collection(db,'acoes'));
+    ACOES=snap.docs.map(d=>({id:d.id,...d.data()}));
+    atualizarContadores();renderContent();
+    // Listener tempo real — atualiza automaticamente quando brapi atualizar
+    onSnapshot(collection(db,'acoes'),s=>{
+      ACOES=s.docs.map(d=>({id:d.id,...d.data()}));
+      atualizarContadores();renderContent();
+    });
+  }
+  catch(_){ACOES=DEMO;atualizarContadores();renderContent();}
 }
 
 function isFii(c){return /11$/.test(c);}
