@@ -164,6 +164,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .ac-ico.b{background:var(--pos-dim);color:var(--pos)}
 .ac-ico.c{background:var(--red-dim);color:var(--red)}
 .ac-ico.n{background:var(--surf2);color:var(--txt3)}
+.ac-logo{width:44px;height:44px;border-radius:11px;object-fit:contain;background:var(--surf);padding:4px;flex-shrink:0;border:1px solid var(--border)}
+.sri-logo{width:38px;height:38px;border-radius:9px;object-fit:contain;background:var(--surf);padding:3px;flex-shrink:0;border:1px solid var(--border)}
 .ac-info{flex:1;min-width:0}
 .ac-ticker{font-size:16px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:7px}
 .ac-type{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--surf2);color:var(--txt3);font-family:var(--fm)}
@@ -374,7 +376,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <div class="overlay" id="modal-detalhe" onclick="closeOut(event,'modal-detalhe')">
   <div class="modal">
     <div class="modal-hd">
-      <div><div class="modal-ticker" id="det-ticker">—</div><div class="modal-nome" id="det-nome">—</div></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img id="det-logo" style="width:44px;height:44px;border-radius:11px;object-fit:contain;background:var(--surf2);padding:4px;border:1px solid var(--border);display:none" alt="">
+        <div><div class="modal-ticker" id="det-ticker">—</div><div class="modal-nome" id="det-nome">—</div></div>
+      </div>
       <button class="modal-close" onclick="closeModal('modal-detalhe')">✕</button>
     </div>
     <div id="det-body"></div>
@@ -585,7 +590,7 @@ function renderCard(a){
   const potClass=c.status==='muito-barata'?'green':c.status==='barata'?'pos':c.status==='cara'?'red':'';
   const dyN=parseFloat(c.dy);
   return `<div class="acao-card ${c.status}" onclick="openDet('${a.codigo}')">
-    <div class="ac-ico ${icoClass}">${sg}</div>
+    ${logoHTML(a.codigo,'ac')}
     <div class="ac-info">
       <div class="ac-ticker">${a.codigo}<span class="ac-type">${isFii(a.codigo)?'FII':'AÇÃO'}</span></div>
       <div class="ac-nome">${a.nome||''}</div>
@@ -610,7 +615,7 @@ function renderSRItem(a){
   const statusLabel=c.status==='muito-barata'?'Muito Barata':c.status==='barata'?'Barata':c.status==='cara'?'Cara':'Sem DY';
   const potClass=c.status==='muito-barata'?'mg':c.status==='barata'?'g':c.status==='cara'?'r':'';
   return `<div class="sr-item" onclick="openDet('${a.codigo}')">
-    <div class="sri-ico ${icoClass}">${sg}</div>
+    ${logoHTML(a.codigo,'sr')}
     <div class="sri-info">
       <div class="sri-ticker">${a.codigo}<span class="sri-type">${isFii(a.codigo)?'FII':'AÇÃO'}</span></div>
       <div class="sri-nome">${a.nome||''}</div>
@@ -631,6 +636,13 @@ window.openDet=codigo=>{
   const pct=c.teto>0?Math.min(ib?(a.cotacao/c.teto)*100:(c.teto/a.cotacao)*100,100):50;
   const segLabel=c.teto>0?(parseFloat(c.diffAbs)>30?'Muito confortável':parseFloat(c.diffAbs)>15?'Confortável':parseFloat(c.diffAbs)>5?'Moderada':'Apertada'):'';
   document.getElementById('det-ticker').textContent=a.codigo;
+  // Logo no modal
+  const detLogoEl=document.getElementById('det-logo');
+  if(detLogoEl){
+    detLogoEl.src=`https://brapi.dev/favicon/${a.codigo}.png`;
+    detLogoEl.onerror=()=>{detLogoEl.style.display='none';};
+    detLogoEl.style.display='block';
+  }
   document.getElementById('det-nome').textContent=(a.nome||'')+(isFii(a.codigo)?' — FII':' — AÇÃO');
   document.getElementById('det-body').innerHTML=`
     <div class="det-grid">
@@ -688,6 +700,16 @@ window.openModal=id=>document.getElementById(id).classList.add('open');
 window.closeModal=id=>document.getElementById(id).classList.remove('open');
 window.closeOut=(e,id)=>{if(e.target.id===id)closeModal(id);};
 window.irCheckout=()=>{window.open('LINK_HOTMART_AQUI','_blank');};
+
+function logoHTML(codigo, size='ac'){
+  const sg=codigo.replace(/\d/g,'').slice(0,4);
+  const url=`https://brapi.dev/favicon/${codigo}.png`;
+  if(size==='ac'){
+    return `<img class="ac-logo" src="${url}" alt="${codigo}" onerror="this.outerHTML='<div class=\"ac-ico n\">${sg}</div>'">`;
+  } else {
+    return `<img class="sri-logo" src="${url}" alt="${codigo}" onerror="this.outerHTML='<div class=\"sri-ico n\">${sg}</div>'">`;
+  }
+}
 window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
 const DEMO=[
