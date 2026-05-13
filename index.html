@@ -73,6 +73,24 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .sb-count{margin-left:auto;font-size:11px;font-family:var(--fm);background:var(--surf2);padding:1px 7px;border-radius:20px;color:var(--txt3)}
 .sb-item.active .sb-count{background:rgba(0,212,168,.15);color:var(--green)}
 .sb-taxa-card{margin:4px 10px;background:var(--surf);border:1px solid var(--border);border-radius:11px;padding:12px;margin-bottom:6px}
+.sb-metodo-card{margin:4px 10px;background:var(--surf);border:1px solid var(--border);border-radius:11px;padding:12px;margin-bottom:6px}
+.sb-metodo-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.sb-metodo-nome{font-size:13px;font-weight:700;color:var(--txt)}
+.sb-metodo-desc{font-size:11px;color:var(--txt3);margin-top:2px;font-family:var(--fm)}
+.sb-metodo-badge{background:var(--green-dim);color:var(--green);font-size:13px;font-weight:800;padding:3px 10px;border-radius:20px;border:1px solid rgba(0,212,168,.2);font-family:var(--fm);flex-shrink:0}
+.sb-metodo-hint{font-size:11px;color:var(--txt2);line-height:1.5;margin-bottom:10px}
+.sb-avancado-btn{width:100%;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surf2);color:var(--txt3);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--fb);display:flex;align-items:center;justify-content:space-between;transition:all .15s}
+.sb-avancado-btn:hover{border-color:var(--green);color:var(--green)}
+.sb-avancado-btn.open{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+.sb-avancado-warn{font-size:11px;color:var(--yellow);line-height:1.4;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:8px 10px}
+.sb-bazin-info{margin-bottom:10px}
+.sb-bazin-title{font-size:12px;font-weight:700;color:var(--txt);margin-bottom:4px}
+.sb-bazin-sub{font-size:11px;color:var(--txt3);line-height:1.5}
+.sb-bazin-sub strong{color:var(--green)}
+.sb-bazin-toggle{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--txt3);cursor:pointer;padding:6px 0;border-top:1px solid var(--border);margin-top:8px;transition:color .15s}
+.sb-bazin-toggle:hover{color:var(--green)}
+.sb-bazin-reset{width:100%;padding:6px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--txt3);font-size:11px;font-family:var(--fb);cursor:pointer;transition:all .15s}
+.sb-bazin-reset:hover{border-color:var(--green);color:var(--green)}
 .sb-taxa-lbl{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
 .sb-taxa-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .sb-taxa-name{font-size:12px;color:var(--txt2)}
@@ -296,18 +314,33 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="sb-item" id="nav-acoes" onclick="setNav('acoes',this)"><span class="sb-item-ico">🏢</span>Ações</div>
       <div class="sb-item" id="nav-fiis" onclick="setNav('fiis',this)"><span class="sb-item-ico">🏗️</span>FIIs</div>
     </div>
-    <div class="sb-section"><div class="sb-lbl">Taxa de retorno</div></div>
+    <div class="sb-section"><div class="sb-lbl">Preço Teto</div></div>
     <div class="sb-taxa-card">
-      <div class="sb-taxa-lbl">Ações</div>
-      <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-display">6,0%</span></div>
-      <input type="range" id="taxa-slider" min="4" max="15" step="0.5" value="6" oninput="onTaxa(this.value)">
-      <div class="sb-range-hints"><span>4%</span><span>15%</span></div>
-    </div>
-    <div class="sb-taxa-card">
-      <div class="sb-taxa-lbl">FIIs</div>
-      <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-fii-display">10,0%</span></div>
-      <input type="range" id="taxa-fii-slider" min="4" max="20" step="0.5" value="10" oninput="onTaxaFii(this.value)">
-      <div class="sb-range-hints"><span>4%</span><span>20%</span></div>
+      <div class="sb-bazin-info">
+        <div class="sb-bazin-title">📐 Método Bazin</div>
+        <div class="sb-bazin-sub">Preço máximo para ganhar <strong>6% ao ano</strong> em dividendos. Acima disso, a ação está cara.</div>
+      </div>
+      <div class="sb-bazin-toggle" onclick="toggleTaxaAvancada()">
+        <span id="taxa-toggle-ico">⚙️</span>
+        <span id="taxa-toggle-txt">Ajustar taxa</span>
+      </div>
+      <div id="taxa-avancada" style="display:none;margin-top:10px">
+        <div style="font-size:10px;color:var(--txt3);margin-bottom:8px;line-height:1.4">
+          ⚠️ Alterar a taxa muda o preço teto. Use apenas se souber o que está fazendo.
+        </div>
+        <div class="sb-taxa-lbl">Ações</div>
+        <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-display">6,0%</span></div>
+        <input type="range" id="taxa-slider" min="4" max="15" step="0.5" value="6" oninput="onTaxa(this.value)">
+        <div class="sb-range-hints"><span>4% — flexível</span><span>15% — exigente</span></div>
+        <div style="margin-top:10px"></div>
+        <div class="sb-taxa-lbl">FIIs</div>
+        <div class="sb-taxa-row"><span class="sb-taxa-name">Taxa desejada/ano</span><span class="sb-taxa-val" id="taxa-fii-display">10,0%</span></div>
+        <input type="range" id="taxa-fii-slider" min="4" max="20" step="0.5" value="10" oninput="onTaxaFii(this.value)">
+        <div class="sb-range-hints"><span>4%</span><span>20%</span></div>
+        <div style="margin-top:8px">
+          <button class="sb-bazin-reset" onclick="resetarTaxa()">↺ Voltar ao padrão Bazin (6%)</button>
+        </div>
+      </div>
     </div>
     <div class="sb-trial" id="trial-box" onclick="openModal('modal-sub')">
       <div class="sb-trial-ttl" id="trial-ttl">⏰ 7 dias de trial</div>
@@ -696,6 +729,23 @@ window.openDet=function(codigo){
   openModal('modal-detalhe');
 };
 
+window.toggleTaxaAvancada=()=>{
+  const el=document.getElementById('taxa-avancada');
+  const txt=document.getElementById('taxa-toggle-txt');
+  const ico=document.getElementById('taxa-toggle-ico');
+  const aberto=el.style.display!=='none';
+  el.style.display=aberto?'none':'block';
+  txt.textContent=aberto?'Ajustar taxa':'Ocultar';
+  ico.textContent=aberto?'⚙️':'✕';
+};
+window.resetarTaxa=async()=>{
+  taxa=6;taxaFii=10;
+  document.getElementById('taxa-slider').value=6;
+  document.getElementById('taxa-fii-slider').value=10;
+  setTaxaDisplay(6);setTaxaFiiDisplay(10);
+  renderContent();
+  if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_personalizada:6,taxa_fii:10},{merge:true});
+};
 window.onTaxa=async v=>{taxa=parseFloat(v);setTaxaDisplay(taxa);renderContent();if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_personalizada:taxa},{merge:true});};
 function setTaxaDisplay(v){document.getElementById('taxa-display').textContent=(v%1===0?v+',0':String(v).replace('.',','))+'%';}
 window.onTaxaFii=async v=>{taxaFii=parseFloat(v);setTaxaFiiDisplay(taxaFii);renderContent();if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_fii:taxaFii},{merge:true});};
@@ -733,6 +783,16 @@ window.openModal=id=>document.getElementById(id).classList.add('open');
 window.closeModal=id=>document.getElementById(id).classList.remove('open');
 window.closeOut=(e,id)=>{if(e.target.id===id)closeModal(id);};
 window.irCheckout=()=>{window.open('LINK_HOTMART_AQUI','_blank');};
+
+window.toggleAvancado=function(){
+  const panel=document.getElementById('avancado-panel');
+  const btn=document.getElementById('btn-avancado');
+  const arrow=document.getElementById('avancado-arrow');
+  const isOpen=panel.style.display!=='none';
+  panel.style.display=isOpen?'none':'block';
+  arrow.textContent=isOpen?'▼':'▲';
+  btn.classList.toggle('open',!isOpen);
+};
 window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
 const DEMO=[
