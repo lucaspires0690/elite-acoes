@@ -50,8 +50,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .btn-google svg{width:18px;height:18px;flex-shrink:0}
 #app{display:none;height:100dvh;flex-direction:row}
 #app.show{display:flex}
-.sidebar{width:240px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
-@media(max-width:900px){.sidebar{display:none}}
+.sidebar{width:280px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
+@media(max-width:1024px){.sidebar{display:none}}
 .sb-logo{padding:16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
 .sb-logo-txt{font-size:17px;font-weight:800;color:var(--txt)}
 .sb-logo-txt span{color:var(--green)}
@@ -111,12 +111,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sb-user-name{font-size:12px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sb-user-plan{font-size:10px;color:var(--txt3)}
 .sb-logout{font-size:15px;cursor:pointer;color:var(--txt3);background:none;border:none;padding:4px;transition:color .15s}
+.sb-assinar-btn{width:100%;padding:10px;border-radius:10px;border:none;background:var(--green);color:#0a0e1a;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb);margin-bottom:8px;transition:opacity .15s}
+.sb-assinar-btn:hover{opacity:.9}
+.sb-assinar-btn.hidden{display:none}
+.sb-user-arrow{font-size:14px;color:var(--txt3);transition:transform .2s}
+.sb-perfil-menu{background:var(--surf2);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:6px;animation:fadeIn .15s ease}
+.sb-perfil-item{width:100%;padding:10px 14px;background:none;border:none;color:var(--txt2);font-size:13px;font-weight:500;font-family:var(--fb);cursor:pointer;text-align:left;transition:background .15s;display:block}
+.sb-perfil-item:hover{background:var(--surf3);color:var(--txt)}
+.sb-perfil-item.red{color:var(--red)}
+.sb-perfil-item.red:hover{background:var(--red-dim)}
 .sb-logout:hover{color:var(--red)}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
 .topbar{height:56px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 16px;flex-shrink:0}
 .mob-logo{display:none;font-size:15px;font-weight:800;color:var(--txt)}
 .mob-logo span{color:var(--green)}
-@media(max-width:900px){.mob-logo{display:block}}
+@media(max-width:1024px){.mob-logo{display:block}}
 .search-big{flex:1;max-width:560px;position:relative}
 .search-big-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--green);font-size:16px;pointer-events:none}
 .search-big-input{width:100%;padding:10px 16px 10px 42px;background:var(--surf);border:1.5px solid var(--border);border-radius:12px;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;outline:none;transition:all .2s}
@@ -128,7 +137,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer}
 .mob-filters{display:none;padding:8px 10px;gap:6px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;scrollbar-width:none}
 .mob-filters::-webkit-scrollbar{display:none}
-@media(max-width:900px){.mob-filters{display:flex}}
+@media(max-width:1024px){.mob-filters{display:flex}}
 .mfbtn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt3);font-size:11px;font-weight:500;font-family:var(--fb);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
 .mfbtn.active{background:var(--green);border-color:var(--green);color:#0a0e1a;font-weight:700}
 .content{flex:1;overflow:hidden;display:flex;flex-direction:column}
@@ -266,9 +275,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sub-feat{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--txt2)}
 .sub-feat::before{content:"✅";font-size:12px}
 .disclaimer-bar{background:rgba(245,158,11,0.06);border-top:1px solid rgba(245,158,11,0.15);padding:6px 16px;font-size:10px;color:var(--txt3);text-align:center;flex-shrink:0;display:none}
-@media(min-width:901px){.disclaimer-bar{display:block}}
+@media(min-width:1025px){.disclaimer-bar{display:block}}
 .bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:6px 0 env(safe-area-inset-bottom);flex-shrink:0}
-@media(max-width:900px){.bnav{display:flex}}
+@media(max-width:1024px){.bnav{display:flex}}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px;cursor:pointer;color:var(--txt3);font-size:10px;font-weight:500;transition:color .15s}
 .ni.active{color:var(--green)}
 .ni-ico{font-size:20px}
@@ -304,7 +313,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     </div>
     <div class="sb-section">
       <div class="sb-lbl">Minha lista</div>
-      <div class="sb-item active" id="nav-favoritos" onclick="setNav('favoritos',this)"><span class="sb-item-ico">⭐</span>Favoritas<span class="sb-count" id="fc-favoritos">0</span></div>
+      <div class="sb-item active" id="nav-inicio" onclick="setNav('inicio',this)"><span class="sb-item-ico">🏠</span>Início</div>
+      <div class="sb-item" id="nav-favoritos" onclick="setNav('favoritos',this)"><span class="sb-item-ico">⭐</span>Favoritas<span class="sb-count" id="fc-favoritos">0</span></div>
       <div class="sb-item" id="nav-baratas" onclick="setNav('baratas',this)"><span class="sb-item-ico">🟢</span>Baratas<span class="sb-count" id="fc-baratas">—</span></div>
       <div class="sb-item" id="nav-caras" onclick="setNav('caras',this)"><span class="sb-item-ico">🔴</span>Caras<span class="sb-count" id="fc-caras">—</span></div>
       <div class="sb-item" id="nav-dy" onclick="setNav('dy',this)"><span class="sb-item-ico">📊</span>DY &gt; 6%<span class="sb-count" id="fc-dy">—</span></div>
@@ -348,13 +358,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="sb-trial-btn">Assinar — R$ 19,90/mês</button>
     </div>
     <div class="sb-bottom">
-      <div class="sb-user">
+      <button class="sb-assinar-btn" id="sb-assinar" onclick="openModal('modal-sub')">🚀 Assinar Elite Ações</button>
+      <div class="sb-user" onclick="togglePerfil()">
         <div class="sb-avatar" id="sb-avatar">?</div>
         <div class="sb-user-info">
           <div class="sb-user-name" id="sb-user-name">Carregando...</div>
           <div class="sb-user-plan" id="sb-user-plan">Trial</div>
         </div>
-        <button class="sb-logout" onclick="fazerLogout()" title="Sair">↩</button>
+        <span class="sb-user-arrow" id="sb-user-arrow">⌄</span>
+      </div>
+      <div class="sb-perfil-menu" id="sb-perfil-menu" style="display:none">
+        <button class="sb-perfil-item" onclick="toggleTheme()">🌙 Alternar tema</button>
+        <button class="sb-perfil-item red" onclick="fazerLogout()">↩ Sair da conta</button>
       </div>
     </div>
   </aside>
@@ -372,21 +387,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
     <div class="mob-filters">
-      <button class="mfbtn active" onclick="setNavM('favoritos',this)">⭐ Favoritas</button>
-      <button class="mfbtn" onclick="setNavM('baratas',this)">🟢 Baratas</button>
-      <button class="mfbtn" onclick="setNavM('caras',this)">🔴 Caras</button>
-      <button class="mfbtn" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
-      <button class="mfbtn" onclick="setNavM('acoes',this)">🏢 Ações</button>
-      <button class="mfbtn" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
+      <button class="mfbtn active" id="mf-inicio" onclick="setNavM('inicio',this)">🏠 Início</button>
+      <button class="mfbtn" id="mf-favoritos" onclick="setNavM('favoritos',this)">⭐ Favoritas</button>
+      <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🟢 Baratas</button>
+      <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
+      <button class="mfbtn" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
+      <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
     </div>
     <div class="content" id="content"></div>
     <div class="disclaimer-bar">⚠️ Ferramenta educacional de organização de dados. Não constitui recomendação de investimento. A decisão é sempre sua.</div>
     <nav class="bnav">
-      <div class="ni active" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
-      <div class="ni" id="mni-baratas" onclick="setNavM('baratas',this);setMobNav(this)"><span class="ni-ico">🟢</span>Baratas</div>
+      <div class="ni active" id="mni-inicio" onclick="setNavM('inicio',this);setMobNav(this)"><span class="ni-ico">🏠</span>Início</div>
+      <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
       <div class="ni" id="mni-busca" onclick="focusBusca();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
       <div class="ni" id="mni-dy" onclick="setNavM('dy',this);setMobNav(this)"><span class="ni-ico">📊</span>DY&gt;6%</div>
-      <div class="ni" id="mni-perfil" onclick="openModal('modal-sub')"><span class="ni-ico">👤</span>Perfil</div>
+      <div class="ni" id="mni-perfil" onclick="openPerfil()"><span class="ni-ico">👤</span>Perfil</div>
     </nav>
   </div>
 </div>
@@ -482,7 +497,7 @@ onAuthStateChanged(auth,async user=>{
   document.getElementById('taxa-slider').value=taxa;
   document.getElementById('taxa-fii-slider').value=taxaFii;
   setTaxaDisplay(taxa);setTaxaFiiDisplay(taxaFii);
-  if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';}
+  if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');}
   else{const dias=Math.ceil((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
@@ -753,13 +768,36 @@ function setTaxaFiiDisplay(v){document.getElementById('taxa-fii-display').textCo
 window.onBusca=v=>{busca=v;renderContent();};
 window.focusBusca=()=>{setTimeout(()=>{const el=document.getElementById('main-search');if(el){el.focus();el.select();}},50);};
 
+window.openPerfil=function(){
+  const ini=(USER?.displayName||USER?.email||'?')[0].toUpperCase();
+  const nome=USER?.displayName||USER?.email||'—';
+  const plan=document.getElementById('sb-user-plan')?.textContent||'Trial';
+  const pa=document.getElementById('perfil-avatar-m');
+  const pn=document.getElementById('perfil-nome-m');
+  const pp=document.getElementById('perfil-plan-m');
+  if(pa)pa.textContent=ini;
+  if(pn)pn.textContent=nome;
+  if(pp)pp.textContent=plan;
+  openModal('modal-perfil');
+};
+
+window.togglePerfil=function(){
+  const menu=document.getElementById('sb-perfil-menu');
+  const arrow=document.getElementById('sb-user-arrow');
+  const isOpen=menu.style.display!=='none';
+  menu.style.display=isOpen?'none':'block';
+  if(arrow)arrow.style.transform=isOpen?'':'rotate(180deg)';
+};
+
 window.setNav=(f,btn)=>{
-  filtro=f;tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
+  filtro=f==='inicio'?'favoritos':f;
+  tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
 };
 window.setNavM=(f,btn)=>{
-  filtro=f;tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
+  filtro=f==='inicio'?'favoritos':f;
+  tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
 };
