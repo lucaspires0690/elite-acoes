@@ -315,8 +315,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="sb-lbl">Minha lista</div>
       <div class="sb-item active" id="nav-inicio" onclick="setNav('inicio',this)"><span class="sb-item-ico">🏠</span>Início</div>
       <div class="sb-item" id="nav-favoritos" onclick="setNav('favoritos',this)"><span class="sb-item-ico">⭐</span>Favoritas<span class="sb-count" id="fc-favoritos">0</span></div>
-      <div class="sb-item" id="nav-baratas" onclick="setNav('baratas',this)"><span class="sb-item-ico">🟢</span>Baratas<span class="sb-count" id="fc-baratas">—</span></div>
-      <div class="sb-item" id="nav-caras" onclick="setNav('caras',this)"><span class="sb-item-ico">🔴</span>Caras<span class="sb-count" id="fc-caras">—</span></div>
+      <div class="sb-item" id="nav-baratas" onclick="setNav('baratas',this)"><span class="sb-item-ico">🎯</span>Oportunidades<span class="sb-count" id="fc-baratas">—</span></div>
       <div class="sb-item" id="nav-dy" onclick="setNav('dy',this)"><span class="sb-item-ico">📊</span>DY &gt; 6%<span class="sb-count" id="fc-dy">—</span></div>
     </div>
     <div class="sb-section">
@@ -389,7 +388,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="mob-filters">
       <button class="mfbtn active" id="mf-inicio" onclick="setNavM('inicio',this)">🏠 Início</button>
       <button class="mfbtn" id="mf-favoritos" onclick="setNavM('favoritos',this)">⭐ Favoritas</button>
-      <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🟢 Baratas</button>
+      <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🎯 Oportunidades</button>
       <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
       <button class="mfbtn" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
@@ -529,11 +528,9 @@ function calc(a,t){
 function atualizarContadores(){
   const comDY=ACOES.filter(a=>a.dividendo_anual>0);
   const buyN=comDY.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';}).length;
-  const caraN=comDY.filter(a=>calc(a,calcTaxa(a)).status==='cara').length;
   const dyN=ACOES.filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=6).length;
   document.getElementById('fc-favoritos').textContent=FAVORITOS.size;
   document.getElementById('fc-baratas').textContent=buyN;
-  document.getElementById('fc-caras').textContent=caraN;
   document.getElementById('fc-dy').textContent=dyN;
 }
 
@@ -602,10 +599,9 @@ function renderContent(){
   }
 
   if(filtro==='baratas')lista=lista.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';});
-  else if(filtro==='caras')lista=lista.filter(a=>calc(a,calcTaxa(a)).status==='cara');
   else if(filtro==='dy')lista=lista.filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=6);
 
-  const labels={baratas:'🟢 Ações Baratas',caras:'🔴 Ações Caras',dy:'📊 DY > 6%',acoes:'🏢 Ações',fiis:'🏗️ FIIs'};
+  const labels={baratas:'🎯 Oportunidades',dy:'📊 DY > 6%',acoes:'🏢 Ações',fiis:'🏗️ FIIs'};
   content.innerHTML='<div class="favs-section"><div class="favs-title">'+(labels[filtro]||filtro)+' ('+lista.length+')</div><div class="favs-grid">'+lista.slice(0,100).map(a=>renderCard(a)).join('')+'</div></div>';
 }
 
