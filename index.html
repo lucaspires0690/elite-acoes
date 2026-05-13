@@ -147,6 +147,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .favs-title{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .favs-title::before{content:'';width:3px;height:14px;background:var(--green);border-radius:2px;display:inline-block}
 .favs-grid{display:flex;flex-direction:column;gap:8px}
+.setor-group{margin-bottom:24px}
+.setor-title{font-size:14px;font-weight:700;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.home-hint{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:12px;color:var(--txt3)}
+.home-hint-ico{font-size:16px;flex-shrink:0}
 
 /* CARD DE AÇÃO */
 .acao-card{background:var(--surf);border:1px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
@@ -248,6 +252,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sub-feat::before{content:"✅";font-size:12px}
 
 /* Bottom nav */
+.disclaimer-bar{background:rgba(245,158,11,0.06);border-top:1px solid rgba(245,158,11,0.15);padding:6px 16px;font-size:10px;color:var(--txt3);text-align:center;flex-shrink:0;display:none}
+@media(min-width:901px){.disclaimer-bar{display:block}}
 .bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:6px 0 env(safe-area-inset-bottom);flex-shrink:0}
 @media(max-width:900px){.bnav{display:flex}}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px;cursor:pointer;color:var(--txt3);font-size:10px;font-weight:500;transition:color .15s}
@@ -272,6 +278,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <svg viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
       Entrar com Google — 7 dias grátis
     </button>
+    <div style="margin-top:14px;font-size:11px;color:var(--txt3);line-height:1.5;padding:0 4px">
+      🔒 Ferramenta educacional de organização de dados.<br>Não constitui recomendação de investimento.
+    </div>
   </div>
 </div>
 
@@ -348,7 +357,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
     <div class="content" id="content"></div>
 
-    <nav class="bnav">
+    <div class="disclaimer-bar">
+  ⚠️ Ferramenta educacional de organização de dados. Não constitui recomendação de investimento. A decisão é sempre sua.
+</div>
+<nav class="bnav">
       <div class="ni active" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
       <div class="ni" id="mni-baratas" onclick="setNavM('baratas',this);setMobNav(this)"><span class="ni-ico">🟢</span>Baratas</div>
       <div class="ni" id="mni-busca" onclick="focusBusca();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
@@ -366,6 +378,35 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="modal-close" onclick="closeModal('modal-detalhe')">✕</button>
     </div>
     <div id="det-body"></div>
+  </div>
+</div>
+
+<!-- MODAL DISCLAIMER -->
+<div class="overlay" id="modal-disclaimer" onclick="closeOut(event,'modal-disclaimer')">
+  <div class="modal">
+    <div class="modal-hd">
+      <div style="font-size:17px;font-weight:800;color:var(--txt)">⚠️ Aviso importante</div>
+      <button class="modal-close" onclick="fecharDisclaimer()">✕</button>
+    </div>
+    <div style="font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:20px">
+      O <strong>Elite Ações</strong> é uma <strong>ferramenta educacional de organização de dados</strong> da B3.
+      <br><br>
+      Nosso objetivo é <strong>simplificar a análise</strong> de preço teto baseado em dividendos — eliminando planilhas complexas e cálculos manuais.
+      <br><br>
+      <strong>Importante:</strong>
+      <ul style="margin:10px 0 10px 18px;display:flex;flex-direction:column;gap:6px">
+        <li>Não somos consultores de investimentos</li>
+        <li>Os dados são organizados com fins educacionais</li>
+        <li>Não fazemos recomendações de compra ou venda</li>
+        <li>A decisão final é sempre e exclusivamente sua</li>
+        <li>Consulte um profissional habilitado antes de investir</li>
+      </ul>
+      Ao continuar, você confirma que entende que esta é uma ferramenta de <strong>organização de dados</strong>, não de consultoria financeira.
+    </div>
+    <button class="btn-main" onclick="fecharDisclaimer()">Entendi, quero continuar</button>
+    <div style="text-align:center;font-size:11px;color:var(--txt3);margin-top:10px">
+      CVM — Instrução 592/2017 · Dados públicos da B3
+    </div>
   </div>
 </div>
 
@@ -427,6 +468,10 @@ onAuthStateChanged(auth,async user=>{
   if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';}
   else{const dias=Math.ceil((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
   await carregarAcoes();
+  // Mostrar disclaimer na primeira vez
+  if(!localStorage.getItem('ea_disclaimer_ok')){
+    setTimeout(()=>openModal('modal-disclaimer'),800);
+  }
 });
 
 function setTrialUI(dias){
@@ -490,31 +535,36 @@ function renderContent(){
 
   if(filtro==='favoritos'){
     const favs=lista.filter(a=>FAVORITOS.has(a.codigo));
-    if(!favs.length){
-      content.innerHTML=`
-        <div class="home-empty">
-          <div class="home-empty-logo">⭐</div>
-          <div class="home-empty-title">Sua lista está vazia</div>
-          <div class="home-empty-sub">Busque uma ação ou FII e adicione aos favoritos para acompanhar o preço teto aqui.</div>
-          <div class="home-search-hint" onclick="focusBusca()">
-            <div class="home-search-hint-ico">🔍</div>
-            <div class="home-search-hint-txt">
-              <div class="home-search-hint-title">Buscar ação ou FII</div>
-              <div class="home-search-hint-sub">Digite o ticker ou nome da empresa</div>
-            </div>
-          </div>
-          <div class="quick-tags">
-            <span class="qtag" onclick="buscaRapida('PETR4')">PETR4</span>
-            <span class="qtag" onclick="buscaRapida('BBAS3')">BBAS3</span>
-            <span class="qtag" onclick="buscaRapida('VALE3')">VALE3</span>
-            <span class="qtag" onclick="buscaRapida('ITUB4')">ITUB4</span>
-            <span class="qtag" onclick="buscaRapida('KLBN11')">KLBN11</span>
-            <span class="qtag" onclick="buscaRapida('TAEE11')">TAEE11</span>
-          </div>
-        </div>`;
-      return;
-    }
-    content.innerHTML=`<div class="favs-section"><div class="favs-title">Meus favoritos (${favs.length})</div><div class="favs-grid">${favs.map(a=>renderCard(a)).join('')}</div></div>`;
+
+    // Setores padrão — 18 ações selecionadas
+    const SETORES_PADRAO=[
+      {nome:'🏦 Bancos',tickers:['ITUB4','BBAS3','BBDC4','SANB11']},
+      {nome:'⚡ Energia',tickers:['EGIE3','TAEE11','CPFE3','CPLE6','TRPL4']},
+      {nome:'🛡️ Seguros',tickers:['BBSE3','PSSA3','IRBR3','SULA11','CXSE3']},
+      {nome:'💧 Saneamento',tickers:['SBSP3','CSMG3','SAPR11']},
+      {nome:'📡 Telecom',tickers:['VIVT3']},
+    ];
+
+    // Monta HTML dos setores com ações do Firestore
+    const setoresHTML=SETORES_PADRAO.map(setor=>{
+      const acoes=setor.tickers.map(t=>ACOES.find(a=>a.codigo===t)).filter(Boolean);
+      if(!acoes.length)return'';
+      return`<div class="setor-group">
+        <div class="setor-title">${setor.nome}</div>
+        <div class="favs-grid">${acoes.map(a=>renderCard(a)).join('')}</div>
+      </div>`;
+    }).join('');
+
+    const favsHTML=favs.length?`<div class="setor-group"><div class="setor-title">⭐ Meus favoritos (${favs.length})</div><div class="favs-grid">${favs.map(a=>renderCard(a)).join('')}</div></div>`:'';
+
+    content.innerHTML=`<div class="favs-section">
+      <div class="home-hint">
+        <span class="home-hint-ico">🔍</span>
+        <span>Busque qualquer ação ou FII e adicione aos favoritos para acompanhar</span>
+      </div>
+      ${favsHTML}
+      ${setoresHTML}
+    </div>`;
     return;
   }
 
@@ -638,6 +688,7 @@ window.openModal=id=>document.getElementById(id).classList.add('open');
 window.closeModal=id=>document.getElementById(id).classList.remove('open');
 window.closeOut=(e,id)=>{if(e.target.id===id)closeModal(id);};
 window.irCheckout=()=>{window.open('LINK_HOTMART_AQUI','_blank');};
+window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
 const DEMO=[
   {codigo:'BBAS3',nome:'Banco do Brasil',cotacao:30.00,dividendo_anual:2.20,setor:'Financeiro'},
