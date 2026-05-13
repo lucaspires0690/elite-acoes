@@ -775,7 +775,7 @@ window.openDet=function(codigo){
             +'<span style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px">Ajustar taxa</span>'
             +'<span style="font-size:14px;font-weight:800;color:var(--green);font-family:var(--fm)" id="det-taxa-display">'+t+'%</span>'
           +'</div>'
-          +'<input type="range" id="det-taxa-slider" min="4" max="'+(isFii(a.codigo)?'20':'15')+'" step="0.5" value="'+t+'" style="width:100%" oninput="onTaxaDet(this.value,''+a.codigo+'')">'
+          +'<input type="range" id="det-taxa-slider" min="4" max="'+(isFii(a.codigo)?'20':'15')+'" step="0.5" value="'+t+'" style="width:100%" data-cod="'+a.codigo+'" oninput="onTaxaDet(this.value,this.dataset.cod)">'
           +'<div style="display:flex;justify-content:space-between;font-size:9px;color:var(--txt4);margin-top:4px"><span>4% — flexível</span><span>'+(isFii(a.codigo)?'20':'15')+'% — exigente</span></div>'
         +'</div>'
 
