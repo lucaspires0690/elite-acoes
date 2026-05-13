@@ -639,7 +639,7 @@ window.openDet=codigo=>{
   // Logo no modal
   const detLogoEl=document.getElementById('det-logo');
   if(detLogoEl){
-    detLogoEl.src=`https://brapi.dev/favicon/${a.codigo}.png`;
+    detLogoEl.src=`https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${a.codigo}.png`;
     detLogoEl.onerror=()=>{detLogoEl.style.display='none';};
     detLogoEl.style.display='block';
   }
@@ -703,12 +703,13 @@ window.irCheckout=()=>{window.open('LINK_HOTMART_AQUI','_blank');};
 
 function logoHTML(codigo, size='ac'){
   const sg=codigo.replace(/\d/g,'').slice(0,4);
-  const url=`https://brapi.dev/favicon/${codigo}.png`;
-  if(size==='ac'){
-    return `<img class="ac-logo" src="${url}" alt="${codigo}" onerror="this.outerHTML='<div class=\"ac-ico n\">${sg}</div>'">`;
-  } else {
-    return `<img class="sri-logo" src="${url}" alt="${codigo}" onerror="this.outerHTML='<div class=\"sri-ico n\">${sg}</div>'">`;
-  }
+  const url1=`https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${codigo}.png`;
+  const url2=`https://raw.githubusercontent.com/nancydotso/logos/main/logos/${codigo}.png`;
+  const icoClass=size==='ac'?'ac-ico':'sri-ico';
+  const imgClass=size==='ac'?'ac-logo':'sri-logo';
+  // Tenta url1, se falhar tenta url2, se falhar mostra iniciais
+  return `<img class="${imgClass}" src="${url1}" alt="${codigo}"
+    onerror="if(this.src.includes('thefintz')){this.src='${url2}';}else{this.outerHTML='<div class=\"${icoClass} n\">${sg}</div>';}">`;
 }
 window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
