@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0e1a">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Elite Ações">
 <title>Elite Ações — Preço Teto de Ações da B3</title>
@@ -34,8 +35,6 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;flex-direction:column}
-
-/* LOGIN */
 #login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;background-image:radial-gradient(ellipse 600px 400px at 65% 20%,rgba(0,212,168,0.07),transparent)}
 .login-card{background:var(--surf);border:1px solid var(--border2);border-radius:24px;padding:48px 40px;width:100%;max-width:420px;text-align:center;box-shadow:0 32px 64px rgba(0,0,0,.35)}
 .login-logo{font-size:28px;font-weight:800;color:var(--txt);margin-bottom:6px}
@@ -49,12 +48,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .btn-google{width:100%;padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--surf2);color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
 .btn-google:hover{border-color:var(--green);background:var(--green-dim);transform:translateY(-1px)}
 .btn-google svg{width:18px;height:18px;flex-shrink:0}
-
-/* APP */
 #app{display:none;height:100dvh;flex-direction:row}
 #app.show{display:flex}
-
-/* SIDEBAR */
 .sidebar{width:240px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
 @media(max-width:900px){.sidebar{display:none}}
 .sb-logo{padding:16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
@@ -92,11 +87,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sb-user-plan{font-size:10px;color:var(--txt3)}
 .sb-logout{font-size:15px;cursor:pointer;color:var(--txt3);background:none;border:none;padding:4px;transition:color .15s}
 .sb-logout:hover{color:var(--red)}
-
-/* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-
-/* TOPBAR */
 .topbar{height:56px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 16px;flex-shrink:0}
 .mob-logo{display:none;font-size:15px;font-weight:800;color:var(--txt)}
 .mob-logo span{color:var(--green)}
@@ -104,91 +95,64 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .search-big{flex:1;max-width:560px;position:relative}
 .search-big-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--green);font-size:16px;pointer-events:none}
 .search-big-input{width:100%;padding:10px 16px 10px 42px;background:var(--surf);border:1.5px solid var(--border);border-radius:12px;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;outline:none;transition:all .2s}
-.search-big-input:focus{border-color:var(--green);background:var(--surf);box-shadow:0 0 0 3px rgba(0,212,168,.1)}
+.search-big-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,212,168,.1)}
 .search-big-input::placeholder{color:var(--txt3)}
 .topbar-right{display:flex;align-items:center;gap:6px;margin-left:auto}
 .tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s}
 .tb-btn:hover{border-color:var(--green);color:var(--green)}
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer}
-
-/* MOBILE FILTERS */
 .mob-filters{display:none;padding:8px 10px;gap:6px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;scrollbar-width:none}
 .mob-filters::-webkit-scrollbar{display:none}
 @media(max-width:900px){.mob-filters{display:flex}}
 .mfbtn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt3);font-size:11px;font-weight:500;font-family:var(--fb);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
 .mfbtn.active{background:var(--green);border-color:var(--green);color:#0a0e1a;font-weight:700}
-
-/* CONTENT */
 .content{flex:1;overflow:hidden;display:flex;flex-direction:column}
-
-/* TELA VAZIA — favoritos */
-.home-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:20px;padding:40px;text-align:center}
-.home-empty-logo{font-size:64px;opacity:.3}
-.home-empty-title{font-size:22px;font-weight:800;color:var(--txt2);letter-spacing:-.3px}
-.home-empty-sub{font-size:14px;color:var(--txt3);line-height:1.6;max-width:380px}
-.home-search-hint{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--border2);border-radius:14px;padding:14px 20px;cursor:pointer;transition:all .2s;max-width:340px;width:100%}
-.home-search-hint:hover{border-color:var(--green);background:var(--green-dim2)}
-.home-search-hint-ico{font-size:20px}
-.home-search-hint-txt{text-align:left}
-.home-search-hint-title{font-size:13px;font-weight:700;color:var(--txt)}
-.home-search-hint-sub{font-size:11px;color:var(--txt3);margin-top:1px}
-.quick-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
-.qtag{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--fm)}
-.qtag:hover{border-color:var(--green);color:var(--green);background:var(--green-dim)}
-
-/* RESULTADOS DE BUSCA */
 .search-results{flex:1;overflow-y:auto}
 .sr-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .sr-title{font-size:13px;font-weight:700;color:var(--txt2)}
 .sr-count{font-size:12px;color:var(--txt3);font-family:var(--fm)}
-
-/* FAVORITOS */
 .favs-section{flex:1;overflow-y:auto;padding:12px 16px}
 .favs-title{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .favs-title::before{content:'';width:3px;height:14px;background:var(--green);border-radius:2px;display:inline-block}
 .favs-grid{display:flex;flex-direction:column;gap:6px}
 .setor-group{margin-bottom:16px}
-.setor-title{font-size:14px;font-weight:700;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.home-hint{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:12px;color:var(--txt3)}
+.setor-title{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.home-hint{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--txt3)}
 .home-hint-ico{font-size:16px;flex-shrink:0}
-
-/* CARD DE AÇÃO */
 .acao-card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
 .acao-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
 .acao-card.muito-barata::before{background:var(--green)}
 .acao-card.barata::before{background:var(--pos)}
 .acao-card.cara::before{background:var(--red)}
-.acao-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.acao-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .ac-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--fm);flex-shrink:0;letter-spacing:.3px}
 .ac-ico.mb{background:var(--green-dim);color:var(--green)}
 .ac-ico.b{background:var(--pos-dim);color:var(--pos)}
 .ac-ico.c{background:var(--red-dim);color:var(--red)}
 .ac-ico.n{background:var(--surf2);color:var(--txt3)}
-.ac-logo{width:44px;height:44px;border-radius:11px;object-fit:contain;background:var(--surf);padding:4px;flex-shrink:0;border:1px solid var(--border)}
-.sri-logo{width:38px;height:38px;border-radius:9px;object-fit:contain;background:var(--surf);padding:3px;flex-shrink:0;border:1px solid var(--border)}
+.ac-logo{width:44px;height:44px;border-radius:11px;object-fit:contain;background:var(--surf2);padding:4px;flex-shrink:0;border:1px solid var(--border)}
+.sri-logo{width:38px;height:38px;border-radius:9px;object-fit:contain;background:var(--surf2);padding:3px;flex-shrink:0;border:1px solid var(--border)}
 .ac-info{flex:1;min-width:0}
-.ac-ticker{font-size:16px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:7px}
+.ac-ticker{font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:7px}
 .ac-type{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--surf2);color:var(--txt3);font-family:var(--fm)}
-.ac-nome{font-size:12px;color:var(--txt3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ac-metrics{display:flex;gap:14px;margin-top:6px}
+.ac-nome{font-size:11px;color:var(--txt3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ac-metrics{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
 .ac-metric{display:flex;flex-direction:column;gap:1px}
-.ac-metric-lbl{font-size:10px;color:var(--txt3);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.ac-metric-val{font-size:14px;font-weight:700;font-family:var(--fm);color:var(--txt)}
+.ac-metric-lbl{font-size:9px;color:var(--txt3);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.ac-metric-val{font-size:13px;font-weight:700;font-family:var(--fm);color:var(--txt)}
 .ac-metric-val.green{color:var(--green)}
 .ac-metric-val.pos{color:var(--pos)}
 .ac-metric-val.red{color:var(--red)}
 .ac-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
-.ac-status{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.ac-status{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
 .ac-status.muito-barata{background:var(--green-dim);color:var(--green);border:1px solid rgba(0,212,168,.2)}
 .ac-status.barata{background:var(--pos-dim);color:var(--pos);border:1px solid rgba(16,185,129,.2)}
 .ac-status.cara{background:var(--red-dim);color:var(--red);border:1px solid rgba(239,68,68,.2)}
 .ac-status.sem-dy{background:var(--surf2);color:var(--txt3);border:1px solid var(--border)}
-.ac-fav{font-size:18px;cursor:pointer;background:none;border:none;color:var(--txt4);transition:all .15s;padding:2px}
-.ac-fav:hover{color:var(--yellow);transform:scale(1.2)}
+.ac-fav{font-size:17px;cursor:pointer;background:none;border:none;color:var(--txt4);transition:all .15s;padding:2px}
+.ac-fav:hover{color:var(--yellow)}
 .ac-fav.fav{color:var(--yellow)}
-
-/* Resultados busca — lista compacta */
-.sr-item{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
+.sr-item{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
 .sr-item:hover{background:var(--surf)}
 .sri-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:var(--fm);flex-shrink:0}
 .sri-ico.mb{background:var(--green-dim);color:var(--green)}
@@ -212,12 +176,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sri-fav{font-size:16px;cursor:pointer;background:none;border:none;color:var(--txt4);transition:all .15s;padding:4px}
 .sri-fav:hover{color:var(--yellow)}
 .sri-fav.fav{color:var(--yellow)}
-
-/* Sem resultados busca */
-.sr-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:10px;color:var(--txt3)}
-.sr-empty-ico{font-size:36px;opacity:.4}
-
-/* Modais */
+.sr-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:10px;color:var(--txt3);font-size:14px}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surf);border:1px solid var(--border2);border-radius:20px;padding:24px;width:100%;max-width:480px;max-height:90dvh;overflow-y:auto;transform:translateY(10px);transition:transform .2s}
@@ -252,8 +211,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sub-feats{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
 .sub-feat{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--txt2)}
 .sub-feat::before{content:"✅";font-size:12px}
-
-/* Bottom nav */
 .disclaimer-bar{background:rgba(245,158,11,0.06);border-top:1px solid rgba(245,158,11,0.15);padding:6px 16px;font-size:10px;color:var(--txt3);text-align:center;flex-shrink:0;display:none}
 @media(min-width:901px){.disclaimer-bar{display:block}}
 .bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:6px 0 env(safe-area-inset-bottom);flex-shrink:0}
@@ -265,7 +222,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">Elite <span>Ações</span></div>
@@ -280,13 +236,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <svg viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
       Entrar com Google — 7 dias grátis
     </button>
-    <div style="margin-top:14px;font-size:11px;color:var(--txt3);line-height:1.5;padding:0 4px">
-      🔒 Ferramenta educacional de organização de dados.<br>Não constitui recomendação de investimento.
+    <div style="margin-top:14px;font-size:11px;color:var(--txt3);line-height:1.5">
+      🔒 Ferramenta educacional. Não constitui recomendação de investimento.
     </div>
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <aside class="sidebar">
     <div class="sb-logo">
@@ -347,7 +302,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <div class="mob-avatar" id="mob-avatar" onclick="openModal('modal-sub')">?</div>
       </div>
     </div>
-
     <div class="mob-filters">
       <button class="mfbtn active" onclick="setNavM('favoritos',this)">⭐ Favoritas</button>
       <button class="mfbtn" onclick="setNavM('baratas',this)">🟢 Baratas</button>
@@ -356,13 +310,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="mfbtn" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
     </div>
-
     <div class="content" id="content"></div>
-
-    <div class="disclaimer-bar">
-  ⚠️ Ferramenta educacional de organização de dados. Não constitui recomendação de investimento. A decisão é sempre sua.
-</div>
-<nav class="bnav">
+    <div class="disclaimer-bar">⚠️ Ferramenta educacional de organização de dados. Não constitui recomendação de investimento. A decisão é sempre sua.</div>
+    <nav class="bnav">
       <div class="ni active" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
       <div class="ni" id="mni-baratas" onclick="setNavM('baratas',this);setMobNav(this)"><span class="ni-ico">🟢</span>Baratas</div>
       <div class="ni" id="mni-busca" onclick="focusBusca();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
@@ -372,7 +322,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div>
 </div>
 
-<!-- MODAL DETALHE -->
 <div class="overlay" id="modal-detalhe" onclick="closeOut(event,'modal-detalhe')">
   <div class="modal">
     <div class="modal-hd">
@@ -386,7 +335,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div>
 </div>
 
-<!-- MODAL DISCLAIMER -->
 <div class="overlay" id="modal-disclaimer" onclick="closeOut(event,'modal-disclaimer')">
   <div class="modal">
     <div class="modal-hd">
@@ -394,10 +342,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="modal-close" onclick="fecharDisclaimer()">✕</button>
     </div>
     <div style="font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:20px">
-      O <strong>Elite Ações</strong> é uma <strong>ferramenta educacional de organização de dados</strong> da B3.
-      <br><br>
-      Nosso objetivo é <strong>simplificar a análise</strong> de preço teto baseado em dividendos — eliminando planilhas complexas e cálculos manuais.
-      <br><br>
+      O <strong>Elite Ações</strong> é uma <strong>ferramenta educacional de organização de dados</strong> da B3.<br><br>
+      Nosso objetivo é <strong>simplificar a análise</strong> de preço teto baseado em dividendos.<br><br>
       <strong>Importante:</strong>
       <ul style="margin:10px 0 10px 18px;display:flex;flex-direction:column;gap:6px">
         <li>Não somos consultores de investimentos</li>
@@ -406,16 +352,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <li>A decisão final é sempre e exclusivamente sua</li>
         <li>Consulte um profissional habilitado antes de investir</li>
       </ul>
-      Ao continuar, você confirma que entende que esta é uma ferramenta de <strong>organização de dados</strong>, não de consultoria financeira.
     </div>
     <button class="btn-main" onclick="fecharDisclaimer()">Entendi, quero continuar</button>
-    <div style="text-align:center;font-size:11px;color:var(--txt3);margin-top:10px">
-      CVM — Instrução 592/2017 · Dados públicos da B3
-    </div>
+    <div style="text-align:center;font-size:11px;color:var(--txt3);margin-top:10px">CVM — Instrução 592/2017 · Dados públicos da B3</div>
   </div>
 </div>
 
-<!-- MODAL ASSINATURA -->
 <div class="overlay" id="modal-sub" onclick="closeOut(event,'modal-sub')">
   <div class="modal">
     <div class="modal-hd"><div style="font-size:17px;font-weight:800;color:var(--txt)">Assinar Elite Ações</div><button class="modal-close" onclick="closeModal('modal-sub')">✕</button></div>
@@ -450,9 +392,8 @@ const gp=new GoogleAuthProvider();
 let ACOES=[],taxa=6,taxaFii=10,filtro='favoritos',tipo='todos',busca='',USER=null,FAVORITOS=new Set();
 
 window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console.error(e);}};
-const btnLogin=document.getElementById('btn-login');
-if(btnLogin)btnLogin.addEventListener('click',()=>window.fazerLogin());
 window.fazerLogout=async()=>{await signOut(auth);};
+document.getElementById('btn-login').addEventListener('click',()=>window.fazerLogin());
 
 onAuthStateChanged(auth,async user=>{
   if(!user){document.getElementById('login-screen').style.display='flex';document.getElementById('app').classList.remove('show');return;}
@@ -475,10 +416,7 @@ onAuthStateChanged(auth,async user=>{
   if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';}
   else{const dias=Math.ceil((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
   await carregarAcoes();
-  // Mostrar disclaimer na primeira vez
-  if(!localStorage.getItem('ea_disclaimer_ok')){
-    setTimeout(()=>openModal('modal-disclaimer'),800);
-  }
+  if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
 });
 
 function setTrialUI(dias){
@@ -490,8 +428,7 @@ function setTrialUI(dias){
 async function carregarAcoes(){
   try{const snap=await getDocs(collection(db,'acoes'));ACOES=snap.docs.map(d=>({id:d.id,...d.data()}));}
   catch(_){ACOES=DEMO;}
-  atualizarContadores();
-  renderContent();
+  atualizarContadores();renderContent();
 }
 
 function isFii(c){return /11$/.test(c);}
@@ -516,181 +453,167 @@ function atualizarContadores(){
   document.getElementById('fc-dy').textContent=dyN;
 }
 
+// ── LOGO — sem aspas aninhadas ──────────────────────────────
+window.logoErr=function(el){
+  var u2=el.getAttribute('data-u2');
+  var sg=el.getAttribute('data-sg');
+  var fb=el.getAttribute('data-fb');
+  if(el.src.indexOf('thefintz')>-1&&u2){
+    el.src=u2;
+  } else {
+    var d=document.createElement('div');
+    d.className=fb;
+    d.textContent=sg;
+    if(el.parentNode)el.parentNode.replaceChild(d,el);
+  }
+};
+
+function logoHTML(codigo,size){
+  var sg=codigo.replace(/\d/g,'').slice(0,4);
+  var cls=size==='sr'?'sri-logo':'ac-logo';
+  var fb=size==='sr'?'sri-ico n':'ac-ico n';
+  var u1='https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/'+codigo+'.png';
+  var u2='https://raw.githubusercontent.com/nancydotso/logos/main/logos/'+codigo+'.png';
+  return '<img class="'+cls+'" src="'+u1+'" alt="'+sg+'" data-u2="'+u2+'" data-sg="'+sg+'" data-fb="'+fb+'" onerror="window.logoErr(this)">';
+}
+// ────────────────────────────────────────────────────────────
+
 function renderContent(){
   const content=document.getElementById('content');
   atualizarContadores();
 
-  // BUSCA ATIVA
   if(busca.trim().length>0){
     const q=busca.toLowerCase().trim();
     let lista=ACOES.filter(a=>a.codigo.toLowerCase().includes(q)||(a.nome||'').toLowerCase().includes(q));
     if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
     if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
-    content.innerHTML=`
-      <div class="sr-header">
-        <div class="sr-title">Resultados para "<strong>${busca}</strong>"</div>
-        <div class="sr-count">${lista.length} encontrados</div>
-      </div>
-      <div class="search-results">${lista.length?lista.map(a=>renderSRItem(a)).join(''):`<div class="sr-empty"><div class="sr-empty-ico">🔍</div><div>Nenhum resultado para "${busca}"</div></div>`}</div>`;
+    content.innerHTML='<div class="sr-header"><div class="sr-title">Resultados para "<strong>'+busca+'</strong>"</div><div class="sr-count">'+lista.length+' encontrados</div></div>'
+      +'<div class="search-results">'+(lista.length?lista.map(a=>renderSRItem(a)).join(''):'<div class="sr-empty">🔍 Nenhum resultado</div>')+'</div>';
     return;
   }
 
-  // FILTROS
   let lista=ACOES;
   if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
   if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
 
   if(filtro==='favoritos'){
     const favs=lista.filter(a=>FAVORITOS.has(a.codigo));
-
-    // Setores padrão — 18 ações selecionadas
-    const SETORES_PADRAO=[
+    const SETORES=[
       {nome:'🏦 Bancos',tickers:['ITUB4','BBAS3','BBDC4','SANB11']},
       {nome:'⚡ Energia',tickers:['EGIE3','TAEE11','CPFE3','CPLE6','TRPL4']},
       {nome:'🛡️ Seguros',tickers:['BBSE3','PSSA3','IRBR3','SULA11','CXSE3']},
       {nome:'💧 Saneamento',tickers:['SBSP3','CSMG3','SAPR11']},
       {nome:'📡 Telecom',tickers:['VIVT3']},
     ];
-
-    // Monta HTML dos setores com ações do Firestore
-    const setoresHTML=SETORES_PADRAO.map(setor=>{
-      const acoes=setor.tickers.map(t=>ACOES.find(a=>a.codigo===t)).filter(Boolean);
+    const favsHTML=favs.length?'<div class="setor-group"><div class="setor-title">⭐ Meus favoritos ('+favs.length+')</div><div class="favs-grid">'+favs.map(a=>renderCard(a)).join('')+'</div></div>':'';
+    const setoresHTML=SETORES.map(s=>{
+      const acoes=s.tickers.map(t=>ACOES.find(a=>a.codigo===t)).filter(Boolean);
       if(!acoes.length)return'';
-      return`<div class="setor-group">
-        <div class="setor-title">${setor.nome}</div>
-        <div class="favs-grid">${acoes.map(a=>renderCard(a)).join('')}</div>
-      </div>`;
+      return'<div class="setor-group"><div class="setor-title">'+s.nome+'</div><div class="favs-grid">'+acoes.map(a=>renderCard(a)).join('')+'</div></div>';
     }).join('');
-
-    const favsHTML=favs.length?`<div class="setor-group"><div class="setor-title">⭐ Meus favoritos (${favs.length})</div><div class="favs-grid">${favs.map(a=>renderCard(a)).join('')}</div></div>`:'';
-
-    content.innerHTML=`<div class="favs-section">
-      <div class="home-hint">
-        <span class="home-hint-ico">🔍</span>
-        <span>Busque qualquer ação ou FII e adicione aos favoritos para acompanhar</span>
-      </div>
-      ${favsHTML}
-      ${setoresHTML}
-    </div>`;
+    content.innerHTML='<div class="favs-section"><div class="home-hint"><span class="home-hint-ico">🔍</span><span>Busque qualquer ação ou FII e adicione aos favoritos para acompanhar</span></div>'+favsHTML+setoresHTML+'</div>';
     return;
   }
 
   if(filtro==='baratas')lista=lista.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';});
   else if(filtro==='caras')lista=lista.filter(a=>calc(a,calcTaxa(a)).status==='cara');
   else if(filtro==='dy')lista=lista.filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=6);
-  else if(filtro==='acoes'||filtro==='fiis')lista=lista;
 
-  const label={baratas:'🟢 Ações Baratas',caras:'🔴 Ações Caras',dy:'📊 DY > 6%',acoes:'🏢 Ações',fiis:'🏗️ FIIs'}[filtro]||filtro;
-  content.innerHTML=`<div class="favs-section"><div class="favs-title">${label} (${lista.length})</div><div class="favs-grid">${lista.slice(0,100).map(a=>renderCard(a)).join('')}</div></div>`;
+  const labels={baratas:'🟢 Ações Baratas',caras:'🔴 Ações Caras',dy:'📊 DY > 6%',acoes:'🏢 Ações',fiis:'🏗️ FIIs'};
+  content.innerHTML='<div class="favs-section"><div class="favs-title">'+(labels[filtro]||filtro)+' ('+lista.length+')</div><div class="favs-grid">'+lista.slice(0,100).map(a=>renderCard(a)).join('')+'</div></div>';
 }
 
 function renderCard(a){
-  const t=calcTaxa(a),c=calc(a,t);
-  const fav=FAVORITOS.has(a.codigo);
-  const st=c.status;
+  const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
   const statusLabel=st==='muito-barata'?'● Muito Barata':st==='barata'?'● Barata':st==='cara'?'● Cara':'Sem DY';
   const potClass=st==='muito-barata'?'green':st==='barata'?'pos':st==='cara'?'red':'';
   const dyN=parseFloat(c.dy);
   const teto=c.teto>0?'R$ '+c.teto.toFixed(2):'—';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
-  const cod=a.codigo;
-  return '<div class="acao-card '+st+'" onclick="openDet(this.dataset.cod)" data-cod="'+cod+'">'
-    +logoHTML(cod,'ac')
+  return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
+    +logoHTML(a.codigo,'ac')
     +'<div class="ac-info">'
       +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
       +'<div class="ac-nome">'+(a.nome||'')+'</div>'
       +'<div class="ac-metrics">'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">Preço atual</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">Preço teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">Preço</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Potencial</div><div class="ac-metric-val '+potClass+'">'+pot+'</div></div>'
         +'<div class="ac-metric"><div class="ac-metric-lbl">DY</div><div class="ac-metric-val '+(dyN>=6?'green':'')+'">'+c.dy+'%</div></div>'
       +'</div>'
     +'</div>'
     +'<div class="ac-right">'
       +'<span class="ac-status '+st+'">'+statusLabel+'</span>'
-      +'<button class="ac-fav '+(fav?'fav':'')+'" onclick="event.stopPropagation();toggleFav(this.dataset.cod)" data-cod="'+cod+'">'+(fav?'⭐':'☆')+'</button>'
+      +'<button class="ac-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
     +'</div>'
   +'</div>';
 }
 
 function renderSRItem(a){
-  const t=calcTaxa(a),c=calc(a,t);
-  const fav=FAVORITOS.has(a.codigo);
-  const st=c.status;
+  const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
   const statusLabel=st==='muito-barata'?'Muito Barata':st==='barata'?'Barata':st==='cara'?'Cara':'Sem DY';
   const potClass=st==='muito-barata'?'mg':st==='barata'?'g':st==='cara'?'r':'';
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
-  const cod2=a.codigo;
-  return '<div class="sr-item" onclick="openDet(this.dataset.cod)" data-cod="'+cod2+'">'
-    +logoHTML(cod2,'sr')
-    +'<div class="sri-info">'
-      +'<div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-      +'<div class="sri-nome">'+(a.nome||'')+'</div>'
-    +'</div>'
-    +'<div class="sri-right">'
-      +'<div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div>'
-      +'<div class="sri-teto">'+teto+'</div>'
-      +'<div class="sri-pct '+potClass+'">'+pot+'</div>'
-    +'</div>'
+  return '<div class="sr-item" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
+    +logoHTML(a.codigo,'sr')
+    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(a.nome||'')+'</div></div>'
+    +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+potClass+'">'+pot+'</div></div>'
     +'<span class="sri-status '+st+'">'+statusLabel+'</span>'
-    +'<button class="sri-fav '+(fav?'fav':'')+'" onclick="event.stopPropagation();toggleFav(this.dataset.cod)" data-cod="'+cod2+'">'+(fav?'⭐':'☆')+'</button>'
+    +'<button class="sri-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
   +'</div>';
 }
 
-window.openDet=codigoOrEl=>{ const codigo=typeof codigoOrEl==='string'?codigoOrEl:codigoOrEl.dataset?.cod||codigoOrEl;
+window.openDet=function(codigo){
   const a=ACOES.find(x=>x.codigo===codigo);if(!a)return;
   const t=calcTaxa(a),c=calc(a,t),ib=c.status==='barata'||c.status==='muito-barata';
   const pct=c.teto>0?Math.min(ib?(a.cotacao/c.teto)*100:(c.teto/a.cotacao)*100,100):50;
   const segLabel=c.teto>0?(parseFloat(c.diffAbs)>30?'Muito confortável':parseFloat(c.diffAbs)>15?'Confortável':parseFloat(c.diffAbs)>5?'Moderada':'Apertada'):'';
   document.getElementById('det-ticker').textContent=a.codigo;
-  // Logo no modal
-  const detLogoEl=document.getElementById('det-logo');
-  if(detLogoEl){
-    detLogoEl.src=`https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${a.codigo}.png`;
-    detLogoEl.onerror=()=>{detLogoEl.style.display='none';};
-    detLogoEl.style.display='block';
-  }
   document.getElementById('det-nome').textContent=(a.nome||'')+(isFii(a.codigo)?' — FII':' — AÇÃO');
-  document.getElementById('det-body').innerHTML=`
-    <div class="det-grid">
-      <div class="det-card"><div class="det-lbl">Preço atual</div><div class="det-val">R$ ${a.cotacao.toFixed(2)}</div></div>
-      <div class="det-card"><div class="det-lbl">Preço teto (${t}%)</div><div class="det-val ${c.status==='muito-barata'?'green':c.status==='barata'?'pos':'red'}">${c.teto>0?'R$ '+c.teto.toFixed(2):'—'}</div></div>
-      <div class="det-card"><div class="det-lbl">Dividend Yield</div><div class="det-val green">${c.dy}%</div></div>
-      <div class="det-card"><div class="det-lbl">Potencial</div><div class="det-val ${ib?'pos':'red'}">${c.teto>0?(ib?'▼ ':'▲ ')+c.diffAbs+'%':'—'}</div></div>
-      ${a.setor?`<div class="det-card"><div class="det-lbl">Setor</div><div class="det-val" style="font-size:13px">${a.setor}</div></div>`:''}
-      ${c.teto>0?`<div class="det-card"><div class="det-lbl">Margem de segurança</div><div class="det-val ${ib?'pos':'red'}" style="font-size:16px">${c.diffAbs}%</div><div class="det-seg" style="color:var(${ib?'--pos':'--red'})">${segLabel}</div></div>`:''}
-    </div>
-    ${c.teto>0?`<div class="prog-wrap"><div class="prog-fill ${ib?'g':'r'}" style="width:${pct}%"></div></div><p style="font-size:11px;color:var(--txt3);text-align:center;margin-bottom:12px">${ib?`Cotação ${c.diffAbs}% abaixo do preço teto`:`Cotação ${c.diffAbs}% acima do preço teto`}</p>`:''}
-    <button class="btn-main" onclick="toggleFav('${a.codigo}')" id="btn-fav-${a.codigo}">${FAVORITOS.has(a.codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos'}</button>
-    <button class="btn-ghost" onclick="closeModal('modal-detalhe')">Fechar</button>`;
+  const detLogo=document.getElementById('det-logo');
+  if(detLogo){
+    detLogo.style.display='block';
+    detLogo.src='https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/'+a.codigo+'.png';
+    detLogo.onerror=function(){this.style.display='none';};
+  }
+  const tetoClass=c.status==='muito-barata'?'green':c.status==='barata'?'pos':'red';
+  document.getElementById('det-body').innerHTML=
+    '<div class="det-grid">'
+      +'<div class="det-card"><div class="det-lbl">Preço atual</div><div class="det-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
+      +'<div class="det-card"><div class="det-lbl">Preço teto ('+t+'%)</div><div class="det-val '+tetoClass+'">'+(c.teto>0?'R$ '+c.teto.toFixed(2):'—')+'</div></div>'
+      +'<div class="det-card"><div class="det-lbl">Dividend Yield</div><div class="det-val green">'+c.dy+'%</div></div>'
+      +'<div class="det-card"><div class="det-lbl">Potencial</div><div class="det-val '+(ib?'pos':'red')+'">'+(c.teto>0?(ib?'▼ ':'▲ ')+c.diffAbs+'%':'—')+'</div></div>'
+      +(a.setor?'<div class="det-card"><div class="det-lbl">Setor</div><div class="det-val" style="font-size:13px">'+a.setor+'</div></div>':'')
+      +(c.teto>0?'<div class="det-card"><div class="det-lbl">Margem de segurança</div><div class="det-val '+(ib?'pos':'red')+'" style="font-size:16px">'+c.diffAbs+'%</div><div class="det-seg" style="color:var('+(ib?'--pos':'--red')+')">'+segLabel+'</div></div>':'')
+    +'</div>'
+    +(c.teto>0?'<div class="prog-wrap"><div class="prog-fill '+(ib?'g':'r')+'" style="width:'+pct+'%"></div></div><p style="font-size:11px;color:var(--txt3);text-align:center;margin-bottom:12px">'+(ib?'Cotação '+c.diffAbs+'% abaixo do preço teto':'Cotação '+c.diffAbs+'% acima do preço teto')+'</p>':'')
+    +'<button class="btn-main" id="btn-fav-'+a.codigo+'" data-cod="'+a.codigo+'" onclick="window.toggleFav(this.dataset.cod)">'+(FAVORITOS.has(a.codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos')+'</button>'
+    +'<button class="btn-ghost" onclick="closeModal(&quot;modal-detalhe&quot;)">Fechar</button>'
+    +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center">⚠️ Dados educacionais. Não constitui recomendação de investimento.</div>';
   openModal('modal-detalhe');
 };
 
 window.onTaxa=async v=>{taxa=parseFloat(v);setTaxaDisplay(taxa);renderContent();if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_personalizada:taxa},{merge:true});};
-function setTaxaDisplay(v){document.getElementById('taxa-display').textContent=`${v%1===0?v+',0':String(v).replace('.',',')}%`;}
+function setTaxaDisplay(v){document.getElementById('taxa-display').textContent=(v%1===0?v+',0':String(v).replace('.',','))+'%';}
 window.onTaxaFii=async v=>{taxaFii=parseFloat(v);setTaxaFiiDisplay(taxaFii);renderContent();if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_fii:taxaFii},{merge:true});};
-function setTaxaFiiDisplay(v){document.getElementById('taxa-fii-display').textContent=`${v%1===0?v+',0':String(v).replace('.',',')}%`;}
-
+function setTaxaFiiDisplay(v){document.getElementById('taxa-fii-display').textContent=(v%1===0?v+',0':String(v).replace('.',','))+'%';}
 window.onBusca=v=>{busca=v;renderContent();};
-window.buscaRapida=v=>{busca=v;document.getElementById('main-search').value=v;renderContent();};
 window.focusBusca=()=>{setTimeout(()=>{const el=document.getElementById('main-search');if(el){el.focus();el.select();}},50);};
 
 window.setNav=(f,btn)=>{
-  filtro=f;if(f==='acoes')tipo='acoes';else if(f==='fiis')tipo='fiis';else tipo='todos';
+  filtro=f;tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');busca='';document.getElementById('main-search').value='';
-  renderContent();
+  btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
 };
 window.setNavM=(f,btn)=>{
-  filtro=f;if(f==='acoes')tipo='acoes';else if(f==='fiis')tipo='fiis';else tipo='todos';
+  filtro=f;tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');busca='';document.getElementById('main-search').value='';
-  renderContent();
+  if(btn)btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
 };
 window.setMobNav=btn=>{document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
 
-window.toggleFav=async codigo=>{
+window.toggleFav=async function(codigo){
   FAVORITOS.has(codigo)?FAVORITOS.delete(codigo):FAVORITOS.add(codigo);
   if(USER)await setDoc(doc(db,'usuarios',USER.uid),{favoritos:[...FAVORITOS]},{merge:true});
   atualizarContadores();
@@ -708,28 +631,17 @@ window.openModal=id=>document.getElementById(id).classList.add('open');
 window.closeModal=id=>document.getElementById(id).classList.remove('open');
 window.closeOut=(e,id)=>{if(e.target.id===id)closeModal(id);};
 window.irCheckout=()=>{window.open('LINK_HOTMART_AQUI','_blank');};
-
-function logoHTML(codigo, size='ac'){
-  const sg=codigo.replace(/\d/g,'').slice(0,4);
-  const url1=`https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${codigo}.png`;
-  const url2=`https://raw.githubusercontent.com/nancydotso/logos/main/logos/${codigo}.png`;
-  const icoClass=size==='ac'?'ac-ico':'sri-ico';
-  const imgClass=size==='ac'?'ac-logo':'sri-logo';
-  // Tenta url1, se falhar tenta url2, se falhar mostra iniciais
-  return `<img class="${imgClass}" src="${url1}" alt="${codigo}"
-    onerror="if(this.src.includes('thefintz')){this.src='${url2}';}else{this.outerHTML='<div class=\"${icoClass} n\">${sg}</div>';}">`;
-}
 window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
 const DEMO=[
   {codigo:'BBAS3',nome:'Banco do Brasil',cotacao:30.00,dividendo_anual:2.20,setor:'Financeiro'},
   {codigo:'ITUB4',nome:'Itaú Unibanco',cotacao:38.50,dividendo_anual:2.10,setor:'Financeiro'},
-  {codigo:'VALE3',nome:'Vale S.A.',cotacao:65.00,dividendo_anual:3.38,setor:'Mineração'},
   {codigo:'PETR4',nome:'Petrobras PN',cotacao:40.20,dividendo_anual:4.10,setor:'Petróleo'},
-  {codigo:'WEGE3',nome:'WEG S.A.',cotacao:55.00,dividendo_anual:0.77,setor:'Indústria'},
   {codigo:'TAEE11',nome:'Taesa',cotacao:9.80,dividendo_anual:1.12,setor:'Energia'},
   {codigo:'EGIE3',nome:'Engie Brasil',cotacao:42.10,dividendo_anual:3.37,setor:'Energia'},
-  {codigo:'KLBN11',nome:'Klabin',cotacao:21.00,dividendo_anual:1.47,setor:'Papel'},
+  {codigo:'BBSE3',nome:'BB Seguridade',cotacao:35.50,dividendo_anual:3.20,setor:'Seguros'},
+  {codigo:'SBSP3',nome:'Sabesp',cotacao:78.00,dividendo_anual:4.50,setor:'Saneamento'},
+  {codigo:'VIVT3',nome:'Telefônica Vivo',cotacao:55.00,dividendo_anual:5.50,setor:'Telecom'},
 ];
 </script>
 </body>
