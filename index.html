@@ -753,38 +753,34 @@ window.openDet=function(codigo){
       '<div class="det-section">'
         +'<div class="det-section-title">Preço Teto</div>'
 
-        // Preço teto em destaque grande
-        +'<div style="text-align:center;padding:18px 0 10px">'
-          +'<div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Preço máximo para comprar</div>'
-          +'<div style="font-size:38px;font-weight:800;color:var(--'+tetoClass+');font-family:var(--fm);letter-spacing:-1px">R$ '+c.teto.toFixed(2)+'</div>'
-          +'<div style="margin-top:6px;font-size:12px;color:var(--txt3)">'+(ib?'✅ Cotação abaixo do teto — boa oportunidade':'⚠️ Cotação acima do teto — aguarde cair')+'</div>'
+        // Preço teto em destaque
+        +'<div style="text-align:center;padding:16px 0 8px">'
+          +'<div style="font-size:38px;font-weight:800;color:var(--'+tetoClass+');font-family:var(--fm);letter-spacing:-1px" id="det-teto-big">R$ '+c.teto.toFixed(2)+'</div>'
+          +'<div style="margin-top:6px;font-size:12px;color:var(--txt3)">'+(ib?'✅ Cotação abaixo do teto':'⚠️ Cotação acima do teto — aguarde cair')+'</div>'
         +'</div>'
 
-        // Cálculo explicado
-        +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:4px 0 10px;font-size:12px;color:var(--txt3);line-height:2">'
-          +'<div style="display:flex;justify-content:space-between"><span>Dividendo anual</span><strong style="color:var(--txt);font-family:var(--fm)">R$ '+a.dividendo_anual.toFixed(4)+'/ação</strong></div>'
-          +'<div style="display:flex;justify-content:space-between"><span>Taxa mínima desejada</span><strong style="color:var(--txt);font-family:var(--fm)" id="det-taxa-val">'+t+'% ao ano</strong></div>'
-          +'<div style="border-top:1px solid var(--border);margin:6px 0"></div>'
-          +'<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--txt4)"><span>R$ '+a.dividendo_anual.toFixed(4)+' ÷ '+t+'%</span><strong style="color:var(--'+tetoClass+')" id="det-teto-result">= R$ '+c.teto.toFixed(2)+'</strong></div>'
-          +'<div style="font-size:10px;color:var(--txt4);margin-top:4px">Acima de R$ '+c.teto.toFixed(2)+', o rendimento será menor que '+t+'% ao ano.</div>'
-        +'</div>'
-
-        // Slider de taxa no modal
-        +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px">'
-          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
-            +'<span style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px">Ajustar taxa</span>'
-            +'<span style="font-size:14px;font-weight:800;color:var(--green);font-family:var(--fm)" id="det-taxa-display">'+t+'%</span>'
+        // Cálculo simples + slider
+        +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:8px 0">'
+          +'<div style="font-size:12px;color:var(--txt3);font-family:var(--fm);text-align:center;margin-bottom:10px" id="det-formula">R$ '+a.dividendo_anual.toFixed(2)+' ÷ <span id="det-taxa-val">'+t+'%</span> = <strong style="color:var(--'+tetoClass+')" id="det-teto-result">R$ '+c.teto.toFixed(2)+'</strong></div>'
+          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
+            +'<span style="font-size:11px;color:var(--txt3)">Taxa</span>'
+            +'<span style="font-size:13px;font-weight:800;color:var(--green);font-family:var(--fm)" id="det-taxa-display">'+t+'%</span>'
           +'</div>'
           +'<input type="range" id="det-taxa-slider" min="4" max="'+(isFii(a.codigo)?'20':'15')+'" step="0.5" value="'+t+'" style="width:100%" data-cod="'+a.codigo+'" oninput="onTaxaDet(this.value,this.dataset.cod)">'
-          +'<div style="display:flex;justify-content:space-between;font-size:9px;color:var(--txt4);margin-top:4px"><span>4% — flexível</span><span>'+(isFii(a.codigo)?'20':'15')+'% — exigente</span></div>'
+          +'<div style="display:flex;justify-content:space-between;font-size:9px;color:var(--txt4);margin-top:3px"><span>4% flexível</span><span>'+(isFii(a.codigo)?'20':'15')+'% exigente</span></div>'
         +'</div>'
 
         // Margem de segurança
-        +'<div style="padding:10px 12px;background:var(--surf2);border:1px solid var(--border);border-radius:10px">'
-          +'<div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">Margem de segurança</div>'
-          +'<div class="prog-wrap" style="margin:0 0 6px"><div class="prog-fill '+(ib?'g':'r')+'" style="width:'+pct+'%"></div></div>'
-          +'<div style="font-size:12px;color:var(--'+(ib?'pos':'red')+');font-weight:700">'+segLabel+'</div>'
+        +'<div style="padding:10px 12px;background:var(--surf2);border:1px solid var(--border);border-radius:10px;margin-bottom:8px">'
+          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
+            +'<span style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px">Margem de segurança</span>'
+            +'<span style="font-size:12px;color:var(--'+(ib?'pos':'red')+');font-weight:700">'+segLabel+'</span>'
+          +'</div>'
+          +'<div class="prog-wrap" style="margin:0"><div class="prog-fill '+(ib?'g':'r')+'" style="width:'+pct+'%"></div></div>'
         +'</div>'
+
+        // Aviso
+        +'<div style="font-size:10px;color:var(--txt4);text-align:center;line-height:1.5;padding:0 4px">⚠️ Calculado com base em dividendos pagos nos últimos 12 meses. Não é recomendação de compra — análise de dados históricos.</div>'
 
       +'</div>'
     :'')
@@ -838,15 +834,15 @@ window.onTaxaDet=function(v,codigo){
   if(!a||!a.dividendo_anual) return;
   const teto=a.dividendo_anual/(t/100);
   const ib=teto>a.cotacao;
+  const cor=ib?'var(--pos)':'var(--red)';
   const disp=document.getElementById('det-taxa-display');
   const taxaVal=document.getElementById('det-taxa-val');
   const res=document.getElementById('det-teto-result');
+  const big=document.getElementById('det-teto-big');
   if(disp) disp.textContent=t+'%';
-  if(taxaVal) taxaVal.textContent=t+'% ao ano';
-  if(res){ res.textContent='= R$ '+teto.toFixed(2); res.style.color=ib?'var(--pos)':'var(--red)'; }
-  // Atualiza preço teto grande
-  const bigs=document.querySelectorAll('#modal-detalhe .det-section div');
-  bigs.forEach(el=>{ if(el.style.fontSize==='38px'){ el.textContent='R$ '+teto.toFixed(2); el.style.color=ib?'var(--pos)':'var(--red)'; } });
+  if(taxaVal) taxaVal.textContent=t+'%';
+  if(res){ res.textContent='R$ '+teto.toFixed(2); res.style.color=cor; }
+  if(big){ big.textContent='R$ '+teto.toFixed(2); big.style.color=cor; }
 };
 window.focusBusca=()=>{setTimeout(()=>{const el=document.getElementById('main-search');if(el){el.focus();el.select();}},50);};
 
