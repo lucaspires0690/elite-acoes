@@ -52,7 +52,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #app.show{display:flex}
 .sidebar{width:280px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
 @media(max-width:1024px){.sidebar{display:none}}
-.sb-logo{padding:16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.sb-logo{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);min-height:60px}
 .sb-logo-txt{font-size:17px;font-weight:800;color:var(--txt)}
 .sb-logo-txt span{color:var(--green)}
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite;margin-left:auto}
@@ -287,7 +287,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
 <div id="login-screen">
   <div class="login-card">
-    <div class="login-logo">Elite <span>Ações</span></div>
+    <div class="login-logo" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px">
+      <svg width="44" height="44" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="33" stroke="#00d4a8" stroke-width="2.5"/>
+        <text x="8" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">E</text>
+        <text x="30" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">A</text>
+        <line x1="28" y1="54" x2="52" y2="18" stroke="#00d4a8" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="52" cy="18" r="5" fill="#00d4a8"/>
+        <circle cx="52" cy="18" r="3" fill="white"/>
+      </svg>
+      <span>Elite <span>Ações</span></span>
+    </div>
     <div class="login-badge">PREÇO TETO AUTOMÁTICO</div>
     <div class="login-sub">Descubra o preço certo para comprar<br>qualquer ação da B3 baseado em dividendos</div>
     <div class="login-feats">
@@ -308,6 +318,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <div id="app">
   <aside class="sidebar">
     <div class="sb-logo">
+      <svg width="32" height="32" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="33" stroke="#00d4a8" stroke-width="2.5"/>
+        <text x="8" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">E</text>
+        <text x="30" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">A</text>
+        <line x1="28" y1="54" x2="52" y2="18" stroke="#00d4a8" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="52" cy="18" r="5" fill="#00d4a8"/>
+        <circle cx="52" cy="18" r="3" fill="white"/>
+      </svg>
       <div class="sb-logo-txt">Elite <span>Ações</span></div>
       <div class="live-dot"></div>
     </div>
@@ -375,7 +393,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
   <div class="main">
     <div class="topbar">
-      <div class="mob-logo">Elite <span>Ações</span></div>
+      <div class="mob-logo" style="display:flex;align-items:center;gap:8px">
+        <svg width="26" height="26" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="33" stroke="#00d4a8" stroke-width="2.5"/>
+          <text x="8" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">E</text>
+          <text x="30" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">A</text>
+          <line x1="28" y1="54" x2="52" y2="18" stroke="#00d4a8" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="52" cy="18" r="5" fill="#00d4a8"/>
+          <circle cx="52" cy="18" r="3" fill="white"/>
+        </svg>
+        <span>Elite <span style="color:var(--green)">Ações</span></span>
+      </div>
       <div class="search-big">
         <span class="search-big-ico">🔍</span>
         <input class="search-big-input" id="main-search" type="text" placeholder="Buscar ação ou FII... ex: PETR4, Petrobras" oninput="onBusca(this.value)">
@@ -489,7 +517,13 @@ onAuthStateChanged(auth,async user=>{
   document.getElementById('sb-user-name').textContent=user.displayName||user.email;
   const uRef=doc(db,'usuarios',user.uid);
   let uSnap=await getDoc(uRef);
-  if(!uSnap.exists()){const te=new Date();te.setDate(te.getDate()+7);await setDoc(uRef,{email:user.email,plano:'gratuito',trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});uSnap=await getDoc(uRef);}
+  if(!uSnap.exists()){
+    const te=new Date();
+    te.setDate(te.getDate()+7);
+    te.setHours(23,59,59,999); // expira à meia-noite do 7º dia
+    await setDoc(uRef,{email:user.email,plano:'gratuito',trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});
+    uSnap=await getDoc(uRef);
+  }
   const d=uSnap.data();
   taxa=d.taxa_personalizada||6;taxaFii=d.taxa_fii||10;
   FAVORITOS=new Set(d.favoritos||[]);
@@ -497,7 +531,7 @@ onAuthStateChanged(auth,async user=>{
   document.getElementById('taxa-fii-slider').value=taxaFii;
   setTaxaDisplay(taxa);setTaxaFiiDisplay(taxaFii);
   if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');}
-  else{const dias=Math.ceil((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
+  else{const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
 });
