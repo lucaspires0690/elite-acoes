@@ -997,7 +997,7 @@ onAuthStateChanged(auth,async user=>{
     const te=new Date();
     te.setDate(te.getDate()+7);
     te.setHours(23,59,59,999); // expira à meia-noite do 7º dia
-    await setDoc(uRef,{email:user.email,plano:'gratuito',trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});
+    await setDoc(uRef,{email:user.email,plano:'gratuito',acesso_ativo:true,trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});
     uSnap=await getDoc(uRef);
   }
   const d=uSnap.data();
@@ -1021,6 +1021,8 @@ onAuthStateChanged(auth,async user=>{
     setTrialUI(dias);
     if(dias<=0){
       PLANO_VENCIDO=true;
+      // Revogar acesso_ativo no Firestore para Firestore Rules bloquearem
+      if(USER) setDoc(doc(db,'usuarios',USER.uid),{acesso_ativo:false},{merge:true}).catch(()=>{});
       document.getElementById('paywall-fab')?.classList.add('show');
     }
   }
@@ -1286,7 +1288,7 @@ function renderHome(el){
       +'<div class="hcard-badge '+c.status+'">'+badgeLabel+'</div>'
       +logoHTML(a.codigo,'sm')
       +'<div class="hcard-ticker">'+a.codigo+'</div>'
-      +'<div class="hcard-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
+      +'<div class="hcard-nome">'+(sanitize(a.nome||''))+'</div>'
       +'<div class="hcard-cotacao">R$ '+a.cotacao.toFixed(2)+varHtml+'</div>'
       +'<div class="hcard-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div>'
       +'</div>';
@@ -1300,7 +1302,7 @@ function renderHome(el){
       +logoHTML(a.codigo,'sm')
       +'<div class="fav-info">'
         +'<div class="fav-ticker">'+a.codigo+'<span class="fav-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-        +'<div class="fav-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
+        +'<div class="fav-nome">'+(sanitize(a.nome||''))+'</div>'
       +'</div>'
       +'<div class="fav-right">'
         +'<div class="fav-cot">R$ '+a.cotacao.toFixed(2)+'</div>'
@@ -1384,7 +1386,7 @@ function renderCard(a){
     +logoHTML(a.codigo,'ac')
     +'<div class="ac-info">'
       +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-      +'<div class="ac-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
+      +'<div class="ac-nome">'+(sanitize(a.nome||''))+'</div>'
       +'<div class="ac-metrics">'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
@@ -1400,13 +1402,14 @@ function renderCard(a){
 
 function renderSRItem(a){
   const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
+  const dyN=parseFloat(c.dy);
   const statusLabel=st==='muito-barata'?'Muito Barata':st==='barata'?'Barata':st==='cara'?'Cara':'Sem DY';
   const potClass=st==='muito-barata'?'mg':st==='barata'?'g':st==='cara'?'r':'';
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   return '<div class="sr-item" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
     +logoHTML(a.codigo,'sr')
-    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(sanitize(a.nome)||''))+'</div></div>'
+    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(a.nome||''))+'</div></div>'
     +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+(dyN>=6?'g':'')+'">DY '+c.dy+'%</div></div>'
     +'<span class="sri-status '+st+'">'+statusLabel+'</span>'
     +'<button class="sri-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
@@ -1521,8 +1524,8 @@ window.openDet=function(codigo){
       '<div class="det-section">'
         +'<div class="det-section-title">Informações</div>'
         +'<div class="det-grid2">'
-          +'<div class="det-card2"><div class="det-lbl">Setor</div><div class="det-val2" style="font-size:12px">'+a.setor+'</div></div>'
-          +(a.subsetor?'<div class="det-card2"><div class="det-lbl">Subsetor</div><div class="det-val2" style="font-size:12px">'+a.subsetor+'</div></div>':'')
+          +'<div class="det-card2"><div class="det-lbl">Setor</div><div class="det-val2" style="font-size:12px">'+sanitize(a.setor)+'</div></div>'
+          +(a.subsetor?'<div class="det-card2"><div class="det-lbl">Subsetor</div><div class="det-val2" style="font-size:12px">'+sanitize(a.subsetor)+'</div></div>':'')
         +'</div>'
       +'</div>'
     :'')
@@ -1710,7 +1713,7 @@ window.onBuscaMobile = function(val) {
       + logoHTML(a.codigo, 'sm')
       + '<div style="flex:1">'
         + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-        + '<div style="font-size:12px;color:var(--txt3)">'+(sanitize(sanitize(a.nome)||''))+'</div>'
+        + '<div style="font-size:12px;color:var(--txt3)">'+(sanitize(a.nome||''))+'</div>'
       + '</div>'
       + '<div style="text-align:right">'
         + '<div style="font-size:13px;font-weight:600;color:var(--txt)">R$ '+a.cotacao.toFixed(2)+'</div>'
