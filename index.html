@@ -1096,10 +1096,13 @@ window.instalarPWA = async function(){
     const {outcome} = await deferredPrompt.userChoice;
     deferredPrompt = null;
     if(outcome === 'accepted'){
-      // Usuário confirmou — agora sim mostrar loading até appinstalled
-      showToast('⏳ Aguarde, instalando o app...', 0, true);
+      // Esconder botões imediatamente
       document.getElementById('pwa-install-btn')?.classList.remove('show');
       document.getElementById('pwa-fab')?.classList.remove('show');
+      // Mostrar loading — vai ficar até o appinstalled + tempo mínimo de 3s
+      showToast('⏳ Aguarde, instalando o app...', 0, true);
+      _instalando = true;
+      _instalandoStart = Date.now();
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
@@ -1116,11 +1119,21 @@ if(isIOS && !isInStandaloneMode){
   if(fab) fab.classList.add('show');
 }
 
+let _instalando = false;
+let _instalandoStart = 0;
+const TEMPO_MINIMO_INSTALACAO = 4000; // mínimo 4 segundos de loading
+
 window.addEventListener('appinstalled', () => {
-  document.getElementById('pwa-install-btn')?.classList.remove('show');
-  document.getElementById('pwa-fab')?.classList.remove('show');
   deferredPrompt = null;
-  showToast('✅ App instalado com sucesso!', 4000);
+  if(_instalando){
+    // Garante que o loading aparece pelo menos o tempo mínimo
+    const decorrido = Date.now() - _instalandoStart;
+    const restante = Math.max(0, TEMPO_MINIMO_INSTALACAO - decorrido);
+    setTimeout(() => {
+      _instalando = false;
+      showToast('✅ App instalado com sucesso!', 4000);
+    }, restante);
+  }
 });
 
 const DEMO=[
