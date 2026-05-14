@@ -159,6 +159,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s}
 .tb-btn:hover{border-color:var(--green);color:var(--green)}
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer}
+/* ── Menu perfil mobile ── */
+#mob-perfil-menu{display:none;position:fixed;top:56px;right:8px;z-index:200;background:var(--surf);border:1px solid var(--border2);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4);min-width:180px;animation:fadeIn .15s ease}
+#mob-perfil-menu.open{display:block}
+.mob-perfil-item{width:100%;padding:12px 16px;background:none;border:none;color:var(--txt2);font-size:13px;font-weight:500;font-family:var(--fb);cursor:pointer;text-align:left;transition:background .15s;display:flex;align-items:center;gap:8px}
+.mob-perfil-item:hover{background:var(--surf2);color:var(--txt)}
+.mob-perfil-item.red{color:var(--red)}
+.mob-perfil-item.red:hover{background:var(--red-dim)}
+.mob-perfil-sep{height:1px;background:var(--border);margin:2px 0}
+
 .mob-filters{display:none;padding:8px 10px;gap:6px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;scrollbar-width:none}
 .mob-filters::-webkit-scrollbar{display:none}
 @media(max-width:1024px){.mob-filters{display:flex}}
@@ -441,9 +450,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <input class="search-big-input" id="main-search" type="text" placeholder="Buscar ação ou FII... ex: PETR4, Petrobras" oninput="onBusca(this.value)">
       </div>
       <div class="topbar-right">
+        <button class="tb-btn" id="mob-refresh-btn" onclick="location.reload()" title="Atualizar" style="display:none">🔄</button>
         <button class="tb-btn" onclick="toggleTheme()" id="theme-btn" title="Tema">🌙</button>
-        <div class="mob-avatar" id="mob-avatar" onclick="openModal('modal-sub')">?</div>
+        <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil()">?</div>
       </div>
+    <!-- Menu perfil mobile -->
+    <div id="mob-perfil-menu">
+      <button class="mob-perfil-item" id="mob-user-info" style="cursor:default;opacity:.7;font-size:11px"></button>
+      <div class="mob-perfil-sep"></div>
+      <button class="mob-perfil-item" onclick="toggleTheme();toggleMobPerfil()">🌙 Alternar tema</button>
+      <button class="mob-perfil-item" id="mob-assinar-item" onclick="openModal('modal-sub');toggleMobPerfil()">🚀 Assinar Elite Ações</button>
+      <div class="mob-perfil-sep"></div>
+      <button class="mob-perfil-item red" onclick="fazerLogout()">↩ Sair da conta</button>
+    </div>
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
     </div>
     <div class="mob-filters">
@@ -550,6 +569,14 @@ onAuthStateChanged(auth,async user=>{
   const ini=(user.displayName||user.email||'?')[0].toUpperCase();
   document.getElementById('sb-avatar').textContent=ini;
   document.getElementById('mob-avatar').textContent=ini;
+  // Mostrar botão atualizar no mobile
+  if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    const rb = document.getElementById('mob-refresh-btn');
+    if(rb) rb.style.display='flex';
+  }
+  // Info do usuário no menu mobile
+  const mobInfo = document.getElementById('mob-user-info');
+  if(mobInfo) mobInfo.textContent = '👤 ' + (user.displayName || user.email);
   document.getElementById('sb-user-name').textContent=user.displayName||user.email;
   const uRef=doc(db,'usuarios',user.uid);
   let uSnap=await getDoc(uRef);
@@ -949,6 +976,20 @@ window.openPerfil=function(){
   openModal('modal-perfil');
 };
 
+window.toggleMobPerfil=function(){
+  const menu = document.getElementById('mob-perfil-menu');
+  menu.classList.toggle('open');
+  // Fechar ao clicar fora
+  if(menu.classList.contains('open')){
+    setTimeout(()=>document.addEventListener('click', function h(e){
+      if(!menu.contains(e.target) && e.target.id!=='mob-avatar'){
+        menu.classList.remove('open');
+        document.removeEventListener('click',h);
+      }
+    }),10);
+  }
+};
+
 window.togglePerfil=function(){
   const menu=document.getElementById('sb-perfil-menu');
   const arrow=document.getElementById('sb-user-arrow');
@@ -1051,14 +1092,14 @@ const isInStandaloneMode = window.navigator.standalone === true;
 
 window.instalarPWA = async function(){
   if(deferredPrompt){
-    showToast('Aguarde a instalação do app...', 0, true); // loading persistente
     deferredPrompt.prompt();
     const {outcome} = await deferredPrompt.userChoice;
     deferredPrompt = null;
     if(outcome === 'accepted'){
+      // Usuário confirmou — agora sim mostrar loading até appinstalled
+      showToast('⏳ Aguarde, instalando o app...', 0, true);
       document.getElementById('pwa-install-btn')?.classList.remove('show');
       document.getElementById('pwa-fab')?.classList.remove('show');
-      // appinstalled vai trocar a mensagem
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
