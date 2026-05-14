@@ -66,7 +66,60 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #paywall-fab.show{display:block}
 
 
-/* ── Busca Mobile ── */
+
+/* ── Busca Mobile Profissional ── */
+.busca-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .15s;
+  animation: fadeIn .15s ease both;
+}
+.busca-item:active { background: var(--surf2); }
+.busca-item-info { flex: 1; min-width: 0; }
+.busca-item-ticker { font-size: 15px; font-weight: 800; color: var(--txt); }
+.busca-item-tipo {
+  font-size: 9px; font-weight: 700;
+  padding: 1px 5px; border-radius: 4px;
+  background: var(--surf2); color: var(--txt3);
+  margin-left: 6px; font-family: var(--fm);
+}
+.busca-item-nome { font-size: 12px; color: var(--txt3); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.busca-item-right { text-align: right; flex-shrink: 0; }
+.busca-item-cot { font-size: 13px; font-weight: 700; color: var(--txt); font-family: var(--fm); }
+.busca-item-dy { font-size: 11px; font-weight: 600; margin-top: 2px; font-family: var(--fm); }
+.busca-item-status { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+.busca-item-status.muito-barata { background: var(--green-dim); color: var(--green); }
+.busca-item-status.barata { background: var(--pos-dim); color: var(--pos); }
+.busca-item-status.cara { background: var(--red-dim); color: var(--red); }
+.busca-item-status.sem-dy { background: var(--surf2); color: var(--txt3); }
+.busca-sugestoes {
+  padding: 10px 16px 4px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+.busca-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: var(--surf2);
+  color: var(--txt3);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--fb);
+  transition: all .15s;
+}
+.busca-chip:active { background: var(--green-dim); border-color: rgba(0,212,168,.3); color: var(--green); }
+.busca-empty { text-align: center; padding: 40px 20px; color: var(--txt3); font-size: 14px; }
+.busca-header-lbl { font-size: 11px; font-weight: 700; color: var(--txt3); text-transform: uppercase; letter-spacing: .8px; padding: 12px 16px 6px; }
+
+/* ── Busca Mobile Profissional definida acima ── */
 #mob-busca-overlay{display:none;position:fixed;inset:0;z-index:500;background:var(--bg);flex-direction:column}
 #mob-busca-overlay.open{display:flex}
 .mob-busca-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
@@ -411,7 +464,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 @media(max-width:1024px){.mob-filters{display:flex}}
 .mfbtn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt3);font-size:11px;font-weight:500;font-family:var(--fb);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
 .mfbtn.active{background:var(--green);border-color:var(--green);color:#0a0e1a;font-weight:700}
-.content{flex:1;overflow:hidden;display:flex;flex-direction:column}
+.content{flex:1;overflow-y:auto;display:flex;flex-direction:column}
 .search-results{flex:1;overflow-y:auto}
 .sr-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .sr-title{font-size:13px;font-weight:700;color:var(--txt2)}
@@ -1222,7 +1275,7 @@ function renderCard(a){
       +'<div class="ac-metrics">'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">DY 12m</div><div class="ac-metric-val '+(dyN>=6?'green':'')+'">'+c.dy+'%</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val '+(dyN>=6?'green':'')+'">'+c.dy+'%</div></div>'
       +'</div>'
     +'</div>'
     +'<div class="ac-right">'
@@ -1492,6 +1545,8 @@ window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeM
 // ── Busca Mobile ──
 window.abrirBuscaMobile = function() {
   document.getElementById('mob-busca-overlay').classList.add('open');
+  const res=document.getElementById('mob-busca-results');
+  renderBuscaInicial(res);
   setTimeout(() => document.getElementById('mob-busca-input').focus(), 100);
 };
 
