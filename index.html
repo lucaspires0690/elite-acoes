@@ -138,20 +138,19 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
   .hst-v{font-size:30px}
   .home-sec{padding:0 0 14px}
 
-  /* Carrossel horizontal no desktop também — com scroll visível */
+  /* Carrossel horizontal no desktop — scroll visível com padding */
   .hscroll{
     display:flex;
     overflow-x:auto;
-    padding:0 0 16px;
+    padding:0 16px 12px;
     gap:12px;
     scrollbar-width:thin;
     scrollbar-color:var(--border2) transparent;
-    padding-bottom:8px;
   }
-  .hscroll::-webkit-scrollbar{height:4px}
+  .hscroll::-webkit-scrollbar{height:5px}
   .hscroll::-webkit-scrollbar-track{background:transparent}
   .hscroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-  .hcard{width:180px;flex-shrink:0;}
+  .hcard{width:200px;flex-shrink:0;}
   .hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
   .hcard.muito-barata:hover{box-shadow:0 8px 24px rgba(0,212,168,.12);}
 
