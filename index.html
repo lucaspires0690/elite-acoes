@@ -570,7 +570,7 @@ function setPlanoProUI(dataAssinatura, diasRestantes){
     ?'Renova em: <strong style="color:'+(alerta?'var(--red)':'var(--txt)')+'">'+diasRestantes+' dias</strong>'
     :'<strong style="color:var(--red)">⚠️ Renovação pendente</strong>';
   const btnHTML=alerta
-    ?'<button class="sb-trial-btn" style="background:var(--red);margin-top:6px" onclick="window.open('https://pay.hotmart.com/A105812574Y','_blank')">⚠️ Renovar agora</button>'
+    ?'<button class="sb-trial-btn" style="background:var(--red);margin-top:6px" onclick="irCheckout()">⚠️ Renovar agora</button>'
     :'';
   box.innerHTML=''
     +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">'
