@@ -1095,19 +1095,34 @@ async function carregarAcoes(){
   }catch(_){}
   try{
     const snap=await getDocs(collection(db,'acoes'));
+    const tinhaCache=ACOES.length>0;
     ACOES=snap.docs.map(d=>({id:d.id,...d.data()}));
     // Cache local
     try{localStorage.setItem('ea_acoes_cache',JSON.stringify(ACOES));localStorage.setItem('ea_cache_ts',Date.now());}catch(_){}
-    atualizarContadores();renderContent();
+    // Só renderiza se não tinha cache (evita piscar)
+    if(!tinhaCache){atualizarContadores();renderContent();}
+    else{atualizarContadores();} // atualiza contadores sem re-renderizar tudo
     // Mostrar barra de atualização
     const ub=document.getElementById('update-bar');
     const ut=document.getElementById('update-txt');
     if(ub&&ut){ub.style.display='flex';ut.textContent='Dados atualizados agora · '+ACOES.length+' ativos';}
-    // Listener tempo real — atualiza automaticamente quando brapi atualizar
-    onSnapshot(collection(db,'acoes'),s=>{
-      ACOES=s.docs.map(d=>({id:d.id,...d.data()}));
-      atualizarContadores();renderContent();
-    });
+    // Atualização silenciosa a cada 15 min — sem piscar
+    setInterval(async()=>{
+      try{
+        const s=await getDocs(collection(db,'acoes'));
+        const novos=s.docs.map(d=>({id:d.id,...d.data()}));
+        // Só re-renderiza se os dados realmente mudaram
+        const tsNovo=novos[0]?.ultima_atualizacao;
+        const tsAtual=ACOES[0]?.ultima_atualizacao;
+        if(tsNovo!==tsAtual){
+          ACOES=novos;
+          try{localStorage.setItem('ea_acoes_cache',JSON.stringify(ACOES));localStorage.setItem('ea_cache_ts',Date.now());}catch(_){}
+          atualizarContadores();renderContent();
+          const ut=document.getElementById('update-txt');
+          if(ut)ut.textContent='Dados atualizados agora · '+ACOES.length+' ativos';
+        }
+      }catch(_){}
+    }, 15*60*1000);
   }
   catch(_){ACOES=DEMO;atualizarContadores();renderContent();}
 }
@@ -1158,8 +1173,6 @@ function logoHTML(codigo,size){
 // ────────────────────────────────────────────────────────────
 
 window.renderContent=function renderContent(){
-  const el=document.getElementById('content');
-  if(el){el.style.opacity='0';el.style.transform='translateY(6px)';setTimeout(()=>{el.style.transition='opacity .2s ease,transform .2s ease';el.style.opacity='1';el.style.transform='translateY(0)';},20);}
   const content=document.getElementById('content');
   atualizarContadores();
 
