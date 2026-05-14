@@ -134,6 +134,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
     <div class="tab" data-tab="operacoes" onclick="showTab('operacoes')">⚡ Operações</div>
     <div class="tab" data-tab="usuarios"  onclick="showTab('usuarios')">👥 Usuários</div>
     <div class="tab" data-tab="scheduler" onclick="showTab('scheduler')">⏰ Scheduler</div>
+    <div class="tab" data-tab="afiliados" onclick="showTab('afiliados')">🤝 Afiliados</div>
   </div>
 
   <div class="main">
@@ -147,6 +148,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
         <div class="stat-card"><div class="stat-label">Usuários</div><div class="stat-value blue" id="s-usuarios">—</div><div class="stat-sub">cadastrados</div></div>
         <div class="stat-card"><div class="stat-label">Pagantes</div><div class="stat-value green" id="s-pagantes">—</div></div>
         <div class="stat-card"><div class="stat-label">Em Trial</div><div class="stat-value yellow" id="s-trial">—</div></div>
+        <div class="stat-card"><div class="stat-label">Afiliados</div><div class="stat-value" style="color:#a78bfa" id="s-afiliados">—</div><div class="stat-sub">ativos</div></div>
       </div>
       <button class="btn btn-ghost" onclick="carregarDashboard()">🔄 Atualizar</button>
     </div>
@@ -229,6 +231,43 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
         <div class="section-body">
           <div style="font-size:13px;color:var(--txt3)">Atualiza a cada hora durante o pregão da B3. Requer plano pago da HG Brasil.</div>
           <button class="btn btn-green" onclick="mostrarComando('producao')">📋 Ver comando</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <!-- AFILIADOS -->
+    <div class="view" id="view-afiliados">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🤝 Afiliados ativos</div>
+          <button class="btn btn-ghost" onclick="carregarAfiliados()" style="padding:7px 14px;font-size:13px">🔄 Atualizar</button>
+        </div>
+        <div class="cards-grid" style="margin-bottom:16px">
+          <div class="stat-card"><div class="stat-label">Total de Afiliados</div><div class="stat-value green" id="a-total">—</div></div>
+          <div class="stat-card"><div class="stat-label">Vendas via Afiliados</div><div class="stat-value blue" id="a-vendas">—</div></div>
+          <div class="stat-card"><div class="stat-label">Comissões pagas</div><div class="stat-value yellow" id="a-comissoes">—</div></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nome</th><th>Email</th><th>Código</th><th>Vendas</th><th>Comissão total</th><th>Cadastro</th></tr></thead>
+            <tbody id="tbody-afiliados">
+              <tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:32px">Clique em "Atualizar" para carregar</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-card" style="margin-top:16px">
+        <div class="section-header"><div class="section-title">📦 Vendas via afiliados (Hotmart)</div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Data</th><th>Comprador</th><th>Afiliado</th><th>Valor</th><th>Comissão</th><th>Status</th></tr></thead>
+            <tbody id="tbody-vendas-afiliados">
+              <tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:32px">Carregando junto com afiliados...</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -355,6 +394,9 @@ function carregarDashboard() {
     document.getElementById('s-pagantes').textContent = u.filter(function(x){return x.plano==='pago';}).length;
     document.getElementById('s-trial').textContent    = u.filter(function(x){return x.plano!=='pago'&&Math.ceil((new Date(x.trial_ate)-new Date())/864e5)>0;}).length;
   });
+  db.collection('afiliados').get().then(function(snap) {
+    document.getElementById('s-afiliados').textContent = snap.size;
+  });
 }
 
 function carregarUsuarios() {
@@ -407,6 +449,67 @@ function copiarComando(){
   });
 }
 function fecharModal(){document.getElementById('modal-cmd').classList.remove('show');}
+function carregarAfiliados() {
+  var tbody  = document.getElementById('tbody-afiliados');
+  var tbodyV = document.getElementById('tbody-vendas-afiliados');
+  tbody.innerHTML  = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Carregando...</td></tr>';
+  tbodyV.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Carregando...</td></tr>';
+
+  // Buscar afiliados da coleção
+  db.collection('afiliados').orderBy('data_cadastro','desc').get().then(function(snap) {
+    document.getElementById('a-total').textContent = snap.size;
+    if (!snap.size) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:32px">Nenhum afiliado ainda</td></tr>';
+      return;
+    }
+    var totalVendas = 0, totalComissao = 0;
+    tbody.innerHTML = snap.docs.map(function(d) {
+      var a = d.data();
+      totalVendas   += (a.total_vendas || 0);
+      totalComissao += (a.total_comissao || 0);
+      return '<tr>' +
+        '<td style="color:var(--txt)">'+(a.nome||'—')+'</td>' +
+        '<td style="font-size:12px">'+(a.email||'—')+'</td>' +
+        '<td><code style="background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:11px">'+(a.codigo||d.id)+'</code></td>' +
+        '<td class="green">'+(a.total_vendas||0)+'</td>' +
+        '<td class="yellow">R$ '+((a.total_comissao||0).toFixed(2))+'</td>' +
+        '<td style="font-size:12px">'+(a.data_cadastro?new Date(a.data_cadastro).toLocaleDateString('pt-BR'):'—')+'</td>' +
+      '</tr>';
+    }).join('');
+    document.getElementById('a-vendas').textContent = totalVendas;
+    document.getElementById('a-comissoes').textContent = 'R$ ' + totalComissao.toFixed(2);
+  }).catch(function(e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:16px">Erro: '+e.message+'<br><small>Crie a coleção "afiliados" no Firestore para habilitar.</small></td></tr>';
+  });
+
+  // Buscar vendas via afiliados do Firestore (gravadas pelo webhook Hotmart)
+  db.collection('vendas').where('afiliado_codigo','!=',null).orderBy('afiliado_codigo').orderBy('data','desc').limit(50).get()
+  .then(function(snap) {
+    if (!snap.size) {
+      tbodyV.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Nenhuma venda via afiliado registrada ainda</td></tr>';
+      return;
+    }
+    tbodyV.innerHTML = snap.docs.map(function(d) {
+      var v = d.data();
+      var statusBadge = v.status==='APPROVED'
+        ? '<span class="badge badge-green">✅ PAGO</span>'
+        : v.status==='REFUNDED'
+        ? '<span class="badge badge-red">↩ REEMBOLSO</span>'
+        : '<span class="badge badge-yellow">⏳ '+( v.status||'—')+'</span>';
+      return '<tr>' +
+        '<td style="font-size:12px">'+(v.data?new Date(v.data).toLocaleDateString('pt-BR'):'—')+'</td>' +
+        '<td style="font-size:12px">'+(v.comprador_email||'—')+'</td>' +
+        '<td style="font-size:12px">'+(v.afiliado_nome||v.afiliado_codigo||'—')+'</td>' +
+        '<td class="green">R$ '+((v.valor||0).toFixed(2))+'</td>' +
+        '<td class="yellow">R$ '+((v.comissao_afiliado||0).toFixed(2))+'</td>' +
+        '<td>'+statusBadge+'</td>' +
+      '</tr>';
+    }).join('');
+  }).catch(function() {
+    tbodyV.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Vendas via afiliados aparecerão aqui após as primeiras transações</td></tr>';
+  });
+}
+
 function showNotif(msg,type){
   var el=document.getElementById('notif');el.textContent=msg;el.className='notif '+type+' show';
   setTimeout(function(){el.classList.remove('show');},4000);
