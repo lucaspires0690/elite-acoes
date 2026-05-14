@@ -56,6 +56,15 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .splash-logo span{color:var(--green)}
 .splash-spinner{width:32px;height:32px;border:3px solid rgba(0,212,168,.2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
 
+
+/* ── Paywall ── */
+.acao-card.bloqueado{cursor:pointer;filter:none;position:relative}
+.acao-card.bloqueado .ac-info,.acao-card.bloqueado .ac-right{filter:blur(3px);pointer-events:none;user-select:none}
+.card-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;background:rgba(10,14,26,0.45);border-radius:12px}
+.card-lock-ico{font-size:22px}
+#paywall-fab{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:500;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:800;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 24px rgba(0,212,168,.5);white-space:nowrap;animation:fadeInUp .4s ease}
+#paywall-fab.show{display:block}
+
 /* ── PWA Install Button ── */
 #pwa-install-btn{display:none;width:100%;margin-top:10px;padding:13px;border-radius:12px;border:1.5px solid var(--green);background:var(--green-dim);color:var(--green);font-family:var(--fb);font-size:14px;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:8px;transition:all .2s;animation:fadeInUp .4s ease}
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
@@ -478,6 +487,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="mob-perfil-sep"></div>
       <button class="mob-perfil-item red" onclick="fazerLogout()">↩ Sair da conta</button>
     </div>
+    <button id="paywall-fab" onclick="openModal('modal-sub')">🚀 Assinar Plano Pro — R$ 19,90/mês</button>
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
     </div>
     <div class="mob-filters">
@@ -571,7 +581,7 @@ const db=getFirestore(fbApp);
 const gp=new GoogleAuthProvider();
 setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
-let ACOES=[],taxa=6,taxaFii=10,filtro='favoritos',tipo='todos',busca='',USER=null,FAVORITOS=new Set();
+let ACOES=[],taxa=6,taxaFii=10,filtro='favoritos',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false;
 
 window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console.error(e);}};
 window.fazerLogout=async()=>{await signOut(auth);};
@@ -623,10 +633,17 @@ onAuthStateChanged(auth,async user=>{
     const diasRestantes=expiracao?Math.ceil((expiracao-new Date())/864e5):30;
     setPlanoProUI(d.data_assinatura, diasRestantes);
     const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');
+    if(diasRestantes<=0){
+      PLANO_VENCIDO=true;
+      document.getElementById('paywall-fab')?.classList.add('show');
+    }
   } else{
     const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);
     setTrialUI(dias);
-    if(dias<=0)openModal('modal-sub');
+    if(dias<=0){
+      PLANO_VENCIDO=true;
+      document.getElementById('paywall-fab')?.classList.add('show');
+    }
   }
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
