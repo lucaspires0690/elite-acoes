@@ -605,7 +605,7 @@ function logoHTML(codigo,size){
 }
 // ────────────────────────────────────────────────────────────
 
-function renderContent(){
+window.renderContent=function renderContent(){
   const el=document.getElementById('content');
   if(el){el.style.opacity='0';el.style.transform='translateY(6px)';setTimeout(()=>{el.style.transition='opacity .2s ease,transform .2s ease';el.style.opacity='1';el.style.transform='translateY(0)';},20);}
   const content=document.getElementById('content');
