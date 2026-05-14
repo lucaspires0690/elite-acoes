@@ -132,7 +132,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .search-big-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,212,168,.1)}
 .search-big-input::placeholder{color:var(--txt3)}
 .topbar-right{display:flex;align-items:center;gap:6px;margin-left:auto}
-.tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s}
+.tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:16px;font-size:16px;transition:all .15s}
 .tb-btn:hover{border-color:var(--green);color:var(--green)}
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer}
 .mob-filters{display:none;padding:8px 10px;gap:6px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;scrollbar-width:none}
@@ -727,8 +727,10 @@ function renderCard(a){
   +'</div>';
 }
 
+// ── CORREÇÃO: adicionado `const dyN=parseFloat(c.dy);` que estava faltando ──
 function renderSRItem(a){
   const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
+  const dyN=parseFloat(c.dy);
   const statusLabel=st==='muito-barata'?'Muito Barata':st==='barata'?'Barata':st==='cara'?'Cara':'Sem DY';
   const potClass=st==='muito-barata'?'mg':st==='barata'?'g':st==='cara'?'r':'';
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
