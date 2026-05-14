@@ -48,6 +48,14 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .btn-google{width:100%;padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--surf2);color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
 .btn-google:hover{border-color:var(--green);background:var(--green-dim);transform:translateY(-1px)}
 .btn-google svg{width:18px;height:18px;flex-shrink:0}
+
+/* ── Loading inicial (verificando sessão) ── */
+#splash-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:300;gap:16px}
+#splash-screen.hide{display:none}
+.splash-logo{font-size:24px;font-weight:800;color:var(--txt)}
+.splash-logo span{color:var(--green)}
+.splash-spinner{width:32px;height:32px;border:3px solid rgba(0,212,168,.2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+
 /* ── PWA Install Button ── */
 #pwa-install-btn{display:none;width:100%;margin-top:10px;padding:13px;border-radius:12px;border:1.5px solid var(--green);background:var(--green-dim);color:var(--green);font-family:var(--fb);font-size:14px;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:8px;transition:all .2s;animation:fadeInUp .4s ease}
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
@@ -158,7 +166,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .topbar-right{display:flex;align-items:center;gap:6px;margin-left:auto}
 .tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s}
 .tb-btn:hover{border-color:var(--green);color:var(--green)}
-.mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer}
+.mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer;overflow:hidden;flex-shrink:0}
+.mob-avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 /* ── Menu perfil mobile ── */
 #mob-perfil-menu{display:none;position:fixed;top:56px;right:8px;z-index:1000;background:var(--surf);border:1px solid var(--border2);border-radius:12px;overflow:visible;box-shadow:0 8px 32px rgba(0,0,0,.6);min-width:200px;animation:fadeIn .15s ease}
 #mob-perfil-menu.open{display:block}
@@ -322,7 +331,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 </head>
 <body>
 
-<div id="login-screen">
+<!-- Splash de verificação de sessão -->
+<div id="splash-screen">
+  <div class="splash-logo">Elite <span>Ações</span></div>
+  <div class="splash-spinner"></div>
+</div>
+
+<div id="login-screen" style="display:none">
   <div class="login-card">
     <div class="login-logo" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px">
       <svg width="44" height="44" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -480,7 +495,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
       <div class="ni" id="mni-busca" onclick="focusBusca();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
       <div class="ni" id="mni-dy" onclick="setNavM('dy',this);setMobNav(this)"><span class="ni-ico">📊</span>DY&gt;6%</div>
-      <div class="ni" id="mni-perfil" onclick="openPerfil()"><span class="ni-ico">👤</span>Perfil</div>
+      <div class="ni" id="mni-baratas" onclick="setNavM('baratas',this);setMobNav(this)"><span class="ni-ico">🎯</span>Oportunidades</div>
     </nav>
   </div>
 </div>
@@ -546,7 +561,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, browserLocalPersistence, setPersistence } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',authDomain:'elite-acoes.firebaseapp.com',projectId:'elite-acoes',storageBucket:'elite-acoes.firebasestorage.app',messagingSenderId:'723536084871',appId:'1:723536084871:web:c6cf5879ddeb629759dd22'};
@@ -554,6 +569,7 @@ const fbApp=initializeApp(firebaseConfig);
 const auth=getAuth(fbApp);
 const db=getFirestore(fbApp);
 const gp=new GoogleAuthProvider();
+setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
 let ACOES=[],taxa=6,taxaFii=10,filtro='favoritos',tipo='todos',busca='',USER=null,FAVORITOS=new Set();
 
@@ -562,13 +578,21 @@ window.fazerLogout=async()=>{await signOut(auth);};
 document.getElementById('btn-login').addEventListener('click',()=>window.fazerLogin());
 
 onAuthStateChanged(auth,async user=>{
+  // Esconder splash assim que Firebase responder
+  document.getElementById('splash-screen').classList.add('hide');
   if(!user){document.getElementById('login-screen').style.display='flex';document.getElementById('app').classList.remove('show');return;}
   USER=user;
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').classList.add('show');
   const ini=(user.displayName||user.email||'?')[0].toUpperCase();
   document.getElementById('sb-avatar').textContent=ini;
-  document.getElementById('mob-avatar').textContent=ini;
+  // Foto do Google no avatar mobile
+  const mobAv = document.getElementById('mob-avatar');
+  if(user.photoURL){
+    mobAv.innerHTML = '<img src="'+user.photoURL+'" alt="foto" referrerpolicy="no-referrer">';
+  } else {
+    mobAv.textContent = ini;
+  }
   // Mostrar botão atualizar no mobile
   if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     const rb = document.getElementById('mob-refresh-btn');
@@ -1099,7 +1123,7 @@ window.instalarPWA = async function(){
       document.getElementById('pwa-install-btn')?.classList.remove('show');
       document.getElementById('pwa-fab')?.classList.remove('show');
       // Loading fica até o sistema abrir o app — não há evento confiável
-      showToast('📲 Instalando... Aguarde um momento.', 0, true);
+      showToast('📲 Instalando... Aguarde um momento.', 10000, true);
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
