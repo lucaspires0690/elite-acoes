@@ -425,6 +425,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 /* Animações */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUpMenu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
 @keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 @keyframes shimmerLoad{0%{background-position:-200% 0}100%{background-position:200% 0}}
@@ -502,7 +503,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer;overflow:hidden;flex-shrink:0}
 .mob-avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 /* ── Menu perfil mobile ── */
-#mob-perfil-menu{display:none;position:fixed;top:56px;right:8px;z-index:1000;background:var(--surf);border:1px solid var(--border2);border-radius:12px;overflow:visible;box-shadow:0 8px 32px rgba(0,0,0,.6);min-width:200px;animation:fadeIn .15s ease}
+#mob-perfil-menu{display:none;position:fixed;bottom:calc(64px + env(safe-area-inset-bottom));right:8px;z-index:1000;background:var(--surf);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 -4px 32px rgba(0,0,0,.5);min-width:220px;animation:slideUpMenu .2s ease}
 #mob-perfil-menu.open{display:block}
 .mob-perfil-item{width:100%;padding:12px 16px;background:none;border:none;color:var(--txt2);font-size:13px;font-weight:500;font-family:var(--fb);cursor:pointer;text-align:left;transition:background .15s;display:flex;align-items:center;gap:8px}
 .mob-perfil-item:hover{background:var(--surf2);color:var(--txt)}
@@ -869,6 +870,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
     </div>
     <div class="mob-filters">
+      <button class="mfbtn" id="mf-inicio" onclick="setNavM('inicio',this)">🏠 Início</button>
       <button class="mfbtn active" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
       <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
@@ -1563,7 +1565,13 @@ window.setNavM=(f,btn)=>{
   filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
+  if(btn) btn.classList.add('active');
+  // Sincronizar barra inferior
+  document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
+  const niMap={'inicio':'mni-inicio','favoritos':'mni-fav','baratas':'mni-inicio','dy':'mni-inicio','acoes':'mni-inicio','fiis':'mni-inicio'};
+  const niEl=document.getElementById(niMap[f]||'mni-inicio');
+  if(niEl) niEl.classList.add('active');
+  busca='';document.getElementById('main-search').value='';renderContent();
 };
 window.setMobNav=btn=>{document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
 
