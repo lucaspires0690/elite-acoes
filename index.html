@@ -1149,6 +1149,15 @@ async function carregarAcoes(){
 
 function isFii(c){return /11$/.test(c);}
 function calcTaxa(a){return isFii(a.codigo)?taxaFii:taxa;}
+
+// Taxa baseada no DY real dos últimos 12 meses
+// Limitada ao range do slider (4% mínimo)
+function calcTaxaReal(a){
+  if(!a.cotacao||!a.dividendo_anual) return calcTaxa(a);
+  const dyReal=parseFloat(((a.dividendo_anual/a.cotacao)*100).toFixed(1));
+  const maxT=isFii(a.codigo)?20:15;
+  return Math.min(Math.max(dyReal>0?dyReal:calcTaxa(a), 4), maxT);
+}
 function calc(a,t){
   const teto=a.dividendo_anual>0?a.dividendo_anual/(t/100):0;
   const diff=teto>0?((teto-a.cotacao)/a.cotacao)*100:-100;
@@ -1300,7 +1309,7 @@ function renderHome(el){
   const favs=ACOES.filter(a=>FAVORITOS.has(a.codigo));
 
   function hcard(a){
-    const c=calc(a,calcTaxa(a));
+    const c=calc(a,calcTaxaReal(a));
     const dyN=parseFloat(c.dy);
     const dyColor=dyN>=8?'var(--green)':dyN>=6?'var(--pos)':'var(--txt3)';
     const badgeLabel=c.status==='muito-barata'?'🔥 MUITO BARATA':c.status==='barata'?'✅ BARATA':'📈 CARA';
@@ -1401,7 +1410,7 @@ function renderHome(el){
 }
 
 function renderCard(a){
-  const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
+  const t=calcTaxaReal(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
   const statusLabel=st==='muito-barata'?'● Muito Barata':st==='barata'?'● Barata':st==='cara'?'● Cara':'Sem DY';
   const potClass=st==='muito-barata'?'green':st==='barata'?'pos':st==='cara'?'red':'';
   const dyN=parseFloat(c.dy);
@@ -1426,7 +1435,7 @@ function renderCard(a){
 }
 
 function renderSRItem(a){
-  const t=calcTaxa(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
+  const t=calcTaxaReal(a),c=calc(a,t),st=c.status,fav=FAVORITOS.has(a.codigo);
   const dyN=parseFloat(c.dy);
   const statusLabel=st==='muito-barata'?'Muito Barata':st==='barata'?'Barata':st==='cara'?'Cara':'Sem DY';
   const potClass=st==='muito-barata'?'mg':st==='barata'?'g':st==='cara'?'r':'';
@@ -1445,11 +1454,9 @@ window.openDet=function(codigo){
   const a=ACOES.find(x=>x.codigo===codigo);if(!a)return;
   // Paywall: bloquear detalhe se plano vencido
   if(PLANO_VENCIDO){openModal('modal-sub');return;}
-  // Taxa padrão do modal = DY real da ação (arredondado para 1 decimal), limitado ao range do slider
-  const dyReal=a.cotacao>0?parseFloat(((a.dividendo_anual/a.cotacao)*100).toFixed(1)):calcTaxa(a);
+  // Taxa do modal = DY real dos últimos 12 meses (consistente com o card)
   const maxT=isFii(a.codigo)?20:15;
-  const tModal=Math.min(Math.max(dyReal>0?dyReal:calcTaxa(a),4),maxT);
-  const t=tModal,c=calc(a,t),ib=c.status==='barata'||c.status==='muito-barata';
+  const t=calcTaxaReal(a),c=calc(a,t),ib=c.status==='barata'||c.status==='muito-barata';
   const pct=c.teto>0?Math.min(ib?(a.cotacao/c.teto)*100:(c.teto/a.cotacao)*100,100):50;
   const segLabel=c.teto>0?(parseFloat(c.diffAbs)>30?'Muito confortável':parseFloat(c.diffAbs)>15?'Confortável':parseFloat(c.diffAbs)>5?'Moderada':'Apertada'):'';
 
