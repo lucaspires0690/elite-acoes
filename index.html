@@ -65,6 +65,15 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #paywall-fab{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:500;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:800;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 24px rgba(0,212,168,.5);white-space:nowrap;animation:fadeInUp .4s ease}
 #paywall-fab.show{display:block}
 
+
+/* ── Busca Mobile ── */
+#mob-busca-overlay{display:none;position:fixed;inset:0;z-index:500;background:var(--bg);flex-direction:column}
+#mob-busca-overlay.open{display:flex}
+.mob-busca-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.mob-busca-input{flex:1;padding:10px 16px;background:var(--surf);border:1.5px solid var(--green);border-radius:12px;color:var(--txt);font-family:var(--fb);font-size:15px;outline:none}
+.mob-busca-close{background:none;border:none;color:var(--txt2);font-size:22px;cursor:pointer;padding:4px 8px}
+.mob-busca-results{flex:1;overflow-y:auto;padding:8px}
+
 /* ── PWA Install Button ── */
 #pwa-install-btn{display:none;width:100%;margin-top:10px;padding:13px;border-radius:12px;border:1.5px solid var(--green);background:var(--green-dim);color:var(--green);font-family:var(--fb);font-size:14px;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:8px;transition:all .2s;animation:fadeInUp .4s ease}
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
@@ -168,6 +177,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .mob-logo span{color:var(--green)}
 @media(max-width:1024px){.mob-logo{display:block}}
 .search-big{flex:1;max-width:560px;position:relative}
+@media(max-width:1024px){.search-big{display:none}}
 .search-big-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--green);font-size:16px;pointer-events:none}
 .search-big-input{width:100%;padding:10px 16px 10px 42px;background:var(--surf);border:1.5px solid var(--border);border-radius:12px;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;outline:none;transition:all .2s}
 .search-big-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,212,168,.1)}
@@ -491,21 +501,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
     </div>
     <div class="mob-filters">
-      <button class="mfbtn active" id="mf-inicio" onclick="setNavM('inicio',this)">🏠 Início</button>
-      <button class="mfbtn" id="mf-favoritos" onclick="setNavM('favoritos',this)">⭐ Favoritas</button>
-      <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🎯 Oportunidades</button>
-      <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
-      <button class="mfbtn" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
+      <button class="mfbtn active" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
+      <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
+      <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🎯 Oportunidades</button>
     </div>
     <div class="content" id="content"></div>
     <div class="disclaimer-bar">⛔ Apenas informativo — Não constitui recomendação de investimento. Dados históricos de dividendos fornecidos pela HG Brasil. Cada plataforma usa metodologia própria. Consulte um profissional habilitado pela CVM antes de investir.</div>
     <nav class="bnav">
       <div class="ni active" id="mni-inicio" onclick="setNavM('inicio',this);setMobNav(this)"><span class="ni-ico">🏠</span>Início</div>
-      <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
-      <div class="ni" id="mni-busca" onclick="focusBusca();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
-      <div class="ni" id="mni-dy" onclick="setNavM('dy',this);setMobNav(this)"><span class="ni-ico">📊</span>DY&gt;6%</div>
-      <div class="ni" id="mni-baratas" onclick="setNavM('baratas',this);setMobNav(this)"><span class="ni-ico">🎯</span>Oportunidades</div>
+      <div class="ni" id="mni-busca" onclick="abrirBuscaMobile();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
+      <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritos</div>
+      <div class="ni" id="mni-perfil" onclick="toggleMobPerfil()"><span class="ni-ico">👤</span>Perfil</div>
     </nav>
   </div>
 </div>
@@ -1083,6 +1090,49 @@ window.toggleAvancado=function(){
 };
 window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeModal('modal-disclaimer');};
 
+
+// ── Busca Mobile ──
+window.abrirBuscaMobile = function() {
+  document.getElementById('mob-busca-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('mob-busca-input').focus(), 100);
+};
+
+window.fecharBuscaMobile = function() {
+  document.getElementById('mob-busca-overlay').classList.remove('open');
+  document.getElementById('mob-busca-input').value = '';
+  document.getElementById('mob-busca-results').innerHTML = '<div style="text-align:center;color:var(--txt3);padding:40px 20px;font-size:14px">Digite para buscar ações e FIIs</div>';
+};
+
+window.onBuscaMobile = function(val) {
+  const res = document.getElementById('mob-busca-results');
+  if (!val || val.length < 1) {
+    res.innerHTML = '<div style="text-align:center;color:var(--txt3);padding:40px 20px;font-size:14px">Digite para buscar ações e FIIs</div>';
+    return;
+  }
+  const q = val.toUpperCase();
+  const found = ACOES.filter(a => a.codigo.includes(q) || (a.nome||'').toUpperCase().includes(q)).slice(0, 30);
+  if (!found.length) {
+    res.innerHTML = '<div style="text-align:center;color:var(--txt3);padding:40px 20px;font-size:14px">Nenhum resultado para "'+val+'"</div>';
+    return;
+  }
+  res.innerHTML = found.map(a => {
+    const t = calcTaxa(a), c = calc(a, t);
+    const st = c.status;
+    const cor = st==='muito-barata'?'var(--green)':st==='barata'?'var(--pos)':st==='cara'?'var(--red)':'var(--txt3)';
+    return '<div style="display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border);cursor:pointer" onclick="fecharBuscaMobile();window.openDet(''+a.codigo+'')">'
+      + logoHTML(a.codigo, 'sm')
+      + '<div style="flex:1">'
+        + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+        + '<div style="font-size:12px;color:var(--txt3)">'+(a.nome||'')+'</div>'
+      + '</div>'
+      + '<div style="text-align:right">'
+        + '<div style="font-size:13px;font-weight:600;color:var(--txt)">R$ '+a.cotacao.toFixed(2)+'</div>'
+        + '<div style="font-size:11px;color:'+cor+'">'+c.dy+'% DY</div>'
+      + '</div>'
+    + '</div>';
+  }).join('');
+};
+
 // ── PWA Install ──
 let deferredPrompt = null;
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -1178,6 +1228,18 @@ const DEMO=[
 
 <!-- Toast PWA feedback -->
 <div id="pwa-toast"></div>
+
+
+<!-- Busca Mobile -->
+<div id="mob-busca-overlay">
+  <div class="mob-busca-header">
+    <input class="mob-busca-input" id="mob-busca-input" type="text" placeholder="Buscar ação ou FII... ex: PETR4" oninput="onBuscaMobile(this.value)" autocomplete="off">
+    <button class="mob-busca-close" onclick="fecharBuscaMobile()">✕</button>
+  </div>
+  <div class="mob-busca-results" id="mob-busca-results">
+    <div style="text-align:center;color:var(--txt3);padding:40px 20px;font-size:14px">Digite para buscar ações e FIIs</div>
+  </div>
+</div>
 
 <!-- iOS Install Banner -->
 <div id="ios-banner">
