@@ -1382,7 +1382,7 @@ function renderCard(a){
   const dyN=parseFloat(c.dy);
   const teto=c.teto>0?'R$ '+c.teto.toFixed(2):'—';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
-  return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
+  return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'">'
     +logoHTML(a.codigo,'ac')
     +'<div class="ac-info">'
       +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
@@ -1407,7 +1407,7 @@ function renderSRItem(a){
   const potClass=st==='muito-barata'?'mg':st==='barata'?'g':st==='cara'?'r':'';
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
-  return '<div class="sr-item" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
+  return '<div class="sr-item" data-cod="'+a.codigo+'" style="cursor:pointer">'
     +logoHTML(a.codigo,'sr')
     +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(a.nome||''))+'</div></div>'
     +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+(dyN>=6?'g':'')+'">DY '+c.dy+'%</div></div>'
@@ -1694,7 +1694,7 @@ window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeM
 function getBuscasRecentes(){
   try{return JSON.parse(localStorage.getItem('ea_buscas_recentes')||'[]');}catch(_){return[];}
 }
-function addBuscaRecente(cod){
+window.addBuscaRecente=function addBuscaRecente(cod){
   try{
     let r=getBuscasRecentes().filter(x=>x!==cod).slice(0,5);
     r.unshift(cod);
@@ -1833,6 +1833,16 @@ window.copiarEmailContato = function() {
 };
 document.getElementById('popup-contato').addEventListener('click', function(e) {
   if(e.target === this) fecharContato();
+});
+
+// ── Delegação global de cliques nos cards ──
+document.addEventListener('click', function(e) {
+  // sr-item ou acao-card
+  const card = e.target.closest('.sr-item, .acao-card');
+  if(card && !e.target.closest('.ac-fav, .sri-fav, button')) {
+    const cod = card.dataset.cod;
+    if(cod) window.openDet(cod);
+  }
 });
 
 // ── PWA Install ──
