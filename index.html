@@ -130,39 +130,34 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 
 /* ── Home Dashboard ── */
 
-/* ── Desktop: Diretrizes profissionais aplicadas ── */
+/* ── Desktop: Melhorias ── */
 @media(min-width:1025px){
-  /* Grid 8px system */
   .home-wrap{padding:0 0 32px}
   .home-stats{padding:0 0 24px;gap:16px}
   .hst{padding:20px 16px;border-radius:16px}
   .hst-v{font-size:30px}
   .home-sec{padding:0 0 14px}
 
-  /* Cards: grid 4 colunas, sem carrossel */
+  /* Carrossel horizontal no desktop também — com scroll visível */
   .hscroll{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    overflow:visible;
-    padding:0 0 24px;
+    display:flex;
+    overflow-x:auto;
+    padding:0 0 16px;
     gap:12px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--border2) transparent;
+    padding-bottom:8px;
   }
-  .hcard{width:auto;flex-shrink:unset;}
+  .hscroll::-webkit-scrollbar{height:4px}
+  .hscroll::-webkit-scrollbar-track{background:transparent}
+  .hscroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+  .hcard{width:180px;flex-shrink:0;}
   .hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
   .hcard.muito-barata:hover{box-shadow:0 8px 24px rgba(0,212,168,.12);}
 
-  /* Favoritos */
   .fav-wrap{margin:0 0 24px}
   .fav-row{padding:14px 18px}
-
-  /* Disclaimer desktop — não sobrepõe */
   .disclaimer-bar{display:block;padding:6px 24px;}
-}
-
-/* Large screens */
-@media(min-width:1400px){
-  .hscroll{grid-template-columns:repeat(5,1fr)}
-  .home-stats{gap:20px}
 }
 
 .home-wrap{padding:0 0 24px}
@@ -503,7 +498,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer;overflow:hidden;flex-shrink:0}
 .mob-avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 /* ── Menu perfil mobile ── */
-#mob-perfil-menu{display:none;position:fixed;bottom:calc(64px + env(safe-area-inset-bottom));right:8px;z-index:1000;background:var(--surf);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 -4px 32px rgba(0,0,0,.5);min-width:220px;animation:slideUpMenu .2s ease}
+#mob-perfil-menu{display:none;position:fixed;right:8px;z-index:1000;background:var(--surf);border:1px solid var(--border2);border-radius:16px;overflow:hidden;min-width:220px;}
+#mob-perfil-menu.from-top{top:56px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeIn .15s ease;}
+#mob-perfil-menu.from-bottom{bottom:calc(64px + env(safe-area-inset-bottom));box-shadow:0 -4px 32px rgba(0,0,0,.5);animation:slideUpMenu .2s ease;}
+#mob-perfil-menu.open{display:block}
 #mob-perfil-menu.open{display:block}
 .mob-perfil-item{width:100%;padding:12px 16px;background:none;border:none;color:var(--txt2);font-size:13px;font-weight:500;font-family:var(--fb);cursor:pointer;text-align:left;transition:background .15s;display:flex;align-items:center;gap:8px}
 .mob-perfil-item:hover{background:var(--surf2);color:var(--txt)}
@@ -651,9 +649,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sr-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:10px;color:var(--txt3);font-size:14px}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--surf);border:1px solid var(--border2);border-radius:20px;padding:24px;width:100%;max-width:520px;max-height:90dvh;overflow-y:auto;transform:translateY(16px);transition:transform .25s cubic-bezier(0.34,1.56,0.64,1),opacity .2s}
+.modal{background:var(--surf);border:1px solid var(--border2);border-radius:20px;padding:16px;width:100%;max-width:520px;max-height:92dvh;overflow-y:auto;transform:translateY(16px);transition:transform .25s cubic-bezier(0.34,1.56,0.64,1),opacity .2s}
 .overlay.open .modal{transform:translateY(0)}
-.modal-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:10px}
+.modal-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:10px}
 .modal-ticker{font-size:24px;font-weight:800;color:var(--green);font-family:var(--fm)}
 .modal-nome{font-size:12px;color:var(--txt3);margin-top:2px}
 .modal-close{background:none;border:none;color:var(--txt3);font-size:18px;cursor:pointer;padding:4px;flex-shrink:0}
@@ -666,21 +664,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .det-seg{font-size:11px;font-weight:600;margin-top:2px}
 
 /* Modal rico */
-.det-section{margin-bottom:14px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px}
-.det-section-title{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.det-section{margin-bottom:8px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px}
+.det-section-title{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
 .op-tabs{display:flex;gap:8px;margin-bottom:12px}
 .op-tab{flex:1;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surf2);color:var(--txt3);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .15s}
 .op-tab.active{background:var(--green-dim);border-color:var(--green);color:var(--green)}
 .op-tab:hover:not(.active){border-color:var(--border2);color:var(--txt)}
 .det-row-big{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.det-big-val{font-size:26px;font-weight:800;color:var(--txt);font-family:var(--fm);letter-spacing:-.5px}
+.det-big-val{font-size:22px;font-weight:800;color:var(--txt);font-family:var(--fm);letter-spacing:-.5px}
 .det-big-sub{font-size:12px;margin-top:3px}
 .det-badge-wrap{text-align:right}
 .det-badge{font-size:10px;font-weight:600;color:var(--txt3);margin-bottom:3px}
-.det-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.det-card2{background:var(--surf);border:1px solid var(--border);border-radius:9px;padding:10px}
+.det-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.det-card2{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:8px}
 .det-lbl{font-size:10px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.det-val2{font-size:17px;font-weight:800;color:var(--txt);font-family:var(--fm);letter-spacing:-.3px}
+.det-val2{font-size:15px;font-weight:800;color:var(--txt);font-family:var(--fm);letter-spacing:-.3px}
 .det-val2.pos{color:var(--pos)}.det-val2.green{color:var(--green)}.det-val2.red{color:var(--red)}
 .det-52w{display:flex;align-items:center;gap:8px}
 .det-52w-item{flex-shrink:0;min-width:70px}
@@ -855,7 +853,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="topbar-right">
         <button class="tb-btn" id="mob-refresh-btn" onclick="location.reload()" title="Atualizar" style="display:none">🔄</button>
         <button class="tb-btn" onclick="toggleTheme()" id="theme-btn" title="Tema">🌙</button>
-        <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil()">?</div>
+        <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil('top')">?</div>
       </div>
     <!-- Menu perfil mobile -->
     <div id="mob-perfil-menu">
@@ -870,8 +868,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
     </div>
     <div class="mob-filters">
-      <button class="mfbtn" id="mf-inicio" onclick="setNavM('inicio',this)">🏠 Início</button>
-      <button class="mfbtn active" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
+      <button class="mfbtn" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
       <button class="mfbtn" id="mf-dy" onclick="setNavM('dy',this)">📊 DY &gt;6%</button>
       <button class="mfbtn" id="mf-baratas" onclick="setNavM('baratas',this)">🎯 Oportunidades</button>
@@ -886,7 +883,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="ni active" id="mni-inicio" onclick="setNavM('inicio',this);setMobNav(this)"><span class="ni-ico">🏠</span>Início</div>
       <div class="ni" id="mni-busca" onclick="abrirBuscaMobile();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
       <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritos</div>
-      <div class="ni" id="mni-perfil" onclick="toggleMobPerfil()"><span class="ni-ico">👤</span>Perfil</div>
+      <div class="ni" id="mni-perfil" onclick="toggleMobPerfil('bottom')"><span class="ni-ico">👤</span>Perfil</div>
     </nav>
   </div>
 </div>
@@ -1423,8 +1420,8 @@ window.openDet=function(codigo){
         +'<div class="det-section-title">Preço Teto</div>'
 
         // Preço teto em destaque
-        +'<div style="text-align:center;padding:16px 0 8px">'
-          +'<div style="font-size:38px;font-weight:800;color:var(--'+tetoClass+');font-family:var(--fm);letter-spacing:-1px" id="det-teto-big">R$ '+c.teto.toFixed(2)+'</div>'
+        +'<div style="text-align:center;padding:8px 0 4px">'
+          +'<div style="font-size:30px;font-weight:800;color:var(--'+tetoClass+');font-family:var(--fm);letter-spacing:-1px" id="det-teto-big">R$ '+c.teto.toFixed(2)+'</div>'
           +'<div style="margin-top:6px;font-size:12px;color:var(--txt3)">'+(ib?'✅ Cotação abaixo do teto':'⚠️ Cotação acima do teto — aguarde cair')+'</div>'
         +'</div>'
 
@@ -1533,18 +1530,26 @@ window.openPerfil=function(){
   openModal('modal-perfil');
 };
 
-window.toggleMobPerfil=function(){
+window.toggleMobPerfil=function(origem){
   const menu = document.getElementById('mob-perfil-menu');
-  menu.classList.toggle('open');
-  // Fechar ao clicar fora
-  if(menu.classList.contains('open')){
-    setTimeout(()=>document.addEventListener('click', function h(e){
-      if(!menu.contains(e.target) && e.target.id!=='mob-avatar'){
-        menu.classList.remove('open');
-        document.removeEventListener('click',h);
-      }
-    }),10);
+  const jaAberto = menu.classList.contains('open');
+  // Fechar se já aberto
+  if(jaAberto){ menu.classList.remove('open','from-top','from-bottom'); return; }
+  // Definir posição conforme origem
+  menu.classList.remove('from-top','from-bottom');
+  if(origem==='top'){
+    menu.classList.add('from-top');
+  } else {
+    menu.classList.add('from-bottom');
   }
+  menu.classList.add('open');
+  // Fechar ao clicar fora
+  setTimeout(()=>document.addEventListener('click', function h(e){
+    if(!menu.contains(e.target) && e.target.id!=='mob-avatar' && e.target.id!=='mni-perfil'){
+      menu.classList.remove('open','from-top','from-bottom');
+      document.removeEventListener('click',h);
+    }
+  }),10);
 };
 
 window.togglePerfil=function(){
