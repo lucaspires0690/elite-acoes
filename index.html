@@ -62,7 +62,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .acao-card.bloqueado .ac-info,.acao-card.bloqueado .ac-right{filter:blur(3px);pointer-events:none;user-select:none}
 .card-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;background:rgba(10,14,26,0.45);border-radius:12px}
 .card-lock-ico{font-size:22px}
-#paywall-fab{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:500;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:800;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 24px rgba(0,212,168,.5);white-space:nowrap;animation:fadeInUp .4s ease}
+#paywall-fab{display:none;position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:500;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:12px 24px;font-size:14px;font-weight:800;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 24px rgba(0,212,168,.5);white-space:nowrap;animation:fadeInUp .4s ease}
 #paywall-fab.show{display:block}
 
 
@@ -130,15 +130,16 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 
 /* ── Home Dashboard ── */
 
-/* ── Desktop: Home melhorada ── */
+/* ── Desktop: Diretrizes profissionais aplicadas ── */
 @media(min-width:1025px){
+  /* Grid 8px system */
   .home-wrap{padding:0 0 32px}
-  .home-stats{padding:0 0 24px;gap:12px}
-  .hst{padding:18px 14px}
-  .hst-v{font-size:28px}
-  .home-sec{padding:0 0 12px}
+  .home-stats{padding:0 0 24px;gap:16px}
+  .hst{padding:20px 16px;border-radius:16px}
+  .hst-v{font-size:30px}
+  .home-sec{padding:0 0 14px}
 
-  /* Grid em vez de carrossel no desktop */
+  /* Cards: grid 4 colunas, sem carrossel */
   .hscroll{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -146,31 +147,22 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
     padding:0 0 24px;
     gap:12px;
   }
-  .hcard{
-    width:auto;
-    flex-shrink:unset;
-  }
-  .hcard:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 32px rgba(0,0,0,.3);
-  }
-  .hcard.muito-barata:hover{
-    box-shadow:0 12px 32px rgba(0,212,168,.15);
-  }
+  .hcard{width:auto;flex-shrink:unset;}
+  .hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+  .hcard.muito-barata:hover{box-shadow:0 8px 24px rgba(0,212,168,.12);}
 
-  /* Favoritos no desktop — 2 colunas */
+  /* Favoritos */
   .fav-wrap{margin:0 0 24px}
   .fav-row{padding:14px 18px}
 
-  /* Espaçamento home sections */
-  .home-section > div + div{margin-top:4px}
-
-  /* Stats mais espaçados */
-  .home-stats .hst{border-radius:16px}
+  /* Disclaimer desktop — não sobrepõe */
+  .disclaimer-bar{display:block;padding:6px 24px;}
 }
 
+/* Large screens */
 @media(min-width:1400px){
   .hscroll{grid-template-columns:repeat(5,1fr)}
+  .home-stats{gap:20px}
 }
 
 .home-wrap{padding:0 0 24px}
@@ -401,7 +393,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
 #pwa-install-btn.show{display:flex}
 /* Botão flutuante mobile no app */
-#pwa-fab{display:none;position:fixed;bottom:80px;right:16px;z-index:99;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:10px 16px;font-size:13px;font-weight:700;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 20px rgba(0,212,168,.4);align-items:center;gap:6px;animation:fadeInUp .4s ease}
+#pwa-fab{display:none;position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));right:16px;z-index:99;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:10px 16px;font-size:13px;font-weight:700;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 20px rgba(0,212,168,.4);align-items:center;gap:6px;animation:fadeInUp .4s ease}
 #pwa-fab.show{display:flex}
 /* ── iOS Install Banner ── */
 #ios-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surf);border-top:1px solid var(--green);padding:16px 20px;animation:slideUp .3s ease}
@@ -623,7 +615,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .ac-metric-val.pos{color:var(--pos)}
 .ac-metric-val.red{color:var(--red)}
 .ac-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
-.ac-status{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.ac-status{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800;white-space:nowrap;letter-spacing:.2px}
 .ac-status.muito-barata{background:var(--green-dim);color:var(--green);border:1px solid rgba(0,212,168,.2)}
 .ac-status.barata{background:var(--pos-dim);color:var(--pos);border:1px solid rgba(16,185,129,.2)}
 .ac-status.cara{background:var(--red-dim);color:var(--red);border:1px solid rgba(239,68,68,.2)}
@@ -715,9 +707,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sub-feats{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
 .sub-feat{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--txt2)}
 .sub-feat::before{content:"✅";font-size:12px}
-.disclaimer-bar{background:rgba(245,158,11,0.06);border-top:1px solid rgba(245,158,11,0.15);padding:6px 16px;font-size:10px;color:var(--txt3);text-align:center;flex-shrink:0;display:none}
+.disclaimer-bar{background:rgba(245,158,11,0.04);border-top:1px solid rgba(245,158,11,0.1);padding:5px 16px;font-size:10px;color:var(--txt3);text-align:center;flex-shrink:0;display:none;line-height:1.4}
 @media(min-width:1025px){.disclaimer-bar{display:block}}
-.bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:6px 0 env(safe-area-inset-bottom);flex-shrink:0}
+.bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:8px 0 calc(8px + env(safe-area-inset-bottom));flex-shrink:0}
 @media(max-width:1024px){.bnav{display:flex}}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px;cursor:pointer;color:var(--txt3);font-size:10px;font-weight:500;transition:color .15s}
 .ni.active{color:var(--green)}
@@ -887,7 +879,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <span id="update-txt">Dados atualizados</span>
     </div>
     <div class="content" id="content"></div>
-    <div clclass="disclaimer-bar">⛔ Apenas informativo · Não constitui recomendação de investimento · <a href="/termos.html" style="color:inherit;opacity:.6;text-decoration:underline">Termos</a> · <a href="#" onclick="abrirContato(event)" style="color:inherit;opacity:.6;text-decoration:underline">Contato</a></div>
+    <div class="disclaimer-bar">⛔ Apenas informativo · Não constitui recomendação de investimento · <a href="/termos.html" style="color:inherit;opacity:.6;text-decoration:underline">Termos</a> · <a href="#" onclick="abrirContato(event)" style="color:inherit;opacity:.6;text-decoration:underline">Contato</a></div>
     <nav class="bnav">
       <div class="ni active" id="mni-inicio" onclick="setNavM('inicio',this);setMobNav(this)"><span class="ni-ico">🏠</span>Início</div>
       <div class="ni" id="mni-busca" onclick="abrirBuscaMobile();setMobNav(this)"><span class="ni-ico">🔍</span>Buscar</div>
@@ -1500,7 +1492,12 @@ window.onTaxa=async v=>{taxa=parseFloat(v);setTaxaDisplay(taxa);renderContent();
 function setTaxaDisplay(v){document.getElementById('taxa-display').textContent=(v%1===0?v+',0':String(v).replace('.',','))+'%';}
 window.onTaxaFii=async v=>{taxaFii=parseFloat(v);setTaxaFiiDisplay(taxaFii);renderContent();if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_fii:taxaFii},{merge:true});};
 function setTaxaFiiDisplay(v){document.getElementById('taxa-fii-display').textContent=(v%1===0?v+',0':String(v).replace('.',','))+'%';}
-window.onBusca=v=>{busca=v;renderContent();};
+window.onBusca=v=>{
+  busca=v.trim();
+  // Limpar filtro de tipo na busca para mostrar tudo
+  if(busca.length>0) tipo='todos';
+  renderContent();
+};
 
 // Slider de taxa dentro do modal de detalhe
 window.onTaxaDet=function(v,codigo){
