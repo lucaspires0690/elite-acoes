@@ -538,8 +538,17 @@ onAuthStateChanged(auth,async user=>{
   document.getElementById('taxa-slider').value=taxa;
   document.getElementById('taxa-fii-slider').value=taxaFii;
   setTaxaDisplay(taxa);setTaxaFiiDisplay(taxaFii);
-  if(d.plano==='pago'){document.getElementById('trial-box').style.display='none';document.getElementById('sb-user-plan').textContent='✅ Assinante';const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');}
-  else{const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);setTrialUI(dias);if(dias<=0)openModal('modal-sub');}
+  if(d.plano==='pago' && d.plano_ativo){
+    // Calcular dias restantes do plano
+    const expiracao=d.data_expiracao?new Date(d.data_expiracao):null;
+    const diasRestantes=expiracao?Math.ceil((expiracao-new Date())/864e5):30;
+    setPlanoProUI(d.data_assinatura, diasRestantes);
+    const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');
+  } else{
+    const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);
+    setTrialUI(dias);
+    if(dias<=0)openModal('modal-sub');
+  }
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
 });
@@ -548,6 +557,27 @@ function setTrialUI(dias){
   const el=document.getElementById('trial-ttl');
   if(dias>0){el.textContent=`⏰ ${dias} dias restantes`;document.getElementById('sb-user-plan').textContent=`Trial — ${dias}d`;}
   else{el.textContent='⚠️ Trial expirado';document.getElementById('sb-user-plan').textContent='Expirado';}
+}
+
+function setPlanoProUI(dataAssinatura, diasRestantes){
+  const box=document.getElementById('trial-box');
+  const dtFmt=dataAssinatura?new Date(dataAssinatura).toLocaleDateString('pt-BR'):'—';
+  const alerta=diasRestantes<=3;
+  box.onclick=null;
+  box.style.cursor='default';
+  box.style.borderColor=alerta?'rgba(239,68,68,0.4)':'rgba(0,212,168,0.2)';
+  box.innerHTML=`
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+      <span style="font-size:14px">✅</span>
+      <span style="font-size:12px;font-weight:800;color:var(--green)">Plano Pro Ativo</span>
+    </div>
+    <div style="font-size:11px;color:var(--txt3);margin-bottom:6px;line-height:1.5">
+      Ativo desde: <strong style="color:var(--txt)">${dtFmt}</strong><br>
+      ${diasRestantes>0?`Renova em: <strong style="color:${alerta?'var(--red)':'var(--txt)}'>${diasRestantes} dias</strong>`:'<strong style="color:var(--red)">⚠️ Renovação pendente</strong>'}
+    </div>
+    ${alerta?`<button class="sb-trial-btn" style="background:var(--red)" onclick="window.open('https://pay.hotmart.com/A105812574Y','_blank')">⚠️ Renovar agora</button>`:''}
+  `;
+  document.getElementById('sb-user-plan').textContent='✅ Pro';
 }
 
 async function carregarAcoes(){
