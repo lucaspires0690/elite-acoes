@@ -1907,6 +1907,24 @@ window.addEventListener('beforeinstallprompt', e => {
 
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+// ── Botão voltar físico do Android ──
+// 1º toque: vai para início
+// 2º toque: fecha o app
+function pushEstado(){ history.pushState({ea:true}, '', location.href); }
+pushEstado(); // estado inicial
+
+window.addEventListener('popstate', function() {
+  if(filtro !== 'inicio'){
+    // Fecha busca/modais se abertos
+    const busca = document.getElementById('mob-busca-overlay');
+    if(busca && busca.classList.contains('open')) fecharBuscaMobile();
+    document.querySelectorAll('.overlay.open').forEach(m => m.classList.remove('open'));
+    voltarInicio();
+    pushEstado();
+  }
+  // Se já está no início — não faz pushState, próximo toque fecha o app
+});
+
 // ── Bloquear pull-to-refresh no mobile ──
 // scroll nativo — sem bloqueio
 
