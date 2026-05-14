@@ -852,6 +852,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
       <div class="topbar-right">
         <button class="tb-btn" id="mob-refresh-btn" onclick="location.reload()" title="Atualizar" style="display:none">🔄</button>
+        <div id="mob-trial-badge" style="display:none;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:20px;padding:3px 9px;font-size:10px;font-weight:800;color:#f59e0b;white-space:nowrap;cursor:pointer" onclick="openModal('modal-sub')"></div>
         <button class="tb-btn" onclick="toggleTheme()" id="theme-btn" title="Tema">🌙</button>
         <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil('top')">?</div>
       </div>
@@ -977,7 +978,7 @@ onAuthStateChanged(auth,async user=>{
   // Foto do Google no avatar mobile
   const mobAv = document.getElementById('mob-avatar');
   if(user.photoURL){
-    mobAv.innerHTML = '<img src="'+user.photoURL+'" alt="foto" referrerpolicy="no-referrer">';
+    mobAv.innerHTML = '<img src="'+user.photoURL+'" alt="foto" referrerpolicy="no-referrer" class="mob-avatar-img">';
   } else {
     mobAv.textContent = ini;
   }
@@ -1029,8 +1030,28 @@ onAuthStateChanged(auth,async user=>{
 
 function setTrialUI(dias){
   const el=document.getElementById('trial-ttl');
-  if(dias>0){el.textContent=`⏰ ${dias} dias restantes`;document.getElementById('sb-user-plan').textContent=`Trial — ${dias}d`;}
-  else{el.textContent='⚠️ Trial expirado';document.getElementById('sb-user-plan').textContent='Expirado';}
+  const badge=document.getElementById('mob-trial-badge');
+  if(dias>0){
+    el.textContent=`⏰ ${dias} dias restantes`;
+    document.getElementById('sb-user-plan').textContent=`Trial — ${dias}d`;
+    if(badge){
+      badge.style.display='flex';
+      badge.textContent = dias<=3 ? `⚠️ ${dias}d grátis` : `⏰ ${dias}d grátis`;
+      badge.style.background = dias<=3 ? 'rgba(239,68,68,.15)' : 'rgba(245,158,11,.15)';
+      badge.style.borderColor = dias<=3 ? 'rgba(239,68,68,.3)' : 'rgba(245,158,11,.3)';
+      badge.style.color = dias<=3 ? '#ef4444' : '#f59e0b';
+    }
+  } else {
+    el.textContent='⚠️ Trial expirado';
+    document.getElementById('sb-user-plan').textContent='Expirado';
+    if(badge){
+      badge.style.display='flex';
+      badge.textContent='⚠️ Trial expirado';
+      badge.style.background='rgba(239,68,68,.15)';
+      badge.style.borderColor='rgba(239,68,68,.3)';
+      badge.style.color='#ef4444';
+    }
+  }
 }
 
 function setPlanoProUI(dataAssinatura, diasRestantes){
