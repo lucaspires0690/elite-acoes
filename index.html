@@ -238,6 +238,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 /* Modal rico */
 .det-section{margin-bottom:14px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px}
 .det-section-title{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.op-tabs{display:flex;gap:8px;margin-bottom:12px}
+.op-tab{flex:1;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surf2);color:var(--txt3);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .15s}
+.op-tab.active{background:var(--green-dim);border-color:var(--green);color:var(--green)}
+.op-tab:hover:not(.active){border-color:var(--border2);color:var(--txt)}
 .det-row-big{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .det-big-val{font-size:26px;font-weight:800;color:var(--txt);font-family:var(--fm);letter-spacing:-.5px}
 .det-big-sub{font-size:12px;margin-top:3px}
@@ -644,6 +648,23 @@ function renderContent(){
   else if(filtro==='dy')lista=lista.filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=6);
 
   const labels={baratas:'🎯 Oportunidades',dy:'📊 DY > 6%',acoes:'🏢 Ações',fiis:'🏗️ FIIs'};
+
+  // Abas Ações/FIIs para Oportunidades e DY
+  if(filtro==='baratas'||filtro==='dy'){
+    const listaAcoes=lista.filter(a=>!isFii(a.codigo));
+    const listaFiis=lista.filter(a=>isFii(a.codigo));
+    const abaAtivaOp=window._oportunidadesAba||'acoes';
+    content.innerHTML='<div class="favs-section">'
+      +'<div class="favs-title">'+(labels[filtro]||filtro)+'</div>'
+      +'<div class="op-tabs">'
+        +'<button class="op-tab '+(abaAtivaOp==='acoes'?'active':'')+'" onclick="window._oportunidadesAba='acoes';renderContent()">🏢 Ações ('+listaAcoes.length+')</button>'
+        +'<button class="op-tab '+(abaAtivaOp==='fiis'?'active':'')+'" onclick="window._oportunidadesAba='fiis';renderContent()">🏗️ FIIs ('+listaFiis.length+')</button>'
+      +'</div>'
+      +'<div class="favs-grid">'+(abaAtivaOp==='acoes'?listaAcoes:listaFiis).slice(0,100).map(a=>renderCard(a)).join('')+'</div>'
+    +'</div>';
+    return;
+  }
+
   content.innerHTML='<div class="favs-section"><div class="favs-title">'+(labels[filtro]||filtro)+' ('+lista.length+')</div><div class="favs-grid">'+lista.slice(0,100).map(a=>renderCard(a)).join('')+'</div></div>';
 }
 
@@ -803,7 +824,7 @@ window.openDet=function(codigo){
     // ── AÇÕES ────────────────────────────────────────
     +'<button class="btn-main" id="btn-fav-'+a.codigo+'" data-cod="'+a.codigo+'" onclick="window.toggleFav(this.dataset.cod)">'+(FAVORITOS.has(a.codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos')+'</button>'
     +'<button class="btn-ghost" onclick="closeModal(&quot;modal-detalhe&quot;)">Fechar</button>'
-    +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center">⚠️ Dados educacionais. Não constitui recomendação de investimento.</div>';
+    +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center;line-height:1.6">⚠️ Dados fornecidos pela HG Brasil. Cada plataforma utiliza metodologia própria de cálculo e pode divergir. Nenhuma reflete 100% os dados oficiais da B3/CVM. Não constitui recomendação de investimento.</div>';
 
   openModal('modal-detalhe');
 };
