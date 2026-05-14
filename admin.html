@@ -558,7 +558,6 @@ function carregarDashboard() {
     // Alerta se perto do limite
     if (pct >= 90) showNotif('⚠️ Quota HG Brasil em ' + pct + '%!', 'warning');
   });
-  });
   db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
     if (!snap.exists) return;
     var dataVenc = snap.data().data_vencimento;
