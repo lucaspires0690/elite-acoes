@@ -314,7 +314,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       Entrar com Google — 7 dias grátis
     </button>
     <div style="margin-top:14px;font-size:11px;color:var(--txt3);line-height:1.5">
-      🔒 Ferramenta educacional. Não constitui recomendação de investimento.
+      ⛔ Apenas informativo — Não constitui recomendação de investimento.
     </div>
   </div>
 </div>
@@ -426,7 +426,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
     </div>
     <div class="content" id="content"></div>
-    <div class="disclaimer-bar">⚠️ Ferramenta educacional de organização de dados. Não constitui recomendação de investimento. A decisão é sempre sua.</div>
+    <div class="disclaimer-bar">⛔ Apenas informativo — Não constitui recomendação de investimento. Dados históricos de dividendos fornecidos pela HG Brasil. Cada plataforma usa metodologia própria. Consulte um profissional habilitado pela CVM antes de investir.</div>
     <nav class="bnav">
       <div class="ni active" id="mni-inicio" onclick="setNavM('inicio',this);setMobNav(this)"><span class="ni-ico">🏠</span>Início</div>
       <div class="ni" id="mni-fav" onclick="setNavM('favoritos',this);setMobNav(this)"><span class="ni-ico">⭐</span>Favoritas</div>
@@ -456,20 +456,23 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div style="font-size:17px;font-weight:800;color:var(--txt)">⚠️ Aviso importante</div>
       <button class="modal-close" onclick="fecharDisclaimer()">✕</button>
     </div>
-    <div style="font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:20px">
-      O <strong>Elite Ações</strong> é uma <strong>ferramenta educacional de organização de dados</strong> da B3.<br><br>
-      Nosso objetivo é <strong>simplificar a análise</strong> de preço teto baseado em dividendos.<br><br>
-      <strong>Importante:</strong>
-      <ul style="margin:10px 0 10px 18px;display:flex;flex-direction:column;gap:6px">
-        <li>Não somos consultores de investimentos</li>
-        <li>Os dados são organizados com fins educacionais</li>
-        <li>Não fazemos recomendações de compra ou venda</li>
-        <li>A decisão final é sempre e exclusivamente sua</li>
-        <li>Consulte um profissional habilitado antes de investir</li>
+    <div style="font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:16px">
+      O <strong>Elite Ações</strong> é uma <strong>ferramenta informativa de organização de dados públicos</strong> da B3 e CVM.<br><br>
+      <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:12px;margin-bottom:12px">
+        <strong style="color:var(--red)">⛔ NÃO É RECOMENDAÇÃO DE INVESTIMENTO</strong><br>
+        <span style="font-size:12px">Nenhuma informação exibida nesta plataforma deve ser interpretada como sugestão, indicação ou recomendação de compra ou venda de ativos.</span>
+      </div>
+      <ul style="margin:0 0 10px 18px;display:flex;flex-direction:column;gap:6px;font-size:13px">
+        <li>Somos uma ferramenta de <strong>organização de dados históricos</strong></li>
+        <li>Os dados de dividendos são baseados em <strong>pagamentos passados</strong> e não garantem rendimentos futuros</li>
+        <li>O preço teto é calculado pelo <strong>Método Bazin</strong> — uma metodologia entre várias existentes</li>
+        <li>Os dados podem <strong>divergir de outras plataformas</strong> por diferenças metodológicas</li>
+        <li>A decisão de investir é <strong>exclusivamente sua</strong></li>
+        <li><strong>Consulte um profissional</strong> habilitado pela CVM antes de investir</li>
       </ul>
     </div>
-    <button class="btn-main" onclick="fecharDisclaimer()">Entendi, quero continuar</button>
-    <div style="text-align:center;font-size:11px;color:var(--txt3);margin-top:10px">CVM — Instrução 592/2017 · Dados públicos da B3</div>
+    <button class="btn-main" onclick="fecharDisclaimer()">Li e entendi — quero continuar</button>
+    <div style="text-align:center;font-size:10px;color:var(--txt4);margin-top:10px;line-height:1.5">Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.<br>Dados fornecidos por HG Brasil · Metodologia: Bazin</div>
   </div>
 </div>
 
@@ -805,7 +808,7 @@ window.openDet=function(codigo){
         +'</div>'
 
         // Aviso
-        +'<div style="font-size:10px;color:var(--txt4);text-align:center;line-height:1.5;padding:0 4px">⚠️ Calculado com base em dividendos pagos nos últimos 12 meses. Não é recomendação de compra — análise de dados históricos.</div>'
+        +'<div style="font-size:10px;color:var(--txt4);text-align:center;line-height:1.6;padding:4px 8px;margin-top:4px;background:rgba(239,68,68,0.05);border-radius:6px">⛔ Não é recomendação de compra. Baseado em dividendos históricos pagos nos últimos 12 meses. Rentabilidade passada não garante resultados futuros.</div>'
 
       +'</div>'
     :'')
@@ -824,7 +827,7 @@ window.openDet=function(codigo){
     // ── AÇÕES ────────────────────────────────────────
     +'<button class="btn-main" id="btn-fav-'+a.codigo+'" data-cod="'+a.codigo+'" onclick="window.toggleFav(this.dataset.cod)">'+(FAVORITOS.has(a.codigo)?'⭐ Remover dos favoritos':'☆ Adicionar aos favoritos')+'</button>'
     +'<button class="btn-ghost" onclick="closeModal(&quot;modal-detalhe&quot;)">Fechar</button>'
-    +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center;line-height:1.6">⚠️ Dados fornecidos pela HG Brasil. Cada plataforma utiliza metodologia própria de cálculo e pode divergir. Nenhuma reflete 100% os dados oficiais da B3/CVM. Não constitui recomendação de investimento.</div>';
+    +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center;line-height:1.6;padding:8px;background:rgba(245,158,11,0.05);border-radius:8px">📊 Dados: HG Brasil · Metodologia: Bazin · Cada plataforma pode divergir — nenhuma reflete 100% os dados oficiais da B3/CVM.<br><strong style="color:var(--red)">⛔ Não constitui recomendação de investimento.</strong></div>';
 
   openModal('modal-detalhe');
 };
