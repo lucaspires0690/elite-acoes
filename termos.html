@@ -68,11 +68,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(6,7,13,.94);backdrop-filter
 .alert.warn{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2);}
 
 /* CONTATO */
-.contact-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.contact-info h3{font-family:var(--font-title);font-size:18px;margin-bottom:6px;}
-.contact-info p{font-size:14px;color:var(--text2);}
-.btn-contact{background:var(--teal);color:#000;font-weight:700;font-size:14px;padding:11px 22px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:opacity .2s;}
-.btn-contact:hover{opacity:.88;text-decoration:none;}
+
 
 /* FOOTER */
 footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
@@ -131,7 +127,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('termos')">📋 Termos de Uso</button>
     <button class="tab-btn" onclick="showTab('privacidade')">🔒 Privacidade (LGPD)</button>
-    <button class="tab-btn" onclick="showTab('contato')">✉️ Contato</button>
   </div>
 
   <!-- TERMOS DE USO -->
@@ -280,42 +275,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
 
   </div>
 
-  <!-- CONTATO -->
-  <div class="tab-content" id="tab-contato">
 
-    <div class="doc-section">
-      <h2>Entre em contato</h2>
-      <p>Dúvidas sobre termos, privacidade, sua assinatura ou qualquer outro assunto — nossa equipe responde em até 2 dias úteis.</p>
-    </div>
-
-    <div class="contact-card" style="margin-bottom:20px">
-      <div class="contact-info">
-        <h3>📧 Suporte por Email</h3>
-        <p>Para dúvidas gerais, problemas técnicos e sugestões.</p>
-        <p style="margin-top:8px;font-size:13px;color:var(--text3)">Tempo de resposta: até 2 dias úteis</p>
-      </div>
-      <a href="mailto:contato@eliteacoes.com" class="btn-contact">contato@eliteacoes.com</a>
-    </div>
-
-    <div class="contact-card" style="margin-bottom:20px">
-      <div class="contact-info">
-        <h3>💳 Cancelamento e Pagamento</h3>
-        <p>Para cancelar a assinatura ou resolver questões de cobrança, acesse diretamente a Hotmart.</p>
-        <p style="margin-top:8px;font-size:13px;color:var(--text3)">O cancelamento é imediato e sem burocracia</p>
-      </div>
-      <a href="https://app.hotmart.com" target="_blank" class="btn-contact">Acessar Hotmart</a>
-    </div>
-
-    <div class="contact-card">
-      <div class="contact-info">
-        <h3>⚖️ Solicitações LGPD</h3>
-        <p>Para exercer seus direitos de titular de dados (acesso, exclusão, portabilidade).</p>
-        <p style="margin-top:8px;font-size:13px;color:var(--text3)">Respondemos em até 15 dias úteis conforme a lei</p>
-      </div>
-      <a href="mailto:contato@eliteacoes.com?subject=Solicitação LGPD" class="btn-contact">Enviar solicitação</a>
-    </div>
-
-  </div>
 
   <div class="divider"></div>
 
