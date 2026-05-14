@@ -150,6 +150,32 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
         <div class="stat-card"><div class="stat-label">Em Trial</div><div class="stat-value yellow" id="s-trial">—</div></div>
         <div class="stat-card"><div class="stat-label">Afiliados</div><div class="stat-value" style="color:#a78bfa" id="s-afiliados">—</div><div class="stat-sub">ativos</div></div>
         <div class="stat-card" id="card-vencimento"><div class="stat-label">HG Brasil vence em</div><div class="stat-value" id="s-vencimento" style="font-size:16px;padding-top:8px">—</div></div>
+        <div class="stat-card" id="card-status-api"><div class="stat-label">Status API</div><div class="stat-value" id="s-status-api" style="font-size:14px;padding-top:8px">—</div></div>
+        <div class="stat-card"><div class="stat-label">Próxima atualização</div><div class="stat-value" id="s-proxima" style="font-size:14px;padding-top:8px">—</div><div class="stat-sub">a cada 15 min (10h-18h)</div></div>
+        <div class="stat-card"><div class="stat-label">Req. usadas hoje</div><div class="stat-value" id="s-req-hoje" style="font-size:20px;padding-top:6px">—</div><div class="stat-sub">limite: 10.000/dia</div></div>
+      </div>
+      <!-- Barra de progresso de requisições -->
+      <div id="req-progress-wrap" style="display:none;margin-bottom:16px;background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px 18px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px;color:var(--txt2)">
+          <span>Requisições HG Brasil hoje</span>
+          <span id="req-progress-txt">— / 10.000</span>
+        </div>
+        <div style="height:6px;background:var(--surf2);border-radius:6px;overflow:hidden">
+          <div id="req-progress-bar" style="height:100%;border-radius:6px;transition:width .5s ease;width:0%"></div>
+        </div>
+      </div>
+      <!-- Log de atualizações recentes -->
+      <div style="background:var(--surf);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:13px;font-weight:700;color:var(--txt2)">⚡ Atualizações recentes</span>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span id="live-dot" style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;animation:pulse 2s infinite"></span>
+            <span style="font-size:11px;color:var(--txt3)">Ao vivo</span>
+          </div>
+        </div>
+        <div id="log-live" style="max-height:280px;overflow-y:auto">
+          <div style="padding:24px;text-align:center;color:var(--txt3);font-size:13px">Carregando...</div>
+        </div>
       </div>
       <button class="btn btn-ghost" onclick="carregarDashboard()">🔄 Atualizar</button>
     </div>
@@ -336,6 +362,15 @@ function entrarAdmin(user) {
   showTab(localStorage.getItem('ea_admin_tab') || 'dashboard');
   carregarDashboard();
   carregarConfig();
+  // Listener ao vivo — atualiza dashboard automaticamente quando Firestore muda
+  db.collection('logs_atualizacao').orderBy('data_execucao','desc').limit(1).onSnapshot(function(snap) {
+    carregarDashboard();
+  });
+  // Atualizar "próxima atualização" a cada minuto
+  setInterval(function() {
+    var el = document.getElementById('s-proxima');
+    if (el) el.textContent = proximaAtualizacao();
+  }, 60000);
 }
 
 function sair() {
@@ -421,14 +456,54 @@ function salvarConfig() {
     .catch(function(e) { log.innerHTML='<span class="erro">❌ Erro: '+e.message+'</span>'; });
 }
 
+function proximaAtualizacao() {
+  var agora = new Date();
+  var h = agora.getHours(), m = agora.getMinutes(), ds = agora.getDay();
+  if (ds === 0 || ds === 6) return 'Fora de pregão (fim de semana)';
+  if (h < 10) return 'Hoje às 10:00';
+  if (h >= 18) return 'Amanhã às 10:00';
+  var minAtual = h * 60 + m;
+  var slots = [0,15,30,45];
+  for (var i = 0; i < 60; i++) {
+    var prox = minAtual + i;
+    if (slots.indexOf(prox % 60) !== -1 && i > 0) {
+      var ph = Math.floor(prox / 60), pm = prox % 60;
+      return 'às ' + String(ph).padStart(2,'0') + ':' + String(pm).padStart(2,'0') + ' (' + i + 'min)';
+    }
+  }
+  return '—';
+}
+
 function carregarDashboard() {
+  // Última atualização e total de ações com snapshot ao vivo
   db.collection('acoes').get().then(function(s) {
     document.getElementById('s-total').textContent = s.size;
     var a = s.docs[0] && s.docs[0].data();
     if (a && a.ultima_atualizacao) {
       var d = new Date(a.ultima_atualizacao);
-      document.getElementById('s-data').textContent = d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      var agora = new Date();
+      var diffMin = Math.round((agora - d) / 60000);
+      var diffTxt = diffMin < 1 ? 'agora mesmo' : diffMin < 60 ? diffMin + ' min atrás' : Math.round(diffMin/60) + 'h atrás';
+      document.getElementById('s-data').textContent = d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) + ' (' + diffTxt + ')';
+      // Status API
+      var statusEl = document.getElementById('s-status-api');
+      var cardApi = document.getElementById('card-status-api');
+      if (diffMin <= 20) {
+        statusEl.textContent = '🟢 Operando';
+        statusEl.style.color = '#10b981';
+        cardApi.style.borderColor = 'rgba(16,185,129,.3)';
+      } else if (diffMin <= 60) {
+        statusEl.textContent = '🟡 Atrasado ' + diffMin + 'min';
+        statusEl.style.color = '#f59e0b';
+        cardApi.style.borderColor = 'rgba(245,158,11,.3)';
+      } else {
+        statusEl.textContent = '🔴 Sem atualizar';
+        statusEl.style.color = '#ef4444';
+        cardApi.style.borderColor = 'rgba(239,68,68,.3)';
+      }
     }
+    // Próxima atualização
+    document.getElementById('s-proxima').textContent = proximaAtualizacao();
   });
   db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
     if (snap.exists) document.getElementById('s-plano').textContent = snap.data().plano_pago ? '🟢 HG Pago' : '🟡 HG Grátis';
@@ -441,6 +516,48 @@ function carregarDashboard() {
   });
   db.collection('afiliados').get().then(function(snap) {
     document.getElementById('s-afiliados').textContent = snap.size;
+  });
+
+  // Log de atualizações recentes ao vivo
+  db.collection('logs_atualizacao').orderBy('data_execucao','desc').limit(8).get().then(function(snap) {
+    var logEl = document.getElementById('log-live');
+    if (!snap.size) { logEl.innerHTML = '<div style="padding:20px;text-align:center;color:var(--txt3);font-size:13px">Nenhum log encontrado</div>'; return; }
+    var totalReqHoje = 0;
+    var hoje = new Date().toISOString().slice(0,10);
+    logEl.innerHTML = snap.docs.map(function(d) {
+      var l = d.data();
+      var dt = new Date(l.data_execucao);
+      var agora = new Date();
+      var diffMin = Math.round((agora - dt) / 60000);
+      var diffTxt = diffMin < 1 ? 'agora' : diffMin < 60 ? diffMin+'min atrás' : dt.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      var ok = l.sucessos || 0;
+      var err = l.erros || 0;
+      var total = l.total_acoes || l.total || 0;
+      var pct = total > 0 ? Math.round(ok/total*100) : 0;
+      var cor = pct >= 90 ? '#10b981' : pct >= 70 ? '#f59e0b' : '#ef4444';
+      // Contar req do dia
+      if (l.data_execucao && l.data_execucao.startsWith(hoje)) totalReqHoje += total;
+      return '<div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border)">'        +'<div style="width:8px;height:8px;border-radius:50%;background:'+cor+';flex-shrink:0"></div>'        +'<div style="flex:1;min-width:0">'          +'<div style="font-size:12px;font-weight:600;color:var(--txt)">'+ok+'/'+total+' ativos atualizados <span style="color:'+cor+'">'+pct+'%</span></div>'          +'<div style="font-size:11px;color:var(--txt3)">'+diffTxt+' · '+( l.duracao_segundos||'—')+'s · '+(err>0?'<span style="color:#ef4444">'+err+' erros</span>':'sem erros')+'</div>'        +'</div>'        +'<div style="font-size:10px;color:var(--txt3);flex-shrink:0">'+dt.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</div>'      +'</div>';
+    }).join('');
+  });
+
+  // Quota diária — leitura direta e precisa
+  var hoje = new Date().toISOString().slice(0,10);
+  db.collection('quota_diaria').doc(hoje).onSnapshot(function(snap) {
+    var req = snap.exists ? (snap.data().requisicoes || 0) : 0;
+    var limite = snap.exists ? (snap.data().limite || 10000) : 10000;
+    var pct = Math.min(100, Math.round(req/limite*100));
+    document.getElementById('s-req-hoje').textContent = req.toLocaleString('pt-BR');
+    var wrap = document.getElementById('req-progress-wrap');
+    var bar = document.getElementById('req-progress-bar');
+    var txt = document.getElementById('req-progress-txt');
+    wrap.style.display = 'block';
+    bar.style.width = pct + '%';
+    bar.style.background = pct < 70 ? '#10b981' : pct < 90 ? '#f59e0b' : '#ef4444';
+    txt.textContent = req.toLocaleString('pt-BR') + ' / ' + limite.toLocaleString('pt-BR') + ' (' + pct + '%)';
+    // Alerta se perto do limite
+    if (pct >= 90) showNotif('⚠️ Quota HG Brasil em ' + pct + '%!', 'warning');
+  });
   });
   db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
     if (!snap.exists) return;
