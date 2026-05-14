@@ -210,6 +210,60 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .favs-title{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .favs-title::before{content:'';width:3px;height:14px;background:var(--green);border-radius:2px;display:inline-block}
 .favs-grid{display:flex;flex-direction:column;gap:6px}
+
+/* ── Nova Home ── */
+.home-section{padding:0 0 20px}
+.home-greeting{padding:16px 16px 8px;font-size:20px;font-weight:800;color:var(--txt)}
+.home-greeting span{color:var(--green)}
+.home-mercado-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-left:8px;vertical-align:middle}
+.home-mercado-badge.aberto{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+.home-mercado-badge.fechado{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+
+/* Cards de resumo */
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 16px 16px}
+.hstat{background:var(--surf);border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center}
+.hstat-val{font-size:22px;font-weight:800;color:var(--green)}
+.hstat-lbl{font-size:10px;color:var(--txt3);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
+/* Seção de oportunidades do dia */
+.home-sec-title{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;padding:0 16px 8px;display:flex;align-items:center;justify-content:space-between}
+.home-sec-title a{font-size:11px;color:var(--green);text-decoration:none;font-weight:600;text-transform:none;letter-spacing:0}
+
+/* Cards horizontais de oportunidade */
+.home-horiz{display:flex;gap:10px;padding:0 16px 16px;overflow-x:auto;scrollbar-width:none}
+.home-horiz::-webkit-scrollbar{display:none}
+.horiz-card{flex-shrink:0;width:160px;background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.horiz-card:active{transform:scale(.97)}
+.horiz-card.muito-barata{border-color:rgba(0,212,168,.3);background:linear-gradient(135deg,var(--surf),rgba(0,212,168,.04))}
+.horiz-card.barata{border-color:rgba(16,185,129,.25);background:linear-gradient(135deg,var(--surf),rgba(16,185,129,.03))}
+.horiz-card.cara{border-color:rgba(239,68,68,.2)}
+.hcard-ticker{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:2px}
+.hcard-nome{font-size:10px;color:var(--txt3);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hcard-cotacao{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:4px}
+.hcard-dy{font-size:11px;font-weight:600}
+.hcard-status{position:absolute;top:10px;right:10px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px}
+.hcard-status.muito-barata{background:rgba(0,212,168,.15);color:var(--green)}
+.hcard-status.barata{background:rgba(16,185,129,.15);color:#10b981}
+.hcard-status.cara{background:rgba(239,68,68,.1);color:#ef4444}
+
+/* Favoritos na home */
+.home-fav-empty{padding:20px 16px;background:var(--surf);border:1px dashed var(--border2);border-radius:16px;margin:0 16px;text-align:center;color:var(--txt3);font-size:13px;line-height:1.6}
+
+/* Variação do dia nos favoritos */
+.fav-home-card{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.fav-home-card:active{background:var(--surf2)}
+.fav-home-card:last-child{border-bottom:none}
+.fhc-info{flex:1;min-width:0}
+.fhc-ticker{font-size:14px;font-weight:700;color:var(--txt)}
+.fhc-nome{font-size:11px;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fhc-right{text-align:right;flex-shrink:0}
+.fhc-cotacao{font-size:14px;font-weight:700;color:var(--txt)}
+.fhc-var{font-size:11px;font-weight:600;margin-top:2px}
+.fhc-var.pos{color:var(--green)}
+.fhc-var.neg{color:var(--red)}
+.fhc-var.neu{color:var(--txt3)}
+.home-card-wrap{background:var(--surf);border:1px solid var(--border);border-radius:16px;margin:0 16px 16px;overflow:hidden}
+
 .setor-group{margin-bottom:16px;animation:fadeIn .4s ease both}
 .setor-title{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--border)}
 .home-hint{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--txt3)}
@@ -588,7 +642,7 @@ const db=getFirestore(fbApp);
 const gp=new GoogleAuthProvider();
 setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
-let ACOES=[],taxa=6,taxaFii=10,filtro='favoritos',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false;
+let ACOES=[],taxa=6,taxaFii=10,filtro='inicio',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false;
 
 window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console.error(e);}};
 window.fazerLogout=async()=>{await signOut(auth);};
@@ -807,6 +861,104 @@ window.renderContent=function renderContent(){
   }
 
   content.innerHTML='<div class="favs-section"><div class="favs-title">'+(labels[filtro]||filtro)+' ('+lista.length+')</div><div class="favs-grid">'+lista.slice(0,100).map(a=>renderCard(a)).join('')+'</div></div>';
+}
+
+function renderHome(content){
+  const agora = new Date();
+  const hora = agora.getHours();
+  const diaSemana = agora.getDay();
+  const mercadoAberto = diaSemana >= 1 && diaSemana <= 5 && hora >= 10 && hora < 18;
+  const saudacao = hora < 12 ? 'Bom dia' : hora < 18 ? 'Boa tarde' : 'Boa noite';
+  const nomeUser = USER?.displayName?.split(' ')[0] || '';
+
+  // Stats
+  const totalAcoes = ACOES.filter(a=>!isFii(a.codigo)).length;
+  const totalFiis  = ACOES.filter(a=>isFii(a.codigo)).length;
+  const oportunidades = ACOES.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';}).length;
+
+  // Top 5 oportunidades do dia
+  const topOp = ACOES
+    .filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})
+    .sort((a,b)=>{
+      const ca=calc(a,calcTaxa(a)), cb=calc(b,calcTaxa(b));
+      const pa = ca.status==='muito-barata'?2:1;
+      const pb = cb.status==='muito-barata'?2:1;
+      return pb-pa || parseFloat(cb.dy)-parseFloat(ca.dy);
+    }).slice(0,8);
+
+  // Top 5 FIIs oportunidade
+  const topFiis = ACOES
+    .filter(a=>isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
+    .sort((a,b)=>parseFloat(calc(b,calcTaxa(b)).dy)-parseFloat(calc(a,calcTaxa(a)).dy))
+    .slice(0,8);
+
+  // Favoritos
+  const favs = ACOES.filter(a=>FAVORITOS.has(a.codigo));
+
+  function horizCard(a){
+    const c=calc(a,calcTaxa(a));
+    const dyN=parseFloat(c.dy);
+    const dyColor=dyN>=8?'var(--green)':dyN>=6?'var(--pos)':'var(--txt3)';
+    const varDia=a.variacao_dia!=null?a.variacao_dia:null;
+    return '<div class="horiz-card '+c.status+'" onclick="window.openDet(''+a.codigo+'')">'
+      +'<span class="hcard-status '+c.status+'">'+(c.status==='muito-barata'?'🔥 Barata':c.status==='barata'?'✅ Boa':'📈 Cara')+'</span>'
+      +logoHTML(a.codigo,'sm')
+      +'<div class="hcard-ticker">'+a.codigo+'</div>'
+      +'<div class="hcard-nome">'+(a.nome||'')+'</div>'
+      +'<div class="hcard-cotacao">R$ '+a.cotacao.toFixed(2)+(varDia!=null?'<span style="font-size:10px;margin-left:4px;color:'+(varDia>=0?'var(--green)':'var(--red)')+';">'+(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%</span>':'')+'</div>'
+      +'<div class="hcard-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div>'
+      +'</div>';
+  }
+
+  function favCard(a){
+    const c=calc(a,calcTaxa(a));
+    const varDia=a.variacao_dia!=null?a.variacao_dia:null;
+    const varClass=varDia==null?'neu':varDia>0?'pos':'neg';
+    const varTxt=varDia==null?'—':(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%';
+    return '<div class="fav-home-card" onclick="window.openDet(''+a.codigo+'')">'
+      +logoHTML(a.codigo,'sm')
+      +'<div class="fhc-info"><div class="fhc-ticker">'+a.codigo+' <span style="font-size:10px;color:var(--txt3)">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="fhc-nome">'+(a.nome||'')+'</div></div>'
+      +'<div class="fhc-right"><div class="fhc-cotacao">R$ '+a.cotacao.toFixed(2)+'</div><div class="fhc-var '+varClass+'">'+varTxt+'</div></div>'
+      +'</div>';
+  }
+
+  let html = '<div class="home-section">';
+
+  // Saudação
+  html += '<div class="home-greeting">'+saudacao+(nomeUser?', <span>'+nomeUser+'</span>':'')+'!'
+    +'<span class="home-mercado-badge '+(mercadoAberto?'aberto':'fechado')+'">'+(mercadoAberto?'● Mercado aberto':'● Mercado fechado')+'</span>'
+    +'</div>';
+
+  // Stats
+  html += '<div class="home-stats">'
+    +'<div class="hstat"><div class="hstat-val">'+totalAcoes+'</div><div class="hstat-lbl">Ações</div></div>'
+    +'<div class="hstat"><div class="hstat-val">'+totalFiis+'</div><div class="hstat-lbl">FIIs</div></div>'
+    +'<div class="hstat"><div class="hstat-val green" style="color:var(--green)">'+oportunidades+'</div><div class="hstat-lbl">Oportunidades</div></div>'
+    +'</div>';
+
+  // Favoritos
+  html += '<div class="home-sec-title">⭐ Meus Favoritos <a onclick="setNavM('favoritos',null)">Ver todos</a></div>';
+  if(favs.length){
+    html += '<div class="home-card-wrap">'+favs.slice(0,5).map(favCard).join('')+'</div>';
+  } else {
+    html += '<div class="home-fav-empty">Você ainda não tem favoritos.<br>Busque uma ação e toque em ☆ para adicionar.</div>';
+  }
+  html += '<div style="height:12px"></div>';
+
+  // Top oportunidades ações
+  if(topOp.length){
+    html += '<div class="home-sec-title">🔥 Ações em Oportunidade <a onclick="setNavM('baratas',null)">Ver todas</a></div>';
+    html += '<div class="home-horiz">'+topOp.map(horizCard).join('')+'</div>';
+  }
+
+  // Top FIIs
+  if(topFiis.length){
+    html += '<div class="home-sec-title">🏗️ FIIs em Oportunidade <a onclick="setNavM('baratas',null)">Ver todos</a></div>';
+    html += '<div class="home-horiz">'+topFiis.map(horizCard).join('')+'</div>';
+  }
+
+  html += '</div>';
+  content.innerHTML = html;
 }
 
 function renderCard(a){
