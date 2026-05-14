@@ -496,6 +496,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .search-big-input::placeholder{color:var(--txt3)}
 .topbar-right{display:flex;align-items:center;gap:6px;margin-left:auto}
 .tb-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s}
+#btn-voltar{display:none;gap:6px;padding:0 12px;width:auto;font-size:13px;font-weight:600;font-family:var(--fb)}
+#btn-voltar.show{display:flex}
 .tb-btn:hover{border-color:var(--green);color:var(--green)}
 .mob-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--pos));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#0a0e1a;cursor:pointer;overflow:hidden;flex-shrink:0}
 .mob-avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover}
@@ -848,6 +850,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         </svg>
         <span>Elite <span style="color:var(--green)">Ações</span></span>
       </div>
+      <button id="btn-voltar" class="tb-btn" onclick="voltarInicio()">← Voltar</button>
       <div class="search-big">
         <span class="search-big-ico">🔍</span>
         <input class="search-big-input" id="main-search" type="text" placeholder="Buscar ação ou FII... ex: PETR4, Petrobras" oninput="onBusca(this.value)">
@@ -1218,8 +1221,28 @@ window.renderContent=function renderContent(){
   if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
   if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
 
-  if(filtro==='inicio'||filtro==='favoritos'){
+  if(filtro==='inicio'){
     renderHome(content);
+    return;
+  }
+
+  if(filtro==='favoritos'){
+    const favLista=ACOES.filter(a=>FAVORITOS.has(a.codigo));
+    if(!favLista.length){
+      content.innerHTML='<div class="favs-section">'
+        +'<div class="favs-title">⭐ Favoritas</div>'
+        +'<div class="fav-empty">'
+        +'<div style="font-size:40px;margin-bottom:12px">⭐</div>'
+        +'<div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:8px">Nenhum favorito ainda</div>'
+        +'<div style="font-size:13px;color:var(--txt3);line-height:1.6;margin-bottom:16px">Adicione ações e FIIs aos seus favoritos para acompanhar de perto.</div>'
+        +'<button onclick="abrirBuscaMobile()" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb)">🔍 Buscar ações</button>'
+        +'</div></div>';
+    } else {
+      content.innerHTML='<div class="favs-section">'
+        +'<div class="favs-title">⭐ Favoritas ('+favLista.length+')</div>'
+        +'<div class="favs-grid">'+favLista.map(a=>renderCard(a)).join('')+'</div>'
+        +'</div>';
+    }
     return;
   }
 
@@ -1630,11 +1653,28 @@ window.togglePerfil=function(){
   if(arrow)arrow.style.transform=isOpen?'':'rotate(180deg)';
 };
 
+window.voltarInicio=function(){
+  filtro='inicio'; tipo='todos'; busca='';
+  document.getElementById('main-search').value='';
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
+  const navInicio=document.getElementById('nav-inicio');
+  if(navInicio)navInicio.classList.add('active');
+  document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
+  const mniInicio=document.getElementById('mni-inicio');
+  if(mniInicio)mniInicio.classList.add('active');
+  document.getElementById('btn-voltar').classList.remove('show');
+  renderContent();
+};
+
 window.setNav=(f,btn)=>{
   filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
+  btn.classList.add('active');busca='';document.getElementById('main-search').value='';
+  // Mostrar botão voltar se não estiver no início
+  const bv=document.getElementById('btn-voltar');
+  if(bv) bv.classList.toggle('show', f!=='inicio');
+  renderContent();
 };
 window.setNavM=(f,btn)=>{
   filtro=f;
@@ -1646,7 +1686,10 @@ window.setNavM=(f,btn)=>{
   const niMap={'inicio':'mni-inicio','favoritos':'mni-fav','baratas':'mni-inicio','dy':'mni-inicio','acoes':'mni-inicio','fiis':'mni-inicio'};
   const niEl=document.getElementById(niMap[f]||'mni-inicio');
   if(niEl) niEl.classList.add('active');
-  busca='';document.getElementById('main-search').value='';renderContent();
+  busca='';document.getElementById('main-search').value='';
+  const bv2=document.getElementById('btn-voltar');
+  if(bv2) bv2.classList.toggle('show', f!=='inicio');
+  renderContent();
 };
 window.setMobNav=btn=>{document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
 
