@@ -149,6 +149,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
         <div class="stat-card"><div class="stat-label">Pagantes</div><div class="stat-value green" id="s-pagantes">—</div></div>
         <div class="stat-card"><div class="stat-label">Em Trial</div><div class="stat-value yellow" id="s-trial">—</div></div>
         <div class="stat-card"><div class="stat-label">Afiliados</div><div class="stat-value" style="color:#a78bfa" id="s-afiliados">—</div><div class="stat-sub">ativos</div></div>
+        <div class="stat-card" id="card-vencimento"><div class="stat-label">HG Brasil vence em</div><div class="stat-value" id="s-vencimento" style="font-size:16px;padding-top:8px">—</div></div>
       </div>
       <button class="btn btn-ghost" onclick="carregarDashboard()">🔄 Atualizar</button>
     </div>
@@ -172,6 +173,15 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
           <div id="plano-aviso" style="display:none;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--yellow)">
             ⚠️ Ao ativar o plano pago da HG Brasil, popule o banco novamente na aba <strong>Operações</strong> para dados precisos.
           </div>
+          <div class="field" style="margin-top:16px">
+            <label>📅 Data de recarga (último pagamento)</label>
+            <input type="date" id="input-data-recarga">
+          </div>
+          <div class="field">
+            <label>⏰ Data de vencimento</label>
+            <input type="date" id="input-data-vencimento">
+          </div>
+          <div id="alerta-vencimento" style="display:none;border-radius:8px;padding:12px 16px;font-size:13px;font-weight:600;margin-top:8px"></div>
           <div class="btn-row">
             <button class="btn btn-green" onclick="salvarConfig()">💾 Salvar configuração</button>
           </div>
@@ -353,8 +363,40 @@ function carregarConfig() {
       var d = snap.data();
       document.getElementById('input-token').value    = d.token || '';
       document.getElementById('toggle-plano').checked = d.plano_pago || false;
+      if (d.data_recarga)     document.getElementById('input-data-recarga').value     = d.data_recarga;
+      if (d.data_vencimento)  document.getElementById('input-data-vencimento').value  = d.data_vencimento;
+      verificarVencimento(d.data_vencimento);
     }
   });
+}
+
+function verificarVencimento(dataVenc) {
+  if (!dataVenc) return;
+  var alerta = document.getElementById('alerta-vencimento');
+  var hoje   = new Date(); hoje.setHours(0,0,0,0);
+  var venc   = new Date(dataVenc + 'T00:00:00');
+  var dias   = Math.ceil((venc - hoje) / 864e5);
+  if (dias <= 0) {
+    alerta.style.display = 'block';
+    alerta.style.background = 'rgba(239,68,68,.15)';
+    alerta.style.border = '1px solid rgba(239,68,68,.4)';
+    alerta.style.color = '#ef4444';
+    alerta.innerHTML = '🚨 TOKEN VENCIDO há ' + Math.abs(dias) + ' dia(s)! Renove agora para não perder as atualizações.';
+    showNotif('🚨 Token HG Brasil VENCIDO!', 'error');
+  } else if (dias <= 5) {
+    alerta.style.display = 'block';
+    alerta.style.background = 'rgba(245,158,11,.15)';
+    alerta.style.border = '1px solid rgba(245,158,11,.4)';
+    alerta.style.color = '#f59e0b';
+    alerta.innerHTML = '⚠️ Token vence em <strong>' + dias + ' dia(s)</strong>! Renove o pagamento para não interromper as atualizações.';
+    showNotif('⚠️ Token HG Brasil vence em ' + dias + ' dia(s)!', 'warning');
+  } else {
+    alerta.style.display = 'block';
+    alerta.style.background = 'rgba(16,185,129,.1)';
+    alerta.style.border = '1px solid rgba(16,185,129,.3)';
+    alerta.style.color = '#10b981';
+    alerta.innerHTML = '✅ Token ativo — vence em <strong>' + dias + ' dia(s)</strong> (' + venc.toLocaleDateString("pt-BR") + ')';
+  }
 }
 
 function onTogglePlano() {
@@ -367,9 +409,12 @@ function salvarConfig() {
   var log       = document.getElementById('log-config');
   if (!token) { log.innerHTML='<span class="erro">❌ Token não pode ser vazio.</span>'; return; }
   log.innerHTML = '<span class="info">💾 Salvando...</span>';
-  db.collection('configuracoes').doc('hgbrasil').set({ token: token, plano_pago: planoPago, ultima_atualizacao: new Date().toISOString() })
+  var dataRecarga    = document.getElementById('input-data-recarga').value;
+  var dataVencimento = document.getElementById('input-data-vencimento').value;
+  db.collection('configuracoes').doc('hgbrasil').set({ token: token, plano_pago: planoPago, data_recarga: dataRecarga, data_vencimento: dataVencimento, ultima_atualizacao: new Date().toISOString() })
     .then(function() {
       log.innerHTML = '<span class="ok">✅ Configuração salva!\nToken: '+token.slice(0,8)+'...\nPlano pago: '+(planoPago?'ATIVO ✅':'inativo')+'</span>';
+      verificarVencimento(dataVencimento);
       showNotif('✅ Configuração salva!', 'success');
       carregarDashboard();
     })
@@ -396,6 +441,28 @@ function carregarDashboard() {
   });
   db.collection('afiliados').get().then(function(snap) {
     document.getElementById('s-afiliados').textContent = snap.size;
+  });
+  db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
+    if (!snap.exists) return;
+    var dataVenc = snap.data().data_vencimento;
+    if (!dataVenc) return;
+    var hoje = new Date(); hoje.setHours(0,0,0,0);
+    var venc = new Date(dataVenc + 'T00:00:00');
+    var dias = Math.ceil((venc - hoje) / 864e5);
+    var el   = document.getElementById('s-vencimento');
+    var card = document.getElementById('card-vencimento');
+    if (dias <= 0) {
+      el.textContent = 'VENCIDO!';
+      el.style.color = '#ef4444';
+      card.style.border = '1px solid rgba(239,68,68,.4)';
+    } else if (dias <= 5) {
+      el.textContent = dias + ' dia(s) ⚠️';
+      el.style.color = '#f59e0b';
+      card.style.border = '1px solid rgba(245,158,11,.4)';
+    } else {
+      el.textContent = dias + ' dias ✅';
+      el.style.color = '#10b981';
+    }
   });
 }
 
