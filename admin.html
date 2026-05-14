@@ -130,7 +130,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
 
   <div class="tabs">
     <div class="tab active" data-tab="dashboard" onclick="showTab('dashboard')">📊 Dashboard</div>
-    <div class="tab" data-tab="brapi"     onclick="showTab('brapi')">🔑 brapi.dev</div>
+    <div class="tab" data-tab="hgbrasil"     onclick="showTab('hgbrasil')">🔑 HG Brasil</div>
     <div class="tab" data-tab="operacoes" onclick="showTab('operacoes')">⚡ Operações</div>
     <div class="tab" data-tab="usuarios"  onclick="showTab('usuarios')">👥 Usuários</div>
     <div class="tab" data-tab="scheduler" onclick="showTab('scheduler')">⏰ Scheduler</div>
@@ -143,7 +143,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
       <div class="cards-grid">
         <div class="stat-card"><div class="stat-label">Total de Ações</div><div class="stat-value green" id="s-total">—</div><div class="stat-sub">no Firestore</div></div>
         <div class="stat-card"><div class="stat-label">Última Atualização</div><div class="stat-value" style="font-size:14px;padding-top:10px" id="s-data">—</div></div>
-        <div class="stat-card"><div class="stat-label">Plano brapi</div><div class="stat-value" style="font-size:16px;padding-top:8px" id="s-plano">—</div></div>
+        <div class="stat-card"><div class="stat-label">Plano HG Brasil</div><div class="stat-value" style="font-size:16px;padding-top:8px" id="s-plano">—</div></div>
         <div class="stat-card"><div class="stat-label">Usuários</div><div class="stat-value blue" id="s-usuarios">—</div><div class="stat-sub">cadastrados</div></div>
         <div class="stat-card"><div class="stat-label">Pagantes</div><div class="stat-value green" id="s-pagantes">—</div></div>
         <div class="stat-card"><div class="stat-label">Em Trial</div><div class="stat-value yellow" id="s-trial">—</div></div>
@@ -151,24 +151,24 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
       <button class="btn btn-ghost" onclick="carregarDashboard()">🔄 Atualizar</button>
     </div>
 
-    <!-- BRAPI -->
-    <div class="view" id="view-brapi">
+    <!-- HG BRASIL -->
+    <div class="view" id="view-hgbrasil">
       <div class="section-card">
-        <div class="section-header"><div class="section-title">🔑 Configuração da brapi.dev</div></div>
+        <div class="section-header"><div class="section-title">🔑 Configuração da HG Brasil</div></div>
         <div class="section-body">
           <div class="field">
-            <label>Token da brapi.dev</label>
-            <input type="text" id="input-token" placeholder="Cole aqui o token da brapi.dev">
+            <label>Token da HG Brasil</label>
+            <input type="text" id="input-token" placeholder="Cole aqui o token da HG Brasil">
           </div>
           <div class="toggle-row">
             <div class="toggle-info">
               <div class="toggle-label">Plano pago (Startup)</div>
-              <div class="toggle-desc">Ativa dividendos de 1 ano — requer token do plano Startup</div>
+              <div class="toggle-desc">Ativa dividendos de 1 ano — requer token do plano HG Brasil pago</div>
             </div>
             <label class="switch"><input type="checkbox" id="toggle-plano" onchange="onTogglePlano()"><span class="slider"></span></label>
           </div>
           <div id="plano-aviso" style="display:none;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--yellow)">
-            ⚠️ Ao ativar o plano pago, popule o banco novamente na aba <strong>Operações</strong> para dados precisos.
+            ⚠️ Ao ativar o plano pago da HG Brasil, popule o banco novamente na aba <strong>Operações</strong> para dados precisos.
           </div>
           <div class="btn-row">
             <button class="btn btn-green" onclick="salvarConfig()">💾 Salvar configuração</button>
@@ -183,7 +183,7 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
       <div class="section-card">
         <div class="section-header"><div class="section-title">🗄️ Popular banco (carga inicial)</div></div>
         <div class="section-body">
-          <div style="font-size:13px;color:var(--txt3)">Limpa o banco e recarrega todas as ações da brapi. Use ao trocar de plano. Demora ~9 minutos.</div>
+          <div style="font-size:13px;color:var(--txt3)">Limpa o banco e recarrega todas as ações via HG Brasil. Use ao trocar de plano. Demora ~9 minutos.</div>
           <button class="btn btn-blue" id="btn-popular" onclick="popularBanco()">🚀 Popular banco agora</button>
         </div>
       </div>
@@ -218,16 +218,16 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
     <!-- SCHEDULER -->
     <div class="view" id="view-scheduler">
       <div class="section-card">
-        <div class="section-header"><div class="section-title">🟡 Modo gratuito — 1x ao dia às 18h</div></div>
+        <div class="section-header"><div class="section-title">🟡 Modo gratuito HG Brasil — 1x ao dia às 18h</div></div>
         <div class="section-body">
-          <div style="font-size:13px;color:var(--txt3)">Atualiza as ações uma vez por dia. Recomendado para o plano grátis da brapi.</div>
+          <div style="font-size:13px;color:var(--txt3)">Atualiza as ações uma vez por dia. Recomendado para o plano grátis da HG Brasil.</div>
           <button class="btn btn-ghost" onclick="mostrarComando('gratuito')">📋 Ver comando</button>
         </div>
       </div>
       <div class="section-card">
-        <div class="section-header"><div class="section-title">🟢 Modo produção — a cada hora (10h–17h)</div></div>
+        <div class="section-header"><div class="section-title">🟢 Modo produção HG Brasil — a cada hora (10h–17h)</div></div>
         <div class="section-body">
-          <div style="font-size:13px;color:var(--txt3)">Atualiza a cada hora durante o pregão da B3. Requer plano Startup da brapi.</div>
+          <div style="font-size:13px;color:var(--txt3)">Atualiza a cada hora durante o pregão da B3. Requer plano pago da HG Brasil.</div>
           <button class="btn btn-green" onclick="mostrarComando('producao')">📋 Ver comando</button>
         </div>
       </div>
@@ -309,7 +309,7 @@ function showTab(tab) {
 }
 
 function carregarConfig() {
-  db.collection('configuracoes').doc('brapi').get().then(function(snap) {
+  db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
     if (snap.exists) {
       var d = snap.data();
       document.getElementById('input-token').value    = d.token || '';
@@ -328,7 +328,7 @@ function salvarConfig() {
   var log       = document.getElementById('log-config');
   if (!token) { log.innerHTML='<span class="erro">❌ Token não pode ser vazio.</span>'; return; }
   log.innerHTML = '<span class="info">💾 Salvando...</span>';
-  db.collection('configuracoes').doc('brapi').set({ token: token, plano_pago: planoPago, ultima_atualizacao: new Date().toISOString() })
+  db.collection('configuracoes').doc('hgbrasil').set({ token: token, plano_pago: planoPago, ultima_atualizacao: new Date().toISOString() })
     .then(function() {
       log.innerHTML = '<span class="ok">✅ Configuração salva!\nToken: '+token.slice(0,8)+'...\nPlano pago: '+(planoPago?'ATIVO ✅':'inativo')+'</span>';
       showNotif('✅ Configuração salva!', 'success');
@@ -346,8 +346,8 @@ function carregarDashboard() {
       document.getElementById('s-data').textContent = d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
     }
   });
-  db.collection('configuracoes').doc('brapi').get().then(function(snap) {
-    if (snap.exists) document.getElementById('s-plano').textContent = snap.data().plano_pago ? '🟢 Startup' : '🟡 Grátis';
+  db.collection('configuracoes').doc('hgbrasil').get().then(function(snap) {
+    if (snap.exists) document.getElementById('s-plano').textContent = snap.data().plano_pago ? '🟢 HG Pago' : '🟡 HG Grátis';
   });
   db.collection('usuarios').get().then(function(snap) {
     var u = snap.docs.map(function(d){return d.data();});
@@ -395,7 +395,7 @@ function atualizarBanco() {
 
 function mostrarComando(modo) {
   var cmds={gratuito:'gcloud scheduler jobs update http atualizar-acoes-diario --schedule "0 18 * * 1-5" --time-zone "America/Sao_Paulo" --location southamerica-east1',producao:'gcloud scheduler jobs update http atualizar-acoes-diario --schedule "0 10-17 * * 1-5" --time-zone "America/Sao_Paulo" --location southamerica-east1'};
-  var titulos={gratuito:'🟡 Modo gratuito — 1x ao dia às 18h',producao:'🟢 Modo produção — a cada hora (10h–17h)'};
+  var titulos={gratuito:'🟡 Modo gratuito HG Brasil — 1x ao dia às 18h',producao:'🟢 Modo produção HG Brasil — a cada hora (10h–17h)'};
   document.getElementById('modal-cmd-titulo').textContent=titulos[modo];
   document.getElementById('modal-cmd-code').textContent=cmds[modo];
   document.getElementById('modal-cmd').classList.add('show');
