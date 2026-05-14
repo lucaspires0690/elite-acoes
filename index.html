@@ -1119,7 +1119,7 @@ window.onBuscaMobile = function(val) {
     const t = calcTaxa(a), c = calc(a, t);
     const st = c.status;
     const cor = st==='muito-barata'?'var(--green)':st==='barata'?'var(--pos)':st==='cara'?'var(--red)':'var(--txt3)';
-    return '<div style="display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border);cursor:pointer" onclick="fecharBuscaMobile();window.openDet(''+a.codigo+'')">'
+    return '<div style="display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border);cursor:pointer" onclick="fecharBuscaMobile();window.openDet(&quot;'+a.codigo+'&quot;)">'
       + logoHTML(a.codigo, 'sm')
       + '<div style="flex:1">'
         + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
