@@ -685,10 +685,9 @@ function renderCard(a){
       +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
       +'<div class="ac-nome">'+(a.nome||'')+'</div>'
       +'<div class="ac-metrics">'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">Preço</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">Potencial</div><div class="ac-metric-val '+potClass+'">'+pot+'</div></div>'
-        +'<div class="ac-metric"><div class="ac-metric-lbl">DY</div><div class="ac-metric-val '+(dyN>=6?'green':'')+'">'+c.dy+'%</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
+        +'<div class="ac-metric"><div class="ac-metric-lbl">DY 12m</div><div class="ac-metric-val '+(dyN>=6?'green':'')+'">'+c.dy+'%</div></div>'
       +'</div>'
     +'</div>'
     +'<div class="ac-right">'
@@ -707,7 +706,7 @@ function renderSRItem(a){
   return '<div class="sr-item" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
     +logoHTML(a.codigo,'sr')
     +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(a.nome||'')+'</div></div>'
-    +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+potClass+'">'+pot+'</div></div>'
+    +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+(dyN>=6?'g':'')+'">DY '+c.dy+'%</div></div>'
     +'<span class="sri-status '+st+'">'+statusLabel+'</span>'
     +'<button class="sri-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
   +'</div>';
