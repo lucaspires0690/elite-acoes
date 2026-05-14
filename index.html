@@ -141,16 +141,19 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
   /* Carrossel horizontal no desktop — scroll visível com padding */
   .hscroll{
     display:flex;
+    flex-wrap:nowrap;
     overflow-x:auto;
+    overflow-y:visible;
     padding:0 16px 12px;
     gap:12px;
     scrollbar-width:thin;
     scrollbar-color:var(--border2) transparent;
+    -webkit-overflow-scrolling:touch;
   }
-  .hscroll::-webkit-scrollbar{height:5px}
-  .hscroll::-webkit-scrollbar-track{background:transparent}
+  .hscroll::-webkit-scrollbar{height:6px}
+  .hscroll::-webkit-scrollbar-track{background:var(--surf2);border-radius:4px}
   .hscroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-  .hcard{width:200px;flex-shrink:0;}
+  .hcard{width:200px;min-width:200px;flex-shrink:0;}
   .hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
   .hcard.muito-barata:hover{box-shadow:0 8px 24px rgba(0,212,168,.12);}
 
