@@ -937,7 +937,7 @@ function renderHome(content){
     +'</div>';
 
   // Favoritos
-  html += '<div class="home-sec-title">⭐ Meus Favoritos <a onclick="setNavM('favoritos',null)">Ver todos</a></div>';
+  html += '<div class="home-sec-title">⭐ Meus Favoritos <a onclick="setNavM(&quot;favoritos&quot;,null)">Ver todos</a></div>';
   if(favs.length){
     html += '<div class="home-card-wrap">'+favs.slice(0,5).map(favCard).join('')+'</div>';
   } else {
@@ -947,13 +947,13 @@ function renderHome(content){
 
   // Top oportunidades ações
   if(topOp.length){
-    html += '<div class="home-sec-title">🔥 Ações em Oportunidade <a onclick="setNavM('baratas',null)">Ver todas</a></div>';
+    html += '<div class="home-sec-title">🔥 Ações em Oportunidade <a onclick="setNavM(&quot;baratas&quot;,null)">Ver todas</a></div>';
     html += '<div class="home-horiz">'+topOp.map(horizCard).join('')+'</div>';
   }
 
   // Top FIIs
   if(topFiis.length){
-    html += '<div class="home-sec-title">🏗️ FIIs em Oportunidade <a onclick="setNavM('baratas',null)">Ver todos</a></div>';
+    html += '<div class="home-sec-title">🏗️ FIIs em Oportunidade <a onclick="setNavM(&quot;baratas&quot;,null)">Ver todos</a></div>';
     html += '<div class="home-horiz">'+topFiis.map(horizCard).join('')+'</div>';
   }
 
