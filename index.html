@@ -951,7 +951,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, browserLocalPersistence, setPersistence } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',authDomain:'elite-acoes.firebaseapp.com',projectId:'elite-acoes',storageBucket:'elite-acoes.firebasestorage.app',messagingSenderId:'723536084871',appId:'1:723536084871:web:c6cf5879ddeb629759dd22'};
 const fbApp=initializeApp(firebaseConfig);
@@ -1680,6 +1680,82 @@ window.fecharDisclaimer=()=>{localStorage.setItem('ea_disclaimer_ok','1');closeM
 
 
 // ── Busca Mobile ──
+// ── Busca Mobile — funções de sugestão ──
+function getBuscasRecentes(){
+  try{return JSON.parse(localStorage.getItem('ea_buscas_recentes')||'[]');}catch(_){return[];}
+}
+function addBuscaRecente(cod){
+  try{
+    let r=getBuscasRecentes().filter(x=>x!==cod).slice(0,5);
+    r.unshift(cod);
+    localStorage.setItem('ea_buscas_recentes',JSON.stringify(r));
+  }catch(_){}
+}
+
+function renderBuscaItem(a){
+  const t=calcTaxa(a),c=calc(a,t),st=c.status;
+  const dyColor=st==='muito-barata'?'var(--green)':st==='barata'?'var(--pos)':st==='cara'?'var(--red)':'var(--txt3)';
+  const statusLabel=st==='muito-barata'?'🔥 Muito Barata':st==='barata'?'✅ Barata':st==='cara'?'📈 Cara':'Sem DY';
+  const div=document.createElement('div');
+  div.className='busca-item';
+  div.innerHTML=logoHTML(a.codigo,'sm')
+    +'<div class="busca-item-info"><div class="busca-item-ticker">'+sanitize(a.codigo)+'<span class="busca-item-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+    +'<div class="busca-item-nome">'+sanitize(a.nome||'')+'</div></div>'
+    +'<div class="busca-item-right"><div class="busca-item-cot">R$ '+a.cotacao.toFixed(2)+'</div>'
+    +'<div class="busca-item-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div></div>'
+    +'<span class="busca-item-status '+st+'">'+statusLabel+'</span>';
+  div.addEventListener('click',function(){
+    addBuscaRecente(a.codigo);
+    fecharBuscaMobile();
+    window.openDet(a.codigo);
+  });
+  return div;
+}
+
+function renderBuscaInicial(res){
+  const recentes=getBuscasRecentes().map(cod=>ACOES.find(a=>a.codigo===cod)).filter(Boolean);
+  const topDy=ACOES
+    .filter(a=>parseFloat(calc(a,calcTaxa(a)).dy)>=8)
+    .sort((a,b)=>parseFloat(calc(b,calcTaxa(b)).dy)-parseFloat(calc(a,calcTaxa(a)).dy))
+    .slice(0,5);
+
+  res.innerHTML='';
+
+  // Chips populares
+  const chipsWrap=document.createElement('div');
+  chipsWrap.className='busca-sugestoes';
+  ['PETR4','VALE3','ITUB4','BBAS3','MXRF11','KNIP11'].forEach(cod=>{
+    if(!ACOES.find(x=>x.codigo===cod))return;
+    const chip=document.createElement('button');
+    chip.className='busca-chip';
+    chip.textContent=cod;
+    chip.addEventListener('click',function(){
+      document.getElementById('mob-busca-input').value=cod;
+      onBuscaMobile(cod);
+    });
+    chipsWrap.appendChild(chip);
+  });
+  res.appendChild(chipsWrap);
+
+  // Recentes
+  if(recentes.length){
+    const lbl=document.createElement('div');
+    lbl.className='busca-header-lbl';
+    lbl.textContent='🕐 Vistos recentemente';
+    res.appendChild(lbl);
+    recentes.forEach(a=>res.appendChild(renderBuscaItem(a)));
+  }
+
+  // Top DY
+  if(topDy.length){
+    const lbl2=document.createElement('div');
+    lbl2.className='busca-header-lbl';
+    lbl2.textContent='📊 Maior DY agora';
+    res.appendChild(lbl2);
+    topDy.forEach(a=>res.appendChild(renderBuscaItem(a)));
+  }
+}
+
 window.abrirBuscaMobile = function() {
   document.getElementById('mob-busca-overlay').classList.add('open');
   const res=document.getElementById('mob-busca-results');
