@@ -206,7 +206,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .fav-var.up{color:var(--green)}
 .fav-var.dn{color:var(--red)}
 .fav-var.nc{color:var(--txt3)}
-.fav-empty{padding:24px 20px;text-align:center;color:var(--txt3);font-size:13px;line-height:1.7;border:1px dashed var(--border2);border-radius:16px;margin:0 16px 20px}
+.fav-empty{padding:32px 24px;text-align:center;color:var(--txt3);font-size:13px;line-height:1.7;border:1px dashed var(--border2);border-radius:16px;margin:0 16px 20px;display:flex;flex-direction:column;align-items:center}
 
 
 /* ── Melhoria: Cards com hierarquia visual forte ── */
@@ -1026,6 +1026,13 @@ onAuthStateChanged(auth,async user=>{
   }
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
+  // Onboarding: mostrar dica no primeiro acesso (após disclaimer)
+  if(!localStorage.getItem('ea_onboarding_ok')){
+    setTimeout(()=>{
+      showToast('💡 Dica: toque em qualquer ação para ver o Preço Teto e análise completa!', 6000);
+      localStorage.setItem('ea_onboarding_ok','1');
+    }, 2500);
+  }
 });
 
 function setTrialUI(dias){
@@ -1124,7 +1131,13 @@ async function carregarAcoes(){
       }catch(_){}
     }, 15*60*1000);
   }
-  catch(_){ACOES=DEMO;atualizarContadores();renderContent();}
+  catch(e){
+    ACOES=DEMO;
+    atualizarContadores();
+    renderContent();
+    // Avisar usuário que está vendo dados de exemplo
+    setTimeout(()=>showToast('⚠️ Falha ao conectar — exibindo dados de exemplo', 5000), 500);
+  }
 }
 
 function isFii(c){return /11$/.test(c);}
@@ -1162,6 +1175,17 @@ window.logoErr=function(el){
   }
 };
 
+// Sanitizar texto para evitar XSS em innerHTML
+function sanitize(str){
+  if(!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#x27;');
+}
+
 function logoHTML(codigo,size){
   var sg=codigo.replace(/\d/g,'').slice(0,4);
   var cls=size==='sr'?'sri-logo':'ac-logo';
@@ -1178,7 +1202,7 @@ window.renderContent=function renderContent(){
 
   if(busca.trim().length>0){
     const q=busca.toLowerCase().trim();
-    let lista=ACOES.filter(a=>a.codigo.toLowerCase().includes(q)||(a.nome||'').toLowerCase().includes(q));
+    let lista=ACOES.filter(a=>a.codigo.toLowerCase().includes(q)||(sanitize(a.nome)||'').toLowerCase().includes(q));
     if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
     if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
     content.innerHTML='<div class="sr-header"><div class="sr-title">Resultados para "<strong>'+busca+'</strong>"</div><div class="sr-count">'+lista.length+' encontrados</div></div>'
@@ -1262,7 +1286,7 @@ function renderHome(el){
       +'<div class="hcard-badge '+c.status+'">'+badgeLabel+'</div>'
       +logoHTML(a.codigo,'sm')
       +'<div class="hcard-ticker">'+a.codigo+'</div>'
-      +'<div class="hcard-nome">'+(a.nome||'')+'</div>'
+      +'<div class="hcard-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
       +'<div class="hcard-cotacao">R$ '+a.cotacao.toFixed(2)+varHtml+'</div>'
       +'<div class="hcard-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div>'
       +'</div>';
@@ -1276,7 +1300,7 @@ function renderHome(el){
       +logoHTML(a.codigo,'sm')
       +'<div class="fav-info">'
         +'<div class="fav-ticker">'+a.codigo+'<span class="fav-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-        +'<div class="fav-nome">'+(a.nome||'')+'</div>'
+        +'<div class="fav-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
       +'</div>'
       +'<div class="fav-right">'
         +'<div class="fav-cot">R$ '+a.cotacao.toFixed(2)+'</div>'
@@ -1305,7 +1329,12 @@ function renderHome(el){
   if(favs.length){
     html+='<div class="fav-wrap">'+favs.slice(0,5).map(favRow).join('')+'</div>';
   } else {
-    html+='<div class="fav-empty">Você ainda não tem favoritos.<br>Use a busca para encontrar ações e toque ☆ para adicionar.</div>';
+    html+='<div class="fav-empty">'
+      +'<div style="font-size:40px;margin-bottom:12px">⭐</div>'
+      +'<div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:8px">Nenhum favorito ainda</div>'
+      +'<div style="font-size:13px;color:var(--txt3);line-height:1.6;margin-bottom:16px">Adicione ações e FIIs aos seus favoritos para acompanhar de perto.</div>'
+      +'<button onclick="abrirBuscaMobile()" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb)">🔍 Buscar ações</button>'
+      +'</div>';
   }
 
   // Top Ações
@@ -1355,7 +1384,7 @@ function renderCard(a){
     +logoHTML(a.codigo,'ac')
     +'<div class="ac-info">'
       +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-      +'<div class="ac-nome">'+(a.nome||'')+'</div>'
+      +'<div class="ac-nome">'+(sanitize(sanitize(a.nome)||''))+'</div>'
       +'<div class="ac-metrics">'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val '+potClass+'">'+teto+'</div></div>'
@@ -1377,7 +1406,7 @@ function renderSRItem(a){
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   return '<div class="sr-item" data-cod="'+a.codigo+'" onclick="window.openDet(this.dataset.cod)">'
     +logoHTML(a.codigo,'sr')
-    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(a.nome||'')+'</div></div>'
+    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(sanitize(a.nome)||''))+'</div></div>'
     +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+(dyN>=6?'g':'')+'">DY '+c.dy+'%</div></div>'
     +'<span class="sri-status '+st+'">'+statusLabel+'</span>'
     +'<button class="sri-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
@@ -1386,6 +1415,8 @@ function renderSRItem(a){
 
 window.openDet=function(codigo){
   const a=ACOES.find(x=>x.codigo===codigo);if(!a)return;
+  // Paywall: bloquear detalhe se plano vencido
+  if(PLANO_VENCIDO){openModal('modal-sub');return;}
   // Taxa padrão do modal = DY real da ação (arredondado para 1 decimal), limitado ao range do slider
   const dyReal=a.cotacao>0?parseFloat(((a.dividendo_anual/a.cotacao)*100).toFixed(1)):calcTaxa(a);
   const maxT=isFii(a.codigo)?20:15;
@@ -1403,7 +1434,7 @@ window.openDet=function(codigo){
   }
 
   document.getElementById('det-ticker').textContent=a.codigo;
-  document.getElementById('det-nome').textContent=(a.nome||'')+(isFii(a.codigo)?' — FII':' — AÇÃO');
+  document.getElementById('det-nome').textContent=(sanitize(a.nome)||'')+(isFii(a.codigo)?' — FII':' — AÇÃO');
   const detLogo=document.getElementById('det-logo');
   if(detLogo){
     detLogo.style.display='block';
@@ -1666,7 +1697,7 @@ window.onBuscaMobile = function(val) {
     return;
   }
   const q = val.toUpperCase();
-  const found = ACOES.filter(a => a.codigo.includes(q) || (a.nome||'').toUpperCase().includes(q)).slice(0, 30);
+  const found = ACOES.filter(a => a.codigo.includes(q) || (sanitize(a.nome)||'').toUpperCase().includes(q)).slice(0, 30);
   if (!found.length) {
     res.innerHTML = '<div style="text-align:center;color:var(--txt3);padding:40px 20px;font-size:14px">Nenhum resultado para "'+val+'"</div>';
     return;
@@ -1679,7 +1710,7 @@ window.onBuscaMobile = function(val) {
       + logoHTML(a.codigo, 'sm')
       + '<div style="flex:1">'
         + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
-        + '<div style="font-size:12px;color:var(--txt3)">'+(a.nome||'')+'</div>'
+        + '<div style="font-size:12px;color:var(--txt3)">'+(sanitize(sanitize(a.nome)||''))+'</div>'
       + '</div>'
       + '<div style="text-align:right">'
         + '<div style="font-size:13px;font-weight:600;color:var(--txt)">R$ '+a.cotacao.toFixed(2)+'</div>'
