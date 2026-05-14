@@ -1686,12 +1686,7 @@ window.addEventListener('beforeinstallprompt', e => {
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 // ── Bloquear pull-to-refresh no mobile ──
-let touchStartY = 0;
-document.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, {passive:true});
-document.addEventListener('touchmove', e => {
-  const dy = e.touches[0].clientY - touchStartY;
-  if(dy > 0 && window.scrollY === 0) e.preventDefault();
-}, {passive:false});
+// scroll nativo — sem bloqueio
 
 // ── Toast de feedback ──
 let _toastTimer = null;
