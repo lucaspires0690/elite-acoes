@@ -657,8 +657,8 @@ function renderContent(){
     content.innerHTML='<div class="favs-section">'
       +'<div class="favs-title">'+(labels[filtro]||filtro)+'</div>'
       +'<div class="op-tabs">'
-        +'<button class="op-tab '+(abaAtivaOp==='acoes'?'active':'')+'" onclick="window._oportunidadesAba='acoes';renderContent()">🏢 Ações ('+listaAcoes.length+')</button>'
-        +'<button class="op-tab '+(abaAtivaOp==='fiis'?'active':'')+'" onclick="window._oportunidadesAba='fiis';renderContent()">🏗️ FIIs ('+listaFiis.length+')</button>'
+        +'<button class="op-tab '+(abaAtivaOp==='acoes'?'active':'')+'" onclick="window._oportunidadesAba=&quot;acoes&quot;;renderContent()">🏢 Ações ('+listaAcoes.length+')</button>'
+        +'<button class="op-tab '+(abaAtivaOp==='fiis'?'active':'')+'" onclick="window._oportunidadesAba=&quot;fiis&quot;;renderContent()">🏗️ FIIs ('+listaFiis.length+')</button>'
       +'</div>'
       +'<div class="favs-grid">'+(abaAtivaOp==='acoes'?listaAcoes:listaFiis).slice(0,100).map(a=>renderCard(a)).join('')+'</div>'
     +'</div>';
