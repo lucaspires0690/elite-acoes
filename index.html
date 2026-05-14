@@ -74,6 +74,56 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .mob-busca-close{background:none;border:none;color:var(--txt2);font-size:22px;cursor:pointer;padding:4px 8px}
 .mob-busca-results{flex:1;overflow-y:auto;padding:8px}
 
+
+/* ── Home Dashboard ── */
+.home-wrap{padding:0 0 24px}
+.home-greeting{padding:16px 16px 4px;font-size:21px;font-weight:800;color:var(--txt);line-height:1.3}
+.home-greeting b{color:var(--green)}
+.home-mercado{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin:6px 16px 14px;letter-spacing:.3px}
+.home-mercado.aberto{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+.home-mercado.fechado{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 20px}
+.hst{background:var(--surf);border:1px solid var(--border);border-radius:14px;padding:14px 10px;text-align:center}
+.hst-v{font-size:24px;font-weight:800}
+.hst-v.g{color:var(--green)}
+.hst-v.b{color:#60a5fa}
+.hst-v.y{color:#f59e0b}
+.hst-l{font-size:10px;color:var(--txt3);margin-top:3px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.home-sec{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px}
+.home-sec-t{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px}
+.home-sec-a{font-size:12px;color:var(--green);font-weight:600;cursor:pointer;background:none;border:none;padding:0;font-family:var(--fb)}
+/* Cards horizontais */
+.hscroll{display:flex;gap:10px;padding:0 16px 20px;overflow-x:auto;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.hcard{flex-shrink:0;width:155px;background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}
+.hcard:active{transform:scale(.96)}
+.hcard.muito-barata{border-color:rgba(0,212,168,.4);box-shadow:0 0 0 1px rgba(0,212,168,.1) inset}
+.hcard.barata{border-color:rgba(16,185,129,.3)}
+.hcard-badge{display:inline-block;font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;margin-bottom:8px;letter-spacing:.3px}
+.hcard-badge.muito-barata{background:rgba(0,212,168,.15);color:var(--green)}
+.hcard-badge.barata{background:rgba(16,185,129,.12);color:#10b981}
+.hcard-badge.cara{background:rgba(239,68,68,.1);color:#ef4444}
+.hcard-ticker{font-size:15px;font-weight:800;color:var(--txt)}
+.hcard-nome{font-size:10px;color:var(--txt3);margin:2px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hcard-cotacao{font-size:13px;font-weight:700;color:var(--txt)}
+.hcard-dy{font-size:11px;font-weight:600;margin-top:3px}
+/* Favoritos home */
+.fav-wrap{background:var(--surf);border:1px solid var(--border);border-radius:16px;margin:0 16px 20px;overflow:hidden}
+.fav-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.fav-row:last-child{border-bottom:none}
+.fav-row:active{background:var(--surf2)}
+.fav-info{flex:1;min-width:0}
+.fav-ticker{font-size:14px;font-weight:700;color:var(--txt)}
+.fav-tipo{font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px}
+.fav-nome{font-size:11px;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fav-right{text-align:right;flex-shrink:0}
+.fav-cot{font-size:14px;font-weight:700;color:var(--txt)}
+.fav-var{font-size:11px;font-weight:600;margin-top:2px}
+.fav-var.up{color:var(--green)}
+.fav-var.dn{color:var(--red)}
+.fav-var.nc{color:var(--txt3)}
+.fav-empty{padding:24px 20px;text-align:center;color:var(--txt3);font-size:13px;line-height:1.7;border:1px dashed var(--border2);border-radius:16px;margin:0 16px 20px}
+
 /* ── PWA Install Button ── */
 #pwa-install-btn{display:none;width:100%;margin-top:10px;padding:13px;border-radius:12px;border:1.5px solid var(--green);background:var(--green-dim);color:var(--green);font-family:var(--fb);font-size:14px;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:8px;transition:all .2s;animation:fadeInUp .4s ease}
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
@@ -820,22 +870,8 @@ window.renderContent=function renderContent(){
   if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
   if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
 
-  if(filtro==='favoritos'){
-    const favs=lista.filter(a=>FAVORITOS.has(a.codigo));
-    const SETORES=[
-      {nome:'🏦 Bancos',tickers:['ITUB4','BBAS3','BBDC4','SANB11']},
-      {nome:'⚡ Energia',tickers:['EGIE3','TAEE11','CPFE3','CPLE6','TRPL4']},
-      {nome:'🛡️ Seguros',tickers:['BBSE3','PSSA3','IRBR3','SULA11','CXSE3']},
-      {nome:'💧 Saneamento',tickers:['SBSP3','CSMG3','SAPR11']},
-      {nome:'📡 Telecom',tickers:['VIVT3']},
-    ];
-    const favsHTML=favs.length?'<div class="setor-group"><div class="setor-title">⭐ Meus favoritos ('+favs.length+')</div><div class="favs-grid">'+favs.map(a=>renderCard(a)).join('')+'</div></div>':'';
-    const setoresHTML=SETORES.map(s=>{
-      const acoes=s.tickers.map(t=>ACOES.find(a=>a.codigo===t)).filter(Boolean);
-      if(!acoes.length)return'';
-      return'<div class="setor-group"><div class="setor-title">'+s.nome+'</div><div class="favs-grid">'+acoes.map(a=>renderCard(a)).join('')+'</div></div>';
-    }).join('');
-    content.innerHTML='<div class="favs-section"><div class="home-hint"><span class="home-hint-ico">🔍</span><span>Busque qualquer ação ou FII e adicione aos favoritos para acompanhar</span></div>'+favsHTML+setoresHTML+'</div>';
+  if(filtro==='inicio'||filtro==='favoritos'){
+    renderHome(content);
     return;
   }
 
@@ -863,102 +899,129 @@ window.renderContent=function renderContent(){
   content.innerHTML='<div class="favs-section"><div class="favs-title">'+(labels[filtro]||filtro)+' ('+lista.length+')</div><div class="favs-grid">'+lista.slice(0,100).map(a=>renderCard(a)).join('')+'</div></div>';
 }
 
-function renderHome(content){
-  const agora = new Date();
-  const hora = agora.getHours();
-  const diaSemana = agora.getDay();
-  const mercadoAberto = diaSemana >= 1 && diaSemana <= 5 && hora >= 10 && hora < 18;
-  const saudacao = hora < 12 ? 'Bom dia' : hora < 18 ? 'Boa tarde' : 'Boa noite';
-  const nomeUser = USER?.displayName?.split(' ')[0] || '';
+function renderHome(el){
+  const agora=new Date(), h=agora.getHours(), ds=agora.getDay();
+  const aberto=ds>=1&&ds<=5&&h>=10&&h<18;
+  const sauda=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+  const nome=(USER&&USER.displayName?USER.displayName.split(' ')[0]:'');
 
-  // Stats
-  const totalAcoes = ACOES.filter(a=>!isFii(a.codigo)).length;
-  const totalFiis  = ACOES.filter(a=>isFii(a.codigo)).length;
-  const oportunidades = ACOES.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';}).length;
+  const nAcoes=ACOES.filter(a=>!isFii(a.codigo)).length;
+  const nFiis=ACOES.filter(a=>isFii(a.codigo)).length;
+  const nOp=ACOES.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';}).length;
 
-  // Top 5 oportunidades do dia
-  const topOp = ACOES
-    .filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})
+  // Top oportunidades ações (ordenar: muito-barata primeiro, depois DY desc)
+  const topAcoes=ACOES
+    .filter(a=>!isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
     .sort((a,b)=>{
-      const ca=calc(a,calcTaxa(a)), cb=calc(b,calcTaxa(b));
-      const pa = ca.status==='muito-barata'?2:1;
-      const pb = cb.status==='muito-barata'?2:1;
-      return pb-pa || parseFloat(cb.dy)-parseFloat(ca.dy);
+      const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
+      if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
+      return ca.status==='muito-barata'?-1:1;
     }).slice(0,8);
 
-  // Top 5 FIIs oportunidade
-  const topFiis = ACOES
+  const topFiis=ACOES
     .filter(a=>isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
-    .sort((a,b)=>parseFloat(calc(b,calcTaxa(b)).dy)-parseFloat(calc(a,calcTaxa(a)).dy))
-    .slice(0,8);
+    .sort((a,b)=>{
+      const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
+      if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
+      return ca.status==='muito-barata'?-1:1;
+    }).slice(0,8);
 
-  // Favoritos
-  const favs = ACOES.filter(a=>FAVORITOS.has(a.codigo));
+  const favs=ACOES.filter(a=>FAVORITOS.has(a.codigo));
 
-  function horizCard(a){
+  function hcard(a){
     const c=calc(a,calcTaxa(a));
     const dyN=parseFloat(c.dy);
     const dyColor=dyN>=8?'var(--green)':dyN>=6?'var(--pos)':'var(--txt3)';
+    const badgeLabel=c.status==='muito-barata'?'🔥 MUITO BARATA':c.status==='barata'?'✅ BARATA':'📈 CARA';
     const varDia=a.variacao_dia!=null?a.variacao_dia:null;
-    return '<div class="horiz-card '+c.status+'" onclick="window.openDet(&quot;"+a.codigo+"&quot;)">'
-      +'<span class="hcard-status '+c.status+'">'+(c.status==='muito-barata'?'🔥 Barata':c.status==='barata'?'✅ Boa':'📈 Cara')+'</span>'
+    const varHtml=varDia!=null
+      ?'<span style="font-size:10px;margin-left:5px;color:'+(varDia>=0?'var(--green)':'var(--red)')+';">'+(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%</span>'
+      :'';
+    // Usar data-cod para evitar problemas de aspas no onclick
+    return '<div class="hcard '+c.status+'" data-cod="'+a.codigo+'">'
+      +'<div class="hcard-badge '+c.status+'">'+badgeLabel+'</div>'
       +logoHTML(a.codigo,'sm')
       +'<div class="hcard-ticker">'+a.codigo+'</div>'
       +'<div class="hcard-nome">'+(a.nome||'')+'</div>'
-      +'<div class="hcard-cotacao">R$ '+a.cotacao.toFixed(2)+(varDia!=null?'<span style="font-size:10px;margin-left:4px;color:'+(varDia>=0?'var(--green)':'var(--red)')+';">'+(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%</span>':'')+'</div>'
+      +'<div class="hcard-cotacao">R$ '+a.cotacao.toFixed(2)+varHtml+'</div>'
       +'<div class="hcard-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div>'
       +'</div>';
   }
 
-  function favCard(a){
-    const c=calc(a,calcTaxa(a));
+  function favRow(a){
     const varDia=a.variacao_dia!=null?a.variacao_dia:null;
-    const varClass=varDia==null?'neu':varDia>0?'pos':'neg';
+    const varClass=varDia==null?'nc':varDia>0?'up':'dn';
     const varTxt=varDia==null?'—':(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%';
-    return '<div class="fav-home-card" onclick="window.openDet(&quot;"+a.codigo+"&quot;)">'
+    return '<div class="fav-row" data-cod="'+a.codigo+'">'
       +logoHTML(a.codigo,'sm')
-      +'<div class="fhc-info"><div class="fhc-ticker">'+a.codigo+' <span style="font-size:10px;color:var(--txt3)">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="fhc-nome">'+(a.nome||'')+'</div></div>'
-      +'<div class="fhc-right"><div class="fhc-cotacao">R$ '+a.cotacao.toFixed(2)+'</div><div class="fhc-var '+varClass+'">'+varTxt+'</div></div>'
+      +'<div class="fav-info">'
+        +'<div class="fav-ticker">'+a.codigo+'<span class="fav-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+        +'<div class="fav-nome">'+(a.nome||'')+'</div>'
+      +'</div>'
+      +'<div class="fav-right">'
+        +'<div class="fav-cot">R$ '+a.cotacao.toFixed(2)+'</div>'
+        +'<div class="fav-var '+varClass+'">'+varTxt+'</div>'
+      +'</div>'
       +'</div>';
   }
 
-  let html = '<div class="home-section">';
+  let html='<div class="home-wrap">';
 
   // Saudação
-  html += '<div class="home-greeting">'+saudacao+(nomeUser?', <span>'+nomeUser+'</span>':'')+'!'
-    +'<span class="home-mercado-badge '+(mercadoAberto?'aberto':'fechado')+'">'+(mercadoAberto?'● Mercado aberto':'● Mercado fechado')+'</span>'
-    +'</div>';
+  html+='<div class="home-greeting">'+sauda+(nome?', <b>'+nome+'</b>':'')+'! 👋</div>';
+  html+='<div class="home-mercado '+(aberto?'aberto':'fechado')+'">'+(aberto?'● Mercado aberto':'● Mercado fechado')+'</div>';
 
   // Stats
-  html += '<div class="home-stats">'
-    +'<div class="hstat"><div class="hstat-val">'+totalAcoes+'</div><div class="hstat-lbl">Ações</div></div>'
-    +'<div class="hstat"><div class="hstat-val">'+totalFiis+'</div><div class="hstat-lbl">FIIs</div></div>'
-    +'<div class="hstat"><div class="hstat-val green" style="color:var(--green)">'+oportunidades+'</div><div class="hstat-lbl">Oportunidades</div></div>'
+  html+='<div class="home-stats">'
+    +'<div class="hst"><div class="hst-v b">'+nAcoes+'</div><div class="hst-l">Ações</div></div>'
+    +'<div class="hst"><div class="hst-v b">'+nFiis+'</div><div class="hst-l">FIIs</div></div>'
+    +'<div class="hst"><div class="hst-v g">'+nOp+'</div><div class="hst-l">Oportunidades</div></div>'
     +'</div>';
 
   // Favoritos
-  html += '<div class="home-sec-title">⭐ Meus Favoritos <a onclick="setNavM(&quot;favoritos&quot;,null)">Ver todos</a></div>';
+  html+='<div class="home-sec"><span class="home-sec-t">⭐ Meus Favoritos</span>'
+    +(favs.length?'<button class="home-sec-a" data-nav="favoritos">Ver todos</button>':'')
+    +'</div>';
   if(favs.length){
-    html += '<div class="home-card-wrap">'+favs.slice(0,5).map(favCard).join('')+'</div>';
+    html+='<div class="fav-wrap">'+favs.slice(0,5).map(favRow).join('')+'</div>';
   } else {
-    html += '<div class="home-fav-empty">Você ainda não tem favoritos.<br>Busque uma ação e toque em ☆ para adicionar.</div>';
+    html+='<div class="fav-empty">Você ainda não tem favoritos.<br>Use a busca para encontrar ações e toque ☆ para adicionar.</div>';
   }
-  html += '<div style="height:12px"></div>';
 
-  // Top oportunidades ações
-  if(topOp.length){
-    html += '<div class="home-sec-title">🔥 Ações em Oportunidade <a onclick="setNavM(&quot;baratas&quot;,null)">Ver todas</a></div>';
-    html += '<div class="home-horiz">'+topOp.map(horizCard).join('')+'</div>';
+  // Top Ações
+  if(topAcoes.length){
+    html+='<div class="home-sec"><span class="home-sec-t">🔥 Ações em Oportunidade</span>'
+      +'<button class="home-sec-a" data-nav="baratas">Ver todas</button></div>';
+    html+='<div class="hscroll">'+topAcoes.map(hcard).join('')+'</div>';
   }
 
   // Top FIIs
   if(topFiis.length){
-    html += '<div class="home-sec-title">🏗️ FIIs em Oportunidade <a onclick="setNavM(&quot;baratas&quot;,null)">Ver todos</a></div>';
-    html += '<div class="home-horiz">'+topFiis.map(horizCard).join('')+'</div>';
+    html+='<div class="home-sec"><span class="home-sec-t">🏗️ FIIs em Oportunidade</span>'
+      +'<button class="home-sec-a" data-nav="baratas">Ver todos</button></div>';
+    html+='<div class="hscroll">'+topFiis.map(hcard).join('')+'</div>';
   }
 
-  html += '</div>';
-  content.innerHTML = html;
+  html+='</div>';
+  el.innerHTML=html;
+
+  // Eventos via delegação — sem aspas problemáticas no onclick
+  el.querySelectorAll('.hcard[data-cod]').forEach(function(c){
+    c.addEventListener('click',function(){window.openDet(this.dataset.cod);});
+  });
+  el.querySelectorAll('.fav-row[data-cod]').forEach(function(r){
+    r.addEventListener('click',function(){window.openDet(this.dataset.cod);});
+  });
+  el.querySelectorAll('[data-nav]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=this.dataset.nav;
+      filtro=f; tipo='todos'; busca='';
+      document.querySelectorAll('.mfbtn').forEach(function(x){x.classList.remove('active');});
+      var mf=document.getElementById('mf-'+f);
+      if(mf)mf.classList.add('active');
+      renderContent();
+    });
+  });
 }
 
 function renderCard(a){
@@ -1199,13 +1262,13 @@ window.togglePerfil=function(){
 };
 
 window.setNav=(f,btn)=>{
-  filtro=f==='inicio'?'favoritos':f;
+  filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
 };
 window.setNavM=(f,btn)=>{
-  filtro=f==='inicio'?'favoritos':f;
+  filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');busca='';document.getElementById('main-search').value='';renderContent();
