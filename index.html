@@ -900,7 +900,7 @@ function renderHome(content){
     const dyN=parseFloat(c.dy);
     const dyColor=dyN>=8?'var(--green)':dyN>=6?'var(--pos)':'var(--txt3)';
     const varDia=a.variacao_dia!=null?a.variacao_dia:null;
-    return '<div class="horiz-card '+c.status+'" onclick="window.openDet(''+a.codigo+'')">'
+    return '<div class="horiz-card '+c.status+'" onclick="window.openDet(&quot;"+a.codigo+"&quot;)">'
       +'<span class="hcard-status '+c.status+'">'+(c.status==='muito-barata'?'🔥 Barata':c.status==='barata'?'✅ Boa':'📈 Cara')+'</span>'
       +logoHTML(a.codigo,'sm')
       +'<div class="hcard-ticker">'+a.codigo+'</div>'
@@ -915,7 +915,7 @@ function renderHome(content){
     const varDia=a.variacao_dia!=null?a.variacao_dia:null;
     const varClass=varDia==null?'neu':varDia>0?'pos':'neg';
     const varTxt=varDia==null?'—':(varDia>=0?'▲':'▼')+Math.abs(varDia)+'%';
-    return '<div class="fav-home-card" onclick="window.openDet(''+a.codigo+'')">'
+    return '<div class="fav-home-card" onclick="window.openDet(&quot;"+a.codigo+"&quot;)">'
       +logoHTML(a.codigo,'sm')
       +'<div class="fhc-info"><div class="fhc-ticker">'+a.codigo+' <span style="font-size:10px;color:var(--txt3)">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="fhc-nome">'+(a.nome||'')+'</div></div>'
       +'<div class="fhc-right"><div class="fhc-cotacao">R$ '+a.cotacao.toFixed(2)+'</div><div class="fhc-var '+varClass+'">'+varTxt+'</div></div>'
