@@ -65,8 +65,10 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .ios-banner-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--txt2)}
 .ios-banner-step-ico{font-size:18px;flex-shrink:0;width:28px;text-align:center}
 /* ── Toast feedback PWA ── */
-#pwa-toast{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--surf);border:1px solid var(--green);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:var(--txt);box-shadow:0 8px 24px rgba(0,0,0,.4);align-items:center;gap:8px;white-space:nowrap;animation:fadeInUp .3s ease}
+#pwa-toast{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--surf);border:1px solid var(--green);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:var(--txt);box-shadow:0 8px 24px rgba(0,0,0,.4);align-items:center;gap:10px;white-space:nowrap;animation:fadeInUp .3s ease}
 #pwa-toast.show{display:flex}
+.pwa-spinner{width:16px;height:16px;border:2px solid rgba(0,212,168,.3);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 
 
@@ -1025,27 +1027,40 @@ document.addEventListener('touchmove', e => {
 }, {passive:false});
 
 // ── Toast de feedback ──
-function showToast(msg, duracao=3000){
+let _toastTimer = null;
+function showToast(msg, duracao=3000, loading=false){
   const t = document.getElementById('pwa-toast');
   if(!t) return;
-  t.innerHTML = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), duracao);
+  clearTimeout(_toastTimer);
+  if(loading){
+    t.innerHTML = '<div class="pwa-spinner"></div>' + msg;
+    t.classList.add('show');
+    // não fecha automaticamente
+  } else {
+    t.innerHTML = msg;
+    t.classList.add('show');
+    _toastTimer = setTimeout(() => t.classList.remove('show'), duracao);
+  }
+}
+function hideToast(){
+  clearTimeout(_toastTimer);
+  const t = document.getElementById('pwa-toast');
+  if(t) t.classList.remove('show');
 }
 const isInStandaloneMode = window.navigator.standalone === true;
 
 window.instalarPWA = async function(){
   if(deferredPrompt){
-    showToast('⏳ Aguarde, instalando o app...');
+    showToast('Aguarde a instalação do app...', 0, true); // loading persistente
     deferredPrompt.prompt();
     const {outcome} = await deferredPrompt.userChoice;
     deferredPrompt = null;
     if(outcome === 'accepted'){
       document.getElementById('pwa-install-btn')?.classList.remove('show');
       document.getElementById('pwa-fab')?.classList.remove('show');
-      // appinstalled vai mostrar o sucesso
+      // appinstalled vai trocar a mensagem
     } else {
-      showToast('❌ Instalação cancelada.');
+      showToast('❌ Instalação cancelada.', 3000);
     }
   } else if(isIOS && !isInStandaloneMode){
     document.getElementById('ios-banner').classList.add('show');
