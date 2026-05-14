@@ -132,10 +132,10 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 
 /* ── Desktop: Melhorias ── */
 @media(min-width:1025px){
-  .home-wrap{padding:0 0 32px}
-  .home-stats{padding:0 0 24px;gap:16px}
-  .hst{padding:20px 16px;border-radius:16px}
-  .hst-v{font-size:30px}
+  .home-wrap{padding:0 0 16px}
+  .home-stats{padding:0 0 16px;gap:8px}
+  .hst{padding:12px 8px;border-radius:12px}
+  .hst-v{font-size:22px}
   .home-sec{padding:0 0 14px}
 
   /* Carrossel horizontal no desktop — scroll visível com padding */
@@ -144,7 +144,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
     flex-wrap:nowrap;
     overflow-x:auto;
     overflow-y:visible;
-    padding:0 16px 12px;
+    padding:0 8px 10px;
     gap:12px;
     scrollbar-width:thin;
     scrollbar-color:var(--border2) transparent;
@@ -153,7 +153,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
   .hscroll::-webkit-scrollbar{height:6px}
   .hscroll::-webkit-scrollbar-track{background:var(--surf2);border-radius:4px}
   .hscroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-  .hcard{width:200px;min-width:200px;flex-shrink:0;}
+  .hcard{width:160px;min-width:160px;flex-shrink:0;}
   .hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
   .hcard.muito-barata:hover{box-shadow:0 8px 24px rgba(0,212,168,.12);}
 
@@ -181,7 +181,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 /* Cards horizontais */
 .hscroll{display:flex;flex-wrap:nowrap;gap:10px;padding:0 16px 20px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;width:100%;box-sizing:border-box}
 .hscroll::-webkit-scrollbar{height:5px}.hscroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}.hscroll::-webkit-scrollbar-track{background:transparent}
-.hcard{flex-shrink:0;width:155px;min-width:155px;background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}
+.hcard{flex-shrink:0;width:145px;min-width:145px;background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}
 .hcard:active{transform:scale(.96)}
 .hcard.muito-barata{border-color:rgba(0,212,168,.4);box-shadow:0 0 0 1px rgba(0,212,168,.1) inset}
 .hcard.barata{border-color:rgba(16,185,129,.3)}
@@ -1264,7 +1264,7 @@ function renderHome(el){
       const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
       if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
       return ca.status==='muito-barata'?-1:1;
-    }).slice(0,8);
+    }).slice(0,6);
 
   const topFiis=ACOES
     .filter(a=>isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
@@ -1272,7 +1272,7 @@ function renderHome(el){
       const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
       if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
       return ca.status==='muito-barata'?-1:1;
-    }).slice(0,8);
+    }).slice(0,6);
 
   const favs=ACOES.filter(a=>FAVORITOS.has(a.codigo));
 
