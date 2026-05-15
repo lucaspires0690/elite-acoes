@@ -1022,7 +1022,7 @@ function iniciarTimerGuest(){
   const count=document.getElementById('guest-timer-count');
   if(bar) bar.classList.remove('hide');
 
-  const DURACAO=5*60*1000; // 5 minutos em ms
+  const DURACAO=5*60*1000; // 2 minutos em ms
 
   // Se já tem um timer salvo, usa ele — senão cria novo
   let inicio=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
