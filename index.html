@@ -1993,40 +1993,41 @@ document.addEventListener('click', function(e) {
 // ── PWA Install ──
 let deferredPrompt = null;
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+  || window.navigator.standalone === true;
+
+// Se abriu em standalone após instalação, mostrar conclusão
+if(isStandalone && localStorage.getItem('ea_pwa_instalando') === '1'){
+  localStorage.removeItem('ea_pwa_instalando');
+  // Pequeno delay para o DOM estar pronto
+  setTimeout(() => {
+    showToast('✅ App instalado com sucesso!', 3000);
+  }, 800);
+}
 
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredPrompt = e;
-  if(isMobile){
-    const btn = document.getElementById('pwa-install-btn');
-    const fab = document.getElementById('pwa-fab');
-    if(btn) btn.classList.add('show');
-    if(fab) fab.classList.add('show');
+  if(isMobile && !isStandalone){
+    document.getElementById('pwa-install-btn')?.classList.add('show');
+    document.getElementById('pwa-fab')?.classList.add('show');
   }
 });
 
-const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
 // ── Botão voltar físico do Android ──
-// 1º toque: vai para início
-// 2º toque: fecha o app
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
-pushEstado(); // estado inicial
+pushEstado();
 
 window.addEventListener('popstate', function() {
   if(filtro !== 'inicio'){
-    // Fecha busca/modais se abertos
     const busca = document.getElementById('mob-busca-overlay');
     if(busca && busca.classList.contains('open')) fecharBuscaMobile();
     document.querySelectorAll('.overlay.open').forEach(m => m.classList.remove('open'));
     voltarInicio();
     pushEstado();
   }
-  // Se já está no início — não faz pushState, próximo toque fecha o app
 });
-
-// ── Bloquear pull-to-refresh no mobile ──
-// scroll nativo — sem bloqueio
 
 // ── Toast de feedback ──
 let _toastTimer = null;
@@ -2037,7 +2038,6 @@ function showToast(msg, duracao=3000, loading=false){
   if(loading){
     t.innerHTML = '<div class="pwa-spinner"></div>' + msg;
     t.classList.add('show');
-    // não fecha automaticamente
   } else {
     t.innerHTML = msg;
     t.classList.add('show');
@@ -2049,7 +2049,6 @@ function hideToast(){
   const t = document.getElementById('pwa-toast');
   if(t) t.classList.remove('show');
 }
-const isInStandaloneMode = window.navigator.standalone === true;
 
 window.instalarPWA = async function(){
   if(deferredPrompt){
@@ -2059,28 +2058,33 @@ window.instalarPWA = async function(){
     if(outcome === 'accepted'){
       document.getElementById('pwa-install-btn')?.classList.remove('show');
       document.getElementById('pwa-fab')?.classList.remove('show');
-      // Loading fica até o sistema abrir o app — não há evento confiável
-      showToast('📲 Instalando... Aguarde um momento.', 10000, true);
+      // Marcar no localStorage que está instalando
+      // Quando o app abrir em standalone vai detectar e mostrar sucesso
+      localStorage.setItem('ea_pwa_instalando', '1');
+      showToast('📲 Instalando... Aguarde um momento.', 60000, true);
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
-  } else if(isIOS && !isInStandaloneMode){
-    document.getElementById('ios-banner').classList.add('show');
+  } else if(isIOS && !isStandalone){
+    document.getElementById('ios-banner')?.classList.add('show');
   }
 };
 
-// Mostrar botão no iOS automaticamente (sem beforeinstallprompt)
-if(isIOS && !isInStandaloneMode){
-  const btn = document.getElementById('pwa-install-btn');
-  const fab = document.getElementById('pwa-fab');
-  if(btn) btn.classList.add('show');
-  if(fab) fab.classList.add('show');
+// iOS — mostrar botão automaticamente
+if(isIOS && !isStandalone){
+  document.getElementById('pwa-install-btn')?.classList.add('show');
+  document.getElementById('pwa-fab')?.classList.add('show');
+}
+
+// Esconder botões se já está em standalone
+if(isStandalone){
+  document.getElementById('pwa-install-btn')?.classList.remove('show');
+  document.getElementById('pwa-fab')?.classList.remove('show');
 }
 
 window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  // Não mostramos sucesso aqui — o app abre sozinho em modo standalone
-  // O loading some quando a página recarregar
+  // Não altera o toast — o loading continua até o app abrir em standalone
 });
 
 const DEMO=[
