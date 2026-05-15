@@ -2062,6 +2062,7 @@ window.instalarPWA = async function(){
       // Quando o app abrir em standalone vai detectar e mostrar sucesso
       localStorage.setItem('ea_pwa_instalando', '1');
       showToast('📲 Instalando... Aguarde um momento.', 60000, true);
+      iniciarVerificacaoInstalacao();
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
@@ -2087,13 +2088,21 @@ window.addEventListener('appinstalled', () => {
   hideToast();
 });
 
-// Fallback: quando a página web perde o foco (app standalone abre),
-// esconde o toast de loading
-document.addEventListener('visibilitychange', () => {
-  if(document.hidden && localStorage.getItem('ea_pwa_instalando') === '1'){
-    hideToast();
-  }
-});
+// Polling: verifica a cada 1s se o app já abriu em standalone
+// Quando detectar, some o toast na página web
+let _pwaCheckInterval = null;
+function iniciarVerificacaoInstalacao(){
+  if(_pwaCheckInterval) return;
+  _pwaCheckInterval = setInterval(() => {
+    const jaInstalado = window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+    if(jaInstalado || localStorage.getItem('ea_pwa_instalando') !== '1'){
+      clearInterval(_pwaCheckInterval);
+      _pwaCheckInterval = null;
+      hideToast();
+    }
+  }, 1000);
+}
 
 const DEMO=[
   {codigo:'BBAS3',nome:'Banco do Brasil',cotacao:30.00,dividendo_anual:2.20,setor:'Financeiro'},
