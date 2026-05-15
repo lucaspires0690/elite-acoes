@@ -143,6 +143,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('termos')">📋 Termos de Uso</button>
     <button class="tab-btn" onclick="showTab('privacidade')">🔒 Privacidade (LGPD)</button>
+    <button class="tab-btn" onclick="showTab('disclaimer')">⚠️ Disclaimer Financeiro</button>
   </div>
 
   <!-- TERMOS DE USO -->
@@ -158,11 +159,17 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
       <h2><span class="num">02</span> Descrição do Serviço</h2>
       <p>O Elite Ações é uma plataforma web de análise financeira que calcula automaticamente o preço teto de ações e FIIs listados na B3, utilizando o Método Bazin baseado em histórico de dividendos.</p>
       <ul>
-        <li>Os dados são fornecidos pela API HG Brasil e atualizados a cada 15 minutos durante o pregão</li>
+        <li>Os dados de cotação e dividendos são fornecidos pela API HG Brasil e atualizados a cada 15 minutos durante o pregão da B3 (10h–18h, dias úteis)</li>
+        <li>Os dados exibidos podem apresentar <strong>defasagem de até 20 minutos</strong> em relação ao mercado em tempo real</li>
+        <li>Os dados <strong>não são fornecidos diretamente pela B3</strong> e podem divergir dos valores oficiais em determinados momentos</li>
         <li>O serviço é oferecido em modelo de assinatura mensal (SaaS)</li>
         <li>Um período de trial gratuito de 7 dias é disponibilizado a novos usuários</li>
         <li>O acesso é pessoal e intransferível</li>
       </ul>
+      <div class="alert warn" style="margin-top:16px;margin-bottom:0">
+        <span class="alert-ico">⏱️</span>
+        <div class="alert-txt"><strong>Dados com possível defasagem:</strong> Os valores de cotação e dividendos exibidos na plataforma são obtidos de provedores terceiros e podem apresentar atraso em relação ao mercado em tempo real. <strong>Não utilize estes dados para execução de ordens de compra ou venda.</strong> Para negociação, utilize sempre a plataforma de seu banco ou corretora.</div>
+      </div>
     </div>
 
     <div class="doc-section">
@@ -212,6 +219,108 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
     <div class="doc-section">
       <h2><span class="num">07</span> Alterações nos Termos</h2>
       <p>Podemos atualizar estes termos a qualquer momento. Alterações relevantes serão comunicadas por email com 15 dias de antecedência. O uso contínuo da plataforma após as alterações implica aceitação dos novos termos.</p>
+    </div>
+
+  </div>
+      <p>O Elite Ações obtém dados financeiros de provedores terceiros (HG Brasil) e não tem controle sobre a exatidão, integridade ou tempestividade dessas informações. Em consequência:</p>
+      <ul>
+        <li>A plataforma <strong>não garante</strong> que os dados estejam corretos, completos ou atualizados em tempo real</li>
+        <li>Eventuais erros, omissões ou defasagens nos dados de terceiros estão fora do controle do Elite Ações</li>
+        <li>O usuário assume integralmente o risco de utilizar dados que possam estar desatualizados</li>
+        <li>O Elite Ações <strong>não se responsabiliza</strong> por decisões de investimento tomadas com base nos dados da plataforma</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER FINANCEIRO -->
+  <div class="tab-content" id="tab-disclaimer">
+
+    <div class="alert warn">
+      <span class="alert-ico">⚠️</span>
+      <div class="alert-txt">
+        <strong>Leia com atenção:</strong> Este disclaimer é parte integrante dos Termos de Uso e deve ser lido antes de utilizar qualquer informação da plataforma para fins de investimento.
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">01</span> Natureza da Plataforma</h2>
+      <p>O Elite Ações é uma <strong>ferramenta educativa e informativa</strong> de análise financeira. A plataforma realiza cálculos matemáticos baseados no Método Bazin para estimar o preço teto de ações e FIIs listados na B3.</p>
+      <p>O Elite Ações <strong>não é</strong> e não se configura como:</p>
+      <ul>
+        <li>Consultoria de valores mobiliários (nos termos da Instrução CVM nº 592/2017)</li>
+        <li>Análise de valores mobiliários (nos termos da Instrução CVM nº 598/2018)</li>
+        <li>Gestão de carteiras de investimento</li>
+        <li>Administração fiduciária</li>
+        <li>Corretora ou distribuidora de valores mobiliários</li>
+      </ul>
+      <p>A plataforma não é registrada na Comissão de Valores Mobiliários (CVM) como prestadora de nenhum dos serviços acima.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">02</span> Defasagem e Confiabilidade dos Dados</h2>
+      <p>Os dados de cotação, dividendos e demais informações financeiras exibidas na plataforma são obtidos de provedores terceiros (HG Brasil) e estão sujeitos às seguintes limitações:</p>
+      <ul>
+        <li><strong>Defasagem de até 20 minutos</strong> em relação ao mercado durante o pregão da B3</li>
+        <li>Os dados <strong>não são fornecidos diretamente pela B3</strong> ou pela CVM</li>
+        <li>Possibilidade de erros, omissões ou inconsistências provenientes da fonte de dados</li>
+        <li>Fora do horário de pregão, os dados refletem o fechamento do último pregão</li>
+        <li>O histórico de dividendos pode não incluir eventos corporativos recentes (splits, grupamentos, bonificações)</li>
+      </ul>
+      <div class="alert warn" style="margin-top:16px;margin-bottom:0">
+        <span class="alert-ico">🚫</span>
+        <div class="alert-txt"><strong>Não utilize os dados desta plataforma</strong> para executar ordens de compra ou venda em sua corretora. Para operações em tempo real, utilize sempre os dados oficiais disponibilizados pela sua corretora ou pela B3.</div>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">03</span> O Método Bazin — Limitações</h2>
+      <p>O Método Bazin é uma metodologia de análise de investimentos baseada em dividendos históricos, desenvolvida pelo jornalista francês Décio Bazin. Suas limitações incluem:</p>
+      <ul>
+        <li>Baseia-se em <strong>histórico passado de dividendos</strong>, que não garante pagamentos futuros</li>
+        <li>Não considera fatores macroeconômicos, setoriais ou específicos de cada empresa</li>
+        <li>Não é adequado para empresas em fase de crescimento que não distribuem dividendos</li>
+        <li>A taxa de retorno mínima utilizada (6% para ações, 10% para FIIs) é uma referência, não uma garantia de retorno</li>
+        <li>O preço teto calculado é uma <strong>estimativa matemática</strong>, não um valor justo definitivo</li>
+      </ul>
+      <p>O resultado do cálculo deve ser interpretado como <strong>uma das ferramentas</strong> de análise disponíveis ao investidor, não como único critério de decisão.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">04</span> Isenção de Responsabilidade por Perdas</h2>
+      <p>O Elite Ações, seus sócios, colaboradores e prestadores de serviço <strong>não se responsabilizam</strong> por quaisquer perdas ou danos, diretos ou indiretos, incluindo mas não limitados a:</p>
+      <ul>
+        <li>Perdas financeiras decorrentes de decisões de investimento baseadas nos dados da plataforma</li>
+        <li>Perdas causadas por dados incorretos, desatualizados ou incompletos de provedores terceiros</li>
+        <li>Perdas decorrentes de indisponibilidade temporária do serviço</li>
+        <li>Perdas por uso inadequado das informações apresentadas</li>
+      </ul>
+      <p>O usuário declara ciência de que <strong>investimentos em renda variável envolvem risco de perda parcial ou total do capital investido.</strong></p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">05</span> Recomendação ao Investidor</h2>
+      <p>Antes de qualquer decisão de investimento, recomendamos:</p>
+      <ul>
+        <li>Consultar um <strong>Assessor de Investimentos habilitado</strong> pela CVM ou certificado pela ANCORD</li>
+        <li>Realizar análise própria com múltiplas fontes de informação</li>
+        <li>Avaliar seu perfil de risco (suitability) junto à sua corretora</li>
+        <li>Nunca investir valores que não possa perder</li>
+        <li>Diversificar a carteira para reduzir riscos</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">06</span> Base Legal e Regulatória</h2>
+      <p>Este disclaimer está fundamentado nas seguintes normas:</p>
+      <ul>
+        <li><strong>Instrução CVM nº 592/2017</strong> — Consultoria de Valores Mobiliários</li>
+        <li><strong>Instrução CVM nº 598/2018</strong> — Análise de Valores Mobiliários</li>
+        <li><strong>Lei nº 6.385/1976</strong> — Lei do Mercado de Capitais</li>
+        <li><strong>Lei nº 13.709/2018</strong> — Lei Geral de Proteção de Dados (LGPD)</li>
+        <li><strong>Lei nº 8.078/1990</strong> — Código de Defesa do Consumidor (CDC)</li>
+      </ul>
+      <p>Em caso de dúvidas sobre a regulamentação do mercado de capitais, consulte o site oficial da CVM: <a href="https://www.gov.br/cvm" target="_blank">www.gov.br/cvm</a></p>
     </div>
 
   </div>
