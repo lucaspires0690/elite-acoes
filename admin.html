@@ -341,9 +341,9 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             <span id="modal-u-email-val" style="font-size:12px;color:var(--txt2)">—</span>
           </div>
 
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
-            <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">data_cadastro</label>
-            <span id="modal-u-cadastro" style="font-size:12px;color:var(--txt2)">—</span>
+          <div style="padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
+            <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace;display:block;margin-bottom:6px">data_cadastro</label>
+            <input type="date" id="modal-u-cadastro" style="width:100%;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
@@ -773,7 +773,7 @@ function abrirModalUsuario(uid) {
   document.getElementById('modal-u-expiracao').value=toInput(u.data_expiracao);
   document.getElementById('modal-u-trial').value=toInput(u.trial_ate);
   document.getElementById('modal-u-taxa').value=u.taxa_personalizada||6;
-  document.getElementById('modal-u-cadastro').textContent=fmtDt(u.data_cadastro);
+  document.getElementById('modal-u-cadastro').value=toInput(u.data_cadastro);
   document.getElementById('modal-u-ultima').textContent=fmtDt(u.ultima_atualizacao);
   document.getElementById('modal-usuario').style.display='flex';
 }
@@ -795,16 +795,21 @@ function setTrial(dias) {
 function salvarUsuario() {
   var uid=document.getElementById('modal-u-uid').value;
   var plano=document.getElementById('modal-u-plano').value;
+  var planoAtivo=document.getElementById('modal-u-plano-ativo').value==='true';
   var acesso=document.getElementById('modal-u-acesso').value==='true';
   var assinatura=document.getElementById('modal-u-assinatura').value;
   var expiracao=document.getElementById('modal-u-expiracao').value;
   var trial=document.getElementById('modal-u-trial').value;
+  var taxa=parseFloat(document.getElementById('modal-u-taxa').value)||6;
   var dados={
     plano: plano,
-    plano_ativo: plano==='pago'&&acesso,
+    plano_ativo: planoAtivo,
     acesso_ativo: acesso,
+    taxa_personalizada: taxa,
     ultima_atualizacao: new Date().toISOString(),
   };
+  var cadastro=document.getElementById('modal-u-cadastro').value;
+  if(cadastro) dados.data_cadastro=cadastro+'T00:00:00.000Z';
   if(assinatura) dados.data_assinatura=assinatura+'T00:00:00.000Z';
   if(expiracao) dados.data_expiracao=expiracao+'T23:59:59.000Z';
   if(trial) dados.trial_ate=trial+'T23:59:59.000Z';
