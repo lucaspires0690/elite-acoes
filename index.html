@@ -1071,18 +1071,23 @@ onAuthStateChanged(auth,async user=>{
     GUEST_MODE=true;
     PLANO_VENCIDO=false;
     if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
-    await carregarPaginasAtivas();
-    await carregarAcoes();
-    // Verificar se o timer já expirou antes de iniciar
+
+    // Verificar PRIMEIRO se o timer já expirou — antes de carregar qualquer dado
     const inicioSalvo=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
-    if(inicioSalvo && (Date.now()-inicioSalvo) >= 5*60*1000){
+    const jaExpirou = inicioSalvo && (Date.now()-inicioSalvo) >= 5*60*1000;
+
+    if(jaExpirou){
+      // Timer expirado — não carrega dados, mostra popup direto
       localStorage.removeItem('ea_guest_inicio');
       PLANO_VENCIDO=true;
-      renderContent();
       document.getElementById('popup-login-timer').classList.add('show');
-    } else {
-      iniciarTimerGuest();
+      return;
     }
+
+    // Timer ainda válido — carrega dados e inicia timer
+    await carregarPaginasAtivas();
+    await carregarAcoes();
+    iniciarTimerGuest();
     return;
   }
 
