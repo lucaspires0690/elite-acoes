@@ -38,7 +38,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;background-image:radial-gradient(ellipse 600px 400px at 65% 20%,rgba(0,212,168,0.07),transparent)}
 
 /* ── Timer barra de acesso guest ── */
-#guest-timer-bar{position:fixed;top:0;left:0;right:0;z-index:150;background:rgba(0,212,168,.08);border-bottom:1px solid rgba(0,212,168,.15);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--txt2);transition:background .3s}
+#guest-timer-bar{position:relative;top:auto;left:auto;right:auto;z-index:150;background:rgba(0,212,168,.08);border-bottom:1px solid rgba(0,212,168,.15);padding:5px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--txt2);transition:background .3s;flex-shrink:0}
 #guest-timer-bar.urgente{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
 #guest-timer-bar.hide{display:none}
 #guest-timer-txt{display:flex;align-items:center;gap:6px}
@@ -411,8 +411,10 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #pwa-install-btn:hover{background:var(--green);color:#0a0e1a}
 #pwa-install-btn.show{display:flex}
 /* Botão flutuante mobile no app */
-#pwa-fab{display:none;position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));right:16px;z-index:99;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:10px 16px;font-size:13px;font-weight:700;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 20px rgba(0,212,168,.4);align-items:center;gap:6px;animation:fadeInUp .4s ease}
+#pwa-fab{display:none;position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));right:16px;z-index:99;background:var(--green);color:#0a0e1a;border:none;border-radius:50px;padding:8px 14px;font-size:12px;font-weight:700;font-family:var(--fb);cursor:pointer;box-shadow:0 4px 20px rgba(0,212,168,.4);align-items:center;gap:6px}
+/* No modo guest o fab fica na barra — só mostra pós-login */
 #pwa-fab.show{display:flex}
+@media(max-width:1024px){#guest-timer-bar:not(.hide) ~ * #pwa-fab{bottom:calc(108px + env(safe-area-inset-bottom))}}
 /* ── iOS Install Banner ── */
 #ios-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surf);border-top:1px solid var(--green);padding:16px 20px;animation:slideUp .3s ease}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
@@ -746,13 +748,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
 <!-- Splash de verificação de sessão -->
 <!-- Barra timer acesso guest -->
-<div id="guest-timer-bar" class="hide">
-  <div id="guest-timer-txt">
-    ⏱️ Acesso gratuito por <span id="guest-timer-count">5:00</span>
-  </div>
-  <button id="guest-timer-login" onclick="window.fazerLogin()">Fazer login — 7 dias grátis</button>
-</div>
-
 <!-- Popup login após timer expirar -->
 <div id="popup-login-timer">
   <div class="plt-box">
@@ -917,6 +912,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="update-bar" id="update-bar" style="display:none">
       <span class="update-dot"></span>
       <span id="update-txt">Dados atualizados</span>
+    </div>
+    <div id="guest-timer-bar" class="hide">
+      <div id="guest-timer-txt">⏱️ Acesso gratuito por <span id="guest-timer-count">5:00</span></div>
+      <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+        <button id="guest-pwa-btn" onclick="instalarPWA()" style="display:none;background:transparent;border:1px solid rgba(0,212,168,.4);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--green);cursor:pointer;font-family:var(--fb);white-space:nowrap">📲 Instalar</button>
+        <button id="guest-timer-login" onclick="window.fazerLogin()">Fazer login — 7 dias grátis</button>
+      </div>
     </div>
     <div class="content" id="content"></div>
     <div class="disclaimer-bar">⛔ Apenas informativo · Não constitui recomendação de investimento · <a href="/termos.html" style="color:inherit;opacity:.6;text-decoration:underline">Termos</a> · <a href="#" onclick="abrirContato(event)" style="color:inherit;opacity:.6;text-decoration:underline">Contato</a></div>
@@ -2119,7 +2121,12 @@ window.addEventListener('beforeinstallprompt', e => {
   deferredPrompt = e;
   if(isMobile && !isStandalone){
     document.getElementById('pwa-install-btn')?.classList.add('show');
-    document.getElementById('pwa-fab')?.classList.add('show');
+    if(GUEST_MODE){
+      // No modo guest mostra o botão instalar na barra do timer
+      document.getElementById('guest-pwa-btn')?.style.setProperty('display','block');
+    } else {
+      document.getElementById('pwa-fab')?.classList.add('show');
+    }
   }
 });
 
