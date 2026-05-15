@@ -914,10 +914,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <span id="update-txt">Dados atualizados</span>
     </div>
     <div id="guest-timer-bar" class="hide">
-      <div id="guest-timer-txt">⏱️ Acesso gratuito por <span id="guest-timer-count">5:00</span></div>
+      <div id="guest-timer-txt">⏱️ Faça login em <span id="guest-timer-count">5:00</span> e ganhe 7 dias grátis</div>
       <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
         <button id="guest-pwa-btn" onclick="instalarPWA()" style="display:none;background:transparent;border:1px solid rgba(0,212,168,.4);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--green);cursor:pointer;font-family:var(--fb);white-space:nowrap">📲 Instalar</button>
-        <button id="guest-timer-login" onclick="window.fazerLogin()">Fazer login — 7 dias grátis</button>
+        <button id="guest-timer-login" onclick="window.fazerLogin()">Entrar com Google</button>
       </div>
     </div>
     <div class="content" id="content"></div>
@@ -1021,18 +1021,30 @@ function iniciarTimerGuest(){
   const bar=document.getElementById('guest-timer-bar');
   const count=document.getElementById('guest-timer-count');
   if(bar) bar.classList.remove('hide');
-  let segundos=5*60; // 5 minutos
+
+  const DURACAO=5*60*1000; // 5 minutos em ms
+
+  // Se já tem um timer salvo, usa ele — senão cria novo
+  let inicio=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
+  if(!inicio || isNaN(inicio)){
+    inicio=Date.now();
+    localStorage.setItem('ea_guest_inicio', inicio);
+  }
+
   function atualizar(){
+    const decorrido=Date.now()-inicio;
+    const restante=Math.max(0, DURACAO-decorrido);
+    const segundos=Math.floor(restante/1000);
     const m=Math.floor(segundos/60);
     const s=segundos%60;
     if(count) count.textContent=m+':'+(s<10?'0':'')+s;
-    if(segundos<=60) bar.classList.add('urgente');
-    if(segundos<=0){
+    if(segundos<=60) bar?.classList.add('urgente');
+    if(restante<=0){
       clearInterval(_guestTimerInterval);
       _guestTimerInterval=null;
+      localStorage.removeItem('ea_guest_inicio');
       expirarAcessoGuest();
     }
-    segundos--;
   }
   atualizar();
   _guestTimerInterval=setInterval(atualizar,1000);
@@ -1058,17 +1070,26 @@ onAuthStateChanged(auth,async user=>{
     document.getElementById('popup-login-timer').classList.remove('show');
     GUEST_MODE=true;
     PLANO_VENCIDO=false;
-    // Parar timer anterior se existir
     if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
     await carregarPaginasAtivas();
     await carregarAcoes();
-    iniciarTimerGuest();
+    // Verificar se o timer já expirou antes de iniciar
+    const inicioSalvo=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
+    if(inicioSalvo && (Date.now()-inicioSalvo) >= 5*60*1000){
+      localStorage.removeItem('ea_guest_inicio');
+      PLANO_VENCIDO=true;
+      renderContent();
+      document.getElementById('popup-login-timer').classList.add('show');
+    } else {
+      iniciarTimerGuest();
+    }
     return;
   }
 
   // Logado — parar timer guest e esconder popup
   GUEST_MODE=false;
   PLANO_VENCIDO=false;
+  localStorage.removeItem('ea_guest_inicio'); // limpa timer
   if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
   document.getElementById('guest-timer-bar')?.classList.add('hide');
   document.getElementById('popup-login-timer').classList.remove('show');
