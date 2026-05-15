@@ -133,9 +133,9 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
 <div class="container">
 
   <div class="alert">
-    <span class="alert-ico">⛔</span>
+    <span class="alert-ico">📐</span>
     <div class="alert-txt">
-      <strong>Importante:</strong> O Elite Ações é uma ferramenta de análise informativa. Os dados e cálculos apresentados <strong>não constituem recomendação de investimento</strong>. Consulte um profissional habilitado pela CVM antes de tomar qualquer decisão financeira.
+      <strong>O que é o Elite Ações:</strong> Uma calculadora automatizada do Método Bazin. A plataforma aplica uma fórmula matemática pública — dividendo anual ÷ 6% — para calcular o preço teto de ações e FIIs da B3, com dados atualizados a cada 15 minutos. O objetivo é eliminar o cálculo manual que o investidor já faria de qualquer forma.
     </div>
   </div>
 
@@ -143,7 +143,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('termos')">📋 Termos de Uso</button>
     <button class="tab-btn" onclick="showTab('privacidade')">🔒 Privacidade (LGPD)</button>
-    <button class="tab-btn" onclick="showTab('disclaimer')">⚠️ Disclaimer Financeiro</button>
+    <button class="tab-btn" onclick="showTab('disclaimer')">⚖️ Aviso Legal</button>
   </div>
 
   <!-- TERMOS DE USO -->
@@ -151,176 +151,95 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
 
     <div class="doc-section">
       <h2><span class="num">01</span> Aceitação dos Termos</h2>
-      <p>Ao acessar ou utilizar o Elite Ações ("Plataforma"), você concorda com estes Termos de Uso. Caso não concorde com qualquer disposição, interrompa imediatamente o uso da Plataforma.</p>
-      <p>Estes termos constituem um acordo legal entre você ("Usuário") e o Elite Ações, operado por Lucas Rodrigues Pires, CNPJ/CPF pendente, com sede no Brasil.</p>
+      <p>Ao acessar ou utilizar o Elite Ações ("Plataforma"), você concorda com estes Termos de Uso. Caso não concorde, interrompa o uso da Plataforma.</p>
+      <p>Estes termos constituem um acordo entre você ("Usuário") e o <strong>Elite Ações</strong>, com sede no Brasil, contato: <a href="mailto:contato@eliteacoes.com">contato@eliteacoes.com</a>.</p>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">02</span> Descrição do Serviço</h2>
-      <p>O Elite Ações é uma plataforma web de análise financeira que calcula automaticamente o preço teto de ações e FIIs listados na B3, utilizando o Método Bazin baseado em histórico de dividendos.</p>
+      <h2><span class="num">02</span> O que é o Elite Ações</h2>
+      <p>O Elite Ações é uma <strong>calculadora automatizada do Método Bazin</strong>. A plataforma aplica a fórmula <em>preço teto = dividendo anual ÷ 6%</em> sobre os dados reais de dividendos dos últimos 12 meses e cotação atual de ações e FIIs listados na B3.</p>
+      <p>O objetivo é simples: eliminar o cálculo manual que o investidor já faria de qualquer forma, entregando o resultado atualizado a cada 15 minutos durante o pregão.</p>
       <ul>
-        <li>Os dados de cotação e dividendos são fornecidos pela API HG Brasil e atualizados a cada 15 minutos durante o pregão da B3 (10h–18h, dias úteis)</li>
-        <li>Os dados exibidos podem apresentar <strong>defasagem de até 20 minutos</strong> em relação ao mercado em tempo real</li>
-        <li>Os dados <strong>não são fornecidos diretamente pela B3</strong> e podem divergir dos valores oficiais em determinados momentos</li>
-        <li>O serviço é oferecido em modelo de assinatura mensal (SaaS)</li>
-        <li>Um período de trial gratuito de 7 dias é disponibilizado a novos usuários</li>
+        <li>Os dados de cotação e dividendos são fornecidos pela API HG Brasil, podendo apresentar defasagem de até 20 minutos em relação ao mercado</li>
+        <li>O Método Bazin é uma metodologia pública, descrita no livro <em>Faça Fortuna com Ações</em> de Décio Bazin</li>
+        <li>O serviço é oferecido em modelo de assinatura mensal com trial gratuito de 7 dias</li>
         <li>O acesso é pessoal e intransferível</li>
       </ul>
-      <div class="alert warn" style="margin-top:16px;margin-bottom:0">
-        <span class="alert-ico">⏱️</span>
-        <div class="alert-txt"><strong>Dados com possível defasagem:</strong> Os valores de cotação e dividendos exibidos na plataforma são obtidos de provedores terceiros e podem apresentar atraso em relação ao mercado em tempo real. <strong>Não utilize estes dados para execução de ordens de compra ou venda.</strong> Para negociação, utilize sempre a plataforma de seu banco ou corretora.</div>
-      </div>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">03</span> Isenção de Responsabilidade sobre Investimentos</h2>
-      <div class="alert warn" style="margin-bottom:16px">
-        <span class="alert-ico">⚠️</span>
-        <div class="alert-txt"><strong>Aviso Legal:</strong> Nenhum conteúdo desta plataforma constitui recomendação, consultoria ou indicação de compra ou venda de ativos financeiros.</div>
-      </div>
-      <p>O Elite Ações apresenta dados históricos de dividendos e cálculos matemáticos baseados no Método Bazin. O usuário é o único responsável por suas decisões de investimento.</p>
-      <ul>
-        <li>Rentabilidade passada não garante rentabilidade futura</li>
-        <li>Investimentos em renda variável envolvem risco de perda do capital</li>
-        <li>O cálculo do preço teto é uma estimativa matemática, não uma certeza</li>
-        <li>A plataforma não é registrada na CVM como consultora de valores mobiliários</li>
-      </ul>
+      <h2><span class="num">03</span> Natureza Informativa</h2>
+      <p>O Elite Ações é uma ferramenta de cálculo, equivalente a uma calculadora financeira. O resultado exibido — preço teto pelo Método Bazin — é uma saída matemática baseada em dados históricos de dividendos.</p>
+      <p>A plataforma <strong>não emite opiniões, análises ou recomendações</strong> sobre compra, venda ou manutenção de qualquer ativo. O usuário é o único responsável pela interpretação dos dados e pelas decisões de investimento que tomar.</p>
     </div>
 
     <div class="doc-section">
       <h2><span class="num">04</span> Assinatura e Pagamento</h2>
-      <p>O pagamento é processado exclusivamente pela plataforma <strong>Hotmart</strong>, sujeito aos termos e condições da Hotmart. O Elite Ações não armazena dados de cartão de crédito.</p>
+      <p>O pagamento é processado pela <strong>Hotmart</strong>. O Elite Ações não armazena dados de cartão de crédito.</p>
       <ul>
-        <li><strong>Trial:</strong> 7 dias gratuitos, sem cartão de crédito</li>
+        <li><strong>Trial:</strong> 7 dias gratuitos, sem necessidade de cartão</li>
         <li><strong>Plano Pro:</strong> R$ 19,90/mês, cobrado mensalmente</li>
-        <li><strong>Cancelamento:</strong> disponível a qualquer momento pela Hotmart, sem multa</li>
-        <li><strong>Reembolso:</strong> conforme política de reembolso da Hotmart (7 dias após a compra)</li>
+        <li><strong>Cancelamento:</strong> a qualquer momento pela Hotmart, sem multa, com efeito no fim do período pago</li>
+        <li><strong>Reembolso:</strong> disponível em até 7 dias após a compra, conforme política da Hotmart e o Código de Defesa do Consumidor (CDC)</li>
       </ul>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">05</span> Uso Permitido e Proibido</h2>
-      <p>Você pode usar a plataforma para fins pessoais de acompanhamento de investimentos. É <strong>proibido</strong>:</p>
+      <h2><span class="num">05</span> Uso Permitido</h2>
+      <p>A plataforma pode ser utilizada para consulta e acompanhamento pessoal de investimentos. É também permitida a <strong>divulgação da plataforma por afiliados cadastrados</strong> no programa oficial de afiliados do Elite Ações via Hotmart, desde que a divulgação respeite as diretrizes deste documento — em especial, sem atribuir à plataforma caráter de recomendação de investimento.</p>
+      <p>É <strong>proibido</strong>:</p>
       <ul>
         <li>Reproduzir, redistribuir ou revender os dados da plataforma</li>
-        <li>Usar robôs, scrapers ou automações para coletar dados em massa</li>
+        <li>Usar robôs ou automações para coleta de dados em massa</li>
         <li>Compartilhar credenciais de acesso com terceiros</li>
-        <li>Tentar acessar recursos além do plano contratado</li>
-        <li>Usar os dados para oferecer serviços de consultoria financeira sem registro na CVM</li>
+        <li>Divulgar a plataforma como serviço de consultoria, análise ou recomendação de investimentos</li>
+        <li>Utilizar os dados como base para prestação de consultoria financeira sem registro na CVM</li>
       </ul>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">06</span> Disponibilidade do Serviço</h2>
-      <p>O Elite Ações se esforça para manter o serviço disponível 24/7, mas não garante disponibilidade ininterrupta. Podem ocorrer interrupções por manutenção, falhas de infraestrutura ou indisponibilidade de APIs de dados terceiros (HG Brasil, Firebase).</p>
-      <p>Não nos responsabilizamos por eventuais perdas financeiras decorrentes de indisponibilidade do serviço.</p>
+      <h2><span class="num">06</span> Programa de Afiliados — Responsabilidades</h2>
+
+      <p>O Elite Ações disponibiliza um programa de afiliados gerenciado pela plataforma Hotmart. Ao se cadastrar como afiliado, o participante declara ter lido, compreendido e aceito integralmente as condições desta seção.</p>
+
+      <p><strong>O afiliado é o único responsável</strong> pelo conteúdo, formato e veiculação de todo material de divulgação que produzir para promover o Elite Ações. O Elite Ações não supervisiona, aprova previamente nem se responsabiliza por propagandas, vídeos, posts, stories, textos ou qualquer outro material produzido por afiliados.</p>
+
+      <p>Ao divulgar o Elite Ações, o afiliado se compromete a:</p>
+      <ul>
+        <li>Apresentar a plataforma exclusivamente como uma <strong>calculadora automatizada do Método Bazin</strong> — ferramenta de apoio ao investidor, não como serviço de consultoria ou recomendação de investimentos</li>
+        <li>Nunca prometer, sugerir ou insinuar retorno financeiro garantido ao usuário final</li>
+        <li>Nunca induzir o consumidor a acreditar que a plataforma indica quais ações comprar ou vender</li>
+        <li>Incluir, em todo material de divulgação, aviso claro de que os resultados de investimento dependem exclusivamente das decisões do próprio investidor</li>
+        <li>Respeitar integralmente o <strong>Código de Defesa do Consumidor (Lei nº 8.078/1990)</strong>, em especial as normas sobre publicidade enganosa (arts. 37 e 38)</li>
+        <li>Respeitar as normas do <strong>CONAR (Código Brasileiro de Autorregulamentação Publicitária)</strong> aplicáveis à divulgação de produtos financeiros</li>
+        <li>Não realizar publicidade que configure oferta ou distribuição pública de valores mobiliários sem autorização da CVM, nos termos da <strong>Lei nº 6.385/1976</strong></li>
+      </ul>
+
+      <p>É <strong>expressamente proibido</strong> ao afiliado:</p>
+      <ul>
+        <li>Divulgar a plataforma como serviço de consultoria, análise ou recomendação de investimentos — atividades reguladas pela CVM (Instruções CVM nº 592/2017 e 598/2018)</li>
+        <li>Usar frases como "invista em X", "compre Y agora", "essa ação vai subir" ou equivalentes em materiais que referenciem o Elite Ações</li>
+        <li>Prometer ganhos financeiros, rentabilidade ou retornos específicos associados ao uso da plataforma</li>
+        <li>Reproduzir, alterar ou usar indevidamente a marca Elite Ações de forma que prejudique sua reputação</li>
+        <li>Criar sites, páginas ou perfis que se passem pelo Elite Ações oficial</li>
+      </ul>
+
+      <div class="alert warn" style="margin-top:20px;margin-bottom:0">
+        <span class="alert-ico">⚖️</span>
+        <div class="alert-txt">
+          <strong>Responsabilidade exclusiva do afiliado:</strong> Qualquer infração às normas acima — incluindo publicidade enganosa, promessa de retorno ou divulgação como consultoria de investimentos — é de responsabilidade <strong>exclusiva e integral do afiliado</strong>, que responderá civil e criminalmente perante consumidores, a CVM, o CONAR e demais órgãos competentes. O Elite Ações se reserva o direito de desativar imediatamente o cadastro de afiliados que descumprirem estas regras e de comunicar as infrações às autoridades competentes.
+        </div>
+      </div>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">07</span> Alterações nos Termos</h2>
+      <h2><span class="num">07</span> Disponibilidade e Dados de Terceiros</h2>
+      <p>O Elite Ações depende de APIs de terceiros (HG Brasil, Firebase, Google Auth) para funcionar. Não garantimos disponibilidade ininterrupta nem a exatidão dos dados fornecidos por esses provedores. A plataforma não se responsabiliza por indisponibilidades temporárias ou por eventuais inconsistências nos dados de origem.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">08</span> Alterações nos Termos</h2>
       <p>Podemos atualizar estes termos a qualquer momento. Alterações relevantes serão comunicadas por email com 15 dias de antecedência. O uso contínuo da plataforma após as alterações implica aceitação dos novos termos.</p>
-    </div>
-
-  </div>
-      <p>O Elite Ações obtém dados financeiros de provedores terceiros (HG Brasil) e não tem controle sobre a exatidão, integridade ou tempestividade dessas informações. Em consequência:</p>
-      <ul>
-        <li>A plataforma <strong>não garante</strong> que os dados estejam corretos, completos ou atualizados em tempo real</li>
-        <li>Eventuais erros, omissões ou defasagens nos dados de terceiros estão fora do controle do Elite Ações</li>
-        <li>O usuário assume integralmente o risco de utilizar dados que possam estar desatualizados</li>
-        <li>O Elite Ações <strong>não se responsabiliza</strong> por decisões de investimento tomadas com base nos dados da plataforma</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- DISCLAIMER FINANCEIRO -->
-  <div class="tab-content" id="tab-disclaimer">
-
-    <div class="alert warn">
-      <span class="alert-ico">⚠️</span>
-      <div class="alert-txt">
-        <strong>Leia com atenção:</strong> Este disclaimer é parte integrante dos Termos de Uso e deve ser lido antes de utilizar qualquer informação da plataforma para fins de investimento.
-      </div>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">01</span> Natureza da Plataforma</h2>
-      <p>O Elite Ações é uma <strong>ferramenta educativa e informativa</strong> de análise financeira. A plataforma realiza cálculos matemáticos baseados no Método Bazin para estimar o preço teto de ações e FIIs listados na B3.</p>
-      <p>O Elite Ações <strong>não é</strong> e não se configura como:</p>
-      <ul>
-        <li>Consultoria de valores mobiliários (nos termos da Instrução CVM nº 592/2017)</li>
-        <li>Análise de valores mobiliários (nos termos da Instrução CVM nº 598/2018)</li>
-        <li>Gestão de carteiras de investimento</li>
-        <li>Administração fiduciária</li>
-        <li>Corretora ou distribuidora de valores mobiliários</li>
-      </ul>
-      <p>A plataforma não é registrada na Comissão de Valores Mobiliários (CVM) como prestadora de nenhum dos serviços acima.</p>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">02</span> Defasagem e Confiabilidade dos Dados</h2>
-      <p>Os dados de cotação, dividendos e demais informações financeiras exibidas na plataforma são obtidos de provedores terceiros (HG Brasil) e estão sujeitos às seguintes limitações:</p>
-      <ul>
-        <li><strong>Defasagem de até 20 minutos</strong> em relação ao mercado durante o pregão da B3</li>
-        <li>Os dados <strong>não são fornecidos diretamente pela B3</strong> ou pela CVM</li>
-        <li>Possibilidade de erros, omissões ou inconsistências provenientes da fonte de dados</li>
-        <li>Fora do horário de pregão, os dados refletem o fechamento do último pregão</li>
-        <li>O histórico de dividendos pode não incluir eventos corporativos recentes (splits, grupamentos, bonificações)</li>
-      </ul>
-      <div class="alert warn" style="margin-top:16px;margin-bottom:0">
-        <span class="alert-ico">🚫</span>
-        <div class="alert-txt"><strong>Não utilize os dados desta plataforma</strong> para executar ordens de compra ou venda em sua corretora. Para operações em tempo real, utilize sempre os dados oficiais disponibilizados pela sua corretora ou pela B3.</div>
-      </div>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">03</span> O Método Bazin — Limitações</h2>
-      <p>O Método Bazin é uma metodologia de análise de investimentos baseada em dividendos históricos, desenvolvida pelo jornalista francês Décio Bazin. Suas limitações incluem:</p>
-      <ul>
-        <li>Baseia-se em <strong>histórico passado de dividendos</strong>, que não garante pagamentos futuros</li>
-        <li>Não considera fatores macroeconômicos, setoriais ou específicos de cada empresa</li>
-        <li>Não é adequado para empresas em fase de crescimento que não distribuem dividendos</li>
-        <li>A taxa de retorno mínima utilizada (6% para ações, 10% para FIIs) é uma referência, não uma garantia de retorno</li>
-        <li>O preço teto calculado é uma <strong>estimativa matemática</strong>, não um valor justo definitivo</li>
-      </ul>
-      <p>O resultado do cálculo deve ser interpretado como <strong>uma das ferramentas</strong> de análise disponíveis ao investidor, não como único critério de decisão.</p>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">04</span> Isenção de Responsabilidade por Perdas</h2>
-      <p>O Elite Ações, seus sócios, colaboradores e prestadores de serviço <strong>não se responsabilizam</strong> por quaisquer perdas ou danos, diretos ou indiretos, incluindo mas não limitados a:</p>
-      <ul>
-        <li>Perdas financeiras decorrentes de decisões de investimento baseadas nos dados da plataforma</li>
-        <li>Perdas causadas por dados incorretos, desatualizados ou incompletos de provedores terceiros</li>
-        <li>Perdas decorrentes de indisponibilidade temporária do serviço</li>
-        <li>Perdas por uso inadequado das informações apresentadas</li>
-      </ul>
-      <p>O usuário declara ciência de que <strong>investimentos em renda variável envolvem risco de perda parcial ou total do capital investido.</strong></p>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">05</span> Recomendação ao Investidor</h2>
-      <p>Antes de qualquer decisão de investimento, recomendamos:</p>
-      <ul>
-        <li>Consultar um <strong>Assessor de Investimentos habilitado</strong> pela CVM ou certificado pela ANCORD</li>
-        <li>Realizar análise própria com múltiplas fontes de informação</li>
-        <li>Avaliar seu perfil de risco (suitability) junto à sua corretora</li>
-        <li>Nunca investir valores que não possa perder</li>
-        <li>Diversificar a carteira para reduzir riscos</li>
-      </ul>
-    </div>
-
-    <div class="doc-section">
-      <h2><span class="num">06</span> Base Legal e Regulatória</h2>
-      <p>Este disclaimer está fundamentado nas seguintes normas:</p>
-      <ul>
-        <li><strong>Instrução CVM nº 592/2017</strong> — Consultoria de Valores Mobiliários</li>
-        <li><strong>Instrução CVM nº 598/2018</strong> — Análise de Valores Mobiliários</li>
-        <li><strong>Lei nº 6.385/1976</strong> — Lei do Mercado de Capitais</li>
-        <li><strong>Lei nº 13.709/2018</strong> — Lei Geral de Proteção de Dados (LGPD)</li>
-        <li><strong>Lei nº 8.078/1990</strong> — Código de Defesa do Consumidor (CDC)</li>
-      </ul>
-      <p>Em caso de dúvidas sobre a regulamentação do mercado de capitais, consulte o site oficial da CVM: <a href="https://www.gov.br/cvm" target="_blank">www.gov.br/cvm</a></p>
     </div>
 
   </div>
@@ -331,17 +250,17 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
     <div class="alert">
       <span class="alert-ico">🔒</span>
       <div class="alert-txt">
-        <strong>Comprometimento com sua privacidade:</strong> O Elite Ações não vende dados pessoais. Coletamos apenas o mínimo necessário para o funcionamento do serviço, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018)</strong>.
+        <strong>Privacidade em primeiro lugar:</strong> O Elite Ações não vende dados pessoais. Coletamos apenas o mínimo necessário para o funcionamento do serviço, em conformidade com a <strong>LGPD (Lei 13.709/2018)</strong>.
       </div>
     </div>
 
     <div class="doc-section">
       <h2><span class="num">01</span> Dados que Coletamos</h2>
       <ul>
-        <li><strong>Dados de autenticação:</strong> nome, email e foto de perfil fornecidos pelo Google ao fazer login</li>
-        <li><strong>Dados de uso:</strong> ações favoritas, taxa mínima configurada, data do último acesso</li>
-        <li><strong>Dados de assinatura:</strong> plano ativo, data de expiração, histórico de pagamentos (via Hotmart)</li>
-        <li><strong>Dados técnicos:</strong> tipo de dispositivo, navegador (via Firebase Analytics)</li>
+        <li><strong>Autenticação:</strong> nome, email e foto de perfil fornecidos pelo Google ao fazer login</li>
+        <li><strong>Preferências:</strong> ações favoritas e data do último acesso</li>
+        <li><strong>Assinatura:</strong> plano ativo e data de expiração (via Hotmart)</li>
+        <li><strong>Dados técnicos:</strong> tipo de dispositivo e navegador (via Firebase)</li>
       </ul>
     </div>
 
@@ -349,63 +268,89 @@ footer{padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
       <h2><span class="num">02</span> Como Usamos seus Dados</h2>
       <ul>
         <li>Autenticar seu acesso à plataforma</li>
-        <li>Salvar suas preferências e favoritos entre sessões</li>
+        <li>Salvar favoritos e preferências entre sessões</li>
         <li>Controlar o acesso conforme o plano contratado</li>
-        <li>Enviar comunicações sobre seu plano (expiração, renovação)</li>
-        <li>Melhorar a experiência da plataforma com base em dados agregados</li>
+        <li>Enviar avisos sobre expiração e renovação do plano</li>
       </ul>
     </div>
 
     <div class="doc-section">
       <h2><span class="num">03</span> Compartilhamento de Dados</h2>
-      <p>Seus dados são compartilhados apenas com:</p>
+      <p>Seus dados são compartilhados apenas com os provedores necessários para o funcionamento da plataforma:</p>
       <ul>
-        <li><strong>Google Firebase:</strong> autenticação e banco de dados (Google LLC, EUA — adequação LGPD via SCCs)</li>
-        <li><strong>Hotmart:</strong> processamento de pagamentos (Brasil)</li>
-        <li><strong>HG Brasil:</strong> fornecimento de dados financeiros (sem acesso a dados pessoais)</li>
+        <li><strong>Google Firebase:</strong> autenticação e banco de dados</li>
+        <li><strong>Hotmart:</strong> processamento de pagamentos</li>
       </ul>
-      <p>Não compartilhamos dados com anunciantes, parceiros de marketing ou terceiros não listados acima.</p>
+      <p>Não compartilhamos dados com anunciantes ou parceiros de marketing.</p>
     </div>
 
     <div class="doc-section">
       <h2><span class="num">04</span> Seus Direitos (LGPD)</h2>
-      <p>Como titular dos dados, você tem direito a:</p>
-      <ul>
-        <li><strong>Acesso:</strong> saber quais dados temos sobre você</li>
-        <li><strong>Correção:</strong> solicitar correção de dados incorretos</li>
-        <li><strong>Exclusão:</strong> solicitar a exclusão dos seus dados</li>
-        <li><strong>Portabilidade:</strong> receber seus dados em formato estruturado</li>
-        <li><strong>Revogação:</strong> revogar o consentimento a qualquer momento</li>
-      </ul>
-      <p>Para exercer seus direitos, entre em contato: <a href="mailto:contato@eliteacoes.com">contato@eliteacoes.com</a></p>
+      <p>Você pode a qualquer momento solicitar: acesso, correção, exclusão ou portabilidade dos seus dados. Para isso, entre em contato: <a href="mailto:contato@eliteacoes.com">contato@eliteacoes.com</a></p>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">05</span> Retenção de Dados</h2>
-      <p>Seus dados são mantidos enquanto sua conta estiver ativa. Após o cancelamento, os dados são excluídos em até <strong>90 dias</strong>, exceto quando obrigados por lei a mantê-los por período maior.</p>
+      <h2><span class="num">05</span> Retenção e Exclusão</h2>
+      <p>Seus dados são mantidos enquanto a conta estiver ativa. Após o cancelamento, são excluídos em até <strong>90 dias</strong>, salvo obrigação legal de retenção por prazo maior.</p>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">06</span> Cookies e Armazenamento Local</h2>
-      <p>Utilizamos <strong>localStorage</strong> do navegador para cache de dados e preferências de tema, sem finalidade publicitária. Não utilizamos cookies de rastreamento de terceiros.</p>
+      <h2><span class="num">06</span> Armazenamento Local</h2>
+      <p>Utilizamos <strong>localStorage</strong> do navegador para cache de dados e preferências de tema. Não utilizamos cookies de rastreamento ou publicidade.</p>
     </div>
 
     <div class="doc-section">
-      <h2><span class="num">07</span> Encarregado de Dados (DPO)</h2>
-      <p>Responsável pelo tratamento de dados pessoais:<br>
-      <strong>Lucas Rodrigues Pires</strong><br>
-      Email: <a href="mailto:contato@eliteacoes.com">contato@eliteacoes.com</a>
-      </p>
+      <h2><span class="num">07</span> Contato — DPO</h2>
+      <p>Responsável pelo tratamento de dados:<br>
+      <strong>Elite Ações</strong> — <a href="mailto:contato@eliteacoes.com">contato@eliteacoes.com</a></p>
     </div>
 
   </div>
 
+  <!-- AVISO LEGAL -->
+  <div class="tab-content" id="tab-disclaimer">
 
+    <div class="doc-section">
+      <h2><span class="num">01</span> O que a plataforma faz</h2>
+      <p>O Elite Ações automatiza o cálculo do Método Bazin — uma metodologia pública e amplamente conhecida entre investidores de dividendos. A fórmula é simples:</p>
+      <p style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-family:monospace;font-size:14px;color:var(--teal);margin:16px 0;">
+        Preço Teto = Dividendo Anual (DY 12 meses × Cotação) ÷ 6%
+      </p>
+      <p>Se a cotação atual estiver <strong>abaixo do preço teto</strong>, a ação oferece retorno em dividendos acima de 6% ao ano pelo histórico recente. Se estiver <strong>acima</strong>, o retorno seria inferior a 6%. Isso é tudo que a plataforma calcula — uma relação matemática entre dividendos e preço.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">02</span> O que a plataforma não faz</h2>
+      <p>O Elite Ações <strong>não emite opiniões, análises ou recomendações</strong> de compra, venda ou manutenção de ativos. A plataforma não é registrada na CVM como consultora ou analista de valores mobiliários (Instruções CVM nº 592/2017 e 598/2018).</p>
+      <p>A classificação "barata" ou "cara" refere-se exclusivamente à relação matemática entre cotação e preço teto calculado. Não implica qualquer juízo sobre o valor intrínseco da empresa ou recomendação de investimento.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">03</span> Limitações do Método Bazin</h2>
+      <ul>
+        <li>Baseia-se em histórico de dividendos dos últimos 12 meses — pagamentos futuros podem variar</li>
+        <li>Não considera fatores qualitativos da empresa (gestão, setor, endividamento, perspectivas)</li>
+        <li>Não é adequado para empresas que não distribuem dividendos regularmente</li>
+        <li>A taxa de 6% é uma referência histórica — cada investidor pode ter um retorno mínimo diferente</li>
+      </ul>
+      <p>O resultado do cálculo deve ser usado como <strong>um dado a mais</strong> na análise do investidor, não como critério único de decisão.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">04</span> Defasagem dos Dados</h2>
+      <p>Os dados de cotação e dividendos são obtidos via API HG Brasil e podem apresentar defasagem de até 20 minutos em relação ao pregão da B3. Os dados não são fornecidos diretamente pela B3. Para execução de ordens, utilize sempre a plataforma da sua corretora.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2><span class="num">05</span> Responsabilidade do Usuário</h2>
+      <p>O usuário declara ter ciência de que investimentos em renda variável envolvem risco de perda de capital e que é o único responsável pelas decisões de investimento que tomar, independentemente das informações consultadas nesta plataforma.</p>
+    </div>
+
+  </div>
 
   <div class="divider"></div>
 
 </div>
-
 <footer>
   <div class="container">
     <div class="footer-inner">
