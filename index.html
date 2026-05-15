@@ -1071,12 +1071,19 @@ function setTrialUI(dias){
 function setPlanoProUI(dataAssinatura, diasRestantes){
   const box=document.getElementById('trial-box');
   const dtFmt=dataAssinatura?new Date(dataAssinatura).toLocaleDateString('pt-BR'):'—';
+  // Data de vencimento = data assinatura + 30 dias
+  let dtVencFmt='—';
+  if(dataAssinatura){
+    const dtVenc=new Date(dataAssinatura);
+    dtVenc.setDate(dtVenc.getDate()+30);
+    dtVencFmt=dtVenc.toLocaleDateString('pt-BR');
+  }
   const alerta=diasRestantes<=3;
   box.onclick=null;
   box.style.cursor='default';
   box.style.borderColor=alerta?'rgba(239,68,68,0.4)':'rgba(0,212,168,0.2)';
   const renovaHTML=diasRestantes>0
-    ?'Renova em: <strong style="color:'+(alerta?'var(--red)':'var(--txt)')+'">'+diasRestantes+' dias</strong>'
+    ?'Vence em: <strong style="color:'+(alerta?'var(--red)':'var(--txt)')+'">'+dtVencFmt+'</strong> ('+diasRestantes+' dias)'
     :'<strong style="color:var(--red)">⚠️ Renovação pendente</strong>';
   const btnHTML=alerta
     ?'<button class="sb-trial-btn" style="background:var(--red);margin-top:6px" onclick="irCheckout()">⚠️ Renovar agora</button>'
@@ -1493,18 +1500,6 @@ window.openDet=function(codigo){
       +'</div>'
     +'</div>'
 
-    // ── 52 SEMANAS ───────────────────────────────────
-    +'<div class="det-section">'
-      +'<div class="det-section-title">Intervalo 52 semanas</div>'
-      +'<div class="det-52w">'
-        +'<div class="det-52w-item"><div class="det-lbl">Mínimo</div><div class="det-52w-val red">'+fmt(a.min_52s)+'</div></div>'
-        +'<div class="det-52w-bar-wrap"><div class="det-52w-bar"><div class="det-52w-cur" style="left:'+
-          (a.min_52s&&a.max_52s?Math.min(Math.max(((a.cotacao-a.min_52s)/(a.max_52s-a.min_52s))*100,2),98):50)
-          +'%"></div></div></div>'
-        +'<div class="det-52w-item" style="text-align:right"><div class="det-lbl">Máximo</div><div class="det-52w-val green">'+fmt(a.max_52s)+'</div></div>'
-      +'</div>'
-    +'</div>'
-
     // ── DIVIDENDOS ───────────────────────────────────
     +'<div class="det-section">'
       +'<div class="det-section-title">Dividendos</div>'
@@ -1525,15 +1520,10 @@ window.openDet=function(codigo){
           +'<div style="margin-top:6px;font-size:12px;color:var(--txt3)">'+(ib?'✅ Cotação abaixo do teto':'⚠️ Cotação acima do teto — aguarde cair')+'</div>'
         +'</div>'
 
-        // Cálculo simples + slider
-        +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:8px 0">'
-          +'<div style="font-size:12px;color:var(--txt3);font-family:var(--fm);text-align:center;margin-bottom:10px" id="det-formula">R$ '+a.dividendo_anual.toFixed(2)+' ÷ <span id="det-taxa-val">'+t+'%</span> = <strong style="color:var(--'+tetoClass+')" id="det-teto-result">R$ '+c.teto.toFixed(2)+'</strong></div>'
-          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
-            +'<span style="font-size:11px;color:var(--txt3)">Taxa</span>'
-            +'<span style="font-size:13px;font-weight:800;color:var(--green);font-family:var(--fm)" id="det-taxa-display">'+t+'%</span>'
-          +'</div>'
-          +'<input type="range" id="det-taxa-slider" min="4" max="'+(isFii(a.codigo)?'20':'15')+'" step="0.1" value="'+t+'" style="width:100%" data-cod="'+a.codigo+'" oninput="onTaxaDet(this.value,this.dataset.cod)">'
-          +'<div style="display:flex;justify-content:space-between;font-size:9px;color:var(--txt4);margin-top:3px"><span>4% flexível</span><span>'+(isFii(a.codigo)?'20':'15')+'% exigente</span></div>'
+        // Fórmula simples sem slider
+        +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:8px 0;text-align:center">'
+          +'<div style="font-size:11px;color:var(--txt3);margin-bottom:4px">Dividendos 12m ÷ DY real</div>'
+          +'<div style="font-size:13px;font-weight:700;font-family:var(--fm);color:var(--txt)">R$ '+a.dividendo_anual.toFixed(4)+' ÷ '+t.toFixed(1)+'% = <strong style="color:var(--'+tetoClass+')">R$ '+c.teto.toFixed(2)+'</strong></div>'
         +'</div>'
 
         // Margem de segurança
