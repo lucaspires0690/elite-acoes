@@ -1337,7 +1337,7 @@ function renderHome(el){
       :'';
 
     if(PLANO_VENCIDO){
-      return '<div class="hcard '+c.status+'" style="cursor:pointer;opacity:.85" onclick="openModal('modal-sub')">'
+      return '<div class="hcard '+c.status+'" style="cursor:pointer;opacity:.85" onclick=\"openModal(&quot;modal-sub&quot;)\">'
         +'<div class="hcard-badge '+c.status+'">'+badgeLabel+'</div>'
         +logoHTML(a.codigo,'sm')
         +'<div class="hcard-ticker">'+a.codigo+'</div>'
@@ -1376,7 +1376,7 @@ function renderHome(el){
 
   let html='<div class="home-wrap">';
   if(PLANO_VENCIDO){
-    html+='<div style="background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.06));border:1px solid rgba(239,68,68,.3);border-radius:14px;margin:12px 16px;padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:32px">🔒</span><div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:4px">Seu acesso expirou</div><div style="font-size:12px;color:var(--txt3);line-height:1.5">Assine o Plano Pro para ver cotações, preço teto e DY de todas as ações e FIIs.</div></div><button onclick="openModal(\'modal-sub\')" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb);white-space:nowrap">🚀 Assinar</button></div>';
+    html+='<div style="background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.06));border:1px solid rgba(239,68,68,.3);border-radius:14px;margin:12px 16px;padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:32px">🔒</span><div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:4px">Seu acesso expirou</div><div style="font-size:12px;color:var(--txt3);line-height:1.5">Assine o Plano Pro para ver cotações, preço teto e DY de todas as ações e FIIs.</div></div><button onclick=\"openModal(&quot;modal-sub&quot;)\" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb);white-space:nowrap">🚀 Assinar</button></div>';
   }
 
   // Saudação
@@ -1449,7 +1449,7 @@ function renderCard(a){
   const teto=c.teto>0?'R$ '+c.teto.toFixed(2):'—';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick="openModal(\'modal-sub\')">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"openModal(&quot;modal-sub&quot;)\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'">'
     +logoHTML(a.codigo,'ac')
@@ -1477,7 +1477,7 @@ function renderSRItem(a){
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick="openModal(\'modal-sub\')">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"openModal(&quot;modal-sub&quot;)\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="sr-item" data-cod="'+a.codigo+'" style="cursor:pointer">'
     +logoHTML(a.codigo,'sr')
