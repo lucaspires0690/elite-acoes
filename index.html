@@ -945,7 +945,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, browserLocalPersistence, setPersistence } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',authDomain:'elite-acoes.firebaseapp.com',projectId:'elite-acoes',storageBucket:'elite-acoes.firebasestorage.app',messagingSenderId:'723536084871',appId:'1:723536084871:web:c6cf5879ddeb629759dd22'};
 const fbApp=initializeApp(firebaseConfig);
@@ -990,34 +990,47 @@ onAuthStateChanged(auth,async user=>{
   if(!uSnap.exists()){
     const te=new Date();
     te.setDate(te.getDate()+7);
-    te.setHours(23,59,59,999); // expira à meia-noite do 7º dia
+    te.setHours(23,59,59,999);
     await setDoc(uRef,{email:user.email,plano:'gratuito',acesso_ativo:true,trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});
     uSnap=await getDoc(uRef);
   }
-  const d=uSnap.data();
-  taxa=d.taxa_personalizada||6;taxaFii=d.taxa_fii||10;
-  FAVORITOS=new Set(d.favoritos||[]);
 
-  if(d.plano==='pago' && d.plano_ativo){
-    // Calcular dias restantes do plano
-    const expiracao=d.data_expiracao?new Date(d.data_expiracao):null;
-    const diasRestantes=expiracao?Math.ceil((expiracao-new Date())/864e5):30;
-    setPlanoProUI(d.data_assinatura, diasRestantes);
-    const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');
-    if(diasRestantes<=0){
-      PLANO_VENCIDO=true;
-      document.getElementById('paywall-fab')?.classList.add('show');
+  // Função para aplicar dados do usuário — chamada no carregamento e sempre que mudar no Firestore
+  function aplicarDadosUsuario(d){
+    FAVORITOS=new Set(d.favoritos||[]);
+    PLANO_VENCIDO=false;
+    document.getElementById('paywall-fab')?.classList.remove('show');
+
+    if(d.plano==='pago' && d.plano_ativo){
+      const expiracao=d.data_expiracao?new Date(d.data_expiracao):null;
+      const diasRestantes=expiracao?Math.ceil((expiracao-new Date())/864e5):30;
+      setPlanoProUI(d.data_assinatura, diasRestantes);
+      const sa=document.getElementById('sb-assinar');if(sa)sa.classList.add('hidden');
+      if(diasRestantes<=0){
+        PLANO_VENCIDO=true;
+        document.getElementById('paywall-fab')?.classList.add('show');
+      }
+    } else {
+      const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);
+      setTrialUI(dias);
+      if(dias<=0){
+        PLANO_VENCIDO=true;
+        if(USER) setDoc(doc(db,'usuarios',USER.uid),{acesso_ativo:false},{merge:true}).catch(()=>{});
+        document.getElementById('paywall-fab')?.classList.add('show');
+      }
     }
-  } else{
-    const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);
-    setTrialUI(dias);
-    if(dias<=0){
-      PLANO_VENCIDO=true;
-      // Revogar acesso_ativo no Firestore para Firestore Rules bloquearem
-      if(USER) setDoc(doc(db,'usuarios',USER.uid),{acesso_ativo:false},{merge:true}).catch(()=>{});
-      document.getElementById('paywall-fab')?.classList.add('show');
-    }
+    // Re-renderizar para refletir mudanças de plano
+    atualizarContadores();
+    renderContent();
   }
+
+  // Aplicar dados iniciais
+  aplicarDadosUsuario(uSnap.data());
+
+  // Listener em tempo real — atualiza automaticamente quando admin editar
+  onSnapshot(uRef, function(snap){
+    if(snap.exists()) aplicarDadosUsuario(snap.data());
+  });
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
   // Onboarding: mostrar dica no primeiro acesso (após disclaimer)
