@@ -1085,6 +1085,31 @@ function setPlanoProUI(dataAssinatura, diasRestantes){
     +'</div>'
     +btnHTML;
   document.getElementById('sb-user-plan').textContent='✅ Pro';
+
+  // Badge mobile com dias restantes do plano pago
+  const badge=document.getElementById('mob-trial-badge');
+  if(badge){
+    badge.style.display='flex';
+    if(diasRestantes<=0){
+      badge.textContent='⚠️ Plano vencido';
+      badge.style.background='rgba(239,68,68,.15)';
+      badge.style.borderColor='rgba(239,68,68,.3)';
+      badge.style.color='#ef4444';
+      badge.onclick=()=>openModal('modal-sub');
+    } else if(diasRestantes<=3){
+      badge.textContent='⚠️ Pro — '+diasRestantes+'d';
+      badge.style.background='rgba(239,68,68,.15)';
+      badge.style.borderColor='rgba(239,68,68,.3)';
+      badge.style.color='#ef4444';
+      badge.onclick=()=>openModal('modal-sub');
+    } else {
+      badge.textContent='✅ Pro — '+diasRestantes+'d';
+      badge.style.background='rgba(0,212,168,.12)';
+      badge.style.borderColor='rgba(0,212,168,.3)';
+      badge.style.color='var(--green)';
+      badge.onclick=null;
+    }
+  }
 }
 
 async function carregarAcoes(){
