@@ -2084,11 +2084,10 @@ if(isStandalone){
 }
 
 // Toast some APENAS quando a página ficar oculta (app instalado abriu na frente)
-// e recarrega automaticamente
+// e recarrega automaticamente. A flag ea_pwa_instalando é removida pelo standalone.
 document.addEventListener('visibilitychange', () => {
   if(document.hidden && localStorage.getItem('ea_pwa_instalando') === '1'){
-    localStorage.removeItem('ea_pwa_instalando');
-    // Quando o usuário voltar para a página, ela já estará recarregada sem o toast
+    // Não remove a flag aqui — o standalone vai ler e mostrar sucesso
     location.reload();
   }
 });
