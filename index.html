@@ -2084,9 +2084,15 @@ if(isStandalone){
 
 window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  // Esconde o toast de loading na página web
-  // O app standalone já mostra a mensagem de sucesso
   hideToast();
+});
+
+// Fallback: quando a página web perde o foco (app standalone abre),
+// esconde o toast de loading
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden && localStorage.getItem('ea_pwa_instalando') === '1'){
+    hideToast();
+  }
 });
 
 const DEMO=[
