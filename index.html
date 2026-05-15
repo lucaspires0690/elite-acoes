@@ -1160,10 +1160,9 @@ function calcTaxa(a){return isFii(a.codigo)?taxaFii:taxa;}
 // Taxa baseada no DY real dos últimos 12 meses
 // Limitada ao range do slider (4% mínimo)
 function calcTaxaReal(a){
-  if(!a.cotacao||!a.dividendo_anual) return calcTaxa(a);
-  const dyReal=parseFloat(((a.dividendo_anual/a.cotacao)*100).toFixed(1));
-  const maxT=isFii(a.codigo)?20:15;
-  return Math.min(Math.max(dyReal>0?dyReal:calcTaxa(a), 4), maxT);
+  // Método Bazin: taxa mínima de retorno desejada
+  // Ações: 6% | FIIs: 10%
+  return isFii(a.codigo)?10:6;
 }
 function calc(a,t){
   const teto=a.dividendo_anual>0?a.dividendo_anual/(t/100):0;
