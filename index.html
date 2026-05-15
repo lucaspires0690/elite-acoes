@@ -2083,32 +2083,15 @@ if(isStandalone){
   document.getElementById('pwa-fab')?.classList.remove('show');
 }
 
-window.addEventListener('appinstalled', () => {
-  deferredPrompt = null;
-  localStorage.removeItem('ea_pwa_instalando');
-  // Recarrega a página — o toast some e os botões de instalar somem
-  setTimeout(() => location.reload(), 500);
+// Toast some APENAS quando a página ficar oculta (app instalado abriu na frente)
+// e recarrega automaticamente
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden && localStorage.getItem('ea_pwa_instalando') === '1'){
+    localStorage.removeItem('ea_pwa_instalando');
+    // Quando o usuário voltar para a página, ela já estará recarregada sem o toast
+    location.reload();
+  }
 });
-
-// Se voltou para a página com flag de instalação pendente, limpa
-if(!isStandalone && localStorage.getItem('ea_pwa_instalando') === '1'){
-  localStorage.removeItem('ea_pwa_instalando');
-}
-
-// Polling de segurança: se a flag existir por mais de 60s sem instalar, limpa o toast
-let _pwaCheckInterval = null;
-function iniciarVerificacaoInstalacao(){
-  if(_pwaCheckInterval) return;
-  let segundos = 0;
-  _pwaCheckInterval = setInterval(() => {
-    segundos++;
-    if(localStorage.getItem('ea_pwa_instalando') !== '1' || segundos >= 60){
-      clearInterval(_pwaCheckInterval);
-      _pwaCheckInterval = null;
-      hideToast();
-    }
-  }, 1000);
-}
 
 const DEMO=[
   {codigo:'BBAS3',nome:'Banco do Brasil',cotacao:30.00,dividendo_anual:2.20,setor:'Financeiro'},
