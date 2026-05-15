@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Pages | Elite Ações</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<style>
+:root{
+  --ink:#06070d;--ink2:#0c0f1e;--ink3:#111828;--ink4:#1a2238;
+  --green:#00d4a8;--green2:rgba(0,212,168,.1);--green3:rgba(0,212,168,.2);
+  --red:#ef4444;--yellow:#f59e0b;--blue:#60a5fa;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --t1:#fff;--t2:rgba(255,255,255,.75);--t3:rgba(255,255,255,.45);--t4:rgba(255,255,255,.22);
+  --r:14px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--t2);min-height:100vh;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(ellipse 60% 50% at 75% 0%,rgba(0,212,168,.07),transparent 70%),var(--ink)}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;color:var(--t1);font-weight:800;letter-spacing:-.03em}
+h1{font-size:clamp(28px,4vw,44px)}h2{font-size:22px}h3{font-size:16px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,7,13,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{height:60px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:auto;padding:0 24px}
+.logo{font-family:'Bricolage Grotesque';font-size:18px;font-weight:800;color:var(--t1);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--green)}
+.logo-badge{background:var(--green2);border:1px solid var(--green3);border-radius:6px;padding:2px 8px;font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.user-email{font-size:12px;color:var(--t3)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:none;cursor:pointer;font-family:'DM Sans';font-weight:700;border-radius:999px;transition:all .15s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#0a0e1a;padding:8px 18px;font-size:13px}
+.btn-ghost{border:1px solid var(--border2);background:transparent;color:var(--t3);padding:8px 14px;font-size:13px}
+.btn-ghost:hover{color:var(--t1);border-color:rgba(255,255,255,.3)}
+.btn-sm{padding:5px 12px;font-size:11px}
+.btn-danger{border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:var(--red)}
+
+/* Layout */
+.W{max-width:1200px;margin:0 auto;padding:0 24px}
+main{padding:28px 0 48px}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat{background:rgba(17,24,40,.85);border:1px solid var(--border);border-radius:var(--r);padding:18px}
+.stat-label{font-size:10px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.stat-value{font-family:'Bricolage Grotesque';font-size:28px;font-weight:800;color:var(--t1)}
+.stat-value.green{color:var(--green)}.stat-value.yellow{color:var(--yellow)}.stat-value.blue{color:var(--blue)}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;background:rgba(17,24,40,.6);border:1px solid var(--border);border-radius:999px;padding:4px;margin-bottom:20px;width:fit-content}
+.tab-btn{padding:7px 20px;border-radius:999px;border:none;background:transparent;color:var(--t3);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans';transition:all .15s}
+.tab-btn.active{background:var(--green);color:#0a0e1a}
+
+/* Toolbar */
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.search-box{display:flex;align-items:center;gap:8px;background:rgba(17,24,40,.8);border:1px solid var(--border2);border-radius:999px;padding:8px 16px;min-width:260px}
+.search-box input{background:none;border:none;outline:none;color:var(--t1);font-family:'DM Sans';font-size:13px;width:100%}
+.filter-row{display:flex;gap:6px}
+.filter-btn{padding:6px 14px;border-radius:999px;border:1px solid var(--border2);background:transparent;color:var(--t3);font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans';transition:all .15s}
+.filter-btn.active{background:rgba(0,212,168,.1);border-color:rgba(0,212,168,.3);color:var(--green)}
+
+/* Grid de cards */
+.pages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* Card */
+.page-card{background:rgba(17,24,40,.88);border:1px solid var(--border);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px;transition:all .15s}
+.page-card:hover{border-color:var(--border2)}
+.page-card.ativa{border-color:rgba(0,212,168,.25);background:rgba(0,212,168,.03)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-ticker{font-family:'Bricolage Grotesque';font-size:18px;font-weight:800;color:var(--t1)}
+.card-nome{font-size:11px;color:var(--t3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-tipo{font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px}
+.tipo-acao{background:rgba(96,165,250,.1);color:var(--blue);border:1px solid rgba(96,165,250,.2)}
+.tipo-fii{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
+.badge-status{font-size:10px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.badge-ativa{background:rgba(0,212,168,.12);color:var(--green);border:1px solid rgba(0,212,168,.25)}
+.badge-inativa{background:rgba(255,255,255,.06);color:var(--t3);border:1px solid var(--border)}
+.card-url{font-size:11px;color:var(--green);opacity:.7;word-break:break-all}
+.card-actions{display:flex;gap:6px;align-items:center;margin-top:4px}
+
+/* Toggle switch */
+.toggle-wrap{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--t3)}
+.toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--border2);cursor:pointer;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:2px;top:2px;border-radius:50%;background:rgba(255,255,255,.6);transition:.2s}
+.toggle input:checked+.toggle-slider{background:rgba(0,212,168,.2);border-color:rgba(0,212,168,.4)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(18px);background:var(--green)}
+
+/* Modal */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-ov.show{display:flex}
+.modal{width:100%;max-width:580px;max-height:90vh;overflow-y:auto;background:var(--ink3);border:1px solid var(--border2);border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.modal-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-body{padding:20px 24px;display:flex;flex-direction:column;gap:14px}
+.modal-foot{padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.close-btn{background:rgba(255,255,255,.08);border:1px solid var(--border);color:var(--t3);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.close-btn:hover{color:var(--t1)}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--t3)}
+.field input,.field textarea,.field select{width:100%;background:var(--ink4);border:1px solid var(--border2);border-radius:10px;padding:10px 12px;color:var(--t1);font-family:'DM Sans';font-size:13px;outline:none;transition:border-color .15s}
+.field input:focus,.field textarea:focus{border-color:var(--green)}
+.field textarea{min-height:80px;resize:vertical}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--ink4);border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:13px;color:var(--t2);transform:translateY(120%);transition:.25s;z-index:300;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.toast.show{transform:translateY(0)}
+.toast.success{border-color:rgba(0,212,168,.3);color:var(--green)}
+.toast.error{border-color:rgba(239,68,68,.3);color:var(--red)}
+
+/* Empty */
+.empty-state{text-align:center;padding:48px 24px;color:var(--t3);font-size:14px}
+
+@media(max-width:900px){.pages-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.pages-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.W{padding:0 16px}.toolbar{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- Não logado -->
+<div id="blocked" style="display:none;min-height:100vh;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:400px;padding:24px">
+    <div style="font-size:40px;margin-bottom:16px">🔒</div>
+    <h2 style="color:var(--t1);margin-bottom:8px">Acesso restrito</h2>
+    <p style="color:var(--t3);margin-bottom:20px">Faça login com a conta admin para acessar.</p>
+    <button class="btn btn-primary" onclick="loginGoogle()">Entrar com Google</button>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app" style="display:none">
+  <nav>
+    <div class="nav-inner">
+      <a href="/admin.html" class="logo">Elite <span>Ações</span> <span class="logo-badge">PAGES</span></a>
+      <div class="nav-right">
+        <span class="user-email" id="user-email"></span>
+        <a href="/admin.html" class="btn btn-ghost btn-sm">← Admin</a>
+        <button class="btn btn-ghost btn-sm" onclick="sair()">Sair</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="W">
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Total páginas</div><div class="stat-value blue" id="s-total">—</div></div>
+        <div class="stat"><div class="stat-label">Ativas</div><div class="stat-value green" id="s-ativas">—</div></div>
+        <div class="stat"><div class="stat-label">Ações</div><div class="stat-value" id="s-acoes">—</div></div>
+        <div class="stat"><div class="stat-label">FIIs</div><div class="stat-value yellow" id="s-fiis">—</div></div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <!-- Tabs Ações / FIIs / Todas -->
+          <div class="tabs">
+            <button class="tab-btn active" id="tab-todas" onclick="setTab('todas')">Todas</button>
+            <button class="tab-btn" id="tab-acoes" onclick="setTab('acoes')">🏢 Ações</button>
+            <button class="tab-btn" id="tab-fiis" onclick="setTab('fiis')">🏗️ FIIs</button>
+          </div>
+          <!-- Filtro ativo/inativo -->
+          <div class="filter-row">
+            <button class="filter-btn active" id="f-todas" onclick="setFiltro('todas')">Todas</button>
+            <button class="filter-btn" id="f-ativas" onclick="setFiltro('ativas')">✅ Ativas</button>
+            <button class="filter-btn" id="f-inativas" onclick="setFiltro('inativas')">⏸ Inativas</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="search-box">
+            <span style="color:var(--t3)">🔍</span>
+            <input id="search-input" type="text" placeholder="Buscar ticker..." oninput="renderGrid()">
+          </div>
+          <button class="btn btn-primary" onclick="abrirModalNova()">+ Nova página</button>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="pages-grid" id="pages-grid"></div>
+      <div class="empty-state" id="empty" style="display:none">Nenhuma página encontrada</div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Modal editar/criar página -->
+<div class="modal-ov" id="modal-pagina">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-titulo">Nova página</h3>
+      <button class="close-btn" onclick="fecharModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="m-id">
+
+      <div class="field-row">
+        <div class="field">
+          <label>Ticker *</label>
+          <input id="m-ticker" type="text" placeholder="Ex: PETR4" oninput="this.value=this.value.toUpperCase()">
+        </div>
+        <div class="field">
+          <label>Tipo *</label>
+          <select id="m-tipo">
+            <option value="acao">Ação</option>
+            <option value="fii">FII</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Nome da empresa *</label>
+        <input id="m-nome" type="text" placeholder="Ex: Petrobras PN">
+      </div>
+
+      <div class="field">
+        <label>Setor</label>
+        <input id="m-setor" type="text" placeholder="Ex: Petróleo e Gás">
+      </div>
+
+      <div class="field">
+        <label>Descrição curta (aparece no card)</label>
+        <textarea id="m-desc" placeholder="Breve descrição da empresa para o card..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>URL da página</label>
+        <input id="m-url" type="text" placeholder="Ex: /acoes/petr4" readonly style="color:var(--green);opacity:.8">
+      </div>
+
+      <div class="field">
+        <label>Status</label>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--ink4);border:1px solid var(--border2);border-radius:10px">
+          <label class="toggle">
+            <input type="checkbox" id="m-ativa">
+            <span class="toggle-slider"></span>
+          </label>
+          <span style="font-size:13px;color:var(--t2)">Página ativa — botão "Saiba mais" aparece no app</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(0,212,168,.06);border:1px solid rgba(0,212,168,.15);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--t3);line-height:1.6">
+        💡 <strong style="color:var(--green)">Como funciona:</strong> quando ativa, o botão "📖 Saiba mais" aparece no modal de <strong style="color:var(--t2)">{TICKER}</strong> no app. O arquivo <code style="color:var(--green)">{URL}.html</code> deve estar no GitHub para o link funcionar.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-danger btn-sm" id="btn-excluir" onclick="excluirPagina()" style="display:none;margin-right:auto">🗑️ Excluir</button>
+      <button class="btn btn-ghost" onclick="fecharModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarPagina()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var ADMIN_EMAIL = 'lucasserip1990@gmail.com';
+firebase.initializeApp({
+  apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',
+  authDomain:'elite-acoes.firebaseapp.com',
+  projectId:'elite-acoes',
+  storageBucket:'elite-acoes.firebasestorage.app',
+  messagingSenderId:'723536084871',
+  appId:'1:723536084871:web:c6cf5879ddeb629759dd22'
+});
+var auth = firebase.auth();
+var db = firebase.firestore();
+
+var _paginas = [];
+var _tab = 'todas';
+var _filtro = 'todas';
+
+// Auth
+function loginGoogle() {
+  var p = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(p).then(function(r) {
+    if(r.user.email !== ADMIN_EMAIL) { auth.signOut(); toast('Acesso negado','error'); }
+  });
+}
+function sair() { auth.signOut(); }
+
+auth.onAuthStateChanged(function(user) {
+  if(user && user.email === ADMIN_EMAIL) {
+    document.getElementById('blocked').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('user-email').textContent = user.email;
+    carregarPaginas();
+  } else {
+    document.getElementById('blocked').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+});
+
+function carregarPaginas() {
+  db.collection('paginas_acoes').orderBy('ticker').get().then(function(snap) {
+    _paginas = snap.docs.map(function(d) { return Object.assign({id:d.id}, d.data()); });
+    atualizarStats();
+    renderGrid();
+  }).catch(function(e) {
+    // Coleção ainda não existe — ok, vai criar ao salvar primeira
+    _paginas = [];
+    atualizarStats();
+    renderGrid();
+  });
+}
+
+function atualizarStats() {
+  var total=_paginas.length;
+  var ativas=_paginas.filter(function(p){return p.ativa;}).length;
+  var acoes=_paginas.filter(function(p){return p.tipo==='acao';}).length;
+  var fiis=_paginas.filter(function(p){return p.tipo==='fii';}).length;
+  document.getElementById('s-total').textContent=total;
+  document.getElementById('s-ativas').textContent=ativas;
+  document.getElementById('s-acoes').textContent=acoes;
+  document.getElementById('s-fiis').textContent=fiis;
+}
+
+function setTab(tab) {
+  _tab = tab;
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('tab-'+tab).classList.add('active');
+  renderGrid();
+}
+
+function setFiltro(f) {
+  _filtro = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('f-'+f).classList.add('active');
+  renderGrid();
+}
+
+function renderGrid() {
+  var q = (document.getElementById('search-input').value || '').toUpperCase().trim();
+  var lista = _paginas.filter(function(p) {
+    if(_tab === 'acoes' && p.tipo !== 'acao') return false;
+    if(_tab === 'fiis' && p.tipo !== 'fii') return false;
+    if(_filtro === 'ativas' && !p.ativa) return false;
+    if(_filtro === 'inativas' && p.ativa) return false;
+    if(q && !p.ticker.includes(q) && !(p.nome||'').toUpperCase().includes(q)) return false;
+    return true;
+  });
+
+  var grid = document.getElementById('pages-grid');
+  var empty = document.getElementById('empty');
+
+  if(!lista.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = lista.map(function(p) {
+    var tipoLabel = p.tipo === 'fii' ? 'FII' : 'AÇÃO';
+    var tipoCls = p.tipo === 'fii' ? 'tipo-fii' : 'tipo-acao';
+    var ativa = p.ativa;
+    return '<div class="page-card '+(ativa?'ativa':'')+'">'
+      +'<div class="card-top">'
+        +'<div>'
+          +'<div style="display:flex;align-items:center;gap:6px">'
+            +'<div class="card-ticker">'+p.ticker+'</div>'
+            +'<span class="card-tipo '+tipoCls+'">'+tipoLabel+'</span>'
+          +'</div>'
+          +'<div class="card-nome">'+(p.nome||'—')+'</div>'
+        +'</div>'
+        +'<span class="badge-status '+(ativa?'badge-ativa':'badge-inativa')+'">'+(ativa?'✅ ATIVA':'⏸ INATIVA')+'</span>'
+      +'</div>'
+      +(p.setor?'<div style="font-size:11px;color:var(--t3)">📂 '+p.setor+'</div>':'')
+      +'<div class="card-url">'+(p.url||'/acoes/'+p.ticker.toLowerCase())+'</div>'
+      +'<div class="card-actions">'
+        +'<label class="toggle-wrap" onclick="event.stopPropagation()">'
+          +'<span class="toggle"><input type="checkbox" '+(ativa?'checked':'')+' onchange="toggleAtiva(\''+p.id+'\',this.checked)"><span class="toggle-slider"></span></span>'
+          +(ativa?'Desativar':'Ativar')
+        +'</label>'
+        +'<button class="btn btn-ghost btn-sm" style="margin-left:auto" onclick="abrirModalEditar(\''+p.id+'\')">✏️ Editar</button>'
+        +(ativa?'<a href="'+( p.url||'/acoes/'+p.ticker.toLowerCase())+'" target="_blank" class="btn btn-ghost btn-sm">🔗</a>':'')
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function toggleAtiva(id, ativa) {
+  db.collection('paginas_acoes').doc(id).update({ ativa: ativa, ultima_atualizacao: new Date().toISOString() })
+    .then(function() {
+      var p = _paginas.find(function(x){return x.id===id;});
+      if(p) p.ativa = ativa;
+      atualizarStats();
+      renderGrid();
+      toast(ativa ? '✅ Página ativada — botão "Saiba mais" aparecerá no app' : '⏸ Página desativada', ativa?'success':'');
+    }).catch(function(e){ toast('Erro: '+e.message,'error'); });
+}
+
+function abrirModalNova() {
+  document.getElementById('modal-titulo').textContent = 'Nova página';
+  document.getElementById('m-id').value = '';
+  document.getElementById('m-ticker').value = '';
+  document.getElementById('m-ticker').removeAttribute('readonly');
+  document.getElementById('m-tipo').value = 'acao';
+  document.getElementById('m-nome').value = '';
+  document.getElementById('m-setor').value = '';
+  document.getElementById('m-desc').value = '';
+  document.getElementById('m-url').value = '';
+  document.getElementById('m-ativa').checked = false;
+  document.getElementById('btn-excluir').style.display = 'none';
+  document.getElementById('modal-pagina').classList.add('show');
+  // Atualizar URL ao digitar ticker
+  document.getElementById('m-ticker').oninput = function() {
+    this.value = this.value.toUpperCase();
+    var tipo = document.getElementById('m-tipo').value;
+    document.getElementById('m-url').value = '/'+(tipo==='fii'?'fiis':'acoes')+'/'+this.value.toLowerCase();
+  };
+  document.getElementById('m-tipo').onchange = function() {
+    var ticker = document.getElementById('m-ticker').value.toLowerCase();
+    document.getElementById('m-url').value = '/'+(this.value==='fii'?'fiis':'acoes')+'/'+ticker;
+  };
+}
+
+function abrirModalEditar(id) {
+  var p = _paginas.find(function(x){return x.id===id;});
+  if(!p) return;
+  document.getElementById('modal-titulo').textContent = 'Editar — '+p.ticker;
+  document.getElementById('m-id').value = id;
+  document.getElementById('m-ticker').value = p.ticker;
+  document.getElementById('m-ticker').setAttribute('readonly','');
+  document.getElementById('m-tipo').value = p.tipo||'acao';
+  document.getElementById('m-nome').value = p.nome||'';
+  document.getElementById('m-setor').value = p.setor||'';
+  document.getElementById('m-desc').value = p.desc||'';
+  document.getElementById('m-url').value = p.url||'/acoes/'+p.ticker.toLowerCase();
+  document.getElementById('m-ativa').checked = !!p.ativa;
+  document.getElementById('btn-excluir').style.display = 'inline-flex';
+  document.getElementById('modal-pagina').classList.add('show');
+}
+
+function fecharModal() {
+  document.getElementById('modal-pagina').classList.remove('show');
+}
+
+function salvarPagina() {
+  var id = document.getElementById('m-id').value;
+  var ticker = document.getElementById('m-ticker').value.trim().toUpperCase();
+  var nome = document.getElementById('m-nome').value.trim();
+  if(!ticker || !nome) { toast('Ticker e nome são obrigatórios','error'); return; }
+  var dados = {
+    ticker: ticker,
+    tipo: document.getElementById('m-tipo').value,
+    nome: nome,
+    setor: document.getElementById('m-setor').value.trim(),
+    desc: document.getElementById('m-desc').value.trim(),
+    url: document.getElementById('m-url').value.trim() || '/acoes/'+ticker.toLowerCase(),
+    ativa: document.getElementById('m-ativa').checked,
+    ultima_atualizacao: new Date().toISOString(),
+  };
+  var promise = id
+    ? db.collection('paginas_acoes').doc(id).update(dados)
+    : (dados.data_criacao = new Date().toISOString(), db.collection('paginas_acoes').add(dados));
+  promise.then(function() {
+    toast('✅ Salvo!','success');
+    fecharModal();
+    carregarPaginas();
+  }).catch(function(e){ toast('Erro: '+e.message,'error'); });
+}
+
+function excluirPagina() {
+  var id = document.getElementById('m-id').value;
+  var ticker = document.getElementById('m-ticker').value;
+  if(!confirm('Excluir página de '+ticker+'? O arquivo HTML no GitHub não será removido.')) return;
+  db.collection('paginas_acoes').doc(id).delete().then(function() {
+    toast('🗑️ Excluído','success');
+    fecharModal();
+    carregarPaginas();
+  }).catch(function(e){ toast('Erro: '+e.message,'error'); });
+}
+
+function toast(msg, type) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (type?' '+type:'');
+  setTimeout(function(){ el.classList.remove('show'); }, 3500);
+}
+
+// Fechar modal clicando fora
+document.getElementById('modal-pagina').addEventListener('click', function(e) {
+  if(e.target === this) fecharModal();
+});
+</script>
+</body>
+</html>
