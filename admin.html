@@ -327,6 +327,24 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
               <button onclick="setTrial(14)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+14 dias</button>
             </div>
           </div>
+
+          <!-- Taxa personalizada -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Taxa personalizada</label>
+            <input type="number" id="modal-u-taxa" min="1" max="50" step="0.5" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+          </div>
+
+          <!-- Última atualização (read-only) -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Última atualização</label>
+            <div id="modal-u-ultima" style="padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:12px">—</div>
+          </div>
+
+          <!-- Data cadastro (read-only) -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Data cadastro</label>
+            <div id="modal-u-cadastro" style="padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:12px">—</div>
+          </div>
         </div>
 
         <div style="display:flex;gap:8px;margin-top:20px">
@@ -747,6 +765,9 @@ function abrirModalUsuario(uid) {
   document.getElementById('modal-u-assinatura').value=toInput(u.data_assinatura);
   document.getElementById('modal-u-expiracao').value=toInput(u.data_expiracao);
   document.getElementById('modal-u-trial').value=toInput(u.trial_ate);
+  document.getElementById('modal-u-taxa').value=u.taxa_personalizada||6;
+  document.getElementById('modal-u-ultima').textContent=u.ultima_atualizacao?new Date(u.ultima_atualizacao).toLocaleString('pt-BR'):'—';
+  document.getElementById('modal-u-cadastro').textContent=u.data_cadastro?new Date(u.data_cadastro).toLocaleString('pt-BR'):'—';
   document.getElementById('modal-usuario').style.display='flex';
 }
 
@@ -771,10 +792,12 @@ function salvarUsuario() {
   var assinatura=document.getElementById('modal-u-assinatura').value;
   var expiracao=document.getElementById('modal-u-expiracao').value;
   var trial=document.getElementById('modal-u-trial').value;
+  var taxa=parseFloat(document.getElementById('modal-u-taxa').value)||6;
   var dados={
     plano: plano,
     plano_ativo: plano==='pago'&&acesso,
     acesso_ativo: acesso,
+    taxa_personalizada: taxa,
     ultima_atualizacao: new Date().toISOString(),
   };
   if(assinatura) dados.data_assinatura=assinatura+'T00:00:00.000Z';
