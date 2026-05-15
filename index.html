@@ -997,9 +997,7 @@ onAuthStateChanged(auth,async user=>{
   const d=uSnap.data();
   taxa=d.taxa_personalizada||6;taxaFii=d.taxa_fii||10;
   FAVORITOS=new Set(d.favoritos||[]);
-  document.getElementById('taxa-slider').value=taxa;
-  document.getElementById('taxa-fii-slider').value=taxaFii;
-  setTaxaDisplay(taxa);setTaxaFiiDisplay(taxaFii);
+
   if(d.plano==='pago' && d.plano_ativo){
     // Calcular dias restantes do plano
     const expiracao=d.data_expiracao?new Date(d.data_expiracao):null;
@@ -1582,9 +1580,7 @@ window.toggleTaxaAvancada=()=>{
 };
 window.resetarTaxa=async()=>{
   taxa=6;taxaFii=10;
-  document.getElementById('taxa-slider').value=6;
-  document.getElementById('taxa-fii-slider').value=10;
-  setTaxaDisplay(6);setTaxaFiiDisplay(10);
+
   renderContent();
   if(USER)await setDoc(doc(db,'usuarios',USER.uid),{taxa_personalizada:6,taxa_fii:10},{merge:true});
 };
