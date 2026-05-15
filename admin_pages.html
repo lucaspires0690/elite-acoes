@@ -373,14 +373,14 @@ function renderGrid() {
         +'<span class="badge-status '+(ativa?'badge-ativa':'badge-inativa')+'">'+(ativa?'✅ ATIVA':'⏸ INATIVA')+'</span>'
       +'</div>'
       +(p.setor?'<div style="font-size:11px;color:var(--t3)">📂 '+p.setor+'</div>':'')
-      +'<div class="card-url">'+(p.url||'/acoes/'+p.ticker.toLowerCase())+'</div>'
+      +'<div class="card-url">'+(p.url||'/paginas/acoes/'+p.ticker.toLowerCase())+'</div>'
       +'<div class="card-actions">'
         +'<label class="toggle-wrap" onclick="event.stopPropagation()">'
           +'<span class="toggle"><input type="checkbox" '+(ativa?'checked':'')+' onchange="toggleAtiva(\''+p.id+'\',this.checked)"><span class="toggle-slider"></span></span>'
           +(ativa?'Desativar':'Ativar')
         +'</label>'
         +'<button class="btn btn-ghost btn-sm" style="margin-left:auto" onclick="abrirModalEditar(\''+p.id+'\')">✏️ Editar</button>'
-        +(ativa?'<a href="'+( p.url||'/acoes/'+p.ticker.toLowerCase())+'" target="_blank" class="btn btn-ghost btn-sm">🔗</a>':'')
+        +(ativa?'<a href="'+( p.url||'/paginas/acoes/'+p.ticker.toLowerCase())+'" target="_blank" class="btn btn-ghost btn-sm">🔗</a>':'')
       +'</div>'
     +'</div>';
   }).join('');
@@ -433,7 +433,7 @@ function abrirModalEditar(id) {
   document.getElementById('m-nome').value = p.nome||'';
   document.getElementById('m-setor').value = p.setor||'';
   document.getElementById('m-desc').value = p.desc||'';
-  document.getElementById('m-url').value = p.url||'/acoes/'+p.ticker.toLowerCase();
+  document.getElementById('m-url').value = p.url||'/paginas/acoes/'+p.ticker.toLowerCase();
   document.getElementById('m-ativa').checked = !!p.ativa;
   document.getElementById('btn-excluir').style.display = 'inline-flex';
   document.getElementById('modal-pagina').classList.add('show');
@@ -454,7 +454,7 @@ function salvarPagina() {
     nome: nome,
     setor: document.getElementById('m-setor').value.trim(),
     desc: document.getElementById('m-desc').value.trim(),
-    url: document.getElementById('m-url').value.trim() || '/acoes/'+ticker.toLowerCase(),
+    url: document.getElementById('m-url').value.trim() || '/paginas/acoes/'+ticker.toLowerCase(),
     ativa: document.getElementById('m-ativa').checked,
     ultima_atualizacao: new Date().toISOString(),
   };
