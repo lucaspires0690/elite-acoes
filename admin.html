@@ -237,18 +237,101 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
 
     <!-- USUÁRIOS -->
     <div class="view" id="view-usuarios">
+      <!-- Stats rápidos -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+        <div class="stat-card"><div class="stat-label">Total</div><div class="stat-value" id="u-total">—</div></div>
+        <div class="stat-card"><div class="stat-label">Pagos</div><div class="stat-value" style="color:#10b981" id="u-pagos">—</div></div>
+        <div class="stat-card"><div class="stat-label">Trial ativo</div><div class="stat-value" style="color:#f59e0b" id="u-trial">—</div></div>
+        <div class="stat-card"><div class="stat-label">Expirados</div><div class="stat-value" style="color:#ef4444" id="u-expirados">—</div></div>
+      </div>
+
       <div class="section-card">
         <div class="section-header">
-          <div class="section-title">👥 Usuários cadastrados</div>
-          <button class="btn btn-ghost" onclick="carregarUsuarios()" style="padding:7px 14px;font-size:13px">🔄 Atualizar</button>
+          <div class="section-title">👥 Usuários</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="u-search" type="text" placeholder="Buscar por email..." oninput="filtrarUsuarios(this.value)"
+              style="padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px;width:220px;outline:none">
+            <button class="btn btn-ghost" onclick="carregarUsuarios()" style="padding:7px 14px;font-size:13px">🔄 Atualizar</button>
+          </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Email</th><th>Plano</th><th>Trial</th><th>Último acesso</th><th>Cadastro</th></tr></thead>
+            <thead><tr>
+              <th>Email</th>
+              <th>Plano</th>
+              <th>Acesso</th>
+              <th>Vencimento</th>
+              <th>Cadastro</th>
+              <th>Ações</th>
+            </tr></thead>
             <tbody id="tbody-usuarios">
-              <tr><td colspan="5" style="text-align:center;color:var(--txt3);padding:32px">Clique em "Atualizar" para carregar</td></tr>
+              <tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:32px">Clique em "Atualizar" para carregar</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL EDITAR USUÁRIO -->
+    <div id="modal-usuario" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center;padding:20px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div style="font-size:16px;font-weight:700;color:var(--txt)" id="modal-u-email">—</div>
+          <button onclick="fecharModalUsuario()" style="background:none;border:none;color:var(--txt3);font-size:20px;cursor:pointer">✕</button>
+        </div>
+
+        <input type="hidden" id="modal-u-uid">
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <!-- Plano -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Plano</label>
+            <select id="modal-u-plano" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+              <option value="gratuito">gratuito</option>
+              <option value="pago">pago</option>
+            </select>
+          </div>
+
+          <!-- Plano Ativo -->
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <label style="font-size:13px;color:var(--txt2)">Acesso ativo</label>
+            <select id="modal-u-acesso" style="padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+              <option value="true">✅ Sim</option>
+              <option value="false">❌ Não</option>
+            </select>
+          </div>
+
+          <!-- Data assinatura -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Data assinatura</label>
+            <input type="date" id="modal-u-assinatura" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+          </div>
+
+          <!-- Data expiração -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Data expiração</label>
+            <input type="date" id="modal-u-expiracao" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+            <div style="display:flex;gap:6px;margin-top:6px">
+              <button onclick="setExpiracao(30)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+30 dias</button>
+              <button onclick="setExpiracao(60)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+60 dias</button>
+              <button onclick="setExpiracao(365)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+1 ano</button>
+            </div>
+          </div>
+
+          <!-- Trial até -->
+          <div>
+            <label style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Trial até</label>
+            <input type="date" id="modal-u-trial" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--txt);font-size:13px">
+            <div style="display:flex;gap:6px;margin-top:6px">
+              <button onclick="setTrial(7)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+7 dias</button>
+              <button onclick="setTrial(14)" style="flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt3);font-size:11px;cursor:pointer">+14 dias</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:20px">
+          <button onclick="salvarUsuario()" style="flex:1;padding:11px;border-radius:10px;border:none;background:#10b981;color:#fff;font-weight:700;cursor:pointer;font-size:14px">💾 Salvar</button>
+          <button onclick="excluirUsuario()" style="padding:11px 16px;border-radius:10px;border:1px solid #ef4444;background:transparent;color:#ef4444;font-weight:700;cursor:pointer;font-size:14px">🗑️ Excluir</button>
         </div>
       </div>
     </div>
@@ -583,18 +666,132 @@ function carregarDashboard() {
   });
 }
 
+var _todosUsuarios = [];
+
 function carregarUsuarios() {
   var tbody = document.getElementById('tbody-usuarios');
-  tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--txt3);padding:24px">Carregando...</td></tr>';
-  db.collection('usuarios').get().then(function(snap) {
-    if (!snap.size) { tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--txt3);padding:24px">Nenhum usuário</td></tr>'; return; }
-    tbody.innerHTML = snap.docs.map(function(d) {
-      var u    = d.data();
-      var dias = Math.ceil((new Date(u.trial_ate)-new Date())/864e5);
-      var badge= u.plano==='pago'?'<span class="badge badge-green">✅ PAGO</span>':dias>0?'<span class="badge badge-yellow">⏳ TRIAL</span>':'<span class="badge badge-red">❌ EXPIRADO</span>';
-      return '<tr><td style="color:var(--txt)">'+(u.email||'—')+'</td><td>'+badge+'</td><td style="font-size:12px">'+(u.plano==='pago'?'—':dias>0?dias+' dias':'Expirado')+'</td><td style="font-size:12px">'+(u.ultimo_acesso?new Date(u.ultimo_acesso).toLocaleDateString('pt-BR'):'—')+'</td><td style="font-size:12px">'+(u.data_cadastro?new Date(u.data_cadastro).toLocaleDateString('pt-BR'):'—')+'</td></tr>';
-    }).join('');
-  }).catch(function(e){ tbody.innerHTML='<tr><td colspan="5" style="color:var(--red);padding:16px">Erro: '+e.message+'</td></tr>'; });
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Carregando...</td></tr>';
+  db.collection('usuarios').orderBy('data_cadastro','desc').get().then(function(snap) {
+    _todosUsuarios = snap.docs;
+    atualizarStatsUsuarios(snap.docs);
+    renderUsuarios(snap.docs);
+  }).catch(function(e){ tbody.innerHTML='<tr><td colspan="6" style="color:var(--red);padding:16px">Erro: '+e.message+'</td></tr>'; });
+}
+
+function atualizarStatsUsuarios(docs) {
+  var total=docs.length, pagos=0, trial=0, expirados=0;
+  docs.forEach(function(d){
+    var u=d.data();
+    if(u.plano==='pago'&&u.plano_ativo) pagos++;
+    else {
+      var dias=Math.ceil((new Date(u.trial_ate)-new Date())/864e5);
+      if(dias>0) trial++; else expirados++;
+    }
+  });
+  document.getElementById('u-total').textContent=total;
+  document.getElementById('u-pagos').textContent=pagos;
+  document.getElementById('u-trial').textContent=trial;
+  document.getElementById('u-expirados').textContent=expirados;
+}
+
+function renderUsuarios(docs) {
+  var tbody = document.getElementById('tbody-usuarios');
+  if(!docs.length){ tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--txt3);padding:24px">Nenhum usuário</td></tr>'; return; }
+  tbody.innerHTML = docs.map(function(d) {
+    var u=d.data(), uid=d.id;
+    var agora=new Date();
+    var isPago=u.plano==='pago'&&u.plano_ativo;
+    var diasTrial=Math.ceil((new Date(u.trial_ate)-agora)/864e5);
+    var badge=isPago
+      ?'<span class="badge badge-green">✅ PAGO</span>'
+      :diasTrial>0?'<span class="badge badge-yellow">⏳ TRIAL</span>'
+      :'<span class="badge badge-red">❌ EXPIRADO</span>';
+    var acesso=u.acesso_ativo
+      ?'<span style="color:#10b981;font-size:12px">✅ Ativo</span>'
+      :'<span style="color:#ef4444;font-size:12px">❌ Bloqueado</span>';
+    var venc=isPago&&u.data_expiracao
+      ?new Date(u.data_expiracao).toLocaleDateString('pt-BR')
+      :diasTrial>0?diasTrial+'d trial':'—';
+    var cadastro=u.data_cadastro?new Date(u.data_cadastro).toLocaleDateString('pt-BR'):'—';
+    return '<tr>'
+      +'<td style="color:var(--txt);font-size:12px">'+(u.email||'—')+'</td>'
+      +'<td>'+badge+'</td>'
+      +'<td>'+acesso+'</td>'
+      +'<td style="font-size:12px">'+venc+'</td>'
+      +'<td style="font-size:12px">'+cadastro+'</td>'
+      +'<td><button onclick="abrirModalUsuario(''+uid+'')" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt2);font-size:11px;cursor:pointer">✏️ Editar</button></td>'
+      +'</tr>';
+  }).join('');
+}
+
+function filtrarUsuarios(q) {
+  if(!q) { renderUsuarios(_todosUsuarios); return; }
+  var filtrados=_todosUsuarios.filter(function(d){ return (d.data().email||'').toLowerCase().includes(q.toLowerCase()); });
+  renderUsuarios(filtrados);
+}
+
+function abrirModalUsuario(uid) {
+  var doc=_todosUsuarios.find(function(d){return d.id===uid;});
+  if(!doc) return;
+  var u=doc.data();
+  document.getElementById('modal-u-uid').value=uid;
+  document.getElementById('modal-u-email').textContent=u.email||uid;
+  document.getElementById('modal-u-plano').value=u.plano||'gratuito';
+  document.getElementById('modal-u-acesso').value=u.acesso_ativo?'true':'false';
+  // Datas
+  var toInput=function(iso){return iso?iso.slice(0,10):'';};
+  document.getElementById('modal-u-assinatura').value=toInput(u.data_assinatura);
+  document.getElementById('modal-u-expiracao').value=toInput(u.data_expiracao);
+  document.getElementById('modal-u-trial').value=toInput(u.trial_ate);
+  document.getElementById('modal-usuario').style.display='flex';
+}
+
+function fecharModalUsuario() {
+  document.getElementById('modal-usuario').style.display='none';
+}
+
+function setExpiracao(dias) {
+  var d=new Date(); d.setDate(d.getDate()+dias);
+  document.getElementById('modal-u-expiracao').value=d.toISOString().slice(0,10);
+}
+
+function setTrial(dias) {
+  var d=new Date(); d.setDate(d.getDate()+dias);
+  document.getElementById('modal-u-trial').value=d.toISOString().slice(0,10);
+}
+
+function salvarUsuario() {
+  var uid=document.getElementById('modal-u-uid').value;
+  var plano=document.getElementById('modal-u-plano').value;
+  var acesso=document.getElementById('modal-u-acesso').value==='true';
+  var assinatura=document.getElementById('modal-u-assinatura').value;
+  var expiracao=document.getElementById('modal-u-expiracao').value;
+  var trial=document.getElementById('modal-u-trial').value;
+  var dados={
+    plano: plano,
+    plano_ativo: plano==='pago'&&acesso,
+    acesso_ativo: acesso,
+    ultima_atualizacao: new Date().toISOString(),
+  };
+  if(assinatura) dados.data_assinatura=assinatura+'T00:00:00.000Z';
+  if(expiracao) dados.data_expiracao=expiracao+'T23:59:59.000Z';
+  if(trial) dados.trial_ate=trial+'T23:59:59.000Z';
+  db.collection('usuarios').doc(uid).update(dados).then(function(){
+    showNotif('✅ Usuário salvo!','success');
+    fecharModalUsuario();
+    carregarUsuarios();
+  }).catch(function(e){ showNotif('❌ Erro: '+e.message,'error'); });
+}
+
+function excluirUsuario() {
+  var uid=document.getElementById('modal-u-uid').value;
+  var email=document.getElementById('modal-u-email').textContent;
+  if(!confirm('Excluir usuário '+email+'? Esta ação não pode ser desfeita.')) return;
+  db.collection('usuarios').doc(uid).delete().then(function(){
+    showNotif('🗑️ Usuário excluído','success');
+    fecharModalUsuario();
+    carregarUsuarios();
+  }).catch(function(e){ showNotif('❌ Erro: '+e.message,'error'); });
 }
 
 function popularBanco() {
