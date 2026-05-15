@@ -954,7 +954,7 @@ const db=getFirestore(fbApp);
 const gp=new GoogleAuthProvider();
 setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
-let ACOES=[],taxa=6,taxaFii=10,filtro='inicio',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false;
+let ACOES=[],taxa=6,taxaFii=10,filtro='inicio',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false,PAGINAS_ATIVAS=new Set();
 
 window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console.error(e);}};
 window.fazerLogout=async()=>{await signOut(auth);};
@@ -1031,6 +1031,7 @@ onAuthStateChanged(auth,async user=>{
   onSnapshot(uRef, function(snap){
     if(snap.exists()) aplicarDadosUsuario(snap.data());
   });
+  await carregarPaginasAtivas();
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
   // Onboarding: mostrar dica no primeiro acesso (após disclaimer)
@@ -1119,6 +1120,15 @@ function setPlanoProUI(dataExpiracao, diasRestantes){
       badge.onclick=null;
     }
   }
+}
+
+async function carregarPaginasAtivas(){
+  try{
+    const snap=await getDocs(collection(db,'paginas_acoes'));
+    PAGINAS_ATIVAS=new Set(
+      snap.docs.filter(d=>d.data().ativa).map(d=>d.data().ticker)
+    );
+  }catch(_){}
 }
 
 async function carregarAcoes(){
@@ -1616,6 +1626,10 @@ window.openDet=function(codigo){
     :'')
 
     // ── AÇÕES ────────────────────────────────────────
+    // Botão Saiba mais — só aparece se a página estiver ativa no Firestore
+    +(PAGINAS_ATIVAS.has(a.codigo)
+      ?'<a href="'+(isFii(a.codigo)?'/fiis/':'/acoes/')+a.codigo.toLowerCase()+'" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:11px;border:1px solid var(--border2);background:var(--surf2);color:var(--txt2);font-size:13px;font-weight:600;text-decoration:none;margin-bottom:8px;transition:all .15s" onmouseover="this.style.borderColor='var(--green)';this.style.color='var(--green)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--txt2)'">📖 Saiba mais sobre '+a.codigo+'</a>'
+      :'')
     +'<button id="btn-fav-modal" class="'+(FAVORITOS.has(a.codigo)?'sim-fav':'nao-fav')+'" data-cod="'+a.codigo+'" onclick="window.toggleFavModal(this)">'+(FAVORITOS.has(a.codigo)?'⭐ Salvo nos favoritos':'☆ Adicionar aos favoritos')+'</button>'
     +'<button class="btn-ghost" onclick="closeModal(&quot;modal-detalhe&quot;)">Fechar</button>'
     +'<div style="margin-top:12px;font-size:10px;color:var(--txt4);text-align:center;line-height:1.6;padding:8px;background:rgba(245,158,11,0.05);border-radius:8px">📊 Dados: HG Brasil · Metodologia: Bazin · Cada plataforma pode divergir — nenhuma reflete 100% os dados oficiais da B3/CVM.<br><strong style="color:var(--red)">⛔ Não constitui recomendação de investimento.</strong></div>';
