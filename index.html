@@ -1042,7 +1042,7 @@ function iniciarTimerGuest(){
     if(restante<=0){
       clearInterval(_guestTimerInterval);
       _guestTimerInterval=null;
-      localStorage.removeItem('ea_guest_inicio');
+      // NÃO remove o timestamp — garante que ao atualizar continue expirado
       expirarAcessoGuest();
     }
   }
@@ -1078,7 +1078,7 @@ onAuthStateChanged(auth,async user=>{
 
     if(jaExpirou){
       // Timer expirado — não carrega dados, mostra popup direto
-      localStorage.removeItem('ea_guest_inicio');
+      // NÃO remove o timestamp — assim ao atualizar continua expirado
       PLANO_VENCIDO=true;
       document.getElementById('popup-login-timer').classList.add('show');
       return;
