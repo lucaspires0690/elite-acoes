@@ -36,6 +36,27 @@
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;flex-direction:column}
 #login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;background-image:radial-gradient(ellipse 600px 400px at 65% 20%,rgba(0,212,168,0.07),transparent)}
+
+/* ── Timer barra de acesso guest ── */
+#guest-timer-bar{position:fixed;top:0;left:0;right:0;z-index:150;background:rgba(0,212,168,.08);border-bottom:1px solid rgba(0,212,168,.15);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--txt2);transition:background .3s}
+#guest-timer-bar.urgente{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
+#guest-timer-bar.hide{display:none}
+#guest-timer-txt{display:flex;align-items:center;gap:6px}
+#guest-timer-count{font-family:var(--fm);font-weight:800;color:var(--green);min-width:36px}
+#guest-timer-bar.urgente #guest-timer-count{color:#ef4444}
+#guest-timer-login{background:var(--green);color:#0a0e1a;border:none;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:800;cursor:pointer;font-family:var(--fb);white-space:nowrap}
+
+/* ── Popup login após timer ── */
+#popup-login-timer{display:none;position:fixed;inset:0;z-index:9000;background:rgba(6,7,13,.85);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px}
+#popup-login-timer.show{display:flex}
+.plt-box{background:var(--bg2);border:1px solid rgba(0,212,168,.2);border-radius:24px;padding:32px 28px;width:100%;max-width:380px;text-align:center;animation:fadeInUp .35s ease}
+.plt-icon{font-size:40px;margin-bottom:16px}
+.plt-title{font-family:var(--fb);font-size:22px;font-weight:800;color:var(--txt);margin-bottom:8px;line-height:1.2}
+.plt-sub{font-size:14px;color:var(--txt3);margin-bottom:24px;line-height:1.6}
+.plt-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,168,.1);border:1px solid rgba(0,212,168,.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;color:var(--green);margin-bottom:20px}
+.plt-btn{width:100%;padding:14px;border-radius:12px;border:none;background:var(--green);color:#0a0e1a;font-size:15px;font-weight:800;cursor:pointer;font-family:var(--fb);display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .2s}
+.plt-btn:hover{opacity:.9}
+.plt-hint{font-size:11px;color:var(--txt4);margin-top:12px}
 .login-card{background:var(--surf);border:1px solid var(--border2);border-radius:24px;padding:48px 40px;width:100%;max-width:420px;text-align:center;box-shadow:0 32px 64px rgba(0,0,0,.35)}
 .login-logo{font-size:28px;font-weight:800;color:var(--txt);margin-bottom:6px}
 .login-logo span{color:var(--green)}
@@ -724,6 +745,29 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <body>
 
 <!-- Splash de verificação de sessão -->
+<!-- Barra timer acesso guest -->
+<div id="guest-timer-bar" class="hide">
+  <div id="guest-timer-txt">
+    ⏱️ Acesso gratuito por <span id="guest-timer-count">5:00</span>
+  </div>
+  <button id="guest-timer-login" onclick="window.fazerLogin()">Fazer login — 7 dias grátis</button>
+</div>
+
+<!-- Popup login após timer expirar -->
+<div id="popup-login-timer">
+  <div class="plt-box">
+    <div class="plt-icon">📊</div>
+    <div class="plt-title">Seu acesso gratuito expirou</div>
+    <div class="plt-sub">Você acabou de ver o Elite Ações em ação. Faça login para continuar com <strong>7 dias completamente grátis</strong>.</div>
+    <div class="plt-badge">✅ Sem cartão de crédito</div>
+    <button class="plt-btn" onclick="window.fazerLogin()">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Entrar com Google
+    </button>
+    <div class="plt-hint">Seus dados ficam seguros. Não enviamos spam.</div>
+  </div>
+</div>
+
 <div id="splash-screen">
   <div class="splash-logo">Elite <span>Ações</span></div>
   <div class="splash-spinner"></div>
@@ -957,15 +1001,76 @@ const gp=new GoogleAuthProvider();
 setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
 let ACOES=[],taxa=6,taxaFii=10,filtro='inicio',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false,PAGINAS_ATIVAS=new Set();
+let GUEST_MODE=false, _guestTimerInterval=null;
+
+// Abre o modal correto dependendo se é guest ou usuário com plano vencido
+window.abrirModalAcesso=function(){
+  if(GUEST_MODE){ document.getElementById('popup-login-timer').classList.add('show'); }
+  else { openModal('modal-sub'); }
+};
 
 window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console.error(e);}};
 window.fazerLogout=async()=>{await signOut(auth);};
 document.getElementById('btn-login').addEventListener('click',()=>window.fazerLogin());
 
+// ── Timer de acesso guest ──
+function iniciarTimerGuest(){
+  GUEST_MODE=true;
+  const bar=document.getElementById('guest-timer-bar');
+  const count=document.getElementById('guest-timer-count');
+  if(bar) bar.classList.remove('hide');
+  let segundos=5*60; // 5 minutos
+  function atualizar(){
+    const m=Math.floor(segundos/60);
+    const s=segundos%60;
+    if(count) count.textContent=m+':'+(s<10?'0':'')+s;
+    if(segundos<=60) bar.classList.add('urgente');
+    if(segundos<=0){
+      clearInterval(_guestTimerInterval);
+      _guestTimerInterval=null;
+      expirarAcessoGuest();
+    }
+    segundos--;
+  }
+  atualizar();
+  _guestTimerInterval=setInterval(atualizar,1000);
+}
+
+function expirarAcessoGuest(){
+  // Some a barra e esconde os dados — mantém nomes e logos
+  document.getElementById('guest-timer-bar')?.classList.add('hide');
+  PLANO_VENCIDO=true;
+  renderContent();
+  // Mostra popup de login
+  document.getElementById('popup-login-timer').classList.add('show');
+}
+
 onAuthStateChanged(auth,async user=>{
   // Esconder splash assim que Firebase responder
   document.getElementById('splash-screen').classList.add('hide');
-  if(!user){document.getElementById('login-screen').style.display='flex';document.getElementById('app').classList.remove('show');return;}
+
+  if(!user){
+    // Sem login — mostrar app em modo guest com timer
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').classList.add('show');
+    document.getElementById('popup-login-timer').classList.remove('show');
+    GUEST_MODE=true;
+    PLANO_VENCIDO=false;
+    // Parar timer anterior se existir
+    if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
+    await carregarPaginasAtivas();
+    await carregarAcoes();
+    iniciarTimerGuest();
+    return;
+  }
+
+  // Logado — parar timer guest e esconder popup
+  GUEST_MODE=false;
+  PLANO_VENCIDO=false;
+  if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
+  document.getElementById('guest-timer-bar')?.classList.add('hide');
+  document.getElementById('popup-login-timer').classList.remove('show');
+
   USER=user;
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').classList.add('show');
@@ -1358,7 +1463,7 @@ function renderHome(el){
       :'';
 
     if(PLANO_VENCIDO){
-      return '<div class="hcard '+c.status+'" style="cursor:pointer;opacity:.85" onclick=\"openModal(&quot;modal-sub&quot;)\">'
+      return '<div class="hcard '+c.status+'" style="cursor:pointer;opacity:.85" onclick=\"abrirModalAcesso()\">'
         +'<div class="hcard-badge '+c.status+'">'+badgeLabel+'</div>'
         +logoHTML(a.codigo,'sm')
         +'<div class="hcard-ticker">'+a.codigo+'</div>'
@@ -1397,7 +1502,7 @@ function renderHome(el){
 
   let html='<div class="home-wrap">';
   if(PLANO_VENCIDO){
-    html+='<div style="background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.06));border:1px solid rgba(239,68,68,.3);border-radius:14px;margin:12px 16px;padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:32px">🔒</span><div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:4px">Seu acesso expirou</div><div style="font-size:12px;color:var(--txt3);line-height:1.5">Assine o Plano Pro para ver cotações, preço teto e DY de todas as ações e FIIs.</div></div><button onclick=\"openModal(&quot;modal-sub&quot;)\" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb);white-space:nowrap">🚀 Assinar</button></div>';
+    html+='<div style="background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.06));border:1px solid rgba(239,68,68,.3);border-radius:14px;margin:12px 16px;padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:32px">🔒</span><div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:4px">Seu acesso expirou</div><div style="font-size:12px;color:var(--txt3);line-height:1.5">Assine o Plano Pro para ver cotações, preço teto e DY de todas as ações e FIIs.</div></div><button onclick=\"abrirModalAcesso()\" style="background:var(--green);color:#0a0e1a;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fb);white-space:nowrap">🚀 Assinar</button></div>';
   }
 
   // Saudação
@@ -1470,7 +1575,7 @@ function renderCard(a){
   const teto=c.teto>0?'R$ '+c.teto.toFixed(2):'—';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"openModal(&quot;modal-sub&quot;)\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'">'
     +logoHTML(a.codigo,'ac')
@@ -1498,7 +1603,7 @@ function renderSRItem(a){
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"openModal(&quot;modal-sub&quot;)\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="sr-item" data-cod="'+a.codigo+'" style="cursor:pointer">'
     +logoHTML(a.codigo,'sr')
@@ -1512,7 +1617,10 @@ function renderSRItem(a){
 window.openDet=function(codigo){
   const a=ACOES.find(x=>x.codigo===codigo);if(!a)return;
   // Paywall: bloquear detalhe se plano vencido
-  if(PLANO_VENCIDO){openModal('modal-sub');return;}
+  if(PLANO_VENCIDO){
+    if(GUEST_MODE){ document.getElementById('popup-login-timer').classList.add('show'); return; }
+    abrirModalAcesso();return;
+  }
   // Taxa do modal = DY real dos últimos 12 meses (consistente com o card)
   const maxT=isFii(a.codigo)?20:15;
   const t=calcTaxaReal(a),c=calc(a,t),ib=c.status==='barata'||c.status==='muito-barata';
