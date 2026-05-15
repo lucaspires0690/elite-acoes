@@ -2061,8 +2061,8 @@ window.instalarPWA = async function(){
       // Marcar no localStorage que está instalando
       // Quando o app abrir em standalone vai detectar e mostrar sucesso
       localStorage.setItem('ea_pwa_instalando', '1');
-      showToast('📲 Instalando... Aguarde um momento.', 60000, true);
-      iniciarVerificacaoInstalacao();
+      // Toast fica até appinstalled disparar e recarregar a página
+      showToast('📲 Instalando... Aguarde um momento.', 999999, true);
     } else {
       showToast('❌ Instalação cancelada.', 3000);
     }
@@ -2085,18 +2085,24 @@ if(isStandalone){
 
 window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  hideToast();
+  localStorage.removeItem('ea_pwa_instalando');
+  // Recarrega a página — o toast some e os botões de instalar somem
+  setTimeout(() => location.reload(), 500);
 });
 
-// Polling: verifica a cada 1s se o app já abriu em standalone
-// Quando detectar, some o toast na página web
+// Se voltou para a página com flag de instalação pendente, limpa
+if(!isStandalone && localStorage.getItem('ea_pwa_instalando') === '1'){
+  localStorage.removeItem('ea_pwa_instalando');
+}
+
+// Polling de segurança: se a flag existir por mais de 60s sem instalar, limpa o toast
 let _pwaCheckInterval = null;
 function iniciarVerificacaoInstalacao(){
   if(_pwaCheckInterval) return;
+  let segundos = 0;
   _pwaCheckInterval = setInterval(() => {
-    const jaInstalado = window.matchMedia('(display-mode: standalone)').matches
-      || window.navigator.standalone === true;
-    if(jaInstalado || localStorage.getItem('ea_pwa_instalando') !== '1'){
+    segundos++;
+    if(localStorage.getItem('ea_pwa_instalando') !== '1' || segundos >= 60){
       clearInterval(_pwaCheckInterval);
       _pwaCheckInterval = null;
       hideToast();
