@@ -809,10 +809,10 @@ function salvarUsuario() {
     ultima_atualizacao: new Date().toISOString(),
   };
   var cadastro=document.getElementById('modal-u-cadastro').value;
-  if(cadastro) dados.data_cadastro=cadastro+'T00:00:00.000Z';
-  if(assinatura) dados.data_assinatura=assinatura+'T00:00:00.000Z';
-  if(expiracao) dados.data_expiracao=expiracao+'T23:59:59.000Z';
-  if(trial) dados.trial_ate=trial+'T23:59:59.000Z';
+  if(cadastro) dados.data_cadastro=cadastro+'T12:00:00.000Z';
+  if(assinatura) dados.data_assinatura=assinatura+'T12:00:00.000Z';
+  if(expiracao) dados.data_expiracao=expiracao+'T12:00:00.000Z';
+  if(trial) dados.trial_ate=trial+'T12:00:00.000Z';
   db.collection('usuarios').doc(uid).update(dados).then(function(){
     showNotif('✅ Usuário salvo!','success');
     fecharModalUsuario();

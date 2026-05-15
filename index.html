@@ -990,7 +990,7 @@ onAuthStateChanged(auth,async user=>{
   if(!uSnap.exists()){
     const te=new Date();
     te.setDate(te.getDate()+7);
-    te.setHours(23,59,59,999);
+    te.setHours(12,0,0,0);
     await setDoc(uRef,{email:user.email,plano:'gratuito',acesso_ativo:true,trial_ate:te.toISOString(),data_cadastro:new Date().toISOString()},{merge:true});
     uSnap=await getDoc(uRef);
   }
