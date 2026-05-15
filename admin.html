@@ -279,12 +279,9 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
           <div style="font-size:15px;font-weight:700;color:var(--txt)" id="modal-u-email">—</div>
           <button onclick="fecharModalUsuario()" style="background:none;border:none;color:var(--txt3);font-size:20px;cursor:pointer">✕</button>
         </div>
-
         <input type="hidden" id="modal-u-uid">
+        <div style="display:flex;flex-direction:column;gap:10px">
 
-        <div style="display:flex;flex-direction:column;gap:12px">
-
-          <!-- acesso_ativo -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">acesso_ativo</label>
             <select id="modal-u-acesso" style="padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
@@ -293,7 +290,6 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             </select>
           </div>
 
-          <!-- plano -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">plano</label>
             <select id="modal-u-plano" style="padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
@@ -302,7 +298,6 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             </select>
           </div>
 
-          <!-- plano_ativo -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">plano_ativo</label>
             <select id="modal-u-plano-ativo" style="padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
@@ -311,13 +306,11 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             </select>
           </div>
 
-          <!-- data_assinatura -->
           <div style="padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace;display:block;margin-bottom:6px">data_assinatura</label>
             <input type="date" id="modal-u-assinatura" style="width:100%;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
           </div>
 
-          <!-- data_expiracao -->
           <div style="padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace;display:block;margin-bottom:6px">data_expiracao</label>
             <input type="date" id="modal-u-expiracao" style="width:100%;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
@@ -328,7 +321,6 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             </div>
           </div>
 
-          <!-- trial_ate -->
           <div style="padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace;display:block;margin-bottom:6px">trial_ate</label>
             <input type="date" id="modal-u-trial" style="width:100%;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px">
@@ -339,32 +331,27 @@ td{padding:11px 14px;font-size:13px;color:var(--txt2);border-top:1px solid var(-
             </div>
           </div>
 
-          <!-- taxa_personalizada -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">taxa_personalizada</label>
             <input type="number" id="modal-u-taxa" min="1" max="50" step="0.5" style="width:80px;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--txt);font-size:12px;text-align:center">
           </div>
 
-          <!-- email (read-only) -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">email</label>
             <span id="modal-u-email-val" style="font-size:12px;color:var(--txt2)">—</span>
           </div>
 
-          <!-- data_cadastro (read-only) -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">data_cadastro</label>
             <span id="modal-u-cadastro" style="font-size:12px;color:var(--txt2)">—</span>
           </div>
 
-          <!-- ultima_atualizacao (read-only) -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
             <label style="font-size:12px;font-weight:700;color:var(--txt3);font-family:monospace">ultima_atualizacao</label>
             <span id="modal-u-ultima" style="font-size:12px;color:var(--txt2)">—</span>
           </div>
 
         </div>
-
         <div style="display:flex;gap:8px;margin-top:20px">
           <button onclick="salvarUsuario()" style="flex:1;padding:11px;border-radius:10px;border:none;background:#10b981;color:#fff;font-weight:700;cursor:pointer;font-size:14px">💾 Salvar</button>
           <button onclick="excluirUsuario()" style="padding:11px 16px;border-radius:10px;border:1px solid #ef4444;background:transparent;color:#ef4444;font-weight:700;cursor:pointer;font-size:14px">🗑️ Excluir</button>
@@ -776,7 +763,6 @@ function abrirModalUsuario(uid) {
   var u=doc.data();
   var toInput=function(iso){return iso?iso.slice(0,10):'';};
   var fmtDt=function(iso){return iso?new Date(iso).toLocaleString('pt-BR'):'—';};
-
   document.getElementById('modal-u-uid').value=uid;
   document.getElementById('modal-u-email').textContent=u.email||uid;
   document.getElementById('modal-u-email-val').textContent=u.email||uid;
@@ -809,17 +795,14 @@ function setTrial(dias) {
 function salvarUsuario() {
   var uid=document.getElementById('modal-u-uid').value;
   var plano=document.getElementById('modal-u-plano').value;
-  var planoAtivo=document.getElementById('modal-u-plano-ativo').value==='true';
   var acesso=document.getElementById('modal-u-acesso').value==='true';
   var assinatura=document.getElementById('modal-u-assinatura').value;
   var expiracao=document.getElementById('modal-u-expiracao').value;
   var trial=document.getElementById('modal-u-trial').value;
-  var taxa=parseFloat(document.getElementById('modal-u-taxa').value)||6;
   var dados={
     plano: plano,
-    plano_ativo: planoAtivo,
+    plano_ativo: plano==='pago'&&acesso,
     acesso_ativo: acesso,
-    taxa_personalizada: taxa,
     ultima_atualizacao: new Date().toISOString(),
   };
   if(assinatura) dados.data_assinatura=assinatura+'T00:00:00.000Z';
