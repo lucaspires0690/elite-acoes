@@ -1015,34 +1015,67 @@ window.fazerLogin=async()=>{try{await signInWithPopup(auth,gp);}catch(e){console
 window.fazerLogout=async()=>{await signOut(auth);};
 document.getElementById('btn-login').addEventListener('click',()=>window.fazerLogin());
 
-// ── Timer de acesso guest ──
-function iniciarTimerGuest(){
+// ── Fingerprint do dispositivo ──
+async function gerarFingerprintId(){
+  const nav = navigator;
+  const raw = [
+    nav.userAgent, nav.language, nav.platform,
+    screen.width+'x'+screen.height, screen.colorDepth,
+    Intl.DateTimeFormat().resolvedOptions().timeZone,
+    nav.hardwareConcurrency||'', nav.maxTouchPoints||''
+  ].join('|');
+  // Busca IP público
+  let ip='unknown';
+  try{
+    const r=await fetch('https://api.ipify.org?format=json',{signal:AbortSignal.timeout(3000)});
+    ip=(await r.json()).ip||'unknown';
+  }catch(e){}
+  // Hash SHA-256
+  const data=new TextEncoder().encode(raw+'|'+ip);
+  const buf=await crypto.subtle.digest('SHA-256',data);
+  const hash=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,32);
+  return {id:hash, ip};
+}
+
+// ── Verifica sessão guest no Firestore ──
+async function verificarSessaoGuest(){
+  const DURACAO=5*60*1000;
+  const agora=Date.now();
+  try{
+    const {id,ip}=await gerarFingerprintId();
+    const ref=doc(db,'guest_sessions',id);
+    const snap=await getDoc(ref);
+    if(snap.exists()){
+      const inicio=snap.data().inicio;
+      return {expirado:(agora-inicio)>=DURACAO, inicio, ref};
+    } else {
+      await setDoc(ref,{inicio:agora,ip,criado_em:new Date().toISOString()});
+      return {expirado:false, inicio:agora, ref};
+    }
+  }catch(e){
+    // Fallback localStorage se Firestore falhar
+    console.warn('guest session fallback:',e);
+    let inicio=parseInt(localStorage.getItem('ea_guest_fb')||'0');
+    if(!inicio){inicio=agora;localStorage.setItem('ea_guest_fb',inicio);}
+    return {expirado:(agora-inicio)>=DURACAO, inicio, ref:null};
+  }
+}
+
+function iniciarTimerGuest(inicio){
   GUEST_MODE=true;
   const bar=document.getElementById('guest-timer-bar');
   const count=document.getElementById('guest-timer-count');
   if(bar) bar.classList.remove('hide');
-
-  const DURACAO=5*60*1000; // 2 minutos em ms
-
-  // Se já tem um timer salvo, usa ele — senão cria novo
-  let inicio=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
-  if(!inicio || isNaN(inicio)){
-    inicio=Date.now();
-    localStorage.setItem('ea_guest_inicio', inicio);
-  }
-
+  const DURACAO=5*60*1000;
   function atualizar(){
-    const decorrido=Date.now()-inicio;
-    const restante=Math.max(0, DURACAO-decorrido);
-    const segundos=Math.floor(restante/1000);
-    const m=Math.floor(segundos/60);
-    const s=segundos%60;
+    const restante=Math.max(0,DURACAO-(Date.now()-inicio));
+    const seg=Math.floor(restante/1000);
+    const m=Math.floor(seg/60), s=seg%60;
     if(count) count.textContent=m+':'+(s<10?'0':'')+s;
-    if(segundos<=60) bar?.classList.add('urgente');
+    if(seg<=60) bar?.classList.add('urgente');
     if(restante<=0){
       clearInterval(_guestTimerInterval);
       _guestTimerInterval=null;
-      // NÃO remove o timestamp — garante que ao atualizar continue expirado
       expirarAcessoGuest();
     }
   }
@@ -1072,29 +1105,28 @@ onAuthStateChanged(auth,async user=>{
     PLANO_VENCIDO=false;
     if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
 
-    // Verificar PRIMEIRO se o timer já expirou — antes de carregar qualquer dado
-    const inicioSalvo=parseInt(localStorage.getItem('ea_guest_inicio')||'0');
-    const jaExpirou = inicioSalvo && (Date.now()-inicioSalvo) >= 5*60*1000;
+    // Verifica sessão no Firestore (IP + fingerprint)
+    const sessao = await verificarSessaoGuest();
 
-    if(jaExpirou){
-      // Timer expirado — não carrega dados, mostra popup direto
-      // NÃO remove o timestamp — assim ao atualizar continua expirado
+    if(sessao.expirado){
+      // Já usou os 5 minutos neste dispositivo — mostra popup direto sem carregar dados
       PLANO_VENCIDO=true;
       document.getElementById('popup-login-timer').classList.add('show');
       return;
     }
 
-    // Timer ainda válido — carrega dados e inicia timer
+    // Sessão válida — carrega dados e inicia timer
     await carregarPaginasAtivas();
     await carregarAcoes();
-    iniciarTimerGuest();
+    iniciarTimerGuest(sessao.inicio);
     return;
   }
 
   // Logado — parar timer guest e esconder popup
   GUEST_MODE=false;
   PLANO_VENCIDO=false;
-  localStorage.removeItem('ea_guest_inicio'); // limpa timer
+  localStorage.removeItem('ea_guest_inicio'); // limpa timer legado
+  localStorage.removeItem('ea_guest_fb');     // limpa fallback
   if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
   document.getElementById('guest-timer-bar')?.classList.add('hide');
   document.getElementById('popup-login-timer').classList.remove('show');
