@@ -719,9 +719,13 @@ function renderUsuarios(docs) {
       +'<td>'+acesso+'</td>'
       +'<td style="font-size:12px">'+venc+'</td>'
       +'<td style="font-size:12px">'+cadastro+'</td>'
-      +'<td><button onclick="abrirModalUsuario(''+uid+'')" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt2);font-size:11px;cursor:pointer">✏️ Editar</button></td>'
+      +'<td><button data-uid="'+uid+'" class="btn-editar-usuario" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--txt2);font-size:11px;cursor:pointer">✏️ Editar</button></td>'
       +'</tr>';
   }).join('');
+  // Event delegation para botões editar
+  tbody.querySelectorAll('.btn-editar-usuario').forEach(function(btn){
+    btn.addEventListener('click', function(){ abrirModalUsuario(this.dataset.uid); });
+  });
 }
 
 function filtrarUsuarios(q) {
