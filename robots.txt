@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.html
+Disallow: /admin_pages.html
+Disallow: /googleb3335e74bb5a2e42.html
+
+Sitemap: https://eliteacoes.com/sitemap.xml
