@@ -2084,7 +2084,9 @@ if(isStandalone){
 
 window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  // Não altera o toast — o loading continua até o app abrir em standalone
+  // Esconde o toast de loading na página web
+  // O app standalone já mostra a mensagem de sucesso
+  hideToast();
 });
 
 const DEMO=[
