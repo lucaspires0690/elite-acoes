@@ -2234,15 +2234,24 @@ window.addEventListener('beforeinstallprompt', e => {
 });
 
 // ── Botão voltar físico do Android ──
-function pushEstado(){ history.pushState({ea:true}, '', location.href); }
-// Dois pushState garante que sempre há um estado para interceptar no standalone
-pushEstado();
-pushEstado();
+// ── Botão voltar Android PWA ──
+// No standalone, o Android injeta entradas no histórico automaticamente.
+// A solução é encher o histórico com muitos estados e monitorar quantos foram consumidos.
 
-let _sairTimer = null;
 let _aguardandoSair = false;
+let _sairTimer = null;
 
-window.addEventListener('popstate', function() {
+function pushEstado(){
+  history.pushState({ea:true}, '', location.href);
+}
+
+// Ao iniciar, empurra vários estados para ter margem
+function iniciarHistorico(){
+  for(let i=0;i<20;i++) pushEstado();
+}
+iniciarHistorico();
+
+window.addEventListener('popstate', function(e) {
   const busca = document.getElementById('mob-busca-overlay');
   const buscaAberta = busca && busca.classList.contains('open');
   const modalAberto = document.querySelector('.overlay.open');
@@ -2251,27 +2260,39 @@ window.addEventListener('popstate', function() {
     fecharBuscaMobile();
     pushEstado();
     _aguardandoSair = false;
-  } else if(modalAberto){
+    clearTimeout(_sairTimer);
+    return;
+  }
+
+  if(modalAberto){
     modalAberto.classList.remove('open');
     pushEstado();
     _aguardandoSair = false;
-  } else if(filtro !== 'inicio'){
+    clearTimeout(_sairTimer);
+    return;
+  }
+
+  if(filtro !== 'inicio'){
     voltarInicio();
     pushEstado();
     _aguardandoSair = false;
+    clearTimeout(_sairTimer);
+    return;
+  }
+
+  // Já no início
+  if(_aguardandoSair){
+    _aguardandoSair = false;
+    clearTimeout(_sairTimer);
+    showToast('Saindo...', 800);
+    setTimeout(()=> window.close(), 300);
   } else {
-    if(_aguardandoSair){
-      // 2º toque — sai do app
+    _aguardandoSair = true;
+    showToast('Pressione voltar novamente para sair', 2000);
+    pushEstado();
+    _sairTimer = setTimeout(()=>{
       _aguardandoSair = false;
-      clearTimeout(_sairTimer);
-      // Não faz pushEstado — deixa o sistema fechar
-    } else {
-      // 1º toque — aviso
-      _aguardandoSair = true;
-      showToast('Pressione voltar novamente para sair', 2000);
-      pushEstado(); // repõe estado para capturar o 2º toque
-      _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
-    }
+    }, 2000);
   }
 });
 
