@@ -510,7 +510,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .sb-logout:hover{color:var(--red)}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
 .topbar{height:56px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 16px;flex-shrink:0}
-.mob-logo{display:none!important;font-size:15px;font-weight:800;color:var(--txt);align-items:center;gap:8px}
+.mob-logo{display:none!important;font-size:15px;font-weight:800;color:var(--txt);align-items:center;gap:8px;cursor:pointer}
 .mob-logo span{color:var(--green)}
 @media(max-width:1024px){.mob-logo{display:flex!important}}
 .search-big{flex:1;max-width:560px;position:relative}
@@ -541,7 +541,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .mob-filters{display:none;padding:8px 10px;gap:6px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;scrollbar-width:none}
 .mob-filters::-webkit-scrollbar{display:none}
 @media(max-width:1024px){.mob-filters{display:flex}}
-.mfbtn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt3);font-size:11px;font-weight:500;font-family:var(--fb);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
+.mfbtn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surf);color:var(--txt2);font-size:11px;font-weight:600;font-family:var(--fb);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
 .mfbtn.active{background:var(--green);border-color:var(--green);color:#0a0e1a;font-weight:700}
 .content{flex:1;overflow-y:auto;display:flex;flex-direction:column}
 .search-results{flex:1;overflow-y:auto}
@@ -739,7 +739,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 @media(min-width:1025px){.disclaimer-bar{display:block}}
 .bnav{display:none;background:var(--bg2);border-top:1px solid var(--border);padding:8px 0 calc(8px + env(safe-area-inset-bottom));flex-shrink:0}
 @media(max-width:1024px){.bnav{display:flex}}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px;cursor:pointer;color:var(--txt3);font-size:10px;font-weight:500;transition:color .15s}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px;cursor:pointer;color:var(--txt2);font-size:10px;font-weight:600;transition:color .15s}
 .ni.active{color:var(--green)}
 .ni-ico{font-size:20px}
 </style>
@@ -869,7 +869,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
   <div class="main">
     <div class="topbar">
-      <div class="mob-logo">
+      <div class="mob-logo" onclick="voltarInicio()">
         <svg width="26" height="26" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="36" cy="36" r="33" stroke="#00d4a8" stroke-width="2.5"/>
           <text x="8" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">E</text>
