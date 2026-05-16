@@ -898,7 +898,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <button class="mob-perfil-item" onclick="toggleTheme();toggleMobPerfil()">🌙 Alternar tema</button>
       <button class="mob-perfil-item" id="mob-assinar-item" onclick="openModal('modal-sub');toggleMobPerfil()">🚀 Assinar Elite Ações</button>
       <div class="mob-perfil-sep"></div>
-      <button class="mob-perfil-item red" onclick="fazerLogout()">↩ Sair da conta</button>
+      <button class="mob-perfil-item" id="mob-login-item" onclick="window.fazerLogin();toggleMobPerfil()" style="display:none">🔑 Entrar com Google — 7 dias grátis</button>
+      <button class="mob-perfil-item red" id="mob-logout-item" onclick="fazerLogout()">↩ Sair da conta</button>
     </div>
     <button id="paywall-fab" onclick="openModal('modal-sub')">🚀 Assinar Plano Pro — R$ 19,90/mês</button>
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
@@ -1101,6 +1102,11 @@ onAuthStateChanged(auth,async user=>{
     document.getElementById('login-screen').style.display='none';
     document.getElementById('app').classList.add('show');
     document.getElementById('popup-login-timer').classList.remove('show');
+    // Perfil mobile — guest: mostrar login, esconder logout e assinar
+    document.getElementById('mob-login-item')?.style.setProperty('display','flex');
+    document.getElementById('mob-logout-item')?.style.setProperty('display','none');
+    document.getElementById('mob-assinar-item')?.style.setProperty('display','none');
+    document.getElementById('mob-user-info').textContent='👤 Visitante';
     GUEST_MODE=true;
     PLANO_VENCIDO=false;
     if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
@@ -1143,6 +1149,9 @@ onAuthStateChanged(auth,async user=>{
   } else {
     mobAv.textContent = ini;
   }
+  // Perfil mobile — logado: mostrar logout, esconder login
+  document.getElementById('mob-login-item')?.style.setProperty('display','none');
+  document.getElementById('mob-logout-item')?.style.setProperty('display','flex');
   // Mostrar botão atualizar no mobile
   if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     const rb = document.getElementById('mob-refresh-btn');
@@ -1202,12 +1211,7 @@ onAuthStateChanged(auth,async user=>{
   await carregarAcoes();
   if(!localStorage.getItem('ea_disclaimer_ok')){setTimeout(()=>openModal('modal-disclaimer'),800);}
   // Onboarding: mostrar dica no primeiro acesso (após disclaimer)
-  if(!localStorage.getItem('ea_onboarding_ok')){
-    setTimeout(()=>{
-      showToast('💡 Dica: toque em qualquer ação para ver o Preço Teto e análise completa!', 6000);
-      localStorage.setItem('ea_onboarding_ok','1');
-    }, 2500);
-  }
+  // onboarding removido
 });
 
 function setTrialUI(dias){
