@@ -2239,9 +2239,17 @@ let _aguardandoSair = false;
 let _sairTimer = null;
 
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
-// 2 estados: o Android consome 1, o JS intercepta o outro
+// 2 estados iniciais
 pushEstado();
 pushEstado();
+
+// Repõe 2 estados sempre que o app voltar ao foco (após minimizar/fechar e reabrir)
+document.addEventListener('visibilitychange', ()=>{
+  if(!document.hidden){
+    pushEstado();
+    pushEstado();
+  }
+});
 
 window.addEventListener('popstate', function() {
   // Fechar busca mobile se aberta
