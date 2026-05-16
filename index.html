@@ -38,7 +38,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 #login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;background-image:radial-gradient(ellipse 600px 400px at 65% 20%,rgba(0,212,168,0.07),transparent)}
 
 /* ── Timer barra de acesso guest ── */
-#guest-timer-bar{position:relative;top:auto;left:auto;right:auto;z-index:150;background:rgba(0,212,168,.08);border-bottom:1px solid rgba(0,212,168,.15);padding:5px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--txt2);transition:background .3s;flex-shrink:0}
+#guest-timer-bar{position:relative;z-index:1;background:rgba(0,212,168,.08);border-bottom:1px solid rgba(0,212,168,.15);padding:5px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--txt2);transition:background .3s;flex-shrink:0}
 #guest-timer-bar.urgente{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
 #guest-timer-bar.hide{display:none}
 #guest-timer-txt{display:flex;align-items:center;gap:6px}
@@ -891,6 +891,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <button class="tb-btn" onclick="toggleTheme()" id="theme-btn" title="Tema">🌙</button>
         <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil('top')">?</div>
       </div>
+    </div>
     <!-- Menu perfil mobile -->
     <div id="mob-perfil-menu">
       <button class="mob-perfil-item" id="mob-user-info" style="cursor:default;opacity:.7;font-size:11px"></button>
@@ -903,7 +904,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     </div>
     <button id="paywall-fab" onclick="openModal('modal-sub')">🚀 Assinar Plano Pro — R$ 19,90/mês</button>
     <button id="pwa-fab" onclick="instalarPWA()">📲 Instalar app</button>
-    </div>
     <div class="mob-filters">
       <button class="mfbtn" id="mf-acoes" onclick="setNavM('acoes',this)">🏢 Ações</button>
       <button class="mfbtn" id="mf-fiis" onclick="setNavM('fiis',this)">🏗️ FIIs</button>
