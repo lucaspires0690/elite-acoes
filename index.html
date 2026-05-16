@@ -2237,25 +2237,35 @@ window.addEventListener('beforeinstallprompt', e => {
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
 pushEstado();
 
+let _sairTimer = null;
 window.addEventListener('popstate', function() {
   const busca = document.getElementById('mob-busca-overlay');
   const buscaAberta = busca && busca.classList.contains('open');
   const modalAberto = document.querySelector('.overlay.open');
 
   if(buscaAberta){
-    // 1º toque — fecha busca
     fecharBuscaMobile();
     pushEstado();
   } else if(modalAberto){
-    // 1º toque — fecha modal
     modalAberto.classList.remove('open');
     pushEstado();
   } else if(filtro !== 'inicio'){
-    // 1º toque — volta ao início
     voltarInicio();
     pushEstado();
+  } else {
+    // Já no início — mostrar aviso e sair no 2º toque
+    if(_sairTimer){
+      // 2º toque — sai do app
+      clearTimeout(_sairTimer);
+      _sairTimer = null;
+      history.go(-1);
+    } else {
+      // 1º toque — aviso
+      showToast('Pressione voltar novamente para sair', 2000);
+      pushEstado();
+      _sairTimer = setTimeout(()=>{ _sairTimer = null; }, 2000);
+    }
   }
-  // Se já está no início e nada aberto — não faz pushEstado, próximo toque sai do app
 });
 
 // ── Toast de feedback ──
