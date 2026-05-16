@@ -2239,7 +2239,9 @@ let _aguardandoSair = false;
 let _sairTimer = null;
 
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
-pushEstado(); // estado inicial
+// 2 estados: o Android consome 1, o JS intercepta o outro
+pushEstado();
+pushEstado();
 
 window.addEventListener('popstate', function() {
   // Fechar busca mobile se aberta
