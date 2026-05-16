@@ -797,7 +797,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="login-sub">Descubra o preço certo para comprar<br>qualquer ação da B3 baseado em dividendos</div>
     <div class="login-feats">
       <div class="login-feat"><div class="login-feat-ico">🎯</div>Preço teto calculado por dividendos</div>
-      <div class="login-feat"><div class="login-feat-ico">⚡</div>300+ ações e FIIs da B3</div>
+      <div class="login-feat"><div class="login-feat-ico">⚡</div>+140 ações e +145 FIIs para dividendos</div>
       <div class="login-feat"><div class="login-feat-ico">⭐</div>Monitore seus ativos favoritos</div>
     </div>
     <button class="btn-google" id="btn-login">
@@ -898,7 +898,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <input class="search-big-input" id="main-search" type="text" placeholder="Buscar ação ou FII... ex: PETR4, Petrobras" oninput="onBusca(this.value)">
       </div>
       <div class="topbar-right">
-        <button class="tb-btn" id="mob-refresh-btn" onclick="location.reload()" title="Atualizar" style="display:none">🔄</button>
+        <button class="tb-btn" id="mob-refresh-btn" onclick="sessionStorage.setItem('ea_filtro_atual',filtro);location.reload()" title="Atualizar" style="display:none">🔄</button>
         <div id="mob-trial-badge" style="display:none;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:20px;padding:3px 9px;font-size:10px;font-weight:800;color:#f59e0b;white-space:nowrap;cursor:pointer" onclick="openModal('modal-sub')"></div>
         <button class="tb-btn" onclick="toggleTheme()" id="theme-btn" title="Tema">🌙</button>
         <div class="mob-avatar" id="mob-avatar" onclick="toggleMobPerfil('top')">?</div>
@@ -996,16 +996,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="sub-hero">
       <div class="sub-ico">🚀</div>
       <div class="sub-title">Acesso completo</div>
-      <div class="sub-desc">Preço teto automático para 300+ ações e FIIs da B3 baseado em dividendos.</div>
+      <div class="sub-desc">Preço teto automático para +140 ações e +145 FIIs da B3 focadas em dividendos.</div>
       <div class="sub-price"><span style="color:var(--green)">R$ 19,90</span> <small>/mês</small></div>
     </div>
     <div class="sub-feats">
-      <div class="sub-feat">Preço teto por dividendos de todas as ações</div>
-      <div class="sub-feat">300+ ações e FIIs atualizados diariamente</div>
+      <div class="sub-feat">Preço teto por dividendos — não é para trade</div>
+      <div class="sub-feat">+140 ações e +145 FIIs atualizados a cada 15 minutos</div>
       <div class="sub-feat">Filtros por DY e potencial</div>
       <div class="sub-feat">Favoritos e carteira pessoal</div>
     </div>
     <button class="btn-main" onclick="irCheckout()">🚀 Garantir por R$ 19,90/mês</button>
+    <div style="text-align:center;font-size:11px;color:var(--txt3);margin-top:6px">✅ 7 dias grátis · Sem cartão de crédito</div>
     <div class="dismiss" onclick="closeModal('modal-sub')">Continuar com o trial gratuito</div>
   </div>
 </div>
@@ -1023,6 +1024,10 @@ const gp=new GoogleAuthProvider();
 setPersistence(auth, browserLocalPersistence).catch(()=>{});
 
 let ACOES=[],taxa=6,taxaFii=10,filtro='inicio',tipo='todos',busca='',USER=null,FAVORITOS=new Set(),PLANO_VENCIDO=false,PAGINAS_ATIVAS=new Set();
+
+// Restaurar filtro salvo antes do reload
+const _filtroSalvo = sessionStorage.getItem('ea_filtro_atual');
+if(_filtroSalvo) { filtro = _filtroSalvo; sessionStorage.removeItem('ea_filtro_atual'); }
 let GUEST_MODE=false, _guestTimerInterval=null;
 
 // Abre o modal correto dependendo se é guest ou usuário com plano vencido
@@ -2371,7 +2376,7 @@ const DEMO=[
           ptrPull.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
           ptrPull.style.transform = `translateY(-${LIMIAR}px)`;
           ptrPull.classList.remove('loading');
-          setTimeout(() => { location.reload(); }, 350);
+          setTimeout(() => { sessionStorage.setItem('ea_filtro_atual', filtro); location.reload(); }, 350);
         }, 600);
       };
       atualizar();
