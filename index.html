@@ -2361,23 +2361,18 @@ const DEMO=[
       ptrPull.classList.add('loading');
       ptrTxt.textContent = 'Atualizando...';
 
-      // Atualiza dados
+      // Atualiza dados e recarrega igual ao botão atualizar
       const atualizar = async () => {
         if(typeof carregarAcoes === 'function') await carregarAcoes();
-        // Volta com animação mola
+        // Volta com animação mola e recarrega a página
         setTimeout(() => {
           content.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
           content.style.transform = 'translateY(0)';
           ptrPull.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
           ptrPull.style.transform = `translateY(-${LIMIAR}px)`;
           ptrPull.classList.remove('loading');
-          setTimeout(() => {
-            content.style.transform = '';
-            content.style.transition = '';
-            ptrPull.style.transform = '';
-            ptrPull.style.transition = '';
-          }, 350);
-        }, 800);
+          setTimeout(() => { location.reload(); }, 350);
+        }, 600);
       };
       atualizar();
     } else {
