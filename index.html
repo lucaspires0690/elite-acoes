@@ -1071,14 +1071,16 @@ async function verificarSessaoGuest(){
     const ref=doc(db,'guest_sessions',id);
     const snap=await getDoc(ref);
     if(snap.exists()){
-      const inicio=snap.data().inicio;
+      const data=snap.data();
+      // Se marcado como expirado (fez login antes) — vai direto pro popup
+      if(data.expirado) return {expirado:true, inicio:0, ref};
+      const inicio=data.inicio;
       return {expirado:(agora-inicio)>=DURACAO, inicio, ref};
     } else {
       await setDoc(ref,{inicio:agora,ip,criado_em:new Date().toISOString()});
       return {expirado:false, inicio:agora, ref};
     }
   }catch(e){
-    // Fallback localStorage se Firestore falhar
     console.warn('guest session fallback:',e);
     let inicio=parseInt(localStorage.getItem('ea_guest_fb')||'0');
     if(!inicio){inicio=agora;localStorage.setItem('ea_guest_fb',inicio);}
@@ -1160,9 +1162,10 @@ onAuthStateChanged(auth,async user=>{
   if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
   document.getElementById('guest-timer-bar')?.classList.add('hide');
   document.getElementById('popup-login-timer').classList.remove('show');
-  // Apagar sessão guest do Firestore para liberar novo acesso guest no futuro
+  // Marcar sessão guest como expirada — ao fazer logout não volta o timer
   gerarFingerprintId().then(({id})=>{
-    deleteDoc(doc(db,'guest_sessions',id)).catch(()=>{});
+    const ref = doc(db,'guest_sessions',id);
+    setDoc(ref, {inicio: 0, expirado: true}, {merge: true}).catch(()=>{});
   });
 
   USER=user;
