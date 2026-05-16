@@ -2238,53 +2238,41 @@ window.addEventListener('beforeinstallprompt', e => {
 let _aguardandoSair = false;
 let _sairTimer = null;
 
-// Empurra UM estado — suficiente para interceptar o próximo toque
-function pushEstado(){
-  history.pushState({ea:true}, '', location.href);
-}
-pushEstado();
+function pushEstado(){ history.pushState({ea:true}, '', location.href); }
+pushEstado(); // estado inicial
 
 window.addEventListener('popstate', function() {
+  // Fechar busca mobile se aberta
   const busca = document.getElementById('mob-busca-overlay');
-  const buscaAberta = busca && busca.classList.contains('open');
-  const modalAberto = document.querySelector('.overlay.open');
-
-  if(buscaAberta){
+  if(busca && busca.classList.contains('open')){
     fecharBuscaMobile();
     pushEstado();
-    _aguardandoSair = false;
-    clearTimeout(_sairTimer);
     return;
   }
-
-  if(modalAberto){
-    modalAberto.classList.remove('open');
+  // Fechar qualquer modal aberto
+  const modais = document.querySelectorAll('.overlay.open');
+  if(modais.length > 0){
+    modais.forEach(m => m.classList.remove('open'));
     pushEstado();
-    _aguardandoSair = false;
-    clearTimeout(_sairTimer);
     return;
   }
-
+  // Se não está no início, voltar para início
   if(filtro !== 'inicio'){
     voltarInicio();
     pushEstado();
-    _aguardandoSair = false;
-    clearTimeout(_sairTimer);
     return;
   }
-
-  // Já no início
+  // Já no início — 1º toque mostra aviso, 2º toque fecha
   if(_aguardandoSair){
-    // 2º toque — não repõe estado, sistema fecha o app naturalmente
     _aguardandoSair = false;
     clearTimeout(_sairTimer);
-  } else {
-    // 1º toque — mostra aviso e repõe estado
-    _aguardandoSair = true;
-    showToast('Pressione voltar novamente para sair', 2000);
-    pushEstado();
-    _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
+    // Não repõe estado — sistema fecha o app
+    return;
   }
+  _aguardandoSair = true;
+  showToast('Pressione voltar novamente para sair', 2000);
+  pushEstado();
+  _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
 });
 
 // ── Toast de feedback ──
