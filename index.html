@@ -426,7 +426,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 .ios-banner-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--txt2)}
 .ios-banner-step-ico{font-size:18px;flex-shrink:0;width:28px;text-align:center}
 /* ── Toast feedback PWA ── */
-#pwa-toast{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--surf);border:1px solid var(--green);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:var(--txt);box-shadow:0 8px 24px rgba(0,0,0,.4);align-items:center;gap:10px;white-space:nowrap;animation:fadeInUp .3s ease}
+#pwa-toast{display:none;position:fixed;bottom:calc(80px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:9999;background:rgba(30,35,50,.95);border:none;border-radius:24px;padding:10px 22px;font-size:13px;font-weight:600;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.5);align-items:center;gap:10px;white-space:nowrap;animation:fadeInUp .2s ease}
 #pwa-toast.show{display:flex}
 .pwa-spinner{width:16px;height:16px;border:2px solid rgba(0,212,168,.3);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -2237,6 +2237,11 @@ window.addEventListener('beforeinstallprompt', e => {
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
 pushEstado();
 
+// Quando app volta do segundo plano, repõe o estado no histórico
+document.addEventListener('visibilitychange', ()=>{
+  if(!document.hidden) pushEstado();
+});
+
 let _sairTimer = null;
 window.addEventListener('popstate', function() {
   const busca = document.getElementById('mob-busca-overlay');
@@ -2253,14 +2258,12 @@ window.addEventListener('popstate', function() {
     voltarInicio();
     pushEstado();
   } else {
-    // Já no início — mostrar aviso e sair no 2º toque
+    // Já no início — aviso de saída
     if(_sairTimer){
-      // 2º toque — sai do app
       clearTimeout(_sairTimer);
       _sairTimer = null;
       history.go(-1);
     } else {
-      // 1º toque — aviso
       showToast('Pressione voltar novamente para sair', 2000);
       pushEstado();
       _sairTimer = setTimeout(()=>{ _sairTimer = null; }, 2000);
