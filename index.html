@@ -2237,12 +2237,9 @@ window.addEventListener('beforeinstallprompt', e => {
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
 pushEstado();
 
-// Quando app volta do segundo plano, repõe o estado no histórico
-document.addEventListener('visibilitychange', ()=>{
-  if(!document.hidden) pushEstado();
-});
-
 let _sairTimer = null;
+let _aguardandoSair = false;
+
 window.addEventListener('popstate', function() {
   const busca = document.getElementById('mob-busca-overlay');
   const buscaAberta = busca && busca.classList.contains('open');
@@ -2251,22 +2248,27 @@ window.addEventListener('popstate', function() {
   if(buscaAberta){
     fecharBuscaMobile();
     pushEstado();
+    _aguardandoSair = false;
   } else if(modalAberto){
     modalAberto.classList.remove('open');
     pushEstado();
+    _aguardandoSair = false;
   } else if(filtro !== 'inicio'){
     voltarInicio();
     pushEstado();
+    _aguardandoSair = false;
   } else {
-    // Já no início — aviso de saída
-    if(_sairTimer){
+    if(_aguardandoSair){
+      // 2º toque — sai do app
+      _aguardandoSair = false;
       clearTimeout(_sairTimer);
-      _sairTimer = null;
-      history.go(-1);
+      // Não faz pushEstado — deixa o sistema fechar
     } else {
+      // 1º toque — aviso
+      _aguardandoSair = true;
       showToast('Pressione voltar novamente para sair', 2000);
-      pushEstado();
-      _sairTimer = setTimeout(()=>{ _sairTimer = null; }, 2000);
+      pushEstado(); // repõe estado para capturar o 2º toque
+      _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
     }
   }
 });
