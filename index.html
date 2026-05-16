@@ -1014,7 +1014,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, browserLocalPersistence, setPersistence } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, onSnapshot, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={apiKey:'AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo',authDomain:'elite-acoes.firebaseapp.com',projectId:'elite-acoes',storageBucket:'elite-acoes.firebasestorage.app',messagingSenderId:'723536084871',appId:'1:723536084871:web:c6cf5879ddeb629759dd22'};
 const fbApp=initializeApp(firebaseConfig);
@@ -1155,11 +1155,15 @@ onAuthStateChanged(auth,async user=>{
   // Logado — parar timer guest e esconder popup
   GUEST_MODE=false;
   PLANO_VENCIDO=false;
-  localStorage.removeItem('ea_guest_inicio'); // limpa timer legado
-  localStorage.removeItem('ea_guest_fb');     // limpa fallback
+  localStorage.removeItem('ea_guest_inicio');
+  localStorage.removeItem('ea_guest_fb');
   if(_guestTimerInterval){ clearInterval(_guestTimerInterval); _guestTimerInterval=null; }
   document.getElementById('guest-timer-bar')?.classList.add('hide');
   document.getElementById('popup-login-timer').classList.remove('show');
+  // Apagar sessão guest do Firestore para liberar novo acesso guest no futuro
+  gerarFingerprintId().then(({id})=>{
+    deleteDoc(doc(db,'guest_sessions',id)).catch(()=>{});
+  });
 
   USER=user;
   document.getElementById('login-screen').style.display='none';
