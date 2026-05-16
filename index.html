@@ -1232,7 +1232,7 @@ onAuthStateChanged(auth,async user=>{
         document.getElementById('paywall-fab')?.classList.add('show');
       }
     } else {
-      const dias=Math.floor((new Date(d.trial_ate)-new Date())/864e5);
+      const dias=Math.ceil((new Date(d.trial_ate)-new Date())/864e5);
       setTrialUI(dias);
       if(dias<=0){
         PLANO_VENCIDO=true;
