@@ -2235,6 +2235,8 @@ window.addEventListener('beforeinstallprompt', e => {
 
 // ── Botão voltar físico do Android ──
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
+// Dois pushState garante que sempre há um estado para interceptar no standalone
+pushEstado();
 pushEstado();
 
 let _sairTimer = null;
