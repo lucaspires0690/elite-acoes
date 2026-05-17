@@ -1958,16 +1958,15 @@ window.togglePerfil=function(){
 window.voltarInicio=function(){
   filtro='inicio'; tipo='todos'; busca='';
   document.getElementById('main-search').value='';
-  // Desktop sidebar
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   const navInicio=document.getElementById('nav-inicio');
   if(navInicio)navInicio.classList.add('active');
-  // Mobile nav inferior
   document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
   const mniInicio=document.getElementById('mni-inicio');
   if(mniInicio)mniInicio.classList.add('active');
-  // Mobile filtros superiores
+  // Limpar filtros mobile
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-voltar').classList.remove('show');
   renderContent();
 };
 
@@ -1976,7 +1975,11 @@ window.setNav=(f,btn)=>{
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');busca='';document.getElementById('main-search').value='';
-  // Mostrar botão voltar se não estiver no início};
+  // Mostrar botão voltar se não estiver no início
+  const bv=document.getElementById('btn-voltar');
+  if(bv) bv.classList.toggle('show', f!=='inicio');
+  renderContent();
+};
 window.setNavM=(f,btn)=>{
   filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
@@ -1987,7 +1990,11 @@ window.setNavM=(f,btn)=>{
   const niMap={'inicio':'mni-inicio','favoritos':'mni-fav','baratas':'mni-inicio','dy':'mni-inicio','acoes':'mni-inicio','fiis':'mni-inicio'};
   const niEl=document.getElementById(niMap[f]||'mni-inicio');
   if(niEl) niEl.classList.add('active');
-  busca='';document.getElementById('main-search').value='';};
+  busca='';document.getElementById('main-search').value='';
+  const bv2=document.getElementById('btn-voltar');
+  if(bv2) bv2.classList.toggle('show', f!=='inicio');
+  renderContent();
+};
 window.setMobNav=btn=>{document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
 
 // Favoritar via modal — atualiza botão sem fechar modal
