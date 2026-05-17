@@ -2233,16 +2233,12 @@ window.addEventListener('beforeinstallprompt', e => {
   }
 });
 
-// ── Botão voltar físico do Android ──
 // ── Botão voltar Android PWA ──
 let _aguardandoSair = false;
 let _sairTimer = null;
 
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
 window.addEventListener('pageshow', ()=>{ pushEstado(); pushEstado(); });
-
-let _aguardandoSair = false;
-let _sairTimer = null;
 
 window.addEventListener('popstate', function() {
   const busca = document.getElementById('mob-busca-overlay');
@@ -2268,41 +2264,7 @@ window.addEventListener('popstate', function() {
     showToast('Pressione voltar novamente para sair', 2000);
     _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
   }
-  pushEstado(); // sempre repõe — nunca deixa o app fechar
-});
-
-window.addEventListener('popstate', function() {
-  // Fechar busca mobile se aberta
-  const busca = document.getElementById('mob-busca-overlay');
-  if(busca && busca.classList.contains('open')){
-    fecharBuscaMobile();
-    pushEstado();
-    return;
-  }
-  // Fechar qualquer modal aberto
-  const modais = document.querySelectorAll('.overlay.open');
-  if(modais.length > 0){
-    modais.forEach(m => m.classList.remove('open'));
-    pushEstado();
-    return;
-  }
-  // Se não está no início, voltar para início
-  if(filtro !== 'inicio'){
-    voltarInicio();
-    pushEstado();
-    return;
-  }
-  // Já no início — 1º toque mostra aviso, 2º toque fecha
-  if(_aguardandoSair){
-    _aguardandoSair = false;
-    clearTimeout(_sairTimer);
-    // Não repõe estado — sistema fecha o app
-    return;
-  }
-  _aguardandoSair = true;
-  showToast('Pressione voltar novamente para sair', 2000);
   pushEstado();
-  _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
 });
 
 // ── Toast de feedback ──
