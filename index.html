@@ -435,7 +435,9 @@ body{font-family:var(--fb);background:var(--bg);color:var(--txt);display:flex;fl
 
 #app{display:none;height:100dvh;flex-direction:row}
 #app.show{display:flex}
-.sidebar{width:280px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:hidden}
+.sidebar{width:280px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 @media(max-width:1024px){.sidebar{display:none}}
 .sb-logo{padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);min-height:54px}
 .sb-logo-txt{font-size:17px;font-weight:800;color:var(--txt)}
