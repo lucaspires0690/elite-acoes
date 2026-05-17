@@ -2239,16 +2239,36 @@ let _aguardandoSair = false;
 let _sairTimer = null;
 
 function pushEstado(){ history.pushState({ea:true}, '', location.href); }
-// 2 estados iniciais
-pushEstado();
-pushEstado();
+window.addEventListener('pageshow', ()=>{ pushEstado(); pushEstado(); });
 
-// Repõe 2 estados sempre que o app voltar ao foco (após minimizar/fechar e reabrir)
-document.addEventListener('visibilitychange', ()=>{
-  if(!document.hidden){
+let _aguardandoSair = false;
+let _sairTimer = null;
+
+window.addEventListener('popstate', function() {
+  const busca = document.getElementById('mob-busca-overlay');
+  if(busca && busca.classList.contains('open')){
+    fecharBuscaMobile();
     pushEstado();
-    pushEstado();
+    return;
   }
+  const modais = document.querySelectorAll('.overlay.open');
+  if(modais.length > 0){
+    modais.forEach(m => m.classList.remove('open'));
+    pushEstado();
+    return;
+  }
+  if(filtro !== 'inicio'){
+    voltarInicio();
+    pushEstado();
+    return;
+  }
+  // No início — mostra toast e repõe estado sempre (não fecha)
+  if(!_aguardandoSair){
+    _aguardandoSair = true;
+    showToast('Pressione voltar novamente para sair', 2000);
+    _sairTimer = setTimeout(()=>{ _aguardandoSair = false; }, 2000);
+  }
+  pushEstado(); // sempre repõe — nunca deixa o app fechar
 });
 
 window.addEventListener('popstate', function() {
