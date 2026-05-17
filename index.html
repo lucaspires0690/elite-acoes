@@ -1137,11 +1137,10 @@ function expirarAcessoGuest(){
 }
 
 onAuthStateChanged(auth,async user=>{
-  // Esconder splash assim que Firebase responder
-  document.getElementById('splash-screen').classList.add('hide');
 
   if(!user){
-    // Sem login — mostrar app em modo guest com timer
+    // Sem login — esconder splash e mostrar guest
+    document.getElementById('splash-screen').classList.add('hide');
     document.getElementById('login-screen').style.display='none';
     document.getElementById('app').classList.add('show');
     document.getElementById('popup-login-timer').classList.remove('show');
@@ -1187,7 +1186,6 @@ onAuthStateChanged(auth,async user=>{
 
   USER=user;
   document.getElementById('login-screen').style.display='none';
-  document.getElementById('app').classList.add('show');
   const ini=(user.displayName||user.email||'?')[0].toUpperCase();
   document.getElementById('sb-avatar').textContent=ini;
   // Foto do Google no avatar mobile
@@ -1243,8 +1241,10 @@ onAuthStateChanged(auth,async user=>{
     renderContent();
   }
 
-  // Aplicar dados iniciais
+  // Aplicar dados iniciais — só mostra o app depois disso para evitar flash
   aplicarDadosUsuario(uSnap.data());
+  document.getElementById('splash-screen').classList.add('hide');
+  document.getElementById('app').classList.add('show');
 
   // Listener em tempo real — atualiza automaticamente quando admin editar
   onSnapshot(uRef, function(snap){
