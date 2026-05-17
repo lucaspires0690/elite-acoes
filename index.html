@@ -1966,7 +1966,7 @@ window.voltarInicio=function(){
   if(mniInicio)mniInicio.classList.add('active');
   // Limpar filtros mobile
   document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btn-voltar').classList.remove('show');
+  document.getElementById('btn-voltar')?.classList.remove('show');
   renderContent();
 };
 
