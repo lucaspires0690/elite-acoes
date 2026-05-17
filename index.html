@@ -894,7 +894,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         </svg>
         <span>Elite <span style="color:var(--green)">Ações</span></span>
       </div>
-      <button id="btn-voltar" class="tb-btn" onclick="voltarInicio()">← Voltar</button>
+      
       <div class="search-big">
         <span class="search-big-ico">🔍</span>
         <input class="search-big-input" id="main-search" type="text" placeholder="Buscar ação ou FII... ex: PETR4, Petrobras" oninput="onBusca(this.value)">
@@ -1958,13 +1958,16 @@ window.togglePerfil=function(){
 window.voltarInicio=function(){
   filtro='inicio'; tipo='todos'; busca='';
   document.getElementById('main-search').value='';
+  // Desktop sidebar
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   const navInicio=document.getElementById('nav-inicio');
   if(navInicio)navInicio.classList.add('active');
+  // Mobile nav inferior
   document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
   const mniInicio=document.getElementById('mni-inicio');
   if(mniInicio)mniInicio.classList.add('active');
-  document.getElementById('btn-voltar').classList.remove('show');
+  // Mobile filtros superiores
+  document.querySelectorAll('.mfbtn').forEach(b=>b.classList.remove('active'));
   renderContent();
 };
 
@@ -1973,11 +1976,7 @@ window.setNav=(f,btn)=>{
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');busca='';document.getElementById('main-search').value='';
-  // Mostrar botão voltar se não estiver no início
-  const bv=document.getElementById('btn-voltar');
-  if(bv) bv.classList.toggle('show', f!=='inicio');
-  renderContent();
-};
+  // Mostrar botão voltar se não estiver no início};
 window.setNavM=(f,btn)=>{
   filtro=f;
   tipo=f==='acoes'?'acoes':f==='fiis'?'fiis':'todos';
@@ -1988,11 +1987,7 @@ window.setNavM=(f,btn)=>{
   const niMap={'inicio':'mni-inicio','favoritos':'mni-fav','baratas':'mni-inicio','dy':'mni-inicio','acoes':'mni-inicio','fiis':'mni-inicio'};
   const niEl=document.getElementById(niMap[f]||'mni-inicio');
   if(niEl) niEl.classList.add('active');
-  busca='';document.getElementById('main-search').value='';
-  const bv2=document.getElementById('btn-voltar');
-  if(bv2) bv2.classList.toggle('show', f!=='inicio');
-  renderContent();
-};
+  busca='';document.getElementById('main-search').value='';};
 window.setMobNav=btn=>{document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
 
 // Favoritar via modal — atualiza botão sem fechar modal
