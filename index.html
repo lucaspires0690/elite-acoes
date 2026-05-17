@@ -1845,7 +1845,7 @@ window.openDet=function(codigo){
     // ── AÇÕES ────────────────────────────────────────
     // Botão Saiba mais — só aparece se a página estiver ativa no Firestore
     +(PAGINAS_ATIVAS.has(a.codigo)
-      ?'<a href="'+(isFii(a.codigo)?'/paginas/fiis/':'/paginas/acoes/')+a.codigo.toLowerCase()+'.html" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:11px;border:1px solid var(--border2);background:var(--surf2);color:var(--txt2);font-size:13px;font-weight:600;text-decoration:none;margin-bottom:8px;transition:all .15s">📋 Sobre a empresa</a>'
+      ?'<button onclick="window.open(\''+(isFii(a.codigo)?\'/paginas/fiis/\':\'/paginas/acoes/')+a.codigo.toLowerCase()+\'.html\',\'_blank\')" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:11px;border:1px solid var(--border2);background:var(--surf2);color:var(--txt2);font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;font-family:var(--fb)">📋 Sobre a empresa</button>'
       :'')
     +'<button id="btn-fav-modal" class="'+(FAVORITOS.has(a.codigo)?'sim-fav':'nao-fav')+'" data-cod="'+a.codigo+'" onclick="window.toggleFavModal(this)">'+(FAVORITOS.has(a.codigo)?'⭐ Salvo nos favoritos':'☆ Adicionar aos favoritos')+'</button>'
     +'<button class="btn-ghost" onclick="closeModal(&quot;modal-detalhe&quot;)">Fechar</button>'
