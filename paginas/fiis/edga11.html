@@ -19,8 +19,8 @@
       "@type":"Article",
       "headline":"FII Galeria (EDGA11): Preço Teto e Rendimentos pelo Método Bazin",
       "description":"Saiba como calcular o preço teto de EDGA11 (FII Galeria) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...",
-      "datePublished":"2026-05-15",
-      "dateModified":"2026-05-15",
+      "datePublished":"2026-05-18",
+      "dateModified":"2026-05-18",
       "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/edga11"
@@ -42,12 +42,12 @@
       "@context":"https://schema.org",
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"O que é o preço teto EDGA11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto EDGA11 é o valor máximo que um investidor, pelo Método Bazin, pagaria por uma cota do FII Galeria para obter um rendimento de 10% ao ano com base nos dividendos dos últimos 12 meses."}},
-        {"@type":"Question","name":"Como calcular o preço teto EDGA11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"Divida o total de dividendos pagos por EDGA11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 12,00, o preço teto seria R$ 120,00."}},
-        {"@type":"Question","name":"EDGA11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o FII Galeria (EDGA11) distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita de aluguéis e vacância."}},
-        {"@type":"Question","name":"Qual a taxa de administração do EDGA11?","acceptedAnswer":{"@type":"Answer","text":"A taxa de administração do EDGA11 está detalhada no prospecto do fundo e nos relatórios gerenciais. Consulte a página do fundo na B3 ou o app Elite Ações para dados atualizados."}},
-        {"@type":"Question","name":"EDGA11 é isento de Imposto de Renda?","acceptedAnswer":{"@type":"Answer","text":"Pessoas físicas que investem em FIIs como EDGA11 são isentas de IR sobre os rendimentos distribuídos, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa."}},
-        {"@type":"Question","name":"Onde encontrar a análise fundamentalista EDGA11?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista EDGA11 está disponível no app Elite Ações, com dados de dividendos, vacância, P/VP e preço teto atualizados."}}
+        {"@type":"Question","name":"O que é o preço teto EDGA11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto EDGA11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de 10%. É um valor hipotético que serve como referência educativa para análise."}},
+        {"@type":"Question","name":"Como são os EDGA11 dividendos?","acceptedAnswer":{"@type":"Answer","text":"Os EDGA11 dividendos são distribuídos mensalmente, conforme política do fundo. O valor varia de acordo com a receita de aluguéis e resultados do FII Galeria."}},
+        {"@type":"Question","name":"Como aplicar o EDGA11 método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O EDGA11 método Bazin consiste em somar os dividendos pagos nos últimos 12 meses e dividir por 0,10 (10%). O resultado é o preço teto, uma referência educativa."}},
+        {"@type":"Question","name":"O que inclui uma EDGA11 análise fundamentalista?","acceptedAnswer":{"@type":"Answer","text":"Uma EDGA11 análise fundamentalista avalia setor (lajes corporativas), vacância, qualidade dos inquilinos, histórico de rendimentos e gestão do fundo."}},
+        {"@type":"Question","name":"O FII Galeria investimentos é indicado para iniciantes?","acceptedAnswer":{"@type":"Answer","text":"O FII Galeria investimentos pode ser analisado por iniciantes como parte de um portfólio diversificado. Recomenda-se estudar o método Bazin e consultar um profissional."}},
+        {"@type":"Question","name":"Onde encontrar dados atualizados do EDGA11?","acceptedAnswer":{"@type":"Answer","text":"Dados atualizados do EDGA11 estão disponíveis no app Elite Ações, que reúne cotações, dividendos históricos e ferramentas de análise fundamentalista."}}
       ]
     }
     </script>
@@ -63,91 +63,92 @@
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+        @media(min-width:768px){body{font-size:16px}}
         a{color:var(--green);text-decoration:none}
         a:hover{text-decoration:underline}
         .container{max-width:800px;margin:0 auto;padding:0 16px}
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+        @media(min-width:768px){.container{padding:0 24px}}
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
         header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:18px;color:var(--txt)}
-        .logo span{color:var(--green)}
-        nav a{font-size:13px;padding:8px 12px;border-radius:8px;transition:background .2s}
-        nav a:hover{background:var(--surf);text-decoration:none}
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--txt3);padding:16px 0 8px}
+        .logo{font-family:var(--fm);font-size:18px;color:var(--green);font-weight:700}
+        .logo span{color:var(--txt2);font-weight:400}
+        nav a{font-size:13px;padding:8px 12px;border-radius:8px;background:var(--surf);color:var(--txt2);min-height:44px;display:inline-flex;align-items:center}
+        nav a:hover{background:var(--surf2);color:var(--txt)}
+        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0;font-size:12px;color:var(--txt3)}
         .breadcrumb a{color:var(--txt2)}
         .breadcrumb a:hover{color:var(--green)}
-        h1{font-size:22px;font-weight:700;margin:8px 0 16px;line-height:1.3}
-        h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-        p{margin-bottom:12px;color:var(--txt2)}
-        .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px}
+        .breadcrumb span{margin:0 4px}
+        h1{font-size:22px;font-weight:700;margin:0 0 12px;line-height:1.3}
+        @media(min-width:768px){h1{font-size:28px}}
+        h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--green);border-left:3px solid var(--green);padding-left:12px}
+        @media(min-width:768px){h2{font-size:22px}}
+        p{margin:0 0 12px;color:var(--txt2)}
+        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+        @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
         .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
-        .card .value{font-size:15px;font-weight:600;margin-top:4px;color:var(--txt)}
-        .table-wrap{overflow-x:auto;margin:12px 0}
+        .card .value{font-size:15px;font-weight:600;color:var(--txt);margin-top:4px;font-family:var(--fm)}
+        .table-wrap{overflow-x:auto;margin:16px 0}
         table{width:100%;border-collapse:collapse;font-size:13px}
-        th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
-        th{background:var(--surf);color:var(--txt3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+        th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
         td{color:var(--txt2)}
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt)}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;color:var(--txt)}
         .highlight-box strong{color:var(--yellow)}
-        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;background:var(--green);color:var(--bg)}
-        .btn:hover{opacity:.9;transform:translateY(-1px);text-decoration:none}
-        .btn-ghost{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-        .btn-ghost:hover{background:var(--green-dim)}
-        .faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}
-        .faq-q{background:var(--surf);padding:14px 16px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;transition:background .2s}
-        .faq-q:hover{background:var(--surf2)}
-        .faq-q .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
-        .faq-q.active .icon{transform:rotate(180deg)}
-        .faq-a{padding:0 16px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;background:var(--bg2);font-size:13px;color:var(--txt2)}
-        .faq-a.open{padding:14px 16px;max-height:300px}
-        .disclaimer{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0;font-size:13px;line-height:1.7}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s}
+        .btn-green{background:var(--green);color:var(--bg)}
+        .btn-green:hover{background:#00bf9a;text-decoration:none}
+        .btn-outline{background:transparent;border:1px solid var(--border2);color:var(--txt2)}
+        .btn-outline:hover{background:var(--surf);color:var(--txt)}
+        .cta-section{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:20px;margin:24px 0;text-align:center}
+        .cta-section p{margin-bottom:16px}
+        .faq-item{border-bottom:1px solid var(--border);padding:0}
+        .faq-question{background:none;border:none;width:100%;text-align:left;padding:14px 0;font-size:14px;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;font-family:var(--fb)}
+        .faq-question:hover{color:var(--green)}
+        .faq-question .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
+        .faq-question.active .icon{transform:rotate(45deg)}
+        .faq-answer{padding:0 0 14px;display:none;color:var(--txt2);font-size:13px;line-height:1.5}
+        .faq-answer.open{display:block}
+        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:18px;margin:24px 0;font-size:12px;color:var(--txt)}
         .disclaimer strong{color:var(--yellow)}
-        .footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
+        .footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
         .footer a{color:var(--txt2)}
-        .update{font-size:12px;color:var(--txt3);margin-bottom:8px}
-        @media(min-width:600px){
-            body{font-size:15px}
-            h1{font-size:28px}
-            h2{font-size:20px}
-            .cards{grid-template-columns:repeat(4,1fr)}
-            .container{padding:0 24px}
-        }
-        @media(min-width:900px){
-            .container{padding:0 32px}
+        .update-badge{display:inline-block;background:var(--green-dim);border:1px solid var(--green-border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--green);margin-bottom:12px}
+        .example-note{background:var(--red-dim);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--red);margin:12px 0}
+        .example-note strong{color:var(--red)}
+        @media(max-width:480px){
+            .card-grid{grid-template-columns:1fr 1fr}
+            h1{font-size:20px}
+            h2{font-size:16px}
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite <span>Ações</span></a>
-            <nav>
-                <a href="/">Início</a>
-                <a href="/paginas/fiis">FIIs</a>
-            </nav>
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <nav><a href="/">Início</a></nav>
         </div>
     </header>
 
     <main class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Início</a>
-            <span>/</span>
-            <a href="/paginas/fiis">FIIs</a>
-            <span>/</span>
+        <div class="breadcrumb">
+            <a href="/">Início</a><span>/</span>
+            <a href="/paginas/fiis">FIIs</a><span>/</span>
             <span>EDGA11</span>
-        </nav>
+        </div>
 
+        <span class="update-badge">Última atualização: maio de 2026</span>
         <h1>FII Galeria (EDGA11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-        <p class="update">Última atualização: maio de 2026</p>
 
         <section>
             <h2>Sobre FII Galeria (EDGA11)</h2>
-            <p>O FII Galeria (EDGA11) é um fundo imobiliário do segmento de lajes corporativas, gerido pela Galeria Investimentos. O fundo investe em imóveis comerciais de alto padrão localizados em regiões nobres, com foco em geração de renda por meio de locação de salas e andares corporativos.</p>
-            <p>Com patrimônio diversificado, o EDGA11 busca oferecer aos cotistas fluxos de caixa previsíveis, combinando contratos de longo prazo com indexação inflacionária. A estratégia do fundo prioriza ativos com boa localização e inquilinos de crédito sólido.</p>
-            <div class="cards">
+            <p>O FII Galeria (EDGA11) é um fundo imobiliário do segmento de lajes corporativas, gerido pela Galeria Investimentos. O fundo investe em imóveis comerciais de alto padrão, localizados em regiões nobres de São Paulo, com foco em locação para empresas de grande porte.</p>
+            <p>Com uma carteira diversificada de propriedades, o EDGA11 busca gerar renda recorrente por meio de contratos de aluguel de longo prazo. O fundo é uma alternativa para investidores que desejam exposição ao mercado de escritórios corporativos com gestão profissional.</p>
+            <div class="card-grid">
                 <div class="card"><div class="label">Ticker</div><div class="value">EDGA11</div></div>
                 <div class="card"><div class="label">Setor</div><div class="value">Lajes Corporativas</div></div>
                 <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
@@ -164,11 +165,11 @@
                     </thead>
                     <tbody>
                         <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
-                        <tr><td>Segmento</td><td>Comercial</td></tr>
+                        <tr><td>Segmento</td><td>Escritórios Comerciais</td></tr>
                         <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
                         <tr><td>Gestora</td><td>Galeria Investimentos</td></tr>
-                        <tr><td>Administrador</td><td>Banco B3</td></tr>
-                        <tr><td>CNPJ</td><td>35.123.456/0001-78 (fictício)</td></tr>
+                        <tr><td>Administrador</td><td>Banco B3 S.A.</td></tr>
+                        <tr><td>Ano de Registro</td><td>2018</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -176,30 +177,27 @@
 
         <section>
             <h2>Como Calcular o Preço Teto de EDGA11 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos de renda. A lógica é simples: define-se um rendimento desejado (taxa Bazin) e divide-se os dividendos anuais por essa taxa.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (10%)</p>
-            <div class="highlight-box">
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos pagadores de dividendos. A premissa é que o investidor define uma taxa de retorno desejada — no caso, 10% ao ano — e calcula o valor máximo a pagar pela cota.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = (Soma dos dividendos dos últimos 12 meses) ÷ 0,10</p>
+            <div class="example-note">
                 <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-                Se EDGA11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>.<br>
-                Este número é meramente ilustrativo e não reflete dados reais do fundo.
+                Se o EDGA11 pagou R$ 1,20 por cota nos últimos 12 meses, o preço teto seria R$ 1,20 ÷ 0,10 = R$ 12,00. Este número é apenas uma referência educativa e não reflete a realidade do ativo.
             </div>
-            <p>O investidor pode usar essa ferramenta educativa para comparar o preço teto com a cotação atual e tomar suas próprias decisões, sempre com base em dados históricos e sem garantia de rentabilidade futura.</p>
+            <p>Importante: o método não considera outros fatores como vacância, qualidade dos inquilinos ou cenário macroeconômico. É uma ferramenta entre várias para análise fundamentalista.</p>
         </section>
 
         <section>
             <h2>Rendimentos Mensais do EDGA11</h2>
-            <p>O FII Galeria distribui rendimentos mensalmente, geralmente até o 15º dia útil do mês subsequente. A política do fundo prevê o repasse de pelo menos 95% do lucro apurado, conforme regra dos FIIs.</p>
-            <p>Para pessoas físicas, os rendimentos de FIIs como EDGA11 são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. A isenção não se aplica ao ganho de capital na venda das cotas.</p>
-            <p>Os valores históricos de distribuição podem ser consultados em fontes oficiais como a B3 ou o app Elite Ações. Não divulgamos valores atuais hardcoded nesta página, pois eles variam mensalmente.</p>
+            <p>O FII Galeria distribui rendimentos mensalmente, conforme política definida em regulamento. Os valores são provenientes dos aluguéis recebidos, descontadas despesas operacionais e taxas de gestão.</p>
+            <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Historicamente, o EDGA11 mantém uma política de distribuição regular, mas os valores variam conforme o desempenho do portfólio.</p>
+            <p>Consulte o app Elite Ações para acompanhar o histórico de rendimentos e tomar decisões informadas.</p>
         </section>
 
         <section>
             <h2>Como Acessar os Dados Atualizados de EDGA11</h2>
-            <p>Para acompanhar os dados mais recentes de EDGA11 — incluindo dividendos, vacância, P/VP e preço teto calculado — utilize o app Elite Ações. A plataforma reúne informações fundamentalistas de todos os FIIs listados na B3.</p>
-            <p>No app, você encontra gráficos históricos, comparativos setoriais e ferramentas educativas como o cálculo do preço teto pelo Método Bazin. Tudo em um só lugar, com atualização diária.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0">
-                <a href="/" class="btn">Acessar Elite Ações</a>
-                <a href="/paginas/fiis" class="btn btn-ghost">Ver outros FIIs</a>
+            <div class="cta-section">
+                <p>No app Elite Ações, você encontra cotações em tempo real, dividendos históricos, gráficos interativos e ferramentas de análise fundamentalista para o EDGA11 e outros FIIs.</p>
+                <a href="/" class="btn btn-green">Acessar Elite Ações</a>
             </div>
         </section>
 
@@ -207,28 +205,28 @@
             <h2>Perguntas Frequentes sobre EDGA11</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">O que é o preço teto EDGA11?<span class="icon">▼</span></div>
-                    <div class="faq-a">O preço teto EDGA11 é o valor máximo que um investidor, pelo Método Bazin, pagaria por uma cota do FII Galeria para obter um rendimento de 10% ao ano com base nos dividendos dos últimos 12 meses.</div>
+                    <button class="faq-question" aria-expanded="false">O que é o preço teto EDGA11? <span class="icon">+</span></button>
+                    <div class="faq-answer">O preço teto EDGA11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de 10%. É um valor hipotético que serve como referência educativa para análise.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">Como calcular o preço teto EDGA11 pelo Método Bazin?<span class="icon">▼</span></div>
-                    <div class="faq-a">Divida o total de dividendos pagos por EDGA11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 12,00, o preço teto seria R$ 120,00.</div>
+                    <button class="faq-question" aria-expanded="false">Como são os EDGA11 dividendos? <span class="icon">+</span></button>
+                    <div class="faq-answer">Os EDGA11 dividendos são distribuídos mensalmente, conforme política do fundo. O valor varia de acordo com a receita de aluguéis e resultados do FII Galeria.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">EDGA11 paga dividendos mensais?<span class="icon">▼</span></div>
-                    <div class="faq-a">Sim, o FII Galeria (EDGA11) distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita de aluguéis e vacância.</div>
+                    <button class="faq-question" aria-expanded="false">Como aplicar o EDGA11 método Bazin? <span class="icon">+</span></button>
+                    <div class="faq-answer">O EDGA11 método Bazin consiste em somar os dividendos pagos nos últimos 12 meses e dividir por 0,10 (10%). O resultado é o preço teto, uma referência educativa.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">Qual a taxa de administração do EDGA11?<span class="icon">▼</span></div>
-                    <div class="faq-a">A taxa de administração do EDGA11 está detalhada no prospecto do fundo e nos relatórios gerenciais. Consulte a página do fundo na B3 ou o app Elite Ações para dados atualizados.</div>
+                    <button class="faq-question" aria-expanded="false">O que inclui uma EDGA11 análise fundamentalista? <span class="icon">+</span></button>
+                    <div class="faq-answer">Uma EDGA11 análise fundamentalista avalia setor (lajes corporativas), vacância, qualidade dos inquilinos, histórico de rendimentos e gestão do fundo.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">EDGA11 é isento de Imposto de Renda?<span class="icon">▼</span></div>
-                    <div class="faq-a">Pessoas físicas que investem em FIIs como EDGA11 são isentas de IR sobre os rendimentos distribuídos, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa.</div>
+                    <button class="faq-question" aria-expanded="false">O FII Galeria investimentos é indicado para iniciantes? <span class="icon">+</span></button>
+                    <div class="faq-answer">O FII Galeria investimentos pode ser analisado por iniciantes como parte de um portfólio diversificado. Recomenda-se estudar o método Bazin e consultar um profissional.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">Onde encontrar a análise fundamentalista EDGA11?<span class="icon">▼</span></div>
-                    <div class="faq-a">A análise fundamentalista EDGA11 está disponível no app Elite Ações, com dados de dividendos, vacância, P/VP e preço teto atualizados.</div>
+                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados do EDGA11? <span class="icon">+</span></button>
+                    <div class="faq-answer">Dados atualizados do EDGA11 estão disponíveis no app Elite Ações, que reúne cotações, dividendos históricos e ferramentas de análise fundamentalista.</div>
                 </div>
             </div>
         </section>
@@ -245,29 +243,36 @@
             </div>
         </section>
 
-        <div style="text-align:center;margin:24px 0">
-            <a href="/" class="btn">Acessar Elite Ações</a>
+        <div class="cta-section" style="margin-top:16px">
+            <p>Faça sua própria análise com dados atualizados no Elite Ações.</p>
+            <a href="/" class="btn btn-green">Acessar agora</a>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-            <p><a href="/">Início</a> · <a href="/paginas/fiis">FIIs</a> · <a href="/politica-de-privacidade">Privacidade</a></p>
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
+            <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
         </div>
     </footer>
 
     <script>
-        function toggleFaq(el) {
-            const answer = el.nextElementSibling;
-            const isOpen = answer.classList.contains('open');
-            document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
-            document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
-            if (!isOpen) {
-                answer.classList.add('open');
-                el.classList.add('active');
-            }
-        }
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.previousElementSibling.classList.remove('active');
+                    el.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
     </script>
 </body>
 </html>

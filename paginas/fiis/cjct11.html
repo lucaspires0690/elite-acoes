@@ -22,8 +22,8 @@
     "@type": "Article",
     "headline": "FII Cjctower (CJCT11): Preço Teto e Rendimentos pelo Método Bazin",
     "description": "Saiba como calcular o preço teto de CJCT11 (FII Cjctower) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
-    "datePublished": "2026-05-15",
-    "dateModified": "2026-05-15",
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
     "author": {
       "@type": "Organization",
       "name": "Elite Ações",
@@ -44,7 +44,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
       { "@type": "ListItem", "position": 2, "name": "FIIs", "item": "https://eliteacoes.com/paginas/fiis" },
-      { "@type": "ListItem", "position": 3, "name": "CJCT11" }
+      { "@type": "ListItem", "position": 3, "name": "CJCT11", "item": "https://eliteacoes.com/paginas/fiis/cjct11" }
     ]
   }
   </script>
@@ -55,50 +55,50 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Qual o preço teto de CJCT11 pelo Método Bazin?",
+        "name": "O que é o preço teto CJCT11 pelo método Bazin?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 8,00 por cota, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados."
+          "text": "O preço teto é calculado dividindo os dividendos anuais do fundo por 10% (taxa Bazin). Exemplo hipotético: se CJCT11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 120,00. Esse valor é apenas referencial educacional."
         }
       },
       {
         "@type": "Question",
-        "name": "Como são os dividendos de CJCT11?",
+        "name": "Como são os dividendos CJCT11?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O fundo distribui rendimentos mensais, isentos de IR para pessoas físicas, conforme legislação de FIIs. Os valores variam conforme a receita de aluguéis e vacância. Acompanhe no app Elite Ações."
+          "text": "CJCT11 distribui rendimentos mensais, isentos de IR para pessoas físicas (Lei 11.033/2004). Os valores variam conforme a receita de aluguéis e vacância do fundo. Consulte o app Elite Ações para dados atualizados."
         }
       },
       {
         "@type": "Question",
-        "name": "O que é o Método Bazin para CJCT11?",
+        "name": "O método Bazin funciona para CJCT11?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Criado por Décio Bazin, o método calcula o preço teto de uma ação ou FII dividindo os dividendos anuais por uma taxa de retorno desejada (geralmente 10%). É uma ferramenta educativa de análise fundamentalista."
+          "text": "O método Bazin é uma ferramenta educativa que usa dividendos passados para estimar um preço teto. Não há garantia de retorno futuro. Cada investidor deve avaliar o fundo com base em sua própria análise fundamentalista."
         }
       },
       {
         "@type": "Question",
-        "name": "CJCT11 é um bom investimento?",
+        "name": "Onde encontrar análise fundamentalista CJCT11?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Esta página não faz recomendações de investimento. O Método Bazin é uma das várias metodologias existentes. Consulte um profissional habilitado pela CVM antes de decidir."
+          "text": "A análise fundamentalista completa de CJCT11 está disponível no app Elite Ações, com dados de vacância, P/VP, dividend yield histórico e comparativo com o setor de lajes corporativas."
         }
       },
       {
         "@type": "Question",
-        "name": "Onde encontrar dados atualizados de CJCT11?",
+        "name": "Qual o setor do FII Cjctower investimentos?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista completa do FII Cjctower. Acesse eliteacoes.com."
+          "text": "O FII Cjctower (CJCT11) é um fundo de lajes corporativas, focado em imóveis comerciais de alto padrão. Seu portfólio inclui edifícios corporativos localizados em regiões nobres."
         }
       },
       {
         "@type": "Question",
-        "name": "Qual a taxa Bazin usada para CJCT11?",
+        "name": "Como acessar dados atualizados de CJCT11?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A taxa Bazin padrão é de 10% ao ano, conforme metodologia original de Décio Bazin. O investidor pode ajustar esse percentual conforme seu objetivo de retorno."
+          "text": "Baixe o app Elite Ações gratuitamente. Lá você encontra cotações em tempo real, histórico de rendimentos, preço teto calculado automaticamente e ferramentas de análise fundamentalista."
         }
       }
     ]
@@ -114,158 +114,168 @@
       --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
       --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:14px;scroll-behavior:smooth}
+    @media(min-width:768px){html{font-size:16px}}
+    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:800px;margin:0 auto;padding:0 1rem}
+    @media(min-width:768px){.container{padding:0 2rem}}
+    /* header */
+    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
+    .logo{font-weight:700;font-size:1.15rem;color:var(--green);text-decoration:none;letter-spacing:-.02em}
+    .logo span{color:var(--txt)}
+    .btn-header{background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:.5rem 1rem;font-weight:600;font-size:.85rem;cursor:pointer;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:opacity .2s}
+    .btn-header:hover{opacity:.85}
+    /* breadcrumb */
+    .breadcrumb{font-size:.8rem;color:var(--txt3);padding:.75rem 0;border-bottom:1px solid var(--border)}
+    .breadcrumb a{color:var(--txt2);text-decoration:none}
+    .breadcrumb a:hover{color:var(--green)}
+    .breadcrumb span{margin:0 .35rem}
+    /* headings */
+    h1{font-size:1.6rem;font-weight:700;line-height:1.25;margin:1.5rem 0 .75rem;color:var(--txt)}
+    @media(min-width:768px){h1{font-size:2rem}}
+    h2{font-size:1.25rem;font-weight:600;margin:2rem 0 .75rem;color:var(--txt);border-left:3px solid var(--green);padding-left:.75rem}
+    @media(min-width:768px){h2{font-size:1.4rem}}
+    h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--txt2)}
+    p{color:var(--txt2);margin-bottom:.85rem;font-size:.95rem}
+    @media(min-width:768px){p{font-size:1rem}}
     a{color:var(--green);text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:720px;margin:0 auto;padding:0 16px}
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:18px;color:var(--txt)}
-    .logo span{color:var(--green)}
-    .btn-header{background:var(--green);color:var(--bg);padding:8px 20px;border-radius:8px;font-weight:600;font-size:14px;min-height:44px;display:flex;align-items:center;border:none;cursor:pointer;transition:.2s}
-    .btn-header:hover{opacity:.9;text-decoration:none}
-    .breadcrumb{font-size:12px;color:var(--txt3);padding:16px 0 8px}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb span{color:var(--txt3)}
-    h1{font-size:22px;font-weight:700;line-height:1.3;margin:8px 0 16px;color:var(--txt)}
-    .update{font-size:12px;color:var(--txt3);margin-bottom:24px;font-family:var(--fm)}
-    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
-    p{color:var(--txt2);margin-bottom:12px;font-size:14px}
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:12px}
-    .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;font-family:var(--fm)}
-    .card .value{font-size:15px;font-weight:600;color:var(--txt);margin-top:4px}
-    .table-wrap{overflow-x:auto;margin:12px 0}
-    table{width:100%;border-collapse:collapse;font-size:13px}
-    th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
-    th{color:var(--txt3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-family:var(--fm)}
-    td{color:var(--txt2)}
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt)}
-    .highlight-box strong{color:var(--yellow)}
-    .btn-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);padding:12px 28px;border-radius:10px;font-weight:700;font-size:15px;min-height:44px;border:none;cursor:pointer;transition:.2s;margin:8px 0}
-    .btn-cta:hover{opacity:.9;text-decoration:none}
-    .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-q{background:var(--surf);padding:14px 16px;cursor:pointer;font-weight:500;font-size:14px;display:flex;justify-content:space-between;align-items:center;border:none;width:100%;text-align:left;color:var(--txt);min-height:44px;transition:.2s}
-    .faq-q:hover{background:var(--surf2)}
-    .faq-q .icon{font-size:18px;transition:.3s;color:var(--txt3)}
-    .faq-q.open .icon{transform:rotate(180deg)}
-    .faq-a{padding:0 16px 14px;font-size:13px;color:var(--txt2);display:none}
-    .faq-a.show{display:block}
-    .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:20px;margin:24px 0;font-size:13px;color:var(--txt);line-height:1.7}
-    .disclaimer strong{color:var(--yellow)}
-    footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
+    /* cards */
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:.85rem;text-align:center}
+    .card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--txt3);margin-bottom:.25rem}
+    .card-value{font-family:var(--fm);font-size:.9rem;color:var(--txt);font-weight:500}
+    /* table */
+    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+    .data-table td{padding:.6rem .75rem;border-bottom:1px solid var(--border);color:var(--txt2)}
+    .data-table td:first-child{font-weight:500;color:var(--txt3);width:40%}
+    /* faq */
+    .faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:.6rem;overflow:hidden;background:var(--surf)}
+    .faq-question{width:100%;background:none;border:none;padding:.85rem 1rem;text-align:left;font-family:var(--fb);font-size:.95rem;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;transition:background .2s}
+    .faq-question:hover{background:var(--surf2)}
+    .faq-question .icon{font-size:1.2rem;transition:transform .3s;color:var(--txt3)}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .faq-answer{padding:0 1rem .85rem;color:var(--txt2);font-size:.9rem;display:none;line-height:1.5}
+    .faq-item.active .faq-answer{display:block}
+    /* disclaimer */
+    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:1.25rem;margin:1.5rem 0;font-size:.85rem;color:var(--txt)}
+    .disclaimer-box strong{color:var(--yellow)}
+    /* cta */
+    .cta-box{background:var(--green-dim);border:1px solid var(--green-border);border-radius:12px;padding:1.25rem;text-align:center;margin:1.5rem 0}
+    .cta-box p{color:var(--txt2);margin-bottom:.75rem}
+    .btn-cta{display:inline-block;background:var(--green);color:var(--bg);font-weight:700;padding:.7rem 1.5rem;border-radius:8px;font-size:.95rem;min-height:44px;text-decoration:none;transition:opacity .2s}
+    .btn-cta:hover{opacity:.85;text-decoration:none}
+    /* footer */
+    footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--txt3)}
     footer a{color:var(--txt2)}
-    @media(min-width:600px){
-      body{font-size:15px}
-      .container{padding:0 24px}
-      h1{font-size:28px}
-      h2{font-size:20px}
-      .card-grid{grid-template-columns:1fr 1fr 1fr 1fr}
-      p{font-size:15px}
+    .update-note{font-size:.75rem;color:var(--txt3);margin-top:.5rem}
+    /* responsive */
+    @media(max-width:480px){
+      .card-grid{grid-template-columns:1fr 1fr}
+      h1{font-size:1.35rem}
+      h2{font-size:1.1rem}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">Elite <span>Ações</span></a>
-      <a href="/" class="btn-header">Acessar App</a>
+      <a href="/" class="logo">Elite<span>Ações</span></a>
+      <a href="/" class="btn-header">App</a>
     </div>
   </header>
-  <main class="container">
-    <nav class="breadcrumb">
-      <a href="/">Início</a> <span>/</span>
-      <a href="/paginas/fiis">FIIs</a> <span>/</span>
-      CJCT11
+
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Início</a><span>/</span>
+      <a href="/paginas/fiis">FIIs</a><span>/</span>
+      <span>CJCT11</span>
     </nav>
+
     <h1>FII Cjctower (CJCT11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-    <p class="update">Última atualização: maio de 2026</p>
 
     <section>
       <h2>Sobre FII Cjctower (CJCT11)</h2>
-      <p>O FII Cjctower é um fundo imobiliário do segmento de lajes corporativas, gerido por administradora experiente no mercado brasileiro. O fundo investe em imóveis comerciais de alto padrão, localizados em regiões nobres, com foco em geração de renda mensal para cotistas.</p>
-      <p>Com patrimônio diversificado, o CJCT11 busca manter vacância controlada e contratos de longo prazo com inquilinos de qualidade. A estratégia do fundo é proporcionar previsibilidade de rendimentos, alinhada às práticas de governança do mercado de FIIs.</p>
+      <p>O FII Cjctower (CJCT11) é um fundo imobiliário do segmento de lajes corporativas, gerido por administradora profissional. Seu portfólio é composto por imóveis comerciais de alto padrão, localizados em regiões estratégicas, com contratos de locação de longo prazo. O fundo busca gerar renda recorrente por meio da locação de seus ativos, distribuindo periodicamente os resultados aos cotistas.</p>
+      <p>Com foco em edifícios corporativos, o CJCT11 se posiciona como uma alternativa para investidores que buscam exposição ao mercado de escritórios comerciais. A gestão ativa trabalha para manter a taxa de ocupação elevada e otimizar a rentabilidade do portfólio, sempre dentro das melhores práticas de governança.</p>
       <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value">CJCT11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Lajes Corporativas</div></div>
-        <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
+        <div class="card"><div class="card-label">Ticker</div><div class="card-value">CJCT11</div></div>
+        <div class="card"><div class="card-label">Setor</div><div class="card-value">Lajes Corporativas</div></div>
+        <div class="card"><div class="card-label">Tipo de Fundo</div><div class="card-value">FII</div></div>
+        <div class="card"><div class="card-label">Tipo</div><div class="card-value">Renda</div></div>
       </div>
     </section>
 
     <section>
       <h2>Dados Cadastrais de CJCT11</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Campo</th><th>Informação</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
-            <tr><td>Segmento</td><td>Edifícios Comerciais</td></tr>
-            <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-            <tr><td>Gestora</td><td>Consultoria e Administradora</td></tr>
-            <tr><td>Registro CVM</td><td>Ativo</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="data-table">
+        <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
+        <tr><td>Segmento</td><td>Edifícios Comerciais</td></tr>
+        <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+        <tr><td>Gestora</td><td>Consultoria de Imóveis</td></tr>
+        <tr><td>Administradora</td><td>Banco Registrado CVM</td></tr>
+        <tr><td>CNPJ</td><td>XX.XXX.XXX/XXXX-XX</td></tr>
+      </table>
     </section>
 
     <section>
       <h2>Como Calcular o Preço Teto de CJCT11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa de análise fundamentalista. A fórmula é simples: divida os dividendos anuais por uma taxa de retorno desejada, geralmente 10% (taxa Bazin). O resultado é o preço teto, ou seja, o valor máximo que se pagaria pela cota para obter esse rendimento.</p>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos de renda. A lógica é simples: define-se uma taxa de dividend yield desejada (geralmente 10% ao ano) e divide-se os dividendos anuais por essa taxa.</p>
       <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 10%</p>
-      <div class="highlight-box">
-        <strong>Exemplo hipotético (valores fictícios):</strong> Se o CJCT11 distribuiu R$ 8,00 por cota nos últimos 12 meses, o preço teto seria R$ 80,00 (R$ 8,00 ÷ 0,10). Este é apenas um exemplo ilustrativo — os dados reais devem ser consultados no app Elite Ações.
-      </div>
+      <p><em>(Exemplo hipotético para ilustração — valores fictícios)</em>: Suponha que CJCT11 distribuiu R$ 12,00 por cota nos últimos 12 meses. O preço teto seria R$ 12,00 ÷ 0,10 = R$ 120,00. Esse valor é apenas referencial e não representa recomendação de compra.</p>
     </section>
 
     <section>
       <h2>Rendimentos Mensais do CJCT11</h2>
-      <p>O fundo distribui rendimentos mensais aos cotistas, geralmente isentos de Imposto de Renda para pessoas físicas, conforme legislação brasileira de FIIs. A política de distribuição busca refletir a receita de aluguéis descontadas as despesas operacionais.</p>
-      <p>Historicamente, os rendimentos podem variar conforme a ocupação dos imóveis e reajustes contratuais. Para acompanhar os valores atualizados, utilize o app Elite Ações, que reúne dados históricos e calcula o preço teto automaticamente.</p>
+      <p>O CJCT11 distribui rendimentos mensais aos cotistas, geralmente isentos de Imposto de Renda para pessoas físicas (conforme Lei 11.033/2004). A política de distribuição segue o regulamento do fundo, que prevê o repasse de pelo menos 95% do resultado auferido a cada semestre.</p>
+      <p>Historicamente, os rendimentos variam de acordo com a receita de aluguéis, vacância e despesas operacionais. Para dados atualizados, consulte o app Elite Ações, que reúne o histórico completo de distribuições.</p>
     </section>
 
     <section>
       <h2>Como Acessar os Dados Atualizados de CJCT11</h2>
-      <p>No app Elite Ações você encontra dividendos mensais históricos, preço teto calculado pelo Método Bazin, gráficos de rendimento e análise fundamentalista completa do FII Cjctower. Tudo em uma interface simples e educativa.</p>
-      <a href="/" class="btn-cta">Acessar App Elite Ações</a>
+      <div class="cta-box">
+        <p>Obtenha cotações em tempo real, histórico de rendimentos, preço teto calculado automaticamente e ferramentas de análise fundamentalista no app Elite Ações.</p>
+        <a href="/" class="btn-cta">Acessar App Elite Ações</a>
+      </div>
+      <p>No app, você encontra gráficos interativos, comparativos com outros FIIs do setor de lajes corporativas e alertas personalizados. Tudo em uma interface intuitiva e gratuita.</p>
     </section>
 
     <section>
       <h2>Perguntas Frequentes sobre CJCT11</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Qual o preço teto de CJCT11 pelo Método Bazin? <span class="icon">▼</span></button>
-          <div class="faq-a">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 8,00 por cota, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados.</div>
+          <button class="faq-question" aria-expanded="false">O que é o preço teto CJCT11 pelo método Bazin? <span class="icon">+</span></button>
+          <div class="faq-answer">O preço teto é calculado dividindo os dividendos anuais do fundo por 10% (taxa Bazin). Exemplo hipotético: se CJCT11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 120,00. Esse valor é apenas referencial educacional.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Como são os dividendos de CJCT11? <span class="icon">▼</span></button>
-          <div class="faq-a">O fundo distribui rendimentos mensais, isentos de IR para pessoas físicas, conforme legislação de FIIs. Os valores variam conforme a receita de aluguéis e vacância. Acompanhe no app Elite Ações.</div>
+          <button class="faq-question" aria-expanded="false">Como são os dividendos CJCT11? <span class="icon">+</span></button>
+          <div class="faq-answer">CJCT11 distribui rendimentos mensais, isentos de IR para pessoas físicas (Lei 11.033/2004). Os valores variam conforme a receita de aluguéis e vacância do fundo. Consulte o app Elite Ações para dados atualizados.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">O que é o Método Bazin para CJCT11? <span class="icon">▼</span></button>
-          <div class="faq-a">Criado por Décio Bazin, o método calcula o preço teto de uma ação ou FII dividindo os dividendos anuais por uma taxa de retorno desejada (geralmente 10%). É uma ferramenta educativa de análise fundamentalista.</div>
+          <button class="faq-question" aria-expanded="false">O método Bazin funciona para CJCT11? <span class="icon">+</span></button>
+          <div class="faq-answer">O método Bazin é uma ferramenta educativa que usa dividendos passados para estimar um preço teto. Não há garantia de retorno futuro. Cada investidor deve avaliar o fundo com base em sua própria análise fundamentalista.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">CJCT11 é um bom investimento? <span class="icon">▼</span></button>
-          <div class="faq-a">Esta página não faz recomendações de investimento. O Método Bazin é uma das várias metodologias existentes. Consulte um profissional habilitado pela CVM antes de decidir.</div>
+          <button class="faq-question" aria-expanded="false">Onde encontrar análise fundamentalista CJCT11? <span class="icon">+</span></button>
+          <div class="faq-answer">A análise fundamentalista completa de CJCT11 está disponível no app Elite Ações, com dados de vacância, P/VP, dividend yield histórico e comparativo com o setor de lajes corporativas.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Onde encontrar dados atualizados de CJCT11? <span class="icon">▼</span></button>
-          <div class="faq-a">No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista completa do FII Cjctower. Acesse eliteacoes.com.</div>
+          <button class="faq-question" aria-expanded="false">Qual o setor do FII Cjctower investimentos? <span class="icon">+</span></button>
+          <div class="faq-answer">O FII Cjctower (CJCT11) é um fundo de lajes corporativas, focado em imóveis comerciais de alto padrão. Seu portfólio inclui edifícios corporativos localizados em regiões nobres.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Qual a taxa Bazin usada para CJCT11? <span class="icon">▼</span></button>
-          <div class="faq-a">A taxa Bazin padrão é de 10% ao ano, conforme metodologia original de Décio Bazin. O investidor pode ajustar esse percentual conforme seu objetivo de retorno.</div>
+          <button class="faq-question" aria-expanded="false">Como acessar dados atualizados de CJCT11? <span class="icon">+</span></button>
+          <div class="faq-answer">Baixe o app Elite Ações gratuitamente. Lá você encontra cotações em tempo real, histórico de rendimentos, preço teto calculado automaticamente e ferramentas de análise fundamentalista.</div>
         </div>
       </div>
     </section>
 
     <section>
       <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer">
+      <div class="disclaimer-box">
         <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
         Não constitui recomendação de compra ou venda de ativos financeiros.<br>
         Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
@@ -275,30 +285,26 @@
       </div>
     </section>
 
-    <div style="text-align:center;margin:24px 0">
-      <a href="/" class="btn-cta">Acessar App Elite Ações</a>
+    <div class="cta-box">
+      <p>Faça sua própria análise com dados em tempo real.</p>
+      <a href="/" class="btn-cta">Baixar App Elite Ações</a>
     </div>
-  </main>
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
-    </div>
-  </footer>
+
+    <footer>
+      <p>© 2026 Elite Ações — <a href="/">eliteacoes.com</a></p>
+      <p>Esta página não constitui recomendação de investimento.</p>
+      <p class="update-note">Última atualização: maio de 2026</p>
+    </footer>
+  </div>
+
   <script>
-    document.querySelectorAll('.faq-q').forEach(btn => {
+    document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('show');
-        document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
-        document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
-        if (!isOpen) {
-          answer.classList.add('show');
-          this.classList.add('open');
-          this.setAttribute('aria-expanded', 'true');
-        } else {
-          this.setAttribute('aria-expanded', 'false');
-        }
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+        this.setAttribute('aria-expanded', !isActive);
       });
     });
   </script>

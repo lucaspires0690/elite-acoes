@@ -19,8 +19,8 @@
     "@type":"Article",
     "headline":"Sparta Cdii (CDII11): Preço Teto e Rendimentos pelo Método Bazin",
     "description":"Saiba como calcular o preço teto de CDII11 (Sparta Cdii) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...",
-    "datePublished":"2026-05-15",
-    "dateModified":"2026-05-15",
+    "datePublished":"2026-05-18",
+    "dateModified":"2026-05-18",
     "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/cdii11"
@@ -31,7 +31,7 @@
     "@context":"https://schema.org",
     "@type":"BreadcrumbList",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com"},
       {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
       {"@type":"ListItem","position":3,"name":"CDII11","item":"https://eliteacoes.com/paginas/fiis/cdii11"}
     ]
@@ -42,12 +42,12 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"Qual o preço teto de CDII11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de 10%. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"CDII11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o Sparta Cdii distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acesse o app para histórico."}},
-      {"@type":"Question","name":"Como analisar CDII11 pelo método fundamentalista?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de CDII11 envolve avaliar o patrimônio líquido, a vacância, a qualidade dos ativos e o histórico de rendimentos. O Método Bazin é uma ferramenta complementar."}},
-      {"@type":"Question","name":"O que é o Sparta Cdii investimentos?","acceptedAnswer":{"@type":"Answer","text":"Sparta Cdii é um fundo de investimento imobiliário (FII) listado na B3 sob o ticker CDII11. Seu objetivo é gerar renda por meio de ativos imobiliários."}},
-      {"@type":"Question","name":"CDII11 é isento de IR para pessoa física?","acceptedAnswer":{"@type":"Answer","text":"Sim, os rendimentos distribuídos por FIIs como CDII11 são isentos de Imposto de Renda para pessoas físicas, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa."}},
-      {"@type":"Question","name":"Onde ver os dados atualizados de CDII11?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de CDII11, incluindo cotações e rendimentos, estão disponíveis no app Elite Ações. Baixe gratuitamente e acompanhe em tempo real."}}
+      {"@type":"Question","name":"Qual o preço teto de CDII11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 8,00, o preço teto seria R$ 80,00. Consulte dados atualizados no app Elite Ações."}},
+      {"@type":"Question","name":"CDII11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o Sparta Cdii distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acesse o app Elite Ações para histórico."}},
+      {"@type":"Question","name":"Como funciona o Método Bazin para CDII11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin define um preço teto com base nos dividendos pagos nos últimos 12 meses, divididos por uma taxa de retorno desejada (10% ao ano). É uma ferramenta educativa, não uma recomendação."}},
+      {"@type":"Question","name":"CDII11 é um FII de qual setor?","acceptedAnswer":{"@type":"Answer","text":"O Sparta Cdii (CDII11) é um fundo imobiliário classificado como setor Indefinido pela B3. Consulte a lâmina do fundo para detalhes."}},
+      {"@type":"Question","name":"Onde encontrar a análise fundamentalista de CDII11?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dados cadastrais, histórico de rendimentos e ferramentas educativas como o cálculo de preço teto pelo Método Bazin."}},
+      {"@type":"Question","name":"Sparta Cdii investe em quais ativos?","acceptedAnswer":{"@type":"Answer","text":"O Sparta Cdii é um fundo imobiliário com foco em ativos do setor Indefinido. Para detalhes completos, consulte o site da B3 ou o app Elite Ações."}}
     ]
   }
   </script>
@@ -65,71 +65,74 @@
       --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;font-size:14px;min-height:100vh}
-    @media(min-width:768px){body{font-size:16px}}
-    a{color:var(--green);text-decoration:none;transition:opacity .2s}
-    a:hover{opacity:.8}
+    html{font-size:14px;scroll-behavior:smooth}
+    @media(min-width:768px){html{font-size:16px}}
+    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:var(--green);text-decoration:none;transition:color .2s}
+    a:hover{color:#00e6b8}
     img{max-width:100%;height:auto;display:block}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    @media(min-width:768px){.container{padding:0 32px}}
+    .container{max-width:800px;margin:0 auto;padding:0 1rem}
+    @media(min-width:768px){.container{padding:0 2rem}}
     /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    header .container{display:flex;align-items:center;justify-content:space-between}
     .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
     .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:.875rem;font-weight:500;padding:8px 0;min-height:44px;display:inline-flex;align-items:center}
-    .nav-link:hover{color:var(--txt)}
+    .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s,color .2s}
+    .nav-link:hover{background:var(--surf);color:var(--txt)}
     /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0 8px;font-size:.75rem;color:var(--txt3)}
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:.25rem .5rem;padding:1rem 0 .5rem;font-size:.8125rem;color:var(--txt3)}
     .breadcrumb a{color:var(--txt2)}
     .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{margin:0 4px}
+    .breadcrumb .sep{color:var(--txt3)}
     /* headings */
-    h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em}
+    h1{font-size:1.625rem;font-weight:700;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
     @media(min-width:768px){h1{font-size:2rem}}
-    h2{font-size:1.2rem;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--txt);border-left:3px solid var(--green);padding-left:14px}
-    @media(min-width:768px){h2{font-size:1.4rem}}
-    h3{font-size:1rem;font-weight:600;margin-top:20px;margin-bottom:8px;color:var(--txt2)}
-    p{margin-bottom:16px;color:var(--txt2)}
-    .text-small{font-size:.8rem;color:var(--txt3)}
+    h2{font-size:1.25rem;font-weight:600;margin:2rem 0 .75rem;padding-bottom:.375rem;border-bottom:1px solid var(--border);color:var(--txt);letter-spacing:-.01em}
+    @media(min-width:768px){h2{font-size:1.5rem}}
+    h3{font-size:1.0625rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--txt)}
+    p{margin-bottom:.75rem;color:var(--txt2)}
+    .txt-sm{font-size:.875rem;color:var(--txt3)}
     /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-    .card .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:4px}
-    .card .value{font-family:var(--fm);font-size:1rem;font-weight:500;color:var(--txt)}
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.75rem;text-align:center}
+    .card .label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
+    .card .value{font-family:var(--fm);font-size:.9375rem;font-weight:500;color:var(--txt)}
     /* table */
-    .data-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:.875rem}
-    .data-table th,.data-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
-    .data-table th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:.7rem;letter-spacing:.04em}
+    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
+    .data-table th,.data-table td{padding:.625rem .75rem;text-align:left;border-bottom:1px solid var(--border)}
+    .data-table th{background:var(--surf);font-weight:600;color:var(--txt2);text-transform:uppercase;font-size:.6875rem;letter-spacing:.05em}
     .data-table td{color:var(--txt2)}
     .data-table tr:last-child td{border-bottom:none}
-    /* highlight box */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:.875rem;color:var(--txt)}
+    /* highlight */
+    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem;margin:1rem 0;font-size:.875rem;color:var(--txt)}
     .highlight-box strong{color:var(--yellow)}
     /* cta */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:700;padding:12px 28px;border-radius:8px;min-height:44px;font-size:.9rem;transition:transform .2s,box-shadow .2s;border:none;cursor:pointer}
-    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,212,168,.3);opacity:1}
-    .cta-wrap{text-align:center;margin:24px 0}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.625rem 1.5rem;background:var(--green);color:var(--bg);font-weight:600;font-size:.9375rem;border-radius:10px;border:none;cursor:pointer;transition:background .2s,transform .1s;text-decoration:none}
+    .cta-btn:hover{background:#00e6b8;color:var(--bg);transform:translateY(-1px)}
+    .cta-btn:active{transform:translateY(0)}
+    .cta-wrap{text-align:center;margin:1.5rem 0}
     /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-question{background:none;border:none;width:100%;text-align:left;padding:16px 0;font-family:var(--fb);font-size:.95rem;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-    .faq-question::after{content:'+';font-size:1.2rem;color:var(--green);transition:transform .3s;font-weight:700}
-    .faq-item.active .faq-question::after{content:'−'}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0}
-    .faq-item.active .faq-answer{max-height:300px;padding:0 0 16px}
-    .faq-answer p{font-size:.875rem;color:var(--txt2);margin:0}
+    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:500;color:var(--txt);padding:.25rem 0;user-select:none;gap:.5rem}
+    .faq-q:hover{color:var(--green)}
+    .faq-q .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3);flex-shrink:0}
+    .faq-item.open .faq-q .icon{transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 .5rem;color:var(--txt2);font-size:.875rem;line-height:1.5}
+    .faq-item.open .faq-a{max-height:300px;padding:.5rem .5rem .25rem}
     /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:32px 0;font-size:.8rem;line-height:1.7}
+    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-size:.8125rem;color:var(--txt);line-height:1.6}
     .disclaimer-box strong{color:var(--yellow)}
     /* footer */
-    footer{border-top:1px solid var(--border);padding:24px 0;margin-top:48px;text-align:center;font-size:.75rem;color:var(--txt3)}
+    footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:2.5rem;text-align:center;font-size:.8125rem;color:var(--txt3)}
     footer a{color:var(--txt2)}
-    /* update */
-    .update-badge{display:inline-block;background:var(--green-dim);color:var(--green);padding:4px 12px;border-radius:20px;font-size:.7rem;font-family:var(--fm);margin-bottom:16px;border:1px solid var(--green-border)}
-    /* responsive */
-    @media(max-width:480px){.card-grid{gap:8px}.card{padding:12px 8px}.card .value{font-size:.85rem}}
+    footer a:hover{color:var(--green)}
+    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem}
+    /* utility */
+    .mt-1{margin-top:1rem}
+    .mb-1{margin-bottom:1rem}
+    .text-center{text-align:center}
   </style>
 </head>
 <body>
@@ -142,139 +145,127 @@
 
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/fiis">FIIs</a><span>/</span>
+      <a href="/">Início</a>
+      <span class="sep">›</span>
+      <a href="/paginas/fiis">FIIs</a>
+      <span class="sep">›</span>
       <span>CDII11</span>
     </nav>
 
-    <span class="update-badge">Última atualização: maio de 2026</span>
     <h1>Sparta Cdii (CDII11): Preço Teto e Rendimentos pelo Método Bazin</h1>
+    <div class="update-badge">Última atualização: maio de 2026</div>
 
     <!-- H2-1 -->
-    <section>
-      <h2>Sobre Sparta Cdii (CDII11)</h2>
-      <p>O Sparta Cdii é um fundo de investimento imobiliário (FII) negociado na B3 sob o ticker CDII11. O fundo tem como objetivo principal a geração de renda por meio de investimentos em ativos imobiliários, com foco em diversificação e liquidez. Sua gestão busca equilibrar retorno e segurança para os cotistas.</p>
-      <p>Com um portfólio composto por diferentes tipos de imóveis, o CDII11 se posiciona como uma alternativa para investidores que buscam exposição ao mercado imobiliário de forma indireta. A política de distribuição de rendimentos é definida pela administradora, priorizando a regularidade dos pagamentos.</p>
-      <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value">CDII11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Indefinido</div></div>
-        <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
-      </div>
-    </section>
+    <h2>Sobre Sparta Cdii (CDII11)</h2>
+    <p>O Sparta Cdii é um fundo de investimento imobiliário (FII) negociado na B3 sob o ticker CDII11. O fundo tem como objetivo gerar renda por meio de investimentos em ativos imobiliários, com foco em diversificação e gestão profissional. Sua classificação setorial é Indefinido, o que significa que pode alocar recursos em diferentes segmentos do mercado imobiliário.</p>
+    <p>Com uma taxa Bazin de 10%, o CDII11 é frequentemente analisado por investidores que buscam rendimentos mensais. A gestão é realizada por equipe especializada, e o fundo distribui proventos de forma periódica, conforme sua política de resultados.</p>
+    <div class="card-grid">
+      <div class="card"><div class="label">Ticker</div><div class="value">CDII11</div></div>
+      <div class="card"><div class="label">Setor</div><div class="value">Indefinido</div></div>
+      <div class="card"><div class="label">Tipo</div><div class="value">FII</div></div>
+      <div class="card"><div class="label">Taxa Bazin</div><div class="value">10%</div></div>
+    </div>
 
     <!-- H2-2 -->
-    <section>
-      <h2>Dados Cadastrais de CDII11</h2>
-      <p>Os dados cadastrais abaixo são públicos e podem ser consultados nos sites da B3 e da CVM. Eles refletem as características estruturais do fundo.</p>
-      <table class="data-table">
-        <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
-        <tbody>
-          <tr><td>Setor</td><td>Indefinido</td></tr>
-          <tr><td>Segmento</td><td>Não classificado</td></tr>
-          <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-          <tr><td>Gestora</td><td>Sparta Gestão de Recursos</td></tr>
-          <tr><td>Administradora</td><td>Banco B3 S.A.</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <h2>Dados Cadastrais de CDII11</h2>
+    <p>Os dados abaixo são públicos e podem ser consultados na B3 e na CVM. Eles ajudam o investidor a conhecer a estrutura do fundo antes de qualquer análise.</p>
+    <table class="data-table">
+      <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+      <tbody>
+        <tr><td>Nome do Fundo</td><td>Sparta Cdii</td></tr>
+        <tr><td>Ticker</td><td>CDII11</td></tr>
+        <tr><td>Tipo de Fundo</td><td>FII (Fundo de Investimento Imobiliário)</td></tr>
+        <tr><td>Setor</td><td>Indefinido</td></tr>
+        <tr><td>Segmento</td><td>Indefinido</td></tr>
+        <tr><td>Gestora</td><td>Sparta Capital</td></tr>
+        <tr><td>Taxa Bazin (referência)</td><td>10%</td></tr>
+      </tbody>
+    </table>
 
     <!-- H2-3 -->
-    <section>
-      <h2>Como Calcular o Preço Teto de CDII11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de um ativo com base nos dividendos pagos. A lógica é simples: o investidor define uma taxa de retorno desejada (no caso, 10%) e calcula quanto pagaria para obter esse retorno com base nos dividendos dos últimos 12 meses.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada (10%)</p>
-      <div class="highlight-box">
-        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-        Suponha que o CDII11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Aplicando a fórmula: Preço Teto = R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>. Este valor é apenas uma referência educativa e não reflete a realidade do ativo.
-      </div>
-      <p>Importante: o Método Bazin é uma ferramenta entre muitas. Ele não considera outros fatores como vacância, valor patrimonial ou perspectivas do setor. Use-o como parte de uma análise mais ampla.</p>
-    </section>
+    <h2>Como Calcular o Preço Teto de CDII11 pelo Método Bazin</h2>
+    <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos que pagam dividendos. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 10% ao ano) e divide-se o total de dividendos pagos nos últimos 12 meses por essa taxa.</p>
+    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (10%)</p>
+    <div class="highlight-box">
+      <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+      Suponha que o CDII11 tenha pago R$ 8,00 de dividendos nos últimos 12 meses. O cálculo seria: R$ 8,00 ÷ 0,10 = R$ 80,00. Esse valor é apenas uma referência educativa e não representa recomendação de compra ou venda.
+    </div>
+    <p>O investidor deve sempre consultar dados atualizados e considerar outros fatores antes de tomar decisões. O Método Bazin é uma entre várias metodologias existentes.</p>
 
     <!-- H2-4 -->
-    <section>
-      <h2>Rendimentos Mensais do CDII11</h2>
-      <p>O Sparta Cdii distribui rendimentos mensalmente, conforme definido em sua política de distribuição. Os valores pagos variam ao longo do tempo, dependendo do desempenho dos ativos do fundo e das receitas geradas. Historicamente, o fundo busca manter uma regularidade nos pagamentos, mas não há garantia de valores futuros.</p>
-      <p>Para pessoas físicas, os rendimentos de FIIs como o CDII11 são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Essa isenção é um dos atrativos do investimento em fundos imobiliários.</p>
-      <p>Para conferir o histórico completo de rendimentos, acesse o app Elite Ações, onde os dados são atualizados periodicamente.</p>
-    </section>
+    <h2>Rendimentos Mensais do CDII11</h2>
+    <p>O Sparta Cdii distribui rendimentos mensalmente, seguindo a política de resultados do fundo. Os valores pagos variam de acordo com a receita gerada pelos ativos do fundo e não são fixos ou garantidos. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais.</p>
+    <p>Historicamente, o fundo tem mantido uma regularidade nos pagamentos, mas cada investidor deve acompanhar os comunicados oficiais. Não há dados de cotação ou dividend yield atuais hardcoded nesta página — consulte o app Elite Ações para informações em tempo real.</p>
 
     <!-- H2-5 -->
-    <section>
-      <h2>Como Acessar os Dados Atualizados de CDII11</h2>
-      <p>O app Elite Ações oferece uma plataforma completa para acompanhar o CDII11 em tempo real. No aplicativo, você encontra cotações, gráficos, histórico de dividendos, indicadores fundamentalistas e ferramentas como o cálculo do preço teto pelo Método Bazin.</p>
-      <p>Baixe gratuitamente e tenha na palma da mão todos os dados necessários para sua análise educativa. O app é atualizado constantemente com informações da B3 e da CVM.</p>
-      <div class="cta-wrap">
-        <a href="/" class="cta-btn">Acessar App Elite Ações</a>
-      </div>
-    </section>
+    <h2>Como Acessar os Dados Atualizados de CDII11</h2>
+    <p>Para acompanhar o preço teto, rendimentos e outros indicadores do CDII11 em tempo real, utilize o app Elite Ações. A ferramenta oferece dados cadastrais, histórico de dividendos e calculadoras educativas como o Método Bazin, tudo em um só lugar.</p>
+    <div class="cta-wrap">
+      <a href="/" class="cta-btn">Acessar App Elite Ações</a>
+    </div>
+    <p class="txt-sm text-center">No app você encontra análises fundamentalistas e ferramentas para sua própria avaliação.</p>
 
     <!-- H2-6 -->
-    <section>
-      <h2>Perguntas Frequentes sobre CDII11</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual o preço teto de CDII11 pelo Método Bazin?</button>
-          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de 10%. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">CDII11 paga dividendos mensais?</button>
-          <div class="faq-answer"><p>Sim, o Sparta Cdii distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acesse o app para histórico.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como analisar CDII11 pelo método fundamentalista?</button>
-          <div class="faq-answer"><p>A análise fundamentalista de CDII11 envolve avaliar o patrimônio líquido, a vacância, a qualidade dos ativos e o histórico de rendimentos. O Método Bazin é uma ferramenta complementar.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">O que é o Sparta Cdii investimentos?</button>
-          <div class="faq-answer"><p>Sparta Cdii é um fundo de investimento imobiliário (FII) listado na B3 sob o ticker CDII11. Seu objetivo é gerar renda por meio de ativos imobiliários.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">CDII11 é isento de IR para pessoa física?</button>
-          <div class="faq-answer"><p>Sim, os rendimentos distribuídos por FIIs como CDII11 são isentos de Imposto de Renda para pessoas físicas, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde ver os dados atualizados de CDII11?</button>
-          <div class="faq-answer"><p>Os dados atualizados de CDII11, incluindo cotações e rendimentos, estão disponíveis no app Elite Ações. Baixe gratuitamente e acompanhe em tempo real.</p></div>
-        </div>
+    <h2>Perguntas Frequentes sobre CDII11</h2>
+    <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">Qual o preço teto de CDII11 pelo Método Bazin?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 8,00, o preço teto seria R$ 80,00. Consulte dados atualizados no app Elite Ações.</div></div>
       </div>
-    </section>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">CDII11 paga dividendos mensais?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">Sim, o Sparta Cdii distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acesse o app Elite Ações para histórico.</div></div>
+      </div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">Como funciona o Método Bazin para CDII11?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">O Método Bazin define um preço teto com base nos dividendos pagos nos últimos 12 meses, divididos por uma taxa de retorno desejada (10% ao ano). É uma ferramenta educativa, não uma recomendação.</div></div>
+      </div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">CDII11 é um FII de qual setor?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">O Sparta Cdii (CDII11) é um fundo imobiliário classificado como setor Indefinido pela B3. Consulte a lâmina do fundo para detalhes.</div></div>
+      </div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">Onde encontrar a análise fundamentalista de CDII11?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">No app Elite Ações você encontra dados cadastrais, histórico de rendimentos e ferramentas educativas como o cálculo de preço teto pelo Método Bazin.</div></div>
+      </div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="faq-q" onclick="toggleFaq(this)"><span itemprop="name">Sparta Cdii investe em quais ativos?</span><span class="icon">+</span></div>
+        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">O Sparta Cdii é um fundo imobiliário com foco em ativos do setor Indefinido. Para detalhes completos, consulte o site da B3 ou o app Elite Ações.</div></div>
+      </div>
+    </div>
 
     <!-- H2-7 -->
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-        Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-        Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-        O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
-        Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-        Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
-      </div>
-    </section>
+    <h2>Aviso Legal e Disclaimer</h2>
+    <div class="disclaimer-box">
+      <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
+      Não constitui recomendação de compra ou venda de ativos financeiros.<br>
+      Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
+      O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
+      Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
+      Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+    </div>
 
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Baixar App Elite Ações</a>
+    <div class="cta-wrap mt-1">
+      <a href="/" class="cta-btn">Baixar Elite Ações</a>
     </div>
   </main>
 
   <footer>
     <div class="container">
       <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
-      <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
+      <p><a href="/">Início</a> · <a href="/paginas/fiis">FIIs</a> · <a href="/contato">Contato</a></p>
     </div>
   </footer>
 
   <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
-        this.setAttribute('aria-expanded', !isActive);
-      });
-    });
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
   </script>
 </body>
 </html>

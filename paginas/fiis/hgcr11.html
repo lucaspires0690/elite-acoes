@@ -21,7 +21,7 @@
     "@context":"https://schema.org","@type":"Article",
     "headline":"FII HGCR Pax (HGCR11): Preço Teto e Rendimentos pelo Método Bazin",
     "description":"Saiba como calcular o preço teto de HGCR11 (FII HGCR Pax) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
-    "datePublished":"2026-05-15","dateModified":"2026-05-15",
+    "datePublished":"2026-05-18","dateModified":"2026-05-18",
     "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/hgcr11"
@@ -33,7 +33,7 @@
     "itemListElement":[
       {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
       {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-      {"@type":"ListItem","position":3,"name":"HGCR11"}
+      {"@type":"ListItem","position":3,"name":"HGCR11","item":"https://eliteacoes.com/paginas/fiis/hgcr11"}
     ]
   }
   </script>
@@ -42,11 +42,11 @@
     "@context":"https://schema.org","@type":"FAQPage",
     "mainEntity":[
       {"@type":"Question","name":"Qual o preço teto de HGCR11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"HGCR11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o fundo distribui rendimentos mensalmente, geralmente entre o 10º e 15º dia útil do mês subsequente. Os valores variam conforme a receita do fundo."}},
-      {"@type":"Question","name":"Como analisar HGCR11 pelo método fundamentalista?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de HGCR11 envolve avaliar o patrimônio líquido, a qualidade dos ativos em carteira, a taxa de vacância e o histórico de distribuição de rendimentos. O app Elite Ações oferece esses indicadores."}},
-      {"@type":"Question","name":"HGCR11 é isento de Imposto de Renda?","acceptedAnswer":{"@type":"Answer","text":"Sim, os rendimentos distribuídos por FIIs são isentos de IR para pessoas físicas, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa."}},
-      {"@type":"Question","name":"Onde encontrar dados atualizados de HGCR11?","acceptedAnswer":{"@type":"Answer","text":"Os dados mais recentes de HGCR11 estão disponíveis no app Elite Ações, que reúne cotações, dividendos históricos e indicadores fundamentalistas em tempo real."}},
-      {"@type":"Question","name":"O Método Bazin funciona para FIIs como HGCR11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin foi criado para ações, mas é adaptado para FIIs usando a taxa de 10% como referência. É uma ferramenta educativa e não garante resultados futuros."}}
+      {"@type":"Question","name":"HGCR11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o fundo distribui rendimentos mensalmente, geralmente isentos de IR para pessoas físicas. Os valores variam conforme a receita do fundo."}},
+      {"@type":"Question","name":"Como funciona o Método Bazin para HGCR11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin define um preço teto com base nos dividendos históricos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,10. É uma ferramenta educativa, não uma recomendação."}},
+      {"@type":"Question","name":"HGCR11 é um FII de papel?","acceptedAnswer":{"@type":"Answer","text":"Sim, o HGCR11 é classificado como FII de Papéis, investindo em títulos de crédito imobiliário, como CRIs e LCIs."}},
+      {"@type":"Question","name":"Onde encontrar dados atualizados de HGCR11?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dividendos históricos, preço teto e análise fundamentalista. Acesse https://eliteacoes.com para mais informações."}},
+      {"@type":"Question","name":"Qual a taxa Bazin usada para HGCR11?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin sugerida é de 10% ao ano, conforme dados do ativo. Essa taxa é um parâmetro educativo e pode variar conforme a estratégia do investidor."}}
     ]
   }
   </script>
@@ -64,51 +64,53 @@
     body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
     a{color:var(--green);text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:800px;margin:0 auto;padding:0 16px}
+    img{max-width:100%;height:auto}
+    .container{max-width:720px;margin:0 auto;padding:0 16px}
     header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
     header .container{display:flex;align-items:center;justify-content:space-between}
     .logo{font-weight:700;font-size:18px;color:var(--txt)}
     .logo span{color:var(--green)}
-    nav a{font-size:13px;color:var(--txt2);margin-left:16px;font-weight:500}
-    nav a:hover{color:var(--green)}
-    .breadcrumb{font-size:12px;color:var(--txt3);padding:12px 0 4px}
+    nav a{font-size:13px;color:var(--txt2);margin-left:16px;transition:color .2s}
+    nav a:hover{color:var(--green);text-decoration:none}
+    .breadcrumb{font-size:12px;color:var(--txt3);padding:16px 0 8px}
     .breadcrumb a{color:var(--txt2)}
     .breadcrumb a:hover{color:var(--green)}
-    h1{font-size:22px;font-weight:700;margin:16px 0 8px;line-height:1.3}
-    h2{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--green);border-left:3px solid var(--green);padding-left:12px}
-    h3{font-size:15px;font-weight:600;margin:16px 0 8px}
-    p{color:var(--txt2);margin-bottom:12px}
-    .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+    h1{font-size:24px;font-weight:700;line-height:1.3;margin:8px 0 16px;color:var(--txt)}
+    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
+    h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
+    p{color:var(--txt2);margin-bottom:12px;font-size:14px}
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
     .card{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:12px}
     .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
-    .card .value{font-size:14px;font-weight:600;color:var(--txt);margin-top:2px}
+    .card .value{font-size:14px;font-weight:500;color:var(--txt);margin-top:2px}
     .table-wrap{overflow-x:auto;margin:12px 0}
     table{width:100%;border-collapse:collapse;font-size:13px}
     th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-    th{color:var(--txt3);font-weight:500;font-size:11px;text-transform:uppercase}
+    th{color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
     td{color:var(--txt2)}
     .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--txt)}
     .highlight-box strong{color:var(--yellow)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;background:var(--green);color:var(--bg);font-weight:600;border-radius:8px;font-size:14px;transition:opacity .2s;border:none;cursor:pointer}
-    .btn:hover{opacity:.85;text-decoration:none}
-    .btn-wrap{text-align:center;margin:20px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;background:var(--green);color:var(--bg);text-decoration:none}
+    .btn:hover{opacity:.9;text-decoration:none}
+    .btn-block{width:100%;text-align:center}
     .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-q{background:var(--surf);padding:12px 14px;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;border:none;width:100%;text-align:left;color:var(--txt);font-size:14px;font-family:var(--fb);min-height:44px}
-    .faq-q:hover{background:var(--surf2)}
-    .faq-q .icon{font-size:18px;transition:transform .3s;color:var(--green)}
-    .faq-q.active .icon{transform:rotate(45deg)}
-    .faq-a{padding:0 14px 12px;display:none;color:var(--txt2);font-size:13px}
-    .faq-a.show{display:block}
+    .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+    .faq-question::after{content:'+';font-size:18px;color:var(--txt3);transition:transform .2s}
+    .faq-question.active::after{content:'−'}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
+    .faq-answer.open{max-height:300px;padding:0 0 14px}
+    .faq-answer p{font-size:13px;color:var(--txt2);margin:0}
     .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:16px;margin:16px 0;font-size:12px;color:var(--txt);line-height:1.7}
     .disclaimer strong{color:var(--yellow)}
-    .update{font-size:11px;color:var(--txt3);margin-top:8px;text-align:center}
-    footer{text-align:center;padding:24px 0 16px;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
-    footer a{color:var(--txt2)}
+    .footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
+    .footer a{color:var(--txt2)}
+    .update{font-size:12px;color:var(--txt3);margin-top:4px}
     @media(min-width:600px){
       body{font-size:15px}
-      h1{font-size:28px}
+      h1{font-size:30px}
       h2{font-size:20px}
-      .cards{grid-template-columns:1fr 1fr 1fr 1fr}
+      .card-grid{grid-template-columns:repeat(4,1fr)}
+      .container{padding:0 24px}
     }
   </style>
 </head>
@@ -122,22 +124,21 @@
       </nav>
     </div>
   </header>
-
   <main class="container">
-    <div class="breadcrumb">
-      <a href="/">Início</a> &gt; <a href="/paginas/fiis">FIIs</a> &gt; HGCR11
-    </div>
-
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Início</a> / <a href="/paginas/fiis">FIIs</a> / <span>HGCR11</span>
+    </nav>
     <h1>FII HGCR Pax (HGCR11): Preço Teto e Rendimentos pelo Método Bazin</h1>
+    <p class="update">Última atualização: maio de 2026</p>
 
     <section>
       <h2>Sobre FII HGCR Pax (HGCR11)</h2>
-      <p>O HGCR11 é um fundo de investimento imobiliário do tipo papel, gerido pela Pax Investimentos. Seu foco é a aquisição de ativos de crédito imobiliário, como Certificados de Recebíveis Imobiliários (CRIs), buscando gerar rendimentos mensais aos cotistas por meio do fluxo de juros desses títulos.</p>
-      <p>Com patrimônio líquido significativo e presença consolidada no mercado de FIIs, o fundo se destaca pela transparência na gestão e pela política de distribuição de resultados. É uma alternativa para investidores que buscam exposição ao setor de crédito imobiliário com liquidez em bolsa.</p>
-      <div class="cards">
+      <p>O HGCR11 é um fundo de investimento imobiliário do tipo Papéis, gerido pela Pax Investimentos. O fundo aplica em títulos de crédito imobiliário, como Certificados de Recebíveis Imobiliários (CRIs) e Letras de Crédito Imobiliário (LCIs), buscando gerar rendimentos mensais aos cotistas. Sua estratégia foca em ativos com baixo risco de crédito e diversificação setorial.</p>
+      <p>Com mais de 5 anos de histórico, o HGCR11 se consolidou como uma opção para investidores que buscam exposição ao mercado de crédito imobiliário. A gestão ativa da Pax Investimentos busca equilibrar rentabilidade e segurança, com distribuição regular de proventos.</p>
+      <div class="card-grid">
         <div class="card"><div class="label">Ticker</div><div class="value">HGCR11</div></div>
         <div class="card"><div class="label">Setor</div><div class="value">Papéis</div></div>
-        <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
+        <div class="card"><div class="label">Tipo de fundo</div><div class="value">FII</div></div>
         <div class="card"><div class="label">Tipo</div><div class="value">Crédito</div></div>
       </div>
     </section>
@@ -146,68 +147,74 @@
       <h2>Dados Cadastrais de HGCR11</h2>
       <div class="table-wrap">
         <table>
-          <tr><th>Informação</th><th>Detalhe</th></tr>
-          <tr><td>Setor</td><td>Papéis (Crédito Imobiliário)</td></tr>
-          <tr><td>Segmento</td><td>CRI / Debêntures Imobiliárias</td></tr>
-          <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-          <tr><td>Gestora</td><td>Pax Investimentos</td></tr>
-          <tr><td>Administrador</td><td>Banco B3 S.A.</td></tr>
-          <tr><td>Ano de Início</td><td>2018</td></tr>
+          <thead>
+            <tr><th>Campo</th><th>Valor</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Setor</td><td>Papéis</td></tr>
+            <tr><td>Segmento</td><td>CRI / LCI</td></tr>
+            <tr><td>Tipo de cota</td><td>Ordinária</td></tr>
+            <tr><td>Gestora</td><td>Pax Investimentos</td></tr>
+            <tr><td>Administrador</td><td>Banco B3</td></tr>
+            <tr><td>Data de registro CVM</td><td>2019</td></tr>
+          </tbody>
         </table>
       </div>
-      <p>Os dados acima são públicos e podem ser consultados nos relatórios da B3 e CVM. Para informações em tempo real, utilize o app Elite Ações.</p>
+      <p>Os dados acima são públicos e podem ser consultados no site da B3 ou no app Elite Ações.</p>
     </section>
 
     <section>
       <h2>Como Calcular o Preço Teto de HGCR11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa que calcula um preço teto com base nos dividendos distribuídos. A fórmula é: <strong>Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada</strong>. Para FIIs, a taxa comumente usada é 10% ao ano.</p>
-      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Se o HGCR11 tivesse distribuído R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 12,00 ÷ 0,10 = R$ 120,00. Este cálculo é apenas uma referência educativa e não representa recomendação de compra ou venda.</p>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para um ativo com base nos dividendos pagos. A ideia é definir um valor máximo que o investidor estaria disposto a pagar para obter um rendimento mínimo desejado.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
+      <p>Para o HGCR11, a taxa Bazin sugerida é de 10% ao ano. Isso significa que o investidor busca um retorno de 10% ao ano apenas com dividendos.</p>
       <div class="highlight-box">
-        <strong>Atenção:</strong> O Método Bazin é uma ferramenta entre várias existentes. Não há garantia de que o preço teto calculado se concretize. Consulte sempre dados atualizados e faça sua própria análise.
+        <strong>Exemplo hipotético (valores fictícios):</strong><br>
+        Suponha que os dividendos dos últimos 12 meses do HGCR11 somem R$ 12,00 por cota. O preço teto seria: R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>.<br>
+        Este é apenas um exemplo para ilustrar o método. Os valores reais devem ser consultados no app Elite Ações.
       </div>
+      <p>Lembre-se: o Método Bazin é uma referência entre várias metodologias. Não substitui uma análise completa do fundo.</p>
     </section>
 
     <section>
       <h2>Rendimentos Mensais do HGCR11</h2>
-      <p>O HGCR11 distribui rendimentos mensalmente, geralmente no 10º dia útil de cada mês. A política do fundo prevê o repasse de pelo menos 95% do resultado gerado no período, conforme regulamento. Os valores variam de acordo com a receita de aluguéis e juros dos ativos em carteira.</p>
-      <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Historicamente, o fundo mantém uma regularidade nas distribuições, mas valores passados não garantem pagamentos futuros.</p>
+      <p>O HGCR11 distribui rendimentos mensalmente, geralmente isentos de Imposto de Renda para pessoas físicas (conforme Lei 11.033/2004). A política do fundo é distribuir a maior parte do lucro gerado pelos títulos de crédito.</p>
+      <p>Historicamente, os rendimentos variam de acordo com a receita do fundo, que depende da performance dos CRIs e LCIs da carteira. Para dados atualizados, consulte o app Elite Ações.</p>
     </section>
 
     <section>
       <h2>Como Acessar os Dados Atualizados de HGCR11</h2>
-      <p>O app Elite Ações reúne todas as informações que você precisa para acompanhar o HGCR11: cotações em tempo real, histórico de dividendos, indicadores fundamentalistas e calculadora do Método Bazin integrada. Tudo em um só lugar, com dados atualizados diariamente.</p>
-      <div class="btn-wrap">
-        <a href="/" class="btn">Acessar Elite Ações</a>
-      </div>
-      <p>No app, você encontra gráficos interativos, comparativos com outros FIIs e alertas personalizados. Ideal para quem busca praticidade na análise de ativos.</p>
+      <p>No app Elite Ações, você encontra dividendos históricos, preço teto calculado automaticamente, análise fundamentalista e muito mais. A ferramenta é educativa e permite que você faça suas próprias análises.</p>
+      <a href="/" class="btn btn-block">Acessar Elite Ações</a>
+      <p style="margin-top:8px;font-size:13px;color:var(--txt3)">Disponível para web e dispositivos móveis.</p>
     </section>
 
     <section>
       <h2>Perguntas Frequentes sobre HGCR11</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Qual o preço teto de HGCR11 pelo Método Bazin? <span class="icon">+</span></button>
-          <div class="faq-a">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados.</div>
+          <button class="faq-question" aria-expanded="false">Qual o preço teto de HGCR11 pelo Método Bazin?</button>
+          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">HGCR11 paga dividendos mensais? <span class="icon">+</span></button>
-          <div class="faq-a">Sim, o fundo distribui rendimentos mensalmente, geralmente entre o 10º e 15º dia útil do mês subsequente. Os valores variam conforme a receita do fundo.</div>
+          <button class="faq-question" aria-expanded="false">HGCR11 paga dividendos mensais?</button>
+          <div class="faq-answer"><p>Sim, o fundo distribui rendimentos mensalmente, geralmente isentos de IR para pessoas físicas. Os valores variam conforme a receita do fundo.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Como analisar HGCR11 pelo método fundamentalista? <span class="icon">+</span></button>
-          <div class="faq-a">A análise fundamentalista de HGCR11 envolve avaliar o patrimônio líquido, a qualidade dos ativos em carteira, a taxa de vacância e o histórico de distribuição de rendimentos. O app Elite Ações oferece esses indicadores.</div>
+          <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para HGCR11?</button>
+          <div class="faq-answer"><p>O Método Bazin define um preço teto com base nos dividendos históricos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,10. É uma ferramenta educativa, não uma recomendação.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">HGCR11 é isento de Imposto de Renda? <span class="icon">+</span></button>
-          <div class="faq-a">Sim, os rendimentos distribuídos por FIIs são isentos de IR para pessoas físicas, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa.</div>
+          <button class="faq-question" aria-expanded="false">HGCR11 é um FII de papel?</button>
+          <div class="faq-answer"><p>Sim, o HGCR11 é classificado como FII de Papéis, investindo em títulos de crédito imobiliário, como CRIs e LCIs.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Onde encontrar dados atualizados de HGCR11? <span class="icon">+</span></button>
-          <div class="faq-a">Os dados mais recentes de HGCR11 estão disponíveis no app Elite Ações, que reúne cotações, dividendos históricos e indicadores fundamentalistas em tempo real.</div>
+          <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de HGCR11?</button>
+          <div class="faq-answer"><p>No app Elite Ações você encontra dividendos históricos, preço teto e análise fundamentalista. Acesse https://eliteacoes.com para mais informações.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">O Método Bazin funciona para FIIs como HGCR11? <span class="icon">+</span></button>
-          <div class="faq-a">O Método Bazin foi criado para ações, mas é adaptado para FIIs usando a taxa de 10% como referência. É uma ferramenta educativa e não garante resultados futuros.</div>
+          <button class="faq-question" aria-expanded="false">Qual a taxa Bazin usada para HGCR11?</button>
+          <div class="faq-answer"><p>A taxa Bazin sugerida é de 10% ao ano, conforme dados do ativo. Essa taxa é um parâmetro educativo e pode variar conforme a estratégia do investidor.</p></div>
         </div>
       </div>
     </section>
@@ -224,26 +231,30 @@
       </div>
     </section>
 
-    <div class="update">Última atualização: maio de 2026</div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
+    <div style="text-align:center;margin:24px 0">
+      <a href="/" class="btn">Acessar Elite Ações</a>
     </div>
+  </main>
+  <footer class="footer">
+    <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+    <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
   </footer>
-
   <script>
-    function toggleFaq(btn) {
-      btn.classList.toggle('active');
-      var answer = btn.nextElementSibling;
-      if (answer.classList.contains('show')) {
-        answer.classList.remove('show');
-      } else {
-        answer.classList.add('show');
-      }
-    }
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-question.active').forEach(b => b.classList.remove('active'));
+        if (!isOpen) {
+          answer.classList.add('open');
+          this.classList.add('active');
+          this.setAttribute('aria-expanded', 'true');
+        } else {
+          this.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
   </script>
 </body>
 </html>

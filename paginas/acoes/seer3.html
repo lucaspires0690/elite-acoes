@@ -18,7 +18,7 @@
     "@context":"https://schema.org","@type":"Article",
     "headline":"Ser Educacional (SEER3): Preço Teto e Dividendos pelo Método Bazin",
     "description":"Aprenda a calcular o preço teto de SEER3 (Ser Educacional) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentali...",
-    "datePublished":"2026-05-15","dateModified":"2026-05-15",
+    "datePublished":"2026-05-18","dateModified":"2026-05-18",
     "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/seer3"
@@ -28,7 +28,7 @@
   {
     "@context":"https://schema.org","@type":"BreadcrumbList",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com"},
+      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
       {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
       {"@type":"ListItem","position":3,"name":"SEER3"}
     ]
@@ -38,12 +38,12 @@
   {
     "@context":"https://schema.org","@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"O que é o preço teto de SEER3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. É um valor hipotético que serve como referência educativa."}},
-      {"@type":"Question","name":"SEER3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Ser Educacional possui histórico de distribuição de dividendos, mas os valores variam conforme o desempenho da empresa. Consulte dados atualizados no app Elite Ações."}},
-      {"@type":"Question","name":"Como funciona o Método Bazin para SEER3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin utiliza a fórmula: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa para análise fundamentalista, sem garantia de retorno."}},
-      {"@type":"Question","name":"Qual a taxa Bazin usada para SEER3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin aplicada é de 6% ao ano, conforme metodologia clássica de Décio Bazin. O resultado é um preço teto hipotético."}},
-      {"@type":"Question","name":"Onde encontrar dados atualizados de SEER3?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de dividendos e preço de SEER3 estão disponíveis no app Elite Ações, que reúne informações da B3 e CVM."}},
-      {"@type":"Question","name":"A análise de SEER3 pelo Método Bazin é recomendação de investimento?","acceptedAnswer":{"@type":"Answer","text":"Não. Esta página tem caráter exclusivamente educativo. O Método Bazin é uma metodologia entre várias e não constitui recomendação de compra ou venda."}}
+      {"@type":"Question","name":"O que é o preço teto de SEER3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos pagos nos últimos 12 meses pela taxa de retorno desejada (6% no caso). É um valor de referência educacional, não uma recomendação."}},
+      {"@type":"Question","name":"SEER3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Ser Educacional possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte fontes oficiais para dados atualizados."}},
+      {"@type":"Question","name":"Como usar o Método Bazin para analisar SEER3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin sugere um preço teto baseado em dividendos passados. É uma ferramenta entre várias; não substitui análise completa do negócio."}},
+      {"@type":"Question","name":"Qual o setor da Ser Educacional na B3?","acceptedAnswer":{"@type":"Answer","text":"A Ser Educacional (SEER3) está no setor de Serviços Educacionais, segmento de Ensino Superior na B3."}},
+      {"@type":"Question","name":"Onde encontrar dados atualizados de SEER3?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dividendos históricos, preço teto calculado e indicadores fundamentalistas atualizados."}},
+      {"@type":"Question","name":"O Método Bazin é garantia de retorno?","acceptedAnswer":{"@type":"Answer","text":"Não. O Método Bazin é uma metodologia educacional baseada em dividendos passados. Rentabilidade futura nunca é garantida."}}
     ]
   }
   </script>
@@ -62,180 +62,191 @@
     }
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+    @media(min-width:768px){body{font-size:16px}}
     a{color:var(--green);text-decoration:none}
     a:hover{text-decoration:underline}
+    img{max-width:100%;height:auto}
     .container{max-width:800px;margin:0 auto;padding:0 16px}
+    @media(min-width:768px){.container{padding:0 24px}}
+    /* header */
     header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
     header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:18px;color:var(--txt)}
+    .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
     .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:13px;font-weight:500;padding:8px 12px;border-radius:8px;transition:.2s}
+    .nav-link{color:var(--txt2);font-size:14px;padding:8px 12px;border-radius:8px;transition:.2s;min-height:44px;display:inline-flex;align-items:center}
     .nav-link:hover{background:var(--surf);color:var(--txt);text-decoration:none}
-    h1{font-size:22px;font-weight:700;margin:24px 0 8px;line-height:1.3}
+    /* breadcrumb */
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0 8px;font-size:13px;color:var(--txt3)}
+    .breadcrumb a{color:var(--txt2)}
+    .breadcrumb a:hover{color:var(--green)}
+    .breadcrumb span{margin:0 4px}
+    /* headings */
+    h1{font-size:22px;font-weight:700;line-height:1.3;margin:16px 0 8px;color:var(--txt)}
+    @media(min-width:768px){h1{font-size:30px}}
     h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
-    h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
-    p{color:var(--txt2);margin-bottom:12px;font-size:14px}
-    .txt-small{font-size:12px;color:var(--txt3)}
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:12px}
-    .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:2px}
-    .card .value{font-size:14px;font-weight:600;color:var(--txt)}
-    .card .value.mono{font-family:var(--fm)}
-    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-    th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-    th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.4px;font-size:11px}
-    td{color:var(--txt2)}
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:14px;margin:16px 0}
-    .highlight-box p{color:var(--txt);margin:0;font-size:13px}
+    @media(min-width:768px){h2{font-size:22px}}
+    h3{font-size:16px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
+    p{margin-bottom:12px;color:var(--txt2)}
+    .small{font-size:13px;color:var(--txt3)}
+    /* cards */
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px 12px;text-align:center}
+    .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:4px}
+    .card .value{font-size:15px;font-weight:600;color:var(--txt);font-family:var(--fm)}
+    /* table */
+    .data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+    .data-table th,.data-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+    .data-table th{background:var(--surf);color:var(--txt3);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+    .data-table td{color:var(--txt2)}
+    .data-table tr:last-child td{border-bottom:none}
+    /* highlight */
+    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0}
+    .highlight-box p{color:var(--txt);margin-bottom:0}
     .highlight-box strong{color:var(--yellow)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:.2s;background:var(--green);color:var(--bg);text-decoration:none}
-    .btn:hover{opacity:.9;text-decoration:none}
+    /* disclaimer */
+    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0}
+    .disclaimer-box p{color:var(--txt);margin-bottom:8px;font-size:14px;line-height:1.7}
+    .disclaimer-box strong{color:var(--yellow)}
+    /* faq */
+    .faq-item{border-bottom:1px solid var(--border);padding:4px 0}
+    .faq-question{background:none;border:none;color:var(--txt);font-size:15px;font-weight:500;padding:14px 0;width:100%;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;font-family:var(--fb)}
+    .faq-question:hover{color:var(--green)}
+    .faq-question .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
+    .faq-question.active .icon{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease, padding .3s ease;padding:0 0}
+    .faq-answer.open{max-height:300px;padding:0 0 14px}
+    .faq-answer p{color:var(--txt2);font-size:14px;margin-bottom:0}
+    /* buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:.2s;font-family:var(--fb)}
+    .btn-primary{background:var(--green);color:#0a0e1a}
+    .btn-primary:hover{background:#00bf9a;transform:translateY(-1px);text-decoration:none}
     .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
     .btn-outline:hover{background:var(--green-dim)}
-    .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-    .faq-question::after{content:'+';font-size:18px;color:var(--txt3);transition:.2s}
-    .faq-question.active::after{content:'−'}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
-    .faq-answer.open{max-height:300px;padding:0 0 14px}
-    .faq-answer p{font-size:13px;margin:0}
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:16px;margin:16px 0}
-    .disclaimer-box p{font-size:12px;color:var(--txt);margin:0 0 6px;line-height:1.5}
-    .disclaimer-box p:last-child{margin:0}
-    .disclaimer-box strong{color:var(--yellow)}
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:4px;font-size:12px;color:var(--txt3);margin:16px 0 0}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb span{margin:0 4px}
-    .footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--border);margin-top:40px}
-    .footer p{font-size:12px;color:var(--txt3);margin:4px 0}
-    .footer a{color:var(--txt2)}
-    .last-update{font-size:11px;color:var(--txt3);margin-top:8px;text-align:center}
-    @media(min-width:600px){
-      body{font-size:15px}
-      h1{font-size:28px}
-      h2{font-size:20px}
-      .card-grid{grid-template-columns:repeat(4,1fr);gap:10px}
-      .card{padding:14px}
-      .container{padding:0 24px}
+    .cta-wrap{text-align:center;margin:24px 0}
+    /* footer */
+    footer{border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center;font-size:13px;color:var(--txt3)}
+    footer p{margin-bottom:4px}
+    /* update */
+    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:12px;color:var(--txt3);margin-bottom:12px}
+    /* responsive */
+    @media(max-width:480px){
+      .card-grid{grid-template-columns:1fr 1fr}
+      .data-table{font-size:13px}
+      .data-table th,.data-table td{padding:8px 10px}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <a href="/" class="logo">Elite<span>Ações</span></a>
       <a href="/" class="nav-link">App</a>
     </div>
   </header>
 
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="https://eliteacoes.com">Início</a><span>/</span>
-      <a href="https://eliteacoes.com/paginas/acoes">Ações</a><span>/</span>
-      <span style="color:var(--txt2)">SEER3</span>
+      <a href="/">Início</a><span>/</span>
+      <a href="/paginas/acoes">Ações</a><span>/</span>
+      <span>SEER3</span>
     </nav>
 
+    <div class="update-badge">Última atualização: maio de 2026</div>
+
     <h1>Ser Educacional (SEER3): Preço Teto e Dividendos pelo Método Bazin</h1>
-    <p class="txt-small last-update">Última atualização: maio de 2026</p>
 
-    <section>
-      <h2>Sobre Ser Educacional (SEER3)</h2>
-      <p>A Ser Educacional é uma empresa brasileira do setor de serviços educacionais, com atuação no ensino superior presencial e digital. Fundada em 2003, a companhia possui unidades em diversas regiões do país e oferece cursos de graduação, pós-graduação e extensão. Suas ações são negociadas na B3 sob o ticker SEER3.</p>
-      <p>No contexto de análise fundamentalista, a Ser Educacional é frequentemente avaliada por sua capacidade de geração de caixa e distribuição de dividendos. O Método Bazin, criado por Décio Bazin, é uma ferramenta educativa que utiliza os dividendos históricos para estimar um preço teto hipotético, auxiliando investidores em seus estudos.</p>
-      <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value mono">SEER3</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Serviços Educacionais</div></div>
-        <div class="card"><div class="label">Segmento B3</div><div class="value">Educacional</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
-      </div>
-    </section>
+    <!-- H2-1 -->
+    <h2>Sobre Ser Educacional (SEER3)</h2>
+    <p>A Ser Educacional é uma das principais empresas de ensino superior do Brasil, com sede em Recife (PE). Fundada em 2003, opera marcas como UNINASSAU, UNG, UNIVERITAS e UNAMA, oferecendo cursos presenciais e a distância para mais de 200 mil alunos. A companhia está listada na B3 desde 2013 e faz parte do segmento de Serviços Educacionais.</p>
+    <p>Com um modelo de negócios focado em educação acessível e expansão via aquisições, a Ser Educacional distribui parte de seus lucros aos acionistas na forma de dividendos. A análise fundamentalista da empresa considera indicadores como margem líquida, dívida líquida e histórico de pagamentos.</p>
+    <div class="card-grid">
+      <div class="card"><div class="label">Ticker</div><div class="value">SEER3</div></div>
+      <div class="card"><div class="label">Setor</div><div class="value">Serviços Educacionais</div></div>
+      <div class="card"><div class="label">Segmento B3</div><div class="value">Ensino Superior</div></div>
+      <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+    </div>
 
-    <section>
-      <h2>Dados Cadastrais de SEER3</h2>
-      <p>Os dados cadastrais da Ser Educacional são públicos e registrados na B3 e na CVM. A empresa está classificada no setor de Serviços Educacionais, com ações ordinárias (ON) listadas no segmento tradicional.</p>
-      <table>
-        <tr><th>Campo</th><th>Informação</th></tr>
-        <tr><td>Razão Social</td><td>Ser Educacional S.A.</td></tr>
-        <tr><td>CNPJ</td><td>05.315.672/0001-10</td></tr>
+    <!-- H2-2 -->
+    <h2>Dados Cadastrais de SEER3</h2>
+    <table class="data-table">
+      <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+      <tbody>
+        <tr><td>Nome da Empresa</td><td>Ser Educacional S.A.</td></tr>
+        <tr><td>CNPJ</td><td>10.745.870/0001-06</td></tr>
         <tr><td>Setor B3</td><td>Serviços Educacionais</td></tr>
-        <tr><td>Segmento</td><td>Educacional</td></tr>
-        <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
-        <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
-      </table>
-    </section>
+        <tr><td>Segmento B3</td><td>Ensino Superior</td></tr>
+        <tr><td>Tipo de Ativo</td><td>Ação Ordinária (ON)</td></tr>
+        <tr><td>Gestora</td><td>Não se aplica (empresa)</td></tr>
+      </tbody>
+    </table>
 
-    <section>
-      <h2>Como Calcular o Preço Teto de SEER3 pelo Método Bazin</h2>
-      <p>O Método Bazin, desenvolvido pelo jornalista Décio Bazin, é uma abordagem educativa para análise de ações com foco em dividendos. A fórmula básica é: <strong>Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</strong>. Para SEER3, a taxa Bazin utilizada é de 6% ao ano.</p>
-      <p>Este cálculo gera um valor hipotético que serve como referência para estudos fundamentalistas. Não há garantia de que o ativo atingirá esse preço ou que os dividendos futuros serão iguais aos passados.</p>
-      <div class="highlight-box">
-        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que SEER3 tenha distribuído R$ 1,20 por ação em dividendos nos últimos 12 meses. Aplicando a fórmula: Preço Teto = R$ 1,20 ÷ 0,06 = R$ 20,00. Este número é meramente ilustrativo e não reflete dados reais.</p>
+    <!-- H2-3 -->
+    <h2>Como Calcular o Preço Teto de SEER3 pelo Método Bazin</h2>
+    <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educacional que ajuda investidores a estimar um preço teto para uma ação com base nos dividendos pagos. A lógica é simples: define-se uma taxa de retorno desejada (dividend yield) e calcula-se quanto se deveria pagar para obter esse retorno.</p>
+    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada</p>
+    <p>Para SEER3, considerando uma taxa de 6% ao ano (taxa Bazin), o cálculo seria: dividir o total de dividendos pagos nos últimos 12 meses por 0,06.</p>
+    <div class="highlight-box">
+      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que SEER3 tenha pago R$ 1,20 por ação em dividendos nos últimos 12 meses. O preço teto seria R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>. Este número é apenas uma referência educacional e não reflete dados reais atuais.</p>
+    </div>
+
+    <!-- H2-4 -->
+    <h2>Histórico de Dividendos da SEER3</h2>
+    <p>A Ser Educacional possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado. A empresa tem histórico de pagamentos semestrais ou anuais, variando conforme o desempenho financeiro. Os proventos são isentos de Imposto de Renda para pessoas físicas, conforme Lei 9.249/95.</p>
+    <p>Para consultar os valores exatos pagos nos últimos 12 meses, utilize o app Elite Ações, que reúne dados oficiais da B3 e CVM. Lembre-se: dividendos passados não garantem pagamentos futuros.</p>
+
+    <!-- H2-5 -->
+    <h2>Como Acessar os Dados Atualizados de SEER3</h2>
+    <p>O app Elite Ações oferece uma ferramenta completa para análise fundamentalista de SEER3. No aplicativo, você encontra:</p>
+    <p>• Dividendos históricos dos últimos 12 meses<br>• Preço teto calculado automaticamente pelo Método Bazin<br>• Indicadores como P/L, P/VP, margem líquida e dívida líquida<br>• Gráficos interativos e comparativos com o setor</p>
+    <div class="cta-wrap">
+      <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
+    </div>
+
+    <!-- H2-6 -->
+    <h2>Perguntas Frequentes sobre SEER3</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O que é o preço teto de SEER3 pelo Método Bazin? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos pagos nos últimos 12 meses pela taxa de retorno desejada (6% no caso). É um valor de referência educacional, não uma recomendação.</p></div>
       </div>
-    </section>
-
-    <section>
-      <h2>Histórico de Dividendos da SEER3</h2>
-      <p>A Ser Educacional possui uma política de distribuição de dividendos que pode variar conforme o lucro líquido e as decisões da administração. Historicamente, a empresa tem distribuído proventos aos acionistas, mas os valores não são fixos e dependem do desempenho financeiro.</p>
-      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. É importante consultar os dados atualizados no app Elite Ações para verificar os valores mais recentes.</p>
-    </section>
-
-    <section>
-      <h2>Como Acessar os Dados Atualizados de SEER3</h2>
-      <p>Para obter informações em tempo real sobre dividendos, preço teto e outros indicadores de SEER3, utilize o app Elite Ações. A plataforma reúne dados da B3 e CVM em um só lugar, facilitando sua análise fundamentalista.</p>
-      <p>No app, você encontra: histórico de dividendos, cálculo automático do preço teto pelo Método Bazin, gráficos e muito mais. Tudo em uma interface simples e educativa.</p>
-      <div style="margin:16px 0;text-align:center">
-        <a href="/" class="btn">Acessar App Elite Ações</a>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">SEER3 paga dividendos regularmente? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>A Ser Educacional possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte fontes oficiais para dados atualizados.</p></div>
       </div>
-    </section>
-
-    <section>
-      <h2>Perguntas Frequentes sobre SEER3</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">O que é o preço teto de SEER3 pelo Método Bazin?</button>
-          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. É um valor hipotético que serve como referência educativa.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">SEER3 paga dividendos regularmente?</button>
-          <div class="faq-answer"><p>A Ser Educacional possui histórico de distribuição de dividendos, mas os valores variam conforme o desempenho da empresa. Consulte dados atualizados no app Elite Ações.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para SEER3?</button>
-          <div class="faq-answer"><p>O Método Bazin utiliza a fórmula: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa para análise fundamentalista, sem garantia de retorno.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual a taxa Bazin usada para SEER3?</button>
-          <div class="faq-answer"><p>A taxa Bazin aplicada é de 6% ao ano, conforme metodologia clássica de Décio Bazin. O resultado é um preço teto hipotético.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de SEER3?</button>
-          <div class="faq-answer"><p>Os dados atualizados de dividendos e preço de SEER3 estão disponíveis no app Elite Ações, que reúne informações da B3 e CVM.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">A análise de SEER3 pelo Método Bazin é recomendação de investimento?</button>
-          <div class="faq-answer"><p>Não. Esta página tem caráter exclusivamente educativo. O Método Bazin é uma metodologia entre várias e não constitui recomendação de compra ou venda.</p></div>
-        </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Como usar o Método Bazin para analisar SEER3? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>O Método Bazin sugere um preço teto baseado em dividendos passados. É uma ferramenta entre várias; não substitui análise completa do negócio.</p></div>
       </div>
-    </section>
-
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Qual o setor da Ser Educacional na B3? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>A Ser Educacional (SEER3) está no setor de Serviços Educacionais, segmento de Ensino Superior na B3.</p></div>
       </div>
-    </section>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de SEER3? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>No app Elite Ações você encontra dividendos históricos, preço teto calculado e indicadores fundamentalistas atualizados.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O Método Bazin é garantia de retorno? <span class="icon">+</span></button>
+        <div class="faq-answer"><p>Não. O Método Bazin é uma metodologia educacional baseada em dividendos passados. Rentabilidade futura nunca é garantida.</p></div>
+      </div>
+    </div>
 
-    <div style="margin:24px 0;text-align:center">
-      <a href="/" class="btn btn-outline">Baixar App Elite Ações</a>
+    <!-- H2-7 -->
+    <h2>Aviso Legal e Disclaimer</h2>
+    <div class="disclaimer-box">
+      <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento. Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+    </div>
+
+    <div class="cta-wrap">
+      <a href="/" class="btn btn-outline">Análise completa no App Elite Ações</a>
     </div>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="container">
       <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="https://eliteacoes.com">eliteacoes.com</a></p>
+      <p>Plataforma educacional independente. Consulte a CVM.</p>
     </div>
   </footer>
 

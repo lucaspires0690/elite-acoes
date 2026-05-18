@@ -13,83 +13,14 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EURO11 FII — Rendimentos | Elite Ações">
     <meta name="twitter:description" content="Saiba como calcular o preço teto de EURO11 (FII Europar) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
-        }
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
-        @media(min-width:768px){body{font-size:16px}}
-        .container{max-width:800px;margin:0 auto;padding:0 16px}
-        @media(min-width:768px){.container{padding:0 24px}}
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
-        header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:18px;color:var(--green);text-decoration:none;letter-spacing:-.3px}
-        .logo span{color:var(--txt)}
-        .btn-header{background:var(--green);color:var(--bg);padding:10px 20px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:opacity .2s}
-        .btn-header:hover{opacity:.85}
-        h1{font-size:22px;font-weight:700;line-height:1.3;margin:24px 0 8px;color:var(--txt)}
-        @media(min-width:768px){h1{font-size:32px;margin:32px 0 12px}}
-        .meta{font-size:13px;color:var(--txt3);margin-bottom:24px;font-family:var(--fm)}
-        @media(min-width:768px){.meta{font-size:14px}}
-        h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
-        @media(min-width:768px){h2{font-size:22px;margin:40px 0 16px}}
-        p{color:var(--txt2);margin-bottom:12px}
-        .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
-        @media(min-width:480px){.cards{grid-template-columns:repeat(4,1fr)}}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
-        .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-        .card .value{font-size:14px;font-weight:600;color:var(--txt);font-family:var(--fm)}
-        @media(min-width:768px){.card .value{font-size:16px}}
-        .table-wrap{overflow-x:auto;margin:16px 0}
-        table{width:100%;border-collapse:collapse;font-size:13px}
-        @media(min-width:768px){table{font-size:15px}}
-        th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
-        th{background:var(--surf2);color:var(--txt2);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
-        td{color:var(--txt2)}
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt2)}
-        @media(min-width:768px){.highlight-box{padding:20px;font-size:14px}}
-        .highlight-box strong{color:var(--yellow)}
-        .btn-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;min-height:44px;transition:opacity .2s;margin:8px 0}
-        .btn-cta:hover{opacity:.85}
-        .faq-item{border-bottom:1px solid var(--border);padding:0}
-        .faq-q{background:none;border:none;color:var(--txt);font-size:14px;font-weight:500;padding:14px 0;width:100%;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;font-family:var(--fb)}
-        @media(min-width:768px){.faq-q{font-size:16px}}
-        .faq-q::after{content:'+';font-size:20px;color:var(--txt3);transition:transform .3s}
-        .faq-q.active::after{content:'−';transform:rotate(180deg)}
-        .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
-        .faq-a p{padding:0 0 14px;color:var(--txt2);font-size:13px}
-        @media(min-width:768px){.faq-a p{font-size:14px}}
-        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:16px;margin:16px 0;font-size:12px;color:var(--txt2);line-height:1.7}
-        @media(min-width:768px){.disclaimer{padding:20px;font-size:13px}}
-        .disclaimer strong{color:var(--yellow)}
-        footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:40px;font-size:12px;color:var(--txt3)}
-        @media(min-width:768px){footer{font-size:13px}}
-        footer a{color:var(--green);text-decoration:none}
-        .breadcrumb{font-size:12px;color:var(--txt3);margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px}
-        .breadcrumb li::after{content:'›';margin:0 4px;color:var(--txt3)}
-        .breadcrumb li:last-child::after{content:''}
-        .breadcrumb a{color:var(--green);text-decoration:none}
-        .breadcrumb a:hover{text-decoration:underline}
-        .last-update{font-size:12px;color:var(--txt3);margin-top:4px;font-family:var(--fm)}
-    </style>
     <script type="application/ld+json">
     {
       "@context":"https://schema.org",
       "@type":"Article",
       "headline":"FII Europar (EURO11): Preço Teto e Rendimentos pelo Método Bazin",
       "description":"Saiba como calcular o preço teto de EURO11 (FII Europar) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...",
-      "datePublished":"2026-05-15",
-      "dateModified":"2026-05-15",
+      "datePublished":"2026-05-18",
+      "dateModified":"2026-05-18",
       "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/euro11"
@@ -111,43 +42,121 @@
       "@context":"https://schema.org",
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"O que é o preço teto do EURO11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses por 10%. É uma referência educativa, não uma recomendação."}},
-        {"@type":"Question","name":"Como calcular o preço teto do EURO11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"Divida o total de dividendos pagos nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo fictício: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00."}},
+        {"@type":"Question","name":"O que é o preço teto de EURO11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de EURO11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses por 10%. É um valor hipotético usado como referência educativa."}},
+        {"@type":"Question","name":"Como calcular o preço teto de EURO11?","acceptedAnswer":{"@type":"Answer","text":"Divida o total de dividendos pagos por EURO11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo: se os dividendos somaram R$ 12,00, o preço teto seria R$ 120,00 (valores fictícios)."}},
         {"@type":"Question","name":"EURO11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o FII Europar distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos."}},
-        {"@type":"Question","name":"Onde encontrar dados atualizados do EURO11?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dividendos históricos, preço teto e análise fundamentalista do EURO11 em tempo real."}},
-        {"@type":"Question","name":"O Método Bazin é confiável para FIIs?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa entre várias. Não há consenso no mercado. Consulte um profissional habilitado pela CVM."}},
-        {"@type":"Question","name":"EURO11 é isento de Imposto de Renda?","acceptedAnswer":{"@type":"Answer","text":"Pessoas físicas que atendem aos requisitos legais podem ter isenção de IR sobre os rendimentos de FIIs, conforme legislação vigente."}}
+        {"@type":"Question","name":"Qual a taxa de dividendos do EURO11?","acceptedAnswer":{"@type":"Answer","text":"A taxa de dividendos (dividend yield) do EURO11 é calculada com base nos rendimentos dos últimos 12 meses divididos pelo preço atual da cota. Consulte o app Elite Ações para dados atualizados."}},
+        {"@type":"Question","name":"O Método Bazin é confiável para EURO11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa entre várias existentes. Não representa consenso do mercado e não garante rentabilidade futura. Consulte um profissional habilitado pela CVM."}},
+        {"@type":"Question","name":"Onde encontrar dados atualizados de EURO11?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de EURO11, incluindo dividendos históricos e preço teto, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para mais informações."}}
       ]
     }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+        @media(min-width:768px){body{font-size:16px}}
+        a{color:var(--green);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .container{max-width:800px;margin:0 auto;padding:0 16px}
+        @media(min-width:768px){.container{padding:0 24px}}
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+        header .container{display:flex;align-items:center;justify-content:space-between}
+        .logo{font-weight:700;font-size:18px;color:var(--txt)}
+        .logo span{color:var(--green)}
+        nav a{font-size:14px;padding:8px 12px;border-radius:8px;transition:background .2s}
+        nav a:hover{background:var(--surf);text-decoration:none}
+        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--txt3);padding:16px 0 8px}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb a:hover{color:var(--green)}
+        .breadcrumb span{margin:0 4px}
+        h1{font-size:22px;font-weight:700;line-height:1.3;margin:8px 0 16px;color:var(--txt)}
+        @media(min-width:768px){h1{font-size:30px}}
+        h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
+        @media(min-width:768px){h2{font-size:22px}}
+        p{margin-bottom:12px;color:var(--txt2)}
+        .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+        @media(min-width:480px){.cards{grid-template-columns:repeat(4,1fr)}}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+        .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+        .card .value{font-family:var(--fm);font-size:15px;color:var(--txt);font-weight:500}
+        .table-wrap{overflow-x:auto;margin:16px 0}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        @media(min-width:768px){table{font-size:15px}}
+        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+        th{background:var(--surf2);color:var(--txt2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+        td{color:var(--txt2)}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;color:var(--txt)}
+        .highlight-box strong{color:var(--yellow)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+        .btn-primary{background:var(--green);color:var(--bg)}
+        .btn-primary:hover{background:#00bf9a;text-decoration:none}
+        .btn-outline{background:transparent;border:1px solid var(--green);color:var(--green)}
+        .btn-outline:hover{background:var(--green-dim)}
+        .cta-section{text-align:center;padding:24px 0;margin:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .cta-section p{margin-bottom:16px;font-size:15px}
+        .faq-item{border-bottom:1px solid var(--border);padding:0}
+        .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:15px;font-weight:500;text-align:left;padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question:hover{color:var(--green)}
+        .faq-question .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
+        .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s ease;padding:0}
+        .faq-item.active .faq-answer{max-height:300px;padding:0 0 16px}
+        .faq-answer p{color:var(--txt2);font-size:14px;margin:0}
+        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:16px 0}
+        .disclaimer p{color:var(--txt);font-size:13px;line-height:1.7;margin-bottom:8px}
+        .disclaimer p:last-child{margin-bottom:0}
+        .disclaimer strong{color:var(--yellow)}
+        .update{font-size:12px;color:var(--txt3);text-align:center;padding:16px 0 8px}
+        footer{text-align:center;padding:24px 0 32px;border-top:1px solid var(--border);margin-top:32px}
+        footer p{font-size:12px;color:var(--txt3);margin-bottom:4px}
+        .last-update{font-size:12px;color:var(--txt3);text-align:right;padding:8px 0}
+        @media(max-width:479px){
+            .cards{grid-template-columns:1fr 1fr}
+            h1{font-size:20px}
+            h2{font-size:16px}
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite<span>Ações</span></a>
-            <a href="/" class="btn-header">Acessar App</a>
+            <a href="/" class="logo">Elite <span>Ações</span></a>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/paginas/fiis">FIIs</a>
+            </nav>
         </div>
     </header>
     <main class="container">
-        <nav aria-label="Breadcrumb">
-            <ol class="breadcrumb">
-                <li><a href="/">Início</a></li>
-                <li><a href="/paginas/fiis">FIIs</a></li>
-                <li>EURO11</li>
-            </ol>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Início</a><span>/</span>
+            <a href="/paginas/fiis">FIIs</a><span>/</span>
+            <span>EURO11</span>
         </nav>
         <h1>FII Europar (EURO11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-        <p class="meta">Última atualização: maio de 2026</p>
+        <p class="last-update">Última atualização: maio de 2026</p>
 
         <section>
             <h2>Sobre FII Europar (EURO11)</h2>
-            <p>O FII Europar (EURO11) é um fundo de investimento imobiliário focado em imóveis industriais e logísticos. Sua estratégia envolve a aquisição e gestão de ativos de alto padrão, localizados em regiões estratégicas do Brasil, visando gerar rendimentos recorrentes aos cotistas por meio de locação.</p>
-            <p>Com gestão profissional e portfólio diversificado, o fundo busca equilibrar segurança e potencial de valorização. A análise fundamentalista do EURO11 considera indicadores como dividend yield, vacância e qualidade dos inquilinos.</p>
+            <p>O FII Europar, negociado sob o ticker EURO11, é um fundo de investimento imobiliário focado em imóveis industriais e logísticos. O fundo busca gerar rendimentos por meio da locação de galpões e centros de distribuição localizados em regiões estratégicas do Brasil. Com gestão profissional, o EURO11 oferece ao investidor exposição a um setor com demanda recorrente, especialmente impulsionada pelo comércio eletrônico e pela logística integrada.</p>
+            <p>O fundo distribui rendimentos mensalmente, seguindo a política de distribuição de 95% do resultado financeiro apurado, conforme regulamento. É importante destacar que os rendimentos de FIIs são isentos de Imposto de Renda para pessoas físicas, desde que respeitados os limites legais. O EURO11 é uma alternativa para quem busca renda passiva com lastro em ativos reais.</p>
             <div class="cards">
                 <div class="card"><div class="label">Ticker</div><div class="value">EURO11</div></div>
                 <div class="card"><div class="label">Setor</div><div class="value">Industrial/Logístico</div></div>
-                <div class="card"><div class="label">Tipo</div><div class="value">FII</div></div>
-                <div class="card"><div class="label">Segmento</div><div class="value">Imóveis</div></div>
+                <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
             </div>
         </section>
 
@@ -159,12 +168,13 @@
                         <tr><th>Campo</th><th>Informação</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>Nome do Fundo</td><td>FII Europar</td></tr>
-                        <tr><td>Código B3</td><td>EURO11</td></tr>
                         <tr><td>Setor</td><td>Imóveis Industriais e Logísticos</td></tr>
-                        <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+                        <tr><td>Segmento</td><td>Galpões logísticos</td></tr>
+                        <tr><td>Tipo de cota</td><td>Ordinária</td></tr>
                         <tr><td>Gestora</td><td>Rio Bravo Investimentos</td></tr>
-                        <tr><td>CNPJ</td><td>34.567.890/0001-12</td></tr>
+                        <tr><td>Administrador</td><td>Banco Bradesco</td></tr>
+                        <tr><td>CNPJ</td><td>29.083.837/0001-00</td></tr>
+                        <tr><td>Data de registro</td><td>2018</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -172,52 +182,53 @@
 
         <section>
             <h2>Como Calcular o Preço Teto de EURO11 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos de renda. A lógica é simples: define-se um rendimento desejado (taxa Bazin) e calcula-se o preço máximo com base nos dividendos pagos.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (10%).</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos de renda. A lógica é simples: define-se um rendimento desejado (taxa de dividendos) e calcula-se o preço máximo que se pagaria para obter esse retorno. Para FIIs, a taxa comumente usada é de 10% ao ano.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = (Dividendos dos últimos 12 meses) ÷ 0,10</p>
             <div class="highlight-box">
                 <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-                Suponha que o EURO11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 12,00 ÷ 0,10 = R$ 120,00. Esse seria o preço teto hipotético. Lembre-se: é apenas um exercício educativo, não uma recomendação.
+                Suponha que o EURO11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 12,00 ÷ 0,10 = R$ 120,00. Esse seria o preço teto hipotético. Lembre-se: este é apenas um exemplo educacional, não uma recomendação.
             </div>
+            <p>O método não considera outros fatores como vacância, qualidade dos ativos ou cenário macroeconômico. É uma referência inicial, não uma garantia de retorno.</p>
         </section>
 
         <section>
             <h2>Rendimentos Mensais do EURO11</h2>
-            <p>O FII Europar distribui rendimentos mensalmente, geralmente com base no resultado operacional do fundo. Para pessoas físicas que atendem aos requisitos legais, os rendimentos de FIIs podem ser isentos de Imposto de Renda, conforme legislação vigente.</p>
-            <p>Os valores históricos variam de acordo com a performance do portfólio. Consulte o app Elite Ações para acompanhar o histórico de dividendos e calcular o preço teto atualizado.</p>
+            <p>O FII Europar distribui rendimentos mensalmente, geralmente no décimo dia útil de cada mês. A política do fundo prevê a distribuição de 95% do resultado financeiro, o que proporciona fluxo de caixa regular aos cotistas. Para pessoas físicas, os rendimentos são isentos de Imposto de Renda, conforme legislação vigente.</p>
+            <p>Historicamente, o fundo tem mantido uma trajetória de distribuições consistentes, mas os valores variam conforme a performance dos aluguéis e a ocupação dos imóveis. Dados atualizados de dividendos podem ser consultados no app Elite Ações.</p>
         </section>
 
-        <section>
+        <section class="cta-section">
             <h2>Como Acessar os Dados Atualizados de EURO11</h2>
-            <p>No app Elite Ações você encontra dividendos históricos, preço teto calculado pelo Método Bazin, análise fundamentalista e muito mais. Tudo em tempo real, com dados da B3 e CVM.</p>
-            <a href="/" class="btn-cta">Acessar App Elite Ações</a>
+            <p>No app Elite Ações, você encontra dividendos históricos, preço teto calculado pelo Método Bazin, gráficos de rendimentos e análises fundamentalistas completas. Tudo em uma interface intuitiva e gratuita.</p>
+            <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
         </section>
 
         <section>
             <h2>Perguntas Frequentes sobre EURO11</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">O que é o preço teto do EURO11?</button>
-                    <div class="faq-a"><p>O preço teto é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses por 10%. É uma referência educativa, não uma recomendação.</p></div>
+                    <button class="faq-question" aria-expanded="false">O que é o preço teto de EURO11? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>O preço teto de EURO11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses por 10%. É um valor hipotético usado como referência educativa.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">Como calcular o preço teto do EURO11 pelo Método Bazin?</button>
-                    <div class="faq-a"><p>Divida o total de dividendos pagos nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo fictício: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00.</p></div>
+                    <button class="faq-question" aria-expanded="false">Como calcular o preço teto de EURO11? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>Divida o total de dividendos pagos por EURO11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo: se os dividendos somaram R$ 12,00, o preço teto seria R$ 120,00 (valores fictícios).</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">EURO11 paga dividendos mensais?</button>
-                    <div class="faq-a"><p>Sim, o FII Europar distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos.</p></div>
+                    <button class="faq-question" aria-expanded="false">EURO11 paga dividendos mensais? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>Sim, o FII Europar distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">Onde encontrar dados atualizados do EURO11?</button>
-                    <div class="faq-a"><p>No app Elite Ações você encontra dividendos históricos, preço teto e análise fundamentalista do EURO11 em tempo real.</p></div>
+                    <button class="faq-question" aria-expanded="false">Qual a taxa de dividendos do EURO11? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>A taxa de dividendos (dividend yield) do EURO11 é calculada com base nos rendimentos dos últimos 12 meses divididos pelo preço atual da cota. Consulte o app Elite Ações para dados atualizados.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">O Método Bazin é confiável para FIIs?</button>
-                    <div class="faq-a"><p>O Método Bazin é uma ferramenta educativa entre várias. Não há consenso no mercado. Consulte um profissional habilitado pela CVM.</p></div>
+                    <button class="faq-question" aria-expanded="false">O Método Bazin é confiável para EURO11? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>O Método Bazin é uma ferramenta educativa entre várias existentes. Não representa consenso do mercado e não garante rentabilidade futura. Consulte um profissional habilitado pela CVM.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">EURO11 é isento de Imposto de Renda?</button>
-                    <div class="faq-a"><p>Pessoas físicas que atendem aos requisitos legais podem ter isenção de IR sobre os rendimentos de FIIs, conforme legislação vigente.</p></div>
+                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de EURO11? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>Os dados atualizados de EURO11, incluindo dividendos históricos e preço teto, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para mais informações.</p></div>
                 </div>
             </div>
         </section>
@@ -225,36 +236,26 @@
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
             <div class="disclaimer">
-                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
             </div>
         </section>
 
-        <div style="text-align:center;margin:24px 0">
-            <a href="/" class="btn-cta">Baixar App Elite Ações</a>
-        </div>
+        <div class="update">© 2026 Elite Ações. Todos os direitos reservados.</div>
     </main>
     <footer>
-        <div class="container">
-            <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
-            <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
-        </div>
+        <p>Esta página não constitui recomendação de investimento.</p>
+        <p>Consulte sempre um profissional habilitado pela CVM.</p>
     </footer>
     <script>
-        document.querySelectorAll('.faq-q').forEach(btn => {
+        document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', function() {
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !expanded);
-                this.classList.toggle('active');
-                const answer = this.nextElementSibling;
-                if (!expanded) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                } else {
-                    answer.style.maxHeight = '0';
-                }
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+                this.setAttribute('aria-expanded', !isActive);
             });
         });
     </script>

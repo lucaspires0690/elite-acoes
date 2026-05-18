@@ -16,320 +16,266 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Smart Fit (SMFT3): Preço Teto e Dividendos pelo Método Bazin",
+        "description": "Aprenda a calcular o preço teto de SMFT3 (Smart Fit) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+        "datePublished": "2026-05-18",
+        "dateModified": "2026-05-18",
+        "author": {
+            "@type": "Organization",
+            "name": "Elite Ações",
+            "url": "https://eliteacoes.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Elite Ações",
+            "url": "https://eliteacoes.com"
+        },
+        "mainEntityOfPage": "https://eliteacoes.com/paginas/acoes/smft3"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes" },
+            { "@type": "ListItem", "position": 3, "name": "SMFT3" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "O que é o preço teto de SMFT3?", "acceptedAnswer": { "@type": "Answer", "text": "O preço teto de SMFT3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos anuais por 6%." } },
+            { "@type": "Question", "name": "Como calcular o preço teto de SMFT3 pelo Método Bazin?", "acceptedAnswer": { "@type": "Answer", "text": "Divida os dividendos totais dos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00." } },
+            { "@type": "Question", "name": "SMFT3 paga dividendos regularmente?", "acceptedAnswer": { "@type": "Answer", "text": "A Smart Fit possui política de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte o histórico no app Elite Ações para dados atualizados." } },
+            { "@type": "Question", "name": "Qual a taxa Bazin usada para SMFT3?", "acceptedAnswer": { "@type": "Answer", "text": "A taxa Bazin sugerida para SMFT3 é de 6% ao ano, conforme dados históricos de dividendos. Essa taxa é um parâmetro do método, não uma garantia." } },
+            { "@type": "Question", "name": "Onde encontrar dados atualizados de SMFT3?", "acceptedAnswer": { "@type": "Answer", "text": "No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista de SMFT3, tudo atualizado em tempo real." } },
+            { "@type": "Question", "name": "O Método Bazin é recomendado para SMFT3?", "acceptedAnswer": { "@type": "Answer", "text": "O Método Bazin é uma ferramenta educativa entre várias existentes. Não constitui recomendação de investimento. Consulte um profissional habilitado pela CVM." } }
+        ]
+    }
+    </script>
     <style>
-        :root{
-            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        :root {
+            --green: #00d4a8;
+            --green-dim: rgba(0,212,168,.1);
+            --green-border: rgba(0,212,168,.2);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,.08);
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245,158,11,.08);
+            --yellow-border: rgba(245,158,11,.25);
+            --bg: #0a0e1a;
+            --bg2: #0d1220;
+            --surf: #131b2e;
+            --surf2: #1a2438;
+            --border: rgba(255,255,255,.07);
+            --border2: rgba(255,255,255,.13);
+            --txt: #e8edf5;
+            --txt2: rgba(232,237,245,.72);
+            --txt3: rgba(232,237,245,.42);
+            --fb: 'Plus Jakarta Sans', sans-serif;
+            --fm: 'DM Mono', monospace;
         }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:14px}
-        @media(min-width:768px){html{font-size:16px}}
-        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-        a{color:var(--green);text-decoration:none;transition:opacity .2s}
-        a:hover{opacity:.8}
-        img{max-width:100%;height:auto;display:block}
-        .container{max-width:1120px;margin:0 auto;padding:0 1rem}
-        @media(min-width:768px){.container{padding:0 2rem}}
-        /* header */
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-        header .container{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-        .logo span{color:var(--green)}
-        .nav-link{color:var(--txt2);font-size:.875rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-        .nav-link:hover{background:var(--surf);color:var(--txt)}
-        /* breadcrumb */
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
-        .breadcrumb li+li::before{content:"/";margin-right:.5rem;color:var(--txt3)}
-        .breadcrumb a{color:var(--txt2)}
-        .breadcrumb a:hover{color:var(--green)}
-        .breadcrumb .active{color:var(--txt)}
-        /* headings */
-        h1{font-size:1.75rem;font-weight:700;line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
-        @media(min-width:768px){h1{font-size:2.25rem}}
-        h2{font-size:1.35rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-        @media(min-width:768px){h2{font-size:1.5rem}}
-        h3{font-size:1.1rem;font-weight:600;margin-top:1.5rem;margin-bottom:.75rem;color:var(--txt)}
-        p{margin-bottom:1rem;color:var(--txt2)}
-        /* cards */
-        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1rem 0}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-        .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-        .card .value{font-family:var(--fm);font-size:1rem;font-weight:500;color:var(--txt)}
-        /* table */
-        .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
-        .data-table th,.data-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
-        .data-table th{background:var(--surf);color:var(--txt2);font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:.75rem}
-        .data-table td{color:var(--txt)}
-        .data-table tr:last-child td{border-bottom:none}
-        /* highlight box */
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-        .highlight-box p{color:var(--txt);margin-bottom:.5rem}
-        .highlight-box strong{color:var(--yellow)}
-        /* disclaimer */
-        .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0}
-        .disclaimer-box p{color:var(--txt);font-size:.875rem;margin-bottom:.5rem}
-        .disclaimer-box strong{color:var(--yellow)}
-        /* faq */
-        .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-        .faq-question{background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:1rem;font-weight:500;width:100%;text-align:left;padding:.5rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.5rem;min-height:44px}
-        .faq-question::after{content:"+";font-size:1.25rem;color:var(--green);transition:transform .3s;flex-shrink:0}
-        .faq-item.active .faq-question::after{content:"−";transform:rotate(180deg)}
-        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 .5rem}
-        .faq-item.active .faq-answer{max-height:300px;padding:.5rem .5rem .75rem}
-        .faq-answer p{color:var(--txt2);font-size:.875rem;margin-bottom:0}
-        /* buttons */
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:10px;font-family:var(--fb);font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:all .2s;min-height:44px;text-decoration:none}
-        .btn-primary{background:var(--green);color:var(--bg)}
-        .btn-primary:hover{background:#00bf96;color:var(--bg);opacity:1}
-        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-        .btn-outline:hover{background:var(--green-dim)}
-        .cta-wrap{text-align:center;margin:2rem 0}
-        /* footer */
-        footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.8125rem;color:var(--txt3)}
-        footer p{margin-bottom:.25rem}
-        /* update */
-        .update-note{font-size:.8125rem;color:var(--txt3);margin-top:.5rem;font-style:italic}
-        /* responsive */
-        @media(max-width:480px){
-            .card-grid{grid-template-columns:1fr 1fr}
-            .data-table{font-size:.8125rem}
-            .data-table th,.data-table td{padding:.5rem .75rem}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--txt); font-family: var(--fb); font-size: 14px; line-height: 1.6; min-height: 100vh; }
+        @media (min-width: 768px) { body { font-size: 16px; } }
+        a { color: var(--green); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+        @media (min-width: 768px) { .container { padding: 0 24px; } }
+        header { position: sticky; top: 0; z-index: 100; background: rgba(10,14,26,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+        header .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: var(--fm); font-weight: 700; font-size: 1.1rem; color: var(--green); }
+        .logo span { color: var(--txt); }
+        nav a { font-size: .85rem; color: var(--txt2); margin-left: 16px; }
+        nav a:hover { color: var(--green); }
+        .breadcrumb { padding: 16px 0; font-size: .8rem; color: var(--txt3); }
+        .breadcrumb a { color: var(--txt2); }
+        .breadcrumb a:hover { color: var(--green); }
+        .breadcrumb span { color: var(--txt); }
+        h1 { font-size: 1.6rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; color: var(--txt); }
+        @media (min-width: 768px) { h1 { font-size: 2rem; } }
+        h2 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 12px; color: var(--txt); border-left: 3px solid var(--green); padding-left: 12px; }
+        @media (min-width: 768px) { h2 { font-size: 1.4rem; } }
+        p { margin-bottom: 12px; color: var(--txt2); }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0; }
+        @media (min-width: 480px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+        .card { background: var(--surf); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
+        .card .label { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--txt3); margin-bottom: 4px; }
+        .card .value { font-family: var(--fm); font-size: .9rem; color: var(--txt); }
+        .table-wrap { overflow-x: auto; margin: 16px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--surf); color: var(--txt2); font-weight: 600; }
+        td { color: var(--txt); }
+        .highlight-box { background: var(--yellow-dim); border: 1px solid var(--yellow-border); border-radius: 8px; padding: 16px; margin: 16px 0; }
+        .highlight-box p { color: var(--txt); margin-bottom: 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: .9rem; cursor: pointer; border: none; transition: .2s; }
+        .btn-green { background: var(--green); color: #0a0e1a; }
+        .btn-green:hover { background: #00c49a; text-decoration: none; }
+        .btn-outline { background: transparent; border: 1px solid var(--green-border); color: var(--green); }
+        .btn-outline:hover { background: var(--green-dim); }
+        .cta-wrap { text-align: center; margin: 24px 0; }
+        .cta-wrap .btn { margin: 8px; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-question { width: 100%; background: none; border: none; padding: 14px 0; font-family: var(--fb); font-size: .95rem; font-weight: 500; color: var(--txt); cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: 1.2rem; color: var(--green); transition: .2s; }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+        .faq-answer p { padding: 0 0 14px; color: var(--txt2); }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .disclaimer-box { background: var(--yellow-dim); border: 1px solid var(--yellow-border); border-radius: 8px; padding: 20px; margin: 24px 0; }
+        .disclaimer-box p { font-size: .85rem; color: var(--txt); margin-bottom: 8px; }
+        .disclaimer-box p:last-child { margin-bottom: 0; }
+        .update-note { font-size: .75rem; color: var(--txt3); margin-top: 8px; }
+        footer { border-top: 1px solid var(--border); padding: 24px 0; margin-top: 40px; text-align: center; }
+        footer p { font-size: .8rem; color: var(--txt3); margin-bottom: 4px; }
+        .mono { font-family: var(--fm); }
+        .text-green { color: var(--green); }
+        .text-yellow { color: var(--yellow); }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 1.1rem; }
+            .card-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"Article",
-      "headline":"Smart Fit (SMFT3): Preço Teto e Dividendos pelo Método Bazin",
-      "description":"Aprenda a calcular o preço teto de SMFT3 (Smart Fit) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-      "datePublished":"2026-05-15",
-      "dateModified":"2026-05-15",
-      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/smft3"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"BreadcrumbList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-        {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-        {"@type":"ListItem","position":3,"name":"SMFT3","item":"https://eliteacoes.com/paginas/acoes/smft3"}
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"O que é o preço teto de SMFT3?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de SMFT3 é o valor máximo que um investidor que segue o Método Bazin estaria disposto a pagar pela ação, calculado dividindo os dividendos dos últimos 12 meses pela taxa de dividend yield desejada (6% no caso da Smart Fit)."}},
-        {"@type":"Question","name":"Como calcular o preço teto de SMFT3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O cálculo é: Preço Teto = Dividendos acumulados nos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos somaram R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 20,00 (exemplo hipotético)."}},
-        {"@type":"Question","name":"SMFT3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Smart Fit possui política de distribuição de dividendos definida em estatuto, podendo distribuir proventos de forma semestral ou anual, dependendo dos resultados. Consulte os demonstrativos oficiais da companhia para dados atualizados."}},
-        {"@type":"Question","name":"Qual a taxa Bazin indicada para SMFT3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin sugerida para SMFT3 é de 6% ao ano, conforme dados do setor de atividades esportivas. Essa taxa representa o dividend yield mínimo esperado pelo investidor que segue o método."}},
-        {"@type":"Question","name":"Onde encontrar os dividendos atualizados de SMFT3?","acceptedAnswer":{"@type":"Answer","text":"Os dividendos atualizados de SMFT3 podem ser consultados no app Elite Ações, no site da B3 ou nos comunicados oficiais da Smart Fit. O app reúne dados históricos e ferramentas de análise fundamentalista."}},
-        {"@type":"Question","name":"O Método Bazin é recomendado para analisar SMFT3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa entre várias existentes. Não substitui uma análise completa de valuation. Consulte um profissional habilitado pela CVM antes de decidir."}}
-      ]
-    }
-    </script>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="/" class="logo">Elite<span>Ações</span></a>
             <nav>
-                <a href="/paginas/acoes" class="nav-link">Ações</a>
+                <a href="/">Início</a>
+                <a href="/paginas/acoes">Ações</a>
             </nav>
         </div>
     </header>
-
     <main class="container">
-        <nav aria-label="Breadcrumb">
-            <ol class="breadcrumb">
-                <li><a href="/">Início</a></li>
-                <li><a href="/paginas/acoes">Ações</a></li>
-                <li class="active" aria-current="page">SMFT3</li>
-            </ol>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="https://eliteacoes.com/">Início</a> / <a href="https://eliteacoes.com/paginas/acoes">Ações</a> / <span>SMFT3</span>
         </nav>
-
         <h1>Smart Fit (SMFT3): Preço Teto e Dividendos pelo Método Bazin</h1>
         <p class="update-note">Última atualização: maio de 2026</p>
 
-        <!-- H2-1 -->
         <section>
             <h2>Sobre Smart Fit (SMFT3)</h2>
-            <p>A Smart Fit é uma das maiores redes de academias da América Latina, com presença em diversos países. Fundada no Brasil, a empresa se destaca pelo modelo de negócios de baixo custo e alta capilaridade, oferecendo planos acessíveis e unidades padronizadas. A ação SMFT3 é negociada na B3 desde 2021, representando o segmento de atividades esportivas.</p>
-            <p>Com foco em expansão e eficiência operacional, a Smart Fit busca capturar o crescimento do mercado fitness na região. A companhia possui governança corporativa e divulga resultados trimestrais, permitindo que investidores acompanhem sua evolução financeira.</p>
+            <p>A Smart Fit é uma das maiores redes de academias do Brasil e da América Latina, com presença em diversos países. Fundada em 2009, a empresa se destaca pelo modelo de negócio de baixo custo e alta capilaridade, oferecendo planos acessíveis e unidades padronizadas. A companhia abriu capital na B3 em 2021 sob o ticker SMFT3, ampliando sua base de investidores.</p>
+            <p>No segmento de atividades esportivas, a Smart Fit busca crescimento orgânico e por aquisições, mantendo foco em eficiência operacional. Para investidores que utilizam análise fundamentalista, a empresa é frequentemente avaliada por métricas como dividendos e fluxo de caixa, embora o pagamento de proventos dependa dos resultados de cada exercício.</p>
             <div class="card-grid">
-                <div class="card">
-                    <div class="label">Ticker</div>
-                    <div class="value">SMFT3</div>
-                </div>
-                <div class="card">
-                    <div class="label">Setor</div>
-                    <div class="value">Atividades Esportivas</div>
-                </div>
-                <div class="card">
-                    <div class="label">Segmento B3</div>
-                    <div class="value">Novo Mercado</div>
-                </div>
-                <div class="card">
-                    <div class="label">Tipo</div>
-                    <div class="value">Ação</div>
-                </div>
+                <div class="card"><div class="label">Ticker</div><div class="value">SMFT3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Atividades Esportivas</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Consumo Cíclico</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
             </div>
         </section>
 
-        <!-- H2-2 -->
         <section>
             <h2>Dados Cadastrais de SMFT3</h2>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Campo</th>
-                        <th>Informação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nome da Companhia</td>
-                        <td>Smart Fit Escola de Ginástica e Dança S.A.</td>
-                    </tr>
-                    <tr>
-                        <td>CNPJ</td>
-                        <td>27.093.558/0001-11</td>
-                    </tr>
-                    <tr>
-                        <td>Setor B3</td>
-                        <td>Atividades Esportivas</td>
-                    </tr>
-                    <tr>
-                        <td>Segmento</td>
-                        <td>Novo Mercado</td>
-                    </tr>
-                    <tr>
-                        <td>Tipo de Ação</td>
-                        <td>Ordinária (ON)</td>
-                    </tr>
-                    <tr>
-                        <td>Gestora</td>
-                        <td>Não se aplica (ação)</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Campo</th><th>Informação</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nome da Empresa</td><td>Smart Fit Escola de Ginástica e Dança S.A.</td></tr>
+                        <tr><td>CNPJ</td><td>09.352.356/0001-50</td></tr>
+                        <tr><td>Setor B3</td><td>Consumo Cíclico</td></tr>
+                        <tr><td>Segmento</td><td>Atividades Esportivas</td></tr>
+                        <tr><td>Tipo de Ativo</td><td>Ação Ordinária (ON)</td></tr>
+                        <tr><td>Listagem</td><td>B3 – Novo Mercado</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
-        <!-- H2-3 -->
         <section>
             <h2>Como Calcular o Preço Teto de SMFT3 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa que ajuda investidores a estimar um preço teto para ações com base nos dividendos pagos. A lógica é simples: define-se um dividend yield mínimo desejado (taxa Bazin) e calcula-se o valor máximo a pagar pela ação.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = Dividendos acumulados nos últimos 12 meses ÷ Taxa Bazin</p>
-            <p>Para SMFT3, a taxa Bazin sugerida é de <strong>6%</strong> ao ano, conforme o setor de atividades esportivas.</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor deseja um retorno mínimo de 6% ao ano em dividendos. A fórmula é simples: <strong class="mono text-green">Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06</strong>.</p>
+            <p>Para aplicar o método, você precisa do total de dividendos distribuídos pela Smart Fit nos últimos 12 meses. Esse valor é dividido por 6% (0,06), resultando no preço máximo que você pagaria pela ação para atingir o rendimento desejado. Lembre-se: o método não considera crescimento futuro ou outros fatores.</p>
             <div class="highlight-box">
-                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
-                <p>Se a Smart Fit distribuiu R$ 1,20 em dividendos nos últimos 12 meses, o preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.</p>
-                <p>Este valor é apenas uma referência educativa. Cada investidor deve definir sua própria taxa de retorno esperada.</p>
+                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que a Smart Fit tenha distribuído R$ 1,20 por ação nos últimos 12 meses. Aplicando a fórmula: R$ 1,20 ÷ 0,06 = R$ 20,00. Isso significa que, pelo Método Bazin, o preço teto seria de R$ 20,00 por ação. Este é apenas um exemplo numérico hipotético e não reflete dados reais.</p>
             </div>
         </section>
 
-        <!-- H2-4 -->
         <section>
             <h2>Histórico de Dividendos da SMFT3</h2>
-            <p>A Smart Fit possui política de distribuição de dividendos definida em seu estatuto social, podendo distribuir proventos de forma semestral ou anual, a depender dos resultados apurados. A empresa busca equilibrar o pagamento de dividendos com a necessidade de reinvestimento para expansão.</p>
-            <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. Juros sobre Capital Próprio (JCP), se houver, sofrem tributação na fonte de 15%.</p>
-            <p>Os valores exatos dos dividendos variam a cada período. Consulte os comunicados oficiais da companhia ou o app Elite Ações para dados atualizados.</p>
+            <p>A Smart Fit possui uma política de dividendos que prevê a distribuição de proventos com base no lucro líquido ajustado. Desde sua listagem, a empresa tem pago dividendos de forma variável, dependendo dos resultados financeiros. Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95.</p>
+            <p>O histórico de dividendos da SMFT3 pode ser consultado em fontes oficiais como a B3 ou o site de relações com investidores. Os valores variam a cada trimestre, e não há garantia de pagamento futuro. Para dados atualizados, recomendamos o uso do app Elite Ações, que consolida essas informações em tempo real.</p>
         </section>
 
-        <!-- H2-5 -->
         <section>
             <h2>Como Acessar os Dados Atualizados de SMFT3</h2>
-            <p>Para acompanhar os dividendos reais, preço teto calculado e outras métricas fundamentalistas de SMFT3 em tempo real, utilize o app Elite Ações. A ferramenta reúne dados históricos de proventos, indicadores financeiros e calculadora Bazin integrada.</p>
-            <p>No app, você encontra: histórico completo de dividendos, cálculo automático do preço teto, gráficos de desempenho e comparativos setoriais. Tudo em uma interface intuitiva e educativa.</p>
+            <p>Para acompanhar os dividendos mais recentes, o preço teto calculado e outras métricas fundamentalistas da SMFT3, baixe o app Elite Ações. Nele, você encontra gráficos históricos, calculadora Bazin integrada e notificações sobre proventos. Tudo em uma interface simples e educativa.</p>
             <div class="cta-wrap">
-                <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+                <a href="/" class="btn btn-green">Acessar Elite Ações</a>
+                <a href="/paginas/acoes" class="btn btn-outline">Ver outras ações</a>
             </div>
         </section>
 
-        <!-- H2-6 -->
         <section>
             <h2>Perguntas Frequentes sobre SMFT3</h2>
-            <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">O que é o preço teto de SMFT3?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">O preço teto de SMFT3 é o valor máximo que um investidor que segue o Método Bazin estaria disposto a pagar pela ação, calculado dividindo os dividendos dos últimos 12 meses pela taxa de dividend yield desejada (6% no caso da Smart Fit).</p>
-                    </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O que é o preço teto de SMFT3?</button>
+                    <div class="faq-answer"><p>O preço teto de SMFT3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos anuais por 6%.</p></div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Como calcular o preço teto de SMFT3 pelo Método Bazin?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">O cálculo é: Preço Teto = Dividendos acumulados nos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos somaram R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 20,00 (exemplo hipotético).</p>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como calcular o preço teto de SMFT3 pelo Método Bazin?</button>
+                    <div class="faq-answer"><p>Divida os dividendos totais dos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00.</p></div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">SMFT3 paga dividendos regularmente?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">A Smart Fit possui política de distribuição de dividendos definida em estatuto, podendo distribuir proventos de forma semestral ou anual, dependendo dos resultados. Consulte os demonstrativos oficiais da companhia para dados atualizados.</p>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">SMFT3 paga dividendos regularmente?</button>
+                    <div class="faq-answer"><p>A Smart Fit possui política de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte o histórico no app Elite Ações para dados atualizados.</p></div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Qual a taxa Bazin indicada para SMFT3?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">A taxa Bazin sugerida para SMFT3 é de 6% ao ano, conforme dados do setor de atividades esportivas. Essa taxa representa o dividend yield mínimo esperado pelo investidor que segue o método.</p>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual a taxa Bazin usada para SMFT3?</button>
+                    <div class="faq-answer"><p>A taxa Bazin sugerida para SMFT3 é de 6% ao ano, conforme dados históricos de dividendos. Essa taxa é um parâmetro do método, não uma garantia.</p></div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">Onde encontrar os dividendos atualizados de SMFT3?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Os dividendos atualizados de SMFT3 podem ser consultados no app Elite Ações, no site da B3 ou nos comunicados oficiais da Smart Fit. O app reúne dados históricos e ferramentas de análise fundamentalista.</p>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de SMFT3?</button>
+                    <div class="faq-answer"><p>No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista de SMFT3, tudo atualizado em tempo real.</p></div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" itemprop="name">O Método Bazin é recomendado para analisar SMFT3?</button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">O Método Bazin é uma ferramenta educativa entre várias existentes. Não substitui uma análise completa de valuation. Consulte um profissional habilitado pela CVM antes de decidir.</p>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O Método Bazin é recomendado para SMFT3?</button>
+                    <div class="faq-answer"><p>O Método Bazin é uma ferramenta educativa entre várias existentes. Não constitui recomendação de investimento. Consulte um profissional habilitado pela CVM.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- H2-7 -->
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
             <div class="disclaimer-box">
-                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p>⛔ Esta página tem caráter exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
                 <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
             </div>
         </section>
 
         <div class="cta-wrap">
-            <a href="/" class="btn btn-primary">Baixar App Elite Ações</a>
-            <a href="/paginas/acoes" class="btn btn-outline" style="margin-left:.5rem">Ver outras ações</a>
+            <a href="/" class="btn btn-green">Baixar Elite Ações</a>
         </div>
     </main>
-
     <footer>
         <div class="container">
-            <p>© 2026 Elite Ações — Todos os direitos reservados.</p>
-            <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
+            <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+            <p>Esta página não constitui recomendação de investimento. Consulte a CVM.</p>
         </div>
     </footer>
-
     <script>
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', function() {
-                const item = this.closest('.faq-item');
+                const item = this.parentElement;
                 const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 if (!isActive) item.classList.add('active');
+                this.setAttribute('aria-expanded', !isActive);
             });
         });
     </script>

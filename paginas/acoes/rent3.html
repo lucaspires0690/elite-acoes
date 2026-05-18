@@ -13,14 +13,17 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RENT3 Localiza — Dividendos | Elite Ações">
   <meta name="twitter:description" content="Aprenda a calcular o preço teto de RENT3 (Localiza) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Localiza (RENT3): Preço Teto e Dividendos pelo Método Bazin",
     "description": "Aprenda a calcular o preço teto de RENT3 (Localiza) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-    "datePublished": "2026-05-15",
-    "dateModified": "2026-05-15",
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
     "author": {
       "@type": "Organization",
       "name": "Elite Ações",
@@ -41,7 +44,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
       { "@type": "ListItem", "position": 2, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes" },
-      { "@type": "ListItem", "position": 3, "name": "RENT3", "item": "https://eliteacoes.com/paginas/acoes/rent3" }
+      { "@type": "ListItem", "position": 3, "name": "RENT3" }
     ]
   }
   </script>
@@ -63,7 +66,7 @@
         "name": "Como calcular o preço teto de RENT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Divida o total de dividendos pagos por RENT3 nos últimos 12 meses por 0,06 (taxa de 6% ao ano). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00."
+          "text": "Divida o total de dividendos pagos por RENT3 nos últimos 12 meses por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 1,20, o preço teto seria R$ 20,00."
         }
       },
       {
@@ -71,15 +74,15 @@
         "name": "RENT3 paga dividendos regularmente?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A Localiza possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, conforme sua política de dividendos. Os valores variam conforme o lucro da empresa."
+          "text": "A Localiza possui uma política de distribuição de dividendos baseada no lucro líquido ajustado. Historicamente, a empresa distribui proventos com frequência semestral ou anual, mas os valores variam conforme o desempenho financeiro."
         }
       },
       {
         "@type": "Question",
-        "name": "O Método Bazin é confiável para analisar RENT3?",
+        "name": "O Método Bazin é adequado para analisar RENT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O Método Bazin é uma ferramenta educativa de análise fundamentalista, mas não representa consenso do mercado. Ele deve ser usado como um dos critérios, não como única base para decisões."
+          "text": "O Método Bazin é uma ferramenta educativa que ajuda a estimar um preço teto com base em dividendos passados. Não é uma recomendação de investimento e deve ser usado como parte de uma análise fundamentalista mais ampla."
         }
       },
       {
@@ -87,257 +90,348 @@
         "name": "Onde encontrar dados atualizados de dividendos de RENT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Você pode acessar dados atualizados no app Elite Ações, que reúne histórico de dividendos, preço teto e indicadores fundamentalistas em tempo real."
+          "text": "No aplicativo Elite Ações você encontra o histórico completo de dividendos de RENT3, incluindo valores, datas de pagamento e dados fundamentalistas atualizados em tempo real."
         }
       },
       {
         "@type": "Question",
-        "name": "RENT3 é uma ação indicada para dividendos?",
+        "name": "RENT3 é isenta de Imposto de Renda para pessoa física?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Esta página não faz recomendações de investimento. A análise de dividendos deve considerar o perfil do investidor e o contexto da empresa. Consulte um profissional habilitado pela CVM."
+          "text": "Sim, os dividendos distribuídos por RENT3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95. Isso se aplica a todos os acionistas, independentemente do valor recebido."
         }
       }
     ]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    :root {
+      --green: #00d4a8;
+      --green-dim: rgba(0,212,168,.1);
+      --green-border: rgba(0,212,168,.2);
+      --red: #ef4444;
+      --red-dim: rgba(239,68,68,.08);
+      --yellow: #f59e0b;
+      --yellow-dim: rgba(245,158,11,.08);
+      --yellow-border: rgba(245,158,11,.25);
+      --bg: #0a0e1a;
+      --bg2: #0d1220;
+      --surf: #131b2e;
+      --surf2: #1a2438;
+      --border: rgba(255,255,255,.07);
+      --border2: rgba(255,255,255,.13);
+      --txt: #e8edf5;
+      --txt2: rgba(232,237,245,.72);
+      --txt3: rgba(232,237,245,.42);
+      --fb: 'Plus Jakarta Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:14px}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:opacity .2s}
-    a:hover{opacity:.8}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:800px;margin:0 auto;padding:0 1.25rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:.875rem;color:var(--txt2);padding:.5rem 0;display:inline-block}
-    /* breadcrumb */
-    .breadcrumb{font-size:.75rem;color:var(--txt3);padding:1rem 0 .5rem;display:flex;flex-wrap:wrap;gap:.25rem}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb span{margin:0 .25rem}
-    /* headings */
-    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
-    @media(min-width:768px){h1{font-size:2.25rem}}
-    h2{font-size:1.35rem;font-weight:600;margin:2rem 0 .75rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-    @media(min-width:768px){h2{font-size:1.6rem}}
-    h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--txt)}
-    p{margin-bottom:.75rem;color:var(--txt2)}
-    .small{font-size:.8rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.75rem;text-align:center}
-    .card .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card .value{font-family:var(--fm);font-size:.95rem;color:var(--txt);font-weight:500}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
-    .data-table td,.data-table th{padding:.6rem .75rem;border-bottom:1px solid var(--border);text-align:left}
-    .data-table th{font-weight:600;color:var(--txt2);background:var(--surf);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
-    .data-table td{color:var(--txt)}
-    /* highlight */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem;margin:1.25rem 0}
-    .highlight-box p{color:var(--txt);font-size:.9rem}
-    .highlight-box strong{color:var(--yellow)}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-    .disclaimer-box p{color:var(--txt);font-size:.85rem;line-height:1.5}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:500;color:var(--txt);padding:.25rem 0;user-select:none;min-height:44px}
-    .faq-question:hover{color:var(--green)}
-    .faq-icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3);flex-shrink:0;margin-left:.5rem}
-    .faq-item.active .faq-icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s;opacity:0;color:var(--txt2);font-size:.9rem;line-height:1.5}
-    .faq-item.active .faq-answer{max-height:300px;opacity:1;padding:.5rem 0 .25rem}
-    /* cta */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:700;padding:.75rem 1.5rem;border-radius:10px;font-size:1rem;min-height:44px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none}
-    .cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,168,.3);color:var(--bg)}
-    .cta-wrap{text-align:center;margin:1.5rem 0}
-    /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 0;margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--txt3)}
-    footer p{margin-bottom:.25rem}
-    /* update */
-    .update-badge{display:inline-block;background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem}
-    /* responsive */
-    @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      h1{font-size:1.5rem}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 1rem; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-weight: 700; font-size: 1.15rem; color: var(--txt); }
+    .logo span { color: var(--green); }
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--txt3);
+      padding: .75rem 0 .25rem;
+    }
+    .breadcrumb a { color: var(--txt2); }
+    .breadcrumb a:hover { color: var(--green); text-decoration: none; }
+    .breadcrumb span { color: var(--txt3); }
+    h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 1rem 0 .5rem;
+      color: var(--txt);
+    }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 2rem 0 .75rem;
+      color: var(--txt);
+      border-left: 3px solid var(--green);
+      padding-left: .75rem;
+    }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1rem 0 .5rem; color: var(--txt); }
+    p { margin-bottom: .85rem; color: var(--txt2); }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: 1rem 0;
+    }
+    .card {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .85rem;
+    }
+    .card .label { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--txt3); margin-bottom: .2rem; }
+    .card .value { font-weight: 600; font-size: .95rem; color: var(--txt); }
+    .card .value.mono { font-family: var(--fm); }
+    .highlight-box {
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .highlight-box p { color: var(--txt); margin-bottom: 0; }
+    .warning-box {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .warning-box p { color: var(--txt); margin-bottom: 0; font-size: .9rem; }
+    .disclaimer-box {
+      background: #1a1500;
+      border: 1px solid var(--yellow-border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .disclaimer-box p { color: #fde68a; font-size: .85rem; margin-bottom: .5rem; }
+    .disclaimer-box p:last-child { margin-bottom: 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .6rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .95rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: .85; text-decoration: none; }
+    .btn-primary { background: var(--green); color: #0a0e1a; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--txt);
+      padding: .25rem 0;
+      user-select: none;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--green);
+      transition: transform .2s;
+      flex-shrink: 0;
+      margin-left: .5rem;
+    }
+    .faq-item.active .faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      color: var(--txt2);
+      font-size: .9rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-top: .5rem;
+    }
+    .faq-answer p { margin-bottom: 0; }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--txt3);
+      font-size: .8rem;
+    }
+    .footer p { margin-bottom: .25rem; color: var(--txt3); }
+    .update-badge {
+      display: inline-block;
+      background: var(--surf2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: .2rem .75rem;
+      font-size: .75rem;
+      color: var(--txt2);
+      font-family: var(--fm);
+      margin-bottom: .5rem;
+    }
+    @media (min-width: 640px) {
+      html { font-size: 15px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.45rem; }
+      .card-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .container { max-width: 800px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">Elite<span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
+      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <a href="/" class="btn btn-primary" style="padding:.4rem 1rem;font-size:.85rem;">App</a>
     </div>
   </header>
 
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/acoes">Ações</a><span>/</span>
+      <a href="/">Início</a> <span>/</span>
+      <a href="/paginas/acoes">Ações</a> <span>/</span>
       <span>RENT3</span>
     </nav>
 
-    <div class="update-badge">Última atualização: maio de 2026</div>
-
+    <span class="update-badge">Última atualização: maio de 2026</span>
     <h1>Localiza (RENT3): Preço Teto e Dividendos pelo Método Bazin</h1>
 
-    <!-- H2-1 -->
-    <h2>Sobre Localiza (RENT3)</h2>
-    <p>A Localiza Rent a Car é uma das maiores empresas de aluguel de veículos e gestão de frotas da América Latina, com sede em Belo Horizonte (MG). Fundada em 1973, a companhia atua nos segmentos de aluguel de carros para pessoas físicas e jurídicas, terceirização de frotas e venda de seminovos. Em 2021, a fusão com a Unidas consolidou sua liderança no setor.</p>
-    <p>A ação RENT3 é listada no Novo Mercado da B3, segmento de maior governança corporativa. A empresa possui histórico de distribuição de dividendos, geralmente atrelados ao lucro líquido apurado em cada exercício social, conforme sua política interna.</p>
-    <div class="card-grid">
-      <div class="card"><div class="label">Ticker</div><div class="value">RENT3</div></div>
-      <div class="card"><div class="label">Setor</div><div class="value">Aluguel de carros</div></div>
-      <div class="card"><div class="label">Segmento B3</div><div class="value">Novo Mercado</div></div>
-      <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
-    </div>
+    <section>
+      <h2>Sobre Localiza (RENT3)</h2>
+      <p>A Localiza Rent a Car S.A. é a maior empresa de aluguel de carros da América Latina, com sede em Belo Horizonte (MG). Fundada em 1973, a companhia atua nos segmentos de aluguel de veículos para pessoas físicas e jurídicas, gestão de frotas e seminovos. Em 2021, concluiu a fusão com a Unidas, consolidando sua liderança no setor.</p>
+      <p>A empresa possui uma das maiores frotas do país e está presente em mais de 500 agências. Sua ação RENT3 é negociada no Novo Mercado da B3, segmento de mais alto nível de governança corporativa. A Localiza é conhecida por sua gestão eficiente e histórico de distribuição de dividendos.</p>
+      <div class="card-grid">
+        <div class="card"><div class="label">Ticker</div><div class="value mono">RENT3</div></div>
+        <div class="card"><div class="label">Setor</div><div class="value">Aluguel de carros</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Novo Mercado</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação Ordinária</div></div>
+      </div>
+    </section>
 
-    <!-- H2-2 -->
-    <h2>Dados Cadastrais de RENT3</h2>
-    <p>Os dados abaixo são de natureza pública, disponíveis na B3 e na CVM (Comissão de Valores Mobiliários). A Localiza é uma sociedade anônima de capital aberto, com ações ordinárias (ON) que concedem direito a voto em assembleias.</p>
-    <table class="data-table">
-      <tr><th>Campo</th><th>Informação</th></tr>
-      <tr><td>Setor de atuação</td><td>Aluguel de carros</td></tr>
-      <tr><td>Segmento B3</td><td>Novo Mercado</td></tr>
-      <tr><td>Tipo de ação</td><td>Ordinária (ON)</td></tr>
-      <tr><td>Gestora</td><td>Não se aplica (ação, não FII)</td></tr>
-      <tr><td>CNPJ</td><td>16.670.085/0001-55</td></tr>
-    </table>
+    <section>
+      <h2>Dados Cadastrais de RENT3</h2>
+      <p>As informações abaixo são de caráter público, disponíveis nos registros da B3 e da CVM. A Localiza está listada no segmento Novo Mercado desde 2005, o que garante maior transparência e direitos aos acionistas.</p>
+      <div class="card-grid">
+        <div class="card"><div class="label">Setor</div><div class="value">Aluguel de carros</div></div>
+        <div class="card"><div class="label">Segmento</div><div class="value">Novo Mercado</div></div>
+        <div class="card"><div class="label">Tipo de Ação</div><div class="value">ON (Ordinária)</div></div>
+        <div class="card"><div class="label">CNPJ</div><div class="value mono">16.670.085/0001-55</div></div>
+      </div>
+    </section>
 
-    <!-- H2-3 -->
-    <h2>Como Calcular o Preço Teto de RENT3 pelo Método Bazin</h2>
-    <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa de análise fundamentalista. A premissa é que o investidor define uma taxa de retorno desejada em dividendos — no caso, 6% ao ano — e calcula o preço máximo (teto) que pagaria pela ação para atingir esse rendimento.</p>
-    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06</p>
-    <div class="highlight-box">
-      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-      Suponha que RENT3 tenha distribuído R$ 3,00 por ação em dividendos nos últimos 12 meses. Aplicando a fórmula: R$ 3,00 ÷ 0,06 = R$ 50,00. Isso significa que, segundo o método, o preço teto seria de R$ 50,00 por ação. Este é apenas um exemplo numérico hipotético, sem relação com dados reais atuais.</p>
-    </div>
-    <p>O método não considera outros fatores como valuation, endividamento ou perspectivas de crescimento. É uma ferramenta entre várias disponíveis para o investidor.</p>
+    <section>
+      <h2>Como Calcular o Preço Teto de RENT3 pelo Método Bazin</h2>
+      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa de análise fundamentalista. Ele sugere que o investidor defina um preço teto para uma ação com base nos dividendos pagos nos últimos 12 meses e uma taxa de retorno desejada — no caso, 6% ao ano.</p>
+      <div class="highlight-box">
+        <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06</p>
+      </div>
+      <div class="warning-box">
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que RENT3 tenha pago R$ 1,50 em dividendos nos últimos 12 meses. O preço teto seria R$ 1,50 ÷ 0,06 = R$ 25,00. Este número é apenas uma referência educativa e não reflete a realidade atual do ativo.</p>
+      </div>
+      <p>O método não considera outros fatores como endividamento, crescimento ou valuation. Ele deve ser usado como parte de uma análise mais ampla, nunca como única fonte de decisão.</p>
+    </section>
 
-    <!-- H2-4 -->
-    <h2>Histórico de Dividendos da RENT3</h2>
-    <p>A Localiza possui uma política de dividendos que prevê a distribuição de, no mínimo, 25% do lucro líquido ajustado, conforme estatuto social. Historicamente, a empresa tem pago dividendos de forma semestral ou anual, com valores variáveis de acordo com o resultado financeiro.</p>
-    <p>Os dividendos de ações (como RENT3) são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que a empresa se enquadre nas regras de tributação. Para obter os valores exatos dos últimos 12 meses, consulte fontes oficiais ou o app Elite Ações.</p>
+    <section>
+      <h2>Histórico de Dividendos da RENT3</h2>
+      <p>A Localiza possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado. Historicamente, a empresa tem distribuído proventos de forma semestral ou anual, com valores que variam conforme o desempenho financeiro.</p>
+      <p>Os dividendos pagos por RENT3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95. Isso significa que o valor recebido é integral, sem retenção na fonte. Para dados atualizados de dividendos, consulte o aplicativo Elite Ações.</p>
+    </section>
 
-    <!-- H2-5 -->
-    <h2>Como Acessar os Dados Atualizados de RENT3</h2>
-    <p>Para consultar dividendos reais, preço teto calculado em tempo real e outros indicadores fundamentalistas de RENT3, utilize o aplicativo Elite Ações. A ferramenta reúne dados públicos da B3 e CVM organizados para facilitar sua análise educativa.</p>
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Acessar app Elite Ações</a>
-    </div>
-    <p>No app, você encontra: histórico de dividendos, cálculo automático do preço teto pelo Método Bazin, gráficos de rentabilidade e comparativos com outros ativos. Tudo em um ambiente informativo, sem recomendações de investimento.</p>
+    <section>
+      <h2>Como Acessar os Dados Atualizados de RENT3</h2>
+      <p>No aplicativo Elite Ações, você encontra o histórico completo de dividendos de RENT3, incluindo valores pagos, datas de pagamento, yield e dados fundamentalistas como P/L, ROE e endividamento. Tudo em uma interface simples e objetiva.</p>
+      <p style="margin-top:1rem;">
+        <a href="/" class="btn btn-primary">Baixar Elite Ações</a>
+      </p>
+    </section>
 
-    <!-- H2-6 -->
-    <h2>Perguntas Frequentes sobre RENT3</h2>
-    <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">O que é o preço teto de RENT3 pelo Método Bazin?</span>
-          <span class="faq-icon">+</span>
+    <section>
+      <h2>Perguntas Frequentes sobre RENT3</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">O que é o preço teto de RENT3 pelo Método Bazin?</div>
+          <div class="faq-answer"><p>O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme o Método Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06.</p></div>
         </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme o Método Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06.</div>
+        <div class="faq-item">
+          <div class="faq-question">Como calcular o preço teto de RENT3?</div>
+          <div class="faq-answer"><p>Divida o total de dividendos pagos por RENT3 nos últimos 12 meses por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 1,20, o preço teto seria R$ 20,00.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">RENT3 paga dividendos regularmente?</div>
+          <div class="faq-answer"><p>A Localiza possui uma política de distribuição de dividendos baseada no lucro líquido ajustado. Historicamente, a empresa distribui proventos com frequência semestral ou anual, mas os valores variam conforme o desempenho financeiro.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">O Método Bazin é adequado para analisar RENT3?</div>
+          <div class="faq-answer"><p>O Método Bazin é uma ferramenta educativa que ajuda a estimar um preço teto com base em dividendos passados. Não é uma recomendação de investimento e deve ser usado como parte de uma análise fundamentalista mais ampla.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Onde encontrar dados atualizados de dividendos de RENT3?</div>
+          <div class="faq-answer"><p>No aplicativo Elite Ações você encontra o histórico completo de dividendos de RENT3, incluindo valores, datas de pagamento e dados fundamentalistas atualizados em tempo real.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">RENT3 é isenta de Imposto de Renda para pessoa física?</div>
+          <div class="faq-answer"><p>Sim, os dividendos distribuídos por RENT3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95. Isso se aplica a todos os acionistas, independentemente do valor recebido.</p></div>
         </div>
       </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">Como calcular o preço teto de RENT3?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">Divida o total de dividendos pagos por RENT3 nos últimos 12 meses por 0,06 (taxa de 6% ao ano). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00.</div>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">RENT3 paga dividendos regularmente?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">A Localiza possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, conforme sua política de dividendos. Os valores variam conforme o lucro da empresa.</div>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">O Método Bazin é confiável para analisar RENT3?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">O Método Bazin é uma ferramenta educativa de análise fundamentalista, mas não representa consenso do mercado. Ele deve ser usado como um dos critérios, não como única base para decisões.</div>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">Onde encontrar dados atualizados de dividendos de RENT3?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">Você pode acessar dados atualizados no app Elite Ações, que reúne histórico de dividendos, preço teto e indicadores fundamentalistas em tempo real.</div>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span itemprop="name">RENT3 é uma ação indicada para dividendos?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">Esta página não faz recomendações de investimento. A análise de dividendos deve considerar o perfil do investidor e o contexto da empresa. Consulte um profissional habilitado pela CVM.</div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- H2-7 -->
-    <h2>Aviso Legal e Disclaimer</h2>
-    <div class="disclaimer-box">
-      <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-      Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-      Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-      O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
-      Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-      Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-    </div>
+    <section>
+      <h2>Aviso Legal e Disclaimer</h2>
+      <div class="disclaimer-box">
+        <p>⛔ Esta página tem caráter exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      </div>
+    </section>
 
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Baixar Elite Ações</a>
+    <div style="text-align:center;margin:2rem 0 1rem;">
+      <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
     </div>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p>Dados públicos B3/CVM | Ferramenta educativa</p>
+      <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+      <p>Esta página não constitui recomendação de investimento.</p>
     </div>
   </footer>
 
   <script>
-    function toggleFaq(el) {
-      const item = el.parentElement;
-      const isActive = item.classList.contains('active');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      if (!isActive) item.classList.add('active');
-    }
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>

@@ -19,8 +19,8 @@
     "@type": "Article",
     "headline": "M. Dias Branco (MDIA3): Preço Teto e Dividendos pelo Método Bazin",
     "description": "Aprenda a calcular o preço teto de MDIA3 (M. Dias Branco) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-    "datePublished": "2026-05-15",
-    "dateModified": "2026-05-15",
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
     "author": {
       "@type": "Organization",
       "name": "Elite Ações",
@@ -50,12 +50,12 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "O que é o preço teto de MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "O preço teto é o valor máximo que um investidor pagaria por uma ação com base no Método Bazin, calculado dividindo os dividendos anuais pela taxa de retorno desejada (6% no caso)."}},
-      {"@type": "Question", "name": "Como calcular o preço teto de MDIA3 pelo Método Bazin?", "acceptedAnswer": {"@type": "Answer", "text": "Divida os dividendos pagos nos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00."}},
-      {"@type": "Question", "name": "MDIA3 paga dividendos regularmente?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, a M. Dias Branco possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, conforme política da companhia."}},
-      {"@type": "Question", "name": "Qual a taxa Bazin usada para MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "A taxa Bazin sugerida é de 6% ao ano, que representa o retorno desejado em dividendos sobre o preço pago pela ação."}},
-      {"@type": "Question", "name": "Onde encontrar dados atualizados de MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "No app Elite Ações você encontra dividendos históricos, preço teto calculado e análises fundamentalistas atualizadas."}},
-      {"@type": "Question", "name": "O Método Bazin é garantia de retorno?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O Método Bazin é uma ferramenta educativa baseada em dividendos passados. Rentabilidade futura não é garantida. Consulte um profissional CVM."}}
+      {"@type": "Question", "name": "O que é o preço teto de MDIA3 pelo Método Bazin?", "acceptedAnswer": {"@type": "Answer", "text": "O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme o Método Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06."}},
+      {"@type": "Question", "name": "Como calcular o preço teto de MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "Divida o total de dividendos pagos por MDIA3 nos últimos 12 meses por 0,06 (taxa de 6% ao ano). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00."}},
+      {"@type": "Question", "name": "MDIA3 paga dividendos regularmente?", "acceptedAnswer": {"@type": "Answer", "text": "M. Dias Branco possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, dependendo dos resultados. A política de dividendos é definida pela administração e aprovada em assembleia."}},
+      {"@type": "Question", "name": "Qual a taxa de dividendos ideal para MDIA3 no Método Bazin?", "acceptedAnswer": {"@type": "Answer", "text": "O Método Bazin utiliza uma taxa de 6% ao ano como referência para calcular o preço teto. Essa taxa é uma escolha pessoal do investidor e pode variar conforme seu objetivo de rendimento."}},
+      {"@type": "Question", "name": "Onde encontrar dados atualizados de dividendos de MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "Você pode consultar os dados atualizados no aplicativo Elite Ações, que reúne histórico de dividendos, preço teto e outras informações fundamentalistas em tempo real."}},
+      {"@type": "Question", "name": "O Método Bazin é recomendado para MDIA3?", "acceptedAnswer": {"@type": "Answer", "text": "O Método Bazin é uma ferramenta educativa de análise. Não fazemos recomendações de investimento. Cada investidor deve avaliar seus próprios objetivos e consultar um profissional habilitado pela CVM."}}
     ]
   }
   </script>
@@ -63,99 +63,215 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--green:#00d4a8;--green-dim:rgba(0,212,168,.1);--green-border:rgba(0,212,168,.2);--red:#ef4444;--red-dim:rgba(239,68,68,.08);--yellow:#f59e0b;--yellow-dim:rgba(245,158,11,.08);--yellow-border:rgba(245,158,11,.25);--bg:#0a0e1a;--bg2:#0d1220;--surf:#131b2e;--surf2:#1a2438;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);--txt:#e8edf5;--txt2:rgba(232,237,245,.72);--txt3:rgba(232,237,245,.42);--fb:'Plus Jakarta Sans',sans-serif;--fm:'DM Mono',monospace}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:14px;scroll-behavior:smooth}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#fff}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:800px;margin:0 auto;padding:0 1rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:.875rem;font-weight:500;padding:.5rem 1rem;border-radius:8px;background:var(--surf);border:1px solid var(--border);color:var(--txt2);min-height:44px;display:inline-flex;align-items:center;transition:all .2s}
-    .nav-link:hover{background:var(--surf2);color:var(--txt)}
-    .breadcrumb{font-size:.75rem;color:var(--txt3);padding:1rem 0 .5rem;display:flex;flex-wrap:wrap;gap:.25rem}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{margin:0 .25rem}
-    h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 .75rem;letter-spacing:-.02em}
-    @media(min-width:768px){h1{font-size:2rem}}
-    h2{font-size:1.2rem;font-weight:600;margin:2rem 0 .75rem;padding-top:.5rem;border-top:1px solid var(--border);letter-spacing:-.01em}
-    @media(min-width:768px){h2{font-size:1.4rem}}
-    h3{font-size:1rem;font-weight:600;margin:1rem 0 .5rem}
-    p{color:var(--txt2);margin-bottom:.75rem;font-size:.9375rem}
-    @media(min-width:768px){p{font-size:1rem}}
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.75rem;text-align:center}
-    .card .label{font-size:.6875rem;color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem}
-    .card .value{font-family:var(--fm);font-size:.875rem;color:var(--txt);font-weight:500}
-    .table-wrap{overflow-x:auto;margin:1rem 0}
-    table{width:100%;border-collapse:collapse;font-size:.875rem}
-    th,td{padding:.625rem .75rem;text-align:left;border-bottom:1px solid var(--border)}
-    th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:.6875rem;letter-spacing:.05em}
-    td{color:var(--txt2)}
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem;margin:1rem 0}
-    .highlight-box p{color:var(--txt);margin-bottom:0;font-size:.875rem}
-    .highlight-box strong{color:var(--yellow)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.625rem 1.25rem;border-radius:10px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:all .2s;text-align:center}
-    .btn-primary{background:var(--green);color:var(--bg)}
-    .btn-primary:hover{background:#00e8b8;color:var(--bg)}
-    .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-    .btn-outline:hover{background:var(--green-dim);color:var(--green)}
-    .cta-section{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;text-align:center}
-    .cta-section p{font-size:.875rem;margin-bottom:.75rem}
-    .faq-item{border-bottom:1px solid var(--border)}
-    .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:.9375rem;font-weight:500;padding:.875rem 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-    .faq-question::after{content:'+';font-size:1.25rem;color:var(--txt3);transition:transform .3s}
-    .faq-question.active::after{content:'−'}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0}
-    .faq-answer.open{max-height:300px;padding:0 0 .75rem}
-    .faq-answer p{font-size:.875rem;margin-bottom:0}
-    .disclaimer{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-    .disclaimer p{font-size:.8125rem;color:var(--txt);margin-bottom:.5rem}
-    .disclaimer p:last-child{margin-bottom:0}
-    .disclaimer strong{color:var(--yellow)}
-    .footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem}
-    .footer p{font-size:.75rem;color:var(--txt3);margin-bottom:.25rem}
-    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.6875rem;color:var(--txt3);font-family:var(--fm);margin-bottom:1rem}
-    .mono{font-family:var(--fm)}
-    .text-green{color:var(--green)}
-    .text-yellow{color:var(--yellow)}
-    .gap-1{margin-top:1rem}
+    :root{
+      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; color: var(--txt); }
+    .logo span { color: var(--green); }
+    nav a { font-size: .9rem; color: var(--txt2); margin-left: 1rem; }
+    nav a:hover { color: var(--green); }
+    .breadcrumb {
+      padding: 1rem 0 .5rem;
+      font-size: .85rem;
+      color: var(--txt3);
+    }
+    .breadcrumb a { color: var(--txt2); }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { color: var(--txt3); }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: .5rem 0 1rem;
+      color: var(--txt);
+    }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: var(--txt);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem;
+    }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 .75rem; color: var(--txt); }
+    p { margin-bottom: 1rem; color: var(--txt2); }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: .75rem;
+      margin: 1rem 0;
+    }
+    .card {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .card .label { font-size: .75rem; color: var(--txt3); text-transform: uppercase; letter-spacing: .05em; }
+    .card .value { font-size: 1rem; font-weight: 600; color: var(--txt); margin-top: .25rem; font-family: var(--fm); }
+    .table-wrap { overflow-x: auto; margin: 1rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surf);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: .75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    th { background: var(--surf2); color: var(--txt2); font-weight: 600; }
+    td { color: var(--txt); }
+    .highlight-box {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .highlight-box p { color: var(--txt); margin-bottom: .5rem; }
+    .highlight-box strong { color: var(--yellow); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .95rem;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--green); color: #0a0e1a; }
+    .btn-primary:hover { background: #00bf9a; text-decoration: none; }
+    .btn-outline { background: transparent; border: 1px solid var(--green-border); color: var(--green); }
+    .btn-outline:hover { background: var(--green-dim); }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: .5rem;
+      overflow: hidden;
+    }
+    .faq-question {
+      background: var(--surf);
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: var(--txt);
+      transition: background .2s;
+      user-select: none;
+    }
+    .faq-question:hover { background: var(--surf2); }
+    .faq-question .icon { font-size: 1.2rem; transition: transform .3s; color: var(--txt3); }
+    .faq-item.active .faq-question .icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      background: var(--bg2);
+    }
+    .faq-answer-inner { padding: 0 1.25rem 1rem; color: var(--txt2); font-size: .9rem; }
+    .faq-item.active .faq-answer { max-height: 300px; }
+    .faq-item.active .faq-answer-inner { padding: 1rem 1.25rem 1rem; }
+    .disclaimer-box {
+      background: #2a1f0a;
+      border: 1px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .disclaimer-box p { color: #f5d78e; font-size: .9rem; margin-bottom: .5rem; }
+    .disclaimer-box strong { color: var(--yellow); }
+    .update-note { font-size: .8rem; color: var(--txt3); margin-top: 1rem; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--txt3);
+      font-size: .85rem;
+    }
+    footer a { color: var(--txt2); }
+    @media (min-width: 600px) {
+      html { font-size: 16px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">Elite<span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
+      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <nav>
+        <a href="/">Início</a>
+        <a href="/paginas/acoes">Ações</a>
+      </nav>
     </div>
   </header>
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/acoes">Ações</a><span>/</span>
+      <a href="/">Início</a> <span>/</span>
+      <a href="/paginas/acoes">Ações</a> <span>/</span>
       <span>MDIA3</span>
     </nav>
-    <div class="update-badge">Última atualização: maio de 2026</div>
     <h1>M. Dias Branco (MDIA3): Preço Teto e Dividendos pelo Método Bazin</h1>
-    <p>Página educativa para análise fundamentalista de MDIA3 com foco no Método Bazin. Ferramenta de estudo para investidores que desejam compreender o cálculo de preço teto com base em dividendos históricos.</p>
+    <p>Página educativa sobre a ação MDIA3 da M. Dias Branco. Aqui você aprende a calcular o preço teto pelo Método Bazin, entende o histórico de dividendos e acessa ferramentas de análise fundamentalista. Nenhuma informação aqui constitui recomendação de investimento.</p>
+    <p class="update-note">Última atualização: maio de 2026</p>
 
     <section>
       <h2>Sobre M. Dias Branco (MDIA3)</h2>
-      <p>A M. Dias Branco é uma das maiores empresas de alimentos do Brasil, com sede em Fortaleza (CE). Fundada em 1953, atua na produção e comercialização de biscoitos, massas, farinhas, margarinas e outros produtos alimentícios. Suas marcas incluem Piraquê, Vitarella, Adria e Richester, com presença nacional e exportação para diversos países.</p>
-      <p>A companhia possui capital aberto desde 2006 e suas ações são negociadas no Novo Mercado da B3 sob o ticker MDIA3. A empresa é reconhecida por sua política de distribuição de dividendos, sendo uma das opções para investidores focados em renda passiva.</p>
+      <p>A M. Dias Branco é uma das maiores empresas de alimentos do Brasil, com sede em Fortaleza (CE). Fundada em 1953, atua na produção e comercialização de biscoitos, massas, farinhas, margarinas e snacks, com marcas como Piraquê, Vitarella, Adria e Richester. A companhia possui unidades industriais em vários estados e exporta para dezenas de países.</p>
+      <p>Suas ações são negociadas na B3 sob o ticker MDIA3, com tag along de 100% e liquidez moderada. A empresa tem histórico de distribuição de dividendos, sendo uma opção para investidores focados em renda passiva.</p>
       <div class="card-grid">
         <div class="card"><div class="label">Ticker</div><div class="value">MDIA3</div></div>
         <div class="card"><div class="label">Setor</div><div class="value">Alimentos</div></div>
-        <div class="card"><div class="label">Segmento B3</div><div class="value">Novo Mercado</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Ação ON</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Alimentos Processados</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação Ordinária</div></div>
       </div>
     </section>
 
@@ -163,14 +279,17 @@
       <h2>Dados Cadastrais de MDIA3</h2>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+          <thead>
+            <tr><th>Campo</th><th>Informação</th></tr>
+          </thead>
           <tbody>
             <tr><td>Razão Social</td><td>M. Dias Branco S.A. Indústria e Comércio de Alimentos</td></tr>
-            <tr><td>CNPJ</td><td>07.207.996/0001-50</td></tr>
+            <tr><td>CNPJ</td><td>07.206.050/0001-57</td></tr>
             <tr><td>Setor B3</td><td>Consumo não Cíclico / Alimentos Processados</td></tr>
-            <tr><td>Segmento</td><td>Novo Mercado</td></tr>
+            <tr><td>Segmento B3</td><td>Alimentos Processados</td></tr>
             <tr><td>Tipo de Ação</td><td>Ordinária (ON) com direito a voto</td></tr>
-            <tr><td>Data de Abertura</td><td>2006</td></tr>
+            <tr><td>Tag Along</td><td>100%</td></tr>
+            <tr><td>Listagem</td><td>B3 (Nível 1)</td></tr>
           </tbody>
         </table>
       </div>
@@ -178,26 +297,36 @@
 
     <section>
       <h2>Como Calcular o Preço Teto de MDIA3 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada (yield) e calcula quanto pagaria para obter esse retorno.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
-      <p>Para MDIA3, a taxa Bazin sugerida é de <strong>6% ao ano</strong>. Isso significa que o investidor busca um retorno de 6% em dividendos sobre o valor investido.</p>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A ideia é que o investidor defina uma taxa de retorno desejada (geralmente 6% ao ano) e calcule o valor máximo que pagaria pela ação para atingir esse rendimento.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de retorno desejada (em decimal).</p>
       <div class="highlight-box">
-        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-        Suponha que MDIA3 tenha pago R$ 3,00 em dividendos nos últimos 12 meses. Pelo Método Bazin: Preço Teto = R$ 3,00 ÷ 0,06 = <strong>R$ 50,00</strong>. Este número é apenas uma simulação educativa e não reflete dados reais ou futuros.</p>
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
+        <p>Suponha que MDIA3 tenha pago R$ 3,00 de dividendos nos últimos 12 meses. Considerando uma taxa de 6% (0,06), o preço teto seria: R$ 3,00 ÷ 0,06 = <strong>R$ 50,00</strong>.</p>
+        <p>Este é apenas um exemplo numérico hipotético. Os dividendos reais variam e devem ser consultados em fontes oficiais.</p>
       </div>
+      <p>O método não considera outros fatores como valuation, endividamento ou perspectivas de crescimento. É uma ferramenta entre várias disponíveis para análise fundamentalista.</p>
     </section>
 
     <section>
       <h2>Histórico de Dividendos da MDIA3</h2>
-      <p>A M. Dias Branco possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado. Historicamente, a empresa tem distribuído proventos de forma semestral ou anual, com valores variando conforme o desempenho financeiro.</p>
-      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. Juros sobre Capital Próprio (JCP) sofrem tributação de 15% na fonte. Consulte o app Elite Ações para dados históricos completos e atualizados.</p>
+      <p>A M. Dias Branco possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado, conforme estatuto social. Historicamente, a empresa tem distribuído dividendos de forma semestral ou anual, com valores variando conforme os resultados.</p>
+      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme Lei 9.249/95. É importante consultar o histórico completo de proventos no site da B3 ou no aplicativo Elite Ações para dados atualizados.</p>
+      <p>Não apresentamos valores atuais hardcoded nesta página, pois eles mudam com o tempo. Utilize ferramentas de dados em tempo real para sua análise.</p>
     </section>
 
     <section>
       <h2>Como Acessar os Dados Atualizados de MDIA3</h2>
-      <div class="cta-section">
-        <p>No app Elite Ações você encontra dividendos históricos, preço teto calculado automaticamente, gráficos e análises fundamentalistas de MDIA3 e centenas de outros ativos. Tudo em uma interface simples e educativa.</p>
-        <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
+      <p>O aplicativo Elite Ações oferece uma plataforma completa para acompanhar MDIA3 em tempo real. Você encontra:</p>
+      <ul style="margin-bottom:1rem; padding-left:1.5rem; color:var(--txt2);">
+        <li>Histórico de dividendos dos últimos 12 meses</li>
+        <li>Preço teto calculado automaticamente pelo Método Bazin</li>
+        <li>Gráficos de desempenho e indicadores fundamentalistas</li>
+        <li>Notícias e comunicados relevantes</li>
+      </ul>
+      <p style="margin-bottom:1.5rem;">Baixe agora e tenha na palma da mão todas as ferramentas para sua análise.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+        <a href="/" class="btn btn-outline">Saiba mais</a>
       </div>
     </section>
 
@@ -205,67 +334,83 @@
       <h2>Perguntas Frequentes sobre MDIA3</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">O que é o preço teto de MDIA3?</button>
-          <div class="faq-answer"><p>O preço teto é o valor máximo que um investidor pagaria por uma ação com base no Método Bazin, calculado dividindo os dividendos anuais pela taxa de retorno desejada (6% no caso).</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>O que é o preço teto de MDIA3 pelo Método Bazin?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme o Método Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06.</div>
+          </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como calcular o preço teto de MDIA3 pelo Método Bazin?</button>
-          <div class="faq-answer"><p>Divida os dividendos pagos nos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00.</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Como calcular o preço teto de MDIA3?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Divida o total de dividendos pagos por MDIA3 nos últimos 12 meses por 0,06 (taxa de 6% ao ano). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00.</div>
+          </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">MDIA3 paga dividendos regularmente?</button>
-          <div class="faq-answer"><p>Sim, a M. Dias Branco possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, conforme política da companhia.</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>MDIA3 paga dividendos regularmente?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">M. Dias Branco possui histórico de distribuição de dividendos, geralmente de forma semestral ou anual, dependendo dos resultados. A política de dividendos é definida pela administração e aprovada em assembleia.</div>
+          </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual a taxa Bazin usada para MDIA3?</button>
-          <div class="faq-answer"><p>A taxa Bazin sugerida é de 6% ao ano, que representa o retorno desejado em dividendos sobre o preço pago pela ação.</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Qual a taxa de dividendos ideal para MDIA3 no Método Bazin?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">O Método Bazin utiliza uma taxa de 6% ao ano como referência para calcular o preço teto. Essa taxa é uma escolha pessoal do investidor e pode variar conforme seu objetivo de rendimento.</div>
+          </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de MDIA3?</button>
-          <div class="faq-answer"><p>No app Elite Ações você encontra dividendos históricos, preço teto calculado e análises fundamentalistas atualizadas.</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Onde encontrar dados atualizados de dividendos de MDIA3?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Você pode consultar os dados atualizados no aplicativo Elite Ações, que reúne histórico de dividendos, preço teto e outras informações fundamentalistas em tempo real.</div>
+          </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">O Método Bazin é garantia de retorno?</button>
-          <div class="faq-answer"><p>Não. O Método Bazin é uma ferramenta educativa baseada em dividendos passados. Rentabilidade futura não é garantida. Consulte um profissional CVM.</p></div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>O Método Bazin é recomendado para MDIA3?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">O Método Bazin é uma ferramenta educativa de análise. Não fazemos recomendações de investimento. Cada investidor deve avaliar seus próprios objetivos e consultar um profissional habilitado pela CVM.</div>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
       <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer">
+      <div class="disclaimer-box">
         <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
         <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
         <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
       </div>
     </section>
-
-    <div class="cta-section">
-      <p>Baixe o app Elite Ações e tenha acesso a ferramentas educativas para sua análise fundamentalista.</p>
-      <a href="/" class="btn btn-primary">Acessar App</a>
-    </div>
   </main>
-  <footer class="footer">
-    <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-    <p>Todos os dados são fornecidos apenas para fins educacionais.</p>
+  <footer>
+    <div class="container">
+      <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
+      <p><a href="/">Início</a> | <a href="/paginas/acoes">Ações</a></p>
+    </div>
   </footer>
   <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
-          el.previousElementSibling.setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-          this.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('active');
+    }
   </script>
 </body>
 </html>

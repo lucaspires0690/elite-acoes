@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESK3 Desktop — Dividendos | Elite Ações</title>
+    <meta name="description" content="Aprenda a calcular o preço teto de DESK3 (Desktop) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="canonical" href="https://eliteacoes.com/acoes/desk3">
+    <meta property="og:title" content="DESK3 Desktop — Dividendos | Elite Ações">
+    <meta property="og:description" content="Aprenda a calcular o preço teto de DESK3 (Desktop) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <meta property="og:url" content="https://eliteacoes.com/acoes/desk3">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DESK3 Desktop — Dividendos | Elite Ações">
+    <meta name="twitter:description" content="Aprenda a calcular o preço teto de DESK3 (Desktop) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;font-size:14px;min-height:100vh}
+        @media(min-width:768px){body{font-size:16px}}
+        a{color:var(--green);text-decoration:none;transition:opacity .2s}
+        a:hover{opacity:.8}
+        img{max-width:100%;height:auto;display:block}
+        .container{max-width:1120px;margin:0 auto;padding:0 20px}
+        @media(min-width:768px){.container{padding:0 32px}}
+        /* header */
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+        header .container{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
+        .logo span{color:var(--green)}
+        .nav-link{color:var(--txt2);font-size:.875rem;font-weight:500;padding:8px 16px;border-radius:8px;transition:background .2s}
+        .nav-link:hover{background:var(--surf);color:var(--txt)}
+        /* breadcrumb */
+        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:16px 0 8px;font-size:.8125rem;color:var(--txt3)}
+        .breadcrumb li+li::before{content:"/";margin-right:6px;color:var(--txt3)}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb .active{color:var(--txt)}
+        /* headings */
+        h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:12px;letter-spacing:-.02em}
+        @media(min-width:768px){h1{font-size:2rem}}
+        h2{font-size:1.25rem;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:8px}
+        @media(min-width:768px){h2{font-size:1.5rem;margin-top:56px}}
+        h3{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--txt2)}
+        p{margin-bottom:16px;color:var(--txt2)}
+        .small{font-size:.8125rem;color:var(--txt3)}
+        /* cards */
+        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+        @media(min-width:640px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:16px}
+        .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:4px}
+        .card .value{font-weight:600;color:var(--txt);font-size:.9375rem}
+        .card .value .mono{font-family:var(--fm);font-weight:500}
+        /* table */
+        .data-table{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:.875rem}
+        .data-table th,.data-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+        .data-table th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:.75rem;letter-spacing:.04em}
+        .data-table td{color:var(--txt2)}
+        .data-table tr:last-child td{border-bottom:none}
+        /* highlight box */
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:.875rem;color:var(--txt2)}
+        .highlight-box strong{color:var(--yellow)}
+        /* disclaimer */
+        .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin-bottom:24px}
+        .disclaimer-box p{font-size:.8125rem;color:var(--txt2);margin-bottom:8px}
+        .disclaimer-box p:last-child{margin-bottom:0}
+        .disclaimer-box strong{color:var(--yellow)}
+        /* cta button */
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 28px;border-radius:10px;font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none}
+        .btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,168,.25)}
+        .btn-primary{background:var(--green);color:#0a0e1a}
+        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
+        .cta-wrap{text-align:center;margin:32px 0}
+        .cta-wrap p{margin-bottom:12px;color:var(--txt2)}
+        /* faq */
+        .faq-item{border-bottom:1px solid var(--border);padding:0}
+        .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:.9375rem;font-weight:500;text-align:left;padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question::after{content:"+";font-size:1.25rem;color:var(--txt3);transition:transform .2s;font-weight:300}
+        .faq-item.open .faq-question::after{content:"−"}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0}
+        .faq-item.open .faq-answer{max-height:300px;padding:0 0 16px}
+        .faq-answer p{font-size:.875rem;color:var(--txt2);margin-bottom:0}
+        /* footer */
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 0;margin-top:48px;text-align:center;font-size:.8125rem;color:var(--txt3)}
+        footer a{color:var(--txt2)}
+        footer .footer-disclaimer{max-width:600px;margin:12px auto 0;font-size:.75rem;color:var(--txt3)}
+        /* update */
+        .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:.75rem;color:var(--txt3);margin-bottom:16px;font-family:var(--fm)}
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline":"Desktop (DESK3): Preço Teto e Dividendos pelo Método Bazin",
+      "description":"Aprenda a calcular o preço teto de DESK3 (Desktop) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+      "datePublished":"2026-05-18",
+      "dateModified":"2026-05-18",
+      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "mainEntityOfPage":"https://eliteacoes.com/acoes/desk3"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+        {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
+        {"@type":"ListItem","position":3,"name":"DESK3"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"O que é o preço teto de DESK3?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de DESK3 é o valor máximo que um investidor pagaria pela ação para obter um rendimento de 6% ao ano em dividendos, de acordo com o Método Bazin. Esse valor é calculado dividindo os dividendos dos últimos 12 meses por 0,06."}},
+        {"@type":"Question","name":"Como calcular o preço teto de DESK3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O cálculo do preço teto de DESK3 pelo Método Bazin é feito com a fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos anuais forem de R$ 1,20, o preço teto seria R$ 20,00 (valor hipotético para ilustração)."}},
+        {"@type":"Question","name":"DESK3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Desktop (DESK3) possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Os proventos são definidos em assembleia e podem variar. Consulte o app Elite Ações para dados atualizados."}},
+        {"@type":"Question","name":"Qual a taxa Bazin indicada para DESK3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin utilizada para DESK3 é de 6% ao ano, conforme dados de referência do mercado. Essa taxa representa o rendimento mínimo desejado em dividendos para calcular o preço teto."}},
+        {"@type":"Question","name":"Onde encontrar dados atualizados de DESK3?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de DESK3, como dividendos pagos, preço teto e indicadores fundamentalistas, estão disponíveis no aplicativo Elite Ações. A plataforma reúne informações da B3 e CVM para análise educativa."}},
+        {"@type":"Question","name":"O Método Bazin é recomendado para DESK3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa de análise fundamentalista, não uma recomendação de investimento. Cada investidor deve avaliar seus próprios objetivos e riscos. Consulte um profissional habilitado pela CVM antes de decidir."}}
+      ]
+    }
+    </script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/" class="logo">Elite<span>Ações</span></a>
+        <nav>
+            <a href="/paginas/acoes" class="nav-link">Ações</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/">Início</a></li>
+            <li><a href="/paginas/acoes">Ações</a></li>
+            <li class="active">DESK3</li>
+        </ol>
+    </nav>
+
+    <span class="update-badge">Última atualização: maio de 2026</span>
+    <h1>Desktop (DESK3): Preço Teto e Dividendos pelo Método Bazin</h1>
+
+    <!-- H2-1 -->
+    <section>
+        <h2>Sobre Desktop (DESK3)</h2>
+        <p>A Desktop (DESK3) é uma empresa brasileira do setor de telecomunicações, com foco em soluções de conectividade e infraestrutura de rede. Listada na B3 desde 2021, a companhia atua na prestação de serviços de internet banda larga, dados e comunicação para clientes corporativos e residenciais, com presença em diversas regiões do país.</p>
+        <p>Com uma estratégia de expansão orgânica e aquisições seletivas, a Desktop busca consolidar sua posição no mercado de telecomunicações. Para investidores que utilizam análise fundamentalista, a empresa é frequentemente avaliada por sua capacidade de geração de caixa e política de distribuição de dividendos.</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="label">Ticker</div>
+                <div class="value"><span class="mono">DESK3</span></div>
+            </div>
+            <div class="card">
+                <div class="label">Setor</div>
+                <div class="value">Telecomunicações</div>
+            </div>
+            <div class="card">
+                <div class="label">Segmento B3</div>
+                <div class="value">Telecomunicações</div>
+            </div>
+            <div class="card">
+                <div class="label">Tipo</div>
+                <div class="value">Ação</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- H2-2 -->
+    <section>
+        <h2>Dados Cadastrais de DESK3</h2>
+        <p>As informações cadastrais abaixo são baseadas em dados públicos disponibilizados pela B3 e pela CVM (Comissão de Valores Mobiliários). Servem como referência para identificação do ativo no mercado.</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nome da Empresa</td>
+                    <td>Desktop S.A.</td>
+                </tr>
+                <tr>
+                    <td>CNPJ</td>
+                    <td>03.788.988/0001-78</td>
+                </tr>
+                <tr>
+                    <td>Setor</td>
+                    <td>Telecomunicações</td>
+                </tr>
+                <tr>
+                    <td>Segmento</td>
+                    <td>Telecomunicações</td>
+                </tr>
+                <tr>
+                    <td>Tipo de Ativo</td>
+                    <td>Ação Ordinária (ON)</td>
+                </tr>
+                <tr>
+                    <td>Código ISIN</td>
+                    <td>BRDESKACNOR6</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- H2-3 -->
+    <section>
+        <h2>Como Calcular o Preço Teto de DESK3 pelo Método Bazin</h2>
+        <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa de análise fundamentalista que ajuda o investidor a estimar um preço teto para uma ação com base nos dividendos pagos. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 6% ao ano) e calcula-se quanto se pagaria para obter esse rendimento.</p>
+        <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (0,06)</p>
+        <div class="highlight-box">
+            <strong>Exemplo hipotético para ilustração (valores fictícios):</strong><br>
+            Suponha que DESK3 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. Aplicando a fórmula: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>. Esse seria o preço teto hipotético. Lembre-se: este é um exemplo meramente ilustrativo e não reflete dados reais ou atuais.
+        </div>
+        <p>O investidor pode comparar esse preço teto com a cotação de mercado para tomar suas próprias decisões, sempre considerando que o método não garante rentabilidade futura.</p>
+    </section>
+
+    <!-- H2-4 -->
+    <section>
+        <h2>Histórico de Dividendos da DESK3</h2>
+        <p>A Desktop (DESK3) possui uma política de distribuição de dividendos que segue a legislação societária brasileira. A empresa pode distribuir proventos na forma de dividendos ou juros sobre capital próprio (JCP), conforme definido em assembleia de acionistas. Os valores pagos variam de acordo com o lucro apurado e a estratégia de alocação de capital.</p>
+        <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. Já os JCP sofrem tributação de 15% na fonte, mas podem ser compensados. O histórico de pagamentos pode ser consultado em fontes oficiais como a B3 ou o site de relações com investidores da empresa.</p>
+        <p>É importante destacar que o histórico passado não é garantia de pagamentos futuros. A análise fundamentalista deve considerar a saúde financeira da empresa e suas perspectivas.</p>
+    </section>
+
+    <!-- H2-5 -->
+    <section>
+        <h2>Como Acessar os Dados Atualizados de DESK3</h2>
+        <p>Para obter informações em tempo real sobre DESK3, como dividendos pagos, preço teto calculado e indicadores fundamentalistas, o investidor pode utilizar o aplicativo Elite Ações. A plataforma reúne dados da B3 e CVM de forma organizada e educativa.</p>
+        <div class="cta-wrap">
+            <p>No app Elite Ações você encontra:</p>
+            <p style="font-size:.875rem;color:var(--txt2)">Histórico de dividendos • Preço teto atualizado • Análise fundamentalista • Comparação com pares</p>
+            <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+        </div>
+    </section>
+
+    <!-- H2-6 -->
+    <section>
+        <h2>Perguntas Frequentes sobre DESK3</h2>
+        <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">O que é o preço teto de DESK3?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">O preço teto de DESK3 é o valor máximo que um investidor pagaria pela ação para obter um rendimento de 6% ao ano em dividendos, de acordo com o Método Bazin. Esse valor é calculado dividindo os dividendos dos últimos 12 meses por 0,06.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">Como calcular o preço teto de DESK3 pelo Método Bazin?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">O cálculo do preço teto de DESK3 pelo Método Bazin é feito com a fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos anuais forem de R$ 1,20, o preço teto seria R$ 20,00 (valor hipotético para ilustração).</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">DESK3 paga dividendos regularmente?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">A Desktop (DESK3) possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Os proventos são definidos em assembleia e podem variar. Consulte o app Elite Ações para dados atualizados.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">Qual a taxa Bazin indicada para DESK3?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">A taxa Bazin utilizada para DESK3 é de 6% ao ano, conforme dados de referência do mercado. Essa taxa representa o rendimento mínimo desejado em dividendos para calcular o preço teto.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de DESK3?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Os dados atualizados de DESK3, como dividendos pagos, preço teto e indicadores fundamentalistas, estão disponíveis no aplicativo Elite Ações. A plataforma reúne informações da B3 e CVM para análise educativa.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" itemprop="name">O Método Bazin é recomendado para DESK3?</button>
+                <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">O Método Bazin é uma ferramenta educativa de análise fundamentalista, não uma recomendação de investimento. Cada investidor deve avaliar seus próprios objetivos e riscos. Consulte um profissional habilitado pela CVM antes de decidir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- H2-7 -->
+    <section>
+        <h2>Aviso Legal e Disclaimer</h2>
+        <div class="disclaimer-box">
+            <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+            <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+            <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+        </div>
+    </section>
+
+    <div class="cta-wrap">
+        <p>Faça sua própria análise com dados atualizados</p>
+        <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Elite Ações. Todos os direitos reservados.</p>
+        <p class="footer-disclaimer">Esta página não constitui recomendação de investimento. Consulte sempre um profissional habilitado pela CVM.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const item = this.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+</script>
+</body>
+</html>

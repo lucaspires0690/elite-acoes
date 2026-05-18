@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPA4 Alpargatas — Dividendos | Elite Ações</title>
+  <meta name="description" content="Aprenda a calcular o preço teto de ALPA4 (Alpargatas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="canonical" href="https://eliteacoes.com/acoes/alpa4">
+  <meta property="og:title" content="ALPA4 Alpargatas — Dividendos | Elite Ações">
+  <meta property="og:description" content="Aprenda a calcular o preço teto de ALPA4 (Alpargatas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <meta property="og:url" content="https://eliteacoes.com/acoes/alpa4">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ALPA4 Alpargatas — Dividendos | Elite Ações">
+  <meta name="twitter:description" content="Aprenda a calcular o preço teto de ALPA4 (Alpargatas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:14px}
+    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:var(--green);text-decoration:none;transition:color .2s}
+    a:hover{color:#fff}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:800px;margin:0 auto;padding:0 1.25rem}
+    /* header */
+    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    header .container{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
+    .logo span{color:var(--green)}
+    .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s}
+    .nav-link:hover{background:var(--surf);color:var(--txt)}
+    /* breadcrumb */
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:.375rem;font-size:.75rem;color:var(--txt3);padding:1rem 0 .5rem;list-style:none}
+    .breadcrumb li+li::before{content:"/";margin-right:.375rem;color:var(--txt3)}
+    .breadcrumb a{color:var(--txt2)}
+    .breadcrumb a:hover{color:var(--green)}
+    .breadcrumb .active{color:var(--txt)}
+    /* headings */
+    h1{font-size:1.625rem;font-weight:700;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+    h2{font-size:1.25rem;font-weight:600;margin:2rem 0 .75rem;padding-bottom:.375rem;border-bottom:1px solid var(--border);letter-spacing:-.01em}
+    h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .5rem}
+    p{margin-bottom:.875rem;color:var(--txt2);font-size:.9375rem}
+    /* cards */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1rem 0}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+    .card .label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);margin-bottom:.25rem}
+    .card .value{font-family:var(--fm);font-size:1rem;font-weight:500;color:var(--txt)}
+    /* table */
+    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
+    .data-table th,.data-table td{text-align:left;padding:.625rem .75rem;border-bottom:1px solid var(--border)}
+    .data-table th{font-weight:600;color:var(--txt2);background:var(--surf);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+    .data-table td{color:var(--txt)}
+    .data-table tr:last-child td{border-bottom:none}
+    /* highlight */
+    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem 1.125rem;margin:1.25rem 0}
+    .highlight-box p{color:var(--txt);font-size:.875rem;margin-bottom:.375rem}
+    .highlight-box strong{color:var(--yellow)}
+    /* disclaimer */
+    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
+    .disclaimer-box p{font-size:.8125rem;color:var(--txt);margin-bottom:.5rem;line-height:1.5}
+    .disclaimer-box p:last-child{margin-bottom:0}
+    /* faq */
+    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:.9375rem;font-weight:500;text-align:left;cursor:pointer;padding:.25rem 0;min-height:44px}
+    .faq-question:hover{color:var(--green)}
+    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 .5rem}
+    .faq-item.active .faq-answer{max-height:300px;padding:.5rem .5rem .25rem}
+    .faq-answer p{font-size:.875rem;color:var(--txt2);margin-bottom:.375rem}
+    /* cta */
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#0a0e1a;font-weight:600;font-size:.9375rem;padding:.75rem 1.5rem;border-radius:10px;min-height:44px;border:none;cursor:pointer;transition:background .2s,transform .1s}
+    .cta-btn:hover{background:#00c49a;color:#0a0e1a;transform:scale(1.02)}
+    .cta-wrap{text-align:center;margin:1.5rem 0}
+    /* footer */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 0;margin-top:2.5rem;text-align:center}
+    footer p{font-size:.75rem;color:var(--txt3);margin-bottom:.25rem}
+    footer a{color:var(--txt2)}
+    footer a:hover{color:var(--green)}
+    /* update */
+    .update-note{font-size:.75rem;color:var(--txt3);margin-top:-.25rem;margin-bottom:1rem}
+    /* responsive */
+    @media(min-width:640px){
+      html{font-size:15px}
+      h1{font-size:2rem}
+      h2{font-size:1.375rem}
+      .card-grid{grid-template-columns:repeat(4,1fr)}
+    }
+    @media(min-width:1024px){
+      html{font-size:16px}
+      .container{padding:0 2rem}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Alpargatas (ALPA4): Preço Teto e Dividendos pelo Método Bazin",
+    "description":"Aprenda a calcular o preço teto de ALPA4 (Alpargatas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+    "datePublished":"2026-05-18",
+    "dateModified":"2026-05-18",
+    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "mainEntityOfPage":"https://eliteacoes.com/acoes/alpa4"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+      {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
+      {"@type":"ListItem","position":3,"name":"ALPA4"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Qual o preço teto de ALPA4 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se ALPA4 pagou R$ 1,20 de dividendos nos últimos 12 meses, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para valores atualizados."}},
+      {"@type":"Question","name":"ALPA4 paga dividendos?","acceptedAnswer":{"@type":"Answer","text":"Sim, Alpargatas (ALPA4) possui histórico de distribuição de dividendos e juros sobre capital próprio. A política de dividendos da empresa é definida em assembleia. Os proventos são isentos de Imposto de Renda para pessoas físicas (Lei 9.249/95)."}},
+      {"@type":"Question","name":"Como usar o Método Bazin para ALPA4?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin calcula o preço teto: divida os dividendos anuais por ação pela taxa de retorno desejada (6% para ALPA4). Exemplo hipotético: dividendos de R$ 1,20 resultam em preço teto de R$ 20,00. Use o app Elite Ações para dados em tempo real."}},
+      {"@type":"Question","name":"Onde encontrar a análise fundamentalista de ALPA4?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista completa de ALPA4 está disponível no app Elite Ações, com dados de dividendos, preço teto, indicadores financeiros e histórico de proventos. Baixe gratuitamente."}},
+      {"@type":"Question","name":"Alpargatas é uma boa empresa para investir?","acceptedAnswer":{"@type":"Answer","text":"Não fazemos recomendações de investimento. A Alpargatas é uma empresa do setor de calçados com presença consolidada. Cada investidor deve avaliar seus objetivos e perfil de risco antes de decidir. Consulte um profissional habilitado pela CVM."}},
+      {"@type":"Question","name":"Qual a taxa Bazin indicada para ALPA4?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin sugerida para ALPA4 é de 6% ao ano, conforme dados do mercado. Essa taxa representa o retorno desejado em dividendos. O cálculo do preço teto usa essa taxa como divisor dos dividendos anuais."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <a href="/" class="nav-link">App</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="https://eliteacoes.com/">Início</a></li>
+        <li><a href="https://eliteacoes.com/paginas/acoes">Ações</a></li>
+        <li class="active" aria-current="page">ALPA4</li>
+      </ol>
+    </nav>
+
+    <h1>Alpargatas (ALPA4): Preço Teto e Dividendos pelo Método Bazin</h1>
+    <p class="update-note">Última atualização: maio de 2026</p>
+
+    <!-- H2-1 -->
+    <section>
+      <h2>Sobre Alpargatas (ALPA4)</h2>
+      <p>A Alpargatas S.A. é uma empresa brasileira fundada em 1907, com sede em São Paulo, reconhecida mundialmente por suas marcas de calçados, como Havaianas, Dupé e Osklen. Com presença em mais de 130 países, a companhia é referência no setor calçadista e tem seu capital aberto na B3 sob o ticker ALPA4.</p>
+      <p>No segmento de calçados, a Alpargatas combina inovação e tradição, mantendo operações industriais e comerciais que geram valor aos acionistas. A empresa possui histórico de distribuição de proventos, sendo acompanhada por investidores que utilizam metodologias como o Método Bazin para análise fundamentalista.</p>
+      <div class="card-grid">
+        <div class="card"><div class="label">Ticker</div><div class="value">ALPA4</div></div>
+        <div class="card"><div class="label">Setor</div><div class="value">Calçados</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Consumo</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+      </div>
+    </section>
+
+    <!-- H2-2 -->
+    <section>
+      <h2>Dados Cadastrais de ALPA4</h2>
+      <p>Os dados cadastrais da Alpargatas são públicos e registrados na B3 e na CVM. A empresa está listada no segmento de listagem Novo Mercado, com ações ordinárias e preferenciais.</p>
+      <table class="data-table">
+        <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+        <tbody>
+          <tr><td>Nome Empresarial</td><td>Alpargatas S.A.</td></tr>
+          <tr><td>CNPJ</td><td>61.079.117/0001-05</td></tr>
+          <tr><td>Setor de Atuação</td><td>Calçados</td></tr>
+          <tr><td>Segmento B3</td><td>Consumo Cíclico</td></tr>
+          <tr><td>Tipo de Ação</td><td>Preferencial (PN)</td></tr>
+          <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- H2-3 -->
+    <section>
+      <h2>Como Calcular o Preço Teto de ALPA4 pelo Método Bazin</h2>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma estratégia de valuation focada em dividendos. A premissa é simples: o investidor define uma taxa de retorno desejada (yield) e calcula o preço máximo a pagar por uma ação com base nos dividendos distribuídos.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
+      <p>Para ALPA4, a taxa Bazin sugerida é de <strong>6% ao ano</strong>. Isso significa que o investidor busca um retorno de 6% em dividendos sobre o valor investido.</p>
+      <div class="highlight-box">
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
+        <p>Se ALPA4 pagou R$ 1,20 de dividendos nos últimos 12 meses, o preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.</p>
+        <p>Este é apenas um exemplo didático. Os dividendos reais podem variar. Consulte o app Elite Ações para dados atualizados.</p>
+      </div>
+    </section>
+
+    <!-- H2-4 -->
+    <section>
+      <h2>Histórico de Dividendos da ALPA4</h2>
+      <p>A Alpargatas possui uma política de dividendos que prevê a distribuição de proventos aos acionistas, incluindo dividendos e juros sobre capital próprio (JCP). A empresa costuma pagar dividendos semestralmente, com valores que variam conforme o lucro e a decisão do conselho.</p>
+      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. Já os JCP sofrem retenção de 15% na fonte, mas podem ser compensados na declaração anual. O histórico completo de proventos está disponível no app Elite Ações.</p>
+      <p>Importante: dados de dividendos passados não garantem pagamentos futuros. A empresa pode alterar sua política de distribuição a qualquer momento.</p>
+    </section>
+
+    <!-- H2-5 -->
+    <section>
+      <h2>Como Acessar os Dados Atualizados de ALPA4</h2>
+      <p>Para consultar dividendos reais, preço teto calculado em tempo real e outras métricas fundamentalistas de ALPA4, baixe o app Elite Ações. A ferramenta reúne dados da B3 e CVM de forma organizada e educativa.</p>
+      <p>No app você encontra: histórico de proventos, calculadora do Método Bazin, indicadores financeiros, notícias e comparativos setoriais. Tudo em uma interface simples e gratuita.</p>
+      <div class="cta-wrap">
+        <a href="/" class="cta-btn">Baixar App Elite Ações →</a>
+      </div>
+    </section>
+
+    <!-- H2-6 -->
+    <section>
+      <h2>Perguntas Frequentes sobre ALPA4</h2>
+      <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">Qual o preço teto de ALPA4 pelo Método Bazin?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se ALPA4 pagou R$ 1,20 de dividendos nos últimos 12 meses, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para valores atualizados.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">ALPA4 paga dividendos?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Sim, Alpargatas (ALPA4) possui histórico de distribuição de dividendos e juros sobre capital próprio. A política de dividendos da empresa é definida em assembleia. Os proventos são isentos de Imposto de Renda para pessoas físicas (Lei 9.249/95).</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">Como usar o Método Bazin para ALPA4?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">O Método Bazin calcula o preço teto: divida os dividendos anuais por ação pela taxa de retorno desejada (6% para ALPA4). Exemplo hipotético: dividendos de R$ 1,20 resultam em preço teto de R$ 20,00. Use o app Elite Ações para dados em tempo real.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">Onde encontrar a análise fundamentalista de ALPA4?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A análise fundamentalista completa de ALPA4 está disponível no app Elite Ações, com dados de dividendos, preço teto, indicadores financeiros e histórico de proventos. Baixe gratuitamente.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">Alpargatas é uma boa empresa para investir?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Não fazemos recomendações de investimento. A Alpargatas é uma empresa do setor de calçados com presença consolidada. Cada investidor deve avaliar seus objetivos e perfil de risco antes de decidir. Consulte um profissional habilitado pela CVM.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false">
+            <span itemprop="name">Qual a taxa Bazin indicada para ALPA4?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A taxa Bazin sugerida para ALPA4 é de 6% ao ano, conforme dados do mercado. Essa taxa representa o retorno desejado em dividendos. O cálculo do preço teto usa essa taxa como divisor dos dividendos anuais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- H2-7 -->
+    <section>
+      <h2>Aviso Legal e Disclaimer</h2>
+      <div class="disclaimer-box">
+        <p>⛔ Esta página tem caráter exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      </div>
+    </section>
+
+    <div class="cta-wrap">
+      <a href="/" class="cta-btn">Acessar App Elite Ações →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+      <p><a href="/">Elite Ações</a> | <a href="/paginas/acoes">Ações</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+        this.setAttribute('aria-expanded', !isActive);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -22,8 +22,8 @@
       "@type": "Article",
       "headline": "FII V2 Prop (VVPR11): Preço Teto e Rendimentos pelo Método Bazin",
       "description": "Saiba como calcular o preço teto de VVPR11 (FII V2 Prop) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...",
-      "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "datePublished": "2026-05-18",
+      "dateModified": "2026-05-18",
       "author": {
         "@type": "Organization",
         "name": "Elite Ações",
@@ -53,12 +53,12 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "O que é VVPR11?", "acceptedAnswer": { "@type": "Answer", "text": "VVPR11 é o ticker do FII V2 Prop, um fundo imobiliário misto que investe em diferentes segmentos do mercado imobiliário." } },
-        { "@type": "Question", "name": "Como calcular o preço teto de VVPR11 pelo Método Bazin?", "acceptedAnswer": { "@type": "Answer", "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00." } },
-        { "@type": "Question", "name": "VVPR11 paga dividendos mensais?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, o FII V2 Prop distribui rendimentos mensalmente, conforme sua política de distribuição de resultados." } },
-        { "@type": "Question", "name": "Os dividendos de VVPR11 são isentos de IR?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, para pessoas físicas, os rendimentos de FIIs como VVPR11 são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa." } },
-        { "@type": "Question", "name": "Onde encontrar dados atualizados de VVPR11?", "acceptedAnswer": { "@type": "Answer", "text": "Você pode acessar dados atualizados de VVPR11 no aplicativo Elite Ações, que oferece análises fundamentalistas e informações de mercado." } },
-        { "@type": "Question", "name": "O Método Bazin é recomendado para VVPR11?", "acceptedAnswer": { "@type": "Answer", "text": "O Método Bazin é uma ferramenta educativa entre várias existentes. Não representa consenso do mercado e não substitui uma análise completa do investidor." } }
+        { "@type": "Question", "name": "O que é VVPR11?", "acceptedAnswer": { "@type": "Answer", "text": "VVPR11 é o ticker do FII V2 Prop, um fundo imobiliário do setor misto que investe em diferentes segmentos do mercado imobiliário." } },
+        { "@type": "Question", "name": "Como calcular o preço teto de VVPR11 pelo Método Bazin?", "acceptedAnswer": { "@type": "Answer", "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00." } },
+        { "@type": "Question", "name": "VVPR11 paga dividendos mensais?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, o FII V2 Prop distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita gerada pelos ativos." } },
+        { "@type": "Question", "name": "Qual o setor do FII V2 Prop?", "acceptedAnswer": { "@type": "Answer", "text": "O VVPR11 é classificado como fundo misto, investindo em lajes corporativas, galpões logísticos e outros ativos imobiliários." } },
+        { "@type": "Question", "name": "Os rendimentos de VVPR11 são isentos de IR?", "acceptedAnswer": { "@type": "Answer", "text": "Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa." } },
+        { "@type": "Question", "name": "Onde encontrar dados atualizados de VVPR11?", "acceptedAnswer": { "@type": "Answer", "text": "No app Elite Ações você encontra dados históricos de dividendos, preço teto e análises fundamentalistas do VVPR11." } }
       ]
     }
     </script>
@@ -76,81 +76,85 @@
         body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
         a{color:var(--green);text-decoration:none}
         a:hover{text-decoration:underline}
+        img{max-width:100%;height:auto}
         .container{max-width:720px;margin:0 auto;padding:0 16px}
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
         header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:18px;color:var(--txt)}
+        .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
         .logo span{color:var(--green)}
-        nav a{font-size:13px;padding:8px 12px;border-radius:8px;background:var(--surf);color:var(--txt2);transition:.2s}
-        nav a:hover{background:var(--surf2);color:var(--txt);text-decoration:none}
-        .breadcrumb{display:flex;gap:8px;flex-wrap:wrap;padding:16px 0;font-size:12px;color:var(--txt3)}
+        .nav-link{color:var(--txt2);font-size:13px;font-weight:500;padding:8px 12px;border-radius:8px;transition:background .2s}
+        .nav-link:hover{background:var(--surf);text-decoration:none}
+        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--txt3);padding:16px 0 8px}
         .breadcrumb a{color:var(--txt2)}
-        .breadcrumb a:hover{color:var(--green)}
-        h1{font-size:22px;font-weight:700;margin:0 0 12px;line-height:1.3}
-        h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--txt)}
-        p{margin:0 0 12px;color:var(--txt2)}
-        .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:12px}
-        .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
-        .card .value{font-size:15px;font-weight:600;color:var(--txt);margin-top:4px}
-        .table-wrap{overflow-x:auto;margin:16px 0}
-        table{width:100%;border-collapse:collapse;font-size:13px}
-        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
-        th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+        .breadcrumb span{color:var(--txt3)}
+        h1{font-size:22px;font-weight:700;line-height:1.3;margin:8px 0 12px;color:var(--txt)}
+        h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
+        h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
+        p{color:var(--txt2);margin-bottom:12px;font-size:14px}
+        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px}
+        .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:4px}
+        .card .value{font-size:15px;font-weight:600;color:var(--txt);font-family:var(--fm)}
+        table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+        th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+        th{color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
         td{color:var(--txt2)}
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt)}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0}
+        .highlight-box p{color:var(--txt);margin:0;font-size:13px}
         .highlight-box strong{color:var(--yellow)}
-        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:.2s;background:var(--green);color:var(--bg)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;background:var(--green);color:var(--bg);text-decoration:none}
         .btn:hover{opacity:.9;text-decoration:none}
-        .btn-ghost{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-        .btn-ghost:hover{background:var(--green-dim)}
+        .btn-outline{background:transparent;border:1px solid var(--green);color:var(--green)}
+        .btn-outline:hover{background:var(--green-dim)}
         .faq-item{border-bottom:1px solid var(--border);padding:0}
-        .faq-q{width:100%;background:none;border:none;padding:14px 0;font-size:14px;font-weight:500;color:var(--txt);cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;font-family:var(--fb)}
-        .faq-q:hover{color:var(--green)}
-        .faq-q .icon{font-size:18px;transition:.3s;color:var(--txt3)}
-        .faq-q.active .icon{transform:rotate(45deg)}
-        .faq-a{padding:0 0 14px;display:none;font-size:13px;color:var(--txt2);line-height:1.5}
-        .faq-a.show{display:block}
-        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0;font-size:12px;color:var(--txt2);line-height:1.7}
-        .disclaimer strong{color:var(--yellow)}
-        footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
-        footer a{color:var(--txt2)}
-        .update{font-size:11px;color:var(--txt3);margin-top:8px}
-        @media(min-width:600px){
+        .faq-question{width:100%;background:transparent;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question::after{content:'+';font-size:18px;color:var(--txt3);transition:transform .3s}
+        .faq-question.active::after{content:'−'}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
+        .faq-answer p{padding:0 0 14px;margin:0;font-size:13px;color:var(--txt2)}
+        .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0}
+        .disclaimer-box p{color:var(--txt);font-size:13px;margin-bottom:8px}
+        .disclaimer-box p:last-child{margin-bottom:0}
+        .disclaimer-box strong{color:var(--yellow)}
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center}
+        footer p{font-size:12px;color:var(--txt3);margin:4px 0}
+        .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--txt3);margin-bottom:12px}
+        .cta-section{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:20px;margin:24px 0;text-align:center}
+        .cta-section p{font-size:14px;margin-bottom:16px}
+        @media(min-width:640px){
             body{font-size:15px}
+            .container{padding:0 24px}
             h1{font-size:28px}
             h2{font-size:20px}
-            .cards{grid-template-columns:repeat(4,1fr)}
-            .container{padding:0 24px}
-        }
-        @media(min-width:900px){
-            .container{max-width:800px}
+            .card-grid{grid-template-columns:repeat(4,1fr)}
+            p{font-size:15px}
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite <span>Ações</span></a>
-            <nav><a href="/">Início</a></nav>
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <a href="/" class="nav-link">App</a>
         </div>
     </header>
     <main class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="https://eliteacoes.com/">Início</a>
+            <a href="/">Início</a>
             <span>/</span>
-            <a href="https://eliteacoes.com/paginas/fiis">FIIs</a>
+            <a href="/paginas/fiis">FIIs</a>
             <span>/</span>
             <span>VVPR11</span>
         </nav>
+        <div class="update-badge">Última atualização: maio de 2026</div>
         <h1>FII V2 Prop (VVPR11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-        <p class="update">Última atualização: maio de 2026</p>
+        <p>Página educativa sobre o fundo imobiliário V2 Prop (VVPR11). Aqui você encontra dados cadastrais, explicação do Método Bazin para cálculo de preço teto e contexto sobre rendimentos mensais. Todo conteúdo é informativo e não constitui recomendação de investimento.</p>
 
         <section>
             <h2>Sobre FII V2 Prop (VVPR11)</h2>
-            <p>O FII V2 Prop, negociado sob o ticker VVPR11, é um fundo imobiliário de categoria mista que busca diversificação em diferentes segmentos do mercado imobiliário brasileiro. A gestão do fundo é focada em ativos que geram renda recorrente, combinando estratégias de locação e desenvolvimento.</p>
-            <p>Com patrimônio líquido significativo, o fundo se posiciona como uma alternativa para investidores que desejam exposição a múltiplos setores imobiliários em um único veículo de investimento. A política de distribuição de resultados é definida pela administradora, seguindo as regras da CVM para fundos imobiliários.</p>
-            <div class="cards">
+            <p>O FII V2 Prop, negociado sob o ticker VVPR11, é um fundo imobiliário do setor misto que busca gerar renda por meio de investimentos em diferentes segmentos do mercado imobiliário, como lajes corporativas e galpões logísticos. A gestão do fundo é profissional e focada na diversificação de ativos para mitigar riscos setoriais.</p>
+            <p>Com patrimônio líquido significativo, o VVPR11 distribui rendimentos mensais aos cotistas, seguindo a política de distribuição de 95% do resultado. O fundo é uma alternativa para investidores que buscam exposição ao setor imobiliário com gestão ativa.</p>
+            <div class="card-grid">
                 <div class="card"><div class="label">Ticker</div><div class="value">VVPR11</div></div>
                 <div class="card"><div class="label">Setor</div><div class="value">Misto</div></div>
                 <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
@@ -160,107 +164,99 @@
 
         <section>
             <h2>Dados Cadastrais de VVPR11</h2>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr><th>Informação</th><th>Detalhe</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Nome do Fundo</td><td>FII V2 Prop</td></tr>
-                        <tr><td>Código B3</td><td>VVPR11</td></tr>
-                        <tr><td>Setor</td><td>Misto</td></tr>
-                        <tr><td>Segmento</td><td>Híbrido</td></tr>
-                        <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-                        <tr><td>Gestora</td><td>V2 Gestão de Recursos</td></tr>
-                    </tbody>
-                </table>
-            </div>
+            <p>Os dados abaixo são públicos e podem ser consultados nos sites da B3 e CVM. Eles ajudam o investidor a conhecer a estrutura do fundo antes de qualquer análise.</p>
+            <table>
+                <thead><tr><th>Informação</th><th>Detalhe</th></tr></thead>
+                <tbody>
+                    <tr><td>Setor</td><td>Misto</td></tr>
+                    <tr><td>Segmento</td><td>Lajes Corporativas / Galpões</td></tr>
+                    <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+                    <tr><td>Gestora</td><td>V2 Gestão de Recursos</td></tr>
+                    <tr><td>Administrador</td><td>Banco B3 S.A.</td></tr>
+                </tbody>
+            </table>
         </section>
 
         <section>
             <h2>Como Calcular o Preço Teto de VVPR11 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda investidores a estimar um preço teto para ativos de renda. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 10% ao ano) e divide-se os dividendos anuais por essa taxa.</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem fundamentalista que calcula um preço teto para ativos de renda com base nos dividendos pagos. A ideia é determinar quanto pagar por uma cota para obter um retorno mínimo desejado.</p>
             <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (10%)</p>
             <div class="highlight-box">
-                <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-                Suponha que os dividendos acumulados de VVPR11 nos últimos 12 meses sejam de R$ 12,00 por cota. Aplicando a fórmula: R$ 12,00 ÷ 0,10 = R$ 120,00. Este valor seria o preço teto hipotético. Lembre-se: este é um exemplo meramente ilustrativo e não reflete dados reais do fundo.
+                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Se o VVPR11 tivesse distribuído R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>. Este número é apenas uma simulação educativa e não reflete dados reais do fundo.</p>
             </div>
-            <p>O investidor pode usar essa metodologia como um dos critérios em sua análise fundamentalista, comparando o preço teto calculado com o preço de mercado atual para tomar suas próprias decisões.</p>
+            <p>O investidor pode usar essa ferramenta como um dos critérios de análise, comparando o preço teto calculado com a cotação atual do ativo. Lembre-se: o Método Bazin é uma metodologia entre várias e não garante resultados futuros.</p>
         </section>
 
         <section>
             <h2>Rendimentos Mensais do VVPR11</h2>
-            <p>O FII V2 Prop distribui rendimentos mensais aos seus cotistas, conforme sua política de distribuição de resultados. Os valores pagos variam de acordo com a receita gerada pelos ativos do fundo, como aluguéis e operações imobiliárias.</p>
-            <p>Para pessoas físicas, os rendimentos de FIIs como VVPR11 são isentos de Imposto de Renda, desde que o fundo atenda aos requisitos da legislação (mais de 50 cotistas e cotas negociadas em bolsa). Historicamente, o fundo tem mantido uma política de distribuição regular, mas os valores passados não garantem pagamentos futuros.</p>
+            <p>O FII V2 Prop distribui rendimentos mensalmente, geralmente até o 15º dia útil de cada mês. A política do fundo prevê o pagamento de 95% do resultado gerado no período, o que pode variar conforme a performance dos ativos.</p>
+            <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Historicamente, o VVPR11 tem mantido uma frequência regular de distribuições, mas valores passados não são garantia de pagamentos futuros.</p>
+            <p>Consulte o app Elite Ações para acompanhar o histórico de rendimentos do VVPR11.</p>
         </section>
 
         <section>
             <h2>Como Acessar os Dados Atualizados de VVPR11</h2>
-            <p>Para acompanhar os dados mais recentes de VVPR11, incluindo dividendos, preço de mercado e análises fundamentalistas, utilize o aplicativo Elite Ações. A plataforma oferece ferramentas educativas para apoiar sua análise de investimentos.</p>
-            <p>No app, você encontrará gráficos históricos, calculadora do Método Bazin e informações cadastrais atualizadas do fundo. Tudo em um ambiente seguro e sem recomendações de investimento.</p>
-            <p style="margin-top:16px"><a href="/" class="btn">Acessar Elite Ações</a></p>
+            <div class="cta-section">
+                <p>No app Elite Ações você encontra dados históricos de dividendos, preço teto calculado pelo Método Bazin, gráficos de desempenho e análises fundamentalistas do VVPR11 e de centenas de outros ativos.</p>
+                <a href="/" class="btn">Acessar App Elite Ações</a>
+            </div>
         </section>
 
         <section>
             <h2>Perguntas Frequentes sobre VVPR11</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">O que é VVPR11? <span class="icon">+</span></button>
-                    <div class="faq-a">VVPR11 é o ticker do FII V2 Prop, um fundo imobiliário misto que investe em diferentes segmentos do mercado imobiliário.</div>
+                    <button class="faq-question" aria-expanded="false">O que é VVPR11?</button>
+                    <div class="faq-answer"><p>VVPR11 é o ticker do FII V2 Prop, um fundo imobiliário do setor misto que investe em diferentes segmentos do mercado imobiliário.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">Como calcular o preço teto de VVPR11 pelo Método Bazin? <span class="icon">+</span></button>
-                    <div class="faq-a">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00.</div>
+                    <button class="faq-question" aria-expanded="false">Como calcular o preço teto de VVPR11 pelo Método Bazin?</button>
+                    <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">VVPR11 paga dividendos mensais? <span class="icon">+</span></button>
-                    <div class="faq-a">Sim, o FII V2 Prop distribui rendimentos mensalmente, conforme sua política de distribuição de resultados.</div>
+                    <button class="faq-question" aria-expanded="false">VVPR11 paga dividendos mensais?</button>
+                    <div class="faq-answer"><p>Sim, o FII V2 Prop distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita gerada pelos ativos.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">Os dividendos de VVPR11 são isentos de IR? <span class="icon">+</span></button>
-                    <div class="faq-a">Sim, para pessoas físicas, os rendimentos de FIIs como VVPR11 são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa.</div>
+                    <button class="faq-question" aria-expanded="false">Qual o setor do FII V2 Prop?</button>
+                    <div class="faq-answer"><p>O VVPR11 é classificado como fundo misto, investindo em lajes corporativas, galpões logísticos e outros ativos imobiliários.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">Onde encontrar dados atualizados de VVPR11? <span class="icon">+</span></button>
-                    <div class="faq-a">Você pode acessar dados atualizados de VVPR11 no aplicativo Elite Ações, que oferece análises fundamentalistas e informações de mercado.</div>
+                    <button class="faq-question" aria-expanded="false">Os rendimentos de VVPR11 são isentos de IR?</button>
+                    <div class="faq-answer"><p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false">O Método Bazin é recomendado para VVPR11? <span class="icon">+</span></button>
-                    <div class="faq-a">O Método Bazin é uma ferramenta educativa entre várias existentes. Não representa consenso do mercado e não substitui uma análise completa do investidor.</div>
+                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de VVPR11?</button>
+                    <div class="faq-answer"><p>No app Elite Ações você encontra dados históricos de dividendos, preço teto e análises fundamentalistas do VVPR11.</p></div>
                 </div>
             </div>
         </section>
 
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
-            <div class="disclaimer">
-                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
-                Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+            <div class="disclaimer-box">
+                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
             </div>
         </section>
-
-        <p style="text-align:center;margin:24px 0"><a href="/" class="btn btn-ghost">Voltar ao Início</a></p>
     </main>
     <footer>
         <div class="container">
-            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-            <p><a href="https://eliteacoes.com/paginas/fiis/vvpr11">VVPR11 FII — Rendimentos | Elite Ações</a></p>
+            <p>© 2026 Elite Ações — Todos os direitos reservados.</p>
+            <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
         </div>
     </footer>
     <script>
-        document.querySelectorAll('.faq-q').forEach(btn => {
+        document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
-                const isOpen = answer.classList.contains('show');
-                document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
-                document.querySelectorAll('.faq-q').forEach(b => b.setAttribute('aria-expanded', 'false'));
-                if (!isOpen) {
-                    answer.classList.add('show');
-                    this.setAttribute('aria-expanded', 'true');
+                const isOpen = this.classList.toggle('active');
+                this.setAttribute('aria-expanded', isOpen);
+                if (isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
                 }
             });
         });

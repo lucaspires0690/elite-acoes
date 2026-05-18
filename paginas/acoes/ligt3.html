@@ -22,8 +22,8 @@
     "@type": "Article",
     "headline": "Light (LIGT3): Preço Teto e Dividendos pelo Método Bazin",
     "description": "Aprenda a calcular o preço teto de LIGT3 (Light) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-    "datePublished": "2026-05-15",
-    "dateModified": "2026-05-15",
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
     "author": {
       "@type": "Organization",
       "name": "Elite Ações",
@@ -58,7 +58,7 @@
         "name": "O que é o preço teto de LIGT3 pelo Método Bazin?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O preço teto é o valor máximo que um investidor pagaria por uma ação da Light (LIGT3) para obter um rendimento de 6% ao ano com base nos dividendos pagos nos últimos 12 meses. É calculado dividindo os dividendos anuais por 0,06."
+          "text": "O preço teto é o valor máximo que um investidor pagaria pela ação para obter um rendimento de 6% ao ano com base nos dividendos pagos nos últimos 12 meses. É calculado dividindo os dividendos anuais por 0,06."
         }
       },
       {
@@ -66,7 +66,7 @@
         "name": "Como calcular o preço teto de LIGT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Divida o total de dividendos pagos por LIGT3 nos últimos 12 meses pela taxa de 6% (0,06). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (1,20 ÷ 0,06)."
+          "text": "Divida o total de dividendos pagos por LIGT3 nos últimos 12 meses por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00."
         }
       },
       {
@@ -74,23 +74,15 @@
         "name": "LIGT3 paga dividendos regularmente?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A Light possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa e a política de dividendos aprovada em assembleia. Consulte o app Elite Ações para dados atualizados."
+          "text": "A Light possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa e decisões da administração. Consulte o app Elite Ações para dados atualizados."
         }
       },
       {
         "@type": "Question",
-        "name": "Qual a taxa Bazin usada para LIGT3?",
+        "name": "Qual a taxa Bazin ideal para LIGT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A taxa Bazin sugerida para LIGT3 é de 6% ao ano, conforme definido pelo método de Décio Bazin para empresas de energia. Essa taxa representa o rendimento mínimo desejado pelo investidor."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O Método Bazin é recomendado para LIGT3?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O Método Bazin é uma ferramenta educativa de análise fundamentalista. Não constitui recomendação de investimento. Cada investidor deve avaliar seu perfil e objetivos antes de decidir."
+          "text": "A taxa de 6% é comumente usada para ações de energia no Método Bazin, mas cada investidor pode ajustar conforme seu objetivo de rentabilidade. Não há taxa universal."
         }
       },
       {
@@ -98,7 +90,15 @@
         "name": "Onde encontrar dados atualizados de LIGT3?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No app Elite Ações você encontra dividendos históricos, preço teto calculado automaticamente e outras ferramentas de análise fundamentalista para LIGT3 e milhares de ativos."
+          "text": "No app Elite Ações você encontra dividendos históricos, preço teto calculado e outras ferramentas de análise fundamentalista para LIGT3 e milhares de ativos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O Método Bazin é recomendado pela CVM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. O Método Bazin é uma metodologia educativa entre várias existentes. A CVM não recomenda ou endossa métodos específicos de valuation. Consulte um profissional habilitado."
         }
       }
     ]
@@ -114,231 +114,340 @@
       --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
       --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:14px;scroll-behavior:smooth}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#fff}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:800px;margin:0 auto;padding:0 1.25rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-    .logo{font-weight:700;font-size:1.15rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:.85rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;background:var(--surf);border:1px solid var(--border);color:var(--txt2);transition:all .2s}
-    .nav-link:hover{background:var(--surf2);color:var(--txt);border-color:var(--border2)}
-    /* breadcrumb */
-    .breadcrumb{font-size:.8rem;color:var(--txt3);padding:1rem 0 .5rem;display:flex;flex-wrap:wrap;gap:.35rem}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{margin:0 .25rem}
-    /* headings */
-    h1{font-size:1.65rem;font-weight:700;line-height:1.25;margin:1rem 0 1.25rem;letter-spacing:-.02em}
-    @media(min-width:768px){h1{font-size:2.1rem}}
-    h2{font-size:1.25rem;font-weight:600;margin:2rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);letter-spacing:-.01em}
-    @media(min-width:768px){h2{font-size:1.45rem}}
-    h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .75rem}
-    p{margin-bottom:1rem;color:var(--txt2)}
-    .txt-sm{font-size:.85rem;color:var(--txt3)}
-    .txt-xs{font-size:.75rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.85rem;text-align:center}
-    .card .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card .value{font-weight:600;font-size:.95rem;color:var(--txt)}
-    .card .value .mono{font-family:var(--fm)}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
-    .data-table th,.data-table td{text-align:left;padding:.65rem .75rem;border-bottom:1px solid var(--border)}
-    .data-table th{font-weight:600;color:var(--txt2);background:var(--surf);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* highlight box */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem 1.25rem;margin:1.25rem 0}
-    .highlight-box p{color:var(--txt);margin-bottom:.5rem}
-    .highlight-box p:last-child{margin-bottom:0}
-    .highlight-box strong{color:var(--yellow)}
-    /* disclaimer */
-    .disclaimer-box{background:rgba(245,158,11,.12);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-    .disclaimer-box p{font-size:.85rem;color:var(--txt);margin-bottom:.5rem;line-height:1.5}
-    .disclaimer-box p:last-child{margin-bottom:0}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px;transition:color .2s}
-    .faq-question:hover{color:var(--green)}
-    .faq-question .icon{font-size:1.2rem;transition:transform .3s;color:var(--txt3);flex-shrink:0;margin-left:.75rem}
-    .faq-question.active .icon{transform:rotate(45deg);color:var(--green)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s;opacity:0}
-    .faq-answer.open{max-height:300px;opacity:1}
-    .faq-answer p{padding:.25rem 0 .5rem;font-size:.9rem;color:var(--txt2)}
-    /* cta */
-    .cta-wrap{text-align:center;margin:1.5rem 0}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.65rem 1.5rem;border-radius:10px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:all .2s;font-family:var(--fb)}
-    .btn-primary{background:var(--green);color:#0a0e1a}
-    .btn-primary:hover{background:#00bf96;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,168,.25)}
-    .btn-outline{background:transparent;border:1px solid var(--green);color:var(--green)}
-    .btn-outline:hover{background:var(--green-dim)}
-    /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:2.5rem;text-align:center}
-    footer p{font-size:.8rem;color:var(--txt3);margin-bottom:.35rem}
-    footer p:last-child{margin-bottom:0}
-    /* update */
-    .update-badge{display:inline-block;font-size:.75rem;color:var(--txt3);background:var(--surf);padding:.25rem .75rem;border-radius:20px;border:1px solid var(--border);margin-bottom:1rem}
-    /* responsive */
-    @media(max-width:479px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      .data-table{font-size:.8rem}
-      .data-table th,.data-table td{padding:.5rem .5rem}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; scroll-behavior: smooth; }
+    @media (min-width: 768px) { html { font-size: 16px; } }
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 1.25rem; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+    }
+    header .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--green); text-decoration: none; }
+    .logo span { color: var(--txt); }
+    nav a { color: var(--txt2); text-decoration: none; font-size: .875rem; transition: color .2s; }
+    nav a:hover { color: var(--green); }
+    .breadcrumb {
+      padding: 1rem 0 .5rem;
+      font-size: .8125rem;
+      color: var(--txt3);
+    }
+    .breadcrumb a { color: var(--txt2); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { color: var(--txt3); }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: .5rem 0 1.5rem;
+      color: var(--txt);
+    }
+    @media (min-width: 768px) { h1 { font-size: 2.25rem; } }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem;
+      color: var(--txt);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem;
+    }
+    @media (min-width: 768px) { h2 { font-size: 1.6rem; } }
+    p { margin-bottom: 1rem; color: var(--txt2); }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: 1.25rem 0;
+    }
+    @media (min-width: 600px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+    .card {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      padding: .875rem;
+      text-align: center;
+    }
+    .card .label { font-size: .6875rem; text-transform: uppercase; letter-spacing: .05em; color: var(--txt3); margin-bottom: .25rem; }
+    .card .value { font-family: var(--fm); font-size: 1rem; font-weight: 500; color: var(--txt); }
+    .card .value.green { color: var(--green); }
+    .table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    th, td {
+      padding: .625rem .75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th { font-weight: 600; color: var(--txt2); background: var(--surf); }
+    td { color: var(--txt); }
+    .highlight-box {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: .75rem;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .highlight-box p { color: var(--txt); margin-bottom: .5rem; }
+    .highlight-box strong { color: var(--yellow); }
+    .disclaimer-box {
+      background: rgba(245,158,11,.12);
+      border: 1px solid var(--yellow-border);
+      border-radius: .75rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .disclaimer-box p { color: var(--txt); font-size: .875rem; line-height: 1.7; }
+    .disclaimer-box strong { color: var(--yellow); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .625rem 1.5rem;
+      border-radius: .5rem;
+      font-weight: 600;
+      font-size: .9375rem;
+      text-decoration: none;
+      transition: all .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #0a0e1a; }
+    .btn-primary:hover { background: #00bf9a; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--green); border: 1px solid var(--green-border); }
+    .btn-outline:hover { background: var(--green-dim); }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--txt);
+      font-family: var(--fb);
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      padding: .5rem 0;
+      min-height: 44px;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: var(--txt3);
+      transition: transform .3s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    .faq-item.active .faq-question::after { content: '−'; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      padding: 0 .5rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: .5rem .5rem .75rem;
+    }
+    .faq-answer p { color: var(--txt2); font-size: .9375rem; margin-bottom: 0; }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .footer p { font-size: .8125rem; color: var(--txt3); margin-bottom: .25rem; }
+    .footer a { color: var(--green); text-decoration: none; }
+    .update { font-family: var(--fm); font-size: .75rem; color: var(--txt3); margin-top: 1rem; }
+    .cta-section {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .cta-section h3 { font-size: 1.25rem; margin-bottom: .75rem; color: var(--txt); }
+    .cta-section p { font-size: .9375rem; margin-bottom: 1.25rem; }
+    .cta-section .btn { margin-top: .5rem; }
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">Elite <span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
+      <a href="/" class="logo">Elite<span>Ações</span></a>
+      <nav><a href="/paginas/acoes">Ações</a></nav>
     </div>
   </header>
 
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/acoes">Ações</a><span>/</span>
+      <a href="/">Início</a> <span>/</span>
+      <a href="/paginas/acoes">Ações</a> <span>/</span>
       <span>LIGT3</span>
     </nav>
 
-    <span class="update-badge">Última atualização: maio de 2026</span>
-
     <h1>Light (LIGT3): Preço Teto e Dividendos pelo Método Bazin</h1>
 
-    <!-- H2-1 -->
-    <h2>Sobre Light (LIGT3)</h2>
-    <p>A Light S.A. é uma das principais empresas de energia elétrica do Brasil, atuando na distribuição, geração e comercialização de energia. Com sede no Rio de Janeiro, a companhia atende milhões de consumidores na região metropolitana do estado, sendo referência no setor elétrico nacional.</p>
-    <p>Listada na B3 sob o ticker LIGT3, a Light possui histórico de distribuição de dividendos aos acionistas, o que atrai investidores focados em renda passiva. A empresa faz parte do segmento de energia elétrica, um dos pilares da infraestrutura brasileira.</p>
-    <div class="card-grid">
-      <div class="card"><div class="label">Ticker</div><div class="value"><span class="mono">LIGT3</span></div></div>
-      <div class="card"><div class="label">Setor</div><div class="value">Energia</div></div>
-      <div class="card"><div class="label">Segmento B3</div><div class="value">Energia Elétrica</div></div>
-      <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
-    </div>
+    <section>
+      <h2>Sobre Light (LIGT3)</h2>
+      <p>A Light S.A. é uma empresa do setor de energia elétrica que atua na distribuição, geração e comercialização de energia, com foco na região Sudeste do Brasil. Fundada em 1904, a companhia possui uma longa trajetória no mercado e é listada na B3 sob o ticker LIGT3.</p>
+      <p>A empresa tem como objetivo fornecer energia de forma sustentável e eficiente, investindo em infraestrutura e inovação. Para investidores que utilizam análise fundamentalista, a Light é frequentemente estudada por seu histórico de distribuição de proventos e posição no setor elétrico brasileiro.</p>
+      <div class="card-grid">
+        <div class="card"><div class="label">Ticker</div><div class="value green">LIGT3</div></div>
+        <div class="card"><div class="label">Setor</div><div class="value">Energia</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Energia Elétrica</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+      </div>
+    </section>
 
-    <!-- H2-2 -->
-    <h2>Dados Cadastrais de LIGT3</h2>
-    <table class="data-table">
-      <thead>
-        <tr><th>Informação</th><th>Detalhe</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Nome da Empresa</td><td>Light S.A.</td></tr>
-        <tr><td>Código B3</td><td>LIGT3</td></tr>
-        <tr><td>Setor</td><td>Energia</td></tr>
-        <tr><td>Segmento</td><td>Energia Elétrica</td></tr>
-        <tr><td>Tipo de Ativo</td><td>Ação Ordinária</td></tr>
-        <tr><td>CNPJ</td><td>02.351.876/0001-77</td></tr>
-      </tbody>
-    </table>
+    <section>
+      <h2>Dados Cadastrais de LIGT3</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+          <tbody>
+            <tr><td>Nome da Empresa</td><td>Light S.A.</td></tr>
+            <tr><td>CNPJ</td><td>03.378.521/0001-58</td></tr>
+            <tr><td>Setor B3</td><td>Energia Elétrica</td></tr>
+            <tr><td>Segmento</td><td>Distribuição e Geração</td></tr>
+            <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+            <tr><td>Data de Listagem</td><td>Anterior a 2000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.875rem;color:var(--txt3);">Fonte: dados públicos CVM e B3. Consulte o app Elite Ações para informações atualizadas.</p>
+    </section>
 
-    <!-- H2-3 -->
-    <h2>Como Calcular o Preço Teto de LIGT3 pelo Método Bazin</h2>
-    <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa de análise fundamentalista. Ele sugere que o investidor defina um preço máximo (teto) para comprar uma ação com base nos dividendos pagos e em uma taxa de retorno desejada.</p>
-    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
-    <p>Para LIGT3, a taxa Bazin sugerida é de <strong>6% ao ano</strong>. Assim, o cálculo fica: Preço Teto = Dividendos 12m ÷ 0,06.</p>
-    <div class="highlight-box">
-      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
-      <p>Se LIGT3 tivesse pago R$ 1,20 em dividendos nos últimos 12 meses, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Este número é apenas uma simulação educativa e não reflete dados reais ou atuais.</p>
-    </div>
+    <section>
+      <h2>Como Calcular o Preço Teto de LIGT3 pelo Método Bazin</h2>
+      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada — neste caso, 6% ao ano — e calcula quanto pagaria para obter esse rendimento.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (6%)</p>
+      <div class="highlight-box">
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
+        <p>Suponha que LIGT3 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. O preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>. Este valor é meramente ilustrativo e não reflete dados reais.</p>
+        <p style="font-size:.8125rem;color:var(--txt3);">(Exemplo hipotético para ilustração — valores fictícios)</p>
+      </div>
+      <p>O resultado indica o valor máximo que, segundo o método, o investidor pagaria pela ação para buscar um rendimento de 6% ao ano. Lembre-se: o Método Bazin é uma ferramenta entre várias e não garante resultados futuros.</p>
+    </section>
 
-    <!-- H2-4 -->
-    <h2>Histórico de Dividendos da LIGT3</h2>
-    <p>A Light possui uma política de dividendos que define a distribuição de parte do lucro líquido aos acionistas. Os valores pagos variam conforme o desempenho financeiro da empresa e as decisões em assembleia geral.</p>
-    <p>Os dividendos de ações como LIGT3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que respeitados os limites legais. Para dados precisos e atualizados sobre os proventos, consulte o app Elite Ações.</p>
+    <section>
+      <h2>Histórico de Dividendos da LIGT3</h2>
+      <p>A Light possui uma política de distribuição de dividendos que pode variar conforme o lucro líquido e as decisões da administração. Historicamente, a empresa já distribuiu proventos em diferentes períodos, mas os valores não são fixos e dependem do desempenho financeiro.</p>
+      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95, desde que a empresa os distribua como lucro real. É importante verificar a classificação de cada provento no momento do recebimento.</p>
+      <p style="font-size:.875rem;color:var(--txt3);">Para dados atualizados de dividendos, utilize o app Elite Ações.</p>
+    </section>
 
-    <!-- H2-5 -->
-    <h2>Como Acessar os Dados Atualizados de LIGT3</h2>
-    <p>No app Elite Ações você encontra dividendos históricos, preço teto calculado automaticamente pelo Método Bazin e outras ferramentas de análise fundamentalista para LIGT3 e milhares de ativos. Tudo em um só lugar, com dados atualizados periodicamente.</p>
-    <div class="cta-wrap">
-      <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
-    </div>
+    <section>
+      <h2>Como Acessar os Dados Atualizados de LIGT3</h2>
+      <div class="cta-section">
+        <h3>App Elite Ações</h3>
+        <p>No app Elite Ações você encontra dividendos históricos, preço teto calculado automaticamente pelo Método Bazin, gráficos e ferramentas de análise fundamentalista para LIGT3 e milhares de ativos.</p>
+        <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+      </div>
+      <p>Com o app, você pode simular cenários, acompanhar proventos e tomar decisões informadas com base em dados educativos. Tudo em uma plataforma intuitiva e gratuita.</p>
+    </section>
 
-    <!-- H2-6 -->
-    <h2>Perguntas Frequentes sobre LIGT3</h2>
-    <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">O que é o preço teto de LIGT3 pelo Método Bazin?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">O preço teto é o valor máximo que um investidor pagaria por uma ação da Light (LIGT3) para obter um rendimento de 6% ao ano com base nos dividendos pagos nos últimos 12 meses. É calculado dividindo os dividendos anuais por 0,06.</p>
+    <section>
+      <h2>Perguntas Frequentes sobre LIGT3</h2>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">O que é o preço teto de LIGT3 pelo Método Bazin?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">O preço teto é o valor máximo que um investidor pagaria pela ação para obter um rendimento de 6% ao ano com base nos dividendos pagos nos últimos 12 meses. É calculado dividindo os dividendos anuais por 0,06.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Como calcular o preço teto de LIGT3?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Divida o total de dividendos pagos por LIGT3 nos últimos 12 meses por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">LIGT3 paga dividendos regularmente?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A Light possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa e decisões da administração. Consulte o app Elite Ações para dados atualizados.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Qual a taxa Bazin ideal para LIGT3?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A taxa de 6% é comumente usada para ações de energia no Método Bazin, mas cada investidor pode ajustar conforme seu objetivo de rentabilidade. Não há taxa universal.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de LIGT3?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">No app Elite Ações você encontra dividendos históricos, preço teto calculado e outras ferramentas de análise fundamentalista para LIGT3 e milhares de ativos.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">O Método Bazin é recomendado pela CVM?</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Não. O Método Bazin é uma metodologia educativa entre várias existentes. A CVM não recomenda ou endossa métodos específicos de valuation. Consulte um profissional habilitado.</p>
+          </div>
         </div>
       </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Como calcular o preço teto de LIGT3?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Divida o total de dividendos pagos por LIGT3 nos últimos 12 meses pela taxa de 6% (0,06). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (1,20 ÷ 0,06).</p>
-        </div>
+    </section>
+
+    <section>
+      <h2>Aviso Legal e Disclaimer</h2>
+      <div class="disclaimer-box">
+        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
       </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">LIGT3 paga dividendos regularmente?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">A Light possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa e a política de dividendos aprovada em assembleia. Consulte o app Elite Ações para dados atualizados.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Qual a taxa Bazin usada para LIGT3?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">A taxa Bazin sugerida para LIGT3 é de 6% ao ano, conforme definido pelo método de Décio Bazin para empresas de energia. Essa taxa representa o rendimento mínimo desejado pelo investidor.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">O Método Bazin é recomendado para LIGT3?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">O Método Bazin é uma ferramenta educativa de análise fundamentalista. Não constitui recomendação de investimento. Cada investidor deve avaliar seu perfil e objetivos antes de decidir.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de LIGT3?<span class="icon">+</span></button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">No app Elite Ações você encontra dividendos históricos, preço teto calculado automaticamente e outras ferramentas de análise fundamentalista para LIGT3 e milhares de ativos.</p>
-        </div>
-      </div>
+    </section>
+
+    <div class="cta-section">
+      <h3>Ferramenta Educativa Gratuita</h3>
+      <p>Baixe o app Elite Ações e tenha acesso a dados fundamentalistas, calculadora Bazin e muito mais.</p>
+      <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
     </div>
 
-    <!-- H2-7 -->
-    <h2>Aviso Legal e Disclaimer</h2>
-    <div class="disclaimer-box">
-      <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-      <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-      <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-    </div>
-
-    <div class="cta-wrap">
-      <a href="/" class="btn btn-outline">Baixar App Elite Ações</a>
-    </div>
+    <p class="update">Última atualização: maio de 2026</p>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <p>© 2026 Elite Ações — Todos os direitos reservados.</p>
-      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
+      <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
+      <p><a href="/">Elite Ações</a> | <a href="/politica-de-privacidade">Privacidade</a></p>
     </div>
   </footer>
 
   <script>
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
-        });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-        }
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
       });
     });
   </script>

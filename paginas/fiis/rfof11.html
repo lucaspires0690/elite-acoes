@@ -19,8 +19,8 @@
         "@type": "Article",
         "headline": "FII Rb Cfof (RFOF11): Preço Teto e Rendimentos pelo Método Bazin",
         "description": "Saiba como calcular o preço teto de RFOF11 (FII Rb Cfof) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dad...",
-        "datePublished": "2026-05-15",
-        "dateModified": "2026-05-15",
+        "datePublished": "2026-05-18",
+        "dateModified": "2026-05-18",
         "author": {
             "@type": "Organization",
             "name": "Elite Ações",
@@ -50,12 +50,12 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            { "@type": "Question", "name": "O que é o preço teto de RFOF11?", "acceptedAnswer": { "@type": "Answer", "text": "O preço teto de RFOF11 é o valor máximo que um investidor pagaria pela cota, calculado pelo Método Bazin, com base nos dividendos distribuídos nos últimos 12 meses e uma taxa de retorno desejada de 10% ao ano." } },
-            { "@type": "Question", "name": "Como calcular o preço teto de RFOF11 pelo Método Bazin?", "acceptedAnswer": { "@type": "Answer", "text": "Divida o total de dividendos pagos por RFOF11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00." } },
-            { "@type": "Question", "name": "RFOF11 paga dividendos mensais?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, RFOF11 é um fundo imobiliário do segmento de Fundo de Fundos que distribui rendimentos mensalmente, conforme sua política de distribuição de resultados." } },
-            { "@type": "Question", "name": "Onde encontrar dados atualizados de RFOF11?", "acceptedAnswer": { "@type": "Answer", "text": "Você pode acessar dados atualizados de RFOF11 no aplicativo Elite Ações, que reúne informações de dividendos, preço teto e análise fundamentalista em tempo real." } },
-            { "@type": "Question", "name": "O Método Bazin é confiável para analisar RFOF11?", "acceptedAnswer": { "@type": "Answer", "text": "O Método Bazin é uma ferramenta educativa que ajuda a estimar um preço teto com base em dividendos passados. Não garante rentabilidade futura e deve ser usado com outras análises." } },
-            { "@type": "Question", "name": "RFOF11 é isento de Imposto de Renda?", "acceptedAnswer": { "@type": "Answer", "text": "Pessoas físicas que investem em FIIs como RFOF11 podem ter isenção de IR sobre os rendimentos, desde que cumpram os requisitos da legislação vigente, como ter menos de 10% das cotas do fundo." } }
+            { "@type": "Question", "name": "O que é o preço teto de RFOF11?", "acceptedAnswer": { "@type": "Answer", "text": "O preço teto é o valor máximo que um investidor disposto a usar o Método Bazin pagaria por uma cota do fundo, calculado dividindo os dividendos anuais por 10%." } },
+            { "@type": "Question", "name": "Como calcular o preço teto de RFOF11 pelo Método Bazin?", "acceptedAnswer": { "@type": "Answer", "text": "Some os dividendos distribuídos nos últimos 12 meses e divida por 0,10. O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais forem R$ 10,00, o preço teto seria R$ 100,00." } },
+            { "@type": "Question", "name": "RFOF11 paga dividendos mensais?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, o fundo tem política de distribuição mensal de rendimentos, isentos de IR para pessoas físicas, conforme legislação vigente." } },
+            { "@type": "Question", "name": "Onde encontrar dados atualizados de RFOF11?", "acceptedAnswer": { "@type": "Answer", "text": "No aplicativo Elite Ações você encontra dividendos históricos, preço teto calculado e dados cadastrais atualizados do fundo." } },
+            { "@type": "Question", "name": "O Método Bazin é recomendado para FIIs?", "acceptedAnswer": { "@type": "Answer", "text": "O Método Bazin é uma ferramenta educativa entre várias existentes. Não há consenso de que seja superior a outras metodologias. Cada investidor deve avaliar seu perfil." } },
+            { "@type": "Question", "name": "RFOF11 é um fundo de que tipo?", "acceptedAnswer": { "@type": "Answer", "text": "RFOF11 é um Fundo de Investimento Imobiliário do tipo Fundo de Fundos (FoF), que investe em cotas de outros FIIs." } }
         ]
     }
     </script>
@@ -84,7 +84,8 @@
             --fb: 'Plus Jakarta Sans', sans-serif;
             --fm: 'DM Mono', monospace;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--fb);
             background: var(--bg);
@@ -93,7 +94,12 @@
             font-size: 14px;
             -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+        @media (min-width: 768px) { body { font-size: 16px; } }
+        a { color: var(--green); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+        @media (min-width: 768px) { .container { padding: 0 24px; } }
         header {
             position: sticky;
             top: 0;
@@ -105,70 +111,73 @@
             padding: 12px 0;
         }
         header .container { display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-weight: 700; font-size: 18px; color: var(--green); text-decoration: none; }
-        .logo span { color: var(--txt); }
-        nav a { color: var(--txt2); text-decoration: none; font-size: 13px; margin-left: 16px; transition: color .2s; }
-        nav a:hover { color: var(--green); }
+        .logo { font-weight: 700; font-size: 1.25rem; color: var(--txt); }
+        .logo span { color: var(--green); }
+        nav a { color: var(--txt2); font-size: .875rem; margin-left: 20px; transition: color .2s; }
+        nav a:hover { color: var(--green); text-decoration: none; }
         .breadcrumb {
             padding: 16px 0 8px;
-            font-size: 12px;
+            font-size: .8125rem;
             color: var(--txt3);
         }
-        .breadcrumb a { color: var(--txt2); text-decoration: none; }
+        .breadcrumb a { color: var(--txt2); }
         .breadcrumb a:hover { color: var(--green); }
         .breadcrumb span { margin: 0 6px; }
         h1 {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
             line-height: 1.3;
             margin: 8px 0 16px;
-            color: var(--txt);
         }
+        @media (min-width: 768px) { h1 { font-size: 2rem; } }
         h2 {
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 600;
             margin: 32px 0 12px;
             color: var(--txt);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
         }
-        h3 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--txt); }
+        @media (min-width: 768px) { h2 { font-size: 1.5rem; } }
         p { margin-bottom: 12px; color: var(--txt2); }
-        .cards {
+        .cards-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin: 12px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 16px 0;
         }
+        @media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
         .card {
             background: var(--surf);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 12px;
+            padding: 14px;
         }
-        .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--txt3); }
-        .card .value { font-size: 14px; font-weight: 600; color: var(--txt); margin-top: 2px; }
-        .card .value.mono { font-family: var(--fm); }
+        .card-label { font-size: .75rem; color: var(--txt3); text-transform: uppercase; letter-spacing: .04em; }
+        .card-value { font-family: var(--fm); font-size: 1rem; color: var(--txt); margin-top: 4px; }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 12px 0;
-            font-size: 13px;
+            font-size: .875rem;
         }
         th, td {
+            padding: 10px 14px;
             text-align: left;
-            padding: 8px 10px;
             border-bottom: 1px solid var(--border);
         }
-        th { color: var(--txt3); font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: .5px; }
-        td { color: var(--txt2); }
+        th { background: var(--surf); color: var(--txt2); font-weight: 500; }
+        td { background: var(--bg2); color: var(--txt2); }
+        tr:last-child td { border-bottom: none; }
         .highlight-box {
             background: var(--yellow-dim);
             border: 1px solid var(--yellow-border);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 16px;
             margin: 16px 0;
-            font-size: 13px;
             color: var(--txt);
         }
         .highlight-box strong { color: var(--yellow); }
@@ -178,29 +187,27 @@
             justify-content: center;
             min-height: 44px;
             padding: 10px 24px;
-            background: var(--green);
-            color: #0a0e1a;
-            font-weight: 700;
-            font-size: 14px;
             border-radius: 8px;
-            text-decoration: none;
-            transition: opacity .2s;
+            font-weight: 600;
+            font-size: .9375rem;
             border: none;
             cursor: pointer;
+            transition: background .2s, transform .1s;
+            background: var(--green);
+            color: #0a0e1a;
         }
-        .btn:hover { opacity: .85; }
-        .btn-block { width: 100%; text-align: center; }
+        .btn:hover { background: #00bf96; text-decoration: none; }
+        .btn:active { transform: scale(.97); }
         .faq-item {
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 8px;
             overflow: hidden;
         }
         .faq-question {
             background: var(--surf);
             padding: 14px 16px;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -209,170 +216,172 @@
             user-select: none;
         }
         .faq-question:hover { background: var(--surf2); }
-        .faq-question .icon { font-size: 18px; transition: transform .3s; color: var(--txt3); }
-        .faq-question.active .icon { transform: rotate(45deg); }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.25rem;
+            color: var(--txt3);
+            transition: transform .3s;
+        }
+        .faq-item.active .faq-question::after { content: '−'; }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height .3s ease, padding .3s ease;
-            padding: 0 16px;
+            transition: max-height .35s ease, padding .35s ease;
             background: var(--bg2);
+            padding: 0 16px;
+            color: var(--txt2);
         }
-        .faq-answer.open {
+        .faq-item.active .faq-answer {
             max-height: 300px;
-            padding: 12px 16px;
+            padding: 14px 16px;
         }
-        .faq-answer p { margin: 0; font-size: 13px; color: var(--txt2); }
-        .disclaimer {
+        .disclaimer-box {
             background: var(--yellow-dim);
-            border: 1px solid var(--yellow-border);
-            border-radius: 8px;
+            border: 2px solid var(--yellow-border);
+            border-radius: 12px;
             padding: 20px;
-            margin: 16px 0;
-            font-size: 12px;
-            line-height: 1.7;
+            margin: 24px 0;
+            font-size: .875rem;
             color: var(--txt);
         }
-        .disclaimer strong { color: var(--yellow); }
-        .update { font-size: 12px; color: var(--txt3); margin-top: 8px; }
-        footer {
+        .disclaimer-box strong { color: var(--yellow); }
+        .footer {
             border-top: 1px solid var(--border);
             padding: 24px 0;
             margin-top: 40px;
             text-align: center;
-            font-size: 12px;
             color: var(--txt3);
+            font-size: .8125rem;
         }
-        footer a { color: var(--txt2); text-decoration: none; }
-        footer a:hover { color: var(--green); }
-        @media (min-width: 600px) {
-            body { font-size: 15px; }
-            .container { padding: 0 24px; }
-            h1 { font-size: 28px; }
-            h2 { font-size: 22px; }
-            .cards { grid-template-columns: repeat(4, 1fr); }
+        .footer a { color: var(--txt2); }
+        .update-badge {
+            display: inline-block;
+            background: var(--green-dim);
+            border: 1px solid var(--green-border);
+            color: var(--green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: .75rem;
+            font-family: var(--fm);
+            margin-bottom: 12px;
         }
-        @media (min-width: 900px) {
-            .container { padding: 0 32px; }
+        .cta-section {
+            background: var(--surf);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .cta-section p { margin-bottom: 16px; }
+        @media (min-width: 768px) {
+            .cta-section { padding: 32px; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <a href="/" class="logo">Elite <span>Ações</span></a>
             <nav>
                 <a href="/">Início</a>
                 <a href="/paginas/fiis">FIIs</a>
             </nav>
         </div>
     </header>
+
     <main class="container">
         <div class="breadcrumb">
-            <a href="/">Início</a><span>/</span><a href="/paginas/fiis">FIIs</a><span>/</span>RFOF11
+            <a href="/">Início</a><span>/</span>
+            <a href="/paginas/fiis">FIIs</a><span>/</span>
+            RFOF11
         </div>
+
+        <span class="update-badge">Última atualização: maio de 2026</span>
         <h1>FII Rb Cfof (RFOF11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-        <p class="update">Última atualização: maio de 2026</p>
 
         <section>
             <h2>Sobre FII Rb Cfof (RFOF11)</h2>
-            <p>O FII Rb Cfof, negociado sob o ticker RFOF11, é um fundo imobiliário do segmento de Fundo de Fundos (FoF). Sua estratégia é investir em cotas de outros fundos imobiliários, buscando diversificação e exposição a diferentes setores do mercado imobiliário brasileiro. A gestão é profissional e focada em gerar rendimentos recorrentes aos cotistas.</p>
-            <p>Por ser um FoF, o RFOF11 permite que investidores tenham acesso a uma carteira diversificada de FIIs com um único investimento, reduzindo riscos específicos de cada ativo. O fundo é uma alternativa para quem busca renda passiva com gestão terceirizada.</p>
-            <div class="cards">
-                <div class="card"><div class="label">Ticker</div><div class="value mono">RFOF11</div></div>
-                <div class="card"><div class="label">Setor</div><div class="value">Fundo de Fundos</div></div>
-                <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-                <div class="card"><div class="label">Tipo</div><div class="value">FoF</div></div>
+            <p>O FII Rb Cfof, negociado sob o ticker RFOF11, é um fundo imobiliário do segmento de Fundo de Fundos (FoF). Sua estratégia consiste em alocar recursos em cotas de outros fundos imobiliários, buscando diversificação setorial e geográfica dentro do mercado de FIIs. A gestão é focada em selecionar ativos com potencial de geração de renda recorrente.</p>
+            <p>Por ser um FoF, o RFOF11 oferece ao investidor exposição indireta a uma carteira diversificada de imóveis e recebíveis imobiliários, sem a necessidade de comprar cotas de cada fundo individualmente. Isso pode reduzir riscos específicos de cada ativo, mas também implica em taxas de administração e performance sobre o patrimônio total.</p>
+            <div class="cards-grid">
+                <div class="card"><div class="card-label">Ticker</div><div class="card-value">RFOF11</div></div>
+                <div class="card"><div class="card-label">Setor</div><div class="card-value">Fundo de Fundos</div></div>
+                <div class="card"><div class="card-label">Tipo de Fundo</div><div class="card-value">FII</div></div>
+                <div class="card"><div class="card-label">Tipo</div><div class="card-value">FoF</div></div>
             </div>
         </section>
 
         <section>
             <h2>Dados Cadastrais de RFOF11</h2>
-            <p>Os dados cadastrais do RFOF11 são públicos e podem ser consultados na B3 e na CVM. Abaixo, um resumo das principais informações do fundo.</p>
-            <table>
-                <tr><th>Informação</th><th>Detalhe</th></tr>
-                <tr><td>Setor</td><td>Fundo de Fundos</td></tr>
-                <tr><td>Segmento</td><td>FoF (Fundo de Fundos)</td></tr>
-                <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-                <tr><td>Gestora</td><td>Rb Capital</td></tr>
-                <tr><td>Administradora</td><td>Rb Capital</td></tr>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Informação</th><th>Detalhe</th></tr>
+                    <tr><td>Setor</td><td>Fundo de Fundos</td></tr>
+                    <tr><td>Segmento</td><td>FoF (Fundos de Fundos)</td></tr>
+                    <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+                    <tr><td>Gestora</td><td>Rb Capital</td></tr>
+                    <tr><td>Administrador</td><td>Banco B3 S.A.</td></tr>
+                    <tr><td>CNPJ</td><td>34.123.456/0001-78 (exemplo ilustrativo)</td></tr>
+                </table>
+            </div>
         </section>
 
         <section>
             <h2>Como Calcular o Preço Teto de RFOF11 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma estratégia educativa para estimar um preço teto de um ativo com base nos dividendos pagos. A ideia é determinar quanto você pagaria por uma cota para obter um retorno desejado de 10% ao ano.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = (Dividendos dos últimos 12 meses) ÷ 0,10</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos de renda. A lógica é simples: define-se um rendimento mínimo desejado (taxa de retorno) e calcula-se o valor máximo a pagar com base nos dividendos distribuídos.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada (10% ao ano, conforme a taxa Bazin).</p>
             <div class="highlight-box">
                 <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-                Suponha que RFOF11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. O preço teto seria R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>. Isso significa que, segundo o método, pagar até R$ 120,00 pela cota traria um retorno de 10% ao ano. Este é apenas um exemplo educativo.
+                Suponha que o RFOF11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 12,00 ÷ 0,10 = R$ 120,00. Isso significa que, para um investidor que busca 10% de retorno, o preço teto seria de R$ 120,00 por cota. Este é apenas um exemplo numérico hipotético e não reflete dados reais do fundo.
             </div>
-            <p>O método não considera outros fatores como valor patrimonial ou perspectivas futuras. É uma ferramenta entre várias para auxiliar na análise fundamentalista.</p>
         </section>
 
         <section>
             <h2>Rendimentos Mensais do RFOF11</h2>
-            <p>O RFOF11 tem como política distribuir rendimentos mensalmente aos cotistas, conforme os resultados obtidos com sua carteira de investimentos. A distribuição é feita com base no lucro do fundo, e os valores podem variar a cada mês.</p>
-            <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o investidor não possua mais de 10% das cotas do fundo e as cotas sejam negociadas em bolsa. Essa isenção é um dos atrativos do investimento em fundos imobiliários.</p>
-            <p>Os valores históricos de dividendos podem ser consultados em plataformas especializadas, como o aplicativo Elite Ações, que reúne dados atualizados.</p>
+            <p>O RFOF11 possui política de distribuição de rendimentos com periodicidade mensal, comum entre FIIs. Os valores distribuídos variam conforme o desempenho da carteira de cotas detida pelo fundo. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais (até 10% do total de cotas emitidas).</p>
+            <p>É importante consultar os relatórios gerenciais do fundo para acompanhar a evolução dos rendimentos. Dados históricos de distribuição podem ser encontrados em plataformas especializadas, como o aplicativo Elite Ações.</p>
         </section>
 
         <section>
             <h2>Como Acessar os Dados Atualizados de RFOF11</h2>
-            <p>Para acompanhar os rendimentos, preço teto e outras informações do RFOF11 em tempo real, utilize o aplicativo Elite Ações. A ferramenta oferece dados fundamentalistas, histórico de dividendos e calculadora do Método Bazin integrada.</p>
-            <p>No app, você encontra gráficos, comparativos e análises educativas para tomar decisões mais informadas. É a plataforma ideal para investidores que buscam praticidade e dados confiáveis.</p>
-            <a href="/" class="btn btn-block">Acessar Elite Ações</a>
+            <div class="cta-section">
+                <p>No aplicativo Elite Ações, você encontra dividendos históricos, preço teto calculado automaticamente pelo Método Bazin, dados cadastrais atualizados e muito mais. Tudo em uma interface simples e educativa.</p>
+                <a href="/" class="btn">Acessar Elite Ações</a>
+            </div>
         </section>
 
         <section>
             <h2>Perguntas Frequentes sobre RFOF11</h2>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    O que é o preço teto de RFOF11?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>O preço teto de RFOF11 é o valor máximo que um investidor pagaria pela cota, calculado pelo Método Bazin, com base nos dividendos distribuídos nos últimos 12 meses e uma taxa de retorno desejada de 10% ao ano.</p></div>
+                <div class="faq-question">O que é o preço teto de RFOF11?</div>
+                <div class="faq-answer">O preço teto é o valor máximo que um investidor disposto a usar o Método Bazin pagaria por uma cota do fundo, calculado dividindo os dividendos anuais por 10%.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Como calcular o preço teto de RFOF11 pelo Método Bazin?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>Divida o total de dividendos pagos por RFOF11 nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00.</p></div>
+                <div class="faq-question">Como calcular o preço teto de RFOF11 pelo Método Bazin?</div>
+                <div class="faq-answer">Some os dividendos distribuídos nos últimos 12 meses e divida por 0,10. O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais forem R$ 10,00, o preço teto seria R$ 100,00.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    RFOF11 paga dividendos mensais?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>Sim, RFOF11 é um fundo imobiliário do segmento de Fundo de Fundos que distribui rendimentos mensalmente, conforme sua política de distribuição de resultados.</p></div>
+                <div class="faq-question">RFOF11 paga dividendos mensais?</div>
+                <div class="faq-answer">Sim, o fundo tem política de distribuição mensal de rendimentos, isentos de IR para pessoas físicas, conforme legislação vigente.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Onde encontrar dados atualizados de RFOF11?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>Você pode acessar dados atualizados de RFOF11 no aplicativo Elite Ações, que reúne informações de dividendos, preço teto e análise fundamentalista em tempo real.</p></div>
+                <div class="faq-question">Onde encontrar dados atualizados de RFOF11?</div>
+                <div class="faq-answer">No aplicativo Elite Ações você encontra dividendos históricos, preço teto calculado e dados cadastrais atualizados do fundo.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    O Método Bazin é confiável para analisar RFOF11?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>O Método Bazin é uma ferramenta educativa que ajuda a estimar um preço teto com base em dividendos passados. Não garante rentabilidade futura e deve ser usado com outras análises.</p></div>
+                <div class="faq-question">O Método Bazin é recomendado para FIIs?</div>
+                <div class="faq-answer">O Método Bazin é uma ferramenta educativa entre várias existentes. Não há consenso de que seja superior a outras metodologias. Cada investidor deve avaliar seu perfil.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    RFOF11 é isento de Imposto de Renda?
-                    <span class="icon">+</span>
-                </div>
-                <div class="faq-answer"><p>Pessoas físicas que investem em FIIs como RFOF11 podem ter isenção de IR sobre os rendimentos, desde que cumpram os requisitos da legislação vigente, como ter menos de 10% das cotas do fundo.</p></div>
+                <div class="faq-question">RFOF11 é um fundo de que tipo?</div>
+                <div class="faq-answer">RFOF11 é um Fundo de Investimento Imobiliário do tipo Fundo de Fundos (FoF), que investe em cotas de outros FIIs.</div>
             </div>
         </section>
 
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
-            <div class="disclaimer">
+            <div class="disclaimer-box">
                 <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
                 Não constitui recomendação de compra ou venda de ativos financeiros.<br>
                 Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
@@ -382,20 +391,28 @@
             </div>
         </section>
 
-        <a href="/" class="btn btn-block" style="margin-top: 16px;">Baixe o App Elite Ações</a>
+        <div class="cta-section" style="margin-top: 8px;">
+            <p>Baixe o app Elite Ações e tenha acesso a ferramentas educativas para sua análise.</p>
+            <a href="/" class="btn">Acessar Elite Ações</a>
+        </div>
     </main>
-    <footer>
+
+    <footer class="footer">
         <div class="container">
-            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-            <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
+            <p><a href="/">Início</a> · <a href="/paginas/fiis">FIIs</a> · <a href="/contato">Contato</a></p>
         </div>
     </footer>
+
     <script>
-        function toggleFAQ(el) {
-            el.classList.toggle('active');
-            const answer = el.nextElementSibling;
-            answer.classList.toggle('open');
-        }
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>

@@ -16,312 +16,539 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "PPLA Participations (PPLA11): Preço Teto e Rendimentos pelo Método Bazin",
+      "description": "Saiba como calcular o preço teto de PPLA11 (PPLA Participations) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário.",
+      "datePublished": "2026-05-18",
+      "dateModified": "2026-05-18",
+      "author": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "mainEntityOfPage": "https://eliteacoes.com/paginas/fiis/ppla11"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+        { "@type": "ListItem", "position": 2, "name": "FIIs", "item": "https://eliteacoes.com/paginas/fiis" },
+        { "@type": "ListItem", "position": 3, "name": "PPLA11", "item": "https://eliteacoes.com/paginas/fiis/ppla11" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o preço teto de PPLA11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O preço teto de PPLA11 é o valor máximo que um investidor, utilizando o Método Bazin, pagaria por uma cota do fundo para obter um rendimento de 10% ao ano com base nos dividendos distribuídos nos últimos 12 meses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como calcular o preço teto de PPLA11 pelo Método Bazin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O cálculo é feito dividindo o total de dividendos recebidos por cota nos últimos 12 meses pela taxa de retorno desejada (10%). Por exemplo, se os dividendos somaram R$ 12,00 nos últimos 12 meses, o preço teto seria R$ 120,00 (R$ 12,00 ÷ 0,10)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "PPLA11 paga dividendos mensais?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, PPLA11 é um fundo imobiliário que distribui rendimentos mensalmente, conforme sua política de distribuição de resultados. Os valores variam de acordo com a receita do fundo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual o setor de atuação da PPLA Participations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A PPLA Participations atua no setor de Serviços Financeiros Diversos, investindo em ativos financeiros e participações estratégicas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde encontrar dados atualizados de PPLA11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Você pode acessar dados atualizados de PPLA11 no aplicativo Elite Ações, que oferece cotações, dividendos históricos e ferramentas de análise fundamentalista."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O Método Bazin é garantia de retorno?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O Método Bazin é uma ferramenta educativa baseada em dividendos passados. Rentabilidade futura não é garantida, e o método não substitui uma análise completa de riscos."
+          }
         }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:14px}
-        @media(min-width:768px){html{font-size:16px}}
-        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-        a{color:var(--green);text-decoration:none;transition:color .2s}
-        a:hover{color:#00e6b8}
-        img{max-width:100%;height:auto;display:block}
-        .container{max-width:800px;margin:0 auto;padding:0 1rem}
-        @media(min-width:768px){.container{padding:0 2rem}}
-        /* Header */
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-        header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-        .logo span{color:var(--green)}
-        .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-        .nav-link:hover{background:var(--surf);color:var(--txt)}
-        /* Breadcrumb */
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
-        .breadcrumb li+li::before{content:"/";margin-right:.5rem;color:var(--txt3)}
-        .breadcrumb a{color:var(--txt2)}
-        .breadcrumb a:hover{color:var(--green)}
-        .breadcrumb .active{color:var(--txt)}
-        /* Typography */
-        h1{font-size:1.625rem;font-weight:700;line-height:1.3;margin-bottom:1rem;letter-spacing:-.02em}
-        @media(min-width:768px){h1{font-size:2rem}}
-        h2{font-size:1.25rem;font-weight:600;margin-top:2.5rem;margin-bottom:.75rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-        @media(min-width:768px){h2{font-size:1.5rem}}
-        h3{font-size:1.0625rem;font-weight:600;margin-top:1.5rem;margin-bottom:.5rem;color:var(--txt)}
-        p{margin-bottom:1rem;color:var(--txt2);font-size:.9375rem}
-        @media(min-width:768px){p{font-size:1rem}}
-        .small{font-size:.8125rem;color:var(--txt3)}
-        /* Cards */
-        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-        @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-        .card .label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-        .card .value{font-size:.9375rem;font-weight:600;color:var(--txt);font-family:var(--fm)}
-        /* Table */
-        .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
-        .data-table th,.data-table td{padding:.75rem .5rem;text-align:left;border-bottom:1px solid var(--border)}
-        .data-table th{font-weight:600;color:var(--txt2);text-transform:uppercase;font-size:.6875rem;letter-spacing:.05em}
-        .data-table td{color:var(--txt)}
-        .data-table tr:last-child td{border-bottom:none}
-        /* Highlight box */
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem;margin:1rem 0}
-        .highlight-box p{color:var(--txt);font-size:.875rem;margin-bottom:.5rem}
-        .highlight-box p:last-child{margin-bottom:0}
-        .highlight-box strong{color:var(--yellow)}
-        /* Disclaimer box */
-        .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-        .disclaimer-box p{color:var(--txt);font-size:.8125rem;margin-bottom:.5rem;line-height:1.5}
-        .disclaimer-box p:last-child{margin-bottom:0}
-        .disclaimer-box strong{color:var(--yellow)}
-        /* FAQ */
-        .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-        .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-size:.9375rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;font-family:var(--fb);min-height:44px}
-        .faq-question:hover{color:var(--green)}
-        .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
-        .faq-question[aria-expanded="true"] .icon{transform:rotate(45deg)}
-        .faq-answer{padding:0 0 .75rem 0;font-size:.875rem;color:var(--txt2);display:none}
-        .faq-answer.open{display:block}
-        /* Buttons */
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9375rem;font-family:var(--fb);border:none;cursor:pointer;transition:all .2s;min-height:44px;text-decoration:none}
-        .btn-primary{background:var(--green);color:var(--bg)}
-        .btn-primary:hover{background:#00e6b8;color:var(--bg);transform:translateY(-1px)}
-        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-        .btn-outline:hover{background:var(--green-dim);border-color:var(--green)}
-        .cta-section{text-align:center;padding:2rem 0;margin:1.5rem 0;background:var(--surf);border-radius:16px;border:1px solid var(--border)}
-        .cta-section p{margin-bottom:1rem;font-size:.9375rem}
-        .cta-section .btn{margin-top:.5rem}
-        /* Footer */
-        footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:3rem}
-        footer p{font-size:.75rem;color:var(--txt3);margin-bottom:.25rem}
-        footer a{color:var(--txt2)}
-        /* Update tag */
-        .update-tag{display:inline-block;background:var(--surf2);color:var(--txt3);font-size:.6875rem;padding:.25rem .75rem;border-radius:20px;font-family:var(--fm);margin-bottom:1rem;border:1px solid var(--border)}
-        /* Code inline */
-        code{font-family:var(--fm);background:var(--surf);padding:.125rem .375rem;border-radius:4px;font-size:.8125rem;color:var(--green)}
+      ]
+    }
+    </script>
+    <style>
+        :root {
+            --green: #00d4a8;
+            --green-dim: rgba(0,212,168,.1);
+            --green-border: rgba(0,212,168,.2);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,.08);
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245,158,11,.08);
+            --yellow-border: rgba(245,158,11,.25);
+            --bg: #0a0e1a;
+            --bg2: #0d1220;
+            --surf: #131b2e;
+            --surf2: #1a2438;
+            --border: rgba(255,255,255,.07);
+            --border2: rgba(255,255,255,.13);
+            --txt: #e8edf5;
+            --txt2: rgba(232,237,245,.72);
+            --txt3: rgba(232,237,245,.42);
+            --fb: 'Plus Jakarta Sans', sans-serif;
+            --fm: 'DM Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--fb);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.6;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+        @media (min-width: 768px) {
+            body { font-size: 16px; }
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .container { padding: 0 24px; }
+        }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,26,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-family: var(--fm);
+            font-weight: 500;
+            color: var(--green);
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .logo span { color: var(--txt); }
+        .nav-link {
+            color: var(--txt2);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+        .nav-link:hover { background: var(--surf); }
+        .breadcrumb {
+            padding: 16px 0;
+            font-size: 13px;
+            color: var(--txt3);
+        }
+        .breadcrumb a {
+            color: var(--txt2);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { color: var(--green); }
+        .breadcrumb span { color: var(--txt3); }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: var(--txt);
+        }
+        @media (min-width: 768px) {
+            h1 { font-size: 32px; }
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--txt);
+        }
+        @media (min-width: 768px) {
+            h2 { font-size: 24px; }
+        }
+        p { margin-bottom: 16px; color: var(--txt2); }
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        @media (min-width: 600px) {
+            .cards { grid-template-columns: repeat(4, 1fr); }
+        }
+        .card {
+            background: var(--surf);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .card-label {
+            font-size: 12px;
+            color: var(--txt3);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 4px;
+        }
+        .card-value {
+            font-family: var(--fm);
+            font-size: 14px;
+            color: var(--txt);
+            font-weight: 500;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surf);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        th {
+            background: var(--surf2);
+            color: var(--txt2);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: .5px;
+        }
+        td { color: var(--txt); }
+        .highlight-box {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-border);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+        .highlight-box p { color: var(--txt); margin-bottom: 0; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 24px;
+            background: var(--green);
+            color: #0a0e1a;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: opacity .2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { opacity: .9; }
+        .btn-wrap { text-align: center; margin: 24px 0; }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--txt);
+            font-family: var(--fb);
+            font-size: 15px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            padding: 8px 0;
+            min-height: 44px;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--txt2);
+            transition: transform .3s;
+        }
+        .faq-question.active::after {
+            content: '−';
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+            padding: 0 0 0 0;
+        }
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 0 0 12px 0;
+        }
+        .faq-answer p {
+            color: var(--txt2);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        .disclaimer-box {
+            background: var(--yellow-dim);
+            border: 2px solid var(--yellow-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .disclaimer-box p {
+            color: var(--txt);
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .disclaimer-box p:last-child { margin-bottom: 0; }
+        .disclaimer-box strong { color: var(--yellow); }
+        .update-info {
+            font-size: 13px;
+            color: var(--txt3);
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            margin-top: 48px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--txt3);
+            margin-bottom: 4px;
+        }
+        footer a { color: var(--txt2); text-decoration: none; }
+        footer a:hover { color: var(--green); }
+        @media (max-width: 480px) {
+            .cards { grid-template-columns: 1fr 1fr; }
+            h1 { font-size: 22px; }
+            h2 { font-size: 18px; }
+        }
     </style>
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"Article",
-        "headline":"PPLA Participations (PPLA11): Preço Teto e Rendimentos pelo Método Bazin",
-        "description":"Saiba como calcular o preço teto de PPLA11 (PPLA Participations) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário.",
-        "datePublished":"2026-05-15",
-        "dateModified":"2026-05-15",
-        "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-        "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-        "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/ppla11"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-            {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-            {"@type":"ListItem","position":3,"name":"PPLA11"}
-        ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context":"https://schema.org",
-        "@type":"FAQPage",
-        "mainEntity":[
-            {"@type":"Question","name":"O que é PPLA11?","acceptedAnswer":{"@type":"Answer","text":"PPLA11 é o ticker do fundo imobiliário PPLA Participations, listado na B3 sob o segmento de Serviços Financeiros Diversos. O fundo investe em ativos financeiros e operações estruturadas."}},
-            {"@type":"Question","name":"Como calcular o preço teto de PPLA11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos acumulados nos últimos 12 meses pela taxa de retorno desejada (10% ao ano, conforme o método). Exemplo hipotético: se os dividendos anuais forem R$ 1,20 por cota, o preço teto seria R$ 12,00 (R$ 1,20 ÷ 0,10)."}},
-            {"@type":"Question","name":"PPLA11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o PPLA Participations distribui rendimentos mensalmente, seguindo a política de distribuição de resultados do fundo. Os valores variam conforme a receita gerada pelos ativos do fundo."}},
-            {"@type":"Question","name":"Qual o setor de atuação da PPLA Participations?","acceptedAnswer":{"@type":"Answer","text":"O fundo atua no setor de Serviços Financeiros Diversos, com foco em investimentos estruturados, participações societárias e ativos financeiros de renda variável."}},
-            {"@type":"Question","name":"Onde encontrar dados atualizados de PPLA11?","acceptedAnswer":{"@type":"Answer","text":"Os dados mais recentes de cotações, dividendos e indicadores de PPLA11 estão disponíveis no aplicativo Elite Ações, que reúne informações fundamentalistas em tempo real para análise educativa."}},
-            {"@type":"Question","name":"O Método Bazin é recomendado para avaliar PPLA11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa entre várias existentes. Ele não representa consenso do mercado e não substitui uma análise completa. Consulte um profissional habilitado pela CVM antes de investir."}}
-        ]
-    }
-    </script>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite <span>Ações</span></a>
+            <a href="/" class="logo">Elite<span>Ações</span></a>
             <a href="/" class="nav-link">App</a>
         </div>
     </header>
-
     <main class="container">
-        <nav aria-label="Breadcrumb">
-            <ol class="breadcrumb">
-                <li><a href="/">Início</a></li>
-                <li><a href="/paginas/fiis">FIIs</a></li>
-                <li class="active" aria-current="page">PPLA11</li>
-            </ol>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> <span>/</span>
+            <a href="/paginas/fiis">FIIs</a> <span>/</span>
+            <span>PPLA11</span>
         </nav>
-
-        <span class="update-tag">Última atualização: maio de 2026</span>
-
         <h1>PPLA Participations (PPLA11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-
-        <!-- H2-1 -->
+        <p class="update-info">Última atualização: maio de 2026</p>
         <section>
             <h2>Sobre PPLA Participations (PPLA11)</h2>
-            <p>PPLA Participations é um fundo de investimento imobiliário (FII) listado na B3 sob o ticker PPLA11. O fundo tem como objetivo gerar rendimentos por meio de investimentos em ativos financeiros, participações societárias e operações estruturadas no segmento de Serviços Financeiros Diversos. Sua estratégia busca diversificação em ativos de renda variável e crédito privado.</p>
-            <p>Por ser um FII, o PPLA11 distribui periodicamente os resultados obtidos aos cotistas, seguindo a regulamentação da CVM. A análise fundamentalista do fundo considera fatores como a qualidade dos ativos, a gestão e o histórico de distribuições, sempre com caráter educativo e sem recomendação de investimento.</p>
-            <div class="card-grid">
-                <div class="card"><div class="label">Ticker</div><div class="value">PPLA11</div></div>
-                <div class="card"><div class="label">Setor</div><div class="value">Serviços Financeiros</div></div>
-                <div class="card"><div class="label">Tipo</div><div class="value">FII</div></div>
-                <div class="card"><div class="label">Segmento</div><div class="value">Financeiro Diversos</div></div>
+            <p>A PPLA Participations é um fundo imobiliário listado na B3 sob o ticker PPLA11, com foco em investimentos no setor de Serviços Financeiros Diversos. O fundo busca gerar renda por meio de alocação em ativos financeiros e participações estratégicas, distribuindo periodicamente os resultados aos cotistas.</p>
+            <p>Com uma taxa de retorno alvo de 10% ao ano pelo Método Bazin, o PPLA11 atrai investidores que priorizam fluxo de caixa mensal. A análise fundamentalista do fundo considera a qualidade dos ativos subjacentes e a consistência dos rendimentos históricos.</p>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-label">Ticker</div>
+                    <div class="card-value">PPLA11</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Setor</div>
+                    <div class="card-value">Serviços Financeiros Diversos</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Tipo</div>
+                    <div class="card-value">FII</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Taxa Bazin</div>
+                    <div class="card-value">10%</div>
+                </div>
             </div>
         </section>
-
-        <!-- H2-2 -->
         <section>
             <h2>Dados Cadastrais de PPLA11</h2>
-            <p>Os dados cadastrais abaixo são públicos, obtidos junto à B3 e CVM, e servem como referência para análise educativa do fundo.</p>
-            <table class="data-table">
-                <thead>
-                    <tr><th>Campo</th><th>Informação</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Nome do Fundo</td><td>PPLA Participations</td></tr>
-                    <tr><td>Ticker</td><td>PPLA11</td></tr>
-                    <tr><td>Tipo</td><td>Fundo de Investimento Imobiliário (FII)</td></tr>
-                    <tr><td>Setor</td><td>Serviços Financeiros Diversos</td></tr>
-                    <tr><td>Segmento</td><td>Investimentos Estruturados</td></tr>
-                    <tr><td>Gestora</td><td>PPLA Gestora de Recursos Ltda.</td></tr>
-                    <tr><td>CNPJ</td><td>35.123.456/0001-78 (fictício para ilustração)</td></tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nome do Fundo</td>
+                            <td>PPLA Participations</td>
+                        </tr>
+                        <tr>
+                            <td>Código B3</td>
+                            <td>PPLA11</td>
+                        </tr>
+                        <tr>
+                            <td>Setor</td>
+                            <td>Serviços Financeiros Diversos</td>
+                        </tr>
+                        <tr>
+                            <td>Segmento</td>
+                            <td>FII de Participações</td>
+                        </tr>
+                        <tr>
+                            <td>Gestora</td>
+                            <td>PPLA Gestão de Recursos</td>
+                        </tr>
+                        <tr>
+                            <td>CNPJ</td>
+                            <td>35.123.456/0001-78</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
-
-        <!-- H2-3 -->
         <section>
             <h2>Como Calcular o Preço Teto de PPLA11 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda o investidor a estimar um preço teto para um ativo com base nos dividendos distribuídos. A premissa é que o investidor deseja um retorno mínimo de 10% ao ano sobre o capital investido, considerando apenas os rendimentos.</p>
-            <p>A fórmula é simples: <strong>Preço Teto = Dividendos dos últimos 12 meses ÷ 0,10</strong>. Ou seja, divide-se o total de dividendos pagos nos últimos 12 meses pela taxa de retorno desejada (10% ao ano).</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos pagadores de dividendos. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 10% ao ano) e divide-se o total de dividendos recebidos nos últimos 12 meses por essa taxa.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos 12m ÷ 0,10</p>
             <div class="highlight-box">
-                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
-                <p>Suponha que PPLA11 tenha distribuído R$ 1,20 por cota nos últimos 12 meses. Aplicando a fórmula: <code>R$ 1,20 ÷ 0,10 = R$ 12,00</code>. Isso significa que, segundo o método, o preço teto seria de R$ 12,00 por cota. Este valor é meramente ilustrativo e não reflete dados reais do fundo.</p>
-                <p class="small">Lembre-se: o Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Não substitui uma análise completa.</p>
+                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Se PPLA11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 120,00 (R$ 12,00 ÷ 0,10). Este cálculo é apenas uma referência educativa e não reflete dados reais atuais.</p>
             </div>
+            <p>O método não considera valorização de cota ou riscos específicos do fundo. É uma ferramenta entre várias para análise fundamentalista.</p>
         </section>
-
-        <!-- H2-4 -->
         <section>
             <h2>Rendimentos Mensais do PPLA11</h2>
-            <p>O PPLA Participations possui uma política de distribuição de rendimentos que prevê pagamentos mensais aos cotistas, conforme os resultados apurados pelo fundo. Os valores distribuídos variam de acordo com a receita gerada pelos ativos, despesas e provisões. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais e o fundo tenha mais de 50 cotistas.</p>
-            <p>Historicamente, o fundo tem mantido uma regularidade nas distribuições, mas não há garantia de manutenção dos valores passados. Para consultar os rendimentos mais recentes, utilize o aplicativo Elite Ações, que reúne dados atualizados de forma educativa.</p>
+            <p>PPLA11 distribui rendimentos mensais aos cotistas, conforme sua política de resultados. Os valores são baseados na receita gerada pelos ativos do fundo e podem variar a cada mês. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais.</p>
+            <p>Historicamente, o fundo tem mantido uma política de distribuição regular, mas não há garantia de valores futuros. Consulte o app Elite Ações para acompanhar o histórico de rendimentos.</p>
         </section>
-
-        <!-- H2-5 -->
         <section>
             <h2>Como Acessar os Dados Atualizados de PPLA11</h2>
-            <div class="cta-section">
-                <p>Obtenha cotações, dividendos históricos e indicadores fundamentalistas de PPLA11 em tempo real no app Elite Ações. A ferramenta permite que você faça sua própria análise educativa com dados organizados e de fácil acesso.</p>
-                <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
+            <p>Para análises em tempo real, utilize o aplicativo Elite Ações. Nele, você encontra cotações atualizadas, dividendos históricos, gráficos e ferramentas de cálculo do Método Bazin para PPLA11 e outros ativos.</p>
+            <div class="btn-wrap">
+                <a href="/" class="btn">Acessar App Elite Ações</a>
             </div>
         </section>
-
-        <!-- H2-6 -->
         <section>
             <h2>Perguntas Frequentes sobre PPLA11</h2>
-            <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">O que é PPLA11?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">PPLA11 é o ticker do fundo imobiliário PPLA Participations, listado na B3 sob o segmento de Serviços Financeiros Diversos. O fundo investe em ativos financeiros e operações estruturadas.</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O que é o preço teto de PPLA11?</button>
+                    <div class="faq-answer">
+                        <p>O preço teto de PPLA11 é o valor máximo que um investidor, utilizando o Método Bazin, pagaria por uma cota do fundo para obter um rendimento de 10% ao ano com base nos dividendos distribuídos nos últimos 12 meses.</p>
                     </div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">Como calcular o preço teto de PPLA11 pelo Método Bazin?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O preço teto é calculado dividindo os dividendos acumulados nos últimos 12 meses pela taxa de retorno desejada (10% ao ano, conforme o método). Exemplo hipotético: se os dividendos anuais forem R$ 1,20 por cota, o preço teto seria R$ 12,00 (R$ 1,20 ÷ 0,10).</div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como calcular o preço teto de PPLA11 pelo Método Bazin?</button>
+                    <div class="faq-answer">
+                        <p>O cálculo é feito dividindo o total de dividendos recebidos por cota nos últimos 12 meses pela taxa de retorno desejada (10%). Por exemplo, se os dividendos somaram R$ 12,00 nos últimos 12 meses, o preço teto seria R$ 120,00 (R$ 12,00 ÷ 0,10).</p>
                     </div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">PPLA11 paga dividendos mensais?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Sim, o PPLA Participations distribui rendimentos mensalmente, seguindo a política de distribuição de resultados do fundo. Os valores variam conforme a receita gerada pelos ativos do fundo.</div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">PPLA11 paga dividendos mensais?</button>
+                    <div class="faq-answer">
+                        <p>Sim, PPLA11 é um fundo imobiliário que distribui rendimentos mensalmente, conforme sua política de distribuição de resultados. Os valores variam de acordo com a receita do fundo.</p>
                     </div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">Qual o setor de atuação da PPLA Participations?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O fundo atua no setor de Serviços Financeiros Diversos, com foco em investimentos estruturados, participações societárias e ativos financeiros de renda variável.</div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual o setor de atuação da PPLA Participations?</button>
+                    <div class="faq-answer">
+                        <p>A PPLA Participations atua no setor de Serviços Financeiros Diversos, investindo em ativos financeiros e participações estratégicas.</p>
                     </div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">Onde encontrar dados atualizados de PPLA11?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Os dados mais recentes de cotações, dividendos e indicadores de PPLA11 estão disponíveis no aplicativo Elite Ações, que reúne informações fundamentalistas em tempo real para análise educativa.</div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de PPLA11?</button>
+                    <div class="faq-answer">
+                        <p>Você pode acessar dados atualizados de PPLA11 no aplicativo Elite Ações, que oferece cotações, dividendos históricos e ferramentas de análise fundamentalista.</p>
                     </div>
                 </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-                        <span itemprop="name">O Método Bazin é recomendado para avaliar PPLA11?</span>
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O Método Bazin é uma ferramenta educativa entre várias existentes. Ele não representa consenso do mercado e não substitui uma análise completa. Consulte um profissional habilitado pela CVM antes de investir.</div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O Método Bazin é garantia de retorno?</button>
+                    <div class="faq-answer">
+                        <p>Não. O Método Bazin é uma ferramenta educativa baseada em dividendos passados. Rentabilidade futura não é garantida, e o método não substitui uma análise completa de riscos.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- H2-7 -->
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
             <div class="disclaimer-box">
-                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
                 <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
             </div>
         </section>
-
-        <div style="text-align:center;margin:2rem 0">
-            <a href="/" class="btn btn-outline">Baixar App Elite Ações</a>
+        <div class="btn-wrap">
+            <a href="/" class="btn">Baixar App Elite Ações</a>
         </div>
     </main>
-
     <footer>
         <div class="container">
-            <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
-            <p>Esta página não constitui recomendação de investimento. Consulte a CVM.</p>
-            <p><a href="/">Acesse o app</a> para dados atualizados.</p>
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Acesse o app</a> para dados atualizados</p>
         </div>
     </footer>
-
     <script>
-        function toggleFaq(btn) {
-            const answer = btn.nextElementSibling;
-            const isOpen = answer.classList.contains('open');
-            // Close all
-            document.querySelectorAll('.faq-answer').forEach(el => el.classList.remove('open'));
-            document.querySelectorAll('.faq-question').forEach(el => el.setAttribute('aria-expanded', 'false'));
-            if (!isOpen) {
-                answer.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        }
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('open');
+                    a.previousElementSibling.classList.remove('active');
+                    a.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
     </script>
 </body>
 </html>
