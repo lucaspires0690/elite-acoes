@@ -1346,6 +1346,8 @@ async function carregarPaginasAtivas(){
 }
 
 async function carregarAcoes(){
+  // Limpa cache antigo que pode ter dados sem campo tipo
+  try{const c=localStorage.getItem("ea_acoes_cache");if(c){const arr=JSON.parse(c);if(arr.length&&!arr[0].tipo){localStorage.removeItem("ea_acoes_cache");localStorage.removeItem("ea_cache_ts");}}}catch(_){}
   // Carregar cache imediatamente enquanto busca do Firestore
   try{
     const cached=localStorage.getItem('ea_acoes_cache');
@@ -1360,14 +1362,20 @@ async function carregarAcoes(){
     }
   }catch(_){}
   try{
-    const snap=await getDocs(collection(db,'acoes'));
+    // Busca das duas coleções em paralelo
+    const [snapAcoes, snapFiis] = await Promise.all([
+      getDocs(collection(db,'acoes')),
+      getDocs(collection(db,'fiis'))
+    ]);
     const tinhaCache=ACOES.length>0;
-    ACOES=snap.docs.map(d=>({id:d.id,...d.data()}));
+    const dadosAcoes = snapAcoes.docs.map(d=>({id:d.id,...d.data(),tipo:'acao'}));
+    const dadosFiis  = snapFiis.docs.map(d=>({id:d.id,...d.data(),tipo:'fii'}));
+    ACOES=[...dadosAcoes,...dadosFiis];
     // Cache local
     try{localStorage.setItem('ea_acoes_cache',JSON.stringify(ACOES));localStorage.setItem('ea_cache_ts',Date.now());}catch(_){}
     // Só renderiza se não tinha cache (evita piscar)
     if(!tinhaCache){atualizarContadores();renderContent();}
-    else{atualizarContadores();} // atualiza contadores sem re-renderizar tudo
+    else{atualizarContadores();}
     // Mostrar barra de atualização
     const ub=document.getElementById('update-bar');
     const ut=document.getElementById('update-txt');
@@ -1375,9 +1383,14 @@ async function carregarAcoes(){
     // Atualização silenciosa a cada 15 min — sem piscar
     setInterval(async()=>{
       try{
-        const s=await getDocs(collection(db,'acoes'));
-        const novos=s.docs.map(d=>({id:d.id,...d.data()}));
-        // Só re-renderiza se os dados realmente mudaram
+        const [sA, sF] = await Promise.all([
+          getDocs(collection(db,'acoes')),
+          getDocs(collection(db,'fiis'))
+        ]);
+        const novos=[
+          ...sA.docs.map(d=>({id:d.id,...d.data(),tipo:'acao'})),
+          ...sF.docs.map(d=>({id:d.id,...d.data(),tipo:'fii'}))
+        ];
         const tsNovo=novos[0]?.ultima_atualizacao;
         const tsAtual=ACOES[0]?.ultima_atualizacao;
         if(tsNovo!==tsAtual){
@@ -1399,15 +1412,15 @@ async function carregarAcoes(){
   }
 }
 
-function isFii(c){return /11$/.test(c);}
-function calcTaxa(a){return isFii(a.codigo)?taxaFii:taxa;}
+function isFii(c,obj){if(obj&&obj.tipo)return obj.tipo==="fii";const found=ACOES.find(a=>a.codigo===c||a.id===c);if(found&&found.tipo)return found.tipo==="fii";return /11$/.test(c);}
+function calcTaxa(a){return isFii(a.codigo,a)?taxaFii:taxa;}
 
 // Taxa baseada no DY real dos últimos 12 meses
 // Limitada ao range do slider (4% mínimo)
 function calcTaxaReal(a){
   // Método Bazin: taxa mínima de retorno desejada
   // Ações: 6% | FIIs: 10%
-  return isFii(a.codigo)?10:6;
+  return isFii(a.codigo,a)?10:6;
 }
 function calc(a,t){
   const teto=a.dividendo_anual>0?a.dividendo_anual/(t/100):0;
@@ -1470,16 +1483,16 @@ window.renderContent=function renderContent(){
   if(busca.trim().length>0){
     const q=busca.toLowerCase().trim();
     let lista=ACOES.filter(a=>a.codigo.toLowerCase().includes(q)||(sanitize(a.nome)||'').toLowerCase().includes(q));
-    if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
-    if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
+    if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo,a));
+    if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo,a));
     content.innerHTML='<div class="sr-header"><div class="sr-title">Resultados para "<strong>'+busca+'</strong>"</div><div class="sr-count">'+lista.length+' encontrados</div></div>'
       +'<div class="search-results">'+(lista.length?lista.map(a=>renderSRItem(a)).join(''):'<div class="sr-empty">🔍 Nenhum resultado</div>')+'</div>';
     return;
   }
 
   let lista=ACOES;
-  if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo));
-  if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo));
+  if(tipo==='acoes')lista=lista.filter(a=>!isFii(a.codigo,a));
+  if(tipo==='fiis')lista=lista.filter(a=>isFii(a.codigo,a));
 
   if(filtro==='inicio'){
     renderHome(content);
@@ -1513,8 +1526,8 @@ window.renderContent=function renderContent(){
 
   // Abas Ações/FIIs para Oportunidades e DY
   if(filtro==='baratas'||filtro==='dy'){
-    const listaAcoes=lista.filter(a=>!isFii(a.codigo));
-    const listaFiis=lista.filter(a=>isFii(a.codigo));
+    const listaAcoes=lista.filter(a=>!isFii(a.codigo,a));
+    const listaFiis=lista.filter(a=>isFii(a.codigo,a));
     const abaAtivaOp=window._oportunidadesAba||'acoes';
     content.innerHTML='<div class="favs-section">'
       +'<div class="favs-title">'+(labels[filtro]||filtro)+'</div>'
@@ -1536,13 +1549,13 @@ function renderHome(el){
   const sauda=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
   const nome=(USER&&USER.displayName?USER.displayName.split(' ')[0]:'');
 
-  const nAcoes=ACOES.filter(a=>!isFii(a.codigo)).length;
-  const nFiis=ACOES.filter(a=>isFii(a.codigo)).length;
+  const nAcoes=ACOES.filter(a=>!isFii(a.codigo,a)).length;
+  const nFiis=ACOES.filter(a=>isFii(a.codigo,a)).length;
   const nOp=ACOES.filter(a=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';}).length;
 
   // Top oportunidades ações (ordenar: muito-barata primeiro, depois DY desc)
   const topAcoes=ACOES
-    .filter(a=>!isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
+    .filter(a=>!isFii(a.codigo,a)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
     .sort((a,b)=>{
       const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
       if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
@@ -1550,7 +1563,7 @@ function renderHome(el){
     }).slice(0,6);
 
   const topFiis=ACOES
-    .filter(a=>isFii(a.codigo)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
+    .filter(a=>isFii(a.codigo,a)&&(()=>{const c=calc(a,calcTaxa(a));return c.status==='barata'||c.status==='muito-barata';})())
     .sort((a,b)=>{
       const ca=calc(a,calcTaxa(a)),cb=calc(b,calcTaxa(b));
       if(ca.status===cb.status) return parseFloat(cb.dy)-parseFloat(ca.dy);
@@ -1597,7 +1610,7 @@ function renderHome(el){
     return '<div class="fav-row" data-cod="'+a.codigo+'">'
       +logoHTML(a.codigo,'sm')
       +'<div class="fav-info">'
-        +'<div class="fav-ticker">'+a.codigo+'<span class="fav-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+        +'<div class="fav-ticker">'+a.codigo+'<span class="fav-tipo">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div>'
         +'<div class="fav-nome">'+(sanitize(a.nome||''))+'</div>'
       +'</div>'
       +'<div class="fav-right">'
@@ -1682,12 +1695,12 @@ function renderCard(a){
   const teto=c.teto>0?'R$ '+c.teto.toFixed(2):'—';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="acao-card '+st+'" data-cod="'+a.codigo+'">'
     +logoHTML(a.codigo,'ac')
     +'<div class="ac-info">'
-      +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+      +'<div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div>'
       +'<div class="ac-nome">'+(sanitize(a.nome||''))+'</div>'
       +'<div class="ac-metrics">'
         +'<div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val">R$ '+a.cotacao.toFixed(2)+'</div></div>'
@@ -1710,11 +1723,11 @@ function renderSRItem(a){
   const teto=c.teto>0?'Teto R$ '+c.teto.toFixed(2):'Sem DY';
   const pot=c.teto>0?(st==='cara'?'▲ ':'▼ ')+c.diffAbs+'%':'—';
   if(PLANO_VENCIDO){
-    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
+    return '<div class="acao-card '+st+'" style="cursor:pointer;opacity:.9" onclick=\"abrirModalAcesso()\">'+logoHTML(a.codigo,'ac')+'<div class="ac-info"><div class="ac-ticker">'+a.codigo+'<span class="ac-type">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div><div class="ac-nome">'+(sanitize(a.nome||''))+'</div><div class="ac-metrics"><div class="ac-metric"><div class="ac-metric-lbl">Cotação</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">Preço Teto</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••••</div></div><div class="ac-metric"><div class="ac-metric-lbl">DY 12 Meses</div><div class="ac-metric-val" style="color:var(--txt3);letter-spacing:2px">••%</div></div></div></div><div class="ac-right"><span class="ac-status '+st+'">'+statusLabel+'</span><span style="font-size:16px">🔒</span></div></div>';
   }
   return '<div class="sr-item" data-cod="'+a.codigo+'" style="cursor:pointer">'
     +logoHTML(a.codigo,'sr')
-    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(a.nome||''))+'</div></div>'
+    +'<div class="sri-info"><div class="sri-ticker">'+a.codigo+'<span class="sri-type">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div><div class="sri-nome">'+(sanitize(a.nome||''))+'</div></div>'
     +'<div class="sri-right"><div class="sri-price">R$ '+a.cotacao.toFixed(2)+'</div><div class="sri-teto">'+teto+'</div><div class="sri-pct '+(dyN>=6?'g':'')+'">DY '+c.dy+'%</div></div>'
     +'<span class="sri-status '+st+'">'+statusLabel+'</span>'
     +'<button class="sri-fav '+(fav?'fav':'')+'" data-cod="'+a.codigo+'" onclick="event.stopPropagation();window.toggleFav(this.dataset.cod)">'+(fav?'⭐':'☆')+'</button>'
@@ -1729,7 +1742,7 @@ window.openDet=function(codigo){
     abrirModalAcesso();return;
   }
   // Taxa do modal = DY real dos últimos 12 meses (consistente com o card)
-  const maxT=isFii(a.codigo)?20:15;
+  const maxT=isFii(a.codigo,a)?20:15;
   const t=calcTaxaReal(a),c=calc(a,t),ib=c.status==='barata'||c.status==='muito-barata';
   // Margem de segurança: só faz sentido quando barata (ib=true)
   // Se cara, mostra o quanto está acima do teto (risco)
@@ -1749,7 +1762,7 @@ window.openDet=function(codigo){
   }
 
   document.getElementById('det-ticker').textContent=a.codigo;
-  document.getElementById('det-nome').textContent=(sanitize(a.nome)||'')+(isFii(a.codigo)?' — FII':' — AÇÃO');
+  document.getElementById('det-nome').textContent=(sanitize(a.nome)||'')+(isFii(a.codigo,a)?' — FII':' — AÇÃO');
   const detLogo=document.getElementById('det-logo');
   if(detLogo){
     detLogo.style.display='block';
@@ -1789,7 +1802,7 @@ window.openDet=function(codigo){
 
         // Explicação do método
         +'<div style="font-size:11px;color:var(--txt3);line-height:1.6;margin-bottom:10px;padding:8px 10px;background:var(--surf2);border-radius:8px">'
-          +'📐 <strong style="color:var(--txt2)">Como funciona:</strong> o preço teto é o valor máximo que você deveria pagar para ter um retorno mínimo de <strong style="color:var(--green)">'+(isFii(a.codigo)?'10':'6')+'% ao ano</strong> em dividendos. Se a cotação estiver abaixo, a ação está barata. Acima, está cara.'
+          +'📐 <strong style="color:var(--txt2)">Como funciona:</strong> o preço teto é o valor máximo que você deveria pagar para ter um retorno mínimo de <strong style="color:var(--green)">'+(isFii(a.codigo,a)?'10':'6')+'% ao ano</strong> em dividendos. Se a cotação estiver abaixo, a ação está barata. Acima, está cara.'
         +'</div>'
 
         // Preço teto em destaque
@@ -1801,19 +1814,19 @@ window.openDet=function(codigo){
         // Fórmula
         +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:8px 0;text-align:center">'
           +'<div style="font-size:11px;color:var(--txt3);margin-bottom:4px">Dividendos 12m ÷ Taxa Bazin</div>'
-          +'<div style="font-size:13px;font-weight:700;font-family:var(--fm);color:var(--txt)">R$ '+a.dividendo_anual.toFixed(4)+' ÷ '+(isFii(a.codigo)?'10':'6')+'% = <strong style="color:var(--'+tetoClass+')">R$ '+c.teto.toFixed(2)+'</strong></div>'
+          +'<div style="font-size:13px;font-weight:700;font-family:var(--fm);color:var(--txt)">R$ '+a.dividendo_anual.toFixed(4)+' ÷ '+(isFii(a.codigo,a)?'10':'6')+'% = <strong style="color:var(--'+tetoClass+')">R$ '+c.teto.toFixed(2)+'</strong></div>'
         +'</div>'
 
         // Simulador de taxa personalizada
         +'<div style="background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:12px;margin:8px 0">'
           +'<div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">🧮 Simular com outra taxa</div>'
           +'<div style="display:flex;align-items:center;gap:8px">'
-            +'<input type="number" id="det-taxa-input" min="1" max="50" step="0.1" value="'+(isFii(a.codigo)?10:6)+'" data-div="'+a.dividendo_anual.toFixed(4)+'" data-cod="'+a.codigo+'" style="width:80px;padding:8px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surf);color:var(--txt);font-size:15px;font-weight:700;font-family:var(--fm);outline:none;text-align:center" oninput="simularTeto(this)">'
+            +'<input type="number" id="det-taxa-input" min="1" max="50" step="0.1" value="'+(isFii(a.codigo,a)?10:6)+'" data-div="'+a.dividendo_anual.toFixed(4)+'" data-cod="'+a.codigo+'" style="width:80px;padding:8px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surf);color:var(--txt);font-size:15px;font-weight:700;font-family:var(--fm);outline:none;text-align:center" oninput="simularTeto(this)">'
             +'<span style="font-size:14px;color:var(--txt3)">%</span>'
             +'<span style="font-size:12px;color:var(--txt3)">→ Preço teto:</span>'
             +'<span id="det-teto-sim" style="font-size:15px;font-weight:800;font-family:var(--fm);color:var(--green)">R$ '+c.teto.toFixed(2)+'</span>'
           +'</div>'
-          +'<div style="font-size:10px;color:var(--txt4);margin-top:6px">Digite a taxa mínima de retorno que você deseja. Padrão Bazin: '+(isFii(a.codigo)?'10':'6')+'%</div>'
+          +'<div style="font-size:10px;color:var(--txt4);margin-top:6px">Digite a taxa mínima de retorno que você deseja. Padrão Bazin: '+(isFii(a.codigo,a)?'10':'6')+'%</div>'
         +'</div>'
 
         // Margem de segurança
@@ -2027,7 +2040,7 @@ window.closeOut=(e,id)=>{if(e.target.id===id)closeModal(id);};
 window.irCheckout=()=>{window.open('https://pay.hotmart.com/A105812574Y','_blank');};
 
 window.abrirPaginaEmpresa=function(codigo){
-  const url = (isFii(codigo)?'/paginas/fiis/':'/paginas/acoes/')+codigo.toLowerCase()+'.html';
+  const url = (isFii(codigo,ACOES.find(a=>a.codigo===codigo))?'/paginas/fiis/':'/paginas/acoes/')+codigo.toLowerCase()+'.html';
   window.open(url,'_blank');
 };
 
@@ -2063,7 +2076,7 @@ function renderBuscaItem(a){
   const div=document.createElement('div');
   div.className='busca-item';
   div.innerHTML=logoHTML(a.codigo,'sm')
-    +'<div class="busca-item-info"><div class="busca-item-ticker">'+sanitize(a.codigo)+'<span class="busca-item-tipo">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+    +'<div class="busca-item-info"><div class="busca-item-ticker">'+sanitize(a.codigo)+'<span class="busca-item-tipo">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div>'
     +'<div class="busca-item-nome">'+sanitize(a.nome||'')+'</div></div>'
     +'<div class="busca-item-right"><div class="busca-item-cot">R$ '+a.cotacao.toFixed(2)+'</div>'
     +'<div class="busca-item-dy" style="color:'+dyColor+'">DY '+c.dy+'%</div></div>'
@@ -2165,7 +2178,7 @@ window.onBuscaMobile = function(val) {
     return '<div style="display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border);cursor:pointer" onclick="addBuscaRecente(&quot;'+a.codigo+'&quot;);fecharBuscaMobile();window.openDet(&quot;'+a.codigo+'&quot;)">'
       + logoHTML(a.codigo, 'sm')
       + '<div style="flex:1">'
-        + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo)?'FII':'AÇÃO')+'</span></div>'
+        + '<div style="font-weight:700;color:var(--txt)">'+a.codigo+' <span style="font-size:11px;color:var(--txt3);font-weight:400">'+(isFii(a.codigo,a)?'FII':'AÇÃO')+'</span></div>'
         + '<div style="font-size:12px;color:var(--txt3)">'+(sanitize(a.nome||''))+'</div>'
       + '</div>'
       + '<div style="text-align:right">'
