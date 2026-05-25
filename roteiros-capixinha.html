@@ -669,15 +669,30 @@ window.gerarTitulos = async () => {
   const mencoes = mencSnap.docs.map(d=>`${d.data().de} → ${d.data().para}`).join(', ');
   log('[IA] Consultando DeepSeek...');
   const prompt = `Você é especialista em criar títulos virais para o canal "Capixinha Invest" no YouTube Brasil.
-CONTEXTO: Nicho preço teto de ações e FIIs da B3 pelo Método Bazin. Personagem: Capixinha — capivara feita de coxinha curitibana. CTA sempre eliteacoes.com.
+
+CONTEXTO DO CANAL:
+Micronicho exclusivo: preço teto de ações e FIIs da B3. Personagem: Capixinha, capivara feita de coxinha curitibana. Assinatura do canal: "com coxinhas" — igual ao Primata usa "com bananas".
+
 SUBSTITUIÇÕES OBRIGATÓRIAS: ${mencoes}
-TÍTULOS DE ESTRUTURA (use a estrutura, não o conteúdo): ${estruturas}
-${referencia?`TÍTULO VIRAL DE REFERÊNCIA (extraia elementos virais): "${referencia}"`:''}
-${identidades.length?`TÍTULOS JÁ APROVADOS (mantenha consistência): ${identidades.join(', ')}`:''}
-Gere EXATAMENTE ${qtd} títulos para o canal Capixinha Invest.
-REGRA ABSOLUTA DE MICRONICHO: TODOS os títulos devem conter obrigatoriamente "preço teto" OU "dividendo(s)" ou variações como "renda passiva", "yield", "proventos". Sem exceção. Se um título não tiver nenhum desses termos, reescreva até ter.
-Substitua TODOS: macaco→capivara, banana→coxinha etc. NUNCA recomendar compra ou venda.
-Retorne APENAS os títulos, um por linha, sem numeração.`;
+
+TÍTULOS DE ESTRUTURA — SIGA A ESTRUTURA À RISCA:
+${estruturas}
+Mantenha a estrutura EXATA desses títulos. Apenas troque o tema pelo micronicho e aplique as substituições.
+Exemplo prático: "Imposto Explicado com Bananas" vira "Preço Teto Explicado com Coxinhas".
+Exemplo prático: "Dívida Pública explicada com Gorilas" vira "Dividendos explicados com Coxinhas".
+
+${referencia ? 'TÍTULO VIRAL DE REFERÊNCIA — extraia apenas formato, urgência, emoção e números. NÃO copie o tema: "' + referencia + '"' : ''}
+${identidades.length ? 'TÍTULOS JÁ APROVADOS DO CANAL — mantenha consistência de tom: ' + identidades.join(', ') : ''}
+
+REGRAS ABSOLUTAS:
+1. Estrutura idêntica aos títulos de estrutura — só mude tema e palavras
+2. TODO título deve conter preço teto OU dividendo OU dividendos OU renda passiva OU yield OU proventos
+3. Substitua TODOS: macaco para capivara, banana para coxinha, gorila para capixinha etc.
+4. NUNCA mencionar Método Bazin ou Barsi — só entra se já vier no título de referência colado
+5. NUNCA recomendar compra ou venda
+6. A expressão "com coxinhas" deve aparecer em pelo menos metade dos títulos gerados
+
+Gere EXATAMENTE ${qtd} títulos. Retorne APENAS os títulos, um por linha, sem numeração.`;
   try {
     const res = await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:prompt}],max_tokens:1000,temperature:0.85})});
     const data = await res.json();
