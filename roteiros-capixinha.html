@@ -334,24 +334,35 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
           <div class="card">
             <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Configurar</div>
-            <div style="margin-bottom:12px">
-              <div class="lbl" style="margin-bottom:5px">Títulos de Estrutura (canal Primata — um por linha)</div>
-              <textarea id="tit-estrutura" style="min-height:100px" placeholder="Empresa quebrou, e agora? Falência explicada com bananas&#10;Dívida Pública explicada com Gorilas"></textarea>
+
+            <!-- ESTRUTURA -->
+            <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:12px">
+              <div style="font-size:11px;font-weight:700;color:var(--lime);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Estrutura</div>
+              <div style="margin-bottom:10px">
+                <div class="lbl" style="margin-bottom:5px">Título de Estrutura (canal Primata)</div>
+                <input type="text" id="tit-estrutura" placeholder="Ex: Imposto Explicado com Bananas">
+              </div>
+              <div>
+                <div class="lbl" style="margin-bottom:5px">Transcrição de Estrutura</div>
+                <textarea id="tit-trans-estrutura" style="min-height:60px;font-size:11px" placeholder="Cole a transcrição do vídeo de estrutura aqui..."></textarea>
+                <div id="status-trans-estrutura" style="font-size:11px;color:var(--text3);margin-top:4px;display:none">✓ Transcrição de estrutura recebida</div>
+              </div>
             </div>
-            <div style="margin-bottom:12px">
-              <div class="lbl" style="margin-bottom:5px">Título Viral de Referência</div>
-              <input type="text" id="tit-referencia" placeholder="Ex: Quanto sua empresa realmente paga pra te ter">
+
+            <!-- REFERÊNCIA -->
+            <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:12px">
+              <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Referência Viral</div>
+              <div style="margin-bottom:10px">
+                <div class="lbl" style="margin-bottom:5px">Título Viral de Referência</div>
+                <input type="text" id="tit-referencia" placeholder="Ex: Quanto sua empresa realmente paga pra te ter">
+              </div>
+              <div>
+                <div class="lbl" style="margin-bottom:5px">Transcrição de Referência</div>
+                <textarea id="tit-trans-referencia" style="min-height:60px;font-size:11px" placeholder="Cole a transcrição do vídeo viral aqui..."></textarea>
+                <div id="status-trans-referencia" style="font-size:11px;color:var(--text3);margin-top:4px;display:none">✓ Transcrição de referência recebida</div>
+              </div>
             </div>
-            <div style="margin-bottom:12px">
-              <div class="lbl" style="margin-bottom:5px">Transcrição de Estrutura <span style="color:var(--text3);font-weight:400;font-size:10px;text-transform:none">(opcional — evita números inventados)</span></div>
-              <textarea id="tit-trans-est" style="min-height:70px;font-size:12px" placeholder="Cole a transcrição do canal Primata aqui..." oninput="onTransEst(this)"></textarea>
-              <div id="tit-est-ok" style="display:none;margin-top:4px;padding:6px 10px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);border-radius:7px;font-size:11px;color:var(--lime)">✓ Transcrição de estrutura recebida</div>
-            </div>
-            <div style="margin-bottom:12px">
-              <div class="lbl" style="margin-bottom:5px">Transcrição de Referência <span style="color:var(--text3);font-weight:400;font-size:10px;text-transform:none">(opcional — extrai elementos virais)</span></div>
-              <textarea id="tit-trans-ref" style="min-height:70px;font-size:12px" placeholder="Cole a transcrição do vídeo viral aqui..." oninput="onTransRef(this)"></textarea>
-              <div id="tit-ref-ok" style="display:none;margin-top:4px;padding:6px 10px;background:rgba(255,211,42,0.08);border:1px solid rgba(255,211,42,0.2);border-radius:7px;font-size:11px;color:var(--gold)">✓ Transcrição de referência recebida</div>
-            </div>
+
             <div style="margin-bottom:14px">
               <div class="lbl" style="margin-bottom:5px">Quantidade</div>
               <select id="tit-qtd"><option value="5" selected>5 títulos</option><option value="3">3 títulos</option><option value="10">10 títulos</option></select>
@@ -669,8 +680,6 @@ window.gerarTitulos = async () => {
   const log = m => { const el=document.getElementById('log-tit'); el.innerHTML+=`<span style="color:#60a5fa">${m}</span><br>`; el.scrollTop=99999; };
   const estruturas = document.getElementById('tit-estrutura').value.trim();
   const referencia = document.getElementById('tit-referencia').value.trim();
-  const transEstrutura = document.getElementById('tit-trans-est').value.trim();
-  const transReferencia = document.getElementById('tit-trans-ref').value.trim();
   const qtd = parseInt(document.getElementById('tit-qtd').value);
   if(!estruturas){notif('Cole títulos de estrutura','err');btn.disabled=false;btn.textContent='Gerar Títulos';return;}
   const [idSnap,mencSnap] = await Promise.all([
@@ -680,16 +689,54 @@ window.gerarTitulos = async () => {
   const identidades = idSnap.docs.map(d=>d.data().titulo).slice(-5);
   const mencoes = mencSnap.docs.map(d=>`${d.data().de} → ${d.data().para}`).join(', ');
   log('[IA] Consultando DeepSeek...');
-  const prompt = `Você é especialista em criar títulos virais para o canal "Capixinha Invest" no YouTube Brasil.
-CONTEXTO: Nicho preço teto de ações e FIIs da B3 pelo Método Bazin. Personagem: Capixinha — capivara feita de coxinha curitibana. CTA sempre eliteacoes.com.
+  // Captura transcrições e oculta os campos
+const transEstrutura = document.getElementById('tit-trans-estrutura').value.trim();
+const transReferencia = document.getElementById('tit-trans-referencia').value.trim();
+
+// Mostra confirmação e limpa visual
+if (transEstrutura) {
+  document.getElementById('tit-trans-estrutura').value = '';
+  document.getElementById('status-trans-estrutura').style.display = 'block';
+  document.getElementById('status-trans-estrutura').style.color = 'var(--lime)';
+}
+if (transReferencia) {
+  document.getElementById('tit-trans-referencia').value = '';
+  document.getElementById('status-trans-referencia').style.display = 'block';
+  document.getElementById('status-trans-referencia').style.color = 'var(--gold)';
+}
+
+const prompt = `Você é especialista em criar títulos virais para o canal "Capixinha Invest" no YouTube Brasil.
+
+CONTEXTO DO CANAL:
+Micronicho exclusivo: preço teto de ações e FIIs da B3. Personagem: Capixinha, capivara feita de coxinha curitibana. Assinatura do canal: "com coxinhas" — igual ao Primata usa "com bananas".
+
 SUBSTITUIÇÕES OBRIGATÓRIAS: ${mencoes}
-TÍTULOS DE ESTRUTURA (use a estrutura, não o conteúdo): ${estruturas}
-${referencia?`TÍTULO VIRAL DE REFERÊNCIA (extraia apenas estrutura, urgência e emoção — não o tema): "${referencia}"`:''}
-${transEstrutura?`DADOS REAIS DA TRANSCRIÇÃO DE ESTRUTURA — use APENAS estes números e fatos, NUNCA invente valores: ${transEstrutura.slice(0,1500)}`:''}
-${transReferencia?`ELEMENTOS VIRAIS DA TRANSCRIÇÃO DE REFERÊNCIA — extraia gancho, emoção e narrativa: ${transReferencia.slice(0,1000)}`:''}
-${identidades.length?`TÍTULOS JÁ APROVADOS (mantenha consistência): ${identidades.join(', ')}`:''}
-Gere EXATAMENTE ${qtd} títulos sobre preço teto/dividendos da B3. Substitua TODOS: macaco→capivara, banana→coxinha etc. NUNCA recomendar compra ou venda. ${transEstrutura?'PROIBIDO inventar números ou percentuais — use apenas dados das transcrições.':''}
-Retorne APENAS os títulos, um por linha, sem numeração.`;
+
+TÍTULO DE ESTRUTURA — SIGA A ESTRUTURA À RISCA:
+${estruturas}
+Mantenha a estrutura EXATA desse título. Apenas troque o tema pelo micronicho e aplique as substituições.
+Exemplo: "Imposto Explicado com Bananas" vira "Preço Teto Explicado com Coxinhas".
+
+${transEstrutura ? `TRANSCRIÇÃO DE ESTRUTURA — use os dados reais desta transcrição (números, fatos, exemplos concretos). NUNCA invente dados que não estão aqui:
+${transEstrutura.slice(0, 2000)}` : ''}
+
+${referencia ? `TÍTULO VIRAL DE REFERÊNCIA — extraia apenas formato, urgência, emoção e números REAIS: "${referencia}"` : ''}
+
+${transReferencia ? `TRANSCRIÇÃO DE REFERÊNCIA — extraia elementos virais: ganchos, emoções, perguntas provocativas. Use apenas dados que estão nesta transcrição:
+${transReferencia.slice(0, 2000)}` : ''}
+
+${identidades.length ? `TÍTULOS JÁ APROVADOS DO CANAL — mantenha consistência de tom: ${identidades.join(', ')}` : ''}
+
+REGRAS ABSOLUTAS:
+1. Estrutura idêntica ao título de estrutura — só mude tema e palavras
+2. TODO título deve conter preço teto OU dividendo OU dividendos OU renda passiva OU yield OU proventos
+3. Substitua TODOS: macaco para capivara, banana para coxinha, gorila para capixinha etc.
+4. NUNCA mencionar Método Bazin ou Barsi — só entra se já vier nos títulos de referência
+5. NUNCA recomendar compra ou venda
+6. Use APENAS números e dados que estão nas transcrições fornecidas — NUNCA invente
+7. A expressão "com coxinhas" deve aparecer em pelo menos metade dos títulos gerados
+
+Gere EXATAMENTE ${qtd} títulos. Retorne APENAS os títulos, um por linha, sem numeração.`;
   try {
     const res = await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:prompt}],max_tokens:1000,temperature:0.85})});
     const data = await res.json();
@@ -925,20 +972,6 @@ async function carregarBancoMencoes(){const snap=await getDocs(query(collection(
 window.excluirMencaoBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_mencoes',id));notif('Excluída','inf');carregarBancoMencoes();};
 async function carregarBancoVideos(){const snap=await getDocs(query(collection(db,'capixinha_videos'),orderBy('criado_em','desc')));const el=document.getElementById('banco-videos-list');if(!snap.size){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhum</div>';return;}el.innerHTML=snap.docs.map(d=>`<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--card2);border-radius:var(--radius2);border:1px solid var(--border);margin-bottom:6px"><div style="flex:1"><div style="font-size:13px;color:var(--text2)">${d.data().titulo}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">${d.data().data_publicacao||''} · ${d.data().infos?.length||0} entradas</div></div><button onclick="excluirVideoBanco('${d.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');}
 window.excluirVideoBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_videos',id));notif('Excluído','inf');carregarBancoVideos();};
-
-// ── TRANS CONFIRM (Títulos) ──
-window.onTransEst = (el) => {
-  if(el.value.trim().length > 50) {
-    el.style.cssText += ';height:0;min-height:0;overflow:hidden;padding:0;margin:0;border:none';
-    document.getElementById('tit-est-ok').style.display = 'block';
-  }
-};
-window.onTransRef = (el) => {
-  if(el.value.trim().length > 50) {
-    el.style.cssText += ';height:0;min-height:0;overflow:hidden;padding:0;margin:0;border:none';
-    document.getElementById('tit-ref-ok').style.display = 'block';
-  }
-};
 
 // ── UTILS ──
 window.fecharModal=id=>{document.getElementById(id).style.display='none';};
