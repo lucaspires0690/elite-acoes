@@ -1,288 +1,441 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MILS3 Mills — Dividendos | Elite Ações</title>
-    <meta name="description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/mils3">
-    <meta property="og:title" content="MILS3 Mills — Dividendos | Elite Ações">
-    <meta property="og:description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/mils3">
-    <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MILS3 Mills — Dividendos | Elite Ações">
-    <meta name="twitter:description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org","@type":"Article",
-      "headline":"Mills (MILS3): Preço Teto e Dividendos pelo Método Bazin",
-      "description":"Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-      "datePublished":"2026-05-18","dateModified":"2026-05-18",
-      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/mils3"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org","@type":"BreadcrumbList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-        {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-        {"@type":"ListItem","position":3,"name":"MILS3"}
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org","@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"Qual o preço teto de MILS3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se MILS3 pagou R$ 1,20 em dividendos anuais, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para dados atualizados."}},
-        {"@type":"Question","name":"MILS3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Mills possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. A política de dividendos é definida pela administração e aprovada em assembleia. Verifique os proventos no app Elite Ações."}},
-        {"@type":"Question","name":"Como usar o Método Bazin para MILS3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin calcula o preço teto como Dividendos Anuais ÷ 6%. Para MILS3, use a média dos dividendos dos últimos 12 meses. É uma ferramenta educativa, não uma recomendação de investimento."}},
-        {"@type":"Question","name":"Onde encontrar a análise fundamentalista de MILS3?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista completa de MILS3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto atualizado. Baixe o app gratuitamente."}},
-        {"@type":"Question","name":"MILS3 é uma boa ação para dividendos?","acceptedAnswer":{"@type":"Answer","text":"Não fazemos recomendações de investimento. A Mills está no setor de construção e engenharia, e seus dividendos variam conforme o desempenho. Use o Método Bazin como ferramenta educativa para sua própria análise."}},
-        {"@type":"Question","name":"Qual a taxa Bazin ideal para MILS3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin de 6% é um parâmetro comum para ações, mas cada investidor pode ajustar conforme seu objetivo de retorno. O cálculo do preço teto é apenas uma referência educativa."}}
-      ]
-    }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILS3 Mills — Dividendos | Elite Ações</title>
+  <meta name="description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/mils3">
+  <meta property="og:title" content="MILS3 Mills — Dividendos | Elite Ações">
+  <meta property="og:description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/mils3">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Elite Ações">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MILS3 Mills — Dividendos | Elite Ações">
+  <meta name="twitter:description" content="Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mills (MILS3): Preço Teto e Dividendos pelo Método Bazin",
+    "description": "Aprenda a calcular o preço teto de MILS3 (Mills) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+    "datePublished": "2026-05-24",
+    "dateModified": "2026-05-24",
+    "author": {
+      "@type": "Organization",
+      "name": "Elite Ações",
+      "url": "https://eliteacoes.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Elite Ações",
+      "url": "https://eliteacoes.com"
+    },
+    "mainEntityOfPage": "https://eliteacoes.com/paginas/acoes/mils3"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Empresas", "item": "https://eliteacoes.com/empresas" },
+      { "@type": "ListItem", "position": 3, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes" },
+      { "@type": "ListItem", "position": 4, "name": "MILS3" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual o preço teto de MILS3 pelo Método Bazin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Consulte o app Elite Ações para valores atualizados."
         }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:14px}
-        @media(min-width:768px){html{font-size:16px}}
-        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
-        .container{max-width:800px;margin:0 auto;padding:0 1rem}
-        @media(min-width:768px){.container{padding:0 2rem}}
-        a{color:var(--green);text-decoration:none;transition:color .2s}
-        a:hover{color:#fff}
-        /* Header */
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-        header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-        .logo span{color:var(--green)}
-        .nav-link{font-size:.875rem;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-        .nav-link:hover{background:var(--surf);color:var(--txt)}
-        /* Breadcrumb */
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
-        .breadcrumb li+li::before{content:"/";margin-right:.5rem;color:var(--txt3)}
-        .breadcrumb a{color:var(--txt2)}
-        .breadcrumb a:hover{color:var(--green)}
-        .breadcrumb .active{color:var(--txt)}
-        /* Typography */
-        h1{font-size:1.75rem;font-weight:700;line-height:1.2;margin:1.5rem 0 1rem;letter-spacing:-.02em}
-        @media(min-width:768px){h1{font-size:2.25rem}}
-        h2{font-size:1.35rem;font-weight:600;margin:2rem 0 1rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-        @media(min-width:768px){h2{font-size:1.6rem}}
-        h3{font-size:1.1rem;font-weight:600;margin:1.25rem 0 .75rem;color:var(--txt2)}
-        p{margin-bottom:1rem;color:var(--txt2)}
-        .text-small{font-size:.875rem;color:var(--txt3)}
-        .update{font-size:.8125rem;color:var(--txt3);margin-bottom:1.5rem;font-family:var(--fm)}
-        /* Cards */
-        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0}
-        @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.875rem;text-align:center}
-        .card-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-        .card-value{font-size:1rem;font-weight:600;color:var(--txt);font-family:var(--fm)}
-        /* Table */
-        .data-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.9375rem}
-        .data-table th,.data-table td{padding:.75rem .5rem;text-align:left;border-bottom:1px solid var(--border)}
-        .data-table th{font-weight:600;color:var(--txt3);font-size:.8125rem;text-transform:uppercase;letter-spacing:.04em}
-        .data-table td{color:var(--txt2)}
-        .data-table tr:last-child td{border-bottom:none}
-        /* Highlight box */
-        .highlight-box{background:var(--green-dim);border:1px solid var(--green-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-        .highlight-box p{color:var(--txt);margin-bottom:0}
-        .highlight-box .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:.5rem;font-weight:600}
-        /* Disclaimer */
-        .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0}
-        .disclaimer-box p{color:var(--txt);font-size:.9375rem;margin-bottom:.75rem}
-        .disclaimer-box p:last-child{margin-bottom:0}
-        .disclaimer-box strong{color:var(--yellow)}
-        /* FAQ */
-        .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-        .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-size:1rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px;font-family:var(--fb)}
-        .faq-question:hover{color:var(--green)}
-        .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
-        .faq-question.active .icon{transform:rotate(45deg)}
-        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0}
-        .faq-answer.open{max-height:300px;padding:.5rem 0 .75rem}
-        .faq-answer p{color:var(--txt2);font-size:.9375rem;margin-bottom:0}
-        /* Buttons */
-        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.75rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:all .2s;text-decoration:none;font-family:var(--fb)}
-        .btn-primary{background:var(--green);color:var(--bg)}
-        .btn-primary:hover{background:#00e6b8;color:var(--bg);transform:translateY(-1px)}
-        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-        .btn-outline:hover{background:var(--green-dim);color:var(--green)}
-        .cta-section{text-align:center;padding:2rem 0;margin:1.5rem 0}
-        .cta-section p{margin-bottom:1.25rem}
-        /* Footer */
-        footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;text-align:center}
-        footer p{font-size:.8125rem;color:var(--txt3);margin-bottom:.5rem}
-        footer p:last-child{margin-bottom:0}
-        /* Responsive */
-        @media(max-width:479px){
-            .card-grid{grid-template-columns:1fr 1fr}
-            h1{font-size:1.5rem}
+      },
+      {
+        "@type": "Question",
+        "name": "MILS3 paga dividendos regularmente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Mills possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Verifique os proventos no app Elite Ações."
         }
-    </style>
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o Método Bazin para MILS3?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Método Bazin define um preço teto com base nos dividendos anuais divididos por 6%. É uma ferramenta educativa para análise fundamentalista."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Onde encontrar dados atualizados de MILS3?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No app Elite Ações você encontra dividendos históricos, preço teto e indicadores fundamentalistas atualizados em tempo real."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "MILS3 é uma boa ação para dividendos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Esta página não faz recomendações. A Mills pode ser analisada pelo Método Bazin, mas cada investidor deve avaliar seu perfil e objetivos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual o setor da Mills na B3?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Mills (MILS3) atua no setor de Construção e Engenharia, segmento de Serviços de Apoio e Construção."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --green: #00d4a8;
+      --green-dim: rgba(0,212,168,.1);
+      --green-border: rgba(0,212,168,.2);
+      --red: #ef4444;
+      --red-dim: rgba(239,68,68,.08);
+      --yellow: #f59e0b;
+      --yellow-dim: rgba(245,158,11,.08);
+      --yellow-border: rgba(245,158,11,.25);
+      --bg: #0a0e1a;
+      --bg2: #0d1220;
+      --surf: #131b2e;
+      --surf2: #1a2438;
+      --border: rgba(255,255,255,.07);
+      --border2: rgba(255,255,255,.13);
+      --txt: #e8edf5;
+      --txt2: rgba(232,237,245,.72);
+      --txt3: rgba(232,237,245,.42);
+      --fb: 'Plus Jakarta Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+    @media (min-width: 768px) { body { font-size: 16px; } }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    header .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--txt); }
+    .logo span { color: var(--green); }
+    nav a { color: var(--txt2); font-size: .875rem; margin-left: 20px; }
+    nav a:hover { color: var(--green); }
+    .breadcrumb {
+      padding: 16px 0 8px;
+      font-size: .8125rem;
+      color: var(--txt3);
+    }
+    .breadcrumb a { color: var(--txt2); }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { color: var(--txt3); }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 8px 0 16px;
+    }
+    @media (min-width: 768px) { h1 { font-size: 2.25rem; } }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 40px 0 16px;
+      color: var(--txt);
+    }
+    @media (min-width: 768px) { h2 { font-size: 1.65rem; } }
+    p { margin-bottom: 16px; color: var(--txt2); }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    @media (min-width: 600px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+    .card {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card .label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--txt3); margin-bottom: 4px; }
+    .card .value { font-family: var(--fm); font-size: 1rem; color: var(--txt); }
+    .table-wrap { overflow-x: auto; margin: 20px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--txt3); font-weight: 500; text-transform: uppercase; font-size: .75rem; letter-spacing: .05em; }
+    td { color: var(--txt2); }
+    .highlight-box {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+      color: var(--txt);
+    }
+    .highlight-box strong { color: var(--yellow); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .9375rem;
+      background: var(--green);
+      color: #0a0e1a;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .85; text-decoration: none; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--txt);
+      font-family: var(--fb);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 16px 0;
+      cursor: pointer;
+      text-align: left;
+      min-height: 44px;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--txt3);
+      transition: transform .3s;
+    }
+    .faq-item.active .faq-question::after { content: '−'; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      padding: 0 0;
+      color: var(--txt2);
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 0 16px;
+    }
+    .disclaimer {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .disclaimer p { color: var(--txt); font-size: .875rem; margin-bottom: 8px; }
+    .disclaimer strong { color: var(--yellow); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      margin-top: 40px;
+      text-align: center;
+      color: var(--txt3);
+      font-size: .8125rem;
+    }
+    .update { color: var(--txt3); font-size: .8125rem; margin-top: 8px; }
+    .cta-section {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .cta-section p { margin-bottom: 16px; }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="logo">Elite <span>Ações</span></a>
-            <a href="/" class="nav-link">App</a>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <nav>
+        <a href="/">Início</a>
+        <a href="/empresas">Empresas</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="/">Início</a> / <a href="/empresas">Empresas</a> / <a href="/paginas/acoes">Ações</a> / <span>MILS3</span>
+    </nav>
+    <h1>Mills (MILS3): Preço Teto e Dividendos pelo Método Bazin</h1>
+    <p class="update">Última atualização: maio de 2026</p>
+
+    <section>
+      <h2>Sobre Mills (MILS3)</h2>
+      <p>A Mills Estruturas e Serviços de Engenharia S.A. é uma empresa brasileira com mais de 70 anos de atuação, especializada em locação de equipamentos e soluções para construção e engenharia. Com presença em todo o território nacional, a companhia atende desde grandes obras de infraestrutura até projetos industriais, oferecendo equipamentos como andaimes, escoramentos e plataformas elevatórias.</p>
+      <p>Listada na B3 sob o ticker MILS3, a empresa se destaca no setor de construção e engenharia, com foco em serviços de apoio. Sua política de distribuição de resultados é acompanhada por investidores que buscam análise fundamentalista baseada em dividendos.</p>
+      <div class="card-grid">
+        <div class="card"><div class="label">Ticker</div><div class="value">MILS3</div></div>
+        <div class="card"><div class="label">Setor</div><div class="value">Construção e Engenharia</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Serviços de Apoio e Construção</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Dados Cadastrais de MILS3</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Campo</th><th>Informação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nome da Empresa</td><td>Mills Estruturas e Serviços de Engenharia S.A.</td></tr>
+            <tr><td>CNPJ</td><td>27.813.055/0001-16</td></tr>
+            <tr><td>Setor B3</td><td>Construção e Engenharia</td></tr>
+            <tr><td>Segmento</td><td>Serviços de Apoio e Construção</td></tr>
+            <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+            <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como Calcular o Preço Teto de MILS3 pelo Método Bazin</h2>
+      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa de análise fundamentalista que ajuda investidores a estimar um preço teto para ações com base nos dividendos pagos. A lógica é simples: define-se uma taxa de retorno desejada (aqui, 6%) e calcula-se o valor máximo a pagar pelo ativo.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (6%)</p>
+      <div class="highlight-box">
+        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+        Suponha que MILS3 tenha distribuído R$ 1,20 por ação em dividendos nos últimos 12 meses. Aplicando a fórmula: R$ 1,20 ÷ 0,06 = R$ 20,00. Esse seria o preço teto hipotético. Lembre-se: este é apenas um exemplo educacional, não um valor real ou recomendação.
+      </div>
+    </section>
+
+    <section>
+      <h2>Histórico de Dividendos da MILS3</h2>
+      <p>A Mills possui uma política de distribuição de dividendos que pode variar conforme os resultados financeiros. Historicamente, a empresa tem distribuído proventos aos acionistas, mas a regularidade e o valor dependem do desempenho operacional e das decisões da administração.</p>
+      <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. É importante consultar fontes oficiais para verificar os valores exatos pagos em cada período, pois eles não são fixos e podem oscilar.</p>
+    </section>
+
+    <section>
+      <h2>Como Acessar os Dados Atualizados de MILS3</h2>
+      <div class="cta-section">
+        <p>Obtenha dividendos históricos, preço teto calculado e indicadores fundamentalistas de MILS3 em tempo real no app Elite Ações.</p>
+        <a href="/" class="btn">Acessar Elite Ações</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Perguntas Frequentes sobre MILS3</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Qual o preço teto de MILS3 pelo Método Bazin?</button>
+          <div class="faq-answer">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Consulte o app Elite Ações para valores atualizados.</div>
         </div>
-    </header>
-
-    <main class="container">
-        <nav aria-label="Breadcrumb">
-            <ol class="breadcrumb">
-                <li><a href="https://eliteacoes.com/">Início</a></li>
-                <li><a href="https://eliteacoes.com/paginas/acoes">Ações</a></li>
-                <li class="active">MILS3</li>
-            </ol>
-        </nav>
-
-        <p class="update">Última atualização: maio de 2026</p>
-
-        <h1>Mills (MILS3): Preço Teto e Dividendos pelo Método Bazin</h1>
-
-        <section>
-            <h2>Sobre Mills (MILS3)</h2>
-            <p>A Mills Estruturas e Serviços de Engenharia S.A. é uma empresa brasileira com mais de 70 anos de atuação, especializada em locação de equipamentos e soluções para construção civil, infraestrutura e indústria. Com sede no Rio de Janeiro, a companhia é referência no setor de construção e engenharia, oferecendo desde andaimes e escoramentos até equipamentos de movimentação de cargas.</p>
-            <p>A empresa possui capital aberto na B3 sob o ticker MILS3 e tem como foco a geração de valor por meio de eficiência operacional e expansão de sua frota. Sua política de dividendos busca distribuir resultados aos acionistas de forma consistente, alinhada ao desempenho financeiro.</p>
-            <div class="card-grid">
-                <div class="card"><div class="card-label">Ticker</div><div class="card-value">MILS3</div></div>
-                <div class="card"><div class="card-label">Setor</div><div class="card-value">Construção e Engenharia</div></div>
-                <div class="card"><div class="card-label">Segmento B3</div><div class="card-value">Construção Civil</div></div>
-                <div class="card"><div class="card-label">Tipo</div><div class="card-value">Ação</div></div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Dados Cadastrais de MILS3</h2>
-            <table class="data-table">
-                <thead>
-                    <tr><th>Campo</th><th>Informação</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Nome da Empresa</td><td>Mills Estruturas e Serviços de Engenharia S.A.</td></tr>
-                    <tr><td>CNPJ</td><td>27.813.055/0001-16</td></tr>
-                    <tr><td>Setor B3</td><td>Construção e Engenharia</td></tr>
-                    <tr><td>Segmento B3</td><td>Construção Civil</td></tr>
-                    <tr><td>Tipo de Ativo</td><td>Ação Ordinária (ON)</td></tr>
-                    <tr><td>Listagem</td><td>B3 (Brasil, Bolsa, Balcão)</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Como Calcular o Preço Teto de MILS3 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa de análise fundamentalista que ajuda o investidor a estimar um preço teto para uma ação com base nos dividendos pagos. A premissa é simples: o investidor define uma taxa de retorno desejada (chamada taxa Bazin) e calcula quanto pagaria por ação para obter esse retorno.</p>
-            <div class="highlight-box">
-                <div class="label">Fórmula do Método Bazin</div>
-                <p><strong>Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</strong></p>
-                <p style="margin-top:.5rem;font-size:.9375rem;color:var(--txt2)">Para MILS3, a taxa Bazin de referência é 6% ao ano.</p>
-            </div>
-            <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que MILS3 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. Aplicando a fórmula: Preço Teto = R$ 1,20 ÷ 0,06 = R$ 20,00. Isso significa que, segundo o método, R$ 20,00 seria o valor máximo que um investidor pagaria para obter um retorno de 6% ao ano com base nos dividendos passados. Lembre-se: este é um exemplo hipotético e não reflete dados reais atuais.</p>
-        </section>
-
-        <section>
-            <h2>Histórico de Dividendos da MILS3</h2>
-            <p>A Mills possui uma política de distribuição de dividendos que visa remunerar seus acionistas com base no lucro líquido apurado. Os proventos são pagos de forma semestral ou anual, dependendo da deliberação do conselho de administração. Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95.</p>
-            <p>O histórico de dividendos da empresa reflete seu ciclo operacional e os resultados financeiros de cada período. Para consultar os valores exatos dos últimos 12 meses, utilize o app Elite Ações, que reúne dados atualizados diretamente da B3 e CVM.</p>
-        </section>
-
-        <section>
-            <h2>Como Acessar os Dados Atualizados de MILS3</h2>
-            <p>O app Elite Ações oferece uma plataforma completa para acompanhar MILS3 e outros ativos da B3. Nele, você encontra o preço teto calculado pelo Método Bazin com dados reais, histórico de dividendos, indicadores fundamentalistas e muito mais. Tudo em uma interface simples e objetiva.</p>
-            <div class="cta-section">
-                <p>Baixe agora o app Elite Ações e tenha acesso a dados atualizados de MILS3.</p>
-                <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
-            </div>
-        </section>
-
-        <section>
-            <h2>Perguntas Frequentes sobre MILS3</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Qual o preço teto de MILS3 pelo Método Bazin? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se MILS3 pagou R$ 1,20 em dividendos anuais, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para dados atualizados.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">MILS3 paga dividendos regularmente? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>A Mills possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. A política de dividendos é definida pela administração e aprovada em assembleia. Verifique os proventos no app Elite Ações.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Como usar o Método Bazin para MILS3? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>O Método Bazin calcula o preço teto como Dividendos Anuais ÷ 6%. Para MILS3, use a média dos dividendos dos últimos 12 meses. É uma ferramenta educativa, não uma recomendação de investimento.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de MILS3? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>A análise fundamentalista completa de MILS3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto atualizado. Baixe o app gratuitamente.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">MILS3 é uma boa ação para dividendos? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>Não fazemos recomendações de investimento. A Mills está no setor de construção e engenharia, e seus dividendos variam conforme o desempenho. Use o Método Bazin como ferramenta educativa para sua própria análise.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Qual a taxa Bazin ideal para MILS3? <span class="icon">+</span></button>
-                    <div class="faq-answer"><p>A taxa Bazin de 6% é um parâmetro comum para ações, mas cada investidor pode ajustar conforme seu objetivo de retorno. O cálculo do preço teto é apenas uma referência educativa.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Aviso Legal e Disclaimer</h2>
-            <div class="disclaimer-box">
-                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-                <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-            </div>
-        </section>
-
-        <div class="cta-section">
-            <p>Faça sua própria análise com dados atualizados no app Elite Ações.</p>
-            <a href="/" class="btn btn-primary">Baixar App Elite Ações</a>
+        <div class="faq-item">
+          <button class="faq-question">MILS3 paga dividendos regularmente?</button>
+          <div class="faq-answer">A Mills possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Verifique os proventos no app Elite Ações.</div>
         </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
-            <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado pela CVM.</p>
+        <div class="faq-item">
+          <button class="faq-question">Como funciona o Método Bazin para MILS3?</button>
+          <div class="faq-answer">O Método Bazin define um preço teto com base nos dividendos anuais divididos por 6%. É uma ferramenta educativa para análise fundamentalista.</div>
         </div>
-    </footer>
+        <div class="faq-item">
+          <button class="faq-question">Onde encontrar dados atualizados de MILS3?</button>
+          <div class="faq-answer">No app Elite Ações você encontra dividendos históricos, preço teto e indicadores fundamentalistas atualizados em tempo real.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">MILS3 é uma boa ação para dividendos?</button>
+          <div class="faq-answer">Esta página não faz recomendações. A Mills pode ser analisada pelo Método Bazin, mas cada investidor deve avaliar seu perfil e objetivos.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Qual o setor da Mills na B3?</button>
+          <div class="faq-answer">A Mills (MILS3) atua no setor de Construção e Engenharia, segmento de Serviços de Apoio e Construção.</div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const isOpen = answer.classList.contains('open');
-                document.querySelectorAll('.faq-answer.open').forEach(el => {
-                    el.classList.remove('open');
-                    el.previousElementSibling.classList.remove('active');
-                    el.previousElementSibling.setAttribute('aria-expanded', 'false');
-                });
-                if (!isOpen) {
-                    answer.classList.add('open');
-                    this.classList.add('active');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    </script>
+    <section>
+      <h2>Aviso Legal e Disclaimer</h2>
+      <div class="disclaimer">
+        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <p>Ferramenta educativa gratuita para análise fundamentalista.</p>
+      <a href="/" class="btn">Acessar Elite Ações</a>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+      <p>Todos os dados são fornecidos para fins educacionais.</p>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

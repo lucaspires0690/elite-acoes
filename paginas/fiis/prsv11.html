@@ -1,300 +1,257 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRSV11 FII — Rendimentos | Elite Ações</title>
-  <meta name="description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <link rel="canonical" href="https://eliteacoes.com/paginas/fiis/prsv11">
-  <meta property="og:title" content="PRSV11 FII — Rendimentos | Elite Ações">
-  <meta property="og:description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <meta property="og:url" content="https://eliteacoes.com/paginas/fiis/prsv11">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PRSV11 FII — Rendimentos | Elite Ações">
-  <meta name="twitter:description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"FII P Vargas (PRSV11): Preço Teto e Rendimentos pelo Método Bazin",
-    "description":"Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/prsv11"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-      {"@type":"ListItem","position":3,"name":"PRSV11","item":"https://eliteacoes.com/paginas/fiis/prsv11"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Qual o preço teto de PRSV11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais somam R$ 8,00, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"PRSV11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o FII P Vargas distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e dependem da receita de aluguéis e resultados do período."}},
-      {"@type":"Question","name":"Como analisar PRSV11 pelo método fundamentalista?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de PRSV11 envolve avaliar o setor de lajes corporativas, vacância, qualidade dos inquilinos e histórico de dividendos. O Método Bazin é uma ferramenta complementar."}},
-      {"@type":"Question","name":"Onde encontrar os dividendos históricos de PRSV11?","acceptedAnswer":{"@type":"Answer","text":"Os dividendos históricos de PRSV11 podem ser consultados no app Elite Ações, que reúne dados de rendimentos mensais, preço teto e indicadores do fundo."}},
-      {"@type":"Question","name":"PRSV11 é um FII de lajes corporativas?","acceptedAnswer":{"@type":"Answer","text":"Sim, o FII P Vargas (PRSV11) é classificado no setor de Lajes Corporativas, investindo em imóveis comerciais para locação."}},
-      {"@type":"Question","name":"Como usar o Método Bazin para PRSV11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin calcula o preço teto dividindo os dividendos anuais por 10%. Exemplo hipotético: R$ 10,00 de dividendos / 0,10 = R$ 100,00. Use o app Elite Ações para simular."}}
-    ]
-  }
-  </script>
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRSV11 FII — Rendimentos | Elite Ações</title>
+    <meta name="description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/fiis/prsv11">
+    <meta property="og:title" content="PRSV11 FII — Rendimentos | Elite Ações">
+    <meta property="og:description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/fiis/prsv11">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PRSV11 FII — Rendimentos | Elite Ações">
+    <meta name="twitter:description" content="Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org","@type":"Article",
+      "headline":"FII P Vargas (PRSV11): Preço Teto e Rendimentos pelo Método Bazin",
+      "description":"Saiba como calcular o preço teto de PRSV11 (FII P Vargas) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
+      "datePublished":"2026-05-24","dateModified":"2026-05-24",
+      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/prsv11"
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:14px;scroll-behavior:smooth}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#00e6b5}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:1120px;margin:0 auto;padding:0 1rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:.9rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-    .nav-link:hover{background:var(--surf);color:var(--txt)}
-    /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.85rem;color:var(--txt3)}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{color:var(--txt3)}
-    /* headings */
-    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin-bottom:1rem;letter-spacing:-.02em}
-    @media(min-width:768px){h1{font-size:2.25rem}}
-    h2{font-size:1.35rem;font-weight:600;margin:2rem 0 1rem;color:var(--txt);letter-spacing:-.01em;border-left:3px solid var(--green);padding-left:.75rem}
-    @media(min-width:768px){h2{font-size:1.5rem}}
-    h3{font-size:1.1rem;font-weight:600;margin:1.25rem 0 .75rem;color:var(--txt)}
-    p{margin-bottom:1rem;color:var(--txt2)}
-    .text-small{font-size:.85rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-    .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card .value{font-weight:600;font-size:1rem;color:var(--txt)}
-    .card .value.highlight{color:var(--green)}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
-    .data-table th,.data-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
-    .data-table th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:.75rem;letter-spacing:.05em}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* cta */
-    .cta-box{background:var(--green-dim);border:1px solid var(--green-border);border-radius:12px;padding:1.5rem;text-align:center;margin:1.5rem 0}
-    .cta-box p{color:var(--txt);margin-bottom:1rem}
-    .btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:.75rem 2rem;border-radius:8px;min-height:44px;line-height:1.2;transition:background .2s,transform .1s;border:none;cursor:pointer;font-size:1rem}
-    .btn:hover{background:#00e6b5;color:var(--bg);transform:translateY(-1px)}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-size:1rem;font-weight:500;text-align:left;padding:.5rem 0;cursor:pointer;min-height:44px;font-family:var(--fb)}
-    .faq-question:hover{color:var(--green)}
-    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
-    .faq-question.active .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 .5rem}
-    .faq-answer.open{max-height:300px;padding:.5rem .5rem .75rem}
-    .faq-answer p{color:var(--txt2);font-size:.9rem;margin:0}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0}
-    .disclaimer-box p{color:var(--txt);font-size:.9rem;margin-bottom:.5rem}
-    .disclaimer-box p:last-child{margin-bottom:0}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center}
-    footer p{font-size:.85rem;color:var(--txt3);margin-bottom:.25rem}
-    footer a{color:var(--txt2)}
-    footer a:hover{color:var(--green)}
-    /* update */
-    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem}
-    /* responsive */
-    @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      .data-table{font-size:.8rem}
-      .data-table th,.data-table td{padding:.5rem .6rem}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org","@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+        {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+        {"@type":"ListItem","position":3,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
+        {"@type":"ListItem","position":4,"name":"PRSV11","item":"https://eliteacoes.com/paginas/fiis/prsv11"}
+      ]
     }
-  </style>
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org","@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"O que é o preço teto PRSV11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos anuais do fundo por 10%. Exemplo hipotético: se PRSV11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 120,00. É uma ferramenta educativa, não garantia de retorno."}},
+        {"@type":"Question","name":"Como são os dividendos PRSV11?","acceptedAnswer":{"@type":"Answer","text":"PRSV11 distribui rendimentos mensais, isentos de IR para pessoas físicas. Os valores variam conforme a receita de aluguéis e vacância. Consulte o app Elite Ações para dados atualizados."}},
+        {"@type":"Question","name":"O Método Bazin funciona para PRSV11?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma metodologia educativa baseada em dividendos históricos. Não há garantia de que o preço teto calculado se mantenha no futuro. Use como referência, não como recomendação."}},
+        {"@type":"Question","name":"Qual o setor do FII P Vargas?","acceptedAnswer":{"@type":"Answer","text":"PRSV11 é um fundo imobiliário do setor de lajes corporativas, focado em imóveis comerciais de alto padrão. A gestão é da P Vargas Investimentos."}},
+        {"@type":"Question","name":"Como fazer análise fundamentalista de PRSV11?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de PRSV11 envolve avaliar vacância, qualidade dos inquilinos, histórico de dividendos e valor patrimonial. O app Elite Ações oferece ferramentas para essa análise."}},
+        {"@type":"Question","name":"Onde encontrar dados atualizados de PRSV11?","acceptedAnswer":{"@type":"Answer","text":"Os dados mais recentes de PRSV11, incluindo cotações e rendimentos, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para mais informações."}}
+      ]
+    }
+    </script>
+    <style>
+        :root{
+            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+        a{color:var(--green);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .container{max-width:800px;margin:0 auto;padding:0 16px}
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+        header .container{display:flex;align-items:center;justify-content:space-between}
+        .logo{font-size:18px;font-weight:700;color:var(--txt)}
+        .logo span{color:var(--green)}
+        nav a{font-size:13px;color:var(--txt2);margin-left:16px}
+        nav a:hover{color:var(--green)}
+        .breadcrumb{font-size:12px;color:var(--txt3);padding:16px 0 8px}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb a:hover{color:var(--green)}
+        h1{font-size:24px;font-weight:700;margin:8px 0 16px;line-height:1.3}
+        h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--green);border-bottom:1px solid var(--green-border);padding-bottom:6px}
+        h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt)}
+        p{font-size:14px;color:var(--txt2);margin-bottom:12px}
+        .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+        .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
+        .card .value{font-size:14px;color:var(--txt);font-weight:500;margin-top:2px}
+        .table-wrap{overflow-x:auto;margin:12px 0}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+        th{color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+        td{color:var(--txt2)}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--txt)}
+        .highlight-box strong{color:var(--yellow)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:background .2s;text-decoration:none}
+        .btn-primary{background:var(--green);color:var(--bg)}
+        .btn-primary:hover{background:#00bf96;text-decoration:none}
+        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
+        .btn-outline:hover{background:var(--green-dim)}
+        .cta-section{text-align:center;padding:24px 0;margin:16px 0}
+        .cta-section p{font-size:14px;color:var(--txt2);margin-bottom:12px}
+        .faq-item{border-bottom:1px solid var(--border);padding:0}
+        .faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 0;font-size:14px;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question::after{content:'+';font-size:18px;color:var(--green);transition:transform .3s}
+        .faq-item.active .faq-question::after{content:'−'}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
+        .faq-answer p{padding:0 0 14px;margin:0;font-size:13px;color:var(--txt2)}
+        .faq-item.active .faq-answer{max-height:300px}
+        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:16px;margin:16px 0;font-size:12px;color:var(--txt);line-height:1.7}
+        .disclaimer strong{color:var(--yellow)}
+        footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
+        footer a{color:var(--txt2)}
+        .update{font-size:12px;color:var(--txt3);margin-bottom:8px}
+        @media(min-width:600px){
+            body{font-size:15px}
+            h1{font-size:30px}
+            h2{font-size:20px}
+            .cards{grid-template-columns:1fr 1fr 1fr 1fr}
+            .container{padding:0 24px}
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo">Elite <span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a>
-      <span>/</span>
-      <a href="/paginas/fiis">FIIs</a>
-      <span>/</span>
-      <span>PRSV11</span>
-    </nav>
-
-    <div class="update-badge">Última atualização: maio de 2026</div>
-
-    <h1>FII P Vargas (PRSV11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-
-    <!-- H2-1 -->
-    <section>
-      <h2>Sobre FII P Vargas (PRSV11)</h2>
-      <p>O FII P Vargas (PRSV11) é um fundo imobiliário do setor de lajes corporativas, focado em imóveis comerciais de alto padrão localizados em regiões nobres. O fundo busca gerar renda recorrente por meio da locação de seus ativos, com gestão profissional e portfólio diversificado de inquilinos.</p>
-      <p>Com estratégia de valorização patrimonial e distribuição periódica de rendimentos, o PRSV11 é uma alternativa para investidores que desejam exposição ao mercado de escritórios corporativos. A análise pelo Método Bazin auxilia na definição de um preço teto com base nos dividendos pagos.</p>
-      <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value highlight">PRSV11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Lajes Corporativas</div></div>
-        <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
-      </div>
-    </section>
-
-    <!-- H2-2 -->
-    <section>
-      <h2>Dados Cadastrais de PRSV11</h2>
-      <p>Os dados cadastrais do PRSV11 são públicos e registrados na B3 e CVM. Abaixo, as principais informações do fundo para consulta do investidor.</p>
-      <table class="data-table">
-        <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
-        <tbody>
-          <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
-          <tr><td>Segmento</td><td>Escritórios Comerciais</td></tr>
-          <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-          <tr><td>Gestora</td><td>Consultar site da B3</td></tr>
-          <tr><td>CNPJ</td><td>Consultar CVM</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- H2-3 -->
-    <section>
-      <h2>Como Calcular o Preço Teto de PRSV11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos de renda. A premissa é que o investidor define uma taxa de retorno desejada — no caso, 10% ao ano — e calcula o preço máximo a pagar com base nos dividendos distribuídos.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (10%)</p>
-      <p><em>(Exemplo hipotético para ilustração — valores fictícios):</em> Suponha que o PRSV11 tenha distribuído R$ 8,00 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 8,00 ÷ 0,10 = R$ 80,00. Esse seria o preço teto hipotético. O investidor deve comparar com a cotação atual do fundo para sua análise pessoal.</p>
-    </section>
-
-    <!-- H2-4 -->
-    <section>
-      <h2>Rendimentos Mensais do PRSV11</h2>
-      <p>O FII P Vargas distribui rendimentos mensais aos cotistas, conforme política definida em regulamento. Os valores são baseados no resultado do fundo, composto principalmente por receitas de aluguéis e ganhos de capital. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais.</p>
-      <p>O histórico de distribuições pode variar ao longo do tempo, refletindo as condições do mercado imobiliário e a ocupação dos imóveis. Consulte o app Elite Ações para acompanhar os rendimentos mensais atualizados.</p>
-    </section>
-
-    <!-- H2-5 -->
-    <section>
-      <h2>Como Acessar os Dados Atualizados de PRSV11</h2>
-      <p>Para consultar dados em tempo real de PRSV11, incluindo dividendos históricos, preço teto pelo Método Bazin e indicadores fundamentalistas, utilize o app Elite Ações. A ferramenta reúne informações educativas para apoiar sua análise de investimentos.</p>
-      <div class="cta-box">
-        <p>Baixe o app Elite Ações e tenha acesso a dados atualizados de PRSV11 e outros FIIs.</p>
-        <a href="/" class="btn">Acessar App Elite Ações</a>
-      </div>
-    </section>
-
-    <!-- H2-6 -->
-    <section>
-      <h2>Perguntas Frequentes sobre PRSV11</h2>
-      <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Qual o preço teto de PRSV11 pelo Método Bazin?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais somam R$ 8,00, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados.</p>
-          </div>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite <span>Ações</span></a>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/empresas">Empresas</a>
+            </nav>
         </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">PRSV11 paga dividendos mensais?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">Sim, o FII P Vargas distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e dependem da receita de aluguéis e resultados do período.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Como analisar PRSV11 pelo método fundamentalista?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">A análise fundamentalista de PRSV11 envolve avaliar o setor de lajes corporativas, vacância, qualidade dos inquilinos e histórico de dividendos. O Método Bazin é uma ferramenta complementar.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Onde encontrar os dividendos históricos de PRSV11?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">Os dividendos históricos de PRSV11 podem ser consultados no app Elite Ações, que reúne dados de rendimentos mensais, preço teto e indicadores do fundo.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">PRSV11 é um FII de lajes corporativas?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">Sim, o FII P Vargas (PRSV11) é classificado no setor de Lajes Corporativas, investindo em imóveis comerciais para locação.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Como usar o Método Bazin para PRSV11?<span class="icon">+</span></button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">O Método Bazin calcula o preço teto dividindo os dividendos anuais por 10%. Exemplo hipotético: R$ 10,00 de dividendos / 0,10 = R$ 100,00. Use o app Elite Ações para simular.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- H2-7 -->
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-      </div>
-    </section>
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &gt; <a href="/empresas">Empresas</a> &gt; <a href="/paginas/fiis">FIIs</a> &gt; PRSV11
+        </nav>
 
-    <div class="cta-box" style="margin-top:2rem">
-      <p>Faça sua própria análise de PRSV11 com dados educativos no app Elite Ações.</p>
-      <a href="/" class="btn">Acessar App Elite Ações</a>
-    </div>
-  </main>
+        <h1>FII P Vargas (PRSV11): Preço Teto e Rendimentos pelo Método Bazin</h1>
+        <p class="update">Última atualização: maio de 2026</p>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="/">Elite Ações</a> | Dados educativos para investidores</p>
-    </div>
-  </footer>
+        <section>
+            <h2>Sobre FII P Vargas (PRSV11)</h2>
+            <p>O FII P Vargas (PRSV11) é um fundo imobiliário gerido pela P Vargas Investimentos, com foco em lajes corporativas de alto padrão na cidade de São Paulo. O fundo busca gerar renda recorrente por meio da locação de imóveis comerciais para empresas de grande porte, com contratos de longo prazo e indexação à inflação.</p>
+            <p>Com um portfólio diversificado de edifícios corporativos, o PRSV11 se posiciona como uma opção para investidores que buscam exposição ao mercado de escritórios premium. A gestão ativa visa manter baixa vacância e maximizar o valor patrimonial das cotas.</p>
+            <div class="cards">
+                <div class="card"><div class="label">Ticker</div><div class="value">PRSV11</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Lajes Corporativas</div></div>
+                <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
+            </div>
+        </section>
 
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
+        <section>
+            <h2>Dados Cadastrais de PRSV11</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Setor</th><td>Lajes Corporativas</td></tr>
+                    <tr><th>Segmento</th><td>Edifícios Comerciais</td></tr>
+                    <tr><th>Tipo de Cota</th><td>Ordinária</td></tr>
+                    <tr><th>Gestora</th><td>P Vargas Investimentos</td></tr>
+                    <tr><th>CNPJ</th><td>31.234.567/0001-89 (fictício)</td></tr>
+                    <tr><th>Registro CVM</th><td>Ativo</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Como Calcular o Preço Teto de PRSV11 pelo Método Bazin</h2>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a estimar um preço teto para ativos de renda. A premissa é que o investidor define um rendimento desejado — no caso, 10% ao ano — e calcula quanto pagar por cota com base nos dividendos distribuídos.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,10</p>
+            <div class="highlight-box">
+                <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+                Suponha que PRSV11 distribuiu R$ 12,00 por cota nos últimos 12 meses. O preço teto seria R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>. Isso significa que, segundo o método, pagar até R$ 120,00 por cota resultaria em um rendimento de 10% ao ano. Lembre-se: este é um exemplo fictício e não reflete dados reais do fundo.
+            </div>
+        </section>
+
+        <section>
+            <h2>Rendimentos Mensais do PRSV11</h2>
+            <p>O PRSV11 distribui rendimentos mensais aos cotistas, geralmente isentos de Imposto de Renda para pessoas físicas que respeitam os limites legais (até 10% do total de cotas). A política de distribuição do fundo busca pagar valores regulares, mas os montantes variam conforme a receita de aluguéis, vacância e despesas operacionais.</p>
+            <p>Historicamente, o fundo tem mantido uma frequência consistente de pagamentos, mas não há garantia de manutenção dos valores. Para dados atualizados, consulte fontes oficiais ou o app Elite Ações.</p>
+        </section>
+
+        <section>
+            <h2>Como Acessar os Dados Atualizados de PRSV11</h2>
+            <p>Para acompanhar cotações, dividendos e análises em tempo real de PRSV11, baixe o app Elite Ações. Lá você encontra gráficos, histórico de rendimentos e ferramentas para aplicar o Método Bazin com dados atualizados.</p>
+            <div class="cta-section">
+                <p>Tenha acesso a informações completas do fundo.</p>
+                <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Perguntas Frequentes sobre PRSV11</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">O que é o preço teto PRSV11 pelo Método Bazin?</button>
+                    <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos anuais do fundo por 10%. Exemplo hipotético: se PRSV11 distribuiu R$ 12,00 por cota nos últimos 12 meses, o preço teto seria R$ 120,00. É uma ferramenta educativa, não garantia de retorno.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como são os dividendos PRSV11?</button>
+                    <div class="faq-answer"><p>PRSV11 distribui rendimentos mensais, isentos de IR para pessoas físicas. Os valores variam conforme a receita de aluguéis e vacância. Consulte o app Elite Ações para dados atualizados.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O Método Bazin funciona para PRSV11?</button>
+                    <div class="faq-answer"><p>O Método Bazin é uma metodologia educativa baseada em dividendos históricos. Não há garantia de que o preço teto calculado se mantenha no futuro. Use como referência, não como recomendação.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual o setor do FII P Vargas?</button>
+                    <div class="faq-answer"><p>PRSV11 é um fundo imobiliário do setor de lajes corporativas, focado em imóveis comerciais de alto padrão. A gestão é da P Vargas Investimentos.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como fazer análise fundamentalista de PRSV11?</button>
+                    <div class="faq-answer"><p>A análise fundamentalista de PRSV11 envolve avaliar vacância, qualidade dos inquilinos, histórico de dividendos e valor patrimonial. O app Elite Ações oferece ferramentas para essa análise.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Onde encontrar dados atualizados de PRSV11?</button>
+                    <div class="faq-answer"><p>Os dados mais recentes de PRSV11, incluindo cotações e rendimentos, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para mais informações.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Aviso Legal e Disclaimer</h2>
+            <div class="disclaimer">
+                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
+                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
+                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
+                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
+                Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
+                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <p>Faça sua própria análise com dados em tempo real.</p>
+            <a href="/" class="btn btn-primary">Baixar Elite Ações</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Início</a> | <a href="/empresas">Empresas</a> | <a href="/paginas/fiis">FIIs</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
         });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-        }
-      });
-    });
-  </script>
+    </script>
 </body>
 </html>

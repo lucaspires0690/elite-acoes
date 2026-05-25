@@ -1,321 +1,430 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JSLG3 Jsl — Dividendos | Elite Ações</title>
-  <meta name="description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
-  <link rel="canonical" href="https://eliteacoes.com/acoes/jslg3">
-  <meta property="og:title" content="JSLG3 Jsl — Dividendos | Elite Ações">
-  <meta property="og:description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
-  <meta property="og:url" content="https://eliteacoes.com/acoes/jslg3">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JSLG3 Jsl — Dividendos | Elite Ações">
-  <meta name="twitter:description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSLG3 Jsl — Dividendos | Elite Ações</title>
+    <meta name="description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/jslg3">
+    <meta property="og:title" content="JSLG3 Jsl — Dividendos | Elite Ações">
+    <meta property="og:description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/jslg3">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSLG3 Jsl — Dividendos | Elite Ações">
+    <meta name="twitter:description" content="Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Jsl (JSLG3): Preço Teto e Dividendos pelo Método Bazin",
+      "description": "Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...",
+      "datePublished": "2026-05-24",
+      "dateModified": "2026-05-24",
+      "author": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "mainEntityOfPage": "https://eliteacoes.com/acoes/jslg3"
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:14px}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#fff}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:1120px;margin:0 auto;padding:0 1rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:.875rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;transition:background .2s,color .2s}
-    .nav-link:hover{background:var(--surf);color:var(--txt)}
-    /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:.25rem .5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
-    .breadcrumb li+li::before{content:"/";margin-right:.5rem;color:var(--txt3)}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb .active{color:var(--txt)}
-    /* headings */
-    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin-bottom:1rem;letter-spacing:-.02em}
-    @media(min-width:768px){h1{font-size:2.25rem}}
-    h2{font-size:1.35rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-    @media(min-width:768px){h2{font-size:1.6rem}}
-    h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem;color:var(--txt)}
-    p{margin-bottom:1rem;color:var(--txt2)}
-    .text-small{font-size:.875rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
-    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;transition:border-color .2s}
-    .card:hover{border-color:var(--border2)}
-    .card-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card-value{font-weight:600;font-size:1rem;color:var(--txt)}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:.9rem}
-    .data-table th,.data-table td{text-align:left;padding:.75rem .5rem;border-bottom:1px solid var(--border)}
-    .data-table th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:.75rem}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:1rem;font-weight:500;width:100%;text-align:left;cursor:pointer;padding:.5rem 0;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-    .faq-question::after{content:"+";font-size:1.25rem;color:var(--txt3);transition:transform .2s;margin-left:.5rem}
-    .faq-item.active .faq-question::after{content:"−"}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0}
-    .faq-item.active .faq-answer{max-height:300px;padding:.5rem 0 .75rem}
-    .faq-answer p{color:var(--txt2);font-size:.9rem;margin-bottom:0}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-size:.9rem;color:var(--txt)}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* cta */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:600;padding:.75rem 1.5rem;border-radius:10px;min-height:44px;transition:background .2s,transform .1s;border:none;cursor:pointer;font-family:var(--fb);font-size:1rem}
-    .cta-btn:hover{background:#00bf9a;color:var(--bg);transform:translateY(-1px)}
-    .cta-btn:active{transform:translateY(0)}
-    .cta-wrapper{text-align:center;margin:1.5rem 0}
-    /* footer */
-    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.85rem;color:var(--txt3)}
-    footer p{margin-bottom:.25rem}
-    /* update */
-    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem;font-family:var(--fm)}
-    /* highlight */
-    .highlight{color:var(--green);font-weight:500}
-    .mono{font-family:var(--fm);font-size:.9rem}
-    .example-note{background:var(--green-dim);border:1px solid var(--green-border);border-radius:8px;padding:.75rem 1rem;margin:1rem 0;font-size:.85rem;color:var(--txt2)}
-    .example-note strong{color:var(--green)}
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"Jsl (JSLG3): Preço Teto e Dividendos pelo Método Bazin",
-    "description":"Aprenda a calcular o preço teto de JSLG3 (Jsl) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista. Acesse ...",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/acoes/jslg3"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-      {"@type":"ListItem","position":3,"name":"JSLG3"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"O que é o preço teto de JSLG3?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de JSLG3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos anuais por 6%. É uma referência educativa, não uma recomendação."}},
-      {"@type":"Question","name":"Como calcular o preço teto de JSLG3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"Divida os dividendos pagos nos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (1,20 ÷ 0,06)."}},
-      {"@type":"Question","name":"JSLG3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A JSL (JSLG3) possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"Qual a taxa Bazin usada para JSLG3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin utilizada para JSLG3 é de 6% ao ano, conforme definido pela metodologia do investidor Décio Bazin para empresas consolidadas."}},
-      {"@type":"Question","name":"Onde encontrar dados atualizados de JSLG3?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista de JSLG3. Acesse eliteacoes.com para mais informações."}},
-      {"@type":"Question","name":"O Método Bazin é garantia de retorno?","acceptedAnswer":{"@type":"Answer","text":"Não. O Método Bazin é uma ferramenta educativa de análise. Rentabilidade passada não garante resultados futuros. Consulte um profissional habilitado pela CVM."}}
-    ]
-  }
-  </script>
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Empresas", "item": "https://eliteacoes.com/empresas" },
+        { "@type": "ListItem", "position": 3, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes" },
+        { "@type": "ListItem", "position": 4, "name": "JSLG3" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o preço teto JSLG3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O preço teto JSLG3 é o valor máximo que um investidor, utilizando o Método Bazin, consideraria justo para comprar a ação com base nos dividendos pagos nos últimos 12 meses e uma taxa de retorno desejada de 6% ao ano."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como calcular o preço teto de JSLG3 pelo método bazin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O cálculo é feito dividindo o total de dividendos pagos por JSLG3 nos últimos 12 meses pela taxa de retorno desejada (6%). Por exemplo, se os dividendos somaram R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00. Este é um exemplo hipotético."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "JSLG3 paga dividendos regularmente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A JSLG3 possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Consulte o app Elite Ações para dados atualizados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a taxa bazin indicada para JSLG3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A taxa Bazin sugerida para JSLG3 é de 6% ao ano, conforme dados do ativo. Essa taxa representa o retorno desejado em dividendos sobre o preço pago pela ação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde encontrar a análise fundamentalista de JSLG3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A análise fundamentalista completa de JSLG3, incluindo indicadores como P/L, P/VP, margem líquida e endividamento, está disponível no app Elite Ações."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "JSLG3 é uma boa ação para dividendos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Esta página não faz recomendações de investimento. A decisão de investir em JSLG3 deve ser baseada em sua própria análise e perfil de risco. Consulte um profissional habilitado pela CVM."
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+        :root {
+            --green: #00d4a8;
+            --green-dim: rgba(0,212,168,.1);
+            --green-border: rgba(0,212,168,.2);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,.08);
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245,158,11,.08);
+            --yellow-border: rgba(245,158,11,.25);
+            --bg: #0a0e1a;
+            --bg2: #0d1220;
+            --surf: #131b2e;
+            --surf2: #1a2438;
+            --border: rgba(255,255,255,.07);
+            --border2: rgba(255,255,255,.13);
+            --txt: #e8edf5;
+            --txt2: rgba(232,237,245,.72);
+            --txt3: rgba(232,237,245,.42);
+            --fb: 'Plus Jakarta Sans', sans-serif;
+            --fm: 'DM Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--fb);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.6;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,26,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        header .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-weight: 700; font-size: 18px; color: var(--green); text-decoration: none; }
+        .logo span { color: var(--txt); }
+        .breadcrumb { font-size: 12px; color: var(--txt3); margin-top: 4px; }
+        .breadcrumb a { color: var(--txt2); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--green); }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 24px 0 8px;
+            color: var(--txt);
+        }
+        .update { font-size: 12px; color: var(--txt3); margin-bottom: 24px; font-family: var(--fm); }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 32px 0 12px;
+            color: var(--txt);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+        p { margin-bottom: 12px; color: var(--txt2); }
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 16px 0;
+        }
+        .card {
+            background: var(--surf);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .card .label { font-size: 11px; color: var(--txt3); text-transform: uppercase; letter-spacing: .5px; }
+        .card .value { font-size: 14px; font-weight: 600; color: var(--txt); margin-top: 2px; }
+        .table-wrap { overflow-x: auto; margin: 16px 0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        th { color: var(--txt3); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+        td { color: var(--txt2); }
+        .highlight-box {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--txt);
+        }
+        .highlight-box strong { color: var(--yellow); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 24px;
+            background: var(--green);
+            color: #0a0e1a;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: opacity .2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { opacity: .85; }
+        .btn-wrap { text-align: center; margin: 20px 0; }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: var(--surf);
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--txt);
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: var(--fb);
+        }
+        .faq-question:hover { background: var(--surf2); }
+        .faq-question .icon { font-size: 18px; transition: transform .3s; color: var(--txt3); }
+        .faq-question.active .icon { transform: rotate(45deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            padding: 0 16px;
+            background: var(--bg2);
+        }
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 12px 16px;
+        }
+        .faq-answer p { font-size: 13px; margin-bottom: 0; }
+        .disclaimer {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+            font-size: 13px;
+            color: var(--txt);
+        }
+        .disclaimer strong { color: var(--yellow); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            margin-top: 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--txt3);
+        }
+        footer a { color: var(--txt2); text-decoration: none; }
+        footer a:hover { color: var(--green); }
+        @media (min-width: 600px) {
+            body { font-size: 16px; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 24px; }
+            .card-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo">Elite<span>Ações</span></a>
-      <nav>
-        <a href="/paginas/acoes" class="nav-link">Ações</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <nav aria-label="Breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="/">Início</a></li>
-        <li><a href="/paginas/acoes">Ações</a></li>
-        <li class="active">JSLG3</li>
-      </ol>
-    </nav>
-
-    <div class="update-badge">Última atualização: maio de 2026</div>
-
-    <h1>Jsl (JSLG3): Preço Teto e Dividendos pelo Método Bazin</h1>
-
-    <section>
-      <h2>Sobre Jsl (JSLG3)</h2>
-      <p>A JSL (JSLG3) é uma empresa brasileira de transporte rodoviário de cargas, com atuação em logística integrada, armazenagem e distribuição. Fundada em 1956, a companhia possui uma das maiores frotas do país e atende clientes de diversos setores, como agronegócio, indústria e comércio. A empresa é listada no Novo Mercado da B3 desde 2021.</p>
-      <p>Com foco em eficiência operacional e expansão sustentável, a JSL busca gerar valor aos acionistas por meio de crescimento orgânico e aquisições estratégicas. A política de dividendos da companhia prevê a distribuição de proventos com base no lucro líquido ajustado, o que atrai investidores que utilizam o Método Bazin para análise.</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-label">Ticker</div>
-          <div class="card-value">JSLG3</div>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite <span>Ações</span></a>
+            <div class="breadcrumb">
+                <a href="/">Início</a> / <a href="/empresas">Empresas</a> / <a href="/paginas/acoes">Ações</a> / JSLG3
+            </div>
         </div>
-        <div class="card">
-          <div class="card-label">Setor</div>
-          <div class="card-value">Transporte Rodoviário</div>
-        </div>
-        <div class="card">
-          <div class="card-label">Segmento B3</div>
-          <div class="card-value">Transporte</div>
-        </div>
-        <div class="card">
-          <div class="card-label">Tipo</div>
-          <div class="card-value">Ação</div>
-        </div>
-      </div>
-    </section>
+    </header>
+    <main class="container">
+        <h1>Jsl (JSLG3): Preço Teto e Dividendos pelo Método Bazin</h1>
+        <p class="update">Última atualização: maio de 2026</p>
 
-    <section>
-      <h2>Dados Cadastrais de JSLG3</h2>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Campo</th>
-            <th>Informação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Nome da Empresa</td>
-            <td>JSL S.A.</td>
-          </tr>
-          <tr>
-            <td>CNPJ</td>
-            <td>52.548.435/0001-79</td>
-          </tr>
-          <tr>
-            <td>Setor B3</td>
-            <td>Transporte Rodoviário</td>
-          </tr>
-          <tr>
-            <td>Segmento B3</td>
-            <td>Transporte</td>
-          </tr>
-          <tr>
-            <td>Tipo de Ação</td>
-            <td>Ordinária (ON)</td>
-          </tr>
-          <tr>
-            <td>Listagem</td>
-            <td>Novo Mercado</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <section>
+            <h2>Sobre Jsl (JSLG3)</h2>
+            <p>A JSL (JSLG3) é uma empresa brasileira de logística e transporte rodoviário, com atuação em todo o território nacional. Fundada em 1956, a companhia oferece soluções integradas de transporte, armazenagem e gestão de frotas para diversos setores da economia.</p>
+            <p>Listada na B3 desde 2010, a JSL possui uma frota própria de mais de 10 mil veículos e está presente em mais de 100 municípios brasileiros. A empresa é reconhecida por sua governança corporativa e histórico de distribuição de dividendos.</p>
+            <div class="card-grid">
+                <div class="card"><div class="label">Ticker</div><div class="value">JSLG3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Transporte Rodoviário</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Logística</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+            </div>
+        </section>
 
-    <section>
-      <h2>Como Calcular o Preço Teto de JSLG3 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa de análise fundamentalista. A premissa é simples: o investidor define uma taxa de dividend yield desejada (neste caso, 6% ao ano) e calcula o preço máximo que pagaria pela ação para obter esse retorno com base nos dividendos pagos.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (6%)</p>
-      <div class="example-note">
-        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-        Suponha que a JSLG3 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. O preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>. Este valor é apenas uma referência educativa e não representa recomendação de compra.
-      </div>
-      <p>Para usar o método, o investidor deve coletar os dividendos efetivamente pagos pela empresa no período. A ferramenta Elite Ações automatiza esse cálculo com dados históricos.</p>
-    </section>
+        <section>
+            <h2>Dados Cadastrais de JSLG3</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Informação</th><th>Detalhe</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Razão Social</td><td>JSL S.A.</td></tr>
+                        <tr><td>CNPJ</td><td>52.548.435/0001-79</td></tr>
+                        <tr><td>Setor B3</td><td>Transporte Rodoviário</td></tr>
+                        <tr><td>Segmento B3</td><td>Logística</td></tr>
+                        <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+                        <tr><td>Tag Along</td><td>100%</td></tr>
+                        <tr><td>Listagem</td><td>B3 desde 2010</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <section>
-      <h2>Histórico de Dividendos da JSLG3</h2>
-      <p>A JSL possui uma política de distribuição de dividendos que visa remunerar os acionistas com base no lucro líquido ajustado do exercício. A empresa já distribuiu proventos em diversos períodos, com valores que variam conforme o desempenho operacional. Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95.</p>
-      <p>O histórico de dividendos da JSLG3 reflete a trajetória de crescimento da companhia, mas é importante lembrar que valores passados não garantem pagamentos futuros. Consulte o app Elite Ações para visualizar a série histórica completa e atualizada.</p>
-    </section>
+        <section>
+            <h2>Como Calcular o Preço Teto de JSLG3 pelo Método Bazin</h2>
+            <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada (yield) e calcula quanto pagaria para obter esse retorno.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada</p>
+            <p>Para JSLG3, a taxa sugerida é de 6% ao ano. Assim, se os dividendos acumulados nos últimos 12 meses forem de R$ 1,20 (valor hipotético), o preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00.</p>
+            <div class="highlight-box">
+                <strong>Exemplo hipotético para ilustração — valores fictícios.</strong> Este cálculo não representa recomendação de compra ou venda. Consulte dados reais no app Elite Ações.
+            </div>
+        </section>
 
-    <section>
-      <h2>Como Acessar os Dados Atualizados de JSLG3</h2>
-      <p>No app Elite Ações, você encontra dividendos históricos, preço teto calculado automaticamente pelo Método Bazin, indicadores fundamentalistas e muito mais. A plataforma é atualizada constantemente com dados da B3 e CVM.</p>
-      <div class="cta-wrapper">
-        <a href="/" class="cta-btn">Acessar Elite Ações</a>
-      </div>
-      <p class="text-small">Ao acessar, você terá ferramentas educativas para sua análise fundamentalista, sem recomendações de investimento.</p>
-    </section>
+        <section>
+            <h2>Histórico de Dividendos da JSLG3</h2>
+            <p>A JSL possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado. A empresa tem histórico de distribuições regulares, com pagamentos semestrais ou anuais, dependendo do desempenho financeiro.</p>
+            <p>Os dividendos de JSLG3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que a empresa seja classificada como tributada pelo lucro real. Para valores históricos atualizados, consulte o app Elite Ações.</p>
+        </section>
 
-    <section>
-      <h2>Perguntas Frequentes sobre JSLG3</h2>
-      <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">O que é o preço teto de JSLG3?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">O preço teto de JSLG3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos anuais por 6%. É uma referência educativa, não uma recomendação.</p>
-          </div>
+        <section>
+            <h2>Como Acessar os Dados Atualizados de JSLG3</h2>
+            <p>O app Elite Ações oferece dados em tempo real sobre JSLG3, incluindo dividendos acumulados, preço teto calculado automaticamente pelo Método Bazin, indicadores fundamentalistas e muito mais. Tudo em uma interface simples e educativa.</p>
+            <div class="btn-wrap">
+                <a href="/" class="btn">Acessar App Elite Ações</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Perguntas Frequentes sobre JSLG3</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">O que é o preço teto JSLG3? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>O preço teto JSLG3 é o valor máximo que um investidor, utilizando o Método Bazin, consideraria justo para comprar a ação com base nos dividendos pagos nos últimos 12 meses e uma taxa de retorno desejada de 6% ao ano.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como calcular o preço teto de JSLG3 pelo método bazin? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>O cálculo é feito dividindo o total de dividendos pagos por JSLG3 nos últimos 12 meses pela taxa de retorno desejada (6%). Por exemplo, se os dividendos somaram R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00. Este é um exemplo hipotético.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">JSLG3 paga dividendos regularmente? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>A JSLG3 possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Consulte o app Elite Ações para dados atualizados.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual a taxa bazin indicada para JSLG3? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>A taxa Bazin sugerida para JSLG3 é de 6% ao ano, conforme dados do ativo. Essa taxa representa o retorno desejado em dividendos sobre o preço pago pela ação.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Onde encontrar a análise fundamentalista de JSLG3? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>A análise fundamentalista completa de JSLG3, incluindo indicadores como P/L, P/VP, margem líquida e endividamento, está disponível no app Elite Ações.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">JSLG3 é uma boa ação para dividendos? <span class="icon">+</span></button>
+                    <div class="faq-answer"><p>Esta página não faz recomendações de investimento. A decisão de investir em JSLG3 deve ser baseada em sua própria análise e perfil de risco. Consulte um profissional habilitado pela CVM.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Aviso Legal e Disclaimer</h2>
+            <div class="disclaimer">
+                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
+                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
+                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
+                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
+                Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
+                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+            </div>
+        </section>
+
+        <div class="btn-wrap">
+            <a href="/" class="btn">Acessar App Elite Ações</a>
         </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Como calcular o preço teto de JSLG3 pelo Método Bazin?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">Divida os dividendos pagos nos últimos 12 meses por 0,06 (6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (1,20 ÷ 0,06).</p>
-          </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Início</a> | <a href="/empresas">Empresas</a> | <a href="/paginas/acoes">Ações</a></p>
         </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">JSLG3 paga dividendos regularmente?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">A JSL (JSLG3) possui histórico de distribuição de dividendos, mas os valores variam conforme o lucro da empresa. Consulte o app Elite Ações para dados atualizados.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Qual a taxa Bazin usada para JSLG3?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">A taxa Bazin utilizada para JSLG3 é de 6% ao ano, conforme definido pela metodologia do investidor Décio Bazin para empresas consolidadas.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de JSLG3?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">No app Elite Ações você encontra dividendos históricos, preço teto calculado e análise fundamentalista de JSLG3. Acesse eliteacoes.com para mais informações.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">O Método Bazin é garantia de retorno?</button>
-          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text">Não. O Método Bazin é uma ferramenta educativa de análise. Rentabilidade passada não garante resultados futuros. Consulte um profissional habilitado pela CVM.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento. Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-      </div>
-    </section>
-
-    <div class="cta-wrapper">
-      <a href="/" class="cta-btn">Acessar Elite Ações</a>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p>Plataforma educativa de análise fundamentalista</p>
-    </div>
-  </footer>
-
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
-      });
-    });
-  </script>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.previousElementSibling.classList.remove('active');
+                });
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

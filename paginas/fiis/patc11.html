@@ -18,7 +18,7 @@
     "@context":"https://schema.org","@type":"Article",
     "headline":"FII Patria (PATC11): Preço Teto e Rendimentos pelo Método Bazin",
     "description":"Saiba como calcular o preço teto de PATC11 (FII Patria) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dado...",
-    "datePublished":"2026-05-18","dateModified":"2026-05-18",
+    "datePublished":"2026-05-24","dateModified":"2026-05-24",
     "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
     "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/patc11"
@@ -29,8 +29,9 @@
     "@context":"https://schema.org","@type":"BreadcrumbList",
     "itemListElement":[
       {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-      {"@type":"ListItem","position":3,"name":"PATC11","item":"https://eliteacoes.com/paginas/fiis/patc11"}
+      {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+      {"@type":"ListItem","position":3,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
+      {"@type":"ListItem","position":4,"name":"PATC11"}
     ]
   }
   </script>
@@ -38,12 +39,12 @@
   {
     "@context":"https://schema.org","@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"O que é o preço teto PATC11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de PATC11 é calculado pelo Método Bazin dividindo os dividendos dos últimos 12 meses por 10%. É uma referência educativa, não uma recomendação."}},
-      {"@type":"Question","name":"Como são os dividendos PATC11?","acceptedAnswer":{"@type":"Answer","text":"PATC11 distribui rendimentos mensais isentos de IR para pessoa física, conforme política do fundo. Consulte o app Elite Ações para valores atualizados."}},
-      {"@type":"Question","name":"Como usar o método bazin PATC11?","acceptedAnswer":{"@type":"Answer","text":"O método Bazin para PATC11 considera a média de dividendos pagos nos últimos 12 meses. Divida esse valor por 0,10 para obter o preço teto hipotético."}},
-      {"@type":"Question","name":"O que é análise fundamentalista PATC11?","acceptedAnswer":{"@type":"Answer","text":"Análise fundamentalista de PATC11 avalia dados cadastrais, setor de desenvolvimento e histórico de rendimentos. É uma ferramenta de estudo, não de recomendação."}},
-      {"@type":"Question","name":"O FII Patria investimentos é confiável?","acceptedAnswer":{"@type":"Answer","text":"O FII Patria é um fundo de desenvolvimento gerido por gestora profissional. A confiabilidade depende de análise individual. Consulte dados oficiais da CVM."}},
-      {"@type":"Question","name":"Onde ver dados atualizados de PATC11?","acceptedAnswer":{"@type":"Answer","text":"Dados atualizados de PATC11 estão disponíveis no app Elite Ações, com cotações, dividendos e ferramentas educativas como o Método Bazin."}}
+      {"@type":"Question","name":"O que é o preço teto PATC11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de PATC11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de 10%."}},
+      {"@type":"Question","name":"Como calcular PATC11 dividendos pelo método bazin?","acceptedAnswer":{"@type":"Answer","text":"Multiplique os dividendos mensais médios por 12 e divida por 0,10. O resultado é o preço teto."}},
+      {"@type":"Question","name":"Qual a taxa bazin do PATC11?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin utilizada para PATC11 é de 10% ao ano, conforme metodologia do investidor Décio Bazin."}},
+      {"@type":"Question","name":"PATC11 análise fundamentalista é confiável?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de PATC11 deve considerar dados do fundo, setor de desenvolvimento e histórico de rendimentos. Consulte fontes oficiais."}},
+      {"@type":"Question","name":"Onde encontrar dados atualizados do fii patria investimentos?","acceptedAnswer":{"@type":"Answer","text":"Você pode acessar dados atualizados de PATC11 no app Elite Ações, que reúne informações da B3 e CVM."}},
+      {"@type":"Question","name":"PATC11 paga dividendos todo mês?","acceptedAnswer":{"@type":"Answer","text":"PATC11 distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita do fundo."}}
     ]
   }
   </script>
@@ -60,75 +61,62 @@
       --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
       --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;font-size:14px;min-height:100vh}
-    @media(min-width:768px){body{font-size:16px}}
-    a{color:var(--green);text-decoration:none;transition:opacity .2s}
-    a:hover{opacity:.8}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:800px;margin:0 auto;padding:0 16px}
-    @media(min-width:768px){.container{padding:0 24px}}
-    /* header */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+    a{color:var(--green);text-decoration:none;transition:color .2s}
+    a:hover{color:#00e6b8}
+    img{max-width:100%;height:auto}
+    .container{max-width:720px;margin:0 auto;padding:0 16px}
     header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
     header .container{display:flex;align-items:center;justify-content:space-between}
     .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
     .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:13px;font-weight:500;padding:8px 12px;border-radius:8px;background:var(--surf);border:1px solid var(--border);min-height:44px;display:inline-flex;align-items:center}
-    @media(min-width:768px){.nav-link{font-size:14px}}
-    /* breadcrumb */
+    .nav-link{color:var(--txt2);font-size:13px;font-weight:500;padding:8px 12px;border-radius:8px;transition:background .2s}
+    .nav-link:hover{background:var(--surf);color:var(--txt)}
     .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0 8px;font-size:12px;color:var(--txt3)}
     .breadcrumb a{color:var(--txt2)}
+    .breadcrumb a:hover{color:var(--green)}
     .breadcrumb span{color:var(--txt3)}
-    /* headings */
-    h1{font-size:22px;font-weight:700;line-height:1.3;margin:0 0 12px;color:var(--txt)}
-    @media(min-width:768px){h1{font-size:30px}}
-    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-bottom:1px solid var(--border);padding-bottom:8px}
-    @media(min-width:768px){h2{font-size:22px;margin:40px 0 16px}}
+    h1{font-size:24px;font-weight:700;line-height:1.3;margin:8px 0 16px;color:var(--txt)}
+    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
     h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
-    p{margin:0 0 12px;color:var(--txt2)}
-    .small{font-size:12px;color:var(--txt3)}
-    /* cards */
+    p{margin-bottom:12px;color:var(--txt2)}
     .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px 12px;text-align:center}
-    .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-    .card .value{font-size:14px;font-weight:600;color:var(--txt);font-family:var(--fm)}
-    @media(min-width:768px){.card .value{font-size:16px}}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
-    .data-table th,.data-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
-    .data-table th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.4px;font-size:11px}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* highlight box */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt2)}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px}
+    .card-label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:4px}
+    .card-value{font-size:15px;font-weight:600;color:var(--txt);font-family:var(--fm)}
+    .table-wrap{overflow-x:auto;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+    th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.4px}
+    td{color:var(--txt2)}
+    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0}
+    .highlight-box p{color:var(--txt);font-size:13px;margin:0}
     .highlight-box strong{color:var(--yellow)}
-    /* cta */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:700;font-size:15px;padding:12px 28px;border-radius:12px;min-height:44px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none}
-    .cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,168,.3);color:var(--bg)}
-    .cta-wrap{text-align:center;margin:24px 0}
-    /* faq */
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;background:var(--green);color:#0a0e1a;text-decoration:none}
+    .btn:hover{background:#00e6b8;color:#0a0e1a;transform:translateY(-1px)}
+    .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
+    .btn-outline:hover{background:var(--green-dim);border-color:var(--green)}
     .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-q{background:none;border:none;width:100%;text-align:left;padding:14px 0;font-size:14px;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;font-family:var(--fb)}
-    .faq-q .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
-    .faq-q[aria-expanded="true"] .icon{transform:rotate(45deg)}
-    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0}
-    .faq-a-inner{padding:0 0 14px;color:var(--txt2);font-size:13px;line-height:1.6}
-    .faq-item:first-child{border-top:1px solid var(--border)}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0;font-size:13px;color:var(--txt2);line-height:1.7}
+    .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+    .faq-question::after{content:'+';font-size:18px;color:var(--txt3);transition:transform .3s}
+    .faq-question.active::after{content:'−';transform:rotate(180deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0}
+    .faq-answer.open{max-height:300px;padding:0 0 14px}
+    .faq-answer p{font-size:13px;color:var(--txt2);margin:0}
+    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin:16px 0}
+    .disclaimer-box p{font-size:13px;color:var(--txt);margin:0 0 8px;line-height:1.7}
+    .disclaimer-box p:last-child{margin:0}
     .disclaimer-box strong{color:var(--yellow)}
-    /* footer */
-    footer{border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center;font-size:12px;color:var(--txt3)}
-    footer a{color:var(--txt2)}
-    /* update */
-    .update-badge{display:inline-block;background:var(--green-dim);border:1px solid var(--green-border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--green);font-family:var(--fm);margin-bottom:12px}
-    /* responsive */
-    @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      .data-table{font-size:12px}
-      .data-table th,.data-table td{padding:8px 10px}
+    .footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--border);margin-top:40px}
+    .footer p{font-size:12px;color:var(--txt3);margin:4px 0}
+    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--txt3);font-family:var(--fm);margin-bottom:12px}
+    @media(min-width:640px){
+      body{font-size:15px}
+      h1{font-size:30px}
+      h2{font-size:20px}
+      .card-grid{grid-template-columns:repeat(4,1fr)}
+      .container{padding:0 24px}
     }
   </style>
 </head>
@@ -142,142 +130,177 @@
 
   <main class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/fiis">FIIs</a><span>/</span>
+      <a href="/">Início</a>
+      <span>/</span>
+      <a href="/empresas">Empresas</a>
+      <span>/</span>
+      <a href="/paginas/fiis">FIIs</a>
+      <span>/</span>
       <span>PATC11</span>
     </nav>
 
-    <div class="update-badge">Última atualização: maio de 2026</div>
+    <span class="update-badge">Última atualização: maio de 2026</span>
     <h1>FII Patria (PATC11): Preço Teto e Rendimentos pelo Método Bazin</h1>
 
-    <!-- H2-1 -->
     <section>
       <h2>Sobre FII Patria (PATC11)</h2>
-      <p>O FII Patria (PATC11) é um fundo de investimento imobiliário do segmento de desenvolvimento, gerido pela Patria Investimentos. O fundo tem como objetivo aplicar recursos em empreendimentos imobiliários, com foco em projetos de incorporação e construção, buscando gerar valor por meio da participação em operações estruturadas do setor.</p>
-      <p>Com ticker PATC11, o fundo é negociado na B3 e se destaca por sua estratégia de investimento em ativos de desenvolvimento, que envolve maior potencial de retorno, mas também riscos associados ao ciclo imobiliário. A gestão profissional busca identificar oportunidades em diferentes regiões do país.</p>
+      <p>O FII Patria (PATC11) é um fundo de investimento imobiliário do segmento de desenvolvimento, gerido pela Patria Investimentos. O fundo foca em empreendimentos imobiliários voltados para renda, com estratégia de aquisição e desenvolvimento de ativos de alto padrão.</p>
+      <p>Com patrimônio líquido significativo, o PATC11 busca gerar valor por meio da gestão ativa de seus ativos, distribuindo rendimentos periódicos aos cotistas. O fundo é negociado na B3 sob o ticker PATC11.</p>
       <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value">PATC11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Desenvolvimento</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Gestora</div><div class="value">Patria</div></div>
+        <div class="card">
+          <div class="card-label">Ticker</div>
+          <div class="card-value">PATC11</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Setor</div>
+          <div class="card-value">Desenvolvimento</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Tipo de Fundo</div>
+          <div class="card-value">FII</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Tipo</div>
+          <div class="card-value">Fundo de Desenvolvimento</div>
+        </div>
       </div>
     </section>
 
-    <!-- H2-2 -->
     <section>
       <h2>Dados Cadastrais de PATC11</h2>
-      <p>Os dados cadastrais do PATC11 são públicos e registrados na B3 e na CVM. Abaixo, as principais informações do fundo para análise educativa.</p>
-      <table class="data-table">
-        <tbody>
-          <tr><th>Setor</th><td>Fundo de Desenvolvimento</td></tr>
-          <tr><th>Segmento</th><td>Desenvolvimento Imobiliário</td></tr>
-          <tr><th>Tipo de Cota</th><td>FII (Fundo de Investimento Imobiliário)</td></tr>
-          <tr><th>Gestora</th><td>Patria Investimentos</td></tr>
-          <tr><th>CNPJ</th><td>Disponível no site da CVM</td></tr>
-          <tr><th>Data de Registro</th><td>Consultar B3</td></tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Informação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Setor</td>
+              <td>Fundo de Desenvolvimento</td>
+            </tr>
+            <tr>
+              <td>Segmento</td>
+              <td>Desenvolvimento para Renda</td>
+            </tr>
+            <tr>
+              <td>Tipo de Cota</td>
+              <td>Ordinária</td>
+            </tr>
+            <tr>
+              <td>Gestora</td>
+              <td>Patria Investimentos</td>
+            </tr>
+            <tr>
+              <td>CNPJ</td>
+              <td>Disponível na B3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <!-- H2-3 -->
     <section>
       <h2>Como Calcular o Preço Teto de PATC11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda investidores a estimar um preço teto para ativos que pagam dividendos. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 10% ao ano) e calcula-se o preço máximo com base nos dividendos pagos.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,10</p>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma estratégia educativa que calcula um preço teto para ativos pagadores de dividendos. A fórmula é: <strong>Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada</strong>.</p>
+      <p>Para PATC11, utiliza-se a taxa de 10% ao ano. O investidor coleta os dividendos mensais distribuídos pelo fundo nos últimos 12 meses, soma-os e divide por 0,10. O resultado é o preço máximo sugerido pelo método.</p>
       <div class="highlight-box">
-        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-        Suponha que PATC11 tenha distribuído R$ 1,20 por cota nos últimos 12 meses (valor meramente ilustrativo).<br>
-        Preço teto = R$ 1,20 ÷ 0,10 = <strong>R$ 12,00</strong>.<br>
-        Este número é apenas um exercício educacional. Não representa recomendação ou projeção real.
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+        Suponha que PATC11 distribuiu R$ 1,20 por cota nos últimos 12 meses. Preço teto = R$ 1,20 ÷ 0,10 = <strong>R$ 12,00</strong>. Este valor é apenas uma simulação educativa e não reflete dados reais do fundo.</p>
       </div>
-      <p>O investidor deve usar dados reais de dividendos disponíveis em fontes oficiais e aplicar a fórmula como parte de sua análise pessoal. O método não substitui uma avaliação fundamentalista completa.</p>
     </section>
 
-    <!-- H2-4 -->
     <section>
       <h2>Rendimentos Mensais do PATC11</h2>
-      <p>O FII Patria (PATC11) possui política de distribuição de rendimentos mensais, conforme regulamento do fundo. Os valores pagos variam de acordo com o desempenho dos empreendimentos e a geração de caixa do portfólio.</p>
-      <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais (Lei nº 11.033/2004). Historicamente, o fundo tem mantido uma frequência regular de pagamentos, mas cada investidor deve acompanhar os comunicados oficiais.</p>
-      <p>Não são apresentados valores atuais de dividend yield ou cotação, pois estes mudam constantemente. Consulte o app Elite Ações para dados em tempo real.</p>
+      <p>O FII Patria distribui rendimentos mensalmente, conforme política estabelecida em regulamento. Os valores são baseados na receita gerada pelos ativos do fundo, como aluguéis e resultados operacionais.</p>
+      <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que respeitados os limites legais. Historicamente, o PATC11 mantém uma política de distribuição regular, mas os valores variam conforme o desempenho do fundo.</p>
     </section>
 
-    <!-- H2-5 -->
     <section>
       <h2>Como Acessar os Dados Atualizados de PATC11</h2>
-      <p>Para acompanhar cotações, dividendos históricos e calcular o preço teto pelo Método Bazin com dados reais, utilize o aplicativo Elite Ações. A ferramenta oferece uma interface educativa com informações organizadas para apoiar sua análise fundamentalista.</p>
-      <p>No app, você encontra: histórico de rendimentos mensais, gráficos de performance, dados cadastrais atualizados e calculadora do Método Bazin integrada. Tudo em um só lugar, sem recomendações de investimento.</p>
-      <div class="cta-wrap">
-        <a href="/" class="cta-btn">Acessar App Elite Ações</a>
+      <p>Para consultar dados em tempo real de PATC11, incluindo dividendos, preço teto e análises, utilize o app Elite Ações. A plataforma reúne informações oficiais da B3 e CVM, organizadas de forma educativa.</p>
+      <p>No app, você encontra histórico de rendimentos, calculadora do Método Bazin e dados cadastrais atualizados. Tudo em um ambiente seguro e sem recomendações de investimento.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
+        <a href="/" class="btn">Acessar App Elite Ações</a>
+        <a href="/" class="btn btn-outline">Ver dados de PATC11</a>
       </div>
     </section>
 
-    <!-- H2-6 -->
     <section>
       <h2>Perguntas Frequentes sobre PATC11</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">O que é o preço teto PATC11? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">O preço teto de PATC11 é calculado pelo Método Bazin dividindo os dividendos dos últimos 12 meses por 10%. É uma referência educativa, não uma recomendação.</div></div>
+      <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">O que é o preço teto PATC11?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">O preço teto de PATC11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de 10%.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Como são os dividendos PATC11? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">PATC11 distribui rendimentos mensais isentos de IR para pessoa física, conforme política do fundo. Consulte o app Elite Ações para valores atualizados.</div></div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Como calcular PATC11 dividendos pelo método bazin?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Multiplique os dividendos mensais médios por 12 e divida por 0,10. O resultado é o preço teto.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Como usar o método bazin PATC11? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">O método Bazin para PATC11 considera a média de dividendos pagos nos últimos 12 meses. Divida esse valor por 0,10 para obter o preço teto hipotético.</div></div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Qual a taxa bazin do PATC11?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A taxa Bazin utilizada para PATC11 é de 10% ao ano, conforme metodologia do investidor Décio Bazin.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">O que é análise fundamentalista PATC11? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">Análise fundamentalista de PATC11 avalia dados cadastrais, setor de desenvolvimento e histórico de rendimentos. É uma ferramenta de estudo, não de recomendação.</div></div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">PATC11 análise fundamentalista é confiável?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A análise fundamentalista de PATC11 deve considerar dados do fundo, setor de desenvolvimento e histórico de rendimentos. Consulte fontes oficiais.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">O FII Patria investimentos é confiável? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">O FII Patria é um fundo de desenvolvimento gerido por gestora profissional. A confiabilidade depende de análise individual. Consulte dados oficiais da CVM.</div></div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">Onde encontrar dados atualizados do fii patria investimentos?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Você pode acessar dados atualizados de PATC11 no app Elite Ações, que reúne informações da B3 e CVM.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Onde ver dados atualizados de PATC11? <span class="icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">Dados atualizados de PATC11 estão disponíveis no app Elite Ações, com cotações, dividendos e ferramentas educativas como o Método Bazin.</div></div>
+        <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" itemprop="name">PATC11 paga dividendos todo mês?</button>
+          <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">PATC11 distribui rendimentos mensalmente, conforme política do fundo. Os valores variam de acordo com a receita do fundo.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- H2-7 -->
     <section>
       <h2>Aviso Legal e Disclaimer</h2>
       <div class="disclaimer-box">
-        <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-        Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-        Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-        O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-        Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
       </div>
     </section>
 
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Baixar Elite Ações</a>
+    <div style="text-align:center;margin:24px 0">
+      <a href="/" class="btn">Baixar App Elite Ações</a>
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
-      <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
-    </div>
+  <footer class="container footer">
+    <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+    <p>Dados educativos com base em fontes públicas (B3, CVM)</p>
   </footer>
 
   <script>
-    document.querySelectorAll('.faq-q').forEach(btn => {
+    document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
         const answer = this.nextElementSibling;
-        if (!expanded) {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          answer.style.padding = '0 0 14px';
-        } else {
-          answer.style.maxHeight = '0';
-          answer.style.padding = '0';
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer.open').forEach(el => {
+          el.classList.remove('open');
+          el.previousElementSibling.classList.remove('active');
+        });
+        if (!isOpen) {
+          answer.classList.add('open');
+          this.classList.add('active');
         }
       });
     });

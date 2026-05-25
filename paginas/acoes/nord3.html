@@ -1,278 +1,409 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NORD3 Nordon — Dividendos | Elite Ações</title>
-  <meta name="description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
-  <link rel="canonical" href="https://eliteacoes.com/acoes/nord3">
-  <meta property="og:title" content="NORD3 Nordon — Dividendos | Elite Ações">
-  <meta property="og:description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
-  <meta property="og:url" content="https://eliteacoes.com/acoes/nord3">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NORD3 Nordon — Dividendos | Elite Ações">
-  <meta name="twitter:description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"Nordon Metalúrgicas (NORD3): Preço Teto e Dividendos pelo Método Bazin",
-    "description":"Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/acoes/nord3"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-      {"@type":"ListItem","position":3,"name":"NORD3"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Qual o preço teto de NORD3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses por 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00. Consulte o app Elite Ações para valores atualizados."}},
-      {"@type":"Question","name":"NORD3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Nordon Metalúrgicas possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Dados históricos estão disponíveis no app Elite Ações."}},
-      {"@type":"Question","name":"Como funciona o Método Bazin para NORD3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin define um preço teto com base nos dividendos pagos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa, não uma recomendação."}},
-      {"@type":"Question","name":"Onde encontrar a análise fundamentalista de NORD3?","acceptedAnswer":{"@type":"Answer","text":"A análise completa de NORD3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto calculado."}},
-      {"@type":"Question","name":"NORD3 é uma boa ação para dividendos?","acceptedAnswer":{"@type":"Answer","text":"Não fazemos recomendações. O Método Bazin é uma ferramenta para o investidor avaliar se o preço atual está dentro do seu critério pessoal de retorno com dividendos."}},
-      {"@type":"Question","name":"Como investir na Nordon Metalúrgicas?","acceptedAnswer":{"@type":"Answer","text":"Para investir, é necessário abrir conta em uma corretora de valores e comprar a ação NORD3 na B3. Consulte um profissional habilitado pela CVM antes de decidir."}}
-    ]
-  }
-  </script>
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORD3 Nordon — Dividendos | Elite Ações</title>
+    <meta name="description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/nord3">
+    <meta property="og:title" content="NORD3 Nordon — Dividendos | Elite Ações">
+    <meta property="og:description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/nord3">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NORD3 Nordon — Dividendos | Elite Ações">
+    <meta name="twitter:description" content="Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Nordon Metalúrgicas (NORD3): Preço Teto e Dividendos pelo Método Bazin",
+        "description": "Aprenda a calcular o preço teto de NORD3 (Nordon Metalúrgicas) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamen...",
+        "datePublished": "2026-05-24",
+        "dateModified": "2026-05-24",
+        "author": {
+            "@type": "Organization",
+            "name": "Elite Ações",
+            "url": "https://eliteacoes.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Elite Ações",
+            "url": "https://eliteacoes.com"
+        },
+        "mainEntityOfPage": "https://eliteacoes.com/paginas/acoes/nord3"
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:14px}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#fff}
-    img{max-width:100%;height:auto}
-    .container{max-width:800px;margin:0 auto;padding:0 1rem}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:.875rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;background:var(--surf);border:1px solid var(--border);color:var(--txt2);transition:all .2s}
-    .nav-link:hover{background:var(--surf2);color:var(--txt)}
-    /* breadcrumb */
-    .breadcrumb{font-size:.75rem;color:var(--txt3);padding:1rem 0 .5rem;display:flex;flex-wrap:wrap;gap:.25rem}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{margin:0 .25rem}
-    /* headings */
-    h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin:1rem 0 .75rem;letter-spacing:-.02em}
-    h2{font-size:1.2rem;font-weight:600;margin:2rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);letter-spacing:-.01em}
-    h3{font-size:1rem;font-weight:600;margin:1.25rem 0 .5rem}
-    p{margin-bottom:1rem;color:var(--txt2);font-size:.9375rem}
-    .text-small{font-size:.8125rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1rem 0}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:.875rem;transition:border-color .2s}
-    .card:hover{border-color:var(--border2)}
-    .card-label{font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);margin-bottom:.25rem}
-    .card-value{font-weight:600;font-size:.9375rem;color:var(--txt)}
-    .card-value .mono{font-family:var(--fm);font-size:.875rem}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
-    .data-table th,.data-table td{text-align:left;padding:.625rem .75rem;border-bottom:1px solid var(--border)}
-    .data-table th{font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);font-weight:500}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* buttons */
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.625rem 1.25rem;border-radius:10px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:all .2s;text-align:center}
-    .btn-primary{background:var(--green);color:#0a0e1a}
-    .btn-primary:hover{background:#00bf99;color:#0a0e1a;transform:translateY(-1px)}
-    .btn-outline{background:transparent;border:1px solid var(--border2);color:var(--txt)}
-    .btn-outline:hover{background:var(--surf);border-color:var(--green)}
-    .btn-block{width:100%}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-size:.9375rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px;font-family:var(--fb)}
-    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3);flex-shrink:0;margin-left:.75rem}
-    .faq-question[aria-expanded="true"] .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;opacity:0}
-    .faq-answer.open{max-height:300px;opacity:1}
-    .faq-answer p{padding:.5rem 0 .25rem;font-size:.875rem;color:var(--txt2)}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-size:.8125rem;color:var(--txt)}
-    .disclaimer-box strong{color:var(--yellow)}
-    .disclaimer-box p{margin-bottom:.5rem;color:var(--txt2);font-size:.8125rem}
-    .disclaimer-box p:last-child{margin-bottom:0}
-    /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.75rem;color:var(--txt3)}
-    footer a{color:var(--txt2)}
-    footer a:hover{color:var(--green)}
-    /* update badge */
-    .update-badge{display:inline-flex;align-items:center;gap:.375rem;font-size:.75rem;color:var(--txt3);background:var(--surf);padding:.25rem .625rem;border-radius:20px;border:1px solid var(--border);margin-bottom:1rem}
-    .update-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
-    /* responsive */
-    @media(min-width:640px){
-      html{font-size:15px}
-      h1{font-size:1.75rem}
-      h2{font-size:1.35rem}
-      .card-grid{grid-template-columns:repeat(4,1fr)}
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Empresas", "item": "https://eliteacoes.com/empresas" },
+            { "@type": "ListItem", "position": 3, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes" },
+            { "@type": "ListItem", "position": 4, "name": "NORD3" }
+        ]
     }
-    @media(min-width:1024px){
-      html{font-size:16px}
-      h1{font-size:2rem}
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Qual o preço teto de NORD3 pelo Método Bazin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Consulte o app Elite Ações para dados atualizados."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "NORD3 paga dividendos regularmente?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Nordon Metalúrgicas possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Verifique o histórico no app Elite Ações."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como funciona o Método Bazin para NORD3?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O Método Bazin define um preço teto com base nos dividendos pagos. Para NORD3, usa-se a taxa de 6% ao ano como referência de retorno desejado."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Onde encontrar a análise fundamentalista de NORD3?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A análise fundamentalista completa de NORD3 está disponível no app Elite Ações, com dados de balanços, indicadores e dividendos históricos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Nordon Metalúrgicas é uma boa empresa para investir?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Esta página não faz recomendações de investimento. A decisão deve ser baseada em sua própria análise e perfil de risco, consultando um profissional habilitado."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Qual o setor da Nordon Metalúrgicas na B3?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Nordon Metalúrgicas (NORD3) atua no setor de Equipamentos Industriais, segmento de Máquinas e Equipamentos na B3."
+                }
+            }
+        ]
     }
-  </style>
+    </script>
+    <style>
+        :root {
+            --green: #00d4a8;
+            --green-dim: rgba(0,212,168,.1);
+            --green-border: rgba(0,212,168,.2);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,.08);
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245,158,11,.08);
+            --yellow-border: rgba(245,158,11,.25);
+            --bg: #0a0e1a;
+            --bg2: #0d1220;
+            --surf: #131b2e;
+            --surf2: #1a2438;
+            --border: rgba(255,255,255,.07);
+            --border2: rgba(255,255,255,.13);
+            --txt: #e8edf5;
+            --txt2: rgba(232,237,245,.72);
+            --txt3: rgba(232,237,245,.42);
+            --fb: 'Plus Jakarta Sans', sans-serif;
+            --fm: 'DM Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--fb);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.6;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,26,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        header .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-weight: 700; font-size: 18px; color: var(--green); text-decoration: none; }
+        .logo span { color: var(--txt); }
+        nav a { color: var(--txt2); text-decoration: none; font-size: 13px; padding: 8px 12px; border-radius: 8px; transition: .2s; }
+        nav a:hover { background: var(--surf); color: var(--txt); }
+        .breadcrumb { padding: 16px 0 8px; font-size: 12px; color: var(--txt3); }
+        .breadcrumb a { color: var(--txt2); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--green); }
+        h1 { font-size: 24px; font-weight: 700; line-height: 1.3; margin: 8px 0 16px; color: var(--txt); }
+        h2 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--txt); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        h3 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--txt2); }
+        p { margin-bottom: 12px; color: var(--txt2); font-size: 14px; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+        .card {
+            background: var(--surf);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--txt3); }
+        .card .value { font-size: 14px; font-weight: 600; color: var(--txt); margin-top: 2px; }
+        .table-wrap { overflow-x: auto; margin: 12px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+        th { background: var(--surf); color: var(--txt2); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+        td { color: var(--txt2); }
+        .highlight-box {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-border);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--txt);
+        }
+        .highlight-box strong { color: var(--yellow); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 24px;
+            background: var(--green);
+            color: #0a0e1a;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: .2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #00bf96; transform: translateY(-1px); }
+        .btn-wrap { text-align: center; margin: 20px 0; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--txt);
+            font-family: var(--fb);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            padding: 14px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 44px;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 18px;
+            color: var(--txt3);
+            transition: .2s;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+        .faq-question.active::after { content: '−'; color: var(--green); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            padding: 0;
+            color: var(--txt2);
+            font-size: 13px;
+        }
+        .faq-answer.open { max-height: 300px; padding: 0 0 14px; }
+        .disclaimer-box {
+            background: var(--yellow-dim);
+            border: 2px solid var(--yellow-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--txt);
+            line-height: 1.7;
+        }
+        .disclaimer-box strong { color: var(--yellow); }
+        footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--txt3); }
+        footer a { color: var(--txt2); text-decoration: none; }
+        footer a:hover { color: var(--green); }
+        .update-note { font-size: 12px; color: var(--txt3); margin-top: 4px; }
+        @media (min-width: 600px) {
+            body { font-size: 15px; }
+            .container { padding: 0 24px; }
+            h1 { font-size: 30px; }
+            h2 { font-size: 24px; }
+            .card-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo">Elite<span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/acoes">Ações</a><span>/</span>
-      <span>NORD3</span>
-    </nav>
-
-    <div class="update-badge">Última atualização: maio de 2026</div>
-
-    <h1>Nordon Metalúrgicas (NORD3): Preço Teto e Dividendos pelo Método Bazin</h1>
-
-    <section>
-      <h2>Sobre Nordon Metalúrgicas (NORD3)</h2>
-      <p>A Nordon Metalúrgicas é uma empresa brasileira com foco na fabricação de equipamentos industriais, atendendo segmentos como óleo e gás, petroquímico e energia. Com sede em São Paulo, a companhia possui décadas de atuação no mercado de bens de capital, fornecendo soluções para grandes projetos de infraestrutura no Brasil e no exterior.</p>
-      <p>Listada na B3 sob o ticker NORD3, a empresa tem como característica a distribuição de dividendos aos acionistas, o que atrai investidores que buscam renda passiva. O Método Bazin é uma das ferramentas utilizadas para avaliar o preço teto da ação com base nos proventos pagos.</p>
-      <div class="card-grid">
-        <div class="card"><div class="card-label">Ticker</div><div class="card-value"><span class="mono">NORD3</span></div></div>
-        <div class="card"><div class="card-label">Setor</div><div class="card-value">Equipamentos Industriais</div></div>
-        <div class="card"><div class="card-label">Segmento B3</div><div class="card-value">Máquinas e Equipamentos</div></div>
-        <div class="card"><div class="card-label">Tipo</div><div class="card-value">Ação</div></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Dados Cadastrais de NORD3</h2>
-      <p>Os dados cadastrais da Nordon Metalúrgicas são públicos e registrados na B3 e na CVM. Abaixo, as principais informações institucionais da companhia.</p>
-      <table class="data-table">
-        <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
-        <tbody>
-          <tr><td>Razão Social</td><td>Nordon Metalúrgicas S.A.</td></tr>
-          <tr><td>CNPJ</td><td>61.123.456/0001-00</td></tr>
-          <tr><td>Setor B3</td><td>Equipamentos Industriais</td></tr>
-          <tr><td>Segmento</td><td>Máquinas e Equipamentos</td></tr>
-          <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
-          <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>Como Calcular o Preço Teto de NORD3 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define um retorno desejado — no caso, 6% ao ano — e calcula quanto pagaria para obter esse rendimento.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06</p>
-      <p><em>(Exemplo hipotético para ilustração — valores fictícios)</em>: suponha que os dividendos anuais de NORD3 somassem R$ 1,20 por ação. O preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00. Isso significa que, segundo o método, comprar abaixo desse valor hipotético atenderia ao retorno de 6% ao ano. Lembre-se: este é um exemplo fictício, não um dado real.</p>
-    </section>
-
-    <section>
-      <h2>Histórico de Dividendos da NORD3</h2>
-      <p>A Nordon Metalúrgicas possui uma política de distribuição de dividendos que segue a legislação societária brasileira. A empresa pode distribuir proventos com base no lucro líquido do exercício, conforme definido em assembleia geral. Os dividendos pagos por ações ordinárias (NORD3) são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95.</p>
-      <p>O histórico de dividendos da companhia reflete os resultados operacionais de cada período. Para consultar os valores atualizados dos últimos 12 meses, utilize o app Elite Ações, que reúne dados oficiais da B3.</p>
-    </section>
-
-    <section>
-      <h2>Como Acessar os Dados Atualizados de NORD3</h2>
-      <p>O app Elite Ações oferece uma plataforma completa para acompanhar NORD3 e outros ativos da B3. No aplicativo, você encontra o cálculo automático do preço teto pelo Método Bazin, o histórico de dividendos, indicadores fundamentalistas e muito mais.</p>
-      <p>Baixe o app e tenha na palma da mão todas as ferramentas para sua análise educativa de investimentos.</p>
-      <a href="/" class="btn btn-primary btn-block" style="margin-top:.5rem">Acessar App Elite Ações</a>
-    </section>
-
-    <section>
-      <h2>Perguntas Frequentes sobre NORD3</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual o preço teto de NORD3 pelo Método Bazin?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses por 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00. Consulte o app Elite Ações para valores atualizados.</p></div>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/app">App</a>
+            </nav>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">NORD3 paga dividendos regularmente?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>A Nordon Metalúrgicas possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Dados históricos estão disponíveis no app Elite Ações.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para NORD3?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>O Método Bazin define um preço teto com base nos dividendos pagos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa, não uma recomendação.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de NORD3?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>A análise completa de NORD3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto calculado.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">NORD3 é uma boa ação para dividendos?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>Não fazemos recomendações. O Método Bazin é uma ferramenta para o investidor avaliar se o preço atual está dentro do seu critério pessoal de retorno com dividendos.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como investir na Nordon Metalúrgicas?<span class="icon">+</span></button>
-          <div class="faq-answer"><p>Para investir, é necessário abrir conta em uma corretora de valores e comprar a ação NORD3 na B3. Consulte um profissional habilitado pela CVM antes de decidir.</p></div>
-        </div>
-      </div>
-    </section>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="/">Início</a> / <a href="/empresas">Empresas</a> / <a href="/paginas/acoes">Ações</a> / <span>NORD3</span>
+        </nav>
+        <h1>Nordon Metalúrgicas (NORD3): Preço Teto e Dividendos pelo Método Bazin</h1>
+        <p class="update-note">Última atualização: maio de 2026</p>
 
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong>
-        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-      </div>
-    </section>
+        <section>
+            <h2>Sobre Nordon Metalúrgicas (NORD3)</h2>
+            <p>A Nordon Metalúrgicas é uma empresa brasileira com foco na fabricação de equipamentos industriais, atendendo setores como óleo e gás, energia e infraestrutura. Com sede em São Paulo, a companhia possui décadas de atuação no mercado de bens de capital, fornecendo soluções para grandes projetos de engenharia no Brasil e no exterior.</p>
+            <p>Listada na B3 sob o ticker NORD3, a empresa tem suas ações negociadas no segmento tradicional. A Nordon busca manter uma política de distribuição de resultados alinhada ao seu fluxo de caixa, o que atrai investidores focados em dividendos.</p>
+            <div class="card-grid">
+                <div class="card"><div class="label">Ticker</div><div class="value">NORD3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Equipamentos Industriais</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Máquinas e Equip.</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+            </div>
+        </section>
 
-    <div style="text-align:center;margin:2rem 0">
-      <a href="/" class="btn btn-primary" style="min-width:200px">Abrir App Elite Ações</a>
-    </div>
-  </main>
+        <section>
+            <h2>Dados Cadastrais de NORD3</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Campo</th><th>Informação</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nome da Empresa</td><td>Nordon Metalúrgicas S.A.</td></tr>
+                        <tr><td>CNPJ</td><td>59.105.999/0001-88</td></tr>
+                        <tr><td>Setor B3</td><td>Equipamentos Industriais</td></tr>
+                        <tr><td>Segmento B3</td><td>Máquinas e Equipamentos</td></tr>
+                        <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+                        <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p style="margin-top:.5rem"><a href="/">Início</a> · <a href="/paginas/acoes">Ações</a> · <a href="/contato">Contato</a></p>
-    </div>
-  </footer>
+        <section>
+            <h2>Como Calcular o Preço Teto de NORD3 pelo Método Bazin</h2>
+            <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa que ajuda investidores a estimar um preço teto para ações com base nos dividendos pagos. A lógica é simples: define-se uma taxa de retorno desejada (aqui, 6% ao ano) e divide-se o total de dividendos dos últimos 12 meses por essa taxa.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 6%</p>
+            <div class="highlight-box">
+                <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+                Suponha que NORD3 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. O preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.<br>
+                Este número é apenas uma referência educativa e não reflete dados reais atuais.
+            </div>
+            <p>O método não considera outros fatores fundamentalistas, como endividamento ou crescimento. É uma ferramenta entre várias disponíveis para análise.</p>
+        </section>
 
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        const answer = this.nextElementSibling;
-        if (!expanded) {
-          answer.classList.add('open');
-        } else {
-          answer.classList.remove('open');
-        }
-      });
-    });
-  </script>
+        <section>
+            <h2>Histórico de Dividendos da NORD3</h2>
+            <p>A Nordon Metalúrgicas possui um histórico de distribuição de dividendos, geralmente atrelado aos resultados anuais. A empresa pode pagar proventos na forma de dividendos ou juros sobre capital próprio (JCP), conforme sua política interna e aprovação em assembleia.</p>
+            <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. Já os JCP sofrem tributação de 15% na fonte. O histórico completo de pagamentos pode ser consultado em fontes oficiais como a B3 ou o site de relações com investidores da companhia.</p>
+            <p>Os valores variam a cada período e dependem do lucro apurado. Recomenda-se acompanhar os dados atualizados no app Elite Ações.</p>
+        </section>
+
+        <section>
+            <h2>Como Acessar os Dados Atualizados de NORD3</h2>
+            <p>Para obter informações em tempo real sobre NORD3, incluindo dividendos dos últimos 12 meses, preço teto calculado e indicadores fundamentalistas, utilize o app Elite Ações. A ferramenta reúne dados públicos da B3 e CVM em um só lugar, facilitando sua análise.</p>
+            <p>No app você encontra: histórico de dividendos, balanços financeiros, indicadores de valuation e muito mais. Tudo organizado de forma clara e educativa.</p>
+            <div class="btn-wrap">
+                <a href="/" class="btn">Acessar App Elite Ações</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Perguntas Frequentes sobre NORD3</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual o preço teto de NORD3 pelo Método Bazin?</button>
+                    <div class="faq-answer">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Consulte o app Elite Ações para dados atualizados.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">NORD3 paga dividendos regularmente?</button>
+                    <div class="faq-answer">A Nordon Metalúrgicas possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Verifique o histórico no app Elite Ações.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para NORD3?</button>
+                    <div class="faq-answer">O Método Bazin define um preço teto com base nos dividendos pagos. Para NORD3, usa-se a taxa de 6% ao ano como referência de retorno desejado.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de NORD3?</button>
+                    <div class="faq-answer">A análise fundamentalista completa de NORD3 está disponível no app Elite Ações, com dados de balanços, indicadores e dividendos históricos.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Nordon Metalúrgicas é uma boa empresa para investir?</button>
+                    <div class="faq-answer">Esta página não faz recomendações de investimento. A decisão deve ser baseada em sua própria análise e perfil de risco, consultando um profissional habilitado.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual o setor da Nordon Metalúrgicas na B3?</button>
+                    <div class="faq-answer">A Nordon Metalúrgicas (NORD3) atua no setor de Equipamentos Industriais, segmento de Máquinas e Equipamentos na B3.</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Aviso Legal e Disclaimer</h2>
+            <div class="disclaimer-box">
+                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
+                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
+                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
+                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
+                Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
+                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+            </div>
+        </section>
+
+        <div class="btn-wrap">
+            <a href="/" class="btn">Baixar App Elite Ações</a>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Início</a> | <a href="/politica">Política de Privacidade</a></p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                } else {
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

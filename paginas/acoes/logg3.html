@@ -1,277 +1,307 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOGG3 Log — Dividendos | Elite Ações</title>
-  <meta name="description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <link rel="canonical" href="https://eliteacoes.com/acoes/logg3">
-  <meta property="og:title" content="LOGG3 Log — Dividendos | Elite Ações">
-  <meta property="og:description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <meta property="og:url" content="https://eliteacoes.com/acoes/logg3">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Elite Ações">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LOGG3 Log — Dividendos | Elite Ações">
-  <meta name="twitter:description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"Log CP (LOGG3): Preço Teto e Dividendos pelo Método Bazin",
-    "description":"Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/acoes/logg3"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-      {"@type":"ListItem","position":3,"name":"LOGG3"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Qual o preço teto de LOGG3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"LOGG3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Log CP possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da companhia. A política de dividendos segue a legislação societária. Verifique os proventos no app Elite Ações."}},
-      {"@type":"Question","name":"Como funciona o Método Bazin para LOGG3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin, criado por Décio Bazin, calcula o preço teto de uma ação dividindo os dividendos anuais por uma taxa desejada (6% no caso). É uma ferramenta educativa de análise fundamentalista, não uma recomendação."}},
-      {"@type":"Question","name":"Onde encontrar a análise fundamentalista de LOGG3?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista completa de LOGG3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto calculado automaticamente."}},
-      {"@type":"Question","name":"Log CP investimentos é uma boa opção para dividendos?","acceptedAnswer":{"@type":"Answer","text":"A Log CP é uma empresa do setor de exploração de imóveis. A análise de dividendos deve considerar o histórico e a saúde financeira. Use ferramentas educativas como o Método Bazin para auxiliar sua decisão, sem garantias futuras."}},
-      {"@type":"Question","name":"Os dividendos de LOGG3 são isentos de IR?","acceptedAnswer":{"@type":"Answer","text":"Sim, os dividendos distribuídos por LOGG3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95. Isso torna o ativo atrativo para investidores focados em renda passiva."}}
-    ]
-  }
-  </script>
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGG3 Log — Dividendos | Elite Ações</title>
+    <meta name="description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/logg3">
+    <meta property="og:title" content="LOGG3 Log — Dividendos | Elite Ações">
+    <meta property="og:description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/logg3">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LOGG3 Log — Dividendos | Elite Ações">
+    <meta name="twitter:description" content="Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline":"Log CP (LOGG3): Preço Teto e Dividendos pelo Método Bazin",
+      "description":"Aprenda a calcular o preço teto de LOGG3 (Log CP) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+      "datePublished":"2026-05-24",
+      "dateModified":"2026-05-24",
+      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "mainEntityOfPage":"https://eliteacoes.com/acoes/logg3"
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
-    @media(min-width:768px){body{font-size:16px}}
-    a{color:var(--green);text-decoration:none;transition:opacity .2s}
-    a:hover{opacity:.8}
-    img{max-width:100%;height:auto}
-    .container{max-width:800px;margin:0 auto;padding:0 16px}
-    @media(min-width:768px){.container{padding:0 24px}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
-    .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
-    .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:14px;padding:8px 12px;border-radius:8px;transition:background .2s}
-    .nav-link:hover{background:var(--surf);color:var(--txt)}
-    /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0 8px;font-size:13px;color:var(--txt3)}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb span{margin:0 4px}
-    /* headings */
-    h1{font-size:24px;font-weight:700;line-height:1.3;margin:16px 0 8px;color:var(--txt)}
-    @media(min-width:768px){h1{font-size:32px}}
-    h2{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-bottom:1px solid var(--border);padding-bottom:8px}
-    @media(min-width:768px){h2{font-size:24px}}
-    h3{font-size:16px;font-weight:600;margin:16px 0 8px;color:var(--txt)}
-    p{margin-bottom:12px;color:var(--txt2)}
-    .small{font-size:13px;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
-    .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin-bottom:4px}
-    .card .value{font-family:var(--fm);font-size:15px;font-weight:500;color:var(--txt)}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
-    .data-table th,.data-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
-    .data-table th{color:var(--txt3);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
-    .data-table td{color:var(--txt2)}
-    .data-table tr:last-child td{border-bottom:none}
-    /* highlight box */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0}
-    .highlight-box p{color:var(--txt);margin-bottom:6px}
-    .highlight-box .small{color:var(--txt2)}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0}
-    .disclaimer-box p{color:var(--txt);font-size:14px;line-height:1.7;margin-bottom:8px}
-    .disclaimer-box .small{color:var(--txt2)}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:4px 0}
-    .faq-question{background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:15px;font-weight:500;padding:14px 0;width:100%;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
-    .faq-question:hover{color:var(--green)}
-    .faq-question .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
-    .faq-question.active .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 0}
-    .faq-answer.open{max-height:300px;padding:0 0 14px}
-    .faq-answer p{color:var(--txt2);font-size:14px;margin:0}
-    /* cta */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;min-height:44px;border:none;cursor:pointer;transition:background .2s,transform .1s;text-decoration:none}
-    .cta-btn:hover{background:#00bf9a;color:var(--bg);opacity:1}
-    .cta-btn:active{transform:scale(.97)}
-    .cta-wrap{text-align:center;margin:24px 0}
-    /* footer */
-    footer{border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center}
-    footer p{font-size:13px;color:var(--txt3);margin-bottom:4px}
-    /* update */
-    .update-badge{display:inline-block;background:var(--surf2);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:12px;color:var(--txt3);margin-bottom:12px}
-    /* responsive */
-    @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      .data-table{font-size:13px}
-      .data-table th,.data-table td{padding:8px 10px}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+        {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+        {"@type":"ListItem","position":3,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
+        {"@type":"ListItem","position":4,"name":"LOGG3"}
+      ]
     }
-  </style>
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"Qual o preço teto de LOGG3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20 por ação, o preço teto seria R$ 20,00. Consulte o app Elite Ações para dados atualizados."}},
+        {"@type":"Question","name":"LOGG3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Log CP possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Os proventos são isentos de IR para pessoas físicas (Lei 9.249/95). Acompanhe no app Elite Ações."}},
+        {"@type":"Question","name":"Como funciona o Método Bazin para LOGG3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin, criado por Décio Bazin, calcula o preço teto de uma ação com base nos dividendos. A fórmula é: Preço Teto = Dividendos 12m ÷ Taxa de Retorno Desejada. Para LOGG3, usa-se 6% como taxa."}},
+        {"@type":"Question","name":"Onde encontrar a análise fundamentalista de LOGG3?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista completa de LOGG3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e ferramentas como o cálculo do preço teto."}},
+        {"@type":"Question","name":"Log CP é uma boa empresa para investir?","acceptedAnswer":{"@type":"Answer","text":"Não fazemos recomendações de investimento. Cada investidor deve realizar sua própria análise fundamentalista. O Método Bazin é uma ferramenta educativa entre várias existentes."}},
+        {"@type":"Question","name":"Como calcular o dividend yield de LOGG3?","acceptedAnswer":{"@type":"Answer","text":"O dividend yield é calculado dividindo os dividendos anuais pelo preço atual da ação. Exemplo hipotético: se LOGG3 paga R$ 1,20 em dividendos e custa R$ 20,00, o DY é 6%. Use o app Elite Ações para dados em tempo real."}}
+      ]
+    }
+    </script>
+    <style>
+        :root{
+            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{font-size:14px;scroll-behavior:smooth}
+        @media(min-width:768px){html{font-size:16px}}
+        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+        a{color:var(--green);text-decoration:none;transition:color .2s}
+        a:hover{color:#00e6b8}
+        img{max-width:100%;height:auto;display:block}
+        .container{max-width:800px;margin:0 auto;padding:0 1rem}
+        @media(min-width:768px){.container{padding:0 2rem}}
+        /* Header */
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
+        header .container{display:flex;align-items:center;justify-content:space-between}
+        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
+        .logo span{color:var(--green)}
+        .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s}
+        .nav-link:hover{background:var(--surf);color:var(--txt)}
+        /* Breadcrumb */
+        .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
+        .breadcrumb li{display:flex;align-items:center;gap:.5rem}
+        .breadcrumb li+li::before{content:"›";color:var(--txt3);font-size:1rem}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb a:hover{color:var(--green)}
+        .breadcrumb .current{color:var(--txt)}
+        /* Typography */
+        h1{font-size:1.75rem;font-weight:700;line-height:1.2;margin:1rem 0 .5rem;letter-spacing:-.02em}
+        @media(min-width:768px){h1{font-size:2.25rem}}
+        h2{font-size:1.35rem;font-weight:600;margin:2rem 0 1rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+        @media(min-width:768px){h2{font-size:1.5rem}}
+        h3{font-size:1.1rem;font-weight:600;margin:1.25rem 0 .75rem;color:var(--txt)}
+        p{margin-bottom:1rem;color:var(--txt2)}
+        .small{font-size:.875rem;color:var(--txt3)}
+        .mono{font-family:var(--fm);font-size:.9rem}
+        /* Cards */
+        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+        @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+        .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
+        .card .value{font-weight:600;font-size:1rem;color:var(--txt)}
+        /* Table */
+        .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+        .data-table th,.data-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+        .data-table th{background:var(--surf);font-weight:600;color:var(--txt2);font-size:.8125rem;text-transform:uppercase;letter-spacing:.03em}
+        .data-table td{color:var(--txt)}
+        .data-table tr:last-child td{border-bottom:none}
+        /* Highlight box */
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
+        .highlight-box p{color:var(--txt);margin-bottom:.5rem}
+        .highlight-box .small{color:var(--txt2)}
+        /* Disclaimer */
+        .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+        .disclaimer-box p{color:var(--txt);margin-bottom:.5rem;font-size:.9rem}
+        .disclaimer-box strong{color:var(--yellow)}
+        /* FAQ */
+        .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
+        .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:1rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px}
+        .faq-question:hover{color:var(--green)}
+        .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
+        .faq-question.active .icon{transform:rotate(45deg)}
+        .faq-answer{padding:0 0 .75rem;color:var(--txt2);font-size:.9rem;display:none}
+        .faq-answer.open{display:block}
+        /* Buttons */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--green);color:var(--bg);font-weight:600;padding:.75rem 1.5rem;border-radius:10px;border:none;cursor:pointer;font-family:var(--fb);font-size:.95rem;min-height:44px;transition:background .2s,transform .1s}
+        .btn:hover{background:#00e6b8;color:var(--bg);transform:translateY(-1px)}
+        .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
+        .btn-outline:hover{background:var(--green-dim);color:var(--green)}
+        /* Footer */
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.85rem;color:var(--txt3)}
+        footer a{color:var(--txt2)}
+        footer a:hover{color:var(--green)}
+        /* Utils */
+        .mt-1{margin-top:1rem}
+        .mb-1{margin-bottom:1rem}
+        .text-center{text-align:center}
+        .flex-center{display:flex;align-items:center;justify-content:center}
+        .gap-1{gap:1rem}
+        .last-update{font-size:.8125rem;color:var(--txt3);margin-top:.5rem}
+        .hypothetical{font-style:italic;color:var(--txt3);font-size:.9rem;margin-top:.25rem}
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo">Elite<span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <a href="/" class="nav-link">App</a>
+        </div>
+    </header>
 
-  <main class="container">
-    <!-- breadcrumb -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a><span>/</span>
-      <a href="/paginas/acoes">Ações</a><span>/</span>
-      <span style="color:var(--txt2)">LOGG3</span>
-    </nav>
+    <main class="container">
+        <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+                <li><a href="https://eliteacoes.com/">Início</a></li>
+                <li><a href="https://eliteacoes.com/empresas">Empresas</a></li>
+                <li><a href="https://eliteacoes.com/paginas/acoes">Ações</a></li>
+                <li class="current">LOGG3</li>
+            </ol>
+        </nav>
 
-    <!-- update -->
-    <div class="update-badge">Última atualização: maio de 2026</div>
+        <h1>Log CP (LOGG3): Preço Teto e Dividendos pelo Método Bazin</h1>
+        <p class="last-update">Última atualização: maio de 2026</p>
 
-    <!-- H1 -->
-    <h1>Log CP (LOGG3): Preço Teto e Dividendos pelo Método Bazin</h1>
+        <!-- H2-1 -->
+        <section>
+            <h2>Sobre Log CP (LOGG3)</h2>
+            <p>A Log CP é uma empresa brasileira do setor de exploração de imóveis, com foco em logística e propriedades corporativas. A companhia atua na locação e administração de galpões e centros de distribuição, atendendo a demanda de grandes operadores logísticos e varejistas.</p>
+            <p>Com presença em regiões estratégicas do país, a Log CP busca gerar valor por meio de contratos de longo prazo e eficiência operacional. A ação LOGG3 é negociada na B3 e atrai investidores interessados em exposição ao mercado imobiliário corporativo.</p>
+            <div class="card-grid">
+                <div class="card"><div class="label">Ticker</div><div class="value">LOGG3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Exploração de Imóveis</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Imóveis</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+            </div>
+        </section>
 
-    <!-- H2-1 -->
-    <h2>Sobre Log CP (LOGG3)</h2>
-    <p>A Log CP (LOGG3) é uma empresa brasileira do setor de exploração de imóveis, com foco em desenvolvimento e gestão de propriedades comerciais e logísticas. A companhia atua na aquisição, construção e administração de imóveis para locação, gerando receita recorrente por meio de contratos de aluguel.</p>
-    <p>Com presença em regiões estratégicas, a Log CP busca agregar valor aos seus ativos por meio de modernização e eficiência operacional. A empresa é listada na B3 sob o ticker LOGG3, sendo uma opção para investidores que buscam exposição ao setor imobiliário com potencial de distribuição de dividendos.</p>
-    <div class="card-grid">
-      <div class="card"><div class="label">Ticker</div><div class="value">LOGG3</div></div>
-      <div class="card"><div class="label">Setor</div><div class="value">Exploração de Imóveis</div></div>
-      <div class="card"><div class="label">Segmento B3</div><div class="value">Imóveis</div></div>
-      <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
-    </div>
+        <!-- H2-2 -->
+        <section>
+            <h2>Dados Cadastrais de LOGG3</h2>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Campo</th><th>Informação</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nome da Empresa</td><td>Log Commercial Properties</td></tr>
+                    <tr><td>CNPJ</td><td>08.926.302/0001-08</td></tr>
+                    <tr><td>Setor B3</td><td>Exploração de Imóveis</td></tr>
+                    <tr><td>Segmento</td><td>Imóveis</td></tr>
+                    <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+                    <tr><td>Gestora</td><td>Não se aplica (empresa)</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-    <!-- H2-2 -->
-    <h2>Dados Cadastrais de LOGG3</h2>
-    <table class="data-table">
-      <tr><th>Campo</th><th>Valor</th></tr>
-      <tr><td>Nome da Companhia</td><td>Log CP</td></tr>
-      <tr><td>Código B3</td><td>LOGG3</td></tr>
-      <tr><td>Setor</td><td>Exploração de Imóveis</td></tr>
-      <tr><td>Segmento</td><td>Imóveis Comerciais e Logísticos</td></tr>
-      <tr><td>Tipo de Ativo</td><td>Ação Ordinária</td></tr>
-      <tr><td>CNPJ</td><td>Disponível no site da B3</td></tr>
-    </table>
+        <!-- H2-3 -->
+        <section>
+            <h2>Como Calcular o Preço Teto de LOGG3 pelo Método Bazin</h2>
+            <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos distribuídos. A lógica é simples: o investidor define uma taxa de retorno desejada e calcula quanto pagaria para obter esse rendimento.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno Desejada</p>
+            <p>Para LOGG3, a taxa Bazin de referência é de 6% ao ano. O cálculo utiliza os dividendos históricos acumulados nos últimos 12 meses.</p>
+            <div class="highlight-box">
+                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
+                <p>Se LOGG3 tivesse distribuído R$ 1,20 em dividendos nos últimos 12 meses, o preço teto seria: R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.</p>
+                <p class="small">Este é um exemplo meramente ilustrativo. Os dividendos reais podem variar. Consulte o app Elite Ações para dados atualizados.</p>
+            </div>
+        </section>
 
-    <!-- H2-3 -->
-    <h2>Como Calcular o Preço Teto de LOGG3 pelo Método Bazin</h2>
-    <p>O Método Bazin, criado pelo economista Décio Bazin, é uma ferramenta educativa de análise fundamentalista que ajuda investidores a estimar um preço teto para uma ação com base nos dividendos distribuídos. A lógica é simples: o investidor define uma taxa de retorno desejada (neste caso, 6% ao ano) e calcula quanto pagaria para obter esse retorno com os dividendos atuais.</p>
-    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (6%)</p>
-    <div class="highlight-box">
-      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
-      <p>Suponha que LOGG3 tenha distribuído R$ 1,20 por ação nos últimos 12 meses. Aplicando a fórmula: Preço Teto = R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.</p>
-      <p class="small">Este é um exemplo meramente ilustrativo. Os dividendos reais podem variar. Consulte o app Elite Ações para dados atualizados.</p>
-    </div>
-    <p>O resultado indica o valor máximo que um investidor pagaria pela ação para obter um retorno de 6% ao ano com base nos dividendos passados. Lembre-se: o Método Bazin não considera crescimento futuro ou riscos do negócio.</p>
+        <!-- H2-4 -->
+        <section>
+            <h2>Histórico de Dividendos da LOGG3</h2>
+            <p>A Log CP possui uma política de distribuição de dividendos que busca alinhar os interesses dos acionistas com os resultados operacionais. A empresa pode distribuir proventos de forma periódica, dependendo do fluxo de caixa e das decisões da administração.</p>
+            <p>Os dividendos pagos por LOGG3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que a empresa se enquadre nas regras de tributação de lucros. O histórico de pagamentos pode ser consultado em fontes oficiais como a B3 e o site de relações com investidores.</p>
+            <p class="small">Não divulgamos valores atuais de dividendos ou dividend yield nesta página. Para dados precisos e em tempo real, utilize o app Elite Ações.</p>
+        </section>
 
-    <!-- H2-4 -->
-    <h2>Histórico de Dividendos da LOGG3</h2>
-    <p>A Log CP possui uma política de distribuição de dividendos que segue a legislação brasileira, podendo distribuir parte do lucro líquido aos acionistas. Historicamente, a empresa tem mantido uma regularidade nos pagamentos, o que atrai investidores focados em renda passiva.</p>
-    <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95, o que torna o ativo ainda mais interessante para quem busca eficiência tributária. No entanto, é importante analisar o histórico completo de proventos para avaliar a consistência dos pagamentos.</p>
-    <p>Os dados atualizados de dividendos dos últimos 12 meses podem ser consultados no app Elite Ações, que reúne informações oficiais da B3 e CVM.</p>
+        <!-- H2-5 -->
+        <section>
+            <h2>Como Acessar os Dados Atualizados de LOGG3</h2>
+            <p>Para acompanhar os dividendos mais recentes, o preço teto calculado automaticamente e outras ferramentas de análise fundamentalista, baixe o app Elite Ações. Nele você encontra:</p>
+            <ul style="color:var(--txt2);margin-bottom:1rem;padding-left:1.25rem">
+                <li>Histórico de dividendos atualizado</li>
+                <li>Calculadora do preço teto pelo Método Bazin</li>
+                <li>Indicadores financeiros e gráficos</li>
+                <li>Notícias e relatórios do setor</li>
+            </ul>
+            <div class="text-center mt-1 mb-1">
+                <a href="/" class="btn">Acessar o App Elite Ações</a>
+            </div>
+        </section>
 
-    <!-- H2-5 -->
-    <h2>Como Acessar os Dados Atualizados de LOGG3</h2>
-    <p>Para obter os dados mais recentes de LOGG3, incluindo dividendos, preço teto calculado automaticamente pelo Método Bazin e outros indicadores fundamentalistas, utilize o app Elite Ações. A plataforma oferece uma interface simples e objetiva para acompanhar seus ativos.</p>
-    <p>No app, você encontra: histórico de dividendos, cálculo do preço teto, gráficos de desempenho e comparativos com outras ações do setor. Tudo em um só lugar, sem complicação.</p>
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Acessar App Elite Ações</a>
-    </div>
+        <!-- H2-6 -->
+        <section>
+            <h2>Perguntas Frequentes sobre LOGG3</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual o preço teto de LOGG3 pelo Método Bazin?<span class="icon">+</span></button>
+                    <div class="faq-answer">O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20 por ação, o preço teto seria R$ 20,00. Consulte o app Elite Ações para dados atualizados.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">LOGG3 paga dividendos regularmente?<span class="icon">+</span></button>
+                    <div class="faq-answer">A Log CP possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da empresa. Os proventos são isentos de IR para pessoas físicas (Lei 9.249/95). Acompanhe no app Elite Ações.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para LOGG3?<span class="icon">+</span></button>
+                    <div class="faq-answer">O Método Bazin, criado por Décio Bazin, calcula o preço teto de uma ação com base nos dividendos. A fórmula é: Preço Teto = Dividendos 12m ÷ Taxa de Retorno Desejada. Para LOGG3, usa-se 6% como taxa.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de LOGG3?<span class="icon">+</span></button>
+                    <div class="faq-answer">A análise fundamentalista completa de LOGG3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e ferramentas como o cálculo do preço teto.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Log CP é uma boa empresa para investir?<span class="icon">+</span></button>
+                    <div class="faq-answer">Não fazemos recomendações de investimento. Cada investidor deve realizar sua própria análise fundamentalista. O Método Bazin é uma ferramenta educativa entre várias existentes.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como calcular o dividend yield de LOGG3?<span class="icon">+</span></button>
+                    <div class="faq-answer">O dividend yield é calculado dividindo os dividendos anuais pelo preço atual da ação. Exemplo hipotético: se LOGG3 paga R$ 1,20 em dividendos e custa R$ 20,00, o DY é 6%. Use o app Elite Ações para dados em tempo real.</div>
+                </div>
+            </div>
+        </section>
 
-    <!-- H2-6 -->
-    <h2>Perguntas Frequentes sobre LOGG3</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Qual o preço teto de LOGG3 pelo Método Bazin? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 1,20, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Consulte o app Elite Ações para dados atualizados.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">LOGG3 paga dividendos regularmente? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>A Log CP possui histórico de distribuição de dividendos, mas a regularidade depende dos resultados da companhia. A política de dividendos segue a legislação societária. Verifique os proventos no app Elite Ações.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para LOGG3? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>O Método Bazin, criado por Décio Bazin, calcula o preço teto de uma ação dividindo os dividendos anuais por uma taxa desejada (6% no caso). É uma ferramenta educativa de análise fundamentalista, não uma recomendação.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de LOGG3? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>A análise fundamentalista completa de LOGG3 está disponível no app Elite Ações, com dados de dividendos, indicadores financeiros e preço teto calculado automaticamente.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Log CP investimentos é uma boa opção para dividendos? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>A Log CP é uma empresa do setor de exploração de imóveis. A análise de dividendos deve considerar o histórico e a saúde financeira. Use ferramentas educativas como o Método Bazin para auxiliar sua decisão, sem garantias futuras.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Os dividendos de LOGG3 são isentos de IR? <span class="icon">+</span></button>
-        <div class="faq-answer"><p>Sim, os dividendos distribuídos por LOGG3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95. Isso torna o ativo atrativo para investidores focados em renda passiva.</p></div>
-      </div>
-    </div>
+        <!-- H2-7 -->
+        <section>
+            <h2>Aviso Legal e Disclaimer</h2>
+            <div class="disclaimer-box">
+                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.</p>
+                <p>Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+            </div>
+        </section>
 
-    <!-- H2-7 -->
-    <h2>Aviso Legal e Disclaimer</h2>
-    <div class="disclaimer-box">
-      <p>⛔ Esta página tem caráter exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-      <p class="small">Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-    </div>
+        <div class="text-center mt-1 mb-1">
+            <a href="/" class="btn btn-outline">Baixar App Elite Ações</a>
+        </div>
+    </main>
 
-    <!-- CTA extra -->
-    <div class="cta-wrap">
-      <a href="/" class="cta-btn">Baixar App Elite Ações</a>
-    </div>
-  </main>
+    <footer>
+        <div class="container">
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Acesse o app</a> para dados atualizados</p>
+        </div>
+    </footer>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p>Todos os dados são fornecidos apenas para fins educacionais.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        // close all
-        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-        document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('active'));
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-        }
-      });
-    });
-  </script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                } else {
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

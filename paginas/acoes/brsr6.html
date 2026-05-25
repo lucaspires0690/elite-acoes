@@ -1,333 +1,446 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRSR6 Banco — Dividendos | Elite Ações</title>
-    <meta name="description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/brsr6">
-    <meta property="og:title" content="BRSR6 Banco — Dividendos | Elite Ações">
-    <meta property="og:description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/brsr6">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Elite Ações">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BRSR6 Banco — Dividendos | Elite Ações">
-    <meta name="twitter:description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:14px}
-        @media(min-width:768px){html{font-size:16px}}
-        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
-        a{color:var(--green);text-decoration:none;transition:color .2s}
-        a:hover{color:#00e6b8}
-        img{max-width:100%;height:auto;display:block}
-        .container{max-width:1120px;margin:0 auto;padding:0 1rem}
-        @media(min-width:768px){.container{padding:0 2rem}}
-        /* header */
-        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-        header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-        .logo{font-size:1.25rem;font-weight:700;color:var(--txt);letter-spacing:-.02em}
-        .logo span{color:var(--green)}
-        .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s,color .2s}
-        .nav-link:hover{background:var(--surf);color:var(--txt)}
-        /* breadcrumb */
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:1rem 0;font-size:.8125rem;color:var(--txt3)}
-        .breadcrumb a{color:var(--txt2)}
-        .breadcrumb a:hover{color:var(--green)}
-        .breadcrumb .sep{color:var(--txt3)}
-        .breadcrumb .current{color:var(--txt);font-weight:500}
-        /* headings */
-        h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin-bottom:1rem;letter-spacing:-.02em}
-        @media(min-width:768px){h1{font-size:2.25rem}}
-        h2{font-size:1.35rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
-        @media(min-width:768px){h2{font-size:1.5rem}}
-        h3{font-size:1.1rem;font-weight:600;margin-top:1.5rem;margin-bottom:.75rem;color:var(--txt)}
-        p{margin-bottom:1rem;color:var(--txt2)}
-        .text-small{font-size:.875rem;color:var(--txt3)}
-        /* cards */
-        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1rem 0}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-        .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-        .card .value{font-family:var(--fm);font-size:1rem;font-weight:500;color:var(--txt)}
-        /* table */
-        .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
-        .data-table th,.data-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
-        .data-table th{background:var(--surf);font-weight:600;color:var(--txt2);font-size:.8125rem;text-transform:uppercase;letter-spacing:.03em}
-        .data-table td{color:var(--txt2)}
-        .data-table tr:last-child td{border-bottom:none}
-        /* buttons */
-        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.75rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:all .2s;text-decoration:none;gap:.5rem}
-        .btn-primary{background:var(--green);color:#0a0e1a}
-        .btn-primary:hover{background:#00e6b8;color:#0a0e1a;transform:translateY(-1px)}
-        .btn-outline{background:transparent;border:1px solid var(--green);color:var(--green)}
-        .btn-outline:hover{background:var(--green-dim);border-color:var(--green)}
-        /* faq */
-        .faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:.75rem;overflow:hidden;background:var(--surf)}
-        .faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;background:transparent;border:none;color:var(--txt);font-size:.9375rem;font-weight:500;cursor:pointer;text-align:left;min-height:44px;transition:background .2s}
-        .faq-question:hover{background:var(--surf2)}
-        .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
-        .faq-item.active .faq-question .icon{transform:rotate(180deg)}
-        .faq-answer{padding:0 1.25rem 1rem;color:var(--txt2);font-size:.875rem;display:none}
-        .faq-item.active .faq-answer{display:block}
-        /* disclaimer */
-        .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-size:.875rem;color:var(--txt)}
-        .disclaimer-box strong{color:var(--yellow)}
-        /* footer */
-        footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.8125rem;color:var(--txt3)}
-        footer a{color:var(--txt2)}
-        footer a:hover{color:var(--green)}
-        .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:6px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem}
-        /* utilities */
-        .mt-1{margin-top:1rem}
-        .mb-1{margin-bottom:1rem}
-        .gap-1{display:flex;gap:.75rem;flex-wrap:wrap}
-        .text-center{text-align:center}
-        .highlight{color:var(--green);font-weight:500}
-        .mono{font-family:var(--fm)}
-        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    </style>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"Article",
-      "headline":"Banco Banrisul (BRSR6): Preço Teto e Dividendos pelo Método Bazin",
-      "description":"Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-      "datePublished":"2026-05-18",
-      "dateModified":"2026-05-18",
-      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-      "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/brsr6"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRSR6 Banco — Dividendos | Elite Ações</title>
+  <meta name="description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/brsr6">
+  <meta property="og:title" content="BRSR6 Banco — Dividendos | Elite Ações">
+  <meta property="og:description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/brsr6">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BRSR6 Banco — Dividendos | Elite Ações">
+  <meta name="twitter:description" content="Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Banco Banrisul (BRSR6): Preço Teto e Dividendos pelo Método Bazin",
+    "description": "Aprenda a calcular o preço teto de BRSR6 (Banco Banrisul) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+    "datePublished": "2026-05-24",
+    "dateModified": "2026-05-24",
+    "author": {
+      "@type": "Organization",
+      "name": "Elite Ações",
+      "url": "https://eliteacoes.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Elite Ações",
+      "url": "https://eliteacoes.com"
+    },
+    "mainEntityOfPage": "https://eliteacoes.com/paginas/acoes/brsr6"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Empresas", "item": "https://eliteacoes.com/empresas"},
+      {"@type": "ListItem", "position": 3, "name": "Ações", "item": "https://eliteacoes.com/paginas/acoes"},
+      {"@type": "ListItem", "position": 4, "name": "BRSR6"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "O que é o preço teto de BRSR6?", "acceptedAnswer": {"@type": "Answer", "text": "O preço teto de BRSR6 é o valor máximo que um investidor, seguindo o Método Bazin, pagaria pela ação com base nos dividendos distribuídos nos últimos 12 meses. Ele é calculado dividindo os dividendos anuais por 6% (taxa Bazin)."}},
+      {"@type": "Question", "name": "Como calcular o preço teto de BRSR6 pelo Método Bazin?", "acceptedAnswer": {"@type": "Answer", "text": "O cálculo é feito pela fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 6%. Por exemplo, se os dividendos somarem R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Este é um exemplo hipotético para ilustração."}},
+      {"@type": "Question", "name": "BRSR6 paga dividendos regularmente?", "acceptedAnswer": {"@type": "Answer", "text": "O Banco Banrisul possui histórico de distribuição de dividendos, seguindo sua política de remuneração aos acionistas. A regularidade depende dos resultados da empresa e das decisões da administração. Consulte os dados atualizados no app Elite Ações."}},
+      {"@type": "Question", "name": "Qual a taxa Bazin usada para BRSR6?", "acceptedAnswer": {"@type": "Answer", "text": "A taxa Bazin utilizada para BRSR6 é de 6% ao ano, conforme definido pelo método de Décio Bazin para ações de empresas consolidadas. Essa taxa representa o rendimento mínimo esperado em dividendos."}},
+      {"@type": "Question", "name": "Onde encontrar dados atualizados de BRSR6?", "acceptedAnswer": {"@type": "Answer", "text": "Você pode acessar dados atualizados de BRSR6 no aplicativo Elite Ações, que reúne dividendos históricos, preço teto e outras informações fundamentalistas. O app está disponível para download em eliteacoes.com."}},
+      {"@type": "Question", "name": "O Método Bazin é recomendado pela CVM?", "acceptedAnswer": {"@type": "Answer", "text": "O Método Bazin é uma metodologia educacional de análise, não uma recomendação de investimento. A CVM não endossa ou recomenda métodos específicos. Consulte um profissional habilitado antes de investir."}}
+    ]
+  }
+  </script>
+  <style>
+    :root{
+      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"BreadcrumbList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-        {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-        {"@type":"ListItem","position":3,"name":"BRSR6"}
-      ]
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
     }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"O que é o preço teto de BRSR6 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é o valor máximo que se pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, considerando os dividendos pagos nos últimos 12 meses."}},
-        {"@type":"Question","name":"Como calcular o preço teto de BRSR6?","acceptedAnswer":{"@type":"Answer","text":"Divida o total de dividendos pagos por BRSR6 nos últimos 12 meses pela taxa de 6% (0,06). O resultado é o preço teto hipotético."}},
-        {"@type":"Question","name":"BRSR6 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"O Banco Banrisul possui histórico de distribuição de dividendos, seguindo sua política de proventos. A regularidade depende dos resultados e da aprovação em assembleia."}},
-        {"@type":"Question","name":"Qual a taxa Bazin indicada para BRSR6?","acceptedAnswer":{"@type":"Answer","text":"Para BRSR6, a taxa Bazin sugerida é de 6% ao ano, conforme dados do ativo. Essa taxa é utilizada como referência no cálculo do preço teto."}},
-        {"@type":"Question","name":"Onde encontrar os dividendos atualizados de BRSR6?","acceptedAnswer":{"@type":"Answer","text":"Os dividendos atualizados de BRSR6 podem ser consultados no aplicativo Elite Ações, que reúne dados históricos de proventos e ferramentas de análise."}},
-        {"@type":"Question","name":"O Método Bazin é recomendado para BRSR6?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa entre várias existentes. Não constitui recomendação de investimento. Cada investidor deve fazer sua própria análise."}}
-      ]
+    @media (min-width: 768px) { body { font-size: 16px; } }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 768px) { .container { padding: 0 24px; } }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
     }
-    </script>
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--txt); }
+    .logo span { color: var(--green); }
+    .btn-header {
+      background: var(--green);
+      color: #0a0e1a;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .875rem;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity .2s;
+    }
+    .btn-header:hover { opacity: .9; text-decoration: none; }
+    .breadcrumb {
+      padding: 16px 0;
+      font-size: .8125rem;
+      color: var(--txt3);
+    }
+    .breadcrumb a { color: var(--txt2); }
+    .breadcrumb a:hover { color: var(--green); }
+    .breadcrumb span { color: var(--txt3); }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: var(--txt);
+    }
+    @media (min-width: 768px) { h1 { font-size: 2.25rem; } }
+    .subtitle {
+      color: var(--txt2);
+      font-size: .9375rem;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      color: var(--txt);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    @media (min-width: 768px) { h2 { font-size: 1.625rem; } }
+    p { margin-bottom: 16px; color: var(--txt2); }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 600px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+    .card {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .card .label { font-size: .75rem; color: var(--txt3); text-transform: uppercase; letter-spacing: .5px; }
+    .card .value { font-size: 1rem; font-weight: 600; color: var(--txt); margin-top: 4px; font-family: var(--fm); }
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th { background: var(--surf); color: var(--txt3); font-weight: 500; text-transform: uppercase; font-size: .75rem; letter-spacing: .5px; }
+    td { color: var(--txt2); }
+    .highlight-box {
+      background: var(--yellow-dim);
+      border: 1px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .highlight-box p { color: var(--txt); margin-bottom: 0; }
+    .highlight-box strong { color: var(--yellow); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--green);
+      color: #0a0e1a;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      min-height: 44px;
+      transition: opacity .2s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { opacity: .9; text-decoration: none; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--txt);
+      padding: 8px 0;
+      user-select: none;
+    }
+    .faq-question:hover { color: var(--green); }
+    .faq-question .icon {
+      font-size: 1.25rem;
+      transition: transform .3s;
+      color: var(--txt3);
+    }
+    .faq-question.active .icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      padding: 0 0;
+      color: var(--txt2);
+      font-size: .875rem;
+    }
+    .faq-answer.open {
+      max-height: 300px;
+      padding: 8px 0 16px;
+    }
+    .disclaimer-box {
+      background: var(--yellow-dim);
+      border: 2px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .disclaimer-box p { color: var(--txt); font-size: .875rem; margin-bottom: 8px; }
+    .disclaimer-box strong { color: var(--yellow); }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      margin-top: 40px;
+      text-align: center;
+      color: var(--txt3);
+      font-size: .8125rem;
+    }
+    .footer a { color: var(--txt2); }
+    .update-badge {
+      display: inline-block;
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .75rem;
+      color: var(--txt3);
+      font-family: var(--fm);
+      margin-bottom: 16px;
+    }
+    .cta-section {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .cta-section p { margin-bottom: 16px; }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.25rem; }
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/" class="logo">Elite <span>Ações</span></a>
-            <nav>
-                <a href="/paginas/acoes" class="nav-link">Ações</a>
-                <a href="/" class="nav-link">App</a>
-            </nav>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Elite <span>Ações</span></a>
+      <a href="/" class="btn-header">App</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Início</a> <span>/</span>
+      <a href="/empresas">Empresas</a> <span>/</span>
+      <a href="/paginas/acoes">Ações</a> <span>/</span>
+      <span>BRSR6</span>
+    </nav>
+
+    <span class="update-badge">Última atualização: maio de 2026</span>
+
+    <h1>Banco Banrisul (BRSR6): Preço Teto e Dividendos pelo Método Bazin</h1>
+    <p class="subtitle">Ferramenta educativa de análise fundamentalista para investidores.</p>
+
+    <section>
+      <h2>Sobre Banco Banrisul (BRSR6)</h2>
+      <p>O Banco Banrisul S.A. é uma instituição financeira pública com sede em Porto Alegre, Rio Grande do Sul, controlada pelo governo estadual. Fundado em 1928, é um dos maiores bancos da região Sul, oferecendo serviços bancários tradicionais, crédito, investimentos e seguros para pessoas físicas e jurídicas. Suas ações são negociadas na B3 sob o ticker BRSR6, que são ações preferenciais classe B.</p>
+      <p>A empresa se destaca pela forte presença no mercado gaúcho e por sua política de distribuição de dividendos, que atrai investidores focados em renda passiva. O Banrisul possui uma base sólida de correntistas e atua com foco em eficiência operacional e inovação digital.</p>
+      <div class="cards">
+        <div class="card"><div class="label">Ticker</div><div class="value">BRSR6</div></div>
+        <div class="card"><div class="label">Setor</div><div class="value">Bancos</div></div>
+        <div class="card"><div class="label">Segmento B3</div><div class="value">Financeiro</div></div>
+        <div class="card"><div class="label">Tipo</div><div class="value">Ação PN</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Dados Cadastrais de BRSR6</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Campo</th><th>Informação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nome da Empresa</td><td>Banco Banrisul S.A.</td></tr>
+            <tr><td>CNPJ</td><td>92.702.067/0001-96</td></tr>
+            <tr><td>Setor B3</td><td>Financeiro</td></tr>
+            <tr><td>Segmento B3</td><td>Bancos</td></tr>
+            <tr><td>Tipo de Ação</td><td>Preferencial (PN)</td></tr>
+            <tr><td>Código ISIN</td><td>BRBRSRACNPR6</td></tr>
+            <tr><td>Gestora</td><td>Não se aplica (ação)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como Calcular o Preço Teto de BRSR6 pelo Método Bazin</h2>
+      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educacional para estimar um preço teto de uma ação com base nos dividendos pagos. A ideia central é que o investidor defina um rendimento mínimo desejado — a taxa Bazin — e calcule quanto pagaria para obter esse retorno.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
+      <p>Para BRSR6, a taxa Bazin sugerida é de 6% ao ano. Isso significa que, se os dividendos acumulados nos últimos 12 meses forem de R$ 1,20 por ação, o preço teto seria de R$ 20,00 (R$ 1,20 ÷ 0,06).</p>
+      <div class="highlight-box">
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que BRSR6 tenha distribuído R$ 1,20 em dividendos nos últimos 12 meses. Com taxa Bazin de 6%, o preço teto seria R$ 20,00. Este número é meramente ilustrativo e não reflete dados reais atuais.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Histórico de Dividendos da BRSR6</h2>
+      <p>O Banco Banrisul possui uma política de distribuição de dividendos que visa remunerar seus acionistas com base nos lucros apurados. Historicamente, a empresa tem pago dividendos de forma semestral ou anual, dependendo dos resultados. Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95.</p>
+      <p>Os valores exatos dos dividendos variam a cada período e podem ser consultados em fontes oficiais como a B3 ou o site de relações com investidores do Banrisul. Recomenda-se sempre verificar os dados mais recentes antes de qualquer análise.</p>
+    </section>
+
+    <section>
+      <h2>Como Acessar os Dados Atualizados de BRSR6</h2>
+      <div class="cta-section">
+        <p>Para acompanhar os dividendos históricos, preço teto atualizado e outras métricas fundamentalistas de BRSR6 em tempo real, baixe o aplicativo Elite Ações. A ferramenta reúne dados da B3 e cálculos automáticos do Método Bazin.</p>
+        <a href="/" class="btn-primary">Acessar App Elite Ações</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Perguntas Frequentes sobre BRSR6</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>O que é o preço teto de BRSR6?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">O preço teto de BRSR6 é o valor máximo que um investidor, seguindo o Método Bazin, pagaria pela ação com base nos dividendos distribuídos nos últimos 12 meses. Ele é calculado dividindo os dividendos anuais por 6% (taxa Bazin).</div>
         </div>
-    </header>
-
-    <main class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Início</a>
-            <span class="sep">›</span>
-            <a href="/paginas/acoes">Ações</a>
-            <span class="sep">›</span>
-            <span class="current">BRSR6</span>
-        </nav>
-
-        <h1>Banco Banrisul (BRSR6): Preço Teto e Dividendos pelo Método Bazin</h1>
-
-        <div class="update-badge">Última atualização: maio de 2026</div>
-
-        <!-- H2-1 -->
-        <section>
-            <h2>Sobre Banco Banrisul (BRSR6)</h2>
-            <p>O Banco Banrisul é uma instituição financeira pública com sede no Rio Grande do Sul, controlada pelo governo estadual. Fundado em 1928, o banco atua nos segmentos de crédito, investimentos, seguros e serviços bancários, com forte presença regional. Suas ações são negociadas na B3 sob o ticker BRSR6, sendo uma das opções do setor bancário para investidores focados em dividendos.</p>
-            <p>A empresa possui uma política de distribuição de lucros que historicamente destina parte do resultado aos acionistas. O Banrisul é reconhecido pela solidez patrimonial e pela atuação no desenvolvimento econômico do Rio Grande do Sul.</p>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="label">Ticker</div>
-                    <div class="value">BRSR6</div>
-                </div>
-                <div class="card">
-                    <div class="label">Setor</div>
-                    <div class="value">Bancos</div>
-                </div>
-                <div class="card">
-                    <div class="label">Segmento B3</div>
-                    <div class="value">Financeiro</div>
-                </div>
-                <div class="card">
-                    <div class="label">Tipo</div>
-                    <div class="value">Ação</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- H2-2 -->
-        <section>
-            <h2>Dados Cadastrais de BRSR6</h2>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Informação</th>
-                        <th>Detalhe</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Nome da Empresa</td><td>Banco Banrisul S.A.</td></tr>
-                    <tr><td>Código B3</td><td>BRSR6</td></tr>
-                    <tr><td>Setor</td><td>Bancos</td></tr>
-                    <tr><td>Segmento</td><td>Financeiro</td></tr>
-                    <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
-                    <tr><td>CNPJ</td><td>92.702.067/0001-96</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- H2-3 -->
-        <section>
-            <h2>Como Calcular o Preço Teto de BRSR6 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A lógica é simples: define-se uma taxa de retorno desejada (neste caso, 6% ao ano) e divide-se o total de dividendos dos últimos 12 meses por essa taxa.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = Dividendos 12m ÷ 0,06</p>
-            <p><em>(Exemplo hipotético para ilustração — valores fictícios):</em> Suponha que BRSR6 tenha pago R$ 1,20 em dividendos nos últimos 12 meses. O preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00. Este valor é apenas uma referência educativa e não representa recomendação.</p>
-            <p>O investidor pode comparar o preço teto calculado com o preço de mercado atual para sua própria análise, lembrando que o método não considera outros fatores fundamentalistas.</p>
-        </section>
-
-        <!-- H2-4 -->
-        <section>
-            <h2>Histórico de Dividendos da BRSR6</h2>
-            <p>O Banco Banrisul possui uma política de dividendos que prevê a distribuição de parte do lucro líquido aos acionistas, conforme aprovação em assembleia geral. Historicamente, a empresa tem mantido uma regularidade nos pagamentos, o que atrai investidores focados em renda passiva.</p>
-            <p>Para pessoas físicas, os dividendos são isentos de Imposto de Renda, conforme a Lei 9.249/95. É importante consultar os dados atualizados de proventos no aplicativo Elite Ações, que reúne o histórico completo de pagamentos.</p>
-            <p>Os valores de dividendos variam de acordo com os resultados da empresa e não há garantia de manutenção dos mesmos patamares no futuro.</p>
-        </section>
-
-        <!-- H2-5 -->
-        <section>
-            <h2>Como Acessar os Dados Atualizados de BRSR6</h2>
-            <p>Para consultar os dividendos mais recentes, o preço de mercado e outras informações fundamentalistas de BRSR6, utilize o aplicativo Elite Ações. A ferramenta oferece gráficos, histórico de proventos e calculadora do Método Bazin integrada.</p>
-            <p>No app, você encontra dados organizados para apoiar sua análise pessoal, sem qualquer recomendação de compra ou venda.</p>
-            <div class="gap-1 mt-1">
-                <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
-                <a href="/paginas/acoes" class="btn btn-outline">Ver outras ações</a>
-            </div>
-        </section>
-
-        <!-- H2-6 -->
-        <section>
-            <h2>Perguntas Frequentes sobre BRSR6</h2>
-            <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">O que é o preço teto de BRSR6 pelo Método Bazin?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O preço teto é o valor máximo que se pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, considerando os dividendos pagos nos últimos 12 meses.</div>
-                    </div>
-                </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">Como calcular o preço teto de BRSR6?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Divida o total de dividendos pagos por BRSR6 nos últimos 12 meses pela taxa de 6% (0,06). O resultado é o preço teto hipotético.</div>
-                    </div>
-                </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">BRSR6 paga dividendos regularmente?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O Banco Banrisul possui histórico de distribuição de dividendos, seguindo sua política de proventos. A regularidade depende dos resultados e da aprovação em assembleia.</div>
-                    </div>
-                </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">Qual a taxa Bazin indicada para BRSR6?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Para BRSR6, a taxa Bazin sugerida é de 6% ao ano, conforme dados do ativo. Essa taxa é utilizada como referência no cálculo do preço teto.</div>
-                    </div>
-                </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">Onde encontrar os dividendos atualizados de BRSR6?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Os dividendos atualizados de BRSR6 podem ser consultados no aplicativo Elite Ações, que reúne dados históricos de proventos e ferramentas de análise.</div>
-                    </div>
-                </div>
-                <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="faq-question" aria-expanded="false">
-                        <span itemprop="name">O Método Bazin é recomendado para BRSR6?</span>
-                        <span class="icon">▼</span>
-                    </button>
-                    <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">O Método Bazin é uma ferramenta educativa entre várias existentes. Não constitui recomendação de investimento. Cada investidor deve fazer sua própria análise.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- H2-7 -->
-        <section>
-            <h2>Aviso Legal e Disclaimer</h2>
-            <div class="disclaimer-box">
-                <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-                Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-                Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-                O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
-                Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-                Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Elite Ações — <a href="/">eliteacoes.com</a></p>
-            <p>Esta página não constitui recomendação de investimento. Consulte sempre um profissional habilitado.</p>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Como calcular o preço teto de BRSR6 pelo Método Bazin?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">O cálculo é feito pela fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 6%. Por exemplo, se os dividendos somarem R$ 1,20 nos últimos 12 meses, o preço teto seria R$ 20,00 (R$ 1,20 ÷ 0,06). Este é um exemplo hipotético para ilustração.</div>
         </div>
-    </footer>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>BRSR6 paga dividendos regularmente?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">O Banco Banrisul possui histórico de distribuição de dividendos, seguindo sua política de remuneração aos acionistas. A regularidade depende dos resultados da empresa e das decisões da administração. Consulte os dados atualizados no app Elite Ações.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Qual a taxa Bazin usada para BRSR6?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">A taxa Bazin utilizada para BRSR6 é de 6% ao ano, conforme definido pelo método de Décio Bazin para ações de empresas consolidadas. Essa taxa representa o rendimento mínimo esperado em dividendos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Onde encontrar dados atualizados de BRSR6?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">Você pode acessar dados atualizados de BRSR6 no aplicativo Elite Ações, que reúne dividendos históricos, preço teto e outras informações fundamentalistas. O app está disponível para download em eliteacoes.com.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>O Método Bazin é recomendado pela CVM?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">O Método Bazin é uma metodologia educacional de análise, não uma recomendação de investimento. A CVM não endossa ou recomenda métodos específicos. Consulte um profissional habilitado antes de investir.</div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const item = this.parentElement;
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
-                this.setAttribute('aria-expanded', !isActive);
-            });
-        });
-    </script>
+    <section>
+      <h2>Aviso Legal e Disclaimer</h2>
+      <div class="disclaimer-box">
+        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin-top: 24px;">
+      <a href="/" class="btn-primary">Baixar App Elite Ações</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
+      <p><a href="/">Início</a> | <a href="/empresas">Empresas</a> | <a href="/paginas/acoes">Ações</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      el.classList.toggle('active');
+      const answer = el.nextElementSibling;
+      answer.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>

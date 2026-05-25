@@ -22,8 +22,8 @@
       "@type":"Article",
       "headline":"Pague Menos (PGMN3): Preço Teto e Dividendos pelo Método Bazin",
       "description":"Aprenda a calcular o preço teto de PGMN3 (Pague Menos) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-      "datePublished":"2026-05-18",
-      "dateModified":"2026-05-18",
+      "datePublished":"2026-05-24",
+      "dateModified":"2026-05-24",
       "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
       "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/pgmn3"
@@ -35,8 +35,9 @@
       "@type":"BreadcrumbList",
       "itemListElement":[
         {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-        {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-        {"@type":"ListItem","position":3,"name":"PGMN3","item":"https://eliteacoes.com/paginas/acoes/pgmn3"}
+        {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+        {"@type":"ListItem","position":3,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
+        {"@type":"ListItem","position":4,"name":"PGMN3","item":"https://eliteacoes.com/paginas/acoes/pgmn3"}
       ]
     }
     </script>
@@ -45,12 +46,12 @@
       "@context":"https://schema.org",
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"Qual o preço teto de PGMN3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de 6% (taxa Bazin). Consulte o app Elite Ações para valores atualizados."}},
-        {"@type":"Question","name":"PGMN3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Pague Menos possui política de distribuição de dividendos, com pagamentos periódicos. O histórico pode ser consultado no app Elite Ações."}},
-        {"@type":"Question","name":"Como funciona o Método Bazin para PGMN3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin define um preço teto com base nos dividendos pagos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa."}},
-        {"@type":"Question","name":"PGMN3 é uma boa ação para dividendos?","acceptedAnswer":{"@type":"Answer","text":"Não fazemos recomendações. A análise deve ser feita pelo investidor com base em dados históricos e sua estratégia pessoal."}},
-        {"@type":"Question","name":"Onde encontrar dados atualizados de PGMN3?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de cotações e dividendos de PGMN3 estão disponíveis no app Elite Ações, acessível em eliteacoes.com."}},
-        {"@type":"Question","name":"Os dividendos de PGMN3 são isentos de IR?","acceptedAnswer":{"@type":"Answer","text":"Sim, os dividendos distribuídos por PGMN3 são isentos de Imposto de Renda para pessoas físicas, conforme Lei 9.249/95."}}
+        {"@type":"Question","name":"O que é o preço teto de PGMN3?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de PGMN3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos dos últimos 12 meses pela taxa de dividend yield desejada (6% no caso da Pague Menos)."}},
+        {"@type":"Question","name":"Como calcular o preço teto de PGMN3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O cálculo é feito pela fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos anuais forem de R$ 1,20 (valor hipotético), o preço teto seria R$ 20,00. Consulte dados atualizados no app Elite Ações."}},
+        {"@type":"Question","name":"PGMN3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Pague Menos possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Consulte o histórico completo no app Elite Ações para verificar a consistência dos pagamentos."}},
+        {"@type":"Question","name":"Qual a taxa Bazin indicada para PGMN3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin sugerida para PGMN3 é de 6% ao ano, conforme dados do setor de medicamentos. Essa taxa representa o dividend yield mínimo desejado pelo investidor para considerar a compra da ação."}},
+        {"@type":"Question","name":"Onde encontrar dados atualizados de PGMN3?","acceptedAnswer":{"@type":"Answer","text":"Os dados mais recentes de PGMN3, incluindo dividendos, preço teto e análise fundamentalista, estão disponíveis no app Elite Ações. Acesse https://eliteacoes.com para mais informações."}},
+        {"@type":"Question","name":"O Método Bazin é recomendado para PGMN3?","acceptedAnswer":{"@type":"Answer","text":"O Método Bazin é uma ferramenta educativa de análise fundamentalista, não uma recomendação de investimento. Cada investidor deve avaliar seus próprios critérios e consultar um profissional habilitado pela CVM."}}
       ]
     }
     </script>
@@ -65,200 +66,164 @@
             --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
         }
         *{margin:0;padding:0;box-sizing:border-box}
-        body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
-        .container{max-width:800px;margin:0 auto;padding:0 16px}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+        a{color:var(--green);text-decoration:none;transition:opacity .2s}
+        a:hover{opacity:.8}
+        .container{max-width:720px;margin:0 auto;padding:0 16px}
         header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
         header .container{display:flex;align-items:center;justify-content:space-between}
-        .logo{font-weight:700;font-size:18px;color:var(--green);text-decoration:none}
-        .logo span{color:var(--txt)}
-        .nav-link{color:var(--txt2);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:8px;transition:.2s}
-        .nav-link:hover{background:var(--surf);color:var(--txt)}
-        h1{font-size:24px;font-weight:700;margin:24px 0 8px;line-height:1.3}
-        .meta{color:var(--txt3);font-size:13px;margin-bottom:24px;font-family:var(--fm)}
-        h2{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--green);border-left:3px solid var(--green);padding-left:12px}
-        h3{font-size:16px;font-weight:600;margin:16px 0 8px;color:var(--txt)}
+        .logo{font-weight:700;font-size:18px;color:var(--txt)}
+        .logo span{color:var(--green)}
+        nav a{font-size:13px;color:var(--txt2);margin-left:16px}
+        .breadcrumb{font-size:12px;color:var(--txt3);padding:12px 0;border-bottom:1px solid var(--border)}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb span{color:var(--txt3)}
+        h1{font-size:24px;font-weight:700;margin:20px 0 8px;line-height:1.3}
+        h2{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
+        h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
         p{color:var(--txt2);margin-bottom:12px;font-size:14px}
-        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
-        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-        .card .label{color:var(--txt3);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-        .card .value{color:var(--txt);font-weight:600;font-size:15px}
-        .card .value.green{color:var(--green)}
-        table{width:100%;border-collapse:collapse;margin:16px 0;background:var(--surf);border-radius:12px;overflow:hidden}
-        th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:14px}
-        th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.5px;background:var(--surf2)}
+        .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:12px}
+        .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
+        .card .value{font-size:14px;font-weight:600;color:var(--txt);margin-top:2px;font-family:var(--fm)}
+        .table-wrap{overflow-x:auto;margin:12px 0}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+        th{color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
         td{color:var(--txt2)}
-        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0}
-        .highlight-box p{color:var(--txt);margin:0}
-        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--txt)}
+        .highlight-box strong{color:var(--yellow)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
         .btn-primary{background:var(--green);color:var(--bg)}
         .btn-primary:hover{opacity:.9}
         .btn-outline{background:transparent;border:1px solid var(--green);color:var(--green)}
         .btn-outline:hover{background:var(--green-dim)}
+        .cta-section{text-align:center;padding:20px 0;margin:16px 0}
+        .cta-section p{color:var(--txt2);margin-bottom:12px}
         .faq-item{border-bottom:1px solid var(--border);padding:0}
-        .faq-question{width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:15px;font-weight:500;padding:16px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-        .faq-question::after{content:'+';font-size:20px;color:var(--green);transition:.3s}
+        .faq-question{width:100%;background:transparent;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question::after{content:'+';font-size:18px;color:var(--green);transition:transform .3s}
         .faq-question.active::after{content:'−'}
         .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
-        .faq-answer.open{max-height:300px;padding:0 0 16px}
-        .faq-answer p{color:var(--txt2);margin:0;font-size:14px}
-        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0}
-        .disclaimer p{color:var(--txt);font-size:13px;line-height:1.7;margin:0}
+        .faq-answer p{padding:0 0 14px;margin:0;color:var(--txt2);font-size:13px}
+        .disclaimer{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:8px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt)}
         .disclaimer strong{color:var(--yellow)}
-        footer{text-align:center;padding:32px 0;border-top:1px solid var(--border);margin-top:32px}
-        footer p{color:var(--txt3);font-size:13px;margin:4px 0}
-        footer a{color:var(--green);text-decoration:none}
-        .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0;font-size:13px;color:var(--txt3)}
-        .breadcrumb a{color:var(--txt2);text-decoration:none}
-        .breadcrumb a:hover{color:var(--green)}
-        .breadcrumb span{color:var(--txt3)}
-        @media(min-width:768px){
+        .disclaimer p{margin-bottom:6px;color:var(--txt)}
+        footer{text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;font-size:12px;color:var(--txt3)}
+        footer a{color:var(--txt2)}
+        .update{font-size:12px;color:var(--txt3);margin:4px 0 16px}
+        @media(min-width:640px){
             body{font-size:15px}
-            h1{font-size:32px}
-            h2{font-size:22px}
             .container{padding:0 24px}
+            h1{font-size:30px}
+            h2{font-size:20px}
+            .card-grid{grid-template-columns:repeat(4,1fr)}
+            p{font-size:15px}
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Elite<span>Ações</span></a>
-            <a href="/" class="nav-link">App</a>
+            <a href="/" class="logo">Elite <span>Ações</span></a>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/empresas">Empresas</a>
+            </nav>
         </div>
     </header>
-    <main class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Início</a>
-            <span>/</span>
-            <a href="/paginas/acoes">Ações</a>
-            <span>/</span>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Início</a> <span>/</span>
+            <a href="/empresas">Empresas</a> <span>/</span>
+            <a href="/paginas/acoes">Ações</a> <span>/</span>
             <span>PGMN3</span>
-        </nav>
+        </div>
+
         <h1>Pague Menos (PGMN3): Preço Teto e Dividendos pelo Método Bazin</h1>
-        <p class="meta">Última atualização: maio de 2026</p>
+        <p class="update">Última atualização: maio de 2026</p>
 
         <section>
             <h2>Sobre Pague Menos (PGMN3)</h2>
-            <p>A Pague Menos é uma das maiores redes de farmácias do Brasil, com presença nacional e foco em medicamentos, perfumaria e serviços de saúde. Fundada em 1981, a empresa possui capital aberto na B3 sob o ticker PGMN3, sendo uma das principais representantes do setor farmacêutico no mercado de ações brasileiro.</p>
-            <p>A companhia combina operação de varejo com programas de fidelidade e expansão digital, o que a torna relevante para investidores que buscam exposição ao setor de saúde e consumo. Sua política de distribuição de resultados é acompanhada por analistas fundamentalistas.</p>
+            <p>A Pague Menos é uma das maiores redes de farmácias do Brasil, com presença nacional e foco em medicamentos, perfumaria e serviços de saúde. Fundada em 1981, a empresa se destaca pela capilaridade e pelo programa de fidelidade, além de investir em canais digitais.</p>
+            <p>Listada na B3 sob o ticker PGMN3, a companhia integra o setor de medicamentos e é uma das opções para investidores que buscam exposição ao varejo farmacêutico. A análise fundamentalista da Pague Menos considera indicadores como dividendos, lucro e dívida líquida.</p>
             <div class="card-grid">
-                <div class="card">
-                    <div class="label">Ticker</div>
-                    <div class="value green">PGMN3</div>
-                </div>
-                <div class="card">
-                    <div class="label">Setor</div>
-                    <div class="value">Medicamentos</div>
-                </div>
-                <div class="card">
-                    <div class="label">Segmento B3</div>
-                    <div class="value">Saúde</div>
-                </div>
-                <div class="card">
-                    <div class="label">Tipo</div>
-                    <div class="value">Ação</div>
-                </div>
+                <div class="card"><div class="label">Ticker</div><div class="value">PGMN3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Medicamentos</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Saúde</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
             </div>
         </section>
 
         <section>
             <h2>Dados Cadastrais de PGMN3</h2>
-            <p>Os dados cadastrais da Pague Menos na B3 e CVM incluem informações públicas sobre a empresa, seu segmento de atuação e características da ação. Esses dados são essenciais para a análise fundamentalista.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Campo</th>
-                        <th>Informação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nome da Empresa</td>
-                        <td>Pague Menos S.A.</td>
-                    </tr>
-                    <tr>
-                        <td>Setor</td>
-                        <td>Medicamentos</td>
-                    </tr>
-                    <tr>
-                        <td>Segmento B3</td>
-                        <td>Saúde</td>
-                    </tr>
-                    <tr>
-                        <td>Tipo de Ação</td>
-                        <td>Ordinária (ON)</td>
-                    </tr>
-                    <tr>
-                        <td>CNPJ</td>
-                        <td>06.057.223/0001-71</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Campo</th><th>Valor</th></tr>
+                    <tr><td>Nome Empresa</td><td>Pague Menos S.A.</td></tr>
+                    <tr><td>Setor</td><td>Medicamentos</td></tr>
+                    <tr><td>Segmento</td><td>Varejo Farmacêutico</td></tr>
+                    <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+                    <tr><td>CNPJ</td><td>06.057.223/0001-71</td></tr>
+                </table>
+            </div>
         </section>
 
         <section>
             <h2>Como Calcular o Preço Teto de PGMN3 pelo Método Bazin</h2>
-            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada — no caso, 6% ao ano — e calcula quanto pagaria para obter esse rendimento.</p>
-            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06</p>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa de análise fundamentalista. A ideia é definir um preço máximo (preço teto) para uma ação com base nos dividendos pagos e na taxa de retorno desejada pelo investidor.</p>
+            <p>A fórmula é simples: <strong>Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</strong>. Para a Pague Menos, a taxa sugerida é de 6% ao ano (0,06).</p>
             <div class="highlight-box">
-                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Se PGMN3 tivesse pago R$ 1,20 de dividendos nos últimos 12 meses, o preço teto seria R$ 1,20 ÷ 0,06 = R$ 20,00. Este valor é apenas uma simulação educativa e não reflete dados reais.</p>
+                <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+                Se os dividendos acumulados dos últimos 12 meses fossem R$ 1,20 por ação, o preço teto seria R$ 1,20 ÷ 0,06 = <strong>R$ 20,00</strong>.<br>
+                Isso significa que, segundo o método, o investidor pagaria no máximo R$ 20,00 para obter um dividend yield de 6%.<br>
+                <em>Este é um exemplo meramente ilustrativo. Consulte dados reais no app Elite Ações.</em>
             </div>
-            <p>O método não considera outros fatores como valuation ou perspectivas futuras, sendo uma ferramenta entre várias disponíveis para análise.</p>
         </section>
 
         <section>
             <h2>Histórico de Dividendos da PGMN3</h2>
-            <p>A Pague Menos possui uma política de distribuição de dividendos que visa remunerar seus acionistas com base no lucro apurado. Os pagamentos são realizados periodicamente, e o histórico pode ser consultado em fontes oficiais como a B3 e o site de relações com investidores da empresa.</p>
-            <p>Para pessoas físicas, os dividendos distribuídos por PGMN3 são isentos de Imposto de Renda, conforme a Lei 9.249/95. É importante lembrar que valores passados não garantem pagamentos futuros.</p>
+            <p>A Pague Menos possui uma política de distribuição de dividendos que visa remunerar seus acionistas com base nos resultados. Os dividendos pagos por PGMN3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que a empresa se enquadre nas regras de juros sobre capital próprio.</p>
+            <p>O histórico de dividendos da PGMN3 pode ser consultado no app Elite Ações, onde o investidor encontra os valores pagos nos últimos 12 meses e a consistência da distribuição. Lembre-se: dividendos passados não garantem pagamentos futuros.</p>
         </section>
 
         <section>
             <h2>Como Acessar os Dados Atualizados de PGMN3</h2>
-            <p>Para consultar cotações, dividendos e calcular o preço teto de PGMN3 com dados em tempo real, utilize o app Elite Ações. A ferramenta oferece gráficos, histórico de proventos e calculadora do Método Bazin integrada.</p>
-            <p>No app, você encontra: dividendos dos últimos 12 meses, preço teto calculado automaticamente, notícias e análise fundamentalista.</p>
-            <p style="margin-top:16px">
-                <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
-            </p>
+            <p>Para obter os dados mais recentes de PGMN3, incluindo dividendos atualizados, preço teto calculado e análise fundamentalista completa, utilize o app Elite Ações. A plataforma reúne informações da B3 e CVM em um só lugar.</p>
+            <div class="cta-section">
+                <p>Baixe o app e tenha acesso a ferramentas educativas de análise.</p>
+                <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+            </div>
         </section>
 
         <section>
             <h2>Perguntas Frequentes sobre PGMN3</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Qual o preço teto de PGMN3 pelo Método Bazin?</button>
-                    <div class="faq-answer">
-                        <p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de 6% (taxa Bazin). Consulte o app Elite Ações para valores atualizados.</p>
-                    </div>
+                    <button class="faq-question">O que é o preço teto de PGMN3?</button>
+                    <div class="faq-answer"><p>O preço teto de PGMN3 é o valor máximo que um investidor pagaria pela ação com base no Método Bazin, calculado dividindo os dividendos dos últimos 12 meses pela taxa de dividend yield desejada (6% no caso da Pague Menos).</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">PGMN3 paga dividendos regularmente?</button>
-                    <div class="faq-answer">
-                        <p>A Pague Menos possui política de distribuição de dividendos, com pagamentos periódicos. O histórico pode ser consultado no app Elite Ações.</p>
-                    </div>
+                    <button class="faq-question">Como calcular o preço teto de PGMN3 pelo Método Bazin?</button>
+                    <div class="faq-answer"><p>O cálculo é feito pela fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, se os dividendos anuais forem de R$ 1,20 (valor hipotético), o preço teto seria R$ 20,00. Consulte dados atualizados no app Elite Ações.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para PGMN3?</button>
-                    <div class="faq-answer">
-                        <p>O Método Bazin define um preço teto com base nos dividendos pagos. A fórmula é: Preço Teto = Dividendos 12m ÷ 0,06. É uma ferramenta educativa.</p>
-                    </div>
+                    <button class="faq-question">PGMN3 paga dividendos regularmente?</button>
+                    <div class="faq-answer"><p>A Pague Menos possui histórico de distribuição de dividendos, mas a regularidade e o valor dependem dos resultados da empresa. Consulte o histórico completo no app Elite Ações para verificar a consistência dos pagamentos.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">PGMN3 é uma boa ação para dividendos?</button>
-                    <div class="faq-answer">
-                        <p>Não fazemos recomendações. A análise deve ser feita pelo investidor com base em dados históricos e sua estratégia pessoal.</p>
-                    </div>
+                    <button class="faq-question">Qual a taxa Bazin indicada para PGMN3?</button>
+                    <div class="faq-answer"><p>A taxa Bazin sugerida para PGMN3 é de 6% ao ano, conforme dados do setor de medicamentos. Essa taxa representa o dividend yield mínimo desejado pelo investidor para considerar a compra da ação.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de PGMN3?</button>
-                    <div class="faq-answer">
-                        <p>Os dados atualizados de cotações e dividendos de PGMN3 estão disponíveis no app Elite Ações, acessível em eliteacoes.com.</p>
-                    </div>
+                    <button class="faq-question">Onde encontrar dados atualizados de PGMN3?</button>
+                    <div class="faq-answer"><p>Os dados mais recentes de PGMN3, incluindo dividendos, preço teto e análise fundamentalista, estão disponíveis no app Elite Ações. Acesse https://eliteacoes.com para mais informações.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">Os dividendos de PGMN3 são isentos de IR?</button>
-                    <div class="faq-answer">
-                        <p>Sim, os dividendos distribuídos por PGMN3 são isentos de Imposto de Renda para pessoas físicas, conforme Lei 9.249/95.</p>
-                    </div>
+                    <button class="faq-question">O Método Bazin é recomendado para PGMN3?</button>
+                    <div class="faq-answer"><p>O Método Bazin é uma ferramenta educativa de análise fundamentalista, não uma recomendação de investimento. Cada investidor deve avaliar seus próprios critérios e consultar um profissional habilitado pela CVM.</p></div>
                 </div>
             </div>
         </section>
@@ -266,34 +231,35 @@
         <section>
             <h2>Aviso Legal e Disclaimer</h2>
             <div class="disclaimer">
-                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong> Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento. Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+                <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+                <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.</p>
+                <p>Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento. Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
             </div>
         </section>
 
-        <p style="text-align:center;margin:24px 0">
-            <a href="/" class="btn btn-outline">Voltar ao App Elite Ações</a>
-        </p>
-    </main>
-    <footer>
-        <div class="container">
-            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-            <p><a href="/">eliteacoes.com</a></p>
+        <div class="cta-section">
+            <p>Ferramenta educativa para análise fundamentalista.</p>
+            <a href="/" class="btn btn-outline">Saiba mais no Elite Ações</a>
         </div>
-    </footer>
+
+        <footer>
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
+            <p><a href="/">Início</a> · <a href="/empresas">Empresas</a> · <a href="/paginas/acoes">Ações</a></p>
+        </footer>
+    </div>
+
     <script>
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
-                const isOpen = answer.classList.contains('open');
-                document.querySelectorAll('.faq-answer.open').forEach(el => {
-                    el.classList.remove('open');
-                    el.previousElementSibling.classList.remove('active');
-                    el.previousElementSibling.setAttribute('aria-expanded', 'false');
+                const isOpen = this.classList.contains('active');
+                document.querySelectorAll('.faq-question').forEach(b => {
+                    b.classList.remove('active');
+                    b.nextElementSibling.style.maxHeight = '0';
                 });
                 if (!isOpen) {
-                    answer.classList.add('open');
                     this.classList.add('active');
-                    this.setAttribute('aria-expanded', 'true');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
                 }
             });
         });

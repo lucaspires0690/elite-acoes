@@ -1,291 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UNIP3 Unipar — Dividendos | Elite Ações</title>
-  <meta name="description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <link rel="canonical" href="https://eliteacoes.com/acoes/unip3">
-  <meta property="og:title" content="UNIP3 Unipar — Dividendos | Elite Ações">
-  <meta property="og:description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <meta property="og:url" content="https://eliteacoes.com/acoes/unip3">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="UNIP3 Unipar — Dividendos | Elite Ações">
-  <meta name="twitter:description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"Unipar (UNIP3): Preço Teto e Dividendos pelo Método Bazin",
-    "description":"Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/acoes/unip3"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
-      {"@type":"ListItem","position":3,"name":"UNIP3"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Qual o preço teto de UNIP3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 2,00, o preço teto seria R$ 33,33. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type":"Question","name":"UNIP3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Unipar possui histórico de distribuição de dividendos, com pagamentos semestrais ou anuais, conforme política da companhia. Os valores variam conforme o lucro do período. Verifique os dados históricos no app Elite Ações."}},
-      {"@type":"Question","name":"Como calcular o preço teto de UNIP3?","acceptedAnswer":{"@type":"Answer","text":"Utilize a fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, com dividendos hipotéticos de R$ 1,50, o preço teto seria R$ 25,00. O método é educativo e não garante retorno."}},
-      {"@type":"Question","name":"Onde encontrar a análise fundamentalista de UNIP3?","acceptedAnswer":{"@type":"Answer","text":"No app Elite Ações você encontra dados fundamentalistas como P/L, P/VP, margem líquida, endividamento e histórico de dividendos de UNIP3. Acesse eliteacoes.com para mais informações."}},
-      {"@type":"Question","name":"Qual a taxa Bazin indicada para UNIP3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin sugerida para UNIP3 é de 6% ao ano, conforme dados históricos da empresa. Essa taxa é utilizada no cálculo do preço teto, mas cada investidor pode ajustá-la conforme seu perfil."}},
-      {"@type":"Question","name":"UNIP3 é uma boa ação para dividendos?","acceptedAnswer":{"@type":"Answer","text":"A Unipar tem histórico de distribuição de dividendos, mas não fazemos recomendações. O investidor deve analisar seus próprios objetivos e consultar um profissional habilitado pela CVM antes de decidir."}}
-    ]
-  }
-  </script>
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIP3 Unipar — Dividendos | Elite Ações</title>
+    <meta name="description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/acoes/unip3">
+    <meta property="og:title" content="UNIP3 Unipar — Dividendos | Elite Ações">
+    <meta property="og:description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/acoes/unip3">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Elite Ações">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UNIP3 Unipar — Dividendos | Elite Ações">
+    <meta name="twitter:description" content="Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline":"Unipar (UNIP3): Preço Teto e Dividendos pelo Método Bazin",
+      "description":"Aprenda a calcular o preço teto de UNIP3 (Unipar) pelo Método Bazin com base nos dividendos históricos. Ferramenta educativa de análise fundamentalista.",
+      "datePublished":"2026-05-24",
+      "dateModified":"2026-05-24",
+      "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+      "mainEntityOfPage":"https://eliteacoes.com/paginas/acoes/unip3"
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:14px;scroll-behavior:smooth}
-    @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#00e6b8}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:1120px;margin:0 auto;padding:0 1rem}
-    @media(min-width:768px){.container{padding:0 2rem}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);display:flex;align-items:center;gap:.5rem}
-    .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:.875rem;font-weight:500;padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-    .nav-link:hover{background:var(--surf);color:var(--txt)}
-    /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
-    .breadcrumb li+li::before{content:"/";margin-right:.5rem;color:var(--txt3)}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    /* headings */
-    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin-bottom:1rem;color:var(--txt)}
-    @media(min-width:768px){h1{font-size:2.25rem}}
-    h2{font-size:1.375rem;font-weight:600;margin-top:2.5rem;margin-bottom:.75rem;color:var(--txt);border-bottom:1px solid var(--border);padding-bottom:.5rem}
-    @media(min-width:768px){h2{font-size:1.625rem}}
-    h3{font-size:1.125rem;font-weight:600;margin-top:1.5rem;margin-bottom:.5rem;color:var(--txt)}
-    p{margin-bottom:1rem;color:var(--txt2)}
-    .text-small{font-size:.875rem;color:var(--txt3)}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
-    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-    .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card .value{font-weight:600;color:var(--txt);font-size:1rem}
-    .card .value.mono{font-family:var(--fm)}
-    /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem}
-    .data-table th,.data-table td{padding:.75rem .5rem;text-align:left;border-bottom:1px solid var(--border)}
-    .data-table th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.03em;font-size:.75rem}
-    .data-table td{color:var(--txt2)}
-    /* buttons */
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.625rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
-    .btn-primary{background:var(--green);color:#0a0e1a}
-    .btn-primary:hover{background:#00e6b8;color:#0a0e1a}
-    .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-    .btn-outline:hover{background:var(--green-dim)}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-size:1rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px;font-family:var(--fb)}
-    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
-    .faq-question[aria-expanded="true"] .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 .5rem}
-    .faq-answer.open{max-height:300px;padding:.5rem .5rem .75rem}
-    .faq-answer p{font-size:.875rem;color:var(--txt2);margin:0}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
-    .disclaimer-box p{font-size:.875rem;color:var(--txt);margin-bottom:.5rem}
-    .disclaimer-box p:last-child{margin-bottom:0}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.8125rem;color:var(--txt3)}
-    footer a{color:var(--txt2)}
-    footer a:hover{color:var(--green)}
-    /* highlight */
-    .highlight{background:var(--green-dim);border:1px solid var(--green-border);border-radius:8px;padding:1rem;margin:1rem 0}
-    .highlight p{margin:0;font-size:.875rem;color:var(--txt)}
-    .highlight strong{color:var(--green)}
-    /* cta section */
-    .cta-box{background:linear-gradient(135deg,var(--surf2),var(--surf));border:1px solid var(--green-border);border-radius:16px;padding:1.5rem;text-align:center;margin:1.5rem 0}
-    .cta-box h3{color:var(--green);margin-top:0}
-    .cta-box p{font-size:.9375rem}
-    .cta-box .btn{margin-top:.75rem}
-    /* update */
-    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);font-family:var(--fm);margin-bottom:1rem}
-  </style>
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+        {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+        {"@type":"ListItem","position":3,"name":"Ações","item":"https://eliteacoes.com/paginas/acoes"},
+        {"@type":"ListItem","position":4,"name":"UNIP3"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"O que é o preço teto de UNIP3 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme a metodologia de Décio Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06."}},
+        {"@type":"Question","name":"Como calcular o preço teto de UNIP3?","acceptedAnswer":{"@type":"Answer","text":"Para calcular, some os dividendos pagos por UNIP3 nos últimos 12 meses e divida por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00 (R$ 3,00 ÷ 0,06)."}},
+        {"@type":"Question","name":"UNIP3 paga dividendos regularmente?","acceptedAnswer":{"@type":"Answer","text":"A Unipar possui histórico de distribuição de dividendos, mas os valores variam conforme os resultados da empresa. A política de dividendos é definida pela administração e aprovada em assembleia. Consulte os dados atualizados no app Elite Ações."}},
+        {"@type":"Question","name":"Qual a taxa Bazin ideal para UNIP3?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin de 6% é comumente utilizada para ações de setores mais estáveis, como o químico. No entanto, cada investidor pode ajustar a taxa conforme seu objetivo de retorno. O Método Bazin é uma ferramenta educativa, não uma recomendação."}},
+        {"@type":"Question","name":"Onde encontrar os dividendos históricos de UNIP3?","acceptedAnswer":{"@type":"Answer","text":"Os dividendos históricos de UNIP3 podem ser consultados no site da B3, na área de relações com investidores da Unipar ou no app Elite Ações, que reúne dados organizados para análise fundamentalista."}},
+        {"@type":"Question","name":"O Método Bazin é garantia de retorno com UNIP3?","acceptedAnswer":{"@type":"Answer","text":"Não. O Método Bazin é uma metodologia educativa baseada em dividendos passados. Rentabilidade futura não é garantida. Consulte um profissional habilitado pela CVM antes de investir."}}
+      ]
+    }
+    </script>
+    <style>
+        :root{
+            --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
+            --red:#ef4444; --red-dim:rgba(239,68,68,.08);
+            --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
+            --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
+            --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
+            --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
+            --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
+        a{color:var(--green);text-decoration:none;transition:opacity .2s}
+        a:hover{opacity:.8}
+        img{max-width:100%;height:auto;display:block}
+        .container{max-width:800px;margin:0 auto;padding:0 20px}
+        header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
+        header .container{display:flex;align-items:center;justify-content:space-between}
+        .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
+        .logo span{color:var(--green)}
+        .nav-link{font-size:.875rem;color:var(--txt2);padding:8px 16px;border-radius:8px;background:var(--surf);border:1px solid var(--border);min-height:44px;display:inline-flex;align-items:center}
+        .breadcrumb{font-size:.8125rem;color:var(--txt3);padding:16px 0 8px;display:flex;flex-wrap:wrap;gap:4px}
+        .breadcrumb a{color:var(--txt2)}
+        .breadcrumb span{margin:0 4px;color:var(--txt3)}
+        h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin:16px 0 8px;letter-spacing:-.02em}
+        h2{font-size:1.35rem;font-weight:600;margin:32px 0 12px;color:var(--txt);letter-spacing:-.01em;border-left:3px solid var(--green);padding-left:12px}
+        h3{font-size:1.1rem;font-weight:600;margin:20px 0 8px;color:var(--txt2)}
+        p{font-size:.9375rem;color:var(--txt2);margin-bottom:12px;max-width:70ch}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
+        .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+        .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:4px}
+        .card .value{font-family:var(--fm);font-size:1rem;font-weight:500;color:var(--txt)}
+        .table-wrap{overflow-x:auto;margin:16px 0}
+        table{width:100%;border-collapse:collapse;font-size:.875rem;background:var(--surf);border-radius:12px;overflow:hidden}
+        th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+        th{background:var(--surf2);font-weight:600;color:var(--txt2);font-size:.8125rem;text-transform:uppercase;letter-spacing:.03em}
+        td{color:var(--txt2)}
+        .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:20px 0}
+        .highlight-box p{color:var(--txt);margin-bottom:0}
+        .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.9375rem;border:none;cursor:pointer;transition:all .2s;background:var(--green);color:var(--bg);text-decoration:none}
+        .btn:hover{opacity:.9;transform:translateY(-1px)}
+        .btn-ghost{background:transparent;border:1px solid var(--green-border);color:var(--green)}
+        .faq-item{border-bottom:1px solid var(--border);padding:4px 0}
+        .faq-question{background:none;border:none;width:100%;text-align:left;padding:16px 0;font-family:var(--fb);font-size:.9375rem;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+        .faq-question::after{content:'+';font-size:1.25rem;color:var(--txt3);transition:transform .3s;font-weight:300}
+        .faq-question.active::after{content:'−';transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 0}
+        .faq-answer.open{max-height:300px;padding:0 0 16px}
+        .faq-answer p{font-size:.875rem;color:var(--txt2);margin-bottom:0}
+        .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:24px;margin:24px 0}
+        .disclaimer-box p{font-size:.8125rem;color:var(--txt);margin-bottom:8px;line-height:1.7}
+        .disclaimer-box p:last-child{margin-bottom:0}
+        .footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--border);margin-top:40px}
+        .footer p{font-size:.75rem;color:var(--txt3);margin-bottom:4px}
+        .update-badge{display:inline-block;background:var(--green-dim);border:1px solid var(--green-border);border-radius:20px;padding:4px 14px;font-size:.75rem;color:var(--green);font-family:var(--fm);margin:8px 0 16px}
+        @media (max-width:600px){
+            h1{font-size:1.5rem}
+            h2{font-size:1.2rem}
+            .cards{grid-template-columns:repeat(2,1fr)}
+            .container{padding:0 16px}
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo"><span>Elite</span> Ações</a>
-      <nav>
-        <a href="/paginas/acoes" class="nav-link">Ações</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <nav aria-label="Breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="/">Início</a></li>
-        <li><a href="/paginas/acoes">Ações</a></li>
-        <li>UNIP3</li>
-      </ol>
-    </nav>
-
-    <span class="update-badge">Última atualização: maio de 2026</span>
-
-    <h1>Unipar (UNIP3): Preço Teto e Dividendos pelo Método Bazin</h1>
-
-    <!-- H2-1 -->
-    <section>
-      <h2>Sobre Unipar (UNIP3)</h2>
-      <p>A Unipar Carbocloro é uma das principais empresas do setor químico brasileiro, com foco na produção de cloro, soda cáustica e PVC. Fundada em 1969, a companhia possui unidades industriais em São Paulo e na Bahia, atendendo aos mercados de saneamento, construção civil e agronegócio. A empresa é reconhecida pela solidez financeira e pela política de distribuição de dividendos.</p>
-      <p>Com ações listadas na B3 sob o ticker UNIP3, a Unipar integra o segmento de químicos e petroquímicos. A companhia tem demonstrado consistência operacional, com receitas atreladas ao ciclo econômico e à demanda por insumos industriais. Para investidores focados em renda, a Unipar é frequentemente analisada sob a ótica do Método Bazin.</p>
-      <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value mono">UNIP3</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Químicos</div></div>
-        <div class="card"><div class="label">Segmento B3</div><div class="value">Químicos</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
-      </div>
-    </section>
-
-    <!-- H2-2 -->
-    <section>
-      <h2>Dados Cadastrais de UNIP3</h2>
-      <p>As informações abaixo são baseadas em dados públicos da B3 e da CVM (Comissão de Valores Mobiliários). A Unipar é uma companhia aberta com capital listado no segmento tradicional da bolsa brasileira.</p>
-      <table class="data-table">
-        <thead>
-          <tr><th>Campo</th><th>Valor</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Nome da Empresa</td><td>Unipar Carbocloro S.A.</td></tr>
-          <tr><td>CNPJ</td><td>60.876.593/0001-01</td></tr>
-          <tr><td>Setor B3</td><td>Químicos</td></tr>
-          <tr><td>Segmento</td><td>Químicos</td></tr>
-          <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
-          <tr><td>Tag Along</td><td>100%</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- H2-3 -->
-    <section>
-      <h2>Como Calcular o Preço Teto de UNIP3 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo economista Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada (yield) e calcula quanto pagar para obter esse retorno. Para UNIP3, a taxa Bazin sugerida é de 6% ao ano.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin (6%)</p>
-      <div class="highlight">
-        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que UNIP3 tenha distribuído R$ 2,40 em dividendos nos últimos 12 meses. O preço teto seria: R$ 2,40 ÷ 0,06 = <strong>R$ 40,00</strong>. Este número é apenas uma referência educativa e não representa recomendação de compra.</p>
-      </div>
-      <p>O método não considera outros fatores fundamentalistas como endividamento ou perspectivas de crescimento. Cada investidor deve adaptar a taxa Bazin ao seu próprio objetivo de retorno.</p>
-    </section>
-
-    <!-- H2-4 -->
-    <section>
-      <h2>Histórico de Dividendos da UNIP3</h2>
-      <p>A Unipar possui uma política de distribuição de dividendos que prevê o pagamento de, no mínimo, 25% do lucro líquido ajustado. Historicamente, a empresa tem distribuído proventos de forma semestral ou anual, com valores que variam conforme o desempenho operacional e o ciclo do setor químico.</p>
-      <p>Os dividendos pagos por UNIP3 são isentos de Imposto de Renda para pessoas físicas, conforme a Lei 9.249/95, desde que a empresa se enquadre nas regras de tributação de lucros. Para dados atualizados de dividendos, consulte o app Elite Ações.</p>
-      <p>É importante lembrar que dividendos passados não garantem pagamentos futuros. A política de distribuição pode ser alterada pela assembleia de acionistas.</p>
-    </section>
-
-    <!-- H2-5 -->
-    <section>
-      <h2>Como Acessar os Dados Atualizados de UNIP3</h2>
-      <p>O app Elite Ações oferece uma plataforma completa para análise fundamentalista de ações brasileiras. Nele, você encontra o histórico de dividendos, indicadores financeiros, preço teto calculado automaticamente e comparativos setoriais.</p>
-      <div class="cta-box">
-        <h3>Baixe o App Elite Ações</h3>
-        <p>Acesse dados atualizados de UNIP3, incluindo dividendos, P/L, P/VP e muito mais. Ferramenta educativa para sua análise.</p>
-        <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
-      </div>
-      <p>No app, você pode configurar sua própria taxa Bazin e visualizar o preço teto em tempo real, com base nos dividendos dos últimos 12 meses. Tudo de forma educativa e sem recomendações de investimento.</p>
-    </section>
-
-    <!-- H2-6 -->
-    <section>
-      <h2>Perguntas Frequentes sobre UNIP3</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual o preço teto de UNIP3 pelo Método Bazin? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa Bazin de 6%. Exemplo hipotético: se os dividendos anuais fossem R$ 2,00, o preço teto seria R$ 33,33. Consulte o app Elite Ações para dados atualizados.</p></div>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <a href="/" class="nav-link">App</a>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">UNIP3 paga dividendos regularmente? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>A Unipar possui histórico de distribuição de dividendos, com pagamentos semestrais ou anuais, conforme política da companhia. Os valores variam conforme o lucro do período. Verifique os dados históricos no app Elite Ações.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como calcular o preço teto de UNIP3? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>Utilize a fórmula: Preço Teto = Dividendos dos últimos 12 meses ÷ 0,06. Por exemplo, com dividendos hipotéticos de R$ 1,50, o preço teto seria R$ 25,00. O método é educativo e não garante retorno.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde encontrar a análise fundamentalista de UNIP3? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>No app Elite Ações você encontra dados fundamentalistas como P/L, P/VP, margem líquida, endividamento e histórico de dividendos de UNIP3. Acesse eliteacoes.com para mais informações.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual a taxa Bazin indicada para UNIP3? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>A taxa Bazin sugerida para UNIP3 é de 6% ao ano, conforme dados históricos da empresa. Essa taxa é utilizada no cálculo do preço teto, mas cada investidor pode ajustá-la conforme seu perfil.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">UNIP3 é uma boa ação para dividendos? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>A Unipar tem histórico de distribuição de dividendos, mas não fazemos recomendações. O investidor deve analisar seus próprios objetivos e consultar um profissional habilitado pela CVM antes de decidir.</p></div>
-        </div>
-      </div>
-    </section>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Início</a><span>/</span>
+            <a href="/empresas">Empresas</a><span>/</span>
+            <a href="/paginas/acoes">Ações</a><span>/</span>
+            <span>UNIP3</span>
+        </nav>
+        <span class="update-badge">Última atualização: maio de 2026</span>
+        <h1>Unipar (UNIP3): Preço Teto e Dividendos pelo Método Bazin</h1>
+        <p>Página educativa para análise fundamentalista de UNIP3 (Unipar) utilizando o Método Bazin. Conheça os fundamentos da empresa, entenda como calcular o preço teto com base nos dividendos e utilize ferramentas para suas próprias análises.</p>
 
-    <!-- H2-7 -->
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
-      </div>
-    </section>
-  </main>
+        <section>
+            <h2>Sobre Unipar (UNIP3)</h2>
+            <p>A Unipar é uma empresa brasileira do setor químico, com atuação na produção de cloro, soda cáustica, PVC e outros derivados. Fundada em 1969, a companhia possui unidades industriais no Brasil e na Argentina, sendo uma das principais fornecedoras de insumos para os setores de construção civil, saneamento e agricultura.</p>
+            <p>Com ações listadas na B3 sob o ticker UNIP3, a empresa é conhecida por sua governança corporativa e histórico de distribuição de dividendos. A análise fundamentalista da Unipar considera fatores como alavancagem financeira, margens operacionais e exposição a ciclos econômicos.</p>
+            <div class="cards">
+                <div class="card"><div class="label">Ticker</div><div class="value">UNIP3</div></div>
+                <div class="card"><div class="label">Setor</div><div class="value">Químicos</div></div>
+                <div class="card"><div class="label">Segmento B3</div><div class="value">Químicos</div></div>
+                <div class="card"><div class="label">Tipo</div><div class="value">Ação</div></div>
+            </div>
+        </section>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — Todos os direitos reservados.</p>
-      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
-      <p><a href="/">Elite Ações</a> — ferramenta educativa de análise fundamentalista.</p>
-    </div>
-  </footer>
+        <section>
+            <h2>Dados Cadastrais de UNIP3</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+                    <tbody>
+                        <tr><td>Nome da Empresa</td><td>Unipar Carbocloro S.A.</td></tr>
+                        <tr><td>CNPJ</td><td>60.651.809/0001-00</td></tr>
+                        <tr><td>Setor B3</td><td>Materiais Básicos</td></tr>
+                        <tr><td>Segmento B3</td><td>Químicos</td></tr>
+                        <tr><td>Tipo de Ação</td><td>Ordinária (ON)</td></tr>
+                        <tr><td>Tag Along</td><td>100%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Dados públicos disponíveis no site da B3 e na CVM. Consulte fontes oficiais para informações atualizadas.</p>
+        </section>
 
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        const answer = this.nextElementSibling;
-        answer.classList.toggle('open');
-      });
-    });
-  </script>
+        <section>
+            <h2>Como Calcular o Preço Teto de UNIP3 pelo Método Bazin</h2>
+            <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de uma ação com base nos dividendos pagos. A premissa é que o investidor define uma taxa de retorno desejada (yield) e calcula quanto pagaria para obter esse rendimento.</p>
+            <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa Bazin</p>
+            <p>Para UNIP3, utilizando a taxa Bazin de 6% (0,06), o cálculo é: some todos os dividendos distribuídos pela Unipar nos últimos 12 meses e divida por 0,06.</p>
+            <div class="highlight-box">
+                <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que a Unipar pagou R$ 3,00 em dividendos por ação nos últimos 12 meses. O preço teto seria R$ 3,00 ÷ 0,06 = <strong>R$ 50,00</strong>. Este valor é apenas uma referência educativa e não reflete dados reais atuais.</p>
+            </div>
+            <p>O Método Bazin é uma ferramenta entre várias disponíveis para análise fundamentalista. Cada investidor deve adaptar a taxa conforme seus objetivos e perfil de risco.</p>
+        </section>
+
+        <section>
+            <h2>Histórico de Dividendos da UNIP3</h2>
+            <p>A Unipar possui uma política de dividendos que prevê a distribuição de proventos aos acionistas, geralmente vinculada ao lucro líquido do exercício. Os valores pagos podem variar significativamente entre períodos, dependendo do desempenho operacional e das decisões da administração.</p>
+            <p>Para pessoas físicas, os dividendos distribuídos por UNIP3 são isentos de Imposto de Renda, conforme a Lei 9.249/95. É importante consultar o histórico completo de proventos no site da B3 ou no app Elite Ações para análises mais precisas.</p>
+            <p>Os dividendos históricos não garantem pagamentos futuros. A empresa pode alterar sua política de distribuição a qualquer momento.</p>
+        </section>
+
+        <section>
+            <h2>Como Acessar os Dados Atualizados de UNIP3</h2>
+            <p>Para acompanhar os dividendos reais, preço teto calculado e outras métricas fundamentalistas de UNIP3 em tempo real, utilize o aplicativo Elite Ações. A ferramenta organiza dados da B3 e CVM de forma clara para apoiar suas análises.</p>
+            <p>No app você encontra: histórico de dividendos, indicadores financeiros, gráficos de preço e calculadora do Método Bazin integrada.</p>
+            <p style="margin-top:16px"><a href="/" class="btn">Acessar Elite Ações</a></p>
+        </section>
+
+        <section>
+            <h2>Perguntas Frequentes sobre UNIP3</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O que é o preço teto de UNIP3 pelo Método Bazin?</button>
+                    <div class="faq-answer"><p>O preço teto é o valor máximo que um investidor pagaria por uma ação para obter um rendimento de 6% ao ano em dividendos, conforme a metodologia de Décio Bazin. Ele é calculado dividindo os dividendos dos últimos 12 meses por 0,06.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Como calcular o preço teto de UNIP3?</button>
+                    <div class="faq-answer"><p>Para calcular, some os dividendos pagos por UNIP3 nos últimos 12 meses e divida por 0,06 (taxa Bazin de 6%). O resultado é o preço teto. Exemplo hipotético: se os dividendos somaram R$ 3,00, o preço teto seria R$ 50,00 (R$ 3,00 ÷ 0,06).</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">UNIP3 paga dividendos regularmente?</button>
+                    <div class="faq-answer"><p>A Unipar possui histórico de distribuição de dividendos, mas os valores variam conforme os resultados da empresa. A política de dividendos é definida pela administração e aprovada em assembleia. Consulte os dados atualizados no app Elite Ações.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Qual a taxa Bazin ideal para UNIP3?</button>
+                    <div class="faq-answer"><p>A taxa Bazin de 6% é comumente utilizada para ações de setores mais estáveis, como o químico. No entanto, cada investidor pode ajustar a taxa conforme seu objetivo de retorno. O Método Bazin é uma ferramenta educativa, não uma recomendação.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Onde encontrar os dividendos históricos de UNIP3?</button>
+                    <div class="faq-answer"><p>Os dividendos históricos de UNIP3 podem ser consultados no site da B3, na área de relações com investidores da Unipar ou no app Elite Ações, que reúne dados organizados para análise fundamentalista.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">O Método Bazin é garantia de retorno com UNIP3?</button>
+                    <div class="faq-answer"><p>Não. O Método Bazin é uma metodologia educativa baseada em dividendos passados. Rentabilidade futura não é garantida. Consulte um profissional habilitado pela CVM antes de investir.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Aviso Legal e Disclaimer</h2>
+            <div class="disclaimer-box">
+                <p>⛔ Esta página tem caráter exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+                <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+            </div>
+        </section>
+
+        <div style="text-align:center;margin:24px 0">
+            <a href="/" class="btn">Baixar Elite Ações</a>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+            <p>Esta página não constitui recomendação de investimento.</p>
+            <p>Consulte um profissional habilitado pela CVM.</p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+                document.querySelectorAll('.faq-answer.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.previousElementSibling.classList.remove('active');
+                    el.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

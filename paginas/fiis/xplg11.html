@@ -13,40 +13,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="XPLG11 FII — Rendimentos | Elite Ações">
   <meta name="twitter:description" content="Saiba como calcular o preço teto de XPLG11 (FII XP Log) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dado...">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org","@type":"Article",
-    "headline":"FII XP Log (XPLG11): Preço Teto e Rendimentos pelo Método Bazin",
-    "description":"Saiba como calcular o preço teto de XPLG11 (FII XP Log) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dado...",
-    "datePublished":"2026-05-18","dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/xplg11"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org","@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com"},
-      {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-      {"@type":"ListItem","position":3,"name":"XPLG11","item":"https://eliteacoes.com/paginas/fiis/xplg11"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org","@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"O que é o preço teto de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto de XPLG11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de retorno desejada (10%). É uma referência educativa, não uma recomendação."}},
-      {"@type":"Question","name":"Como calcular o preço teto de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"Divida o total de dividendos pagos por cota nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00."}},
-      {"@type":"Question","name":"XPLG11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, XPLG11 distribui rendimentos mensalmente, geralmente isentos de IR para pessoas físicas, conforme legislação vigente."}},
-      {"@type":"Question","name":"Qual a taxa de retorno do Método Bazin para XPLG11?","acceptedAnswer":{"@type":"Answer","text":"A taxa Bazin utilizada é de 10% ao ano, que representa o retorno desejado pelo investidor sobre o capital investido."}},
-      {"@type":"Question","name":"Onde encontrar dados atualizados de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"Os dados atualizados de XPLG11 podem ser acessados no app Elite Ações, que reúne dividendos históricos, preço teto e análises fundamentalistas."}},
-      {"@type":"Question","name":"O Método Bazin é recomendado pela CVM?","acceptedAnswer":{"@type":"Answer","text":"Não. O Método Bazin é uma metodologia educativa entre várias existentes. A CVM não recomenda nem endossa métodos específicos de valuation."}}
-    ]
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -63,102 +29,112 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-size:14px;scroll-behavior:smooth}
     @media(min-width:768px){html{font-size:16px}}
-    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
-    a{color:var(--green);text-decoration:none;transition:opacity .2s}
-    a:hover{opacity:.8}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:800px;margin:0 auto;padding:0 1rem}
+    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:1120px;margin:0 auto;padding:0 1rem}
     @media(min-width:768px){.container{padding:0 2rem}}
     /* header */
     header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
     header .container{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;padding-bottom:.75rem}
-    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .75rem;border-radius:8px;transition:background .2s}
-    .nav-link:hover{background:var(--surf);color:var(--txt)}
+    .logo{font-weight:700;font-size:1.25rem;color:var(--green);text-decoration:none;letter-spacing:-.02em}
+    .logo span{color:var(--txt)}
+    .nav-link{color:var(--txt2);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;min-height:44px;display:inline-flex;align-items:center}
+    .nav-link:hover{color:var(--green)}
     /* breadcrumb */
-    .breadcrumb{font-size:.8125rem;color:var(--txt3);padding:1rem 0 .5rem}
-    .breadcrumb a{color:var(--txt2)}
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:.25rem .5rem;padding:1rem 0;font-size:.8125rem;color:var(--txt3);list-style:none}
+    .breadcrumb li{display:flex;align-items:center;gap:.25rem}
+    .breadcrumb li+li::before{content:"/";color:var(--txt3);margin-right:.25rem}
+    .breadcrumb a{color:var(--txt2);text-decoration:none;transition:color .2s}
     .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{color:var(--txt3)}
+    .breadcrumb .active{color:var(--txt)}
     /* headings */
-    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin:1rem 0 .75rem;letter-spacing:-.02em}
+    h1{font-size:1.75rem;font-weight:700;line-height:1.25;margin-bottom:1rem;letter-spacing:-.02em}
     @media(min-width:768px){h1{font-size:2.25rem}}
-    h2{font-size:1.35rem;font-weight:600;margin:2rem 0 .75rem;color:var(--txt);letter-spacing:-.01em;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+    h2{font-size:1.35rem;font-weight:600;margin-top:2.5rem;margin-bottom:.75rem;color:var(--txt);letter-spacing:-.01em}
     @media(min-width:768px){h2{font-size:1.6rem}}
-    h3{font-size:1.1rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--txt)}
+    h3{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
     p{margin-bottom:1rem;color:var(--txt2)}
-    .txt-small{font-size:.875rem;color:var(--txt3)}
+    a{color:var(--green);text-decoration:none}
+    a:hover{text-decoration:underline}
     /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
     @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
-    .card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
-    .card .value{font-weight:600;font-size:1rem;color:var(--txt);font-family:var(--fm)}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:1rem}
+    .card-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:.25rem}
+    .card-value{font-weight:600;color:var(--txt);font-size:1rem}
+    .card-value .mono{font-family:var(--fm);font-weight:500}
     /* table */
-    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
-    .data-table td,.data-table th{padding:.65rem .75rem;border-bottom:1px solid var(--border);text-align:left}
-    .data-table th{font-weight:600;color:var(--txt3);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+    .data-table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:.875rem}
+    .data-table th,.data-table td{text-align:left;padding:.75rem .5rem;border-bottom:1px solid var(--border)}
+    .data-table th{color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:.75rem}
     .data-table td{color:var(--txt2)}
     .data-table tr:last-child td{border-bottom:none}
     /* highlight */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1rem;margin:1.25rem 0;font-size:.9rem;color:var(--txt)}
+    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+    .highlight-box p{color:var(--txt);margin-bottom:0}
     .highlight-box strong{color:var(--yellow)}
     /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-size:.875rem;color:var(--txt)}
-    .disclaimer-box strong{color:var(--yellow);display:block;margin-bottom:.5rem}
+    .disclaimer-box{background:var(--yellow-dim);border:2px solid var(--yellow-border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+    .disclaimer-box p{color:var(--txt);margin-bottom:.75rem;font-size:.9375rem}
+    .disclaimer-box p:last-child{margin-bottom:0}
+    .disclaimer-box strong{color:var(--yellow)}
     /* faq */
     .faq-item{border-bottom:1px solid var(--border);padding:.75rem 0}
-    .faq-question{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:500;color:var(--txt);padding:.25rem 0;min-height:44px;background:none;border:none;width:100%;text-align:left;font-size:1rem;font-family:var(--fb)}
-    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--green)}
-    .faq-question.active .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s;opacity:0;color:var(--txt2);font-size:.9rem;line-height:1.5}
-    .faq-answer.open{max-height:300px;opacity:1;padding:.5rem 0 .25rem}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;color:var(--txt);font-family:var(--fb);font-size:1rem;font-weight:500;text-align:left;cursor:pointer;padding:.5rem 0;min-height:44px;transition:color .2s}
+    .faq-question:hover{color:var(--green)}
+    .faq-question .icon{font-size:1.25rem;transition:transform .3s;color:var(--txt3)}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s;opacity:0}
+    .faq-item.active .faq-answer{max-height:300px;opacity:1}
+    .faq-answer p{padding:.5rem 0 .75rem;color:var(--txt2);margin-bottom:0}
     /* cta */
     .cta-wrap{text-align:center;margin:2rem 0}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.75rem 1.75rem;border-radius:10px;font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:var(--fb)}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,168,.25)}
-    .btn-primary{background:var(--green);color:#0a0e1a}
-    .btn-outline{background:transparent;border:2px solid var(--green);color:var(--green)}
-    .btn-outline:hover{background:var(--green-dim)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--bg);font-weight:700;font-size:1rem;padding:.75rem 2rem;border-radius:50px;min-height:44px;text-decoration:none;transition:background .2s,transform .1s;border:none;cursor:pointer}
+    .btn:hover{background:#00bf9a;text-decoration:none;transform:scale(1.02)}
+    .btn:active{transform:scale(.98)}
     /* footer */
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;font-size:.8125rem;color:var(--txt3)}
-    footer a{color:var(--txt2)}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem;text-align:center;color:var(--txt3);font-size:.8125rem}
+    footer p{margin-bottom:.5rem}
     /* update */
-    .update-badge{display:inline-block;background:var(--surf2);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;font-size:.75rem;color:var(--txt3);margin-bottom:1rem}
-    /* spacing */
-    .mt-1{margin-top:1rem}
-    .mb-1{margin-bottom:1rem}
+    .update{font-size:.8125rem;color:var(--txt3);margin-bottom:1.5rem;display:block}
+    /* responsive */
+    @media(max-width:480px){
+      .card-grid{grid-template-columns:1fr 1fr}
+      h1{font-size:1.5rem}
+      .data-table{font-size:.8125rem}
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Elite<span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
+      <a href="/" class="nav-link">Início</a>
     </div>
   </header>
 
   <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a> <span>/</span>
-      <a href="/paginas/fiis">FIIs</a> <span>/</span>
-      <span>XPLG11</span>
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="/">Início</a></li>
+        <li><a href="/empresas">Empresas</a></li>
+        <li><a href="/paginas/fiis">FIIs</a></li>
+        <li class="active" aria-current="page">XPLG11</li>
+      </ol>
     </nav>
 
-    <div class="update-badge">Última atualização: maio de 2026</div>
     <h1>FII XP Log (XPLG11): Preço Teto e Rendimentos pelo Método Bazin</h1>
+    <span class="update">Última atualização: maio de 2026</span>
 
     <!-- H2-1 -->
     <section>
       <h2>Sobre FII XP Log (XPLG11)</h2>
-      <p>O FII XP Log (XPLG11) é um fundo de investimento imobiliário do segmento de imóveis industriais e logísticos, gerido pela XP Asset Management. O fundo investe em galpões logísticos de alto padrão, localizados em regiões estratégicas do Brasil, com foco em contratos atípicos e locatários de primeira linha.</p>
-      <p>Com mais de 1 milhão de metros quadrados de área bruta locável, o XPLG11 busca gerar rendimentos mensais aos cotistas por meio da locação de seus ativos. O fundo é uma alternativa para investidores que desejam exposição ao setor logístico sem adquirir imóveis diretamente.</p>
+      <p>O FII XP Log (XPLG11) é um fundo de investimento imobiliário do segmento de imóveis industriais e logísticos, gerido pela XP Gestão de Recursos. O fundo investe em galpões logísticos de alto padrão, localizados em regiões estratégicas do Brasil, com foco em contratos atípicos e locatários de primeira linha. A estratégia busca proporcionar rendimentos mensais recorrentes aos cotistas por meio da locação de ativos.</p>
+      <p>Com patrimônio líquido relevante e presença em múltiplos estados, o XPLG11 é um dos principais FIIs do setor logístico. A gestão ativa busca otimizar o portfólio com aquisições e desinvestimentos, sempre alinhada às condições de mercado. O fundo distribui rendimentos mensalmente, sendo isento de Imposto de Renda para pessoas físicas que atendam aos requisitos legais.</p>
       <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value">XPLG11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Logístico</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Gestora</div><div class="value">XP Asset</div></div>
+        <div class="card"><div class="card-label">Ticker</div><div class="card-value"><span class="mono">XPLG11</span></div></div>
+        <div class="card"><div class="card-label">Setor</div><div class="card-value">Imóveis Industriais e Logísticos</div></div>
+        <div class="card"><div class="card-label">Tipo de Fundo</div><div class="card-value">FII</div></div>
+        <div class="card"><div class="card-label">Tipo</div><div class="card-value">Tijolo (Logístico)</div></div>
       </div>
     </section>
 
@@ -166,44 +142,45 @@
     <section>
       <h2>Dados Cadastrais de XPLG11</h2>
       <table class="data-table">
-        <tr><th>Campo</th><th>Valor</th></tr>
-        <tr><td>Nome do Fundo</td><td>FII XP Log</td></tr>
-        <tr><td>Código B3</td><td>XPLG11</td></tr>
-        <tr><td>Segmento</td><td>Imóveis Industriais e Logísticos</td></tr>
-        <tr><td>Tipo de Cota</td><td>FII (Fundo de Investimento Imobiliário)</td></tr>
-        <tr><td>Gestora</td><td>XP Asset Management</td></tr>
-        <tr><td>Administrador</td><td>Banco BTG Pactual</td></tr>
-        <tr><td>Data de Início</td><td>2018</td></tr>
+        <thead><tr><th>Campo</th><th>Informação</th></tr></thead>
+        <tbody>
+          <tr><td>Setor</td><td>Imóveis Industriais e Logísticos</td></tr>
+          <tr><td>Segmento</td><td>Galpões Logísticos</td></tr>
+          <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+          <tr><td>Gestora</td><td>XP Gestão de Recursos Ltda.</td></tr>
+          <tr><td>Administrador</td><td>Banco BTG Pactual S.A.</td></tr>
+          <tr><td>CNPJ</td><td>29.831.284/0001-07</td></tr>
+          <tr><td>Data de Registro na B3</td><td>2018</td></tr>
+        </tbody>
       </table>
     </section>
 
     <!-- H2-3 -->
     <section>
       <h2>Como Calcular o Preço Teto de XPLG11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos que distribuem dividendos. A premissa é que o investidor define uma taxa de retorno desejada — no caso, 10% ao ano — e calcula quanto pagar por cota para obter esse retorno.</p>
-      <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Retorno (10%)</p>
+      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos com base nos dividendos distribuídos. A lógica é simples: o investidor define um rendimento mínimo desejado (taxa de retorno) e calcula quanto pagaria por cota para atingir esse objetivo. No caso de FIIs, a taxa de retorno comumente utilizada é de 10% ao ano.</p>
+      <p><strong>Fórmula:</strong> Preço Teto = (Dividendos dos últimos 12 meses) ÷ (Taxa de retorno desejada)</p>
       <div class="highlight-box">
-        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong>
-        Suponha que XPLG11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 12,00 ÷ 0,10 = R$ 120,00. Esse seria o preço teto hipotético. Lembre-se: este é um exemplo meramente educativo, sem qualquer garantia de retorno futuro.
+        <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong> Suponha que o XPLG11 tenha distribuído R$ 12,00 por cota nos últimos 12 meses. Considerando uma taxa de retorno de 10% ao ano, o preço teto seria: R$ 12,00 ÷ 0,10 = <strong>R$ 120,00 por cota</strong>. Este valor é meramente ilustrativo e não reflete dados reais do fundo.</p>
       </div>
-      <p>O método não considera outros fatores como vacância, inadimplência ou valor patrimonial. É uma ferramenta entre várias disponíveis para análise fundamentalista.</p>
+      <p>O método não considera valorização da cota ou outros fatores de mercado. É uma ferramenta entre várias disponíveis para análise fundamentalista. O investidor deve sempre complementar com outras métricas e consultar um profissional habilitado.</p>
     </section>
 
     <!-- H2-4 -->
     <section>
       <h2>Rendimentos Mensais do XPLG11</h2>
-      <p>O FII XP Log distribui rendimentos mensalmente, geralmente isentos de Imposto de Renda para pessoas físicas, conforme a legislação brasileira (Lei nº 11.033/2004). A política de distribuição do fundo busca pagar a maior parte do lucro gerado, mas os valores variam conforme a receita de aluguéis e despesas.</p>
-      <p>Historicamente, o fundo mantém uma frequência regular de pagamentos, mas não há garantia de manutenção dos valores passados. Para dados atualizados, consulte fontes oficiais como a B3 ou o site da gestora.</p>
+      <p>O FII XP Log distribui rendimentos mensalmente, geralmente com base no resultado gerado pela locação dos imóveis. A política de distribuição busca manter previsibilidade, mas os valores podem variar conforme a ocupação dos ativos, reajustes contratuais e despesas do fundo. Para pessoas físicas que atendem aos requisitos da legislação, os rendimentos são isentos de Imposto de Renda.</p>
+      <p>Historicamente, o fundo tem apresentado distribuições regulares, com oscilações pontuais. Dados atualizados de rendimentos podem ser consultados em plataformas especializadas. O Método Bazin utiliza o total distribuído nos últimos 12 meses como base para o cálculo do preço teto.</p>
     </section>
 
     <!-- H2-5 -->
     <section>
       <h2>Como Acessar os Dados Atualizados de XPLG11</h2>
-      <p>Para acompanhar os dividendos históricos, preço teto calculado e outras métricas do XPLG11 em tempo real, utilize o app Elite Ações. A ferramenta reúne dados fundamentalistas, gráficos e calculadoras educativas para apoiar sua análise.</p>
+      <p>Para acompanhar os rendimentos mais recentes, o histórico de dividendos e o preço teto calculado pelo Método Bazin, utilize o aplicativo Elite Ações. A ferramenta reúne dados públicos da B3 e CVM em uma interface educativa, permitindo que o investidor faça suas próprias análises fundamentalistas.</p>
+      <p>No app, você encontra: rendimentos mensais detalhados, gráficos de distribuição, calculadora de preço teto e comparativos com outros FIIs do setor logístico. Tudo com atualização periódica e sem recomendações de investimento.</p>
       <div class="cta-wrap">
-        <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
+        <a href="/" class="btn">Acessar Elite Ações</a>
       </div>
-      <p class="txt-small">No app você encontra: dividendos mensais, preço teto pelo Método Bazin, comparativos setoriais e muito mais.</p>
     </section>
 
     <!-- H2-6 -->
@@ -211,39 +188,39 @@
       <h2>Perguntas Frequentes sobre XPLG11</h2>
       <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">O que é o preço teto de XPLG11?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">Como calcular o preço teto de XPLG11?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">O preço teto de XPLG11 é calculado pelo Método Bazin, dividindo os dividendos dos últimos 12 meses pela taxa de retorno desejada (10%). É uma referência educativa, não uma recomendação.</div>
+            <p itemprop="text">O preço teto pelo Método Bazin é calculado dividindo os dividendos dos últimos 12 meses pela taxa de retorno desejada (geralmente 10%). Exemplo hipotético: se os dividendos somam R$ 12,00, o preço teto seria R$ 120,00. Consulte dados atualizados no app Elite Ações.</p>
           </div>
         </div>
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Como calcular o preço teto de XPLG11?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">Qual o valor dos dividendos de XPLG11?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">Divida o total de dividendos pagos por cota nos últimos 12 meses por 0,10 (10%). O resultado é o preço teto hipotético. Exemplo: se os dividendos anuais forem R$ 12,00, o preço teto seria R$ 120,00.</div>
+            <p itemprop="text">Os rendimentos mensais do XPLG11 variam conforme o resultado do fundo. Para valores atualizados, acesse o app Elite Ações, que reúne o histórico de distribuições. Lembre-se: dados passados não garantem rentabilidade futura.</p>
           </div>
         </div>
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">XPLG11 paga dividendos mensais?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">O que é o Método Bazin para FIIs?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">Sim, XPLG11 distribui rendimentos mensalmente, geralmente isentos de IR para pessoas físicas, conforme legislação vigente.</div>
+            <p itemprop="text">É uma metodologia educativa criada por Décio Bazin para estimar um preço teto com base nos dividendos. Para FIIs, usa-se uma taxa de retorno de 10% ao ano. Não é recomendação de investimento, apenas uma ferramenta de análise.</p>
           </div>
         </div>
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Qual a taxa de retorno do Método Bazin para XPLG11?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">XPLG11 é um bom FII para renda passiva?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">A taxa Bazin utilizada é de 10% ao ano, que representa o retorno desejado pelo investidor sobre o capital investido.</div>
+            <p itemprop="text">O XPLG11 distribui rendimentos mensais isentos de IR para pessoas físicas, mas cada investidor deve avaliar seu perfil e objetivos. Esta página não faz recomendações. Consulte um profissional habilitado pela CVM.</p>
           </div>
         </div>
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de XPLG11?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">Como fazer análise fundamentalista de XPLG11?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">Os dados atualizados de XPLG11 podem ser acessados no app Elite Ações, que reúne dividendos históricos, preço teto e análises fundamentalistas.</div>
+            <p itemprop="text">A análise fundamentalista de FIIs envolve avaliar dividendos, vacância, qualidade dos imóveis e gestão. O Método Bazin é uma das ferramentas. Use o app Elite Ações para acessar dados educativos e calcular o preço teto.</p>
           </div>
         </div>
         <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" itemprop="name">O Método Bazin é recomendado pela CVM?<span class="icon">+</span></button>
+          <button class="faq-question" aria-expanded="false"><span itemprop="name">Onde encontrar dados atualizados de XPLG11?</span><span class="icon">+</span></button>
           <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">Não. O Método Bazin é uma metodologia educativa entre várias existentes. A CVM não recomenda nem endossa métodos específicos de valuation.</div>
+            <p itemprop="text">No aplicativo Elite Ações você encontra rendimentos mensais, histórico de dividendos e calculadora de preço teto. Acesse <a href="/">eliteacoes.com</a> para mais informações.</p>
           </div>
         </div>
       </div>
@@ -253,38 +230,78 @@
     <section>
       <h2>Aviso Legal e Disclaimer</h2>
       <div class="disclaimer-box">
-        <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong>
-        Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento. Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
       </div>
     </section>
 
     <div class="cta-wrap">
-      <a href="/" class="btn btn-outline">Baixar App Elite Ações</a>
+      <a href="/" class="btn">Acessar Elite Ações</a>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="/">Início</a> · <a href="/paginas/fiis">FIIs</a> · <a href="/contato">Contato</a></p>
+      <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
+      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
     </div>
   </footer>
 
   <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
+    (function(){
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', function(){
+          const isActive = item.classList.contains('active');
+          items.forEach(i => i.classList.remove('active'));
+          if(!isActive) item.classList.add('active');
         });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-        }
       });
-    });
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"FII XP Log (XPLG11): Preço Teto e Rendimentos pelo Método Bazin",
+    "description":"Saiba como calcular o preço teto de XPLG11 (FII XP Log) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse dado...",
+    "datePublished":"2026-05-24",
+    "dateModified":"2026-05-24",
+    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/xplg11"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+      {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+      {"@type":"ListItem","position":3,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
+      {"@type":"ListItem","position":4,"name":"XPLG11","item":"https://eliteacoes.com/paginas/fiis/xplg11"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Como calcular o preço teto de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto pelo Método Bazin é calculado dividindo os dividendos dos últimos 12 meses pela taxa de retorno desejada (geralmente 10%). Exemplo hipotético: se os dividendos somam R$ 12,00, o preço teto seria R$ 120,00. Consulte dados atualizados no app Elite Ações."}},
+      {"@type":"Question","name":"Qual o valor dos dividendos de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"Os rendimentos mensais do XPLG11 variam conforme o resultado do fundo. Para valores atualizados, acesse o app Elite Ações, que reúne o histórico de distribuições. Lembre-se: dados passados não garantem rentabilidade futura."}},
+      {"@type":"Question","name":"O que é o Método Bazin para FIIs?","acceptedAnswer":{"@type":"Answer","text":"É uma metodologia educativa criada por Décio Bazin para estimar um preço teto com base nos dividendos. Para FIIs, usa-se uma taxa de retorno de 10% ao ano. Não é recomendação de investimento, apenas uma ferramenta de análise."}},
+      {"@type":"Question","name":"XPLG11 é um bom FII para renda passiva?","acceptedAnswer":{"@type":"Answer","text":"O XPLG11 distribui rendimentos mensais isentos de IR para pessoas físicas, mas cada investidor deve avaliar seu perfil e objetivos. Esta página não faz recomendações. Consulte um profissional habilitado pela CVM."}},
+      {"@type":"Question","name":"Como fazer análise fundamentalista de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de FIIs envolve avaliar dividendos, vacância, qualidade dos imóveis e gestão. O Método Bazin é uma das ferramentas. Use o app Elite Ações para acessar dados educativos e calcular o preço teto."}},
+      {"@type":"Question","name":"Onde encontrar dados atualizados de XPLG11?","acceptedAnswer":{"@type":"Answer","text":"No aplicativo Elite Ações você encontra rendimentos mensais, histórico de dividendos e calculadora de preço teto. Acesse eliteacoes.com para mais informações."}}
+    ]
+  }
   </script>
 </body>
 </html>

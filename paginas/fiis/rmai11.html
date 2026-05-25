@@ -1,283 +1,452 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RMAI11 FII — Rendimentos | Elite Ações</title>
-  <meta name="description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <link rel="canonical" href="https://eliteacoes.com/paginas/fiis/rmai11">
-  <meta property="og:title" content="RMAI11 FII — Rendimentos | Elite Ações">
-  <meta property="og:description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <meta property="og:url" content="https://eliteacoes.com/paginas/fiis/rmai11">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RMAI11 FII — Rendimentos | Elite Ações">
-  <meta name="twitter:description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"FII Reagmult (RMAI11): Preço Teto e Rendimentos pelo Método Bazin",
-    "description":"Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
-    "datePublished":"2026-05-18",
-    "dateModified":"2026-05-18",
-    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
-    "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/rmai11"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
-      {"@type":"ListItem","position":2,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
-      {"@type":"ListItem","position":3,"name":"RMAI11"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"O que é o preço teto RMAI11?","acceptedAnswer":{"@type":"Answer","text":"O preço teto RMAI11 é o valor máximo que um investidor pagaria pela cota com base no Método Bazin, calculado dividindo os dividendos anuais por 0,10 (10% de rentabilidade desejada)."}},
-      {"@type":"Question","name":"Como calcular o preço teto de RMAI11?","acceptedAnswer":{"@type":"Answer","text":"Para calcular o preço teto de RMAI11, some os dividendos distribuídos nos últimos 12 meses e divida por 0,10. O resultado é o preço teto pelo Método Bazin."}},
-      {"@type":"Question","name":"RMAI11 dividendos são isentos de IR?","acceptedAnswer":{"@type":"Answer","text":"Sim, os dividendos de RMAI11 são isentos de Imposto de Renda para pessoas físicas, conforme legislação brasileira para FIIs, desde que o fundo tenha mais de 50 cotistas."}},
-      {"@type":"Question","name":"Como funciona o método bazin para RMAI11?","acceptedAnswer":{"@type":"Answer","text":"O método bazin para RMAI11 consiste em definir um preço teto baseado nos dividendos históricos, buscando uma rentabilidade de 10% ao ano. É uma ferramenta educativa de análise."}},
-      {"@type":"Question","name":"Onde encontrar dados atualizados de RMAI11?","acceptedAnswer":{"@type":"Answer","text":"Você pode acessar dados atualizados de RMAI11 no app Elite Ações, que reúne cotações, dividendos históricos e ferramentas de análise fundamentalista."}},
-      {"@type":"Question","name":"RMAI11 é um FII de lajes corporativas?","acceptedAnswer":{"@type":"Answer","text":"Sim, RMAI11 é um fundo imobiliário do setor de lajes corporativas, administrado pela Reagmult Investimentos, focado em imóveis comerciais de alto padrão."}}
-    ]
-  }
-  </script>
-  <style>
-    :root{
-      --green:#00d4a8; --green-dim:rgba(0,212,168,.1); --green-border:rgba(0,212,168,.2);
-      --red:#ef4444; --red-dim:rgba(239,68,68,.08);
-      --yellow:#f59e0b; --yellow-dim:rgba(245,158,11,.08); --yellow-border:rgba(245,158,11,.25);
-      --bg:#0a0e1a; --bg2:#0d1220; --surf:#131b2e; --surf2:#1a2438;
-      --border:rgba(255,255,255,.07); --border2:rgba(255,255,255,.13);
-      --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
-      --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMAI11 FII — Rendimentos | Elite Ações</title>
+    <meta name="description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <link rel="canonical" href="https://eliteacoes.com/paginas/fiis/rmai11">
+    <meta property="og:title" content="RMAI11 FII — Rendimentos | Elite Ações">
+    <meta property="og:description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <meta property="og:url" content="https://eliteacoes.com/paginas/fiis/rmai11">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RMAI11 FII — Rendimentos | Elite Ações">
+    <meta name="twitter:description" content="Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "FII Reagmult (RMAI11): Preço Teto e Rendimentos pelo Método Bazin",
+      "description": "Saiba como calcular o preço teto de RMAI11 (FII Reagmult) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
+      "datePublished": "2026-05-24",
+      "dateModified": "2026-05-24",
+      "author": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Elite Ações",
+        "url": "https://eliteacoes.com"
+      },
+      "mainEntityOfPage": "https://eliteacoes.com/paginas/fiis/rmai11"
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
-    @media(min-width:768px){body{font-size:16px}}
-    a{color:var(--green);text-decoration:none;transition:color .2s}
-    a:hover{color:#00e6b8}
-    img{max-width:100%;height:auto}
-    .container{max-width:720px;margin:0 auto;padding:0 16px}
-    @media(min-width:768px){.container{padding:0 24px}}
-    /* header */
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
-    .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
-    .logo span{color:var(--green)}
-    .nav-link{font-size:13px;color:var(--txt2);padding:8px 0;min-height:44px;display:inline-flex;align-items:center}
-    @media(min-width:768px){.nav-link{font-size:14px}}
-    /* breadcrumb */
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:4px 8px;padding:16px 0 8px;font-size:12px;color:var(--txt3)}
-    .breadcrumb a{color:var(--txt2)}
-    .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{color:var(--txt3)}
-    /* headings */
-    h1{font-size:22px;font-weight:700;line-height:1.3;margin:8px 0 16px;letter-spacing:-.4px}
-    @media(min-width:768px){h1{font-size:30px}}
-    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);letter-spacing:-.2px}
-    @media(min-width:768px){h2{font-size:22px}}
-    h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
-    p{margin-bottom:12px;color:var(--txt2)}
-    .txt-sm{font-size:12px;color:var(--txt3)}
-    .txt-mono{font-family:var(--fm);font-size:13px}
-    /* cards */
-    .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
-    .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-    .card .value{font-size:14px;font-weight:600;color:var(--txt);font-family:var(--fm)}
-    /* tabela */
-    .data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-    .data-table td,.data-table th{padding:10px 12px;border:1px solid var(--border);text-align:left}
-    .data-table th{background:var(--surf);font-weight:600;color:var(--txt2);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
-    .data-table td{background:var(--bg2);color:var(--txt2)}
-    /* destaque */
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:16px;margin:16px 0;font-size:13px;color:var(--txt2)}
-    .highlight-box strong{color:var(--yellow)}
-    /* botão */
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
-    .btn-primary{background:var(--green);color:#0a0e1a}
-    .btn-primary:hover{background:#00e6b8;color:#0a0e1a}
-    .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
-    .btn-outline:hover{background:var(--green-dim)}
-    .cta-wrap{text-align:center;margin:24px 0}
-    /* faq */
-    .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-question{width:100%;background:transparent;border:none;color:var(--txt);font-family:var(--fb);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px}
-    .faq-question::after{content:'+';font-size:18px;color:var(--txt3);transition:transform .2s}
-    .faq-question.active::after{content:'−'}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0}
-    .faq-answer.open{max-height:300px;padding-bottom:14px}
-    .faq-answer p{font-size:13px;color:var(--txt2);margin:0}
-    /* disclaimer */
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:10px;padding:20px;margin:16px 0;font-size:13px;color:var(--txt2);line-height:1.7}
-    .disclaimer-box strong{color:var(--yellow)}
-    /* footer */
-    footer{border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center;font-size:12px;color:var(--txt3)}
-    footer a{color:var(--txt2)}
-    footer a:hover{color:var(--green)}
-    .update-badge{display:inline-block;background:var(--surf);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:11px;color:var(--txt3);margin-bottom:12px;font-family:var(--fm)}
-  </style>
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Empresas", "item": "https://eliteacoes.com/empresas" },
+        { "@type": "ListItem", "position": 3, "name": "FIIs", "item": "https://eliteacoes.com/paginas/fiis" },
+        { "@type": "ListItem", "position": 4, "name": "RMAI11" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual o preço teto de RMAI11 pelo Método Bazin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O preço teto é calculado dividindo os dividendos acumulados nos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como receber dividendos de RMAI11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os rendimentos são distribuídos mensalmente pelo fundo Reagmult. Para receber, é necessário ser cotista na data-base definida pelo fundo. Os valores são creditados automaticamente na conta da corretora."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "RMAI11 é isento de Imposto de Renda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, para pessoas físicas, os rendimentos de FIIs são isentos de IR, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Consulte seu contador para confirmar sua situação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como analisar RMAI11 fundamentalmente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A análise fundamentalista de RMAI11 envolve avaliar o setor de lajes corporativas, a vacância do portfólio, a qualidade dos inquilinos e o histórico de distribuição de rendimentos. O app Elite Ações oferece dados completos para essa análise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde encontrar dados atualizados de RMAI11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os dados mais recentes de RMAI11, incluindo cotações, dividendos e preço teto, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para baixar e acompanhar em tempo real."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O Método Bazin funciona para RMAI11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Método Bazin é uma ferramenta educativa que calcula um preço teto com base nos dividendos passados. Não garante resultados futuros. É uma das várias metodologias disponíveis para análise de FIIs."
+          }
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #00d4a8;
+            --green-dim: rgba(0,212,168,.1);
+            --green-border: rgba(0,212,168,.2);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,.08);
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245,158,11,.08);
+            --yellow-border: rgba(245,158,11,.25);
+            --bg: #0a0e1a;
+            --bg2: #0d1220;
+            --surf: #131b2e;
+            --surf2: #1a2438;
+            --border: rgba(255,255,255,.07);
+            --border2: rgba(255,255,255,.13);
+            --txt: #e8edf5;
+            --txt2: rgba(232,237,245,.72);
+            --txt3: rgba(232,237,245,.42);
+            --fb: 'Plus Jakarta Sans', sans-serif;
+            --fm: 'DM Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: var(--fb);
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,26,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        header .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-weight: 700; font-size: 18px; color: var(--green); text-decoration: none; }
+        .logo span { color: var(--txt); }
+        .nav-link { color: var(--txt2); text-decoration: none; font-size: 13px; font-weight: 500; transition: color .2s; }
+        .nav-link:hover { color: var(--green); }
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 24px 0 8px;
+            color: var(--txt);
+        }
+        .meta { font-size: 12px; color: var(--txt3); margin-bottom: 20px; }
+        .meta strong { color: var(--txt2); font-weight: 500; }
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 28px 0 12px;
+            color: var(--txt);
+            border-left: 3px solid var(--green);
+            padding-left: 12px;
+        }
+        p { margin-bottom: 12px; color: var(--txt2); }
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 12px 0 16px;
+        }
+        .card {
+            background: var(--surf);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        .card-label { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--txt3); margin-bottom: 4px; }
+        .card-value { font-size: 14px; font-weight: 600; color: var(--txt); }
+        .card-value.mono { font-family: var(--fm); }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th { background: var(--surf); color: var(--txt2); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+        td { background: var(--bg2); color: var(--txt); }
+        .highlight-box {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-border);
+            border-radius: 10px;
+            padding: 14px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--txt);
+        }
+        .highlight-box strong { color: var(--yellow); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 24px;
+            background: var(--green);
+            color: #0a0e1a;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: opacity .2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { opacity: .85; }
+        .btn-wrap { text-align: center; margin: 20px 0; }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: var(--surf);
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background .2s;
+            user-select: none;
+        }
+        .faq-question:hover { background: var(--surf2); }
+        .faq-question::after {
+            content: '+';
+            font-size: 18px;
+            color: var(--green);
+            transition: transform .3s;
+        }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            background: var(--bg2);
+        }
+        .faq-answer-inner { padding: 0 16px 14px; font-size: 13px; color: var(--txt2); }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .faq-answer-inner { padding: 0 16px 14px; }
+        .disclaimer-box {
+            background: var(--yellow-dim);
+            border: 2px solid var(--yellow-border);
+            border-radius: 10px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--txt);
+        }
+        .disclaimer-box strong { color: var(--yellow); }
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--txt3);
+            margin-bottom: 16px;
+            padding-top: 8px;
+        }
+        .breadcrumb a { color: var(--txt2); text-decoration: none; transition: color .2s; }
+        .breadcrumb a:hover { color: var(--green); }
+        .breadcrumb span { color: var(--txt3); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            margin-top: 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--txt3);
+        }
+        footer a { color: var(--txt2); text-decoration: none; }
+        footer a:hover { color: var(--green); }
+        @media (min-width: 600px) {
+            body { font-size: 15px; }
+            h1 { font-size: 28px; }
+            h2 { font-size: 20px; }
+            .card-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="/" class="logo">Elite <span>Ações</span></a>
-      <a href="/" class="nav-link">App</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a>
-      <span>/</span>
-      <a href="/paginas/fiis">FIIs</a>
-      <span>/</span>
-      <span>RMAI11</span>
-    </nav>
-
-    <h1>FII Reagmult (RMAI11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-
-    <div class="update-badge">Última atualização: maio de 2026</div>
-
-    <!-- H2-1 -->
-    <h2>Sobre FII Reagmult (RMAI11)</h2>
-    <p>O FII Reagmult (RMAI11) é um fundo imobiliário do setor de lajes corporativas, gerido pela Reagmult Investimentos. O fundo investe em imóveis comerciais de alto padrão localizados em regiões nobres, com foco em geração de renda mensal por meio de locação.</p>
-    <p>Com patrimônio diversificado, o RMAI11 busca oferecer aos cotistas exposição a ativos de qualidade no segmento corporativo, combinando potencial de valorização com distribuição periódica de rendimentos.</p>
-    <div class="card-grid">
-      <div class="card"><div class="label">Ticker</div><div class="value">RMAI11</div></div>
-      <div class="card"><div class="label">Setor</div><div class="value">Lajes Corporativas</div></div>
-      <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-      <div class="card"><div class="label">Tipo</div><div class="value">Renda</div></div>
-    </div>
-
-    <!-- H2-2 -->
-    <h2>Dados Cadastrais de RMAI11</h2>
-    <table class="data-table">
-      <tr><th>Campo</th><th>Informação</th></tr>
-      <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
-      <tr><td>Segmento</td><td>Imóveis Comerciais</td></tr>
-      <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
-      <tr><td>Gestora</td><td>Reagmult Investimentos</td></tr>
-      <tr><td>Administrador</td><td>B3 S.A.</td></tr>
-      <tr><td>CNPJ</td><td>35.123.456/0001-78 (fictício)</td></tr>
-    </table>
-
-    <!-- H2-3 -->
-    <h2>Como Calcular o Preço Teto de RMAI11 pelo Método Bazin</h2>
-    <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda a definir um preço teto para ativos de renda. A lógica é simples: o investidor define uma rentabilidade desejada (geralmente 10% ao ano) e calcula quanto pagaria por cada cota com base nos dividendos distribuídos.</p>
-    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ 0,10</p>
-    <div class="highlight-box">
-      <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-      Suponha que RMAI11 distribuiu R$ 1,20 por cota nos últimos 12 meses. Pelo método, o preço teto seria R$ 1,20 ÷ 0,10 = <strong>R$ 12,00</strong>. Este valor é apenas uma referência educativa e não reflete a realidade do fundo.
-    </div>
-    <p>O investidor pode usar essa ferramenta como um dos critérios em sua análise fundamentalista, comparando o preço teto com a cotação atual do mercado.</p>
-
-    <!-- H2-4 -->
-    <h2>Rendimentos Mensais do RMAI11</h2>
-    <p>O RMAI11 distribui rendimentos mensais aos cotistas, geralmente com base no resultado financeiro do fundo (aluguéis recebidos, despesas e ajustes). A política de distribuição é definida pela gestora e pode variar ao longo do tempo.</p>
-    <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Historicamente, o fundo mantém uma frequência regular de pagamentos, mas valores passados não garantem resultados futuros.</p>
-
-    <!-- H2-5 -->
-    <h2>Como Acessar os Dados Atualizados de RMAI11</h2>
-    <p>Para acompanhar cotações, dividendos históricos e ferramentas de análise do RMAI11 em tempo real, utilize o app Elite Ações. A plataforma reúne dados da B3, gráficos interativos e calculadoras educativas como o Método Bazin.</p>
-    <div class="cta-wrap">
-      <a href="/" class="btn btn-primary">Acessar App Elite Ações</a>
-    </div>
-    <p>No app, você encontra o histórico completo de rendimentos, preço teto calculado automaticamente e comparativos com outros FIIs do setor de lajes corporativas.</p>
-
-    <!-- H2-6 -->
-    <h2>Perguntas Frequentes sobre RMAI11</h2>
-    <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">O que é o preço teto RMAI11?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">O preço teto RMAI11 é o valor máximo que um investidor pagaria pela cota com base no Método Bazin, calculado dividindo os dividendos anuais por 0,10 (10% de rentabilidade desejada).</p>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Elite<span>Ações</span></a>
+            <a href="/" class="nav-link">App</a>
         </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Como calcular o preço teto de RMAI11?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Para calcular o preço teto de RMAI11, some os dividendos distribuídos nos últimos 12 meses e divida por 0,10. O resultado é o preço teto pelo Método Bazin.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">RMAI11 dividendos são isentos de IR?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Sim, os dividendos de RMAI11 são isentos de Imposto de Renda para pessoas físicas, conforme legislação brasileira para FIIs, desde que o fundo tenha mais de 50 cotistas.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Como funciona o método bazin para RMAI11?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">O método bazin para RMAI11 consiste em definir um preço teto baseado nos dividendos históricos, buscando uma rentabilidade de 10% ao ano. É uma ferramenta educativa de análise.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de RMAI11?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Você pode acessar dados atualizados de RMAI11 no app Elite Ações, que reúne cotações, dividendos históricos e ferramentas de análise fundamentalista.</p>
-        </div>
-      </div>
-      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" itemprop="name">RMAI11 é um FII de lajes corporativas?</button>
-        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Sim, RMAI11 é um fundo imobiliário do setor de lajes corporativas, administrado pela Reagmult Investimentos, focado em imóveis comerciais de alto padrão.</p>
-        </div>
-      </div>
-    </div>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Início</a>
+            <span>/</span>
+            <a href="/empresas">Empresas</a>
+            <span>/</span>
+            <a href="/paginas/fiis">FIIs</a>
+            <span>/</span>
+            <span>RMAI11</span>
+        </nav>
+        <h1>FII Reagmult (RMAI11): Preço Teto e Rendimentos pelo Método Bazin</h1>
+        <p class="meta"><strong>Última atualização:</strong> maio de 2026</p>
 
-    <!-- H2-7 -->
-    <h2>Aviso Legal e Disclaimer</h2>
-    <div class="disclaimer-box">
-      <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
-      Não constitui recomendação de compra ou venda de ativos financeiros.<br>
-      Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
-      O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
-      Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
-      Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
-    </div>
+        <h2>Sobre FII Reagmult (RMAI11)</h2>
+        <p>O FII Reagmult, negociado sob o ticker RMAI11, é um fundo imobiliário do segmento de lajes corporativas. Gerido pela Reagmult Investimentos, o fundo tem como objetivo investir em imóveis comerciais de alto padrão, localizados principalmente em regiões centrais de negócios. A estratégia busca gerar renda recorrente por meio da locação de espaços para empresas de diversos setores.</p>
+        <p>Com foco em ativos de qualidade e localização estratégica, o RMAI11 se posiciona como uma opção para investidores que buscam exposição ao mercado de escritórios. A gestão ativa do portfólio visa manter a vacância controlada e maximizar o retorno aos cotistas, dentro das diretrizes do mercado de fundos imobiliários.</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-label">Ticker</div>
+                <div class="card-value mono">RMAI11</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Setor</div>
+                <div class="card-value">Lajes Corporativas</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Tipo de Fundo</div>
+                <div class="card-value">FII</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Tipo</div>
+                <div class="card-value">Renda</div>
+            </div>
+        </div>
 
-    <div class="cta-wrap">
-      <a href="/" class="btn btn-outline">Análise completa no App Elite Ações</a>
-    </div>
-  </main>
+        <h2>Dados Cadastrais de RMAI11</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Setor</td><td>Lajes Corporativas</td></tr>
+                    <tr><td>Segmento</td><td>Escritórios</td></tr>
+                    <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+                    <tr><td>Gestora</td><td>Reagmult Investimentos</td></tr>
+                    <tr><td>CNPJ</td><td>Disponível na B3</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Elite Ações — não constitui recomendação de investimento</p>
-      <p><a href="/">Início</a> · <a href="/paginas/fiis">FIIs</a> · <a href="/contato">Contato</a></p>
-    </div>
-  </footer>
+        <h2>Como Calcular o Preço Teto de RMAI11 pelo Método Bazin</h2>
+        <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa que calcula um preço teto para ativos de renda. A premissa é que o investidor define uma taxa de retorno desejada — no caso, 10% ao ano — e divide os dividendos acumulados nos últimos 12 meses por essa taxa.</p>
+        <p><strong>Fórmula:</strong> Preço Teto = Dividendos 12m ÷ 10%</p>
+        <div class="highlight-box">
+            <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
+            Suponha que os dividendos dos últimos 12 meses de RMAI11 somassem R$ 12,00 por cota. O preço teto seria R$ 12,00 ÷ 0,10 = <strong>R$ 120,00</strong>. Este número é apenas uma referência educativa e não reflete dados reais ou futuros.
+        </div>
+        <p>O método não considera outros fatores como vacância, qualidade dos inquilinos ou cenário econômico. É uma ferramenta entre várias disponíveis para análise.</p>
 
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
+        <h2>Rendimentos Mensais do RMAI11</h2>
+        <p>O FII Reagmult distribui rendimentos mensalmente aos cotistas, conforme política definida em regulamento. Os valores são pagos com base no resultado do fundo, após despesas e provisões. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, desde que cumpridos os requisitos legais.</p>
+        <p>Historicamente, o fundo mantém uma política de distribuição regular, mas os valores variam conforme a performance dos imóveis e a ocupação do portfólio. Consulte o app Elite Ações para acompanhar os dados mais recentes.</p>
+
+        <h2>Como Acessar os Dados Atualizados de RMAI11</h2>
+        <p>Para obter informações em tempo real sobre RMAI11, incluindo cotações, dividendos e preço teto calculado, utilize o app Elite Ações. A plataforma oferece ferramentas educativas e dados fundamentalistas para apoiar sua análise pessoal.</p>
+        <div class="btn-wrap">
+            <a href="/" class="btn">Baixar App Elite Ações</a>
+        </div>
+
+        <h2>Perguntas Frequentes sobre RMAI11</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">Qual o preço teto de RMAI11 pelo Método Bazin?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">O preço teto é calculado dividindo os dividendos acumulados nos últimos 12 meses pela taxa Bazin de 10%. Exemplo hipotético: se os dividendos anuais fossem R$ 12,00, o preço teto seria R$ 120,00. Consulte o app Elite Ações para dados atualizados.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">Como receber dividendos de RMAI11?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">Os rendimentos são distribuídos mensalmente pelo fundo Reagmult. Para receber, é necessário ser cotista na data-base definida pelo fundo. Os valores são creditados automaticamente na conta da corretora.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">RMAI11 é isento de Imposto de Renda?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">Sim, para pessoas físicas, os rendimentos de FIIs são isentos de IR, desde que o fundo tenha mais de 50 cotistas e as cotas sejam negociadas em bolsa. Consulte seu contador para confirmar sua situação.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">Como analisar RMAI11 fundamentalmente?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">A análise fundamentalista de RMAI11 envolve avaliar o setor de lajes corporativas, a vacância do portfólio, a qualidade dos inquilinos e o histórico de distribuição de rendimentos. O app Elite Ações oferece dados completos para essa análise.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">Onde encontrar dados atualizados de RMAI11?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">Os dados mais recentes de RMAI11, incluindo cotações, dividendos e preço teto, estão disponíveis no app Elite Ações. Acesse eliteacoes.com para baixar e acompanhar em tempo real.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">O Método Bazin funciona para RMAI11?</div>
+                <div class="faq-answer"><div class="faq-answer-inner">O Método Bazin é uma ferramenta educativa que calcula um preço teto com base nos dividendos passados. Não garante resultados futuros. É uma das várias metodologias disponíveis para análise de FIIs.</div></div>
+            </div>
+        </div>
+
+        <h2>Aviso Legal e Disclaimer</h2>
+        <div class="disclaimer-box">
+            <strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong><br>
+            Não constitui recomendação de compra ou venda de ativos financeiros.<br>
+            Os dados apresentados são de natureza histórica e não garantem rentabilidade futura.<br>
+            O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro.<br>
+            Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.<br>
+            Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.
+        </div>
+
+        <div class="btn-wrap">
+            <a href="/" class="btn">Acessar App Elite Ações</a>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2026 Elite Ações — não constitui recomendação de investimento.</p>
+            <p><a href="/">eliteacoes.com</a></p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
         });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-        }
-      });
-    });
-  </script>
+    </script>
 </body>
 </html>

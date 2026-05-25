@@ -13,52 +13,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RECR11 FII — Rendimentos | Elite Ações">
   <meta name="twitter:description" content="Saiba como calcular o preço teto de RECR11 (FII Rec Rece) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "FII Rec Rece (RECR11): Preço Teto e Rendimentos pelo Método Bazin",
-    "description": "Saiba como calcular o preço teto de RECR11 (FII Rec Rece) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
-    "datePublished": "2026-05-18",
-    "dateModified": "2026-05-18",
-    "author": {
-      "@type": "Organization",
-      "name": "Elite Ações",
-      "url": "https://eliteacoes.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Elite Ações",
-      "url": "https://eliteacoes.com"
-    },
-    "mainEntityOfPage": "https://eliteacoes.com/paginas/fiis/recr11"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://eliteacoes.com/"},
-      {"@type": "ListItem", "position": 2, "name": "FIIs", "item": "https://eliteacoes.com/paginas/fiis"},
-      {"@type": "ListItem", "position": 3, "name": "RECR11", "item": "https://eliteacoes.com/paginas/fiis/recr11"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question", "name": "Qual o preço teto de RECR11 pelo Método Bazin?", "acceptedAnswer": {"@type": "Answer", "text": "O preço teto é calculado dividindo os dividendos dos últimos 12 meses por 10%. Exemplo hipotético: se RECR11 distribuiu R$ 1,20 por cota nos últimos 12 meses, o preço teto seria R$ 12,00. Consulte o app Elite Ações para dados atualizados."}},
-      {"@type": "Question", "name": "RECR11 paga dividendos mensais?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, RECR11 distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acompanhe no app Elite Ações."}},
-      {"@type": "Question", "name": "Como funciona o Método Bazin para RECR11?", "acceptedAnswer": {"@type": "Answer", "text": "O Método Bazin calcula o preço teto dividindo os dividendos anuais por uma taxa de retorno desejada (geralmente 10%). É uma ferramenta educativa, não uma recomendação."}},
-      {"@type": "Question", "name": "RECR11 é um FII de papel?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, RECR11 é classificado como FII de Papéis, investindo em títulos de renda fixa imobiliários, como CRIs e LCIs."}},
-      {"@type": "Question", "name": "Onde encontrar dados atualizados de RECR11?", "acceptedAnswer": {"@type": "Answer", "text": "Os dados atualizados de RECR11, incluindo dividendos e preço teto, estão disponíveis no app Elite Ações, com informações da B3 e CVM."}},
-      {"@type": "Question", "name": "RECR11 tem isenção de IR para pessoa física?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, os rendimentos de FIIs como RECR11 são isentos de Imposto de Renda para pessoas físicas, desde que respeitados os limites legais. Consulte seu contador."}}
-    ]
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,214 +26,271 @@
       --txt:#e8edf5; --txt2:rgba(232,237,245,.72); --txt3:rgba(232,237,245,.42);
       --fb:'Plus Jakarta Sans',sans-serif; --fm:'DM Mono',monospace;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--txt);font-family:var(--fb);font-size:14px;line-height:1.6;min-height:100vh}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--bg);color:var(--txt);line-height:1.6;font-size:14px;min-height:100vh}
     @media(min-width:768px){body{font-size:16px}}
-    a{color:var(--green);text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%;height:auto}
-    .container{max-width:800px;margin:0 auto;padding:0 16px}
+    a{color:var(--green);text-decoration:none;transition:opacity .2s}
+    a:hover{opacity:.8}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
     @media(min-width:768px){.container{padding:0 24px}}
-    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 0}
-    header .container{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:700;font-size:18px;color:var(--txt);letter-spacing:-.3px}
+    /* header */
+    header{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    header .container{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+    .logo{font-weight:700;font-size:1.25rem;color:var(--txt);letter-spacing:-.02em}
     .logo span{color:var(--green)}
-    .nav-link{color:var(--txt2);font-size:14px;padding:8px 12px;border-radius:8px;transition:background .2s}
-    .nav-link:hover{background:var(--surf);text-decoration:none}
-    .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--txt3);padding:16px 0 8px}
+    .nav-links{display:flex;gap:20px;list-style:none}
+    .nav-links a{font-size:.875rem;color:var(--txt2);font-weight:500}
+    .nav-links a:hover{color:var(--txt)}
+    /* breadcrumb */
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0 8px;font-size:.75rem;color:var(--txt3);list-style:none}
+    .breadcrumb li+li::before{content:"›";margin-right:6px;color:var(--txt3)}
     .breadcrumb a{color:var(--txt2)}
     .breadcrumb a:hover{color:var(--green)}
-    .breadcrumb span{color:var(--txt3)}
-    h1{font-size:22px;font-weight:700;line-height:1.3;margin:8px 0 12px;color:var(--txt)}
-    @media(min-width:768px){h1{font-size:30px}}
-    h2{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--txt);border-left:3px solid var(--green);padding-left:12px}
-    @media(min-width:768px){h2{font-size:22px}}
-    h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--txt2)}
+    .breadcrumb .active{color:var(--txt)}
+    /* headings */
+    h1{font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:12px;letter-spacing:-.02em}
+    @media(min-width:768px){h1{font-size:2rem}}
+    h2{font-size:1.2rem;font-weight:600;margin-top:32px;margin-bottom:12px;color:var(--txt);letter-spacing:-.01em;border-left:3px solid var(--green);padding-left:12px}
+    @media(min-width:768px){h2{font-size:1.4rem}}
+    h3{font-size:1rem;font-weight:600;margin-top:20px;margin-bottom:8px;color:var(--txt2)}
     p{margin-bottom:12px;color:var(--txt2)}
+    .small{font-size:.8rem;color:var(--txt3)}
+    .update{font-size:.75rem;color:var(--txt3);margin-bottom:16px;display:block}
+    /* cards */
     .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-    @media(min-width:480px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
-    .card .label{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-    .card .value{font-size:14px;font-weight:600;color:var(--txt);font-family:var(--fm)}
-    .table-wrap{overflow-x:auto;margin:16px 0}
-    table{width:100%;border-collapse:collapse;font-size:13px}
-    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
-    th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
-    td{color:var(--txt2)}
-    .highlight-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:16px;margin:16px 0;color:var(--txt)}
-    .highlight-box strong{color:var(--yellow)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
-    .btn-primary{background:var(--green);color:var(--bg)}
-    .btn-primary:hover{background:#00bf9a;text-decoration:none}
+    @media(min-width:600px){.card-grid{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:14px 12px;text-align:center}
+    .card .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--txt3);margin-bottom:4px}
+    .card .value{font-family:var(--fm);font-size:.9rem;font-weight:500;color:var(--txt)}
+    /* table */
+    .data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.85rem}
+    .data-table th,.data-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+    .data-table th{background:var(--surf);color:var(--txt3);font-weight:500;text-transform:uppercase;font-size:.7rem;letter-spacing:.05em}
+    .data-table td{color:var(--txt2)}
+    .data-table tr:last-child td{border-bottom:none}
+    /* buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:background .2s,transform .1s;text-decoration:none}
+    .btn-primary{background:var(--green);color:#0a0e1a}
+    .btn-primary:hover{background:#00bf9a;color:#0a0e1a}
     .btn-outline{background:transparent;border:1px solid var(--green-border);color:var(--green)}
     .btn-outline:hover{background:var(--green-dim)}
-    .cta-section{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:20px;margin:24px 0;text-align:center}
-    .cta-section p{color:var(--txt2);margin-bottom:16px}
-    .faq-item{border-bottom:1px solid var(--border);padding:0}
-    .faq-question{width:100%;background:none;border:none;color:var(--txt);font-size:14px;font-weight:500;text-align:left;padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:44px;font-family:var(--fb)}
-    .faq-question:hover{color:var(--green)}
-    .faq-question .icon{font-size:18px;transition:transform .3s;color:var(--txt3)}
-    .faq-question.active .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease, padding .3s ease;padding:0}
-    .faq-answer.open{max-height:300px;padding:0 0 14px}
-    .faq-answer p{color:var(--txt2);font-size:13px;margin:0}
-    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:16px 0}
-    .disclaimer-box p{color:var(--txt);font-size:13px;margin-bottom:8px}
-    .disclaimer-box p:last-child{margin-bottom:0}
+    .cta-wrap{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+    /* faq */
+    .faq-item{border-bottom:1px solid var(--border);padding:4px 0}
+    .faq-question{background:none;border:none;width:100%;text-align:left;padding:14px 0;font-family:var(--fb);font-size:.95rem;font-weight:500;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px}
+    .faq-question::after{content:"+";font-size:1.2rem;color:var(--txt3);transition:transform .2s;flex-shrink:0}
+    .faq-item.active .faq-question::after{content:"−"}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 0}
+    .faq-item.active .faq-answer{max-height:300px;padding:0 0 14px 0}
+    .faq-answer p{font-size:.85rem;color:var(--txt2);margin:0}
+    /* disclaimer */
+    .disclaimer-box{background:var(--yellow-dim);border:1px solid var(--yellow-border);border-radius:12px;padding:20px;margin:24px 0;font-size:.85rem;color:var(--txt2)}
     .disclaimer-box strong{color:var(--yellow)}
-    .meta-info{font-size:12px;color:var(--txt3);margin:8px 0 16px;font-family:var(--fm)}
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center}
-    footer p{font-size:12px;color:var(--txt3);margin-bottom:4px}
-    footer a{color:var(--txt2)}
-    .code-inline{font-family:var(--fm);color:var(--green);background:var(--green-dim);padding:2px 6px;border-radius:4px;font-size:13px}
-    @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr 1fr}
-      h1{font-size:20px}
-      h2{font-size:16px}
-    }
+    .disclaimer-box p{margin-bottom:8px}
+    .disclaimer-box p:last-child{margin-bottom:0}
+    /* footer */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 0;margin-top:40px;text-align:center;font-size:.8rem;color:var(--txt3)}
+    footer p{margin-bottom:4px}
+    /* highlight */
+    .highlight{background:var(--green-dim);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.9rem}
+    .highlight p{margin:0;color:var(--txt2)}
+    .hypothetical{background:var(--red-dim);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.85rem}
+    .hypothetical p{margin:0;color:var(--txt2)}
+    .hypothetical strong{color:var(--red)}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"FII Rec Rece (RECR11): Preço Teto e Rendimentos pelo Método Bazin",
+    "description":"Saiba como calcular o preço teto de RECR11 (FII Rec Rece) pelo Método Bazin. Análise educativa de rendimentos mensais e dados do fundo imobiliário. Acesse da...",
+    "datePublished":"2026-05-24",
+    "dateModified":"2026-05-24",
+    "author":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "publisher":{"@type":"Organization","name":"Elite Ações","url":"https://eliteacoes.com"},
+    "mainEntityOfPage":"https://eliteacoes.com/paginas/fiis/recr11"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Início","item":"https://eliteacoes.com/"},
+      {"@type":"ListItem","position":2,"name":"Empresas","item":"https://eliteacoes.com/empresas"},
+      {"@type":"ListItem","position":3,"name":"FIIs","item":"https://eliteacoes.com/paginas/fiis"},
+      {"@type":"ListItem","position":4,"name":"RECR11"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Qual o preço teto de RECR11 pelo Método Bazin?","acceptedAnswer":{"@type":"Answer","text":"O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de juros desejada (10% ao ano, conforme a metodologia). Exemplo hipotético: se os dividendos anuais fossem R$ 8,00 por cota, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados."}},
+      {"@type":"Question","name":"RECR11 paga dividendos mensais?","acceptedAnswer":{"@type":"Answer","text":"Sim, o FII Rec Rece distribui rendimentos mensalmente, conforme sua política de distribuição. Os valores variam de acordo com o resultado do fundo. Pessoas físicas são isentas de IR sobre os rendimentos, dentro dos limites legais."}},
+      {"@type":"Question","name":"Como analisar RECR11 fundamentalmente?","acceptedAnswer":{"@type":"Answer","text":"A análise fundamentalista de RECR11 envolve avaliar o patrimônio líquido, a qualidade da carteira de recebíveis, a taxa de vacância (se aplicável) e o histórico de distribuição de rendimentos. O Método Bazin é uma ferramenta complementar."}},
+      {"@type":"Question","name":"O que é o FII Rec Rece (RECR11)?","acceptedAnswer":{"@type":"Answer","text":"RECR11 é um fundo de investimento imobiliário do setor de papéis, focado em recebíveis imobiliários. Sua gestora busca gerar rendimentos recorrentes para os cotistas por meio de operações lastreadas em crédito imobiliário."}},
+      {"@type":"Question","name":"RECR11 é um bom investimento para renda passiva?","acceptedAnswer":{"@type":"Answer","text":"Esta página não faz recomendações. O Método Bazin pode ajudar a estimar um preço teto com base nos dividendos históricos, mas cada investidor deve avaliar seu perfil e objetivos. Consulte um profissional habilitado pela CVM."}},
+      {"@type":"Question","name":"Onde encontrar dados atualizados de RECR11?","acceptedAnswer":{"@type":"Answer","text":"Os dados mais recentes de RECR11, incluindo cotações, dividendos e preço teto calculado, estão disponíveis no app Elite Ações. A plataforma oferece ferramentas educativas para apoiar sua análise."}}
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Elite <span>Ações</span></a>
-      <a href="/" class="nav-link">Início</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/empresas">Empresas</a></li>
+          <li><a href="/paginas/fiis">FIIs</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
+
   <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Início</a>
-      <span>/</span>
-      <a href="/paginas/fiis">FIIs</a>
-      <span>/</span>
-      <span>RECR11</span>
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="/">Início</a></li>
+        <li><a href="/empresas">Empresas</a></li>
+        <li><a href="/paginas/fiis">FIIs</a></li>
+        <li class="active">RECR11</li>
+      </ol>
     </nav>
+
     <h1>FII Rec Rece (RECR11): Preço Teto e Rendimentos pelo Método Bazin</h1>
-    <p class="meta-info">Última atualização: maio de 2026</p>
+    <span class="update">Última atualização: maio de 2026</span>
 
-    <section>
-      <h2>Sobre FII Rec Rece (RECR11)</h2>
-      <p>O FII Rec Rece (RECR11) é um fundo imobiliário do segmento de Papéis, gerido por gestora especializada em ativos de renda fixa imobiliária. O fundo investe predominantemente em Certificados de Recebíveis Imobiliários (CRIs) e Letras de Crédito Imobiliário (LCIs), buscando gerar rendimentos mensais aos cotistas por meio da distribuição de resultados.</p>
-      <p>Com foco em operações de crédito lastreadas em imóveis, o RECR11 oferece exposição ao mercado imobiliário sem a necessidade de aquisição direta de propriedades. Sua política de distribuição visa pagar rendimentos de forma recorrente, sujeita à performance da carteira e às condições econômicas.</p>
-      <div class="card-grid">
-        <div class="card"><div class="label">Ticker</div><div class="value">RECR11</div></div>
-        <div class="card"><div class="label">Setor</div><div class="value">Papéis</div></div>
-        <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
-        <div class="card"><div class="label">Tipo</div><div class="value">Renda Fixa Imobiliária</div></div>
-      </div>
-    </section>
+    <!-- H2-1 -->
+    <h2>Sobre FII Rec Rece (RECR11)</h2>
+    <p>O FII Rec Rece (RECR11) é um fundo de investimento imobiliário do segmento de papéis, focado em recebíveis imobiliários. Sua estratégia envolve a aquisição de ativos de crédito lastreados em imóveis, buscando gerar rendimentos recorrentes para os cotistas por meio da distribuição de resultados mensais.</p>
+    <p>O fundo é gerido por uma administradora experiente e tem como objetivo proporcionar exposição ao mercado de crédito imobiliário com diversificação. Suas cotas são negociadas na B3 sob o ticker RECR11, sendo uma alternativa para investidores que buscam renda passiva com lastro em ativos reais.</p>
+    <div class="card-grid">
+      <div class="card"><div class="label">Ticker</div><div class="value">RECR11</div></div>
+      <div class="card"><div class="label">Setor</div><div class="value">Papéis</div></div>
+      <div class="card"><div class="label">Tipo de Fundo</div><div class="value">FII</div></div>
+      <div class="card"><div class="label">Tipo</div><div class="value">Recebíveis</div></div>
+    </div>
 
-    <section>
-      <h2>Dados Cadastrais de RECR11</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Campo</th><th>Informação</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Setor</td><td>Papéis</td></tr>
-            <tr><td>Segmento</td><td>CRI / LCI</td></tr>
-            <tr><td>Tipo de Cota</td><td>Fechado</td></tr>
-            <tr><td>Gestora</td><td>Rec Rece Gestora de Recursos Ltda.</td></tr>
-            <tr><td>CNPJ</td><td>35.123.456/0001-78 (exemplo fictício)</td></tr>
-            <tr><td>Data de Registro CVM</td><td>2020</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:12px;color:var(--txt3)">Dados públicos baseados em informações da B3 e CVM. Consulte o app Elite Ações para dados atualizados.</p>
-    </section>
+    <!-- H2-2 -->
+    <h2>Dados Cadastrais de RECR11</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Campo</th><th>Informação</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nome do Fundo</td><td>FII Rec Rece</td></tr>
+        <tr><td>Código B3</td><td>RECR11</td></tr>
+        <tr><td>Setor</td><td>Papéis</td></tr>
+        <tr><td>Segmento</td><td>Recebíveis Imobiliários</td></tr>
+        <tr><td>Tipo de Cota</td><td>Ordinária</td></tr>
+        <tr><td>Gestora</td><td>Consultar site da B3 ou CVM</td></tr>
+        <tr><td>CNPJ</td><td>Consultar CVM</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Dados públicos disponíveis na B3 e CVM. Consulte fontes oficiais para informações atualizadas.</p>
 
-    <section>
-      <h2>Como Calcular o Preço Teto de RECR11 pelo Método Bazin</h2>
-      <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma ferramenta educativa que ajuda investidores a estimar um preço teto para ativos que pagam dividendos. A lógica é simples: define-se uma taxa de retorno desejada (geralmente 10% ao ano) e divide-se os dividendos anuais por essa taxa.</p>
-      <p><strong>Fórmula:</strong> <span class="code-inline">Preço Teto = Dividendos dos últimos 12 meses ÷ 0,10</span></p>
-      <div class="highlight-box">
-        <strong>Exemplo hipotético para ilustração — valores fictícios:</strong><br>
-        Suponha que RECR11 distribuiu R$ 1,20 por cota nos últimos 12 meses. Aplicando a fórmula: R$ 1,20 ÷ 0,10 = <strong>R$ 12,00</strong>. Esse valor é o preço teto estimado pelo método. Lembre-se: é apenas uma referência educativa, não uma recomendação de compra.
-      </div>
-      <p>O método não considera fatores como vacância, inadimplência ou cenário macroeconômico. Use-o como parte de uma análise mais ampla.</p>
-    </section>
+    <!-- H2-3 -->
+    <h2>Como Calcular o Preço Teto de RECR11 pelo Método Bazin</h2>
+    <p>O Método Bazin, criado pelo investidor Décio Bazin, é uma abordagem educativa para estimar um preço teto de ativos que distribuem dividendos. A premissa é que o investidor define uma taxa de juros desejada (neste caso, 10% ao ano) e calcula o valor máximo a pagar por cota com base nos dividendos históricos.</p>
+    <p><strong>Fórmula:</strong> Preço Teto = Dividendos dos últimos 12 meses ÷ Taxa de Juros Desejada (10%)</p>
+    <div class="hypothetical">
+      <p><strong>Exemplo hipotético para ilustração — valores fictícios:</strong></p>
+      <p>Suponha que RECR11 tenha distribuído R$ 8,00 por cota nos últimos 12 meses. Aplicando a fórmula: Preço Teto = R$ 8,00 ÷ 0,10 = R$ 80,00. Isso significa que, segundo o método, o investidor pagaria até R$ 80,00 por cota para obter um rendimento de 10% ao ano. Este é apenas um exemplo educacional; os valores reais variam.</p>
+    </div>
+    <p>O método não considera outros fatores como valor patrimonial ou perspectivas futuras. É uma ferramenta entre várias disponíveis para análise.</p>
 
-    <section>
-      <h2>Rendimentos Mensais do RECR11</h2>
-      <p>O RECR11 distribui rendimentos mensalmente, geralmente com base no resultado do mês anterior. A política do fundo prevê o pagamento de pelo menos 95% do lucro líquido apurado, conforme regulamento. Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, dentro dos limites legais.</p>
-      <p>Historicamente, o fundo tem mantido uma frequência de distribuição consistente, mas os valores variam conforme a performance da carteira de créditos. Não há garantia de manutenção dos valores passados. Consulte o app Elite Ações para o histórico completo de rendimentos.</p>
-    </section>
+    <!-- H2-4 -->
+    <h2>Rendimentos Mensais do RECR11</h2>
+    <p>O FII Rec Rece possui uma política de distribuição de rendimentos baseada nos resultados auferidos a cada mês. Os valores distribuídos aos cotistas podem variar conforme a performance da carteira de recebíveis e as condições do mercado de crédito.</p>
+    <p>Para pessoas físicas, os rendimentos de FIIs são isentos de Imposto de Renda, dentro dos limites estabelecidos pela legislação brasileira. Historicamente, o fundo tem mantido uma frequência mensal de distribuições, mas não há garantia de valores futuros.</p>
+    <div class="highlight">
+      <p>Os dados de dividendos dos últimos 12 meses podem ser consultados no app Elite Ações, que reúne informações educativas para apoiar sua análise.</p>
+    </div>
 
-    <section>
-      <h2>Como Acessar os Dados Atualizados de RECR11</h2>
-      <div class="cta-section">
-        <p>Obtenha dados em tempo real de RECR11, incluindo dividendos, preço teto e análise fundamentalista, diretamente no app Elite Ações. A ferramenta educativa permite calcular o preço teto pelo Método Bazin com dados da B3.</p>
-        <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
-      </div>
-      <p>No app, você encontra: histórico de rendimentos, dados cadastrais atualizados, calculadora de preço teto e comparativo com outros FIIs. Tudo em uma interface intuitiva e gratuita.</p>
-    </section>
+    <!-- H2-5 -->
+    <h2>Como Acessar os Dados Atualizados de RECR11</h2>
+    <p>Para acompanhar cotações, dividendos históricos e o preço teto calculado pelo Método Bazin, o investidor pode utilizar o aplicativo Elite Ações. A plataforma oferece ferramentas educativas que facilitam a análise fundamentalista de FIIs como RECR11.</p>
+    <p>No app, você encontra gráficos de rendimentos, comparativos e calculadoras interativas — tudo com foco em educação financeira, sem recomendações de investimento.</p>
+    <div class="cta-wrap">
+      <a href="/" class="btn btn-primary">Acessar Elite Ações</a>
+      <a href="/paginas/fiis" class="btn btn-outline">Ver outros FIIs</a>
+    </div>
 
-    <section>
-      <h2>Perguntas Frequentes sobre RECR11</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Qual o preço teto de RECR11 pelo Método Bazin? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses por 10%. Exemplo hipotético: se RECR11 distribuiu R$ 1,20 por cota nos últimos 12 meses, o preço teto seria R$ 12,00. Consulte o app Elite Ações para dados atualizados.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">RECR11 paga dividendos mensais? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>Sim, RECR11 distribui rendimentos mensalmente, conforme política do fundo. Os valores variam e não são garantidos. Acompanhe no app Elite Ações.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Como funciona o Método Bazin para RECR11? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>O Método Bazin calcula o preço teto dividindo os dividendos anuais por uma taxa de retorno desejada (geralmente 10%). É uma ferramenta educativa, não uma recomendação.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">RECR11 é um FII de papel? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>Sim, RECR11 é classificado como FII de Papéis, investindo em títulos de renda fixa imobiliários, como CRIs e LCIs.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Onde encontrar dados atualizados de RECR11? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>Os dados atualizados de RECR11, incluindo dividendos e preço teto, estão disponíveis no app Elite Ações, com informações da B3 e CVM.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">RECR11 tem isenção de IR para pessoa física? <span class="icon">+</span></button>
-          <div class="faq-answer"><p>Sim, os rendimentos de FIIs como RECR11 são isentos de Imposto de Renda para pessoas físicas, desde que respeitados os limites legais. Consulte seu contador.</p></div>
+    <!-- H2-6 -->
+    <h2>Perguntas Frequentes sobre RECR11</h2>
+    <div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">Qual o preço teto de RECR11 pelo Método Bazin?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>O preço teto é calculado dividindo os dividendos dos últimos 12 meses pela taxa de juros desejada (10% ao ano, conforme a metodologia). Exemplo hipotético: se os dividendos anuais fossem R$ 8,00 por cota, o preço teto seria R$ 80,00. Consulte o app Elite Ações para dados atualizados.</p></div>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h2>Aviso Legal e Disclaimer</h2>
-      <div class="disclaimer-box">
-        <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
-        <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
-        <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">RECR11 paga dividendos mensais?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>Sim, o FII Rec Rece distribui rendimentos mensalmente, conforme sua política de distribuição. Os valores variam de acordo com o resultado do fundo. Pessoas físicas são isentas de IR sobre os rendimentos, dentro dos limites legais.</p></div>
+        </div>
       </div>
-    </section>
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">Como analisar RECR11 fundamentalmente?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>A análise fundamentalista de RECR11 envolve avaliar o patrimônio líquido, a qualidade da carteira de recebíveis, a taxa de vacância (se aplicável) e o histórico de distribuição de rendimentos. O Método Bazin é uma ferramenta complementar.</p></div>
+        </div>
+      </div>
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">O que é o FII Rec Rece (RECR11)?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>RECR11 é um fundo de investimento imobiliário do setor de papéis, focado em recebíveis imobiliários. Sua gestora busca gerar rendimentos recorrentes para os cotistas por meio de operações lastreadas em crédito imobiliário.</p></div>
+        </div>
+      </div>
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">RECR11 é um bom investimento para renda passiva?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>Esta página não faz recomendações. O Método Bazin pode ajudar a estimar um preço teto com base nos dividendos históricos, mas cada investidor deve avaliar seu perfil e objetivos. Consulte um profissional habilitado pela CVM.</p></div>
+        </div>
+      </div>
+      <div class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" itemprop="name">Onde encontrar dados atualizados de RECR11?</button>
+        <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>Os dados mais recentes de RECR11, incluindo cotações, dividendos e preço teto calculado, estão disponíveis no app Elite Ações. A plataforma oferece ferramentas educativas para apoiar sua análise.</p></div>
+        </div>
+      </div>
+    </div>
 
-    <div style="text-align:center;margin:24px 0">
-      <a href="/" class="btn btn-outline">Voltar ao Início</a>
+    <!-- H2-7 -->
+    <h2>Aviso Legal e Disclaimer</h2>
+    <div class="disclaimer-box">
+      <p><strong>⛔ Esta página tem caráter exclusivamente informativo e educacional.</strong></p>
+      <p>Não constitui recomendação de compra ou venda de ativos financeiros. Os dados apresentados são de natureza histórica e não garantem rentabilidade futura. O Método Bazin é uma metodologia entre várias existentes e não representa consenso do mercado financeiro. Consulte um profissional de investimentos habilitado pela CVM (Comissão de Valores Mobiliários) antes de tomar qualquer decisão de investimento.</p>
+      <p>Nos termos da Instrução CVM nº 592/2017, esta plataforma não exerce atividade de consultoria de valores mobiliários.</p>
+    </div>
+
+    <div class="cta-wrap">
+      <a href="/" class="btn btn-primary">Baixar Elite Ações</a>
     </div>
   </main>
+
   <footer>
     <div class="container">
-      <p>© 2026 Elite Ações. Todos os direitos reservados.</p>
-      <p>Esta página não constitui recomendação de investimento. Consulte um profissional habilitado.</p>
-      <p><a href="/">Início</a> | <a href="/paginas/fiis">FIIs</a></p>
+      <p>© 2026 Elite Ações — Todos os direitos reservados.</p>
+      <p>Esta página não constitui recomendação de investimento. Consulte a CVM.</p>
+      <p class="small">Dados educativos. Sem garantia de precisão em tempo real.</p>
     </div>
   </footer>
+
   <script>
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        document.querySelectorAll('.faq-answer.open').forEach(el => {
-          el.classList.remove('open');
-          el.previousElementSibling.classList.remove('active');
-          el.previousElementSibling.setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          answer.classList.add('open');
-          this.classList.add('active');
-          this.setAttribute('aria-expanded', 'true');
-        }
+        const item = this.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
       });
     });
   </script>
