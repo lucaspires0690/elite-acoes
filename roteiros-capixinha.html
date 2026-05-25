@@ -674,7 +674,9 @@ SUBSTITUIÇÕES OBRIGATÓRIAS: ${mencoes}
 TÍTULOS DE ESTRUTURA (use a estrutura, não o conteúdo): ${estruturas}
 ${referencia?`TÍTULO VIRAL DE REFERÊNCIA (extraia elementos virais): "${referencia}"`:''}
 ${identidades.length?`TÍTULOS JÁ APROVADOS (mantenha consistência): ${identidades.join(', ')}`:''}
-Gere EXATAMENTE ${qtd} títulos sobre preço teto/dividendos/Método Bazin da B3. Substitua TODOS: macaco→capivara, banana→coxinha etc. NUNCA recomendar compra ou venda.
+Gere EXATAMENTE ${qtd} títulos para o canal Capixinha Invest.
+REGRA ABSOLUTA DE MICRONICHO: TODOS os títulos devem conter obrigatoriamente "preço teto" OU "dividendo(s)" ou variações como "renda passiva", "yield", "proventos". Sem exceção. Se um título não tiver nenhum desses termos, reescreva até ter.
+Substitua TODOS: macaco→capivara, banana→coxinha etc. NUNCA recomendar compra ou venda.
 Retorne APENAS os títulos, um por linha, sem numeração.`;
   try {
     const res = await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:prompt}],max_tokens:1000,temperature:0.85})});
