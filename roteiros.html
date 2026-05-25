@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FalaTexto — Shorts Engine</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#06070d; --bg2:#0c0f1e; --bg3:#111828;
+      --card:#111828; --card2:#1a2238;
+      --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.12);
+      --lime:#c8ff00; --lime2:#d4ff33; --lime-dim:rgba(200,255,0,0.08);
+      --teal:#00d4a8; --text:#fff;
+      --text2:rgba(255,255,255,0.75); --text3:rgba(255,255,255,0.45);
+      --red:#ff4757; --red-dim:rgba(255,71,87,0.10);
+      --gold:#ffd32a; --gold-dim:rgba(255,211,42,0.10);
+      --radius:14px; --radius2:10px; --sidebar:240px;
+      --font-h:'Bricolage Grotesque',sans-serif;
+      --font-b:'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-b);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#2a3654;border-radius:999px}
+
+    /* ── LAYOUT ── */
+    .app{display:flex;min-height:100vh}
+
+    /* ── SIDEBAR ── */
+    .sidebar{width:var(--sidebar);flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:24px 14px;position:fixed;top:0;left:0;bottom:0;z-index:100;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+    .sidebar-logo{font-family:var(--font-h);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.04em;display:flex;align-items:center;gap:8px;padding:0 6px;margin-bottom:4px;text-decoration:none}
+    .sidebar-sub{font-size:11px;color:var(--text3);padding:0 6px;margin-bottom:28px;font-weight:500}
+    .nav{display:flex;flex-direction:column;gap:2px;flex:1}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--radius2);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:var(--font-b);transition:all .15s}
+    .nav-item:hover{color:var(--text2);background:var(--border)}
+    .nav-item.active{color:var(--lime);background:var(--lime-dim)}
+    .nav-item svg{width:16px;height:16px;flex-shrink:0}
+    .nav-sep{height:1px;background:var(--border);margin:8px 0}
+    .sidebar-footer{border-top:1px solid var(--border);padding-top:14px}
+    .sidebar-footer-lbl{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:0 6px;margin-bottom:6px}
+    .backend-status{display:flex;align-items:center;gap:8px;padding:0 6px}
+    .backend-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+    .backend-txt{font-size:12px;color:var(--text3)}
+
+    /* ── MAIN ── */
+    .main{margin-left:var(--sidebar);flex:1;padding:32px;min-height:100vh}
+
+    /* ── VIEWS ── */
+    .view{display:none}.view.active{display:block}
+
+    /* ── PAGE HEADER ── */
+    .ph{margin-bottom:28px}
+    .ph-title{font-family:var(--font-h);font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:4px}
+    .ph-sub{font-size:13px;color:var(--text3)}
+
+    /* ── GRIDS ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    /* ── CARD ── */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .card-title{font-family:var(--font-h);font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+    .card-title svg{width:15px;height:15px;color:var(--lime);flex-shrink:0}
+
+    /* ── STAT ── */
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px}
+    .stat-lbl{font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+    .stat-val{font-family:var(--font-h);font-size:32px;font-weight:800;color:var(--lime);line-height:1}
+    .stat-sub{font-size:12px;color:var(--text3);margin-top:4px}
+
+    /* ── FIELDS ── */
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+    .field:last-child{margin-bottom:0}
+    .lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+    input[type="text"],input[type="number"],input[type="file"],select,textarea{font-family:var(--font-b);font-size:13px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);color:var(--text);padding:10px 12px;width:100%;transition:border-color .15s,box-shadow .15s}
+    input[type="file"]{cursor:pointer}
+    input[type="file"]::file-selector-button{background:var(--card2);color:var(--text2);border:1px solid var(--border2);border-radius:7px;padding:5px 10px;margin-right:10px;font-family:var(--font-b);font-size:12px;cursor:pointer;transition:.2s}
+    input[type="file"]::file-selector-button:hover{background:var(--border2)}
+    textarea{resize:vertical;line-height:1.6}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 1px rgba(200,255,0,.3)}
+    select option{background:var(--bg3)}
+
+    /* ── BUTTONS ── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:var(--radius2);font-family:var(--font-b);font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;white-space:nowrap}
+    .btn-lime{background:var(--lime);color:var(--bg)}
+    .btn-lime:hover:not(:disabled){background:var(--lime2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,255,0,.25)}
+    .btn-ghost{background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
+    .btn-ghost:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
+    .btn-danger{background:var(--red-dim);color:var(--red);border:1px solid var(--red)}
+    .btn-danger:hover:not(:disabled){background:var(--red);color:#fff}
+    .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+    .btn-full{width:100%}
+    .btn-sm{padding:7px 14px;font-size:12px}
+
+    /* ── BADGES ── */
+    .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+    .badge-lime{background:var(--lime-dim);color:var(--lime)}
+    .badge-gold{background:var(--gold-dim);color:var(--gold)}
+    .badge-gray{background:var(--border);color:var(--text3)}
+    .badge-teal{background:rgba(0,212,168,.1);color:var(--teal)}
+
+    /* ── NICHO PILLS ── */
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .pill{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border2);color:var(--text3);cursor:pointer;transition:all .15s;background:var(--bg3)}
+    .pill:hover{border-color:var(--lime);color:var(--lime)}
+    .pill.sel{border-color:var(--lime);color:var(--bg);background:var(--lime)}
+    .pill.all{border-color:var(--teal);color:var(--teal)}
+    .pill.all.sel{background:var(--teal);color:var(--bg)}
+
+    /* ── PROGRESS ── */
+    .prog-wrap{margin:14px 0}
+    .prog-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+    .prog-lbl{color:var(--text2);font-weight:600}
+    .prog-pct{font-family:var(--font-h);font-weight:800;color:var(--lime)}
+    .prog-bar{height:6px;background:var(--bg3);border-radius:20px;overflow:hidden}
+    .prog-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--teal));border-radius:20px;width:0%;transition:width .3s ease}
+
+    /* ── LOG ── */
+    .log-lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .log-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 14px;height:180px;overflow-y:auto;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;color:var(--text3)}
+    .log-box .li{color:#38bdf8}.log-box .ls{color:var(--lime)}.log-box .lw{color:var(--gold)}.log-box .le{color:var(--red)}
+
+    /* ── PREVIEW ── */
+    .preview-area{width:100%;min-height:360px;max-height:500px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius2);color:var(--text2);font-family:var(--font-b);font-size:13px;line-height:1.7;padding:16px;resize:none;white-space:pre-wrap}
+    .preview-area:focus{outline:none;border-color:rgba(200,255,0,.3)}
+    .preview-area::placeholder{color:var(--text3)}
+
+    /* ── TÍTULO ITEM ── */
+    .titulo-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 16px;transition:border-color .15s;margin-bottom:8px}
+    .titulo-item:hover{border-color:var(--border2)}
+    .titulo-nicho{font-size:10px;font-weight:700;color:var(--teal);background:rgba(0,212,168,.08);border:1px solid rgba(0,212,168,.2);border-radius:20px;padding:3px 8px;white-space:nowrap;flex-shrink:0}
+    .titulo-txt{flex:1;font-size:13px;color:var(--text2)}
+
+    /* ── NICHO EDITOR ── */
+    .nicho-ed-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+    .nicho-ed-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .nicho-ed-name{font-family:var(--font-h);font-size:14px;font-weight:800;color:var(--lime)}
+
+    /* ── EMPTY ── */
+    .empty{text-align:center;padding:60px 32px;color:var(--text3)}
+    .empty svg{width:44px;height:44px;margin:0 auto 14px;opacity:.25;display:block}
+    .empty p{font-size:14px}
+
+    /* ── TABS ── */
+    .tabs{display:flex;gap:4px;background:var(--bg3);border-radius:var(--radius2);padding:4px;margin-bottom:20px}
+    .tab-btn{flex:1;padding:8px;border-radius:8px;font-size:12px;font-weight:700;color:var(--text3);background:none;border:none;cursor:pointer;font-family:var(--font-b);transition:all .15s}
+    .tab-btn.active{background:var(--card2);color:var(--text)}
+
+    /* ── NOTIF ── */
+    .notif{position:fixed;top:24px;right:24px;padding:13px 18px;border-radius:var(--radius2);font-family:var(--font-b);font-size:13px;font-weight:600;z-index:999;transform:translateX(130%);transition:transform .3s;max-width:300px;pointer-events:none}
+    .notif.show{transform:translateX(0)}
+    .notif.ok{background:var(--lime);color:var(--bg)}
+    .notif.err{background:var(--red);color:#fff}
+    .notif.inf{background:var(--teal);color:var(--bg)}
+
+    /* ── MODAL ── */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:32px;max-width:460px;width:100%;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+    .modal-title{font-family:var(--font-h);font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-0.02em}
+    .modal-sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.6}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end}
+
+    /* ── HAMBURGER ── */
+    .hamburger{display:none;position:fixed;top:14px;left:14px;z-index:201;width:38px;height:38px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:4px;padding:9px}
+    .hamburger span{display:block;width:16px;height:2px;background:var(--text2);border-radius:2px;transition:all .25s}
+    .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99}
+    .sidebar-overlay.show{display:block}
+
+    @media(max-width:900px){
+      .hamburger{display:flex}
+      .sidebar{transform:translateX(-100%)}
+      .sidebar.open{transform:translateX(0)}
+      .main{margin-left:0;padding:70px 16px 32px}
+      .g2,.g3{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .ph-title{font-size:20px}
+      .stat-val{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+<button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="app">
+
+  <!-- ── SIDEBAR ── -->
+  <nav class="sidebar" id="sidebar">
+    <a class="sidebar-logo" href="#">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="7" fill="#c8ff00"/>
+        <rect x="7" y="9" width="10" height="2.5" rx="1.2" fill="#06070d"/>
+        <rect x="7" y="14" width="18" height="2.5" rx="1.2" fill="#06070d"/>
+        <rect x="7" y="19" width="13" height="2.5" rx="1.2" fill="#06070d"/>
+      </svg>
+      FalaTexto
+    </a>
+    <div class="sidebar-sub">Shorts Engine</div>
+
+    <div class="nav">
+      <button class="nav-item active" onclick="goTo('dashboard')" id="nav-dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item" onclick="goTo('titulos')" id="nav-titulos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Títulos
+      </button>
+      <button class="nav-item" onclick="goTo('roteiros')" id="nav-roteiros">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Roteiros
+      </button>
+      <div class="nav-sep"></div>
+      <button class="nav-item" onclick="goTo('nichos')" id="nav-nichos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        Editor de Nichos
+      </button>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-lbl">Backend</div>
+      <div class="backend-status">
+        <div class="backend-dot" id="bdot"></div>
+        <span class="backend-txt" id="btxt">Não configurado</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ══════════ DASHBOARD ══════════ -->
+    <div class="view active" id="view-dashboard">
+      <div class="ph">
+        <div class="ph-title">Dashboard</div>
+        <div class="ph-sub">Visão geral da sua Shorts Engine</div>
+      </div>
+
+      <div class="g3" style="margin-bottom:20px">
+        <div class="stat-card">
+          <div class="stat-lbl">Total de Títulos</div>
+          <div class="stat-val" id="stat-total">—</div>
+          <div class="stat-sub">salvos no banco</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">Roteiros Gerados</div>
+          <div class="stat-val" id="stat-roteiros">—</div>
+          <div class="stat-sub">títulos com roteiro</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">Pendentes</div>
+          <div class="stat-val" id="stat-pendentes" style="color:var(--gold)">—</div>
+          <div class="stat-sub">aguardando roteiro</div>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Ações Rápidas
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <button class="btn btn-lime btn-full" onclick="goTo('titulos')">🎯 Gerar Novos Títulos</button>
+            <button class="btn btn-ghost btn-full" onclick="goTo('roteiros')">🎬 Gerar Roteiros Pendentes</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Nichos Ativos
+          </div>
+          <div id="dash-nichos" style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="font-size:12px;color:var(--text3)">Carregando do banco...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ TÍTULOS ══════════ -->
+    <div class="view" id="view-titulos">
+      <div class="ph">
+        <div class="ph-title">Títulos</div>
+        <div class="ph-sub">Gere e gerencie títulos por nicho</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-gerar" onclick="switchTab('gerar')">🎯 Gerar Títulos</button>
+        <button class="tab-btn" id="tab-historico" onclick="switchTab('historico')">📋 Histórico</button>
+      </div>
+
+      <!-- TAB GERAR -->
+      <div id="pane-gerar">
+        <div class="g2" style="margin-bottom:16px">
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>
+              Configurar Geração
+            </div>
+            <div class="field">
+              <div class="lbl">Nicho</div>
+              <div class="pills" id="pills-titulos">
+                <span style="font-size:12px;color:var(--text3)">Carregando nichos...</span>
+              </div>
+            </div>
+            <div class="field">
+              <div class="lbl">Quantidade de Títulos</div>
+              <input type="number" id="qtd-titulos" value="10" min="1" max="50">
+            </div>
+            <button class="btn btn-lime btn-full" id="btn-gerar-titulos" onclick="gerarTitulos()" style="margin-top:6px">
+              🚀 Gerar Títulos
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Títulos Gerados
+            </div>
+            <div id="titulos-preview" style="display:flex;flex-direction:column;gap:6px;max-height:260px;overflow-y:auto">
+              <div style="font-size:12px;color:var(--text3);text-align:center;padding:40px 0">Aguardando geração...</div>
+            </div>
+            <div id="titulos-actions" style="display:none;margin-top:14px;flex-direction:column;gap:8px">
+              <button class="btn btn-lime btn-full" onclick="salvarTitulos()">💾 Salvar no Banco</button>
+              <button class="btn btn-ghost btn-full" onclick="abrirModalRoteiro()">🎬 Criar Roteiros para Estes Títulos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="prog-wrap" id="prog-titulos" style="display:none">
+            <div class="prog-row">
+              <span class="prog-lbl" id="prog-titulos-lbl">Gerando...</span>
+              <span class="prog-pct" id="prog-titulos-pct">0%</span>
+            </div>
+            <div class="prog-bar"><div class="prog-fill" id="prog-titulos-fill"></div></div>
+          </div>
+          <div class="log-lbl">📡 Log</div>
+          <div class="log-box" id="log-titulos"><div class="li">[sistema] Pronto.</div></div>
+        </div>
+      </div>
+
+      <!-- TAB HISTÓRICO -->
+      <div id="pane-historico" style="display:none">
+        <div class="card" style="margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <select id="hist-nicho" onchange="filtrarHistorico()" style="flex:1;min-width:180px">
+              <option value="">Todos os nichos</option>
+            </select>
+            <select id="hist-status" onchange="filtrarHistorico()" style="width:160px">
+              <option value="">Todos os status</option>
+              <option value="pendente">⏳ Pendentes</option>
+              <option value="roteiro">✓ Com Roteiro</option>
+            </select>
+            <button class="btn btn-ghost btn-sm" onclick="carregarHistorico()">🔄 Atualizar</button>
+          </div>
+        </div>
+        <div id="historico-list">
+          <div class="empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <p>Nenhum título salvo ainda</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ROTEIROS ══════════ -->
+    <div class="view" id="view-roteiros">
+      <div class="ph">
+        <div class="ph-title">Roteiros</div>
+        <div class="ph-sub">Gere roteiros de Shorts personalizados por nicho</div>
+      </div>
+
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>
+            Configurações
+          </div>
+
+          <div class="field">
+            <div class="lbl">Fonte dos Títulos</div>
+            <select id="rot-fonte" onchange="configurarFonte()">
+              <option value="pendentes">Todos os Títulos Pendentes</option>
+              <option value="nicho">Por Nicho Específico</option>
+              <option value="manual">Inserir Manualmente</option>
+              <option value="arquivo">Subir Arquivo .txt</option>
+            </select>
+          </div>
+
+          <div id="rot-nicho-field" style="display:none" class="field">
+            <div class="lbl">Nicho</div>
+            <select id="rot-nicho-sel"></select>
+          </div>
+
+          <div id="rot-manual-field" style="display:none">
+            <div class="field">
+              <div class="lbl">Títulos (um por linha)</div>
+              <textarea id="rot-manual-txt" rows="5" placeholder="Cole os títulos aqui..."></textarea>
+            </div>
+            <div class="field">
+              <div class="lbl">Nicho destes títulos</div>
+              <select id="rot-manual-nicho"></select>
+            </div>
+          </div>
+
+          <div id="rot-arquivo-field" style="display:none">
+            <div class="field">
+              <div class="lbl">Arquivo de Títulos (.txt — um por linha)</div>
+              <input type="file" id="rot-arquivo-input" accept=".txt" onchange="lerArquivoTitulos()">
+              <span id="rot-arquivo-status" style="font-size:11px;color:var(--text3);margin-top:2px"></span>
+            </div>
+            <div class="field">
+              <div class="lbl">Nicho destes títulos</div>
+              <select id="rot-arquivo-nicho"></select>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="lbl">Tamanho do Roteiro (chars)</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div><div class="lbl" style="margin-bottom:4px">Mínimo</div><input type="number" id="rot-min" value="500" step="100" min="200"></div>
+              <div><div class="lbl" style="margin-bottom:4px">Máximo</div><input type="number" id="rot-max" value="1200" step="100" min="300"></div>
+            </div>
+          </div>
+
+          <button class="btn btn-lime btn-full" id="btn-gerar-rot" onclick="gerarRoteiros()" style="margin-top:6px">
+            🎬 Gerar Roteiros
+          </button>
+        </div>
+
+        <div class="card" style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div class="card-title" style="margin-bottom:0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Preview do Roteiro
+            </div>
+            <span class="badge badge-gray" id="rot-chars">0 chars</span>
+          </div>
+          <textarea class="preview-area" id="rot-preview" placeholder="O roteiro gerado aparecerá aqui..."></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="prog-wrap" id="prog-rot" style="display:none">
+          <div class="prog-row">
+            <span class="prog-lbl" id="prog-rot-lbl">Gerando...</span>
+            <span class="prog-pct" id="prog-rot-pct">0%</span>
+          </div>
+          <div class="prog-bar"><div class="prog-fill" id="prog-rot-fill"></div></div>
+        </div>
+        <div class="log-lbl">📡 Log</div>
+        <div class="log-box" id="log-rot"><div class="li">[sistema] Pronto.</div></div>
+      </div>
+    </div>
+
+    <!-- ══════════ EDITOR DE NICHOS ══════════ -->
+    <div class="view" id="view-nichos">
+      <div class="ph">
+        <div class="ph-title">Editor de Nichos</div>
+        <div class="ph-sub">Edite o conteúdo de cada nicho. Salvo direto no Firestore.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <button class="btn btn-lime btn-sm" onclick="salvarTodosNichos()">💾 Salvar Todos</button>
+        <button class="btn btn-ghost btn-sm" onclick="carregarNichos()">🔄 Recarregar do Banco</button>
+        <span style="font-size:12px;color:var(--text3)" id="nichos-status"></span>
+      </div>
+      <div id="nichos-editor">
+        <div class="empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg>
+          <p>Carregando nichos do banco...</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL: CRIAR ROTEIRO APÓS SALVAR -->
+<div class="modal-bg" id="modal-roteiro">
+  <div class="modal">
+    <div class="modal-title">🎬 Criar Roteiros Agora?</div>
+    <div class="modal-sub">Os títulos foram salvos. Deseja gerar os roteiros para eles agora?</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="fecharModal()">Não, só salvar</button>
+      <button class="btn btn-lime" onclick="irParaRoteiros()">Sim, criar roteiros</button>
+    </div>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script>
+// ================================================================
+// ⚙️ CONFIGURAÇÃO
+// 🔴 Substitua pelo URL real quando o backend estiver pronto.
+// Ex: 'https://us-central1-SEU_PROJETO.cloudfunctions.net'
+// ================================================================
+const API_BASE = "https://falatexto-shorts-api-323968443683.southamerica-east1.run.app";
+
+// ================================================================
+// STATE
+// ================================================================
+const S = {
+  nichos: [],           // [{key, nome, emoji}] — vem do backend
+  titulosSessao: [],    // gerados na sessão atual
+  todosOsTitulos: [],   // carregados do banco
+  nichoSel: null,
+};
+
+// ================================================================
+// NAVEGAÇÃO
+// ================================================================
+function goTo(v) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-' + v).classList.add('active');
+  document.getElementById('nav-' + v).classList.add('active');
+  closeSidebar();
+  if (v === 'dashboard') carregarDashboard();
+  if (v === 'titulos')   carregarPillsNichos();
+  if (v === 'roteiros')  carregarSelectsNicho();
+  if (v === 'nichos')    carregarNichos();
+}
+
+function switchTab(t) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + t).classList.add('active');
+  document.getElementById('pane-gerar').style.display     = t === 'gerar'     ? 'block' : 'none';
+  document.getElementById('pane-historico').style.display = t === 'historico' ? 'block' : 'none';
+  if (t === 'historico') carregarHistorico();
+}
+
+// ================================================================
+// SIDEBAR MOBILE
+// ================================================================
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+}
+
+// ================================================================
+// NOTIFICAÇÃO
+// ================================================================
+let _nt;
+function notif(msg, type = 'inf') {
+  const el = document.getElementById('notif');
+  el.textContent = msg;
+  el.className = `notif ${type} show`;
+  clearTimeout(_nt);
+  _nt = setTimeout(() => el.className = 'notif', 3500);
+}
+
+// ================================================================
+// LOG
+// ================================================================
+function log(boxId, msg, t = 'i') {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  const d = document.createElement('div');
+  d.className = 'l' + t;
+  d.textContent = `[${new Date().toLocaleTimeString('pt-BR')}] ${msg}`;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+// ================================================================
+// PROGRESS
+// ================================================================
+function prog(id, cur, tot, label) {
+  const pct = tot > 0 ? Math.round((cur / tot) * 100) : 0;
+  const fill = document.getElementById('prog-' + id + '-fill');
+  const pctEl = document.getElementById('prog-' + id + '-pct');
+  const lblEl = document.getElementById('prog-' + id + '-lbl');
+  if (fill)  fill.style.width = pct + '%';
+  if (pctEl) pctEl.textContent = pct + '%';
+  if (lblEl) lblEl.textContent = label;
+}
+
+// ================================================================
+// API HELPERS
+// ================================================================
+async function apiGet(endpoint) {
+  if (!API_BASE) throw new Error('Backend não configurado.');
+  const r = await fetch(API_BASE + endpoint);
+  if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.detail || `HTTP ${r.status}`); }
+  return r.json();
+}
+async function apiPost(endpoint, body) {
+  if (!API_BASE) throw new Error('Backend não configurado.');
+  const r = await fetch(API_BASE + endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.detail || `HTTP ${r.status}`); }
+  return r.json();
+}
+async function apiPut(endpoint, body) {
+  if (!API_BASE) throw new Error('Backend não configurado.');
+  const r = await fetch(API_BASE + endpoint, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.detail || `HTTP ${r.status}`); }
+  return r.json();
+}
+
+// ================================================================
+// UTILITÁRIOS
+// ================================================================
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const sanitize = s => s.replace(/[^a-z0-9áéíóúãõâêîôûç]/gi,'_').substring(0,60);
+function randLen(a,b){ a=parseInt(a)||500; b=parseInt(b)||1200; return a>=b?a:Math.floor(Math.random()*(b-a+1))+a; }
+function cleanTxt(t) {
+  return (t||'')
+    .replace(/(\*\*|__)(.*?)\1/g,'$2')
+    .replace(/(\*|_)(.*?)\1/g,'$2')
+    .replace(/\[[^\]]+\]/g,'')
+    .replace(/^#{1,6}\s+/gm,'')
+    .replace(/^\s*(INTRODUÇÃO|CONCLUSÃO|DESENVOLVIMENTO|GANCHO|CTA)[\s\d:]*$/gmi,'')
+    .replace(/\n{3,}/g,'\n\n').trim();
+}
+function downloadTxt(content, filename) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type:'text/plain;charset=utf-8'}));
+  a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+}
+
+// ================================================================
+// DASHBOARD
+// ================================================================
+async function carregarDashboard() {
+  try {
+    if (API_BASE) {
+      const data = await apiGet('/dashboard');
+      document.getElementById('stat-total').textContent     = data.total || '0';
+      document.getElementById('stat-roteiros').textContent  = data.com_roteiro || '0';
+      document.getElementById('stat-pendentes').textContent = data.pendentes || '0';
+    } else {
+      document.getElementById('stat-total').textContent     = S.todosOsTitulos.length || '0';
+      document.getElementById('stat-roteiros').textContent  = S.todosOsTitulos.filter(t=>t.status==='roteiro').length || '0';
+      document.getElementById('stat-pendentes').textContent = S.todosOsTitulos.filter(t=>t.status==='pendente').length || '0';
+    }
+    const dashNichos = document.getElementById('dash-nichos');
+    if (S.nichos.length > 0) {
+      dashNichos.innerHTML = S.nichos.map(n => `<span class="badge badge-lime">${n.emoji} ${n.nome}</span>`).join('');
+    } else {
+      dashNichos.innerHTML = '<span style="font-size:12px;color:var(--text3)">Carregando nichos...</span>';
+    }
+  } catch(e) { notif('Erro ao carregar dashboard.', 'err'); }
+}
+
+// ================================================================
+// NICHOS — PILLS
+// ================================================================
+async function carregarPillsNichos() {
+  if (S.nichos.length === 0 && API_BASE) {
+    try {
+      const data = await apiGet('/nichos');
+      S.nichos = data.nichos || [];
+    } catch(e) { console.error('Erro ao carregar nichos:', e); }
+  }
+  renderPills('pills-titulos', true);
+}
+
+function renderPills(containerId, comTodos) {
+  const c = document.getElementById(containerId);
+  let html = '';
+  if (comTodos) html += `<div class="pill all ${S.nichoSel==='todos'?'sel':''}" onclick="selNicho('todos',this,'${containerId}')">🌐 Todos</div>`;
+  S.nichos.forEach(n => {
+    html += `<div class="pill ${S.nichoSel===n.key?'sel':''}" onclick="selNicho('${n.key}',this,'${containerId}')">${n.emoji} ${n.nome}</div>`;
+  });
+  c.innerHTML = html;
+}
+
+function selNicho(key, el, containerId) {
+  S.nichoSel = key;
+  document.querySelectorAll(`#${containerId} .pill`).forEach(p => p.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ================================================================
+// NICHOS — SELECTS (ROTEIROS)
+// ================================================================
+function carregarSelectsNicho() {
+  ['rot-nicho-sel','rot-manual-nicho','rot-arquivo-nicho'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (!sel) return;
+    sel.innerHTML = S.nichos.length > 0
+      ? S.nichos.map(n => `<option value="${n.key}">${n.emoji} ${n.nome}</option>`).join('')
+      : '<option value="">— conecte o backend —</option>';
+  });
+}
+
+function configurarFonte() {
+  const v = document.getElementById('rot-fonte').value;
+  document.getElementById('rot-nicho-field').style.display   = v==='nicho'   ? 'block' : 'none';
+  document.getElementById('rot-manual-field').style.display  = v==='manual'  ? 'block' : 'none';
+  document.getElementById('rot-arquivo-field').style.display = v==='arquivo' ? 'block' : 'none';
+}
+
+async function lerArquivoTitulos() {
+  const file = document.getElementById('rot-arquivo-input').files[0];
+  if (!file) return;
+  try {
+    const txt = await new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = e => res(e.target.result);
+      r.onerror = rej;
+      r.readAsText(file);
+    });
+    const titulos = txt.split('\n').map(l=>l.trim()).filter(l=>l.length>3);
+    document.getElementById('rot-arquivo-status').textContent = `✓ ${titulos.length} título(s) carregado(s) — ${file.name}`;
+    document.getElementById('rot-arquivo-status').style.color = 'var(--lime)';
+  } catch(e) {
+    document.getElementById('rot-arquivo-status').textContent = '✗ Erro ao ler arquivo';
+    document.getElementById('rot-arquivo-status').style.color = 'var(--red)';
+  }
+}
+
+// ================================================================
+// GERAR TÍTULOS
+// ================================================================
+async function gerarTitulos() {
+  if (!S.nichoSel) { notif('Selecione um nicho.', 'err'); return; }
+  const qtd = parseInt(document.getElementById('qtd-titulos').value) || 10;
+  const btn = document.getElementById('btn-gerar-titulos');
+  btn.disabled = true; btn.textContent = '⏳ Gerando...';
+  document.getElementById('prog-titulos').style.display = 'block';
+  document.getElementById('titulos-actions').style.display = 'none';
+  document.getElementById('titulos-preview').innerHTML = '';
+  S.titulosSessao = [];
+
+  const nichoKeys = S.nichoSel === 'todos' ? S.nichos.map(n=>n.key) : [S.nichoSel];
+  const qtdPN = S.nichoSel === 'todos' ? Math.ceil(qtd / nichoKeys.length) : qtd;
+
+  log('log-titulos', `Gerando ${qtd} título(s) — nicho: ${S.nichoSel}`, 'i');
+
+  for (let i = 0; i < nichoKeys.length; i++) {
+    const key = nichoKeys[i];
+    const nicho = S.nichos.find(n => n.key === key);
+    prog('titulos', i, nichoKeys.length, `Gerando para ${nicho?.nome || key}...`);
+
+    try {
+      let titulos;
+      if (API_BASE) {
+        const res = await apiPost('/titulos/gerar', {
+          nicho_key: key,
+          quantidade: qtdPN,
+          titulos_existentes: S.todosOsTitulos.map(t => t.titulo)
+        });
+        titulos = res.titulos || [];
+      } else {
+        await sleep(700);
+        titulos = Array.from({length: qtdPN}, (_,j) => `[Simulação] Título ${j+1} para ${nicho?.nome || key}`);
+      }
+
+      titulos.forEach(t => {
+        S.titulosSessao.push({ titulo: t, nicho: key, status: 'pendente' });
+        const div = document.createElement('div');
+        div.style.cssText = 'display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)';
+        div.innerHTML = `<span style="flex:1;font-size:13px;color:var(--text2)">${esc(t)}</span><span class="badge badge-teal">${nicho?.emoji||''} ${nicho?.nome||key}</span>`;
+        document.getElementById('titulos-preview').appendChild(div);
+      });
+
+      log('log-titulos', `✓ ${titulos.length} títulos para ${nicho?.nome||key}`, 's');
+    } catch(e) {
+      log('log-titulos', `❌ Erro em ${key}: ${e.message}`, 'e');
+    }
+  }
+
+  prog('titulos', nichoKeys.length, nichoKeys.length, `Concluído — ${S.titulosSessao.length} títulos`);
+  document.getElementById('titulos-actions').style.display = 'flex';
+  btn.disabled = false; btn.textContent = '🚀 Gerar Títulos';
+  notif(`✓ ${S.titulosSessao.length} títulos gerados!`, 'ok');
+}
+
+// ================================================================
+// SALVAR TÍTULOS
+// ================================================================
+async function salvarTitulos() {
+  if (S.titulosSessao.length === 0) { notif('Nenhum título para salvar.', 'err'); return; }
+  try {
+    if (API_BASE) {
+      const res = await apiPost('/titulos/salvar', { titulos: S.titulosSessao });
+      notif(`✓ ${res.salvos} títulos salvos! (${res.duplicatas} duplicatas ignoradas)`, 'ok');
+      log('log-titulos', `✓ ${res.salvos} salvos, ${res.duplicatas} duplicatas ignoradas.`, 's');
+    } else {
+      S.titulosSessao.forEach(t => {
+        if (!S.todosOsTitulos.find(e => e.titulo === t.titulo)) {
+          S.todosOsTitulos.push({ ...t, id: crypto.randomUUID(), data: new Date().toISOString() });
+        }
+      });
+      notif(`✓ ${S.titulosSessao.length} títulos salvos!`, 'ok');
+    }
+  } catch(e) {
+    notif('Erro ao salvar: ' + e.message, 'err');
+  }
+}
+
+function abrirModalRoteiro() { document.getElementById('modal-roteiro').classList.add('open'); }
+function fecharModal()       { document.getElementById('modal-roteiro').classList.remove('open'); }
+function irParaRoteiros()    { fecharModal(); goTo('roteiros'); }
+
+// ================================================================
+// HISTÓRICO
+// ================================================================
+async function carregarHistorico() {
+  try {
+    if (API_BASE) {
+      const data = await apiGet('/titulos');
+      S.todosOsTitulos = data.titulos || [];
+    }
+    filtrarHistorico();
+    const sel = document.getElementById('hist-nicho');
+    sel.innerHTML = '<option value="">Todos os nichos</option>' +
+      S.nichos.map(n => `<option value="${n.key}">${n.emoji} ${n.nome}</option>`).join('');
+  } catch(e) { notif('Erro ao carregar histórico.', 'err'); }
+}
+
+function filtrarHistorico() {
+  const nichoF  = document.getElementById('hist-nicho').value;
+  const statusF = document.getElementById('hist-status').value;
+  let lista = S.todosOsTitulos;
+  if (nichoF)  lista = lista.filter(t => t.nicho === nichoF);
+  if (statusF) lista = lista.filter(t => t.status === statusF);
+  renderHistorico(lista);
+}
+
+function renderHistorico(lista) {
+  const c = document.getElementById('historico-list');
+  if (lista.length === 0) {
+    c.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><p>Nenhum título encontrado</p></div>`;
+    return;
+  }
+  const nicho = key => S.nichos.find(n=>n.key===key);
+  c.innerHTML = lista.map(t => {
+    const n = nicho(t.nicho);
+    const badge = t.status === 'roteiro'
+      ? `<span class="badge badge-lime">✓ Roteiro</span>`
+      : `<span class="badge badge-gold">⏳ Pendente</span>`;
+    const btnRot = t.status === 'pendente'
+      ? `<button class="btn btn-ghost btn-sm" onclick="gerarRoteiroUnico('${esc(t.titulo)}','${t.nicho}','${t.id}')">Gerar</button>`
+      : '';
+    return `
+      <div class="titulo-item">
+        <span class="titulo-nicho">${n?.emoji||''} ${n?.nome||t.nicho}</span>
+        <span class="titulo-txt">${esc(t.titulo)}</span>
+        ${badge}
+        ${btnRot}
+      </div>`;
+  }).join('');
+}
+
+// ================================================================
+// GERAR ROTEIROS (em lote)
+// ================================================================
+async function gerarRoteiros() {
+  const fonte = document.getElementById('rot-fonte').value;
+  const min   = document.getElementById('rot-min').value;
+  const max   = document.getElementById('rot-max').value;
+  const btn   = document.getElementById('btn-gerar-rot');
+
+  let itens = [];
+
+  if (fonte === 'pendentes') {
+    itens = S.todosOsTitulos.filter(t => t.status === 'pendente');
+    if (!itens.length) { notif('Nenhum título pendente.', 'err'); return; }
+  } else if (fonte === 'nicho') {
+    const key = document.getElementById('rot-nicho-sel').value;
+    itens = S.todosOsTitulos.filter(t => t.nicho === key && t.status === 'pendente');
+    if (!itens.length) { notif('Sem pendentes neste nicho.', 'err'); return; }
+  } else if (fonte === 'manual') {
+    const key  = document.getElementById('rot-manual-nicho').value;
+    const raw  = document.getElementById('rot-manual-txt').value;
+    itens = raw.split('\n').map(l=>l.trim()).filter(l=>l.length>3).map(titulo => ({ titulo, nicho: key, status: 'pendente', id: null }));
+    if (!itens.length) { notif('Insira ao menos um título.', 'err'); return; }
+  } else if (fonte === 'arquivo') {
+    const file = document.getElementById('rot-arquivo-input').files[0];
+    const key  = document.getElementById('rot-arquivo-nicho').value;
+    if (!file) { notif('Selecione um arquivo .txt.', 'err'); return; }
+    const txt = await new Promise((res, rej) => {
+      const r = new FileReader(); r.onload = e => res(e.target.result); r.onerror = rej; r.readAsText(file);
+    });
+    itens = txt.split('\n').map(l=>l.trim()).filter(l=>l.length>3).map(titulo => ({ titulo, nicho: key, status: 'pendente', id: null }));
+    if (!itens.length) { notif('Arquivo vazio ou sem títulos válidos.', 'err'); return; }
+    log('log-rot', `📂 ${itens.length} título(s) carregado(s) de "${file.name}"`, 'i');
+  }
+
+  btn.disabled = true; btn.textContent = '⏳ Gerando...';
+  document.getElementById('prog-rot').style.display = 'block';
+  log('log-rot', `=== Iniciando ${itens.length} roteiro(s) ===`, 'i');
+
+  let ok = 0, erros = 0;
+
+  for (let i = 0; i < itens.length; i++) {
+    const item = itens[i];
+    const idx  = String(i+1).padStart(2,'0');
+    const chars = randLen(min, max);
+
+    prog('rot', i, itens.length, `${i+1}/${itens.length}: ${item.titulo.substring(0,35)}...`);
+    log('log-rot', `[${idx}] ${item.titulo}`, 'i');
+
+    try {
+      let script;
+      if (API_BASE) {
+        const res = await apiPost('/roteiros/gerar', { titulo: item.titulo, nicho_key: item.nicho, target_chars: chars });
+        script = cleanTxt(res.script);
+      } else {
+        await sleep(800);
+        script = cleanTxt(`[SIMULAÇÃO]\n\nTítulo: ${item.titulo}\nChars alvo: ${chars}\n\nBackend não configurado.`);
+      }
+
+      document.getElementById('rot-preview').value = script;
+      document.getElementById('rot-chars').textContent = script.length + ' chars';
+
+      downloadTxt(script, `${idx}_${sanitize(item.titulo)}.txt`);
+      log('log-rot', `[${idx}] ✓ ${script.length} chars — baixado`, 's');
+
+      // Marcar como roteiro gerado no banco
+      if (item.id) {
+        if (API_BASE) await apiPut('/titulos/' + item.id + '/status', { status: 'roteiro' });
+        const t = S.todosOsTitulos.find(t => t.id === item.id);
+        if (t) t.status = 'roteiro';
+      }
+      ok++;
+      await sleep(1000);
+    } catch(e) {
+      erros++;
+      log('log-rot', `[${idx}] ❌ ${e.message}`, 'e');
+      await sleep(800);
+    }
+  }
+
+  prog('rot', itens.length, itens.length, `Concluído — ${ok} gerados, ${erros} erro(s)`);
+  log('log-rot', `=== Finalizado: ${ok}/${itens.length} ===`, ok===itens.length?'s':'w');
+  notif(ok===itens.length ? `✓ ${ok} roteiros baixados!` : `${ok} ok, ${erros} erros`, ok===itens.length?'ok':'err');
+  btn.disabled = false; btn.textContent = '🎬 Gerar Roteiros';
+}
+
+// ================================================================
+// GERAR ROTEIRO ÚNICO (histórico)
+// ================================================================
+async function gerarRoteiroUnico(titulo, nichoKey, id) {
+  try {
+    const chars = randLen(500, 1200);
+    let script;
+    if (API_BASE) {
+      const res = await apiPost('/roteiros/gerar', { titulo, nicho_key: nichoKey, target_chars: chars });
+      script = cleanTxt(res.script);
+    } else {
+      await sleep(800);
+      script = cleanTxt(`[SIMULAÇÃO]\n\nTítulo: ${titulo}\n\nBackend não configurado.`);
+    }
+    downloadTxt(script, sanitize(titulo) + '.txt');
+    if (API_BASE && id) await apiPut('/titulos/' + id + '/status', { status: 'roteiro' });
+    const t = S.todosOsTitulos.find(t => t.id === id);
+    if (t) t.status = 'roteiro';
+    filtrarHistorico();
+    notif('✓ Roteiro gerado e baixado!', 'ok');
+  } catch(e) {
+    notif('Erro: ' + e.message, 'err');
+  }
+}
+
+// ================================================================
+// EDITOR DE NICHOS
+// ================================================================
+async function carregarNichos() {
+  const container = document.getElementById('nichos-editor');
+  try {
+    // 🔴 Quando backend pronto:
+    // S.nichos = await apiGet('/nichos');
+
+    if (S.nichos.length === 0) {
+      container.innerHTML = `
+        <div class="empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg>
+          <p>Nenhum nicho encontrado.<br>Conecte o backend para carregar do Firestore.</p>
+        </div>`;
+      return;
+    }
+    renderEditorNichos();
+  } catch(e) {
+    notif('Erro ao carregar nichos: ' + e.message, 'err');
+  }
+}
+
+function renderEditorNichos() {
+  document.getElementById('nichos-editor').innerHTML = S.nichos.map(n => `
+    <div class="nicho-ed-item">
+      <div class="nicho-ed-hdr">
+        <div class="nicho-ed-name">${n.emoji} ${n.nome}</div>
+        <button class="btn btn-ghost btn-sm" onclick="salvarNicho('${n.key}')">💾 Salvar</button>
+      </div>
+      <div class="field"><div class="lbl">Descrição</div><input type="text" id="ned-desc-${n.key}" value="${esc(n.descricao||'')}"></div>
+      <div class="field"><div class="lbl">Público-alvo</div><input type="text" id="ned-pub-${n.key}" value="${esc(n.publico||'')}"></div>
+      <div class="field"><div class="lbl">Palavras-chave (separadas por vírgula)</div><input type="text" id="ned-kw-${n.key}" value="${esc(n.palavras_chave||'')}"></div>
+      <div class="field"><div class="lbl">Dores do público</div><textarea id="ned-dores-${n.key}" rows="3">${esc(n.dores||'')}</textarea></div>
+      <div class="field" style="margin-bottom:0"><div class="lbl">Benefícios do FalaTexto para este nicho</div><textarea id="ned-ben-${n.key}" rows="3">${esc(n.beneficios||'')}</textarea></div>
+    </div>
+  `).join('');
+}
+
+async function salvarNicho(key) {
+  const n = S.nichos.find(n => n.key === key);
+  if (!n) return;
+  n.descricao     = document.getElementById(`ned-desc-${key}`).value;
+  n.publico       = document.getElementById(`ned-pub-${key}`).value;
+  n.palavras_chave = document.getElementById(`ned-kw-${key}`).value;
+  n.dores         = document.getElementById(`ned-dores-${key}`).value;
+  n.beneficios    = document.getElementById(`ned-ben-${key}`).value;
+
+  try {
+    if (API_BASE) await apiPut('/nichos/' + key, n);
+    notif(`✓ "${n.nome}" salvo!`, 'ok');
+    document.getElementById('nichos-status').textContent = `Salvo às ${new Date().toLocaleTimeString('pt-BR')}`;
+  } catch(e) {
+    notif('Erro ao salvar: ' + e.message, 'err');
+  }
+}
+
+function salvarTodosNichos() {
+  S.nichos.forEach(n => salvarNicho(n.key));
+}
+
+// ================================================================
+// VERIFICAR BACKEND E CARREGAR NICHOS
+// ================================================================
+function verificarBackend() {
+  const dot = document.getElementById('bdot');
+  const txt = document.getElementById('btxt');
+  if (!API_BASE) {
+    dot.style.background = 'var(--gold)';
+    txt.textContent = 'Simulação local';
+  } else {
+    dot.style.background = 'var(--lime)';
+    txt.textContent = 'Conectado';
+  }
+}
+
+async function inicializarNichos() {
+  if (!API_BASE) return;
+  try {
+    const data = await apiGet('/nichos');
+    S.nichos = data.nichos || [];
+  } catch(e) {
+    console.error('Erro ao carregar nichos:', e);
+  }
+}
+
+// ================================================================
+// INIT
+// ================================================================
+async function init() {
+  verificarBackend();
+  await inicializarNichos();
+  carregarDashboard();
+}
+
+init();
+</script>
+
+</body>
+</html>
