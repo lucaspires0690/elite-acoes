@@ -613,11 +613,18 @@ onAuthStateChanged(auth, u => {
   }
 });
 
-document.getElementById('btn-login').onclick = async () => {
-  try { await signInWithPopup(auth, new GoogleAuthProvider()); }
-  catch(e) { notif('Erro: ' + e.message, 'err'); }
-};
 window.fazerLogout = () => signOut(auth);
+
+// Aguarda DOM pronto para vincular o botão de login
+window.addEventListener('DOMContentLoaded', () => {
+  const btnLogin = document.getElementById('btn-login');
+  if (btnLogin) {
+    btnLogin.addEventListener('click', async () => {
+      try { await signInWithPopup(auth, new GoogleAuthProvider()); }
+      catch(e) { notif('Erro: ' + e.message, 'err'); }
+    });
+  }
+});
 
 // ── INIT ──
 async function init() {
