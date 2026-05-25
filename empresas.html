@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ações e FIIs da B3 — Preço Teto e Dividendos | Elite Ações</title>
+<meta name="description" content="Explore 153 ações e 140 FIIs da B3. Preço teto pelo Método Bazin, dividend yield e análise fundamentalista de cada ativo. Dados atualizados.">
+<link rel="canonical" href="https://eliteacoes.com/empresas">
+<link rel="icon" type="image/png" href="/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:title" content="Ações e FIIs da B3 | Elite Ações">
+<meta property="og:description" content="Preço teto, DY e análise de 293 ativos da B3 pelo Método Bazin.">
+<meta property="og:url" content="https://eliteacoes.com/empresas">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --green:#00d4a8;--green-dim:rgba(0,212,168,0.1);--green-dim2:rgba(0,212,168,0.05);
+  --bg:#0a0e1a;--bg2:#0d1220;--surf:#131b2e;--surf2:#1a2438;--surf3:#202d42;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --txt:#e8edf5;--txt2:rgba(232,237,245,0.72);--txt3:rgba(232,237,245,0.42);--txt4:rgba(232,237,245,0.22);
+  --fd:'Plus Jakarta Sans',sans-serif;--fm:'DM Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fd);background:var(--bg);color:var(--txt);min-height:100vh}
+
+/* Header */
+.hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-size:17px;font-weight:800}
+.logo span{color:var(--green)}
+.hdr-app{font-size:13px;font-weight:700;color:var(--green);text-decoration:none;background:var(--green-dim);border:1px solid rgba(0,212,168,.2);padding:6px 14px;border-radius:20px;transition:all .2s}
+.hdr-app:hover{background:var(--green);color:#0a0e1a}
+
+/* Breadcrumb */
+.breadcrumb{padding:12px 24px;font-size:12px;color:var(--txt3)}
+.breadcrumb a{color:var(--txt3);text-decoration:none}
+.breadcrumb a:hover{color:var(--green)}
+.breadcrumb span{margin:0 6px}
+
+/* Hero */
+.hero{padding:40px 24px 32px;text-align:center;background:radial-gradient(ellipse 800px 300px at 50% 0%,rgba(0,212,168,0.06),transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-dim);border:1px solid rgba(0,212,168,.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;font-family:var(--fm);margin-bottom:16px}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(24px,4.5vw,40px);font-weight:800;line-height:1.2;margin-bottom:12px}
+.hero h1 em{color:var(--green);font-style:normal}
+.hero-sub{font-size:14px;color:var(--txt2);max-width:520px;margin:0 auto 28px;line-height:1.7}
+.stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.stat{text-align:center;background:var(--surf);border:1px solid var(--border);border-radius:14px;padding:14px 24px}
+.stat-n{font-size:26px;font-weight:800;color:var(--green);font-family:var(--fm)}
+.stat-l{font-size:10px;color:var(--txt3);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
+
+/* Search + Tabs */
+.controls{max-width:680px;margin:28px auto 0;padding:0 24px}
+.search-box{position:relative;margin-bottom:14px}
+.search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--txt3);pointer-events:none}
+#busca{width:100%;padding:12px 14px 12px 42px;background:var(--surf);border:1.5px solid var(--border2);border-radius:12px;color:var(--txt);font-family:var(--fd);font-size:14px;outline:none;transition:border-color .2s}
+#busca:focus{border-color:var(--green)}
+#busca::placeholder{color:var(--txt3)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{flex:1;min-width:80px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:transparent;color:var(--txt3);font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fd);transition:all .2s;text-align:center}
+.tab.active{background:var(--green-dim);border-color:rgba(0,212,168,.35);color:var(--green)}
+.tab:hover:not(.active){color:var(--txt);background:var(--surf2)}
+
+/* Resultado busca */
+#busca-info{text-align:center;font-size:12px;color:var(--txt3);font-family:var(--fm);margin-top:10px;min-height:18px}
+
+/* Grid */
+.content{max-width:1100px;margin:24px auto 0;padding:0 24px 60px}
+.sec{margin-bottom:32px}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-hd-txt{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap}
+.sec-hd-line{flex:1;height:1px;background:var(--border)}
+.sec-hd-cnt{font-size:11px;font-family:var(--fm);color:var(--txt4)}
+.grid{display:flex;flex-wrap:wrap;gap:7px}
+.t-link{
+  display:inline-block;padding:7px 13px;
+  background:var(--surf);border:1px solid var(--border);border-radius:8px;
+  color:var(--txt2);text-decoration:none;
+  font-size:13px;font-weight:700;font-family:var(--fm);letter-spacing:.3px;
+  transition:all .15s;
+}
+.t-link:hover{background:var(--green-dim);border-color:rgba(0,212,168,.3);color:var(--green);transform:translateY(-1px)}
+.t-link.hidden{display:none!important}
+
+/* No results */
+#no-results{display:none;text-align:center;padding:48px 24px;color:var(--txt3);font-size:14px}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(0,212,168,.07),rgba(0,212,168,.02));border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+.cta h2{font-size:20px;font-weight:800;margin-bottom:8px}
+.cta p{font-size:13px;color:var(--txt2);margin-bottom:20px;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#0a0e1a;padding:13px 28px;border-radius:12px;font-size:14px;font-weight:800;text-decoration:none;font-family:var(--fd);transition:opacity .2s}
+.cta-btn:hover{opacity:.88}
+
+/* Footer */
+footer{padding:20px 24px;text-align:center;font-size:11px;color:var(--txt4);border-top:1px solid var(--border)}
+footer a{color:var(--txt4);text-decoration:none}
+footer a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  .hero{padding:28px 16px 24px}
+  .controls{padding:0 16px}
+  .content{padding:0 16px 48px}
+  .stats{gap:10px}
+  .stat{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="/" class="logo">
+    <svg width="26" height="26" viewBox="0 0 72 72" fill="none">
+      <circle cx="36" cy="36" r="33" stroke="#00d4a8" stroke-width="2.5"/>
+      <text x="8" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">E</text>
+      <text x="30" y="50" font-family="Plus Jakarta Sans" font-weight="800" font-size="32" fill="white">A</text>
+      <line x1="28" y1="54" x2="52" y2="18" stroke="#00d4a8" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="52" cy="18" r="5" fill="#00d4a8"/>
+      <circle cx="52" cy="18" r="3" fill="white"/>
+    </svg>
+    Elite <span>Ações</span>
+  </a>
+  <a href="/" class="hdr-app">Acessar App</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a><span>›</span>Empresas
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">B3 · BOVESPA · DADOS ATUALIZADOS</div>
+  <h1>Ações e FIIs da <em>B3</em></h1>
+  <p class="hero-sub">Preço teto pelo Método Bazin, dividend yield e análise fundamentalista para cada ativo da bolsa brasileira.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">153</div><div class="stat-l">Ações</div></div>
+    <div class="stat"><div class="stat-n">140</div><div class="stat-l">FIIs</div></div>
+    <div class="stat"><div class="stat-n">293</div><div class="stat-l">Total de Ativos</div></div>
+  </div>
+</section>
+
+<div class="controls">
+  <div class="search-box">
+    <span class="search-ico">🔍</span>
+    <input id="busca" type="text" placeholder="Buscar ticker... ex: PETR4, VALE3, MXRF11" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-tab="todos" onclick="setTab(this)">Todos (293)</button>
+    <button class="tab" data-tab="acoes" onclick="setTab(this)">🏢 Ações (153)</button>
+    <button class="tab" data-tab="fiis"  onclick="setTab(this)">🏗️ FIIs (140)</button>
+  </div>
+  <div id="busca-info"></div>
+</div>
+
+<main class="content">
+  <div class="sec" id="sec-acoes">
+    <div class="sec-hd">
+      <span class="sec-hd-txt">🏢 Ações</span>
+      <div class="sec-hd-line"></div>
+      <span class="sec-hd-cnt" id="cnt-acoes">153 ativos</span>
+    </div>
+    <div class="grid" id="grid-acoes">
+            <a href="/paginas/acoes/abev3" class="t-link">ABEV3</a>
+            <a href="/paginas/acoes/alos3" class="t-link">ALOS3</a>
+            <a href="/paginas/acoes/ambp3" class="t-link">AMBP3</a>
+            <a href="/paginas/acoes/anim3" class="t-link">ANIM3</a>
+            <a href="/paginas/acoes/asai3" class="t-link">ASAI3</a>
+            <a href="/paginas/acoes/aure3" class="t-link">AURE3</a>
+            <a href="/paginas/acoes/b3sa3" class="t-link">B3SA3</a>
+            <a href="/paginas/acoes/bbas3" class="t-link">BBAS3</a>
+            <a href="/paginas/acoes/bbdc3" class="t-link">BBDC3</a>
+            <a href="/paginas/acoes/bbdc4" class="t-link">BBDC4</a>
+            <a href="/paginas/acoes/bbse3" class="t-link">BBSE3</a>
+            <a href="/paginas/acoes/beef3" class="t-link">BEEF3</a>
+            <a href="/paginas/acoes/bhia3" class="t-link">BHIA3</a>
+            <a href="/paginas/acoes/blau3" class="t-link">BLAU3</a>
+            <a href="/paginas/acoes/brap4" class="t-link">BRAP4</a>
+            <a href="/paginas/acoes/brfs3" class="t-link">BRFS3</a>
+            <a href="/paginas/acoes/brkm5" class="t-link">BRKM5</a>
+            <a href="/paginas/acoes/brsr6" class="t-link">BRSR6</a>
+            <a href="/paginas/acoes/caml3" class="t-link">CAML3</a>
+            <a href="/paginas/acoes/cbav3" class="t-link">CBAV3</a>
+            <a href="/paginas/acoes/ccro3" class="t-link">CCRO3</a>
+            <a href="/paginas/acoes/cmig3" class="t-link">CMIG3</a>
+            <a href="/paginas/acoes/cmig4" class="t-link">CMIG4</a>
+            <a href="/paginas/acoes/cmin3" class="t-link">CMIN3</a>
+            <a href="/paginas/acoes/cogn3" class="t-link">COGN3</a>
+            <a href="/paginas/acoes/cpfe3" class="t-link">CPFE3</a>
+            <a href="/paginas/acoes/cple3" class="t-link">CPLE3</a>
+            <a href="/paginas/acoes/cple6" class="t-link">CPLE6</a>
+            <a href="/paginas/acoes/crfb3" class="t-link">CRFB3</a>
+            <a href="/paginas/acoes/csan3" class="t-link">CSAN3</a>
+            <a href="/paginas/acoes/csmg3" class="t-link">CSMG3</a>
+            <a href="/paginas/acoes/csna3" class="t-link">CSNA3</a>
+            <a href="/paginas/acoes/cury3" class="t-link">CURY3</a>
+            <a href="/paginas/acoes/cvcb3" class="t-link">CVCB3</a>
+            <a href="/paginas/acoes/cxse3" class="t-link">CXSE3</a>
+            <a href="/paginas/acoes/cyre3" class="t-link">CYRE3</a>
+            <a href="/paginas/acoes/dasa3" class="t-link">DASA3</a>
+            <a href="/paginas/acoes/dirr3" class="t-link">DIRR3</a>
+            <a href="/paginas/acoes/egie3" class="t-link">EGIE3</a>
+            <a href="/paginas/acoes/ektr4" class="t-link">EKTR4</a>
+            <a href="/paginas/acoes/enev3" class="t-link">ENEV3</a>
+            <a href="/paginas/acoes/eqtl3" class="t-link">EQTL3</a>
+            <a href="/paginas/acoes/espa3" class="t-link">ESPA3</a>
+            <a href="/paginas/acoes/eztc3" class="t-link">EZTC3</a>
+            <a href="/paginas/acoes/fesa4" class="t-link">FESA4</a>
+            <a href="/paginas/acoes/flry3" class="t-link">FLRY3</a>
+            <a href="/paginas/acoes/fras3" class="t-link">FRAS3</a>
+            <a href="/paginas/acoes/gfsa3" class="t-link">GFSA3</a>
+            <a href="/paginas/acoes/ggbr3" class="t-link">GGBR3</a>
+            <a href="/paginas/acoes/ggbr4" class="t-link">GGBR4</a>
+            <a href="/paginas/acoes/ggps3" class="t-link">GGPS3</a>
+            <a href="/paginas/acoes/gmat3" class="t-link">GMAT3</a>
+            <a href="/paginas/acoes/goau3" class="t-link">GOAU3</a>
+            <a href="/paginas/acoes/goau4" class="t-link">GOAU4</a>
+            <a href="/paginas/acoes/goll4" class="t-link">GOLL4</a>
+            <a href="/paginas/acoes/grnd3" class="t-link">GRND3</a>
+            <a href="/paginas/acoes/guar3" class="t-link">GUAR3</a>
+            <a href="/paginas/acoes/hapv3" class="t-link">HAPV3</a>
+            <a href="/paginas/acoes/hbsa3" class="t-link">HBSA3</a>
+            <a href="/paginas/acoes/hype3" class="t-link">HYPE3</a>
+            <a href="/paginas/acoes/irbr3" class="t-link">IRBR3</a>
+            <a href="/paginas/acoes/itsa3" class="t-link">ITSA3</a>
+            <a href="/paginas/acoes/itsa4" class="t-link">ITSA4</a>
+            <a href="/paginas/acoes/itub3" class="t-link">ITUB3</a>
+            <a href="/paginas/acoes/itub4" class="t-link">ITUB4</a>
+            <a href="/paginas/acoes/jall3" class="t-link">JALL3</a>
+            <a href="/paginas/acoes/jbss3" class="t-link">JBSS3</a>
+            <a href="/paginas/acoes/jhsf3" class="t-link">JHSF3</a>
+            <a href="/paginas/acoes/kepl3" class="t-link">KEPL3</a>
+            <a href="/paginas/acoes/klbn3" class="t-link">KLBN3</a>
+            <a href="/paginas/acoes/klbn4" class="t-link">KLBN4</a>
+            <a href="/paginas/acoes/lavv3" class="t-link">LAVV3</a>
+            <a href="/paginas/acoes/leve3" class="t-link">LEVE3</a>
+            <a href="/paginas/acoes/ligt3" class="t-link">LIGT3</a>
+            <a href="/paginas/acoes/lren3" class="t-link">LREN3</a>
+            <a href="/paginas/acoes/lwsa3" class="t-link">LWSA3</a>
+            <a href="/paginas/acoes/mdia3" class="t-link">MDIA3</a>
+            <a href="/paginas/acoes/melk3" class="t-link">MELK3</a>
+            <a href="/paginas/acoes/mglu3" class="t-link">MGLU3</a>
+            <a href="/paginas/acoes/mils3" class="t-link">MILS3</a>
+            <a href="/paginas/acoes/mlas3" class="t-link">MLAS3</a>
+            <a href="/paginas/acoes/mnpr3" class="t-link">MNPR3</a>
+            <a href="/paginas/acoes/movi3" class="t-link">MOVI3</a>
+            <a href="/paginas/acoes/mrve3" class="t-link">MRVE3</a>
+            <a href="/paginas/acoes/mtre3" class="t-link">MTRE3</a>
+            <a href="/paginas/acoes/mult3" class="t-link">MULT3</a>
+            <a href="/paginas/acoes/mypk3" class="t-link">MYPK3</a>
+            <a href="/paginas/acoes/natu3" class="t-link">NATU3</a>
+            <a href="/paginas/acoes/neoe3" class="t-link">NEOE3</a>
+            <a href="/paginas/acoes/odpv3" class="t-link">ODPV3</a>
+            <a href="/paginas/acoes/onco3" class="t-link">ONCO3</a>
+            <a href="/paginas/acoes/orvr3" class="t-link">ORVR3</a>
+            <a href="/paginas/acoes/pcar3" class="t-link">PCAR3</a>
+            <a href="/paginas/acoes/pdgr3" class="t-link">PDGR3</a>
+            <a href="/paginas/acoes/peab4" class="t-link">PEAB4</a>
+            <a href="/paginas/acoes/petr3" class="t-link">PETR3</a>
+            <a href="/paginas/acoes/petr4" class="t-link">PETR4</a>
+            <a href="/paginas/acoes/petz3" class="t-link">PETZ3</a>
+            <a href="/paginas/acoes/pgmn3" class="t-link">PGMN3</a>
+            <a href="/paginas/acoes/plpl3" class="t-link">PLPL3</a>
+            <a href="/paginas/acoes/pnvl3" class="t-link">PNVL3</a>
+            <a href="/paginas/acoes/pomo3" class="t-link">POMO3</a>
+            <a href="/paginas/acoes/pomo4" class="t-link">POMO4</a>
+            <a href="/paginas/acoes/posi3" class="t-link">POSI3</a>
+            <a href="/paginas/acoes/prio3" class="t-link">PRIO3</a>
+            <a href="/paginas/acoes/pssa3" class="t-link">PSSA3</a>
+            <a href="/paginas/acoes/ptbl3" class="t-link">PTBL3</a>
+            <a href="/paginas/acoes/qual3" class="t-link">QUAL3</a>
+            <a href="/paginas/acoes/radl3" class="t-link">RADL3</a>
+            <a href="/paginas/acoes/rail3" class="t-link">RAIL3</a>
+            <a href="/paginas/acoes/raiz4" class="t-link">RAIZ4</a>
+            <a href="/paginas/acoes/rapt4" class="t-link">RAPT4</a>
+            <a href="/paginas/acoes/rcsl4" class="t-link">RCSL4</a>
+            <a href="/paginas/acoes/rdni3" class="t-link">RDNI3</a>
+            <a href="/paginas/acoes/recv3" class="t-link">RECV3</a>
+            <a href="/paginas/acoes/rent3" class="t-link">RENT3</a>
+            <a href="/paginas/acoes/rnew4" class="t-link">RNEW4</a>
+            <a href="/paginas/acoes/romi3" class="t-link">ROMI3</a>
+            <a href="/paginas/acoes/sapr3" class="t-link">SAPR3</a>
+            <a href="/paginas/acoes/sapr4" class="t-link">SAPR4</a>
+            <a href="/paginas/acoes/sbfg3" class="t-link">SBFG3</a>
+            <a href="/paginas/acoes/sbsp3" class="t-link">SBSP3</a>
+            <a href="/paginas/acoes/seer3" class="t-link">SEER3</a>
+            <a href="/paginas/acoes/seql3" class="t-link">SEQL3</a>
+            <a href="/paginas/acoes/simh3" class="t-link">SIMH3</a>
+            <a href="/paginas/acoes/slce3" class="t-link">SLCE3</a>
+            <a href="/paginas/acoes/smft3" class="t-link">SMFT3</a>
+            <a href="/paginas/acoes/smto3" class="t-link">SMTO3</a>
+            <a href="/paginas/acoes/stbp3" class="t-link">STBP3</a>
+            <a href="/paginas/acoes/suzb3" class="t-link">SUZB3</a>
+            <a href="/paginas/acoes/tasa3" class="t-link">TASA3</a>
+            <a href="/paginas/acoes/tasa4" class="t-link">TASA4</a>
+            <a href="/paginas/acoes/tend3" class="t-link">TEND3</a>
+            <a href="/paginas/acoes/tgma3" class="t-link">TGMA3</a>
+            <a href="/paginas/acoes/tims3" class="t-link">TIMS3</a>
+            <a href="/paginas/acoes/tots3" class="t-link">TOTS3</a>
+            <a href="/paginas/acoes/tpis3" class="t-link">TPIS3</a>
+            <a href="/paginas/acoes/trad3" class="t-link">TRAD3</a>
+            <a href="/paginas/acoes/tupy3" class="t-link">TUPY3</a>
+            <a href="/paginas/acoes/ugpa3" class="t-link">UGPA3</a>
+            <a href="/paginas/acoes/unip3" class="t-link">UNIP3</a>
+            <a href="/paginas/acoes/unip6" class="t-link">UNIP6</a>
+            <a href="/paginas/acoes/usim3" class="t-link">USIM3</a>
+            <a href="/paginas/acoes/usim5" class="t-link">USIM5</a>
+            <a href="/paginas/acoes/vale3" class="t-link">VALE3</a>
+            <a href="/paginas/acoes/vbbr3" class="t-link">VBBR3</a>
+            <a href="/paginas/acoes/viva3" class="t-link">VIVA3</a>
+            <a href="/paginas/acoes/vivr3" class="t-link">VIVR3</a>
+            <a href="/paginas/acoes/vlid3" class="t-link">VLID3</a>
+            <a href="/paginas/acoes/vulc3" class="t-link">VULC3</a>
+            <a href="/paginas/acoes/wege3" class="t-link">WEGE3</a>
+            <a href="/paginas/acoes/wizc3" class="t-link">WIZC3</a>
+            <a href="/paginas/acoes/yduq3" class="t-link">YDUQ3</a>
+    </div>
+  </div>
+
+  <div class="sec" id="sec-fiis">
+    <div class="sec-hd">
+      <span class="sec-hd-txt">🏗️ Fundos Imobiliários — FIIs</span>
+      <div class="sec-hd-line"></div>
+      <span class="sec-hd-cnt" id="cnt-fiis">140 ativos</span>
+    </div>
+    <div class="grid" id="grid-fiis">
+            <a href="/paginas/fiis/afhi11" class="t-link">AFHI11</a>
+            <a href="/paginas/fiis/aiec11" class="t-link">AIEC11</a>
+            <a href="/paginas/fiis/alzr11" class="t-link">ALZR11</a>
+            <a href="/paginas/fiis/arri11" class="t-link">ARRI11</a>
+            <a href="/paginas/fiis/bcia11" class="t-link">BCIA11</a>
+            <a href="/paginas/fiis/bcri11" class="t-link">BCRI11</a>
+            <a href="/paginas/fiis/bmlc11" class="t-link">BMLC11</a>
+            <a href="/paginas/fiis/bnfs11" class="t-link">BNFS11</a>
+            <a href="/paginas/fiis/brco11" class="t-link">BRCO11</a>
+            <a href="/paginas/fiis/brip11" class="t-link">BRIP11</a>
+            <a href="/paginas/fiis/btra11" class="t-link">BTRA11</a>
+            <a href="/paginas/fiis/btci11" class="t-link">BTCI11</a>
+            <a href="/paginas/fiis/btlg11" class="t-link">BTLG11</a>
+            <a href="/paginas/fiis/cacr11" class="t-link">CACR11</a>
+            <a href="/paginas/fiis/cdii11" class="t-link">CDII11</a>
+            <a href="/paginas/fiis/ceoc11" class="t-link">CEOC11</a>
+            <a href="/paginas/fiis/cjct11" class="t-link">CJCT11</a>
+            <a href="/paginas/fiis/clin11" class="t-link">CLIN11</a>
+            <a href="/paginas/fiis/cpts11" class="t-link">CPTS11</a>
+            <a href="/paginas/fiis/cxag11" class="t-link">CXAG11</a>
+            <a href="/paginas/fiis/cxco11" class="t-link">CXCO11</a>
+            <a href="/paginas/fiis/cxri11" class="t-link">CXRI11</a>
+            <a href="/paginas/fiis/deva11" class="t-link">DEVA11</a>
+            <a href="/paginas/fiis/dovl11" class="t-link">DOVL11</a>
+            <a href="/paginas/fiis/edga11" class="t-link">EDGA11</a>
+            <a href="/paginas/fiis/euro11" class="t-link">EURO11</a>
+            <a href="/paginas/fiis/fatn11" class="t-link">FATN11</a>
+            <a href="/paginas/fiis/fiib11" class="t-link">FIIB11</a>
+            <a href="/paginas/fiis/fiip11" class="t-link">FIIP11</a>
+            <a href="/paginas/fiis/figs11" class="t-link">FIGS11</a>
+            <a href="/paginas/fiis/fisc11" class="t-link">FISC11</a>
+            <a href="/paginas/fiis/flcr11" class="t-link">FLCR11</a>
+            <a href="/paginas/fiis/fpab11" class="t-link">FPAB11</a>
+            <a href="/paginas/fiis/fvpq11" class="t-link">FVPQ11</a>
+            <a href="/paginas/fiis/gare11" class="t-link">GARE11</a>
+            <a href="/paginas/fiis/ggrc11" class="t-link">GGRC11</a>
+            <a href="/paginas/fiis/gzit11" class="t-link">GZIT11</a>
+            <a href="/paginas/fiis/habt11" class="t-link">HABT11</a>
+            <a href="/paginas/fiis/hcri11" class="t-link">HCRI11</a>
+            <a href="/paginas/fiis/hfof11" class="t-link">HFOF11</a>
+            <a href="/paginas/fiis/hgbs11" class="t-link">HGBS11</a>
+            <a href="/paginas/fiis/hgcr11" class="t-link">HGCR11</a>
+            <a href="/paginas/fiis/hgff11" class="t-link">HGFF11</a>
+            <a href="/paginas/fiis/hglg11" class="t-link">HGLG11</a>
+            <a href="/paginas/fiis/hgpo11" class="t-link">HGPO11</a>
+            <a href="/paginas/fiis/hgre11" class="t-link">HGRE11</a>
+            <a href="/paginas/fiis/hgru11" class="t-link">HGRU11</a>
+            <a href="/paginas/fiis/hosi11" class="t-link">HOSI11</a>
+            <a href="/paginas/fiis/hrec11" class="t-link">HREC11</a>
+            <a href="/paginas/fiis/hsaf11" class="t-link">HSAF11</a>
+            <a href="/paginas/fiis/hsml11" class="t-link">HSML11</a>
+            <a href="/paginas/fiis/htmx11" class="t-link">HTMX11</a>
+            <a href="/paginas/fiis/husc11" class="t-link">HUSC11</a>
+            <a href="/paginas/fiis/husi11" class="t-link">HUSI11</a>
+            <a href="/paginas/fiis/icri11" class="t-link">ICRI11</a>
+            <a href="/paginas/fiis/ifra11" class="t-link">IFRA11</a>
+            <a href="/paginas/fiis/inlg11" class="t-link">INLG11</a>
+            <a href="/paginas/fiis/irim11" class="t-link">IRIM11</a>
+            <a href="/paginas/fiis/itip11" class="t-link">ITIP11</a>
+            <a href="/paginas/fiis/itri11" class="t-link">ITRI11</a>
+            <a href="/paginas/fiis/jsaf11" class="t-link">JSAF11</a>
+            <a href="/paginas/fiis/jsre11" class="t-link">JSRE11</a>
+            <a href="/paginas/fiis/kfof11" class="t-link">KFOF11</a>
+            <a href="/paginas/fiis/kncr11" class="t-link">KNCR11</a>
+            <a href="/paginas/fiis/knhy11" class="t-link">KNHY11</a>
+            <a href="/paginas/fiis/knip11" class="t-link">KNIP11</a>
+            <a href="/paginas/fiis/knre11" class="t-link">KNRE11</a>
+            <a href="/paginas/fiis/knsc11" class="t-link">KNSC11</a>
+            <a href="/paginas/fiis/knuq11" class="t-link">KNUQ11</a>
+            <a href="/paginas/fiis/kore11" class="t-link">KORE11</a>
+            <a href="/paginas/fiis/lasc11" class="t-link">LASC11</a>
+            <a href="/paginas/fiis/lvbi11" class="t-link">LVBI11</a>
+            <a href="/paginas/fiis/mcci11" class="t-link">MCCI11</a>
+            <a href="/paginas/fiis/mcre11" class="t-link">MCRE11</a>
+            <a href="/paginas/fiis/mfii11" class="t-link">MFII11</a>
+            <a href="/paginas/fiis/mxrf11" class="t-link">MXRF11</a>
+            <a href="/paginas/fiis/newl11" class="t-link">NEWL11</a>
+            <a href="/paginas/fiis/nslu11" class="t-link">NSLU11</a>
+            <a href="/paginas/fiis/nvho11" class="t-link">NVHO11</a>
+            <a href="/paginas/fiis/oujp11" class="t-link">OUJP11</a>
+            <a href="/paginas/fiis/patc11" class="t-link">PATC11</a>
+            <a href="/paginas/fiis/patl11" class="t-link">PATL11</a>
+            <a href="/paginas/fiis/plri11" class="t-link">PLRI11</a>
+            <a href="/paginas/fiis/pmfo11" class="t-link">PMFO11</a>
+            <a href="/paginas/fiis/pord11" class="t-link">PORD11</a>
+            <a href="/paginas/fiis/ppla11" class="t-link">PPLA11</a>
+            <a href="/paginas/fiis/pqdp11" class="t-link">PQDP11</a>
+            <a href="/paginas/fiis/prsv11" class="t-link">PRSV11</a>
+            <a href="/paginas/fiis/pvbi11" class="t-link">PVBI11</a>
+            <a href="/paginas/fiis/rbds11" class="t-link">RBDS11</a>
+            <a href="/paginas/fiis/rbff11" class="t-link">RBFF11</a>
+            <a href="/paginas/fiis/rbhg11" class="t-link">RBHG11</a>
+            <a href="/paginas/fiis/rbhy11" class="t-link">RBHY11</a>
+            <a href="/paginas/fiis/rblg11" class="t-link">RBLG11</a>
+            <a href="/paginas/fiis/rbrp11" class="t-link">RBRP11</a>
+            <a href="/paginas/fiis/rbrr11" class="t-link">RBRR11</a>
+            <a href="/paginas/fiis/rbry11" class="t-link">RBRY11</a>
+            <a href="/paginas/fiis/rbva11" class="t-link">RBVA11</a>
+            <a href="/paginas/fiis/rcfa11" class="t-link">RCFA11</a>
+            <a href="/paginas/fiis/recr11" class="t-link">RECR11</a>
+            <a href="/paginas/fiis/relg11" class="t-link">RELG11</a>
+            <a href="/paginas/fiis/rfof11" class="t-link">RFOF11</a>
+            <a href="/paginas/fiis/rmai11" class="t-link">RMAI11</a>
+            <a href="/paginas/fiis/rngo11" class="t-link">RNGO11</a>
+            <a href="/paginas/fiis/rspd11" class="t-link">RSPD11</a>
+            <a href="/paginas/fiis/rzak11" class="t-link">RZAK11</a>
+            <a href="/paginas/fiis/rzat11" class="t-link">RZAT11</a>
+            <a href="/paginas/fiis/rztr11" class="t-link">RZTR11</a>
+            <a href="/paginas/fiis/sare11" class="t-link">SARE11</a>
+            <a href="/paginas/fiis/seqr11" class="t-link">SEQR11</a>
+            <a href="/paginas/fiis/shph11" class="t-link">SHPH11</a>
+            <a href="/paginas/fiis/snci11" class="t-link">SNCI11</a>
+            <a href="/paginas/fiis/snff11" class="t-link">SNFF11</a>
+            <a href="/paginas/fiis/srvd11" class="t-link">SRVD11</a>
+            <a href="/paginas/fiis/tgar11" class="t-link">TGAR11</a>
+            <a href="/paginas/fiis/trbl11" class="t-link">TRBL11</a>
+            <a href="/paginas/fiis/trxf11" class="t-link">TRXF11</a>
+            <a href="/paginas/fiis/urpr11" class="t-link">URPR11</a>
+            <a href="/paginas/fiis/vcrr11" class="t-link">VCRR11</a>
+            <a href="/paginas/fiis/vgip11" class="t-link">VGIP11</a>
+            <a href="/paginas/fiis/vgir11" class="t-link">VGIR11</a>
+            <a href="/paginas/fiis/visc11" class="t-link">VISC11</a>
+            <a href="/paginas/fiis/vino11" class="t-link">VINO11</a>
+            <a href="/paginas/fiis/vjfd11" class="t-link">VJFD11</a>
+            <a href="/paginas/fiis/vots11" class="t-link">VOTS11</a>
+            <a href="/paginas/fiis/vpsi11" class="t-link">VPSI11</a>
+            <a href="/paginas/fiis/vrta11" class="t-link">VRTA11</a>
+            <a href="/paginas/fiis/vrtm11" class="t-link">VRTM11</a>
+            <a href="/paginas/fiis/vtlt11" class="t-link">VTLT11</a>
+            <a href="/paginas/fiis/vvco11" class="t-link">VVCO11</a>
+            <a href="/paginas/fiis/vvpr11" class="t-link">VVPR11</a>
+            <a href="/paginas/fiis/wplz11" class="t-link">WPLZ11</a>
+            <a href="/paginas/fiis/wsec11" class="t-link">WSEC11</a>
+            <a href="/paginas/fiis/wtsp11" class="t-link">WTSP11</a>
+            <a href="/paginas/fiis/xpci11" class="t-link">XPCI11</a>
+            <a href="/paginas/fiis/xpin11" class="t-link">XPIN11</a>
+            <a href="/paginas/fiis/xplg11" class="t-link">XPLG11</a>
+            <a href="/paginas/fiis/xpml11" class="t-link">XPML11</a>
+            <a href="/paginas/fiis/xpsf11" class="t-link">XPSF11</a>
+            <a href="/paginas/fiis/zavi11" class="t-link">ZAVI11</a>
+    </div>
+  </div>
+
+  <div id="no-results">Nenhum ativo encontrado para "<strong id="busca-termo"></strong>"</div>
+</main>
+
+<section class="cta">
+  <h2>Veja o preço teto em tempo real</h2>
+  <p>Cotações ao vivo, calculadora Bazin ajustável e monitor de dividendos<br>para todos os ativos da B3.</p>
+  <a href="/" class="cta-btn">🚀 Acessar o App Gratuitamente</a>
+</section>
+
+<footer>
+  <p>⚠️ Apenas informativo — Não constitui recomendação de investimento.</p>
+  <p style="margin-top:6px"><a href="/">Elite Ações</a> · <a href="/termos.html">Termos de Uso</a></p>
+</footer>
+
+<script>
+const grA = document.getElementById('grid-acoes');
+const grF = document.getElementById('grid-fiis');
+const secA = document.getElementById('sec-acoes');
+const secF = document.getElementById('sec-fiis');
+const noRes = document.getElementById('no-results');
+const info  = document.getElementById('busca-info');
+const cntA  = document.getElementById('cnt-acoes');
+const cntF  = document.getElementById('cnt-fiis');
+let tab = 'todos';
+
+function setTab(el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  tab = el.dataset.tab;
+  filtrar(document.getElementById('busca').value);
+}
+
+function filtrar(q) {
+  q = q.trim().toUpperCase();
+  const showA = tab === 'todos' || tab === 'acoes';
+  const showF = tab === 'todos' || tab === 'fiis';
+  let vA = 0, vF = 0;
+
+  grA.querySelectorAll('.t-link').forEach(a => {
+    const ok = showA && (!q || a.textContent.includes(q));
+    a.classList.toggle('hidden', !ok);
+    if (ok) vA++;
+  });
+  grF.querySelectorAll('.t-link').forEach(a => {
+    const ok = showF && (!q || a.textContent.includes(q));
+    a.classList.toggle('hidden', !ok);
+    if (ok) vF++;
+  });
+
+  secA.style.display = (showA && vA > 0) ? '' : 'none';
+  secF.style.display = (showF && vF > 0) ? '' : 'none';
+  cntA.textContent = vA + ' ativos';
+  cntF.textContent = vF + ' ativos';
+
+  const total = vA + vF;
+  noRes.style.display = total === 0 ? 'block' : 'none';
+  if (total === 0) document.getElementById('busca-termo').textContent = q;
+  info.textContent = q ? total + ' resultado' + (total !== 1 ? 's' : '') + ' para "' + q + '"' : '';
+}
+
+document.getElementById('busca').addEventListener('input', e => filtrar(e.target.value));
+</script>
+</body>
+</html>
