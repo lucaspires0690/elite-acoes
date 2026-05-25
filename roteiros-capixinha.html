@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capixinha Invest — Studio</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#06070d; --bg2:#0c0f1e; --bg3:#111828;
+      --card:#111828; --card2:#1a2238;
+      --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.12);
+      --lime:#c8ff00; --lime2:#d4ff33; --lime-dim:rgba(200,255,0,0.08);
+      --teal:#00d4a8; --text:#fff;
+      --text2:rgba(255,255,255,0.75); --text3:rgba(255,255,255,0.45);
+      --red:#ff4757; --red-dim:rgba(255,71,87,0.10);
+      --gold:#ffd32a; --gold-dim:rgba(255,211,42,0.10);
+      --radius:14px; --radius2:10px; --sidebar:240px;
+      --font-h:'Bricolage Grotesque',sans-serif;
+      --font-b:'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-b);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#2a3654;border-radius:999px}
+
+    /* ── LAYOUT ── */
+    .app{display:flex;min-height:100vh}
+
+    /* ── SIDEBAR ── */
+    .sidebar{width:var(--sidebar);flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:24px 14px;position:fixed;top:0;left:0;bottom:0;z-index:100;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+    .sidebar-logo{font-family:var(--font-h);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.04em;display:flex;align-items:center;gap:8px;padding:0 6px;margin-bottom:4px;text-decoration:none}
+    .sidebar-sub{font-size:11px;color:var(--text3);padding:0 6px;margin-bottom:28px;font-weight:500}
+    .nav{display:flex;flex-direction:column;gap:2px;flex:1}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--radius2);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:var(--font-b);transition:all .15s}
+    .nav-item:hover{color:var(--text2);background:var(--border)}
+    .nav-item.active{color:var(--lime);background:var(--lime-dim)}
+    .nav-item svg{width:16px;height:16px;flex-shrink:0}
+    .nav-sep{height:1px;background:var(--border);margin:8px 0}
+    .sidebar-footer{border-top:1px solid var(--border);padding-top:14px}
+    .sidebar-footer-lbl{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:0 6px;margin-bottom:6px}
+    .backend-status{display:flex;align-items:center;gap:8px;padding:0 6px}
+    .backend-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+    .backend-txt{font-size:12px;color:var(--text3)}
+
+    /* ── MAIN ── */
+    .main{margin-left:var(--sidebar);flex:1;padding:32px;min-height:100vh}
+
+    /* ── VIEWS ── */
+    .view{display:none}.view.active{display:block}
+
+    /* ── PAGE HEADER ── */
+    .ph{margin-bottom:28px}
+    .ph-title{font-family:var(--font-h);font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:4px}
+    .ph-sub{font-size:13px;color:var(--text3)}
+
+    /* ── GRIDS ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    /* ── CARD ── */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .card-title{font-family:var(--font-h);font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+    .card-title svg{width:15px;height:15px;color:var(--lime);flex-shrink:0}
+
+    /* ── STAT ── */
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px}
+    .stat-lbl{font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+    .stat-val{font-family:var(--font-h);font-size:32px;font-weight:800;color:var(--lime);line-height:1}
+    .stat-sub{font-size:12px;color:var(--text3);margin-top:4px}
+
+    /* ── FIELDS ── */
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+    .field:last-child{margin-bottom:0}
+    .lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+    input[type="text"],input[type="number"],input[type="file"],select,textarea{font-family:var(--font-b);font-size:13px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);color:var(--text);padding:10px 12px;width:100%;transition:border-color .15s,box-shadow .15s}
+    input[type="file"]{cursor:pointer}
+    input[type="file"]::file-selector-button{background:var(--card2);color:var(--text2);border:1px solid var(--border2);border-radius:7px;padding:5px 10px;margin-right:10px;font-family:var(--font-b);font-size:12px;cursor:pointer;transition:.2s}
+    input[type="file"]::file-selector-button:hover{background:var(--border2)}
+    textarea{resize:vertical;line-height:1.6}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 1px rgba(200,255,0,.3)}
+    select option{background:var(--bg3)}
+
+    /* ── BUTTONS ── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:var(--radius2);font-family:var(--font-b);font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;white-space:nowrap}
+    .btn-lime{background:var(--lime);color:var(--bg)}
+    .btn-lime:hover:not(:disabled){background:var(--lime2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,255,0,.25)}
+    .btn-ghost{background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
+    .btn-ghost:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
+    .btn-danger{background:var(--red-dim);color:var(--red);border:1px solid var(--red)}
+    .btn-danger:hover:not(:disabled){background:var(--red);color:#fff}
+    .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+    .btn-full{width:100%}
+    .btn-sm{padding:7px 14px;font-size:12px}
+
+    /* ── BADGES ── */
+    .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+    .badge-lime{background:var(--lime-dim);color:var(--lime)}
+    .badge-gold{background:var(--gold-dim);color:var(--gold)}
+    .badge-gray{background:var(--border);color:var(--text3)}
+    .badge-teal{background:rgba(0,212,168,.1);color:var(--teal)}
+
+    /* ── NICHO PILLS ── */
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .pill{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border2);color:var(--text3);cursor:pointer;transition:all .15s;background:var(--bg3)}
+    .pill:hover{border-color:var(--lime);color:var(--lime)}
+    .pill.sel{border-color:var(--lime);color:var(--bg);background:var(--lime)}
+    .pill.all{border-color:var(--teal);color:var(--teal)}
+    .pill.all.sel{background:var(--teal);color:var(--bg)}
+
+    /* ── PROGRESS ── */
+    .prog-wrap{margin:14px 0}
+    .prog-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+    .prog-lbl{color:var(--text2);font-weight:600}
+    .prog-pct{font-family:var(--font-h);font-weight:800;color:var(--lime)}
+    .prog-bar{height:6px;background:var(--bg3);border-radius:20px;overflow:hidden}
+    .prog-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--teal));border-radius:20px;width:0%;transition:width .3s ease}
+
+    /* ── LOG ── */
+    .log-lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .log-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 14px;height:180px;overflow-y:auto;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;color:var(--text3)}
+    .log-box .li{color:#38bdf8}.log-box .ls{color:var(--lime)}.log-box .lw{color:var(--gold)}.log-box .le{color:var(--red)}
+
+    /* ── PREVIEW ── */
+    .preview-area{width:100%;min-height:360px;max-height:500px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius2);color:var(--text2);font-family:var(--font-b);font-size:13px;line-height:1.7;padding:16px;resize:none;white-space:pre-wrap}
+    .preview-area:focus{outline:none;border-color:rgba(200,255,0,.3)}
+    .preview-area::placeholder{color:var(--text3)}
+
+    /* ── TÍTULO ITEM ── */
+    .titulo-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 16px;transition:border-color .15s;margin-bottom:8px}
+    .titulo-item:hover{border-color:var(--border2)}
+    .titulo-nicho{font-size:10px;font-weight:700;color:var(--teal);background:rgba(0,212,168,.08);border:1px solid rgba(0,212,168,.2);border-radius:20px;padding:3px 8px;white-space:nowrap;flex-shrink:0}
+    .titulo-txt{flex:1;font-size:13px;color:var(--text2)}
+
+    /* ── NICHO EDITOR ── */
+    .nicho-ed-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+    .nicho-ed-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .nicho-ed-name{font-family:var(--font-h);font-size:14px;font-weight:800;color:var(--lime)}
+
+    /* ── EMPTY ── */
+    .empty{text-align:center;padding:60px 32px;color:var(--text3)}
+    .empty svg{width:44px;height:44px;margin:0 auto 14px;opacity:.25;display:block}
+    .empty p{font-size:14px}
+
+    /* ── TABS ── */
+    .tabs{display:flex;gap:4px;background:var(--bg3);border-radius:var(--radius2);padding:4px;margin-bottom:20px}
+    .tab-btn{flex:1;padding:8px;border-radius:8px;font-size:12px;font-weight:700;color:var(--text3);background:none;border:none;cursor:pointer;font-family:var(--font-b);transition:all .15s}
+    .tab-btn.active{background:var(--card2);color:var(--text)}
+
+    /* ── NOTIF ── */
+    .notif{position:fixed;top:24px;right:24px;padding:13px 18px;border-radius:var(--radius2);font-family:var(--font-b);font-size:13px;font-weight:600;z-index:999;transform:translateX(130%);transition:transform .3s;max-width:300px;pointer-events:none}
+    .notif.show{transform:translateX(0)}
+    .notif.ok{background:var(--lime);color:var(--bg)}
+    .notif.err{background:var(--red);color:#fff}
+    .notif.inf{background:var(--teal);color:var(--bg)}
+
+    /* ── MODAL ── */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:32px;max-width:460px;width:100%;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+    .modal-title{font-family:var(--font-h);font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-0.02em}
+    .modal-sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.6}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end}
+
+    /* ── HAMBURGER ── */
+    .hamburger{display:none;position:fixed;top:14px;left:14px;z-index:201;width:38px;height:38px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:4px;padding:9px}
+    .hamburger span{display:block;width:16px;height:2px;background:var(--text2);border-radius:2px;transition:all .25s}
+    .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99}
+    .sidebar-overlay.show{display:block}
+
+    @media(max-width:900px){
+      .hamburger{display:flex}
+      .sidebar{transform:translateX(-100%)}
+      .sidebar.open{transform:translateX(0)}
+      .main{margin-left:0;padding:70px 16px 32px}
+      .g2,.g3{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .ph-title{font-size:20px}
+      .stat-val{font-size:26px}
+    }
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:500;background-image:radial-gradient(ellipse 600px 400px at 50% 20%,rgba(200,255,0,0.05),transparent)}
+    .login-box{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:44px 40px;width:100%;max-width:400px;text-align:center}
+    .login-title{font-family:var(--font-h);font-size:28px;font-weight:800;color:var(--text);margin-bottom:4px;letter-spacing:-0.03em}
+    .login-title span{color:var(--lime)}
+    .login-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lime-dim);border:1px solid rgba(200,255,0,.2);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;color:var(--lime);letter-spacing:.05em;margin-bottom:16px}
+    .login-sub{font-size:13px;color:var(--text3);margin-bottom:28px;line-height:1.6}
+    .btn-google{width:100%;padding:14px;border-radius:var(--radius2);border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-family:var(--font-b);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
+    .btn-google:hover{border-color:var(--lime);background:var(--lime-dim)}
+    /* ── UPLOAD ── */
+    .upload-area{border:2px dashed var(--border2);border-radius:var(--radius2);padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3)}
+    .upload-area:hover,.upload-area.dragover{border-color:var(--lime);background:var(--lime-dim)}
+    /* ── TITULO CARD ── */
+    .titulo-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 16px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:border-color .15s}
+    .titulo-card:hover{border-color:var(--border2)}
+    .titulo-card.selected{border-color:var(--lime);background:var(--lime-dim)}
+    .titulo-num{font-size:11px;color:var(--text3);width:18px;flex-shrink:0;margin-top:2px;font-family:var(--font-b)}
+    .titulo-txt{flex:1;font-size:13px;color:var(--text2);line-height:1.5}
+    .titulo-card.selected .titulo-txt{color:var(--lime)}
+    /* ── TRANS ITEM ── */
+    .trans-item{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:12px 16px;margin-bottom:6px;display:flex;align-items:center;gap:12px;transition:border-color .15s}
+    .trans-item:hover{border-color:var(--border2)}
+    .trans-nome{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .trans-meta{font-size:11px;color:var(--text3);margin-top:2px}
+    /* ── MENCAO ITEM ── */
+    .mencao-item{display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--card2);border-radius:var(--radius2);border:1px solid var(--border);margin-bottom:6px}
+    /* ── VIDEO ITEM ── */
+    .video-item{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:16px;margin-bottom:10px}
+    .video-relatorio{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:12px;font-size:12px;color:var(--text2);line-height:1.7;margin-top:8px;white-space:pre-wrap}
+    /* ── PREVIEW ── */
+    .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+    .preview-box{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:14px}
+    .preview-lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+    .preview-txt{font-size:12px;color:var(--text2);line-height:1.8;white-space:pre-wrap;max-height:360px;overflow-y:auto;font-family:var(--font-b)}
+    /* ── BADGES ── */
+    .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+    .badge-lime{background:var(--lime-dim);color:var(--lime);border:1px solid rgba(200,255,0,.2)}
+    .badge-gold{background:var(--gold-dim);color:var(--gold)}
+    .badge-red{background:var(--red-dim);color:var(--red)}
+    .badge-gray{background:rgba(255,255,255,.06);color:var(--text3)}
+    .badge-teal{background:rgba(0,212,168,.1);color:var(--teal)}
+    .badge-blue{background:rgba(74,158,255,.1);color:#4a9eff}
+    /* ── NOTIF ── */
+    .notif{position:fixed;top:20px;right:20px;padding:11px 18px;border-radius:var(--radius2);font-size:12px;font-weight:600;z-index:999;transform:translateX(130%);transition:transform .3s;pointer-events:none}
+    .notif.show{transform:translateX(0)}
+    .notif.ok{background:var(--lime);color:var(--bg)}
+    .notif.err{background:var(--red);color:#fff}
+    .notif.inf{background:#4a9eff;color:#fff}
+    @media(max-width:960px){
+      .preview-grid{grid-template-columns:1fr}
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-title">Capixinha <span>Invest</span></div>
+    <div class="login-badge">STUDIO</div>
+    <p class="login-sub">Acesso restrito à equipe.<br>Entre com sua conta Google autorizada.</p>
+    <button class="btn-google" id="btn-login">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
+      Entrar com Google
+    </button>
+  </div>
+</div>
+
+<div class="app" id="app" style="display:none">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">Capixinha Invest</div>
+    <div class="sidebar-sub">Studio de Conteúdo</div>
+    <div class="nav">
+      <button class="nav-item active" onclick="goTo('dashboard')" id="nav-dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item" onclick="goTo('titulos')" id="nav-titulos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Títulos
+      </button>
+      <button class="nav-item" onclick="goTo('roteiros')" id="nav-roteiros">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Roteiros
+      </button>
+      <button class="nav-item" onclick="goTo('mencoes')" id="nav-mencoes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Menções
+      </button>
+      <button class="nav-item" onclick="goTo('mentor')" id="nav-mentor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Mentor
+      </button>
+      <div class="nav-sep"></div>
+      <button class="nav-item" onclick="goTo('banco')" id="nav-banco">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Biblioteca
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-lbl">Usuário</div>
+      <div class="backend-status">
+        <div class="backend-dot" id="user-dot" style="background:var(--text3)"></div>
+        <span class="backend-txt" id="sb-name">Carregando...</span>
+      </div>
+      <button class="btn" onclick="fazerLogout()" style="margin-top:10px;width:100%;background:var(--red-dim);color:var(--red);font-size:12px;padding:8px">Sair</button>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <div class="view active" id="view-dashboard">
+      <div class="ph"><div class="ph-title">Dashboard</div><div class="ph-sub">Studio Capixinha Invest</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+        <div class="stat-card"><div class="stat-lbl">Títulos Salvos</div><div class="stat-val" id="d-titulos">—</div></div>
+        <div class="stat-card"><div class="stat-lbl">Transcrições</div><div class="stat-val" id="d-trans">—</div></div>
+        <div class="stat-card"><div class="stat-lbl">Menções Ativas</div><div class="stat-val" id="d-mencoes">—</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="card">
+          <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Ações Rápidas</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="btn btn-lime btn-full" onclick="goTo('titulos')">Gerar Títulos</button>
+            <button class="btn btn-full" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="goTo('roteiros')">Criar Roteiro</button>
+            <button class="btn btn-full" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="goTo('mentor')">Analisar Performance</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Últimos Títulos</div>
+          <div id="d-ultimos"><div style="font-size:12px;color:var(--text3);text-align:center;padding:20px">Carregando...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TÍTULOS -->
+    <div class="view" id="view-titulos">
+      <div class="ph"><div class="ph-title">Títulos</div><div class="ph-sub">Mescle estrutura do Primata com referência viral</div></div>
+      <div style="display:flex;gap:4px;margin-bottom:20px;background:var(--bg3);padding:4px;border-radius:10px;width:fit-content">
+        <button class="nav-item active" id="tt-gerar" onclick="switchTab('titulos','gerar')" style="border-radius:7px;padding:7px 16px;font-size:12px">Gerar</button>
+        <button class="nav-item" id="tt-hist" onclick="switchTab('titulos','hist')" style="border-radius:7px;padding:7px 16px;font-size:12px">Histórico</button>
+      </div>
+      <div id="tp-gerar">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div class="card">
+            <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Configurar</div>
+
+            <!-- ESTRUTURA -->
+            <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:12px">
+              <div style="font-size:11px;font-weight:700;color:var(--lime);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Estrutura</div>
+              <div style="margin-bottom:10px">
+                <div class="lbl" style="margin-bottom:5px">Título de Estrutura (canal Primata)</div>
+                <input type="text" id="tit-estrutura" placeholder="Ex: Imposto Explicado com Bananas">
+              </div>
+              <div>
+                <div class="lbl" style="margin-bottom:5px">Transcrição de Estrutura</div>
+                <textarea id="tit-trans-estrutura" style="min-height:60px;font-size:11px" placeholder="Cole a transcrição do vídeo de estrutura aqui..."></textarea>
+                <div id="status-trans-estrutura" style="font-size:11px;color:var(--text3);margin-top:4px;display:none">✓ Transcrição de estrutura recebida</div>
+              </div>
+            </div>
+
+            <!-- REFERÊNCIA -->
+            <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:12px">
+              <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Referência Viral</div>
+              <div style="margin-bottom:10px">
+                <div class="lbl" style="margin-bottom:5px">Título Viral de Referência</div>
+                <input type="text" id="tit-referencia" placeholder="Ex: Quanto sua empresa realmente paga pra te ter">
+              </div>
+              <div>
+                <div class="lbl" style="margin-bottom:5px">Transcrição de Referência</div>
+                <textarea id="tit-trans-referencia" style="min-height:60px;font-size:11px" placeholder="Cole a transcrição do vídeo viral aqui..."></textarea>
+                <div id="status-trans-referencia" style="font-size:11px;color:var(--text3);margin-top:4px;display:none">✓ Transcrição de referência recebida</div>
+              </div>
+            </div>
+
+            <div style="margin-bottom:14px">
+              <div class="lbl" style="margin-bottom:5px">Quantidade</div>
+              <select id="tit-qtd"><option value="5" selected>5 títulos</option><option value="3">3 títulos</option><option value="10">10 títulos</option></select>
+            </div>
+            <button class="btn btn-lime btn-full" id="btn-gerar-tit" onclick="gerarTitulos()">Gerar Títulos</button>
+          </div>
+          <div class="card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+              <div class="card-title" style="margin-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Opções Geradas</div>
+              <span class="badge badge-gray" id="tit-count">0</span>
+            </div>
+            <div id="tit-opcoes"><div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Configure e clique em Gerar</div></div>
+            <div id="tit-salvar-wrap" style="display:none;margin-top:12px">
+              <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Clique no título desejado:</div>
+              <button class="btn btn-lime btn-full" id="btn-confirmar-tit" onclick="confirmarTitulo()" disabled>Salvar Título Escolhido</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="lbl" style="margin-bottom:6px">Log</div>
+          <div id="log-tit" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;height:100px;overflow-y:auto;font-size:11px;line-height:1.7;color:var(--text3)"><span style="color:#60a5fa">[sistema] Pronto.</span></div>
+        </div>
+      </div>
+      <div id="tp-hist" style="display:none">
+        <div class="card" style="margin-bottom:14px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input type="text" id="th-busca" placeholder="Buscar título..." style="flex:1" oninput="filtrarTitulosHist()">
+            <select id="th-tipo" onchange="filtrarTitulosHist()" style="width:150px"><option value="">Todos</option><option value="identidade">Identidade</option></select>
+            <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="carregarTitulosHist()">Atualizar</button>
+            <button class="btn" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(255,71,87,.2)" onclick="excluirTitulosSelecionados()">Excluir Selecionados</button>
+          </div>
+        </div>
+        <div id="tit-hist-list"><div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhum título ainda</div></div>
+      </div>
+    </div>
+
+    <!-- ROTEIROS -->
+    <div class="view" id="view-roteiros">
+      <div class="ph"><div class="ph-title">Roteiros</div><div class="ph-sub">Mescle transcrições mantendo identidade Capixinha</div></div>
+      <div style="display:flex;gap:4px;margin-bottom:20px;background:var(--bg3);padding:4px;border-radius:10px;width:fit-content">
+        <button class="nav-item active" id="rt-gerar" onclick="switchTab('roteiros','gerar')" style="border-radius:7px;padding:7px 16px;font-size:12px">Gerar</button>
+        <button class="nav-item" id="rt-trans" onclick="switchTab('roteiros','trans')" style="border-radius:7px;padding:7px 16px;font-size:12px">Transcrições</button>
+      </div>
+      <div id="rp-gerar">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div class="card">
+            <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Transcrição de Estrutura</div>
+            <div class="upload-area" onclick="document.getElementById('file-estrutura').click()" ondragover="dragOver(event,'drop-est')" ondragleave="dragLeave('drop-est')" id="drop-est">
+              <div style="font-size:28px;margin-bottom:8px">↑</div>
+              <div style="font-size:13px;color:var(--text2)">Clique ou arraste — Canal Primata</div>
+              <div style="font-size:11px;color:var(--text3)">.txt ou .srt</div>
+            </div>
+            <input type="file" id="file-estrutura" accept=".txt,.srt" style="display:none" onchange="carregarArquivo(event,'estrutura')">
+            <div id="nome-estrutura" style="font-size:11px;color:var(--lime);margin-top:6px"></div>
+            <textarea id="txt-estrutura" placeholder="Ou cole aqui..." style="margin-top:10px;min-height:80px"></textarea>
+            <div class="card-title" style="margin-top:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/></svg>Transcrição de Referência</div>
+            <div class="upload-area" onclick="document.getElementById('file-referencia').click()" id="drop-ref">
+              <div style="font-size:28px;margin-bottom:8px">↑</div>
+              <div style="font-size:13px;color:var(--text2)">Vídeo viral ou evergreen</div>
+              <div style="font-size:11px;color:var(--text3)">.txt ou .srt</div>
+            </div>
+            <input type="file" id="file-referencia" accept=".txt,.srt" style="display:none" onchange="carregarArquivo(event,'referencia')">
+            <div id="nome-referencia" style="font-size:11px;color:var(--lime);margin-top:6px"></div>
+            <textarea id="txt-referencia" placeholder="Ou cole aqui..." style="margin-top:10px;min-height:80px"></textarea>
+            <div style="display:flex;gap:8px;margin-top:14px">
+              <button class="btn btn-lime" style="flex:1" id="btn-gerar-rot" onclick="gerarRoteiro()">Gerar Roteiro</button>
+              <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="salvarTranscricoes()">Salvar Transcrições</button>
+            </div>
+          </div>
+          <div class="card" style="display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div class="card-title" style="margin-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Preview</div>
+              <div style="display:flex;gap:5px">
+                <span class="badge badge-gray" id="rot-palavras">0 palavras</span>
+                <span class="badge badge-lime" id="rot-capivara">0 capivaras</span>
+                <span class="badge badge-gold" id="rot-coxinha">0 coxinhas</span>
+              </div>
+            </div>
+            <textarea id="rot-preview" style="flex:1;min-height:320px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text2);padding:12px;font-size:12px;line-height:1.8;resize:none;outline:none" placeholder="Roteiro gerado aparece aqui..."></textarea>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn btn-lime" style="flex:1" id="btn-salvar-rot" onclick="salvarRoteiro()" disabled>Salvar como Identidade</button>
+              <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="copiarRoteiro()">Copiar</button>
+              <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="downloadRoteiro()">Baixar</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="card-comparacao" style="display:none">
+          <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Comparação — Original vs Capixinha</div>
+          <div class="preview-grid">
+            <div class="preview-box"><div class="preview-lbl">Estrutura Original</div><div class="preview-txt" id="prev-original"></div></div>
+            <div class="preview-box"><div class="preview-lbl">Roteiro Capixinha</div><div class="preview-txt" id="prev-capixinha"></div></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <div class="lbl" style="margin-bottom:6px">Log</div>
+          <div id="log-rot" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;height:100px;overflow-y:auto;font-size:11px;line-height:1.7;color:var(--text3)"><span style="color:#60a5fa">[sistema] Pronto.</span></div>
+        </div>
+      </div>
+      <div id="rp-trans" style="display:none">
+        <div class="card" style="margin-bottom:14px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input type="text" id="trans-busca" placeholder="Buscar transcrição..." style="flex:1" oninput="filtrarTranscricoes()">
+            <select id="trans-tipo-filtro" onchange="filtrarTranscricoes()" style="width:150px"><option value="">Todos</option><option value="estrutura">Estrutura</option><option value="referencia">Referência</option><option value="identidade">Identidade</option></select>
+            <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="carregarTranscricoes()">Atualizar</button>
+          </div>
+        </div>
+        <div id="trans-list"><div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhuma transcrição ainda</div></div>
+      </div>
+    </div>
+
+    <!-- MENÇÕES -->
+    <div class="view" id="view-mencoes">
+      <div class="ph"><div class="ph-title">Menções</div><div class="ph-sub">Substituições automáticas — define a identidade da Capixinha</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="card">
+          <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Adicionar Substituição</div>
+          <div style="margin-bottom:10px"><div class="lbl" style="margin-bottom:5px">Palavra original</div><input type="text" id="menc-de" placeholder="Ex: macaco, banana, gorila"></div>
+          <div style="margin-bottom:10px"><div class="lbl" style="margin-bottom:5px">Substituir por</div><input type="text" id="menc-para" placeholder="Ex: capivara, coxinha, capixinha"></div>
+          <div style="margin-bottom:14px"><div class="lbl" style="margin-bottom:5px">Contexto (opcional)</div><input type="text" id="menc-ctx" placeholder="Ex: personagem principal"></div>
+          <button class="btn btn-lime btn-full" onclick="adicionarMencao()">+ Adicionar</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Analisar Transcrição</div>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:12px;line-height:1.6">Cole uma transcrição para a IA identificar menções e sugerir substituições automaticamente.</p>
+          <textarea id="menc-analise-txt" placeholder="Cole a transcrição aqui..." style="min-height:100px"></textarea>
+          <button class="btn btn-lime btn-full" style="margin-top:10px" onclick="analisarMencoes()">Analisar e Sugerir</button>
+          <div id="menc-sugestoes" style="margin-top:14px"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div class="card-title" style="margin-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Biblioteca de Substituições Ativas</div>
+          <span class="badge badge-lime" id="menc-count">0 ativas</span>
+        </div>
+        <div id="menc-lista"><div style="text-align:center;padding:32px;font-size:12px;color:var(--text3)">Nenhuma substituição ainda</div></div>
+      </div>
+    </div>
+
+    <!-- MENTOR -->
+    <div class="view" id="view-mentor">
+      <div class="ph">
+        <div class="ph-title">Mentor</div>
+        <div class="ph-sub">Acompanhe a performance de cada vídeo — construa identidade com dados reais</div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
+        <button class="btn btn-lime" onclick="abrirModalVideo()">+ Adicionar Vídeo</button>
+      </div>
+      <div id="mentor-lista"><div style="text-align:center;padding:60px;font-size:12px;color:var(--text3)">Nenhum vídeo ainda.<br>Adicione o primeiro para começar.</div></div>
+    </div>
+
+    <!-- BANCO -->
+    <div class="view" id="view-banco">
+      <div class="ph"><div class="ph-title">Biblioteca</div><div class="ph-sub">Controle total do banco de dados</div></div>
+      <div style="display:flex;gap:4px;margin-bottom:20px;background:var(--bg3);padding:4px;border-radius:10px;width:fit-content">
+        <button class="nav-item active" id="bt-titulos" onclick="switchTabBanco('titulos')" style="border-radius:7px;padding:7px 16px;font-size:12px">Títulos</button>
+        <button class="nav-item" id="bt-trans" onclick="switchTabBanco('trans')" style="border-radius:7px;padding:7px 16px;font-size:12px">Transcrições</button>
+        <button class="nav-item" id="bt-mencoes" onclick="switchTabBanco('mencoes')" style="border-radius:7px;padding:7px 16px;font-size:12px">Menções</button>
+        <button class="nav-item" id="bt-videos" onclick="switchTabBanco('videos')" style="border-radius:7px;padding:7px 16px;font-size:12px">Vídeos</button>
+      </div>
+      <div id="bp-titulos"><div style="display:flex;justify-content:flex-end;margin-bottom:10px"><button class="btn" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(255,71,87,.2)" onclick="excluirTodosTitulos()">Excluir Todos</button></div><div id="banco-titulos-list"></div></div>
+      <div id="bp-trans" style="display:none"><div style="display:flex;justify-content:flex-end;margin-bottom:10px"><button class="btn" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(255,71,87,.2)" onclick="excluirTodasTrans()">Excluir Todas</button></div><div id="banco-trans-list"></div></div>
+      <div id="bp-mencoes" style="display:none"><div id="banco-menc-list"></div></div>
+      <div id="bp-videos" style="display:none"><div id="banco-videos-list"></div></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal Vídeo -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px" id="modal-video">
+  <div style="background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;max-width:480px;width:100%">
+    <div style="font-family:var(--font-h);font-size:18px;font-weight:800;margin-bottom:6px">Novo Vídeo</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:20px">Adicione um vídeo publicado para acompanhar.</div>
+    <div style="margin-bottom:12px"><div class="lbl" style="margin-bottom:5px">Título do Vídeo</div><input type="text" id="mv-titulo" placeholder="Ex: PETR4 explicada com coxinha"></div>
+    <div style="margin-bottom:12px"><div class="lbl" style="margin-bottom:5px">Data de Publicação</div><input type="date" id="mv-data"></div>
+    <div style="margin-bottom:18px"><div class="lbl" style="margin-bottom:5px">URL (opcional)</div><input type="text" id="mv-url" placeholder="https://youtube.com/watch?v=..."></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="fecharModal('modal-video')">Cancelar</button>
+      <button class="btn btn-lime" onclick="salvarVideo()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Info -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px" id="modal-info">
+  <div style="background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;max-width:480px;width:100%">
+    <div style="font-family:var(--font-h);font-size:18px;font-weight:800;margin-bottom:6px">Adicionar Informação</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:20px" id="modal-info-sub">Qualquer observação sobre este vídeo.</div>
+    <div style="margin-bottom:18px"><textarea id="mi-texto" placeholder="Ex: Dia 3 — 1.200 views, 45 likes, comentários positivos..." style="min-height:100px"></textarea></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2)" onclick="fecharModal('modal-info')">Cancelar</button>
+      <button class="btn btn-lime" onclick="salvarInfo()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, where, serverTimestamp, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAgHVQgiQPE368ASxwWRVmejvbkEc41Fgo",
+  authDomain: "elite-acoes.firebaseapp.com",
+  projectId: "elite-acoes",
+  storageBucket: "elite-acoes.firebasestorage.app",
+  messagingSenderId: "723536084871",
+  appId: "1:723536084871:web:c6cf5879ddeb629759dd22"
+};
+const DEEPSEEK_KEY = 'sk-412c2bc9850a4281a7de88cfffd5987f';
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+let USER = null, tituloSelecionado = null, titulosGerados = [], videoAtualId = null;
+
+// ── AUTH ──
+onAuthStateChanged(auth, u => {
+  if (u) {
+    USER = u;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    document.getElementById('sb-name').textContent = u.displayName?.split(' ')[0] || u.email;
+    document.getElementById('user-dot').style.background = 'var(--lime)';
+    init();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-login')?.addEventListener('click', async () => {
+    try { await signInWithPopup(auth, new GoogleAuthProvider()); }
+    catch(e) { notif('Erro: ' + e.message, 'err'); }
+  });
+});
+
+window.fazerLogout = () => signOut(auth);
+
+async function init() {
+  await initMencoesDefault();
+  carregarDashboard();
+  carregarMencoes();
+}
+
+async function initMencoesDefault() {
+  const snap = await getDocs(collection(db,'capixinha_mencoes'));
+  if (snap.empty) {
+    const defaults = [
+      {de:'macaco',para:'capivara',ctx:'personagem principal',ativa:true},
+      {de:'macacos',para:'capivaras',ctx:'personagem plural',ativa:true},
+      {de:'banana',para:'coxinha',ctx:'alimento símbolo',ativa:true},
+      {de:'bananas',para:'coxinhas',ctx:'alimento plural',ativa:true},
+      {de:'gorila',para:'capixinha',ctx:'personagem alternativo',ativa:true},
+      {de:'gorilas',para:'capixinhas',ctx:'personagem alt plural',ativa:true},
+      {de:'tropa',para:'investidores',ctx:'público do canal',ativa:true},
+      {de:'selva',para:'bolsa',ctx:'ambiente/mercado',ativa:true},
+      {de:'primata',para:'capivara',ctx:'referência ao personagem',ativa:true},
+    ];
+    for (const d of defaults) await addDoc(collection(db,'capixinha_mencoes'),{...d,criado_em:serverTimestamp()});
+  }
+}
+
+// ── NAVEGAÇÃO ──
+window.goTo = v => {
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-item[id^="nav-"]').forEach(el=>el.classList.remove('active'));
+  document.getElementById('view-'+v)?.classList.add('active');
+  document.getElementById('nav-'+v)?.classList.add('active');
+  if(v==='mencoes') carregarMencoes();
+  if(v==='mentor') carregarMentor();
+  if(v==='banco') { switchTabBanco('titulos'); }
+  if(v==='roteiros') carregarTranscricoes();
+};
+
+window.switchTab = (view, tab) => {
+  if(view==='titulos'){
+    document.getElementById('tp-gerar').style.display = tab==='gerar'?'block':'none';
+    document.getElementById('tp-hist').style.display  = tab==='hist'?'block':'none';
+    document.getElementById('tt-gerar').classList.toggle('active',tab==='gerar');
+    document.getElementById('tt-hist').classList.toggle('active',tab==='hist');
+    if(tab==='hist') carregarTitulosHist();
+  } else {
+    document.getElementById('rp-gerar').style.display = tab==='gerar'?'block':'none';
+    document.getElementById('rp-trans').style.display = tab==='trans'?'block':'none';
+    document.getElementById('rt-gerar').classList.toggle('active',tab==='gerar');
+    document.getElementById('rt-trans').classList.toggle('active',tab==='trans');
+    if(tab==='trans') carregarTranscricoes();
+  }
+};
+
+// ── DASHBOARD ──
+async function carregarDashboard() {
+  const [ts,trs,ms] = await Promise.all([
+    getDocs(collection(db,'capixinha_titulos')),
+    getDocs(collection(db,'capixinha_transcricoes')),
+    getDocs(query(collection(db,'capixinha_mencoes'),where('ativa','==',true)))
+  ]);
+  document.getElementById('d-titulos').textContent = ts.size;
+  document.getElementById('d-trans').textContent = trs.size;
+  document.getElementById('d-mencoes').textContent = ms.size;
+  const ul = document.getElementById('d-ultimos');
+  const r = ts.docs.slice(-4).reverse();
+  ul.innerHTML = r.length ? r.map(d=>`<div style="padding:8px 10px;background:var(--card2);border-radius:8px;margin-bottom:6px;font-size:12px;color:var(--text2)">${d.data().titulo}<span class="badge badge-lime" style="float:right">${d.data().tipo||'gerado'}</span></div>`).join('') : '<div style="font-size:12px;color:var(--text3);text-align:center;padding:16px">Nenhum título ainda</div>';
+}
+
+// ── GERAR TÍTULOS ──
+window.gerarTitulos = async () => {
+  const btn = document.getElementById('btn-gerar-tit');
+  btn.disabled=true; btn.textContent='Gerando...';
+  const log = m => { const el=document.getElementById('log-tit'); el.innerHTML+=`<span style="color:#60a5fa">${m}</span><br>`; el.scrollTop=99999; };
+  const estruturas = document.getElementById('tit-estrutura').value.trim();
+  const referencia = document.getElementById('tit-referencia').value.trim();
+  const qtd = parseInt(document.getElementById('tit-qtd').value);
+  if(!estruturas){notif('Cole títulos de estrutura','err');btn.disabled=false;btn.textContent='Gerar Títulos';return;}
+  const [idSnap,mencSnap] = await Promise.all([
+    getDocs(query(collection(db,'capixinha_titulos'),where('tipo','==','identidade'))),
+    getDocs(query(collection(db,'capixinha_mencoes'),where('ativa','==',true)))
+  ]);
+  const identidades = idSnap.docs.map(d=>d.data().titulo).slice(-5);
+  const mencoes = mencSnap.docs.map(d=>`${d.data().de} → ${d.data().para}`).join(', ');
+  log('[IA] Consultando DeepSeek...');
+  // Captura transcrições e oculta os campos
+const transEstrutura = document.getElementById('tit-trans-estrutura').value.trim();
+const transReferencia = document.getElementById('tit-trans-referencia').value.trim();
+
+// Mostra confirmação e limpa visual
+if (transEstrutura) {
+  document.getElementById('tit-trans-estrutura').value = '';
+  document.getElementById('status-trans-estrutura').style.display = 'block';
+  document.getElementById('status-trans-estrutura').style.color = 'var(--lime)';
+}
+if (transReferencia) {
+  document.getElementById('tit-trans-referencia').value = '';
+  document.getElementById('status-trans-referencia').style.display = 'block';
+  document.getElementById('status-trans-referencia').style.color = 'var(--gold)';
+}
+
+const prompt = `Você é especialista em criar títulos virais para o canal "Capixinha Invest" no YouTube Brasil.
+
+CONTEXTO DO CANAL:
+Micronicho exclusivo: preço teto de ações e FIIs da B3. Personagem: Capixinha, capivara feita de coxinha curitibana. Assinatura do canal: "com coxinhas" — igual ao Primata usa "com bananas".
+
+SUBSTITUIÇÕES OBRIGATÓRIAS: ${mencoes}
+
+TÍTULO DE ESTRUTURA — SIGA A ESTRUTURA À RISCA:
+${estruturas}
+Mantenha a estrutura EXATA desse título. Apenas troque o tema pelo micronicho e aplique as substituições.
+Exemplo: "Imposto Explicado com Bananas" vira "Preço Teto Explicado com Coxinhas".
+
+${transEstrutura ? `TRANSCRIÇÃO DE ESTRUTURA — use os dados reais desta transcrição (números, fatos, exemplos concretos). NUNCA invente dados que não estão aqui:
+${transEstrutura.slice(0, 2000)}` : ''}
+
+${referencia ? `TÍTULO VIRAL DE REFERÊNCIA — extraia apenas formato, urgência, emoção e números REAIS: "${referencia}"` : ''}
+
+${transReferencia ? `TRANSCRIÇÃO DE REFERÊNCIA — extraia elementos virais: ganchos, emoções, perguntas provocativas. Use apenas dados que estão nesta transcrição:
+${transReferencia.slice(0, 2000)}` : ''}
+
+${identidades.length ? `TÍTULOS JÁ APROVADOS DO CANAL — mantenha consistência de tom: ${identidades.join(', ')}` : ''}
+
+REGRAS ABSOLUTAS:
+1. Estrutura idêntica ao título de estrutura — só mude tema e palavras
+2. TODO título deve conter preço teto OU dividendo OU dividendos OU renda passiva OU yield OU proventos
+3. Substitua TODOS: macaco para capivara, banana para coxinha, gorila para capixinha etc.
+4. NUNCA mencionar Método Bazin ou Barsi — só entra se já vier nos títulos de referência
+5. NUNCA recomendar compra ou venda
+6. Use APENAS números e dados que estão nas transcrições fornecidas — NUNCA invente
+7. A expressão "com coxinhas" deve aparecer em pelo menos metade dos títulos gerados
+
+Gere EXATAMENTE ${qtd} títulos. Retorne APENAS os títulos, um por linha, sem numeração.`;
+  try {
+    const res = await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:prompt}],max_tokens:1000,temperature:0.85})});
+    const data = await res.json();
+    titulosGerados = (data.choices?.[0]?.message?.content?.trim()||'').split('\n').map(t=>t.trim()).filter(t=>t.length>10);
+    document.getElementById('tit-count').textContent = titulosGerados.length;
+    document.getElementById('tit-opcoes').innerHTML = titulosGerados.map((t,i)=>`<div class="titulo-card" id="tc-${i}" onclick="selecionarTitulo(${i})"><span class="titulo-num">${i+1}</span><span class="titulo-txt">${t}</span></div>`).join('');
+    document.getElementById('tit-salvar-wrap').style.display='block';
+    tituloSelecionado=null;
+    log(`[IA] ✓ ${titulosGerados.length} títulos gerados`);
+    notif(`${titulosGerados.length} títulos gerados!`,'ok');
+  } catch(e){log('[IA] ❌ '+e.message);notif('Erro: '+e.message,'err');}
+  btn.disabled=false; btn.textContent='Gerar Títulos';
+};
+
+window.selecionarTitulo = i => {
+  document.querySelectorAll('.titulo-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('tc-'+i)?.classList.add('selected');
+  tituloSelecionado = titulosGerados[i];
+  document.getElementById('btn-confirmar-tit').disabled=false;
+};
+
+window.confirmarTitulo = async () => {
+  if(!tituloSelecionado) return;
+  await addDoc(collection(db,'capixinha_titulos'),{titulo:tituloSelecionado,tipo:'identidade',criado_em:serverTimestamp(),criado_por:USER?.email||''});
+  notif('Título salvo como identidade!','ok');
+  tituloSelecionado=null;
+  document.getElementById('btn-confirmar-tit').disabled=true;
+  document.querySelectorAll('.titulo-card').forEach(c=>c.classList.remove('selected'));
+  carregarDashboard();
+};
+
+async function carregarTitulosHist() {
+  const snap = await getDocs(query(collection(db,'capixinha_titulos'),orderBy('criado_em','desc')));
+  window._titHist = snap.docs.map(d=>({id:d.id,...d.data()}));
+  filtrarTitulosHist();
+}
+window.filtrarTitulosHist = () => {
+  const q=document.getElementById('th-busca')?.value?.toLowerCase()||'';
+  const tipo=document.getElementById('th-tipo')?.value||'';
+  const lista=(window._titHist||[]).filter(t=>(!q||t.titulo?.toLowerCase().includes(q))&&(!tipo||t.tipo===tipo));
+  const el=document.getElementById('tit-hist-list');
+  if(!lista.length){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhum título encontrado</div>';return;}
+  el.innerHTML=lista.map(t=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card2);border-radius:var(--radius2);border:1px solid var(--border);margin-bottom:6px"><input type="checkbox" class="tit-check" data-id="${t.id}" style="width:14px;height:14px;accent-color:var(--lime);flex-shrink:0;cursor:pointer"><div style="flex:1;font-size:13px;color:var(--text2)">${t.titulo}</div><span class="badge ${t.tipo==='identidade'?'badge-lime':'badge-gray'}">${t.tipo}</span><button onclick="excluirTitulo('${t.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');
+};
+window.excluirTitulo = async id => { if(!confirm('Excluir?')) return; await deleteDoc(doc(db,'capixinha_titulos',id)); notif('Excluído','inf'); carregarTitulosHist(); carregarDashboard(); };
+window.excluirTitulosSelecionados = async () => {
+  const ids=[...document.querySelectorAll('.tit-check:checked')].map(c=>c.dataset.id);
+  if(!ids.length){notif('Selecione títulos','err');return;}
+  if(!confirm(`Excluir ${ids.length}?`)) return;
+  for(const id of ids) await deleteDoc(doc(db,'capixinha_titulos',id));
+  notif(`${ids.length} excluído(s)`,'ok'); carregarTitulosHist(); carregarDashboard();
+};
+window.excluirTodosTitulos = async () => {
+  const snap=await getDocs(collection(db,'capixinha_titulos'));
+  if(!snap.size||!confirm(`Excluir TODOS os ${snap.size}?`)) return;
+  for(const d of snap.docs) await deleteDoc(doc(db,'capixinha_titulos',d.id));
+  notif('Todos excluídos','ok'); carregarTitulosHist(); carregarDashboard();
+};
+
+// ── UPLOAD ──
+window.dragOver=(e,id)=>{e.preventDefault();document.getElementById(id)?.classList.add('dragover');};
+window.dragLeave=id=>{document.getElementById(id)?.classList.remove('dragover');};
+window.carregarArquivo=(e,tipo)=>{const f=e.target.files[0];if(f)lerArquivo(f,tipo);};
+function lerArquivo(file,tipo){const r=new FileReader();r.onload=e=>{document.getElementById('txt-'+tipo).value=e.target.result;document.getElementById('nome-'+tipo).textContent='📄 '+file.name;};r.readAsText(file,'UTF-8');}
+
+// ── GERAR ROTEIRO ──
+window.gerarRoteiro = async () => {
+  const btn=document.getElementById('btn-gerar-rot');
+  btn.disabled=true; btn.textContent='Gerando...';
+  const logEl=document.getElementById('log-rot');
+  const log=m=>{logEl.innerHTML+=`<span style="color:#60a5fa">${m}</span><br>`;logEl.scrollTop=99999;};
+  const txtEst=document.getElementById('txt-estrutura').value.trim();
+  const txtRef=document.getElementById('txt-referencia').value.trim();
+  if(!txtEst){notif('Adicione a transcrição de estrutura','err');btn.disabled=false;btn.textContent='Gerar Roteiro';return;}
+  const [idTitSnap,mencSnap]=await Promise.all([
+    getDocs(query(collection(db,'capixinha_titulos'),where('tipo','==','identidade'))),
+    getDocs(query(collection(db,'capixinha_mencoes'),where('ativa','==',true)))
+  ]);
+  const titulosId=idTitSnap.docs.map(d=>d.data().titulo).slice(-5);
+  const mencoes=mencSnap.docs.map(d=>({de:d.data().de,para:d.data().para}));
+  const cnt=(txt,p)=>(txt.match(new RegExp(p,'gi'))||[]).length;
+  const cMacaco=cnt(txtEst,'macaco'), cBanana=cnt(txtEst,'banana'), cGorila=cnt(txtEst,'gorila');
+  log(`[análise] ${cMacaco}x macaco, ${cBanana}x banana, ${cGorila}x gorila`);
+  log('[IA] Gerando com DeepSeek...');
+  const prompt=`Você é roteirista do canal "Capixinha Invest" — educação financeira sobre preço teto de ações e FIIs da B3.
+PERSONAGEM: Capixinha — capivara feita de coxinha curitibana, usa óculos, segura calculadora e gráfico CAPY-INDEX.
+SUBSTITUIÇÕES: ${mencoes.map(m=>`${m.de}→${m.para}`).join(', ')}
+PROPORÇÃO: estrutura tem ${cMacaco}x macaco, ${cBanana}x banana, ${cGorila}x gorila. Mantenha EXATAMENTE: ${cMacaco}x capivara, ${cBanana}x coxinha, ${cGorila}x capixinha.
+ESTRUTURA (siga 100%): ${txtEst}
+${txtRef?`REFERÊNCIA (extraia elementos virais): ${txtRef}`:''}
+${titulosId.length?`IDENTIDADE DO CANAL: ${titulosId.join(', ')}`:''}
+REGRAS: Siga 100% a estrutura. Substitua todas as menções. NUNCA misture Bazin (cálculo) com Barsi (filosofia). CTA final: eliteacoes.com. NUNCA recomendar compra/venda.
+Retorne APENAS o roteiro em texto corrido para narração. Sem marcações.`;
+  try {
+    const res=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'system',content:'Roteirista profissional Capixinha Invest. Texto corrido para narração, sem marcações.'},{role:'user',content:prompt}],max_tokens:4000,temperature:0.6})});
+    const data=await res.json();
+    const roteiro=data.choices?.[0]?.message?.content?.trim()||'';
+    document.getElementById('rot-preview').value=roteiro;
+    document.getElementById('rot-palavras').textContent=roteiro.split(/\s+/).length+' palavras';
+    document.getElementById('rot-capivara').textContent=(roteiro.match(/capivara/gi)||[]).length+' capivaras';
+    document.getElementById('rot-coxinha').textContent=(roteiro.match(/coxinha/gi)||[]).length+' coxinhas';
+    document.getElementById('btn-salvar-rot').disabled=false;
+    document.getElementById('prev-original').textContent=txtEst;
+    document.getElementById('prev-capixinha').textContent=roteiro;
+    document.getElementById('card-comparacao').style.display='block';
+    log(`[IA] ✓ ${roteiro.split(/\s+/).length} palavras`);
+    notif('Roteiro gerado!','ok');
+  } catch(e){log('[IA] ❌ '+e.message);notif('Erro: '+e.message,'err');}
+  btn.disabled=false; btn.textContent='Gerar Roteiro';
+};
+
+window.salvarTranscricoes = async () => {
+  const e=document.getElementById('txt-estrutura').value.trim(), r=document.getElementById('txt-referencia').value.trim();
+  if(!e&&!r){notif('Adicione ao menos uma transcrição','err');return;}
+  if(e) await addDoc(collection(db,'capixinha_transcricoes'),{nome:document.getElementById('nome-estrutura').textContent||'Estrutura',tipo:'estrutura',texto:e,criado_em:serverTimestamp()});
+  if(r) await addDoc(collection(db,'capixinha_transcricoes'),{nome:document.getElementById('nome-referencia').textContent||'Referência',tipo:'referencia',texto:r,criado_em:serverTimestamp()});
+  notif('Transcrições salvas!','ok'); carregarDashboard();
+};
+
+window.salvarRoteiro = async () => {
+  const roteiro=document.getElementById('rot-preview').value;
+  if(!roteiro) return;
+  await addDoc(collection(db,'capixinha_transcricoes'),{nome:'Roteiro — '+new Date().toLocaleDateString('pt-BR'),tipo:'identidade',texto:roteiro,criado_em:serverTimestamp()});
+  notif('Salvo como identidade!','ok');
+  document.getElementById('btn-salvar-rot').disabled=true;
+  carregarDashboard();
+};
+
+window.copiarRoteiro=()=>{navigator.clipboard.writeText(document.getElementById('rot-preview').value);notif('Copiado!','ok');};
+window.downloadRoteiro=()=>{const t=document.getElementById('rot-preview').value;if(!t)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='roteiro-capixinha.txt';a.click();};
+
+// ── TRANSCRIÇÕES ──
+async function carregarTranscricoes(){
+  const snap=await getDocs(query(collection(db,'capixinha_transcricoes'),orderBy('criado_em','desc')));
+  window._trans=snap.docs.map(d=>({id:d.id,...d.data()}));
+  filtrarTranscricoes();
+}
+window.filtrarTranscricoes=()=>{
+  const q=document.getElementById('trans-busca')?.value?.toLowerCase()||'', tipo=document.getElementById('trans-tipo-filtro')?.value||'';
+  const lista=(window._trans||[]).filter(t=>(!q||t.nome?.toLowerCase().includes(q))&&(!tipo||t.tipo===tipo));
+  const el=document.getElementById('trans-list');
+  if(!lista.length){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhuma transcrição</div>';return;}
+  const cores={estrutura:'badge-blue',referencia:'badge-gold',identidade:'badge-lime'};
+  el.innerHTML=lista.map(t=>`<div class="trans-item"><div style="flex:1;min-width:0"><div class="trans-nome">${t.nome}</div><div class="trans-meta">${t.texto?.length||0} chars · ${new Date((t.criado_em?.seconds||0)*1000).toLocaleDateString('pt-BR')}</div></div><span class="badge ${cores[t.tipo]||'badge-gray'}">${t.tipo}</span><button onclick="excluirTrans('${t.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;flex-shrink:0">Excluir</button></div>`).join('');
+};
+window.excluirTrans=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_transcricoes',id));notif('Excluída','inf');carregarTranscricoes();carregarDashboard();};
+window.excluirTodasTrans=async()=>{const snap=await getDocs(collection(db,'capixinha_transcricoes'));if(!snap.size||!confirm(`Excluir TODAS as ${snap.size}?`))return;for(const d of snap.docs)await deleteDoc(doc(db,'capixinha_transcricoes',d.id));notif('Todas excluídas','ok');carregarTranscricoes();carregarDashboard();};
+
+// ── MENÇÕES ──
+async function carregarMencoes(){
+  const snap=await getDocs(query(collection(db,'capixinha_mencoes'),orderBy('criado_em','desc')));
+  const lista=snap.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById('menc-count').textContent=lista.filter(m=>m.ativa).length+' ativas';
+  const el=document.getElementById('menc-lista');
+  if(!lista.length){el.innerHTML='<div style="text-align:center;padding:32px;font-size:12px;color:var(--text3)">Nenhuma substituição</div>';return;}
+  el.innerHTML=lista.map(m=>`<div class="mencao-item" style="${!m.ativa?'opacity:.5':''}"><span style="font-family:var(--font-b);font-size:12px;color:var(--red);flex-shrink:0">${m.de}</span><span style="color:var(--text3)">→</span><span style="font-family:var(--font-b);font-size:12px;color:var(--lime);flex-shrink:0">${m.para}</span><span style="font-size:11px;color:var(--text3);flex:1">${m.ctx||''}</span><button onclick="toggleMencao('${m.id}',${m.ativa})" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer">${m.ativa?'Desativar':'Ativar'}</button><button onclick="excluirMencao('${m.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');
+}
+window.adicionarMencao=async()=>{const de=document.getElementById('menc-de').value.trim().toLowerCase(),para=document.getElementById('menc-para').value.trim().toLowerCase(),ctx=document.getElementById('menc-ctx').value.trim();if(!de||!para){notif('Preencha os campos','err');return;}await addDoc(collection(db,'capixinha_mencoes'),{de,para,ctx,ativa:true,criado_em:serverTimestamp()});document.getElementById('menc-de').value='';document.getElementById('menc-para').value='';document.getElementById('menc-ctx').value='';notif('Adicionada!','ok');carregarMencoes();carregarDashboard();};
+window.toggleMencao=async(id,atual)=>{await updateDoc(doc(db,'capixinha_mencoes',id),{ativa:!atual});notif(atual?'Desativada':'Ativada','inf');carregarMencoes();carregarDashboard();};
+window.excluirMencao=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_mencoes',id));notif('Excluída','inf');carregarMencoes();carregarDashboard();};
+
+window.analisarMencoes=async()=>{
+  const txt=document.getElementById('menc-analise-txt').value.trim();
+  if(!txt){notif('Cole uma transcrição','err');return;}
+  const btn=document.querySelector('[onclick="analisarMencoes()"]');
+  btn.disabled=true;btn.textContent='Analisando...';
+  try{
+    const res=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:`Analise esta transcrição e identifique palavras recorrentes do personagem/estilo. Sugira substituições para adaptar ao canal Capixinha Invest (capivara/coxinha/bolsa). Retorne APENAS JSON: {"palavras_recorrentes":[{"palavra":"...","ocorrencias":N,"sugestao_substituicao":"..."}],"tom_identificado":"..."}\n\n${txt.slice(0,3000)}`}],max_tokens:800})});
+    const data=await res.json();
+    let json={};try{json=JSON.parse(data.choices?.[0]?.message?.content||'{}');}catch(e){}
+    const el=document.getElementById('menc-sugestoes');
+    if(!json.palavras_recorrentes?.length){el.innerHTML='<div style="font-size:12px;color:var(--text3)">Nenhuma menção relevante</div>';return;}
+    el.innerHTML=`<div style="font-size:11px;color:var(--text3);margin-bottom:8px">Tom: ${json.tom_identificado||'—'}</div>`+json.palavras_recorrentes.map(p=>`<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg3);border-radius:8px;margin-bottom:5px"><span style="font-size:12px;color:var(--red)">${p.palavra}</span><span style="color:var(--text3)">→</span><span style="font-size:12px;color:var(--lime)">${p.sugestao_substituicao||'?'}</span><span style="font-size:11px;color:var(--text3)">${p.ocorrencias}x</span><button onclick="aprovarSugestao('${p.palavra}','${p.sugestao_substituicao||''}')" style="background:var(--lime);color:var(--bg);border:none;border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer">Aprovar</button></div>`).join('');
+    notif('Análise concluída!','ok');
+  }catch(e){notif('Erro: '+e.message,'err');}
+  btn.disabled=false;btn.textContent='Analisar e Sugerir';
+};
+window.aprovarSugestao=async(de,para)=>{if(!para){notif('Sem sugestão','err');return;}await addDoc(collection(db,'capixinha_mencoes'),{de:de.toLowerCase(),para:para.toLowerCase(),ctx:'sugerida pela IA',ativa:true,criado_em:serverTimestamp()});notif('Aprovada!','ok');carregarMencoes();carregarDashboard();};
+
+// ── MENTOR ──
+async function carregarMentor(){
+  const snap=await getDocs(query(collection(db,'capixinha_videos'),orderBy('criado_em','desc')));
+  const lista=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const el=document.getElementById('mentor-lista');
+  if(!lista.length){el.innerHTML='<div style="text-align:center;padding:60px;font-size:12px;color:var(--text3)">Nenhum vídeo ainda.</div>';return;}
+  const flags={'identidade':'badge-lime','evergreen':'badge-teal','aprendizado':'badge-blue','nao_fazer':'badge-red'};
+  el.innerHTML=lista.map(v=>`<div class="video-item"><div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px"><div style="flex:1;font-size:13px;font-weight:600;color:var(--text)">${v.titulo}</div><div style="display:flex;gap:5px;flex-shrink:0">${v.flag?`<span class="badge ${flags[v.flag]||'badge-gray'}">${v.flag}</span>`:''}<button onclick="abrirModalInfo('${v.id}','${v.titulo?.replace(/'/g,"\'")}')" style="background:var(--card2);color:var(--text2);border:1px solid var(--border2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer">+ Info</button><button onclick="analisarPerformance('${v.id}')" style="background:var(--lime-dim);color:var(--lime);border:1px solid rgba(200,255,0,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer">Analisar</button><button onclick="excluirVideo('${v.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer">Excluir</button></div></div><div style="font-size:11px;color:var(--text3);margin-bottom:8px">${v.data_publicacao||'—'}${v.url?` · <a href="${v.url}" target="_blank" style="color:var(--lime)">Ver vídeo</a>`:''}</div><div style="display:flex;flex-direction:column;gap:5px;max-height:150px;overflow-y:auto;margin-bottom:8px">${(v.infos||[]).map(i=>`<div style="display:flex;padding:6px 10px;background:var(--bg3);border-radius:7px;font-size:12px;color:var(--text2)"><span style="flex:1">${i.texto}</span><span style="font-size:10px;color:var(--text3);margin-left:10px;white-space:nowrap">${i.data}</span></div>`).join('')}</div>${v.relatorio?`<div class="video-relatorio">${v.relatorio}</div>`:''}</div>`).join('');
+}
+
+window.abrirModalVideo=()=>{document.getElementById('mv-titulo').value='';document.getElementById('mv-data').value=new Date().toISOString().split('T')[0];document.getElementById('mv-url').value='';document.getElementById('modal-video').style.display='flex';};
+window.salvarVideo=async()=>{const titulo=document.getElementById('mv-titulo').value.trim();if(!titulo){notif('Digite o título','err');return;}await addDoc(collection(db,'capixinha_videos'),{titulo,data_publicacao:document.getElementById('mv-data').value,url:document.getElementById('mv-url').value.trim(),infos:[],relatorio:null,flag:null,criado_em:serverTimestamp()});fecharModal('modal-video');notif('Vídeo adicionado!','ok');carregarMentor();};
+window.abrirModalInfo=(id,titulo)=>{videoAtualId=id;document.getElementById('modal-info-sub').textContent=`"${titulo}"`;document.getElementById('mi-texto').value='';document.getElementById('modal-info').style.display='flex';};
+window.salvarInfo=async()=>{const texto=document.getElementById('mi-texto').value.trim();if(!texto||!videoAtualId)return;const ref=doc(db,'capixinha_videos',videoAtualId);const snap=await getDoc(ref);const infos=snap.data()?.infos||[];infos.push({texto,data:new Date().toLocaleString('pt-BR')});await updateDoc(ref,{infos});fecharModal('modal-info');notif('Salvo!','ok');carregarMentor();};
+window.analisarPerformance=async id=>{
+  const btn=document.querySelector(`[onclick="analisarPerformance('${id}')"]`);
+  btn.disabled=true;btn.textContent='Analisando...';
+  const snap=await getDoc(doc(db,'capixinha_videos',id));
+  const v=snap.data();
+  if(!v?.infos?.length){notif('Adicione informações primeiro','err');btn.disabled=false;btn.textContent='Analisar';return;}
+  const idSnap=await getDocs(query(collection(db,'capixinha_titulos'),where('tipo','==','identidade')));
+  const melhores=idSnap.docs.map(d=>d.data().titulo).slice(-5);
+  try{
+    const res=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${DEEPSEEK_KEY}`},body:JSON.stringify({model:'deepseek-chat',messages:[{role:'user',content:`Você é mentor do canal Capixinha Invest. Analise a performance do vídeo "${v.titulo}".\nHistórico: ${v.infos.map(i=>`[${i.data}] ${i.texto}`).join('\n')}\n${melhores.length?`Títulos com melhor performance: ${melhores.join(', ')}`:''}\nClassifique: identidade confirmada, evergreen, aprendizado ou nao_fazer. Seja direto, máx 200 palavras.`}],max_tokens:600,temperature:0.4})});
+    const data=await res.json();
+    const relatorio=data.choices?.[0]?.message?.content?.trim()||'';
+    let flag='aprendizado';
+    if(relatorio.toLowerCase().includes('identidade confirmada'))flag='identidade';
+    else if(relatorio.toLowerCase().includes('evergreen'))flag='evergreen';
+    else if(relatorio.toLowerCase().includes('nao_fazer')||relatorio.toLowerCase().includes('não fazer'))flag='nao_fazer';
+    await updateDoc(doc(db,'capixinha_videos',id),{relatorio,flag});
+    notif('Análise salva!','ok');carregarMentor();
+  }catch(e){notif('Erro: '+e.message,'err');}
+  btn.disabled=false;btn.textContent='Analisar';
+};
+window.excluirVideo=async id=>{if(!confirm('Excluir vídeo e histórico?'))return;await deleteDoc(doc(db,'capixinha_videos',id));notif('Excluído','inf');carregarMentor();};
+
+// ── BANCO ──
+window.switchTabBanco=t=>{
+  ['titulos','trans','mencoes','videos'].forEach(x=>{
+    document.getElementById('bp-'+x).style.display=x===t?'block':'none';
+    document.getElementById('bt-'+x)?.classList.toggle('active',x===t);
+  });
+  if(t==='titulos')carregarBancoTitulos();
+  if(t==='trans')carregarBancoTrans();
+  if(t==='mencoes')carregarBancoMencoes();
+  if(t==='videos')carregarBancoVideos();
+};
+async function carregarBancoTitulos(){const snap=await getDocs(query(collection(db,'capixinha_titulos'),orderBy('criado_em','desc')));const el=document.getElementById('banco-titulos-list');if(!snap.size){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhum título</div>';return;}el.innerHTML=snap.docs.map(d=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card2);border-radius:var(--radius2);border:1px solid var(--border);margin-bottom:6px"><div style="flex:1;font-size:13px;color:var(--text2)">${d.data().titulo}</div><span class="badge ${d.data().tipo==='identidade'?'badge-lime':'badge-gray'}">${d.data().tipo}</span><button onclick="excluirTituloBanco('${d.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');}
+window.excluirTituloBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_titulos',id));notif('Excluído','inf');carregarBancoTitulos();};
+async function carregarBancoTrans(){const snap=await getDocs(query(collection(db,'capixinha_transcricoes'),orderBy('criado_em','desc')));const el=document.getElementById('banco-trans-list');if(!snap.size){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhuma</div>';return;}const cores={estrutura:'badge-blue',referencia:'badge-gold',identidade:'badge-lime'};el.innerHTML=snap.docs.map(d=>`<div class="trans-item"><div style="flex:1;min-width:0"><div class="trans-nome">${d.data().nome}</div><div class="trans-meta">${d.data().texto?.length||0} chars</div></div><span class="badge ${cores[d.data().tipo]||'badge-gray'}">${d.data().tipo}</span><button onclick="excluirTransBanco('${d.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');}
+window.excluirTransBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_transcricoes',id));notif('Excluída','inf');carregarBancoTrans();};
+async function carregarBancoMencoes(){const snap=await getDocs(query(collection(db,'capixinha_mencoes'),orderBy('criado_em','desc')));const el=document.getElementById('banco-menc-list');if(!snap.size){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhuma</div>';return;}el.innerHTML=snap.docs.map(d=>`<div class="mencao-item" style="${!d.data().ativa?'opacity:.5':''}"><span style="font-size:12px;color:var(--red)">${d.data().de}</span><span style="color:var(--text3)">→</span><span style="font-size:12px;color:var(--lime)">${d.data().para}</span><span style="font-size:11px;color:var(--text3);flex:1">${d.data().ctx||''}</span><span class="badge ${d.data().ativa?'badge-lime':'badge-gray'}">${d.data().ativa?'ativa':'inativa'}</span><button onclick="excluirMencaoBanco('${d.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');}
+window.excluirMencaoBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_mencoes',id));notif('Excluída','inf');carregarBancoMencoes();};
+async function carregarBancoVideos(){const snap=await getDocs(query(collection(db,'capixinha_videos'),orderBy('criado_em','desc')));const el=document.getElementById('banco-videos-list');if(!snap.size){el.innerHTML='<div style="text-align:center;padding:40px;font-size:12px;color:var(--text3)">Nenhum</div>';return;}el.innerHTML=snap.docs.map(d=>`<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--card2);border-radius:var(--radius2);border:1px solid var(--border);margin-bottom:6px"><div style="flex:1"><div style="font-size:13px;color:var(--text2)">${d.data().titulo}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">${d.data().data_publicacao||''} · ${d.data().infos?.length||0} entradas</div></div><button onclick="excluirVideoBanco('${d.id}')" style="background:var(--red-dim);color:var(--red);border:none;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer">Excluir</button></div>`).join('');}
+window.excluirVideoBanco=async id=>{if(!confirm('Excluir?'))return;await deleteDoc(doc(db,'capixinha_videos',id));notif('Excluído','inf');carregarBancoVideos();};
+
+// ── UTILS ──
+window.fecharModal=id=>{document.getElementById(id).style.display='none';};
+window.notif=(msg,tipo='ok')=>{const el=document.getElementById('notif');el.textContent=msg;el.className=`notif ${tipo} show`;setTimeout(()=>el.classList.remove('show'),3000);};
+</script>
+</body>
+</html>
